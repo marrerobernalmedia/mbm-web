@@ -67,6 +67,7 @@ h2 small{font-family:var(--body);font-size:12.5px;color:var(--mute)}
 .btn.yt{background:var(--door);color:#fff}
 .btn.ghost{border:1px solid var(--line)}
 
+.next{display:flex;gap:12px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:10px;text-decoration:none;color:inherit}.next img{width:112px;aspect-ratio:16/9;object-fit:cover;border-radius:8px;flex:none}.next em{display:block;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--bulb)}.next b{display:block;font-size:13.5px;line-height:1.25;margin:3px 0}.next span{font-size:11px;color:var(--mute)}
 .week{display:grid;grid-template-columns:repeat(5,minmax(78px,1fr));gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.week::-webkit-scrollbar{display:none}
 .day{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:8px 3px;text-align:center;min-width:0}
 .day b{display:block;font-family:var(--display);font-weight:400;font-size:14px;color:var(--bulb)}
@@ -266,7 +267,7 @@ const D = window.APPDATA;
 // Estado por fecha: un capítulo "proximo" pasa a estrenado solo cuando llega su día (8:00 AM Las Vegas), sin esperar al data.js nuevo
 (() => { try {
   const p = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hour12: false }).formatToParts(new Date());
-  const g = t => p.find(x => x.type === t).value; const today = g("year") + "-" + g("month") + "-" + g("day"), hour = +g("hour");
+  const g = t => p.find(x => x.type === t).value; const today = g("year") + "-" + g("month") + "-" + g("day"), hour = +g("hour"); window.MBM_TODAY = today;
   Object.values(D.vid).forEach(v => { if (v.k === "proximo" && v.f && (v.f < today || (v.f === today && hour >= 8))) { v.k = "episodio"; if (v.d === "Próximamente") v.d = ""; v.nuevo = true; } });
 } catch (e) {} })();
 const YT = id => "https://youtu.be/" + id;
@@ -304,6 +305,8 @@ function inicio(){
   const next = Object.keys(V).find(i => V[i].k === "proximo");
   const all = [...new Set(D.shows.flatMap(s => s.v))].filter(live);
   const nuevos = all.filter(i => V[i].f).sort(byDate).slice(0, 10);
+  const latest = nuevos[0];
+  const yday = (() => { try { const d = new Date((window.MBM_TODAY || "") + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - 1); return d.toISOString().slice(0, 10); } catch (e) { return ""; } })();
   const week = D.week.map(([d, s, note]) => `<button class="day" data-show="${s}"><b>${d}</b>${note?`<em>${esc(note)}</em>`:""}<span>${esc(sname(SH[s]))}</span></button>`).join("");
   const shelves = D.shows.filter(s => !s.soon).map(s => {
     const l = s.v.filter(live).sort(byDate).slice(0, 8);
@@ -311,9 +314,11 @@ function inicio(){
   }).join("");
   const funny = D.comics.filter(c => c.banner).slice(0, 10);
   return `
-  ${next ? `<section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + next + "/maxresdefault.jpg" : img(next)}" onerror="this.onerror=null;this.src=img(next)" alt=""><span class="tag">● Estreno este viernes</span></div>
-    <div class="body"><span class="show" style="--sc:${SH.lrecs.col}">La Risa es Cosa Seria ${V[next].n}</span><h3>${esc(V[next].t)}</h3>${who(next)}
-    <div class="btns"><a class="btn yt" href="${YT(next)}" target="_blank" rel="noopener">🔔 Avísame en YouTube</a><button class="btn ghost" data-open-sheet>Más avisos</button></div></div></div></section>` : ""}
+  ${latest ? (() => { const sh = SH[showOf[latest]] || SH.lrecs; const f = V[latest].f || ""; const tag = f === window.MBM_TODAY ? "● Estreno de hoy" : f === yday ? "● Estrenó ayer" : "● Último estreno";
+    return `<section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt=""><span class="tag">${tag}</span></div>
+    <div class="body"><span class="show" style="--sc:${sh.col}">${esc(sname(sh))}${V[latest].n ? " " + esc(V[latest].n) : ""}</span><h3>${esc(V[latest].t)}</h3>${who(latest)}
+    <div class="btns"><a class="btn yt" href="${YT(latest)}" target="_blank" rel="noopener">▶ Verlo ahora</a>${next ? `<button class="btn ghost" data-open-sheet>🔔 Avísame</button>` : ""}</div></div></div></section>`; })() : ""}
+  ${next ? `<section><a class="next" href="${YT(next)}" target="_blank" rel="noopener"><img src="${img(next)}" alt=""><div><em>Próximo estreno · ${esc(SH[showOf[next]] ? sname(SH[showOf[next]]) : "La Risa es Cosa Seria")}${V[next].n ? " " + esc(V[next].n) : ""}</em><b>${esc(V[next].t)}</b><span>Toca y dale a la campanita en YouTube</span></div></a></section>` : ""}
   <section>${H("La semana en El Home")}<div class="week">${week}</div></section>
   <section>${H("Los shows de la casa", "", `<button class="more" data-tab-go="shows">Ver todos →</button>`)}<div class="row">${D.shows.map(s => `<div class="tile">${showCard(s)}</div>`).join("")}</div></section>
   <section>${H("Lo nuevo de la casa")}<div class="row">${nuevos.map(tile).join("")}</div></section>
