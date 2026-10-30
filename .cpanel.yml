@@ -1,6 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/$USER/public_html
-    - /bin/cp -R elhome/. $DEPLOYPATH/elhome/
-    - /bin/cp -R recta/. $DEPLOYPATH/recta/
+    # Carpeta real del sitio en este servidor (corregido 30-oct-2026)
+    - export DEPLOYPATH=$HOME/public_html/marrerobernalmedia.com
+    # Nunca se copian las claves ni las opiniones: viven solo en el servidor
+    - /usr/bin/rsync -a --exclude='*-config.js' --exclude='*-config.php' --exclude='opiniones/' --exclude='.git' elhome/ $DEPLOYPATH/elhome/
+    - /usr/bin/rsync -a --exclude='*-config.js' --exclude='*-config.php' --exclude='opiniones/' --exclude='.git' recta/ $DEPLOYPATH/recta/
