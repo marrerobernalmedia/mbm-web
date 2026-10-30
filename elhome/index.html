@@ -275,6 +275,19 @@ const img = id => window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + id + "/mqdef
 const fmt = n => n >= 1e6 ? (n/1e6).toFixed(1).replace(".0","") + "M" : n >= 1000 ? Math.round(n/1000) + "K" : String(n||0);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const V = D.vid, SH = Object.fromEntries(D.shows.map(s => [s.id, s]));
+// Un humorista, una sola ficha: los nombres artísticos se unen al nombre principal (Eliam, 30-oct-2026)
+const ALIAS = { "Kamilo Kabello": "Dani Quintero", "Wattage": "Newito" };
+(() => { try {
+  const byName = Object.fromEntries(D.comics.map(c => [c.name, c]));
+  Object.entries(ALIAS).forEach(([from, to]) => {
+    const src = byName[from], dst = byName[to]; if (!src || !dst) return;
+    dst.all = [...new Set([...(dst.all || []), ...(src.all || [])])];
+    dst.lr = [...new Set([...(dst.lr || []), ...(src.lr || [])])];
+    dst.aka = [...(dst.aka || []), from];
+    D.comics.splice(D.comics.indexOf(src), 1);
+  });
+  Object.values(D.vid).forEach(v => { if (v.c) v.c = [...new Set(v.c.map(n => ALIAS[n] || n))]; });
+} catch (e) {} })();
 const CM = Object.fromEntries(D.comics.map(c => [c.name, c]));
 const showOf = {}; D.shows.forEach(s => s.v.forEach(i => { if (!showOf[i]) showOf[i] = s.id; }));
 (SH.lrecs.subs||[]).forEach(sub => sub.v.forEach(i => { if (!showOf[i]) showOf[i] = "lrecs"; }));
@@ -349,7 +362,7 @@ function showPage(s){
   <div class="list">${l.map(id => item(id)).join("")}</div></section>`;
 }
 function comicCard(c){
-  return `<button class="cm${c.banner?"":" noart"}" data-comic="${esc(c.name)}"><div class="th" data-n="${esc(c.name)}"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="" loading="lazy"></div>${c.banner?"":""}<b>${esc(c.name)}</b><span>${c.all.filter(live).length} videos</span></button>`;
+  return `<button class="cm${c.banner?"":" noart"}" data-comic="${esc(c.name)}"><div class="th" data-n="${esc(c.name)}"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="" loading="lazy"></div>${c.banner?"":""}<b>${esc(c.name)}</b><span>${c.aka ? esc(c.aka.join(" · ")) + " · " : ""}${c.all.filter(live).length} videos</span></button>`;
 }
 function humoristas(){
   if (openComic) return comicPage(CM[openComic]);
@@ -360,7 +373,7 @@ function comicPage(c){
   const rest = c.all.filter(i => live(i) && !c.lr.includes(i));
   const groups = D.shows.map(s => [s, rest.filter(i => showOf[i] === s.id)]).filter(([, g]) => g.length);
   return `<button class="back" data-back>← Todos los humoristas</button>
-  <section style="margin-top:8px"><div class="shead"><div class="pic"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt=""></div><div class="b" style="--sc:var(--lime)"><h1>${esc(c.name)}</h1><p>${c.all.filter(live).length} videos en El Home de la Risa</p></div></div></section>
+  <section style="margin-top:8px"><div class="shead"><div class="pic"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt=""></div><div class="b" style="--sc:var(--lime)"><h1>${esc(c.name)}</h1><p>${c.aka ? "También como " + esc(c.aka.join(" y ")) + " · " : ""}${c.all.filter(live).length} videos en El Home de la Risa</p></div></div></section>
   ${lr.length ? `<section>${H("En La Risa es Cosa Seria", lr.length + "")}<div class="list">${lr.map(i => item(i)).join("")}</div></section>` : ""}
   ${groups.map(([s, g]) => `<section>${H(esc(s.id==="lrecs"?"Más de La Risa es Cosa Seria":sname(s)), g.length + "")}<div class="list">${g.sort(byViews).map(i => item(i)).join("")}</div></section>`).join("")}`;
 }
