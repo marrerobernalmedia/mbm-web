@@ -303,7 +303,7 @@ function showCard(s){
 }
 function inicio(){
   const next = Object.keys(V).find(i => V[i].k === "proximo");
-  const all = [...new Set(D.shows.flatMap(s => s.v))].filter(live);
+  const all = [...new Set(D.shows.flatMap(s => s.v.concat((s.subs || []).flatMap(x => x.v))))].filter(live);
   const nuevos = all.filter(i => V[i].f).sort(byDate).slice(0, 10);
   const latest = nuevos[0];
   const yday = (() => { try { const d = new Date((window.MBM_TODAY || "") + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - 1); return d.toISOString().slice(0, 10); } catch (e) { return ""; } })();
