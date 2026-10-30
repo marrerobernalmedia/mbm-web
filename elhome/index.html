@@ -291,6 +291,9 @@ const EXTRA_LR = { "Newito": ["qQ72eLSjGy8"] };
   Object.entries(EXTRA_LR).forEach(([name, ids]) => { const c = byName[name]; if (!c) return; ids.forEach(id => { if (!D.vid[id]) return; if (!c.lr.includes(id)) c.lr.unshift(id); if (!c.all.includes(id)) c.all.unshift(id); D.vid[id].c = [...new Set([...(D.vid[id].c || []), name])]; }); });
   Object.values(D.vid).forEach(v => { if (v.c) v.c = [...new Set(v.c.map(n => ALIAS[n] || n))]; });
 } catch (e) {} })();
+// Humoristas ordenados por visualizaciones totales en la casa, de más a menos (Eliam, 30-oct-2026)
+D.comics.forEach(c => { c.views = (c.all || []).reduce((n, id) => n + ((D.vid[id] && D.vid[id].v) || 0), 0); });
+D.comics.sort((a, b) => b.views - a.views);
 const CM = Object.fromEntries(D.comics.map(c => [c.name, c]));
 const showOf = {}; D.shows.forEach(s => s.v.forEach(i => { if (!showOf[i]) showOf[i] = s.id; }));
 (SH.lrecs.subs||[]).forEach(sub => sub.v.forEach(i => { if (!showOf[i]) showOf[i] = "lrecs"; }));
@@ -328,7 +331,7 @@ function inicio(){
     const l = s.v.filter(live).sort(byDate).slice(0, 8);
     return `<section>${H(esc(sname(s)), "", `<button class="more" data-show="${s.id}">Ver todo →</button>`)}<div class="row">${l.map(tile).join("")}</div></section>`;
   }).join("");
-  const funny = D.comics.filter(c => c.banner).slice(0, 10);
+  const funny = D.comics.slice(0, 10);
   return `
   ${latest ? (() => { const sh = SH[showOf[latest]] || SH.lrecs; const f = V[latest].f || ""; const tag = f === window.MBM_TODAY ? "● Estreno de hoy" : f === yday ? "● Estrenó ayer" : "● Último estreno";
     return `<section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt=""><span class="tag">${tag}</span></div>
@@ -365,7 +368,7 @@ function showPage(s){
   <div class="list">${l.map(id => item(id)).join("")}</div></section>`;
 }
 function comicCard(c){
-  return `<button class="cm${c.banner?"":" noart"}" data-comic="${esc(c.name)}"><div class="th" data-n="${esc(c.name)}"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="" loading="lazy"></div>${c.banner?"":""}<b>${esc(c.name)}</b><span>${c.aka ? esc(c.aka.join(" · ")) + " · " : ""}${c.all.filter(live).length} videos</span></button>`;
+  return `<button class="cm${c.banner?"":" noart"}" data-comic="${esc(c.name)}"><div class="th" data-n="${esc(c.name)}"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="" loading="lazy"></div>${c.banner?"":""}<b>${esc(c.name)}</b><span>${c.aka ? esc(c.aka.join(" · ")) + " · " : ""}${c.all.filter(live).length} videos · ${fmt(c.views)} vistas</span></button>`;
 }
 function humoristas(){
   if (openComic) return comicPage(CM[openComic]);
