@@ -67,11 +67,11 @@ h2 small{font-family:var(--body);font-size:12.5px;color:var(--mute)}
 .btn.yt{background:var(--door);color:#fff}
 .btn.ghost{border:1px solid var(--line)}
 
-.week{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.day{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center;min-width:0}
+.week{display:grid;grid-template-columns:repeat(5,minmax(78px,1fr));gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}.week::-webkit-scrollbar{display:none}
+.day{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:8px 3px;text-align:center;min-width:0}
 .day b{display:block;font-family:var(--display);font-weight:400;font-size:14px;color:var(--bulb)}
 .day span{display:block;font-size:11px;line-height:1.2;margin-top:3px;overflow-wrap:anywhere}
-.day em{display:block;font-style:normal;font-size:10.5px;color:var(--mute);margin-top:2px}
+.day em{display:block;font-style:normal;font-size:9px;font-weight:700;letter-spacing:0;text-transform:uppercase;color:var(--bulb);margin-top:3px}
 
 .row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}
 .row::-webkit-scrollbar{display:none}
@@ -304,7 +304,7 @@ function inicio(){
   const next = Object.keys(V).find(i => V[i].k === "proximo");
   const all = [...new Set(D.shows.flatMap(s => s.v))].filter(live);
   const nuevos = all.filter(i => V[i].f).sort(byDate).slice(0, 10);
-  const week = D.week.map(([d, s, note]) => `<button class="day" data-show="${s}"><b>${d}</b><span>${esc(sname(SH[s]))}</span>${note?`<em>${esc(note)}</em>`:""}</button>`).join("");
+  const week = D.week.map(([d, s, note]) => `<button class="day" data-show="${s}"><b>${d}</b>${note?`<em>${esc(note)}</em>`:""}<span>${esc(sname(SH[s]))}</span></button>`).join("");
   const shelves = D.shows.filter(s => !s.soon).map(s => {
     const l = s.v.filter(live).sort(byDate).slice(0, 8);
     return `<section>${H(esc(sname(s)), "", `<button class="more" data-show="${s.id}">Ver todo →</button>`)}<div class="row">${l.map(tile).join("")}</div></section>`;
