@@ -277,6 +277,8 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 const V = D.vid, SH = Object.fromEntries(D.shows.map(s => [s.id, s]));
 // Un humorista, una sola ficha: los nombres artísticos se unen al nombre principal (Eliam, 30-oct-2026)
 const ALIAS = { "Kamilo Kabello": "Dani Quintero", "Wattage": "Newito" };
+// Videos que la lista de YouTube no trae pero son del humorista (Eliam, 30-oct-2026): van en "En La Risa es Cosa Seria"
+const EXTRA_LR = { "Newito": ["qQ72eLSjGy8"] };
 (() => { try {
   const byName = Object.fromEntries(D.comics.map(c => [c.name, c]));
   Object.entries(ALIAS).forEach(([from, to]) => {
@@ -286,6 +288,7 @@ const ALIAS = { "Kamilo Kabello": "Dani Quintero", "Wattage": "Newito" };
     dst.aka = [...(dst.aka || []), from];
     D.comics.splice(D.comics.indexOf(src), 1);
   });
+  Object.entries(EXTRA_LR).forEach(([name, ids]) => { const c = byName[name]; if (!c) return; ids.forEach(id => { if (!D.vid[id]) return; if (!c.lr.includes(id)) c.lr.unshift(id); if (!c.all.includes(id)) c.all.unshift(id); D.vid[id].c = [...new Set([...(D.vid[id].c || []), name])]; }); });
   Object.values(D.vid).forEach(v => { if (v.c) v.c = [...new Set(v.c.map(n => ALIAS[n] || n))]; });
 } catch (e) {} })();
 const CM = Object.fromEntries(D.comics.map(c => [c.name, c]));
