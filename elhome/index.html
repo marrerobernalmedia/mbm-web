@@ -482,6 +482,6 @@ const instBtn = document.getElementById("instBtn");
 window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; instBtn.hidden = false; });
 instBtn.onclick = async () => { if (!deferred) return; deferred.prompt(); await deferred.userChoice; deferred = null; instBtn.hidden = true; };
 window.addEventListener("appinstalled", () => { instBtn.hidden = true; });
-if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").then(r => r.update()).catch(() => {})); let swNew = false; navigator.serviceWorker.addEventListener("controllerchange", () => { if (swNew) return; swNew = true; if (navigator.serviceWorker.controller) location.reload(); }); }
+if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {})); }
 </script>
 </body></html>
