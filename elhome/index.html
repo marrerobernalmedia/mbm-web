@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>El Home de la Risa</title>
+<meta name="description" content="Todos los shows del humor cubano en un solo lugar: La Risa es Cosa Seria, Bacallao Sin Pan, Apagonia Hoy, El Despingmoment, Si de Cuero se Trata y más.">
+<meta name="theme-color" content="#0c0a0d">
+<meta name="apple-mobile-web-app-title" content="El Home de la Risa">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta property="og:title" content="El Home de la Risa — la app">
+<meta property="og:image" content="https://marrerobernalmedia.com/elhome/icons/icon-512.png">
+<meta property="og:description" content="Todos los shows de humor de Marrero Bernal Media en un solo lugar: La Risa Es Cosa Seria, Apagonia Ahora, La Cosa Es De Risa y más.">
+<meta property="og:url" content="https://marrerobernalmedia.com/elhome/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap">
+<style>
+html,body{margin:0}
+.inst{padding:9px 14px;border-radius:999px;background:var(--lime);color:#111;font-weight:800;font-size:13px;flex:none}
+:root{
+  --bg:#0c0a0d; --bg2:#151217; --card:#1c181f; --line:#2f2834;
+  --fg:#f7f2ea; --mute:#a99fa8; --lime:#8fd11f; --purple:#8a4fd1; --bulb:#ffd36b; --door:#e2262f;
+  --fbc:var(--lime);
+  --display:"Bungee", Impact, "Arial Black", sans-serif;
+  --body:"Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.4;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
+.app{max-width:600px;margin:0 auto;min-height:100vh;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:linear-gradient(var(--bg) 72%,transparent)}
+.hd{display:flex;align-items:center;gap:12px;padding-block:10px}
+.hd>img{width:46px;height:46px;border-radius:50%;background:#000;border:2px solid var(--lime)}
+.brand{flex:1;min-width:0}
+.brand b{display:block;font-family:var(--display);font-weight:400;font-size:19px;line-height:1.05;letter-spacing:.01em}
+.brand b i{font-style:normal;color:var(--lime)}
+.brand span{font-size:12px;color:var(--mute)}
+.bell{position:relative;width:42px;height:42px;border-radius:50%;background:var(--card);display:grid;place-items:center;border:1px solid var(--line);flex:none}
+.bell i{position:absolute;top:8px;right:9px;width:9px;height:9px;border-radius:50%;background:var(--bulb);box-shadow:0 0 0 2px var(--card),0 0 8px var(--bulb)}
+.search{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:6px}
+.search input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--fg);font:inherit}
+.search input::placeholder{color:var(--mute)}
+
+/* marquesina: bombillos bajo los títulos */
+.bulbs{height:8px;margin:-2px 0 12px;max-width:150px;background:radial-gradient(circle,var(--bulb) 0 2.4px,transparent 3px) 0 50%/12px 8px repeat-x;filter:drop-shadow(0 0 3px rgba(255,211,107,.7))}
+section{margin-top:24px}
+h2{font-family:var(--display);font-weight:400;font-size:20px;margin:0 0 8px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;line-height:1.1}
+h2 small{font-family:var(--body);font-size:12.5px;color:var(--mute)}
+
+.hero{border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.pic{position:relative}
+.pic img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.tag{position:absolute;top:12px;left:12px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;border-radius:999px;background:var(--door);color:#fff}
+.hero .body{padding:14px 16px 16px}
+.hero h3{margin:0 0 4px;font-size:19px;font-weight:800;line-height:1.2;text-wrap:balance}
+.meta{font-size:13px;color:var(--mute)}
+.btns{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.btn{flex:1;min-width:140px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;border-radius:12px;font-weight:800;font-size:14px;text-align:center}
+.btn.yt{background:var(--door);color:#fff}
+.btn.ghost{border:1px solid var(--line)}
+
+.week{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.day{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center;min-width:0}
+.day b{display:block;font-family:var(--display);font-weight:400;font-size:14px;color:var(--bulb)}
+.day span{display:block;font-size:11px;line-height:1.2;margin-top:3px;overflow-wrap:anywhere}
+.day em{display:block;font-style:normal;font-size:10.5px;color:var(--mute);margin-top:2px}
+
+.row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.tile{flex:0 0 70%;max-width:280px;scroll-snap-align:start;min-width:0}
+.th{position:relative;border-radius:12px;overflow:hidden;background:var(--card)}
+.th img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.dur{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.82);font-size:11px;font-weight:600;padding:2px 6px;border-radius:5px}
+.ep{position:absolute;left:6px;top:6px;background:var(--fg);color:var(--bg);font-size:11px;font-weight:800;padding:2px 6px;border-radius:5px}
+.show{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--sc,var(--lime))}
+.tile h4,.item h4{margin:3px 0 2px;font-size:14px;font-weight:600;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile .show{margin-top:8px}
+.who{font-size:12.5px;color:var(--bulb);font-weight:600}
+.more{font-size:13px;font-weight:800;color:var(--lime);margin-left:auto}
+
+.list{display:flex;flex-direction:column;gap:14px}
+.item{display:grid;grid-template-columns:44% 1fr;gap:12px;align-items:start}
+.item>div{min-width:0}
+.item h4{-webkit-line-clamp:3}
+.rank{font-family:var(--display);font-size:24px;color:var(--bulb);line-height:1}
+
+/* shows */
+.shows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sc{position:relative;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column}
+.sc .pic img{aspect-ratio:16/10}
+.sc .pic::after{content:"";position:absolute;inset:auto 0 0;height:4px;background:var(--sc)}
+.sc .b{padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px}
+.sc b{font-family:var(--display);font-weight:400;font-size:15px;line-height:1.1}
+.sc span{font-size:12px;color:var(--mute)}
+.soon{position:absolute;top:8px;left:8px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--bulb);color:#1a1200;padding:4px 7px;border-radius:999px}
+.shead{border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.shead .b{padding:14px 16px 16px;border-top:4px solid var(--sc)}
+.shead h1{font-family:var(--display);font-weight:400;font-size:26px;line-height:1.05;margin:0 0 6px;text-wrap:balance}
+.shead p{margin:0;color:var(--mute);font-size:14px;max-width:60ch}
+.back{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:14px;color:var(--lime);padding:6px 0}
+
+/* humoristas */
+.comics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cm{display:flex;flex-direction:column;gap:6px;min-width:0}
+.cm .th img{aspect-ratio:4/3}
+.cm b{font-size:15px;font-weight:800;line-height:1.15}
+.cm span{font-size:12px;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{padding:6px 10px;border-radius:999px;background:var(--bg2);border:1px solid var(--line);font-size:12.5px;font-weight:600}
+.chip i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--sc);margin-right:6px;vertical-align:1px}
+
+.post{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.post .ph{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.post .ph img{width:34px;height:34px;border-radius:50%;background:#000;border:1.5px solid var(--lime)}
+.post .ph b{display:block;font-size:14px}
+.post .ph span{font-size:12px;color:var(--mute)}
+.post p{margin:0;padding:0 14px 12px;font-size:14.5px}
+.post>a>img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.post .act{padding:10px 14px 14px;font-size:13px;font-weight:800;color:var(--lime)}
+.post .act a{color:inherit}
+
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(12,10,13,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+nav.tabs div{max-width:600px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+nav.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 9px;font-size:11px;font-weight:600;color:var(--mute);text-align:center}
+nav.tabs button[aria-selected="true"]{color:var(--fg)}
+nav.tabs button[aria-selected="true"] svg{color:var(--lime)}
+svg{width:22px;height:22px;flex:none}
+
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:40}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--bg2);border-top:1px solid var(--line);border-radius:20px 20px 0 0;max-width:600px;margin:0 auto;padding:18px max(16px,env(safe-area-inset-left,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-right,0px));max-height:85vh;overflow:auto}
+.sheet h3{font-family:var(--display);font-weight:400;font-size:20px;margin:0 0 6px}
+.sheet p{color:var(--mute);margin:0 0 14px;font-size:14px}
+.opt{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:10px}
+.opt img{width:40px;height:40px;border-radius:50%;flex:none;background:#000}
+.opt .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
+.opt b{display:block;font-size:14px}
+.opt span{font-size:12.5px;color:var(--mute)}
+.opt>div{min-width:0;flex:1}
+.close{width:100%;margin-top:6px;padding:12px;border-radius:12px;border:1px solid var(--line);font-weight:800;text-align:center}
+.empty{color:var(--mute);padding:20px 0;text-align:center}
+.foot{color:var(--mute);font-size:12px;text-align:center;margin-top:28px}
+
+.sc .pic img{aspect-ratio:16/9}
+.shead .pic img{aspect-ratio:16/9}
+.cm .th img{aspect-ratio:16/9}
+.cm.noart .th{position:relative}
+.cm.noart .th::after{content:attr(data-n);position:absolute;inset:auto 0 0;padding:18px 10px 8px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-family:var(--display);font-size:15px;color:var(--bulb)}
+.subs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:12px -16px 0;padding:0 16px 4px}
+.subs::-webkit-scrollbar{display:none}
+.subs .chip{flex:none}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+h2{flex-wrap:nowrap}
+h2 .more{flex:none;white-space:nowrap}
+.sortbar{display:flex;gap:6px;margin:-2px 0 12px}
+.sortbar .chip{font-size:12px;padding:5px 9px}
+
+.fbstrip{display:flex;gap:12px;align-items:center;margin-top:26px;padding:14px;border:1px dashed var(--line);border-radius:16px;background:var(--card);width:100%;text-align:left}
+.fbstrip .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--fbc);color:#111;font-size:20px}
+.fbstrip b{display:block;font-size:14.5px}
+.fbstrip span{font-size:12.5px;color:var(--mute)}
+.fbstrip>div{min-width:0;flex:1}
+.fbform{display:flex;flex-direction:column;gap:12px}
+.fbform label{font-size:13px;font-weight:700;display:flex;flex-direction:column;gap:6px}
+.fbform textarea,.fbform input[type=text]{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;width:100%}
+.fbform textarea{min-height:110px;resize:vertical}
+.fbtypes{display:flex;flex-wrap:wrap;gap:6px}
+.fbtypes button{padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13px;font-weight:600}
+.fbtypes button[aria-pressed="true"]{background:var(--fbc);color:#111;border-color:var(--fbc)}
+.stars{display:flex;gap:4px}
+.stars button{font-size:28px;line-height:1;color:var(--line);padding:2px}
+.stars button.on{color:var(--fbc)}
+.fbsend{padding:13px;border-radius:12px;background:var(--fbc);color:#111;font-weight:800;text-align:center}
+.fbsend[disabled]{opacity:.5}
+.fbmsg{font-size:14px;text-align:center;color:var(--mute);min-height:1.2em}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style>
+<script src="onesignal-config.js"></script>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
+  await OS.init({ appId: window.ONESIGNAL_APP_ID, serviceWorkerPath: "elhome/sw.js", serviceWorkerParam: { scope: "/elhome/" } });
+});
+</script>
+</head><body>
+
+<div class="app">
+  <header>
+    <div class="wrap">
+      <div class="hd">
+        <img src="thumbs/logo-home.jpg" alt="">
+        <div class="brand"><b>El Home <i>de la</i> Risa</b><span>Todos los shows del humor cubano en un solo lugar</span></div>
+        <button class="inst" id="instBtn" hidden>Instalar</button>
+        <button class="bell" id="bellBtn" aria-label="Avisos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i></i></button>
+      </div>
+      <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Busca un humorista, un show o un tema: apagón, cola…"></label>
+    </div>
+  </header>
+  <main class="wrap" id="view"></main>
+</div>
+
+<nav class="tabs" aria-label="Secciones"><div role="tablist">
+  <button role="tab" data-tab="inicio" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg>Inicio</button>
+  <button role="tab" data-tab="shows"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m8 2 4 4 4-4" stroke-linecap="round"/></svg>Shows</button>
+  <button role="tab" data-tab="humoristas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"/></svg>Humoristas</button>
+  <button role="tab" data-tab="noticias"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>Noticias</button>
+</div></nav>
+
+<div id="sheetRoot" hidden>
+  <div class="scrim" id="scrim"></div>
+  <div class="sheet" role="dialog" aria-label="Avisos">
+    <h3>Que no se te escape nada</h3>
+    <p>Suscríbete a los canales de la casa y toca la campanita: YouTube te avisa en cada estreno.</p>
+    <button class="opt" id="pushBtn" hidden style="width:100%;text-align:left">
+      <div class="ic" style="background:var(--fbc);color:#111"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
+      <div><b id="pushLbl">Activar avisos de estrenos</b><span>Te avisamos en este teléfono el día que sale un capítulo nuevo</span></div></button>
+    <div id="subs"></div>
+    <a class="opt" href="https://chat.whatsapp.com/BibOkpcOvAg19Mc25grPvi" target="_blank" rel="noopener">
+      <div class="ic" style="background:#25d366"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></div>
+      <div><b>Únete al grupo de WhatsApp</b><span>Estrenos e invitaciones a las grabaciones sorpresa</span></div></a>
+    <div class="opt">
+      <div class="ic" style="background:var(--lime);color:#111"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7M9 11l3 3 3-3"/></svg></div>
+      <div><b>Ponla en tu pantalla de inicio</b><span>Android: menú ⋮ → "Instalar app". iPhone: Compartir → "Agregar a inicio"</span></div></div>
+    <button class="close" id="closeSheet">Listo</button>
+  </div>
+</div>
+
+<div id="fbMount"></div>
+<script>window.THUMB_REMOTE = true;</script>
+<script src="data.js"></script>
+<script>
+const FB_HTML = `
+<div id="fbRoot" hidden>
+  <div class="scrim" data-fbclose></div>
+  <div class="sheet" role="dialog" aria-label="Danos tu opinión">
+    <h3>¿Cómo mejoramos la app?</h3>
+    <p>Lo lee el equipo. Cada semana la app mejora con lo que nos dicen.</p>
+    <form class="fbform" id="fbForm">
+      <div class="fbtypes" id="fbTypes">
+        <button type="button" data-t="Idea" aria-pressed="true">💡 Una idea</button>
+        <button type="button" data-t="Algo no funciona" aria-pressed="false">🔧 Algo no funciona</button>
+        <button type="button" data-t="Quiero ver" aria-pressed="false">🎬 Quiero ver…</button>
+        <button type="button" data-t="Me gusta" aria-pressed="false">❤️ Me gusta</button>
+      </div>
+      <div><div style="font-size:13px;font-weight:700;margin-bottom:4px">¿Qué nota le das a la app?</div>
+        <div class="stars" id="fbStars"><button type="button" data-n="1" aria-label="1 estrellas">★</button><button type="button" data-n="2" aria-label="2 estrellas">★</button><button type="button" data-n="3" aria-label="3 estrellas">★</button><button type="button" data-n="4" aria-label="4 estrellas">★</button><button type="button" data-n="5" aria-label="5 estrellas">★</button></div></div>
+      <label>Cuéntanos<textarea name="texto" id="fbText" maxlength="2000" placeholder="Qué te gustaría encontrar, qué cambiarías, qué humorista o pelotero quieres ver…"></textarea></label>
+      <label>Tu nombre o WhatsApp (si quieres que te respondamos)<input type="text" name="contacto" id="fbContact" maxlength="120"></label>
+      <div class="hp" aria-hidden="true"><input type="text" name="web" tabindex="-1" autocomplete="off"></div>
+      <button class="fbsend" id="fbSend" type="submit">Enviar mi opinión</button>
+      <div class="fbmsg" id="fbMsg" role="status"></div>
+    </form>
+    <button class="close" data-fbclose>Cerrar</button>
+  </div>
+</div>
+`;
+const D = window.APPDATA;
+// Estado por fecha: un capítulo "proximo" pasa a estrenado solo cuando llega su día (8:00 AM Las Vegas), sin esperar al data.js nuevo
+(() => { try {
+  const p = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hour12: false }).formatToParts(new Date());
+  const g = t => p.find(x => x.type === t).value; const today = g("year") + "-" + g("month") + "-" + g("day"), hour = +g("hour");
+  Object.values(D.vid).forEach(v => { if (v.k === "proximo" && v.f && (v.f < today || (v.f === today && hour >= 8))) { v.k = "episodio"; if (v.d === "Próximamente") v.d = ""; v.nuevo = true; } });
+} catch (e) {} })();
+const YT = id => "https://youtu.be/" + id;
+const img = id => window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg" : "thumbs/" + id + ".jpg";
+const fmt = n => n >= 1e6 ? (n/1e6).toFixed(1).replace(".0","") + "M" : n >= 1000 ? Math.round(n/1000) + "K" : String(n||0);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const V = D.vid, SH = Object.fromEntries(D.shows.map(s => [s.id, s]));
+const CM = Object.fromEntries(D.comics.map(c => [c.name, c]));
+const showOf = {}; D.shows.forEach(s => s.v.forEach(i => { if (!showOf[i]) showOf[i] = s.id; }));
+(SH.lrecs.subs||[]).forEach(sub => sub.v.forEach(i => { if (!showOf[i]) showOf[i] = "lrecs"; }));
+const live = id => V[id] && V[id].k !== "proximo" && V[id].k !== "futuro";
+const byViews = (a,b) => (V[b].v||0) - (V[a].v||0);
+const byDate = (a,b) => (V[b].f||"").localeCompare(V[a].f||"") || byViews(a,b);
+const view = document.getElementById("view");
+let tab = "inicio", openShow = null, openComic = null, sub = 0, sort = "show";
+const H = (t, s, more) => `<h2>${t}${s?` <small>${s}</small>`:""}${more||""}</h2><div class="bulbs"></div>`;
+const sname = s => s.short || s.name;
+const showTag = id => { const s = SH[showOf[id]]; return s ? `<span class="show" style="--sc:${s.col}">${esc(sname(s))}${V[id].n?` ${V[id].n}`:""}</span>` : ""; };
+const who = id => V[id].c.length ? `<div class="who">${esc(V[id].c.join(" · "))}</div>` : "";
+const cover = s => s.banner || img(s.v.slice().sort(byViews)[0]);
+
+function tile(id){
+  const v = V[id];
+  return `<a class="tile" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div>${showTag(id)}<h4>${esc(v.t)}</h4>${who(id)}</a>`;
+}
+function item(id, rank){
+  const v = V[id];
+  return `<a class="item" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div><div>${rank?`<div class="rank">${rank}</div>`:""}${showTag(id)}<h4>${esc(v.t)}</h4>${who(id)}${v.v?`<div class="meta">${fmt(v.v)} vistas</div>`:""}</div></a>`;
+}
+function showCard(s){
+  const n = s.v.filter(live).length;
+  return `<button class="sc" data-show="${s.id}" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt="" loading="lazy">${s.soon?`<span class="soon">Próximamente</span>`:""}</div><div class="b"><b>${esc(sname(s))}</b><span>${s.soon?esc(s.soon):n+" videos · "+esc(s.ch)}</span></div></button>`;
+}
+function inicio(){
+  const next = Object.keys(V).find(i => V[i].k === "proximo");
+  const all = [...new Set(D.shows.flatMap(s => s.v))].filter(live);
+  const nuevos = all.filter(i => V[i].f).sort(byDate).slice(0, 10);
+  const week = D.week.map(([d, s, note]) => `<button class="day" data-show="${s}"><b>${d}</b><span>${esc(sname(SH[s]))}</span>${note?`<em>${esc(note)}</em>`:""}</button>`).join("");
+  const shelves = D.shows.filter(s => !s.soon).map(s => {
+    const l = s.v.filter(live).sort(byDate).slice(0, 8);
+    return `<section>${H(esc(sname(s)), "", `<button class="more" data-show="${s.id}">Ver todo →</button>`)}<div class="row">${l.map(tile).join("")}</div></section>`;
+  }).join("");
+  const funny = D.comics.filter(c => c.banner).slice(0, 10);
+  return `
+  ${next ? `<section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + next + "/maxresdefault.jpg" : img(next)}" onerror="this.onerror=null;this.src=img(next)" alt=""><span class="tag">● Estreno este viernes</span></div>
+    <div class="body"><span class="show" style="--sc:${SH.lrecs.col}">La Risa es Cosa Seria ${V[next].n}</span><h3>${esc(V[next].t)}</h3>${who(next)}
+    <div class="btns"><a class="btn yt" href="${YT(next)}" target="_blank" rel="noopener">🔔 Avísame en YouTube</a><button class="btn ghost" data-open-sheet>Más avisos</button></div></div></div></section>` : ""}
+  <section>${H("La semana en El Home")}<div class="week">${week}</div></section>
+  <section>${H("Los shows de la casa", "", `<button class="more" data-tab-go="shows">Ver todos →</button>`)}<div class="row">${D.shows.map(s => `<div class="tile">${showCard(s)}</div>`).join("")}</div></section>
+  <section>${H("Lo nuevo de la casa")}<div class="row">${nuevos.map(tile).join("")}</div></section>
+  <section>${H("Los humoristas", "", `<button class="more" data-tab-go="humoristas">Ver todos →</button>`)}<div class="row">${funny.map(c => `<div class="tile">${comicCard(c)}</div>`).join("")}</div></section>
+  ${shelves}
+  <section>${H("Los más vistos de la casa")}<div class="list">${all.sort(byViews).slice(0,10).map((id,i)=>item(id,i+1)).join("")}</div></section>
+  <p class="foot">Cada video se abre en YouTube · El Home de la Risa</p>`;
+}
+function shows(){
+  if (openShow) return showPage(SH[openShow]);
+  return `<section>${H("Los shows de la casa", D.shows.length + " shows")}<div class="shows">${D.shows.map(showCard).join("")}</div></section>`;
+}
+function sorted(l){
+  l = l.filter(live);
+  if (sort === "vistos") return l.slice().sort(byViews);
+  return l;
+}
+function showPage(s){
+  const lists = [{name: s.id === "lrecs" ? "Todos los episodios" : "Todos", v: s.v}].concat(s.subs || []);
+  const cur = lists[Math.min(sub, lists.length-1)];
+  const l = sorted(cur.v);
+  return `<button class="back" data-back>← Todos los shows</button>
+  <section style="margin-top:8px"><div class="shead" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt=""></div><div class="b"><h1>${esc(s.name)}</h1><p>${esc(s.tag)}</p><div class="meta" style="margin-top:6px">${esc(s.ch)}${s.soon?" · "+esc(s.soon):""}</div>
+  <div class="btns"><a class="btn yt" href="${s.sub}" target="_blank" rel="noopener">Suscribirme al canal</a></div></div></div>
+  ${lists.length > 1 ? `<div class="subs">${lists.map((x,k) => `<button class="chip" data-sub="${k}" aria-pressed="${k===sub}">${esc(x.name)}</button>`).join("")}</div>` : ""}</section>
+  <section>${H(esc(s.soon ? "Mientras tanto" : cur.name), l.length + " videos")}
+  <div class="sortbar"><button class="chip" data-sort="show" aria-pressed="${sort==="show"}">Orden del show</button><button class="chip" data-sort="vistos" aria-pressed="${sort==="vistos"}">Más vistos</button></div>
+  <div class="list">${l.map(id => item(id)).join("")}</div></section>`;
+}
+function comicCard(c){
+  return `<button class="cm${c.banner?"":" noart"}" data-comic="${esc(c.name)}"><div class="th" data-n="${esc(c.name)}"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="" loading="lazy"></div>${c.banner?"":""}<b>${esc(c.name)}</b><span>${c.all.filter(live).length} videos</span></button>`;
+}
+function humoristas(){
+  if (openComic) return comicPage(CM[openComic]);
+  return `<section>${H("Los humoristas", D.comics.length + " en la casa")}<div class="comics">${D.comics.map(comicCard).join("")}</div></section>`;
+}
+function comicPage(c){
+  const lr = c.lr.filter(live);
+  const rest = c.all.filter(i => live(i) && !c.lr.includes(i));
+  const groups = D.shows.map(s => [s, rest.filter(i => showOf[i] === s.id)]).filter(([, g]) => g.length);
+  return `<button class="back" data-back>← Todos los humoristas</button>
+  <section style="margin-top:8px"><div class="shead"><div class="pic"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt=""></div><div class="b" style="--sc:var(--lime)"><h1>${esc(c.name)}</h1><p>${c.all.filter(live).length} videos en El Home de la Risa</p></div></div></section>
+  ${lr.length ? `<section>${H("En La Risa es Cosa Seria", lr.length + "")}<div class="list">${lr.map(i => item(i)).join("")}</div></section>` : ""}
+  ${groups.map(([s, g]) => `<section>${H(esc(s.id==="lrecs"?"Más de La Risa es Cosa Seria":sname(s)), g.length + "")}<div class="list">${g.sort(byViews).map(i => item(i)).join("")}</div></section>`).join("")}`;
+}
+function noticias(){
+  return `<section>${H("Noticias de la casa")}<div class="list">${D.posts.map(p => `<article class="post"><div class="ph"><img src="thumbs/logo-home.jpg" alt=""><div><b>El Home de la Risa</b><span>${esc(p.f)}</span></div></div><p>${esc(p.txt)}</p><a href="${YT(p.id)}" target="_blank" rel="noopener"><img src="${img(p.id)}" alt="" loading="lazy"></a><div class="act"><a href="${YT(p.id)}" target="_blank" rel="noopener">▶ ${esc(p.cta)}</a>${p.wa?` · <a href="https://chat.whatsapp.com/BibOkpcOvAg19Mc25grPvi" target="_blank" rel="noopener">Unirme al WhatsApp</a>`:""}</div></article>`).join("")}</div></section>`;
+}
+function search(q){
+  const n = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+  const k = n(q.trim());
+  const l = Object.keys(V).filter(i => live(i) && n(V[i].t + " " + V[i].c.join(" ") + " " + (SH[showOf[i]]?SH[showOf[i]].name:"")).includes(k)).sort(byViews).slice(0, 60);
+  return `<section>${H("Resultados", String(l.length))}${l.length?`<div class="list">${l.map(i=>item(i)).join("")}</div>`:`<p class="empty">No encontramos nada con "${esc(q)}".</p>`}</section>`;
+}
+function render(){
+  const q = document.getElementById("q").value;
+  view.innerHTML = (q.trim() ? search(q) : ({inicio, shows, humoristas, noticias}[tab])()) + fbStrip();
+}
+function go(t){
+  tab = t; document.getElementById("q").value = "";
+  document.querySelectorAll("nav.tabs button").forEach(x => x.setAttribute("aria-selected", x.dataset.tab === t));
+  render(); window.scrollTo({top:0});
+}
+document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("click", () => { openShow = null; openComic = null; go(b.dataset.tab); }));
+view.addEventListener("click", e => {
+  const s = e.target.closest("[data-show]"), c = e.target.closest("[data-comic]"), g = e.target.closest("[data-tab-go]");
+  const sb = e.target.closest("[data-sub]"), so = e.target.closest("[data-sort]");
+  if (sb){ sub = +sb.dataset.sub; render(); return; }
+  if (so){ sort = so.dataset.sort; render(); return; }
+  if (s){ openShow = s.dataset.show; sub = 0; sort = "show"; go("shows"); return; }
+  if (c){ openComic = c.dataset.comic; go("humoristas"); return; }
+  if (g){ openShow = null; openComic = null; go(g.dataset.tabGo); return; }
+  if (e.target.closest("[data-back]")){ openShow = null; openComic = null; render(); window.scrollTo({top:0}); return; }
+  if (e.target.closest("[data-open-sheet]")) openSheet(true);
+});
+document.getElementById("q").addEventListener("input", render);
+const subs = [["La Risa es Cosa Seria","logo-larisa.jpg","lrecs"],["El Home de la Risa","logo-home.jpg","home"],["Welcome to Apagonia","logo-welcome.jpg","conozca"],["La Cosa Es De Risa","logo-lacosa.jpg","bacallao"]];
+document.getElementById("subs").innerHTML = subs.map(([n, l, s]) => `<a class="opt" href="${SH[s].sub}" target="_blank" rel="noopener"><img src="thumbs/${l}" alt=""><div><b>${n}</b><span>Suscribirme y activar la campanita</span></div></a>`).join("");
+const sheet = document.getElementById("sheetRoot");
+function openSheet(on){ sheet.hidden = !on; }
+document.getElementById("bellBtn").onclick = () => openSheet(true);
+document.getElementById("scrim").onclick = () => openSheet(false);
+document.getElementById("closeSheet").onclick = () => openSheet(false);
+
+// --- opiniones ---
+document.getElementById("fbMount").outerHTML = FB_HTML;
+const fbRoot = document.getElementById("fbRoot");
+let fbType = "Idea", fbNote = 0;
+function openFb(on){ fbRoot.hidden = !on; if (on) { document.getElementById("fbMsg").textContent = ""; } }
+fbRoot.addEventListener("click", e => {
+  if (e.target.closest("[data-fbclose]")) return openFb(false);
+  const t = e.target.closest("#fbTypes [data-t]");
+  if (t){ fbType = t.dataset.t; fbRoot.querySelectorAll("#fbTypes [data-t]").forEach(b => b.setAttribute("aria-pressed", b === t)); }
+  const st = e.target.closest("#fbStars [data-n]");
+  if (st){ fbNote = +st.dataset.n; fbRoot.querySelectorAll("#fbStars [data-n]").forEach(b => b.classList.toggle("on", +b.dataset.n <= fbNote)); }
+});
+document.getElementById("fbForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const msg = document.getElementById("fbMsg"), send = document.getElementById("fbSend");
+  const texto = document.getElementById("fbText").value.trim();
+  if (!texto && !fbNote){ msg.textContent = "Escribe algo o marca una nota."; return; }
+  const fd = new FormData(e.target);
+  fd.set("tipo", fbType); fd.set("nota", fbNote); fd.set("pantalla", (typeof tab !== "undefined" ? tab : ""));
+  send.disabled = true; msg.textContent = "Enviando…";
+  try {
+    const r = await fetch("feedback.php", { method: "POST", body: fd });
+    if (r.status === 429) { msg.textContent = "Espera un momento antes de mandar otra."; return; }
+    const j = await r.json();
+    if (!j.ok) throw 0;
+    msg.textContent = "¡Gracias! Ya lo recibimos."; e.target.reset(); fbNote = 0;
+    fbRoot.querySelectorAll("#fbStars [data-n]").forEach(b => b.classList.remove("on"));
+  } catch (err) {
+    msg.textContent = "No se pudo enviar ahora. Inténtalo más tarde.";
+  } finally { send.disabled = false; }
+});
+document.addEventListener("click", e => { if (e.target.closest("[data-fb]")) openFb(true); });
+const fbStrip = () => `<button class="fbstrip" data-fb><div class="ic">💬</div><div><b>¿Cómo mejoramos la app?</b><span>Danos tu opinión: ideas, fallos o lo que quieres ver.</span></div></button>`;
+
+// --- avisos al teléfono (OneSignal; solo en la versión publicada con su configuración) ---
+const pushBtn = document.getElementById("pushBtn"), pushLbl = document.getElementById("pushLbl");
+if (window.ONESIGNAL_APP_ID && pushBtn) {
+  pushBtn.hidden = false;
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async OS => {
+    const upd = () => { const on = OS.Notifications.permission && OS.User.PushSubscription.optedIn; pushLbl.textContent = on ? "Avisos activados en este teléfono ✓" : "Activar avisos de estrenos"; };
+    upd();
+    OS.Notifications.addEventListener("permissionChange", upd);
+    OS.User.PushSubscription.addEventListener("change", upd);
+    pushBtn.onclick = async () => {
+      try {
+        if (!OS.Notifications.permission) await OS.Notifications.requestPermission();
+        else if (!OS.User.PushSubscription.optedIn) await OS.User.PushSubscription.optIn();
+      } catch (e) {}
+      upd();
+    };
+  });
+}
+render();
+// --- instalar como app (Android / Chrome) ---
+let deferred = null;
+const instBtn = document.getElementById("instBtn");
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; instBtn.hidden = false; });
+instBtn.onclick = async () => { if (!deferred) return; deferred.prompt(); await deferred.userChoice; deferred = null; instBtn.hidden = true; };
+window.addEventListener("appinstalled", () => { instBtn.hidden = true; });
+if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {})); }
+</script>
+</body></html>

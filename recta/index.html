@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Recta Al Pecho</title>
+<meta name="description" content="La historia de la pelota cubana: entrevistas a los peloteros, los mitos y los artículos de rectaalpecho.com.">
+<meta name="theme-color" content="#0a1424">
+<meta name="apple-mobile-web-app-title" content="Recta Al Pecho">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta property="og:title" content="Recta Al Pecho — la app">
+<meta property="og:image" content="https://marrerobernalmedia.com/recta/icons/icon-512.png">
+<meta property="og:description" content="La pelota cubana contada sin filtro: los mitos del béisbol cubano, derrumbados por los mismos peloteros que los vivieron.">
+<meta property="og:url" content="https://marrerobernalmedia.com/recta/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;800&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@1,8..60,600&display=swap">
+<style>
+html,body{margin:0}
+.inst{padding:9px 14px;border-radius:999px;background:var(--red);color:#fff;font-weight:700;font-size:13px}
+:root{
+  --bg:#0a1424; --bg2:#0f1c31; --card:#14243d; --line:#233654;
+  --fg:#f3efe6; --mute:#9aa8bd; --red:#d22630; --red2:#ff4b55; --chalk:#e9e3d3;
+  --fbc:#f2c14e;
+  --display:"Saira Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15.5px;line-height:1.4;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.app{max-width:560px;margin:0 auto;min-height:100vh;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:linear-gradient(var(--bg) 72%,transparent)}
+.hd{display:flex;align-items:center;gap:12px;padding-block:12px}
+.hd img{width:42px;height:42px;border-radius:50%;background:#fff;object-fit:cover}
+.brand{flex:1;min-width:0}
+.brand b{display:block;font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:.03em;line-height:1;text-transform:uppercase}
+.brand b i{font-style:normal;color:var(--red2)}
+.brand span{font-size:12.5px;color:var(--mute)}
+.bell{position:relative;width:42px;height:42px;border-radius:50%;background:var(--card);display:grid;place-items:center;border:1px solid var(--line)}
+.bell i{position:absolute;top:8px;right:9px;width:9px;height:9px;border-radius:50%;background:var(--red2);box-shadow:0 0 0 2px var(--card)}
+.search{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:6px}
+.search input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--fg);font:inherit}
+.search input::placeholder{color:var(--mute)}
+
+section{margin-top:24px}
+h2{font-family:var(--display);font-weight:800;font-size:25px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 10px;display:flex;align-items:baseline;gap:8px;line-height:1.05}
+h2 small{font-family:var(--body);font-weight:400;font-size:12.5px;color:var(--mute);text-transform:none;letter-spacing:0}
+/* costura: the red stitch line under section titles */
+.stitch{height:6px;margin:-4px 0 12px;background:repeating-linear-gradient(115deg,var(--red) 0 2px,transparent 2px 9px);opacity:.85;border-radius:3px;max-width:120px}
+
+.hero{position:relative;border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.pic{position:relative}
+.hero img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;border-radius:999px;background:var(--red);color:#fff}
+.tag.chalk{background:var(--chalk);color:var(--bg)}
+.hero .tag{position:absolute;top:12px;left:12px}
+.hero .body{padding:14px 16px 16px}
+.hero h3{margin:0 0 4px;font-size:19px;font-weight:700;line-height:1.22;text-wrap:balance}
+.who{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:var(--red2)}
+.meta{font-size:13px;color:var(--mute)}
+.btns{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.btn{flex:1;min-width:140px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;border-radius:12px;font-weight:700;font-size:14.5px}
+.btn.yt{background:var(--red);color:#fff}
+.btn.ghost{border:1px solid var(--line)}
+
+/* próximo: scoreboard card */
+.board{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.board .day{font-family:var(--display);font-weight:800;text-align:center;background:var(--chalk);color:var(--bg);border-radius:10px;padding:8px 12px;line-height:1}
+.board .day small{display:block;font-size:12px;letter-spacing:.14em}
+.board .day b{display:block;font-size:30px}
+.board>div{min-width:0}
+.board .name{font-family:var(--display);font-weight:800;font-size:24px;text-transform:uppercase;letter-spacing:.03em;line-height:1}
+.board p{margin:4px 0 0;font-size:13.5px;color:var(--mute)}
+
+.row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.tile{flex:0 0 72%;max-width:300px;scroll-snap-align:start}
+.th{position:relative;border-radius:12px;overflow:hidden;background:var(--card)}
+.th img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.dur{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.8);font-size:11px;font-weight:700;padding:2px 6px;border-radius:5px}
+.tile .who{margin-top:8px}
+.tile h4{margin:2px 0 0;font-size:14px;font-weight:600;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.list{display:flex;flex-direction:column;gap:14px}
+.item{display:grid;grid-template-columns:44% 1fr;gap:12px;align-items:start}
+.item>div{min-width:0}
+.item h4{margin:2px 0 4px;font-size:14px;font-weight:600;line-height:1.25;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rank{font-family:var(--display);font-weight:800;font-size:28px;color:var(--chalk);line-height:1}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:13.5px;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--chalk);color:var(--bg);border-color:var(--chalk)}
+.chip em{font-style:normal;color:var(--mute);font-weight:400;margin-left:4px}
+.chip[aria-pressed="true"] em{color:#4a5568}
+.lede{color:var(--mute);font-size:14px;margin:10px 0 0;max-width:62ch}
+
+/* mitos: myth vs answer */
+.mito{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.mito .q{padding:14px 16px 10px;border-bottom:1px dashed var(--line)}
+.mito .lbl{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.mito .q p{margin:4px 0 0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:18px;line-height:1.25;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}
+.mito .a{display:grid;grid-template-columns:1fr 38%;gap:12px;padding:12px 16px 14px;align-items:center}
+.mito .a>div{min-width:0}
+.mito .a .lbl{color:var(--red2)}
+.mito .a p{margin:4px 0 0;font-size:14.5px}
+.mito .num{font-family:var(--display);font-weight:800;color:var(--red2)}
+
+.post{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.post .ph{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.post .ph img{width:34px;height:34px;border-radius:50%;background:#fff}
+.post .ph b{display:block;font-size:14px}
+.post .ph span{font-size:12px;color:var(--mute)}
+.post h3{margin:0;padding:0 14px 6px;font-size:18px;font-weight:700;line-height:1.25;text-wrap:balance}
+.post p{margin:0;padding:0 14px 12px;font-size:14.5px;color:var(--mute)}
+.post>a>img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.post .act{padding:10px 14px 14px}
+.post .act a{font-size:13.5px;font-weight:700;color:var(--red2)}
+
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(10,20,36,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+nav.tabs div{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+nav.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 9px;font-size:11.5px;font-weight:600;color:var(--mute)}
+nav.tabs button[aria-selected="true"]{color:var(--fg)}
+nav.tabs button[aria-selected="true"] svg{color:var(--red2)}
+svg{width:22px;height:22px;flex:none}
+
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:40}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--bg2);border-top:1px solid var(--line);border-radius:20px 20px 0 0;max-width:560px;margin:0 auto;padding:18px max(16px,env(safe-area-inset-left,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-right,0px));max-height:85vh;overflow:auto}
+.sheet h3{font-family:var(--display);font-weight:800;font-size:25px;text-transform:uppercase;margin:0 0 6px}
+.sheet p{color:var(--mute);margin:0 0 14px;font-size:14px}
+.opt{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:10px}
+.opt .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
+.opt b{display:block;font-size:14px}
+.opt span{font-size:12.5px;color:var(--mute)}
+.opt>div{min-width:0;flex:1}
+.close{width:100%;margin-top:6px;padding:12px;border-radius:12px;border:1px solid var(--line);font-weight:700}
+.empty{color:var(--mute);padding:20px 0;text-align:center}
+.foot{color:var(--mute);font-size:12px;text-align:center;margin-top:28px}
+
+.sgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sc{border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;text-align:left;width:100%}
+.sc img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-bottom:3px solid var(--sc,var(--red))}
+.sc .b{padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px}
+.sc b{font-family:var(--display);font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.03em;line-height:1.05}
+.sc span{font-size:12px;color:var(--mute)}
+.col{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;text-align:left;width:100%}
+.col .stack{position:relative;height:54px}
+.col .stack img{position:absolute;width:76px;aspect-ratio:16/9;object-fit:cover;border-radius:7px;border:2px solid var(--card)}
+.col .stack img:nth-child(1){left:0;top:0;z-index:3}.col .stack img:nth-child(2){left:10px;top:6px;z-index:2;opacity:.8}.col .stack img:nth-child(3){left:20px;top:12px;z-index:1;opacity:.6}
+.col b{font-size:15px;font-weight:700;line-height:1.2;display:block}
+.col span{font-size:12.5px;color:var(--mute);display:block;margin-top:2px}
+.col>div{min-width:0}
+.back{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:var(--red2);padding:6px 0}
+.shead{border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.shead img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.shead .b{padding:14px 16px 16px}
+.shead h1{font-family:var(--display);font-weight:800;font-size:28px;text-transform:uppercase;line-height:1;margin:0 0 6px}
+.shead p{margin:0;color:var(--mute);font-size:14px}
+.more{font-family:var(--body);font-size:13px;font-weight:700;color:var(--red2);margin-left:auto;text-transform:none;letter-spacing:0;white-space:nowrap}
+.sortbar{display:flex;gap:6px;margin:-4px 0 12px}
+.sortbar .chip{font-size:12px;padding:5px 9px}
+
+.fbstrip{display:flex;gap:12px;align-items:center;margin-top:26px;padding:14px;border:1px dashed var(--line);border-radius:16px;background:var(--card);width:100%;text-align:left}
+.fbstrip .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--fbc);color:#111;font-size:20px}
+.fbstrip b{display:block;font-size:14.5px}
+.fbstrip span{font-size:12.5px;color:var(--mute)}
+.fbstrip>div{min-width:0;flex:1}
+.fbform{display:flex;flex-direction:column;gap:12px}
+.fbform label{font-size:13px;font-weight:700;display:flex;flex-direction:column;gap:6px}
+.fbform textarea,.fbform input[type=text]{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;width:100%}
+.fbform textarea{min-height:110px;resize:vertical}
+.fbtypes{display:flex;flex-wrap:wrap;gap:6px}
+.fbtypes button{padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13px;font-weight:600}
+.fbtypes button[aria-pressed="true"]{background:var(--fbc);color:#111;border-color:var(--fbc)}
+.stars{display:flex;gap:4px}
+.stars button{font-size:28px;line-height:1;color:var(--line);padding:2px}
+.stars button.on{color:var(--fbc)}
+.fbsend{padding:13px;border-radius:12px;background:var(--fbc);color:#111;font-weight:800;text-align:center}
+.fbsend[disabled]{opacity:.5}
+.fbmsg{font-size:14px;text-align:center;color:var(--mute);min-height:1.2em}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+</style>
+<script src="onesignal-config.js"></script>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
+  await OS.init({ appId: window.ONESIGNAL_APP_ID, serviceWorkerPath: "recta/sw.js", serviceWorkerParam: { scope: "/recta/" } });
+});
+</script>
+</head><body>
+
+<div class="app">
+  <header>
+    <div class="wrap">
+      <div class="hd">
+        <img src="thumbs/logo.jpg" alt="">
+        <div class="brand"><b>Recta <i>Al</i> Pecho</b><span>La historia de la pelota cubana · estreno cada jueves</span></div>
+        <button class="inst" id="instBtn" hidden>Instalar</button>
+        <button class="bell" id="bellBtn" aria-label="Avisos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i></i></button>
+      </div>
+      <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Busca un pelotero: Anglada, Contreras, Valle…"></label>
+    </div>
+  </header>
+  <main class="wrap" id="view"></main>
+</div>
+
+<nav class="tabs" aria-label="Secciones"><div role="tablist">
+  <button role="tab" data-tab="inicio" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 21 12 12 21 3 12z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>Inicio</button>
+  <button role="tab" data-tab="series"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m8 2 4 4 4-4" stroke-linecap="round"/></svg>Series</button>
+  <button role="tab" data-tab="mitos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M7 5.5c2 2 2.5 4 2.5 6.5S9 16.5 7 18.5M17 5.5c-2 2-2.5 4-2.5 6.5s.5 4.5 2.5 6.5"/></svg>Mitos</button>
+  <button role="tab" data-tab="noticias"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>Noticias</button>
+</div></nav>
+
+<div id="sheetRoot" hidden>
+  <div class="scrim" id="scrim"></div>
+  <div class="sheet" role="dialog" aria-label="Avisos">
+    <h3>Que no se te escape un jueves</h3>
+    <p>Cada jueves estrena una entrevista nueva. Elige cómo quieres enterarte.</p>
+    <button class="opt" id="pushBtn" hidden style="width:100%;text-align:left">
+      <div class="ic" style="background:var(--fbc);color:#111"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
+      <div><b id="pushLbl">Activar avisos de estrenos</b><span>Te avisamos en este teléfono el día que sale un capítulo nuevo</span></div></button>
+    <a class="opt" href="https://www.youtube.com/@RectaAlPecho?sub_confirmation=1" target="_blank" rel="noopener">
+      <div class="ic" style="background:var(--red)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .6 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM9.7 15.1V8.9L15.5 12z"/></svg></div>
+      <div><b>Suscríbete y toca la campanita</b><span>YouTube te avisa en el momento del estreno</span></div></a>
+    <a class="opt" href="https://rectaalpecho.com/" target="_blank" rel="noopener">
+      <div class="ic" style="background:var(--chalk);color:var(--bg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
+      <div><b>Lee los artículos en rectaalpecho.com</b><span>Las Fugas, Los Borrados, Los que dijeron no</span></div></a>
+    <div class="opt">
+      <div class="ic" style="background:var(--fg);color:var(--bg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7M9 11l3 3 3-3"/></svg></div>
+      <div><b>Ponla en tu pantalla de inicio</b><span>Android: menú ⋮ → "Instalar app". iPhone: Compartir → "Agregar a inicio"</span></div></div>
+    <button class="close" id="closeSheet">Listo</button>
+  </div>
+</div>
+
+<div id="fbMount"></div>
+<script>window.THUMB_REMOTE = true;</script>
+<script src="data.js"></script>
+<script>
+const FB_HTML = `
+<div id="fbRoot" hidden>
+  <div class="scrim" data-fbclose></div>
+  <div class="sheet" role="dialog" aria-label="Danos tu opinión">
+    <h3>¿Cómo mejoramos la app?</h3>
+    <p>Lo lee el equipo. Cada semana la app mejora con lo que nos dicen.</p>
+    <form class="fbform" id="fbForm">
+      <div class="fbtypes" id="fbTypes">
+        <button type="button" data-t="Idea" aria-pressed="true">💡 Una idea</button>
+        <button type="button" data-t="Algo no funciona" aria-pressed="false">🔧 Algo no funciona</button>
+        <button type="button" data-t="Quiero ver" aria-pressed="false">🎬 Quiero ver…</button>
+        <button type="button" data-t="Me gusta" aria-pressed="false">❤️ Me gusta</button>
+      </div>
+      <div><div style="font-size:13px;font-weight:700;margin-bottom:4px">¿Qué nota le das a la app?</div>
+        <div class="stars" id="fbStars"><button type="button" data-n="1" aria-label="1 estrellas">★</button><button type="button" data-n="2" aria-label="2 estrellas">★</button><button type="button" data-n="3" aria-label="3 estrellas">★</button><button type="button" data-n="4" aria-label="4 estrellas">★</button><button type="button" data-n="5" aria-label="5 estrellas">★</button></div></div>
+      <label>Cuéntanos<textarea name="texto" id="fbText" maxlength="2000" placeholder="Qué te gustaría encontrar, qué cambiarías, qué humorista o pelotero quieres ver…"></textarea></label>
+      <label>Tu nombre o WhatsApp (si quieres que te respondamos)<input type="text" name="contacto" id="fbContact" maxlength="120"></label>
+      <div class="hp" aria-hidden="true"><input type="text" name="web" tabindex="-1" autocomplete="off"></div>
+      <button class="fbsend" id="fbSend" type="submit">Enviar mi opinión</button>
+      <div class="fbmsg" id="fbMsg" role="status"></div>
+    </form>
+    <button class="close" data-fbclose>Cerrar</button>
+  </div>
+</div>
+`;
+const D = window.APPDATA;
+// Estado por fecha: un capítulo "proximo" pasa a estrenado solo cuando llega su día (8:00 AM Las Vegas), sin esperar al data.js nuevo
+(() => { try {
+  const p = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hour12: false }).formatToParts(new Date());
+  const g = t => p.find(x => x.type === t).value; const today = g("year") + "-" + g("month") + "-" + g("day"), hour = +g("hour");
+  Object.values(D.vid).forEach(v => { if (v.k === "proximo" && v.f && (v.f < today || (v.f === today && hour >= 8))) { v.k = "episodio"; if (v.d === "Próximamente") v.d = ""; v.nuevo = true; } });
+} catch (e) {} })();
+const YT = id => "https://youtu.be/" + id;
+const img = id => window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg" : "thumbs/" + id + ".jpg";
+const fmt = n => n >= 1e6 ? (n/1e6).toFixed(1).replace(".0","") + "M" : n >= 1000 ? Math.round(n/1000) + "K" : String(n||0);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const V = D.vid, ALL = [...D.series, ...D.cols], BY = Object.fromEntries(ALL.map(s => [s.id, s]));
+const serOf = {}; D.series.forEach(s => s.v.forEach(i => { if (!serOf[i]) serOf[i] = s; }));
+const byViews = (a,b) => (V[b].v||0) - (V[a].v||0);
+const view = document.getElementById("view");
+let tab = "inicio", open = null, sort = "serie";
+const H = (t, s, more) => `<h2>${t}${s?` <small>${s}</small>`:""}${more||""}</h2><div class="stitch"></div>`;
+const tag = id => serOf[id] ? `<span class="meta" style="color:${serOf[id].col}">${esc(serOf[id].name)}</span>` : "";
+function tile(id){ const v = V[id];
+  return `<a class="tile" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div>${v.p?`<div class="who">${esc(v.p)}</div>`:""}<h4>${esc(v.t)}</h4></a>`; }
+function item(id, rank){ const v = V[id];
+  return `<a class="item" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div><div>${rank?`<div class="rank">${rank}</div>`:""}${v.p?`<div class="who">${esc(v.p)}</div>`:""}<h4>${esc(v.t)}</h4><div class="meta">${v.v?fmt(v.v)+" vistas":""}</div></div></a>`; }
+const card = s => `<button class="sc" data-open="${s.id}" style="--sc:${s.col}"><img src="${s.banner}" alt="" loading="lazy"><div class="b"><b>${esc(s.name)}</b><span>${s.v.length} videos</span></div></button>`;
+const colRow = c => `<button class="col" data-open="${c.id}"><div class="stack">${c.v.slice(0,3).map(i=>`<img src="${img(i)}" alt="" loading="lazy">`).join("")}</div><div><b>${esc(c.name)}</b><span>${esc(c.tag)} · ${c.v.length} videos</span></div></button>`;
+function inicio(){
+  const last = D.last, p = D.prox, d = p[1].split(" ");
+  const shelves = D.series.map(s => `<section>${H(esc(s.name), "", `<button class="more" data-open="${s.id}">Ver todo →</button>`)}<div class="row">${s.v.slice(0,8).map(tile).join("")}</div></section>`).join("");
+  return `
+  <section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + last + "/maxresdefault.jpg" : img(last)}" onerror="this.onerror=null;this.src=img(last)" alt=""><span class="tag">● Último estreno</span></div>
+    <div class="body"><div class="who">${esc(V[last].p)}</div><h3>${esc(V[last].t)}</h3><div class="meta">${V[last].d}</div>
+    <div class="btns"><a class="btn yt" href="${YT(last)}" target="_blank" rel="noopener">▶ Ver en YouTube</a><button class="btn ghost" data-open-sheet>🔔 Avísame</button></div></div></div></section>
+  <section>${H("Próximo jueves")}<div class="board"><div class="day"><small>${esc(d[0].toUpperCase())}</small><b>${esc(d[1])}</b><small>${esc((d[3]||"").slice(0,3).toUpperCase())}</small></div>
+    <div><div class="name">${esc(p[0])}</div><p>Nueva entrevista en Recta Al Pecho. Suscríbete y toca la campanita para que YouTube te avise.</p></div></div></section>
+  <section>${H("Las series", "", `<button class="more" data-go="series">Ver todas →</button>`)}<div class="row">${D.series.map(s => `<div class="tile">${card(s)}</div>`).join("")}</div></section>
+  ${shelves}
+  <section>${H("Colecciones")}<div class="list">${D.cols.slice(0,5).map(colRow).join("")}</div><button class="more" data-go="series" style="display:block;margin:12px 0 0 auto">Todas las colecciones →</button></section>
+  <section>${H("Los más vistos")}<div class="list">${Object.keys(V).sort(byViews).slice(0,5).map((i,k)=>item(i,k+1)).join("")}</div></section>
+  <p class="foot">Cada entrevista se abre en YouTube · Recta Al Pecho</p>`;
+}
+function series(){
+  if (open) return page(BY[open]);
+  return `<section>${H("Las series", D.series.length + " series")}<div class="sgrid">${D.series.map(card).join("")}</div></section>
+  <section>${H("Colecciones", D.cols.length + "")}<div class="list">${D.cols.map(colRow).join("")}</div></section>`;
+}
+function page(s){
+  const l = sort === "vistos" ? s.v.slice().sort(byViews) : s.v;
+  return `<button class="back" data-back>← Series y colecciones</button>
+  <section style="margin-top:8px"><div class="shead">${s.banner?`<img src="${s.banner}" alt="">`:`<img src="${img(s.v[0])}" alt="">`}<div class="b"><h1>${esc(s.name)}</h1><p>${esc(s.tag)}</p>
+  <div class="btns"><a class="btn yt" href="https://www.youtube.com/@RectaAlPecho?sub_confirmation=1" target="_blank" rel="noopener">Suscribirme al canal</a></div></div></div></section>
+  <section>${H("Las entrevistas", s.v.length + "")}<div class="sortbar"><button class="chip" data-sort="serie" aria-pressed="${sort==="serie"}">Orden de la serie</button><button class="chip" data-sort="vistos" aria-pressed="${sort==="vistos"}">Más vistos</button></div>
+  <div class="list">${l.map(i=>item(i)).join("")}</div></section>`;
+}
+function mitos(){
+  return `<section>${H("Mitos de la pelota cubana")}<p class="lede">Lo que se repite en las peñas y en los comentarios, y lo que dicen los números. Cada respuesta tiene su entrevista.</p></section>
+  <section><div class="list">${D.m.map((m,i)=>`<article class="mito"><div class="q"><div class="lbl">El mito <span class="num">#${i+1}</span></div><p>${esc(m[0])}</p></div>
+  <a class="a" href="${YT(m[2])}" target="_blank" rel="noopener"><div><div class="lbl">Recta al pecho</div><p>${esc(m[1])}</p></div><div class="th"><img src="${img(m[2])}" alt="" loading="lazy"></div></a></article>`).join("")}</div></section>`;
+}
+function noticias(){
+  return `<section>${H("Noticias", "de rectaalpecho.com")}<div class="list">${D.n.map(n=>`<article class="post"><div class="ph"><img src="thumbs/logo.jpg" alt=""><div><b>rectaalpecho.com</b><span>${esc(n[1])}</span></div></div><h3>${esc(n[0])}</h3><p>${esc(n[4])}</p><a href="${n[2]}" target="_blank" rel="noopener"><img src="${img(n[3])}" alt="" loading="lazy"></a><div class="act"><a href="${n[2]}" target="_blank" rel="noopener">Leer el artículo →</a></div></article>`).join("")}</div></section>`;
+}
+function search(q){
+  const n = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+  const k = n(q.trim());
+  const l = Object.keys(V).filter(i => n(V[i].p+" "+V[i].t).includes(k)).sort(byViews);
+  return `<section>${H("Resultados", String(l.length))}${l.length?`<div class="list">${l.map(i=>item(i)).join("")}</div>`:`<p class="empty">No encontramos nada con "${esc(q)}".</p>`}</section>`;
+}
+function render(){
+  const q = document.getElementById("q").value;
+  view.innerHTML = (q.trim() ? search(q) : ({inicio,series,mitos,noticias}[tab])()) + fbStrip();
+}
+function go(t){
+  tab = t; document.getElementById("q").value = "";
+  document.querySelectorAll("nav.tabs button").forEach(x => x.setAttribute("aria-selected", x.dataset.tab === t));
+  render(); window.scrollTo({top:0});
+}
+document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("click", () => { open = null; go(b.dataset.tab); }));
+view.addEventListener("click", e => {
+  const o = e.target.closest("[data-open]"), g = e.target.closest("[data-go]"), so = e.target.closest("[data-sort]");
+  if (so){ sort = so.dataset.sort; render(); return; }
+  if (o){ open = o.dataset.open; sort = "serie"; go("series"); return; }
+  if (g){ open = null; go(g.dataset.go); return; }
+  if (e.target.closest("[data-back]")){ open = null; render(); window.scrollTo({top:0}); return; }
+  if (e.target.closest("[data-open-sheet]")) openSheet(true);
+});
+document.getElementById("q").addEventListener("input", render);
+const sheet = document.getElementById("sheetRoot");
+function openSheet(on){ sheet.hidden = !on; }
+document.getElementById("bellBtn").onclick = () => openSheet(true);
+document.getElementById("scrim").onclick = () => openSheet(false);
+document.getElementById("closeSheet").onclick = () => openSheet(false);
+
+// --- opiniones ---
+document.getElementById("fbMount").outerHTML = FB_HTML;
+const fbRoot = document.getElementById("fbRoot");
+let fbType = "Idea", fbNote = 0;
+function openFb(on){ fbRoot.hidden = !on; if (on) { document.getElementById("fbMsg").textContent = ""; } }
+fbRoot.addEventListener("click", e => {
+  if (e.target.closest("[data-fbclose]")) return openFb(false);
+  const t = e.target.closest("#fbTypes [data-t]");
+  if (t){ fbType = t.dataset.t; fbRoot.querySelectorAll("#fbTypes [data-t]").forEach(b => b.setAttribute("aria-pressed", b === t)); }
+  const st = e.target.closest("#fbStars [data-n]");
+  if (st){ fbNote = +st.dataset.n; fbRoot.querySelectorAll("#fbStars [data-n]").forEach(b => b.classList.toggle("on", +b.dataset.n <= fbNote)); }
+});
+document.getElementById("fbForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const msg = document.getElementById("fbMsg"), send = document.getElementById("fbSend");
+  const texto = document.getElementById("fbText").value.trim();
+  if (!texto && !fbNote){ msg.textContent = "Escribe algo o marca una nota."; return; }
+  const fd = new FormData(e.target);
+  fd.set("tipo", fbType); fd.set("nota", fbNote); fd.set("pantalla", (typeof tab !== "undefined" ? tab : ""));
+  send.disabled = true; msg.textContent = "Enviando…";
+  try {
+    const r = await fetch("feedback.php", { method: "POST", body: fd });
+    if (r.status === 429) { msg.textContent = "Espera un momento antes de mandar otra."; return; }
+    const j = await r.json();
+    if (!j.ok) throw 0;
+    msg.textContent = "¡Gracias! Ya lo recibimos."; e.target.reset(); fbNote = 0;
+    fbRoot.querySelectorAll("#fbStars [data-n]").forEach(b => b.classList.remove("on"));
+  } catch (err) {
+    msg.textContent = "No se pudo enviar ahora. Inténtalo más tarde.";
+  } finally { send.disabled = false; }
+});
+document.addEventListener("click", e => { if (e.target.closest("[data-fb]")) openFb(true); });
+const fbStrip = () => `<button class="fbstrip" data-fb><div class="ic">💬</div><div><b>¿Cómo mejoramos la app?</b><span>Danos tu opinión: ideas, fallos o lo que quieres ver.</span></div></button>`;
+
+// --- avisos al teléfono (OneSignal; solo en la versión publicada con su configuración) ---
+const pushBtn = document.getElementById("pushBtn"), pushLbl = document.getElementById("pushLbl");
+if (window.ONESIGNAL_APP_ID && pushBtn) {
+  pushBtn.hidden = false;
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async OS => {
+    const upd = () => { const on = OS.Notifications.permission && OS.User.PushSubscription.optedIn; pushLbl.textContent = on ? "Avisos activados en este teléfono ✓" : "Activar avisos de estrenos"; };
+    upd();
+    OS.Notifications.addEventListener("permissionChange", upd);
+    OS.User.PushSubscription.addEventListener("change", upd);
+    pushBtn.onclick = async () => {
+      try {
+        if (!OS.Notifications.permission) await OS.Notifications.requestPermission();
+        else if (!OS.User.PushSubscription.optedIn) await OS.User.PushSubscription.optIn();
+      } catch (e) {}
+      upd();
+    };
+  });
+}
+render();
+// --- instalar como app (Android / Chrome) ---
+let deferred = null;
+const instBtn = document.getElementById("instBtn");
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; instBtn.hidden = false; });
+instBtn.onclick = async () => { if (!deferred) return; deferred.prompt(); await deferred.userChoice; deferred = null; instBtn.hidden = true; };
+window.addEventListener("appinstalled", () => { instBtn.hidden = true; });
+if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {})); }
+</script>
+</body></html>

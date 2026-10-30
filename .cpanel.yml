@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/$USER/public_html
+    - /bin/cp -R elhome/. $DEPLOYPATH/elhome/
+    - /bin/cp -R recta/. $DEPLOYPATH/recta/

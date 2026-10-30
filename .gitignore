@@ -1,0 +1,5 @@
+# Claves y datos privados: solo viven en el servidor
+*-config.js
+*-config.php
+opiniones/
+.DS_Store
