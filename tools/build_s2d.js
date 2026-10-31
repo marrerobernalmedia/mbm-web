@@ -32,7 +32,8 @@ function ncard(n, P) {
 
 // Miniatura en inglés propia (s2d/img/th/<id>.jpg, 1280x720) si existe; si no, la de YouTube.
 const hasTh = id => fs.existsSync(path.join(OUT, "img/th", id + ".jpg"));
-const thumb = id => hasTh(id) ? `${SITE}/img/th/${id}.jpg` : `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const hasSm = id => fs.existsSync(path.join(OUT, "img/th_sm", id + ".jpg")); // 336px en inglés bajados de YouTube
+const thumb = id => hasTh(id) ? `${SITE}/img/th/${id}.jpg` : hasSm(id) ? `${SITE}/img/th_sm/${id}.jpg` : `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const big = id => hasTh(id) ? `${SITE}/img/th/${id}.jpg` : `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 const isoDur = d => { const p = d.split(":").map(Number); while (p.length < 3) p.unshift(0); return `PT${p[0] ? p[0] + "H" : ""}${p[1]}M${p[2]}S`; };
 const human = d => { const p = d.split(":").map(Number); if (p.length === 3) return `${p[0]} h ${p[1]} min`; return `${p[0]} min`; };
