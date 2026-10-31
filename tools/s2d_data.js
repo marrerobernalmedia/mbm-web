@@ -4,10 +4,10 @@
 // c: mlb | defect | legends | specials
 module.exports = {
   cats: [
-    { id: "mlb", name: "Made It to the Majors", tag: "Cuban and Latin players who reached Major League Baseball, in their own words." },
+    { id: "mlb", name: "Made It to the Majors", tag: "Players who reached Major League Baseball, in their own words." },
     { id: "defect", name: "The Defections", tag: "Boats, hotels, third countries: how they got out of Cuba, and what it cost them." },
     { id: "legends", name: "Legends Cuba Forgot", tag: "The stars of the Serie Nacional and Team Cuba that the system pushed aside." },
-    { id: "specials", name: "Specials & Debates", tag: "Documentaries, big games and the arguments Cuban baseball fans never settle." }
+    { id: "specials", name: "Specials & Debates", tag: "Documentaries, big games and the arguments fans never settle." }
   ],
   featured: ["MMl2t7B6wS4", "qGhlnS2-SJY", "QZamWqu-N5E", "E_YTKkq8-Gw"],
   v: [

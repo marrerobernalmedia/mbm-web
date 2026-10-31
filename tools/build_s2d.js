@@ -131,7 +131,7 @@ ${lead ? `<section class="r-hero">
 ${lastEp ? `<section class="r-yt">
  <button class="player" data-yt="${lastEp.id}" aria-label="Play: ${esc(lastEp.t)}"><img src="${big(lastEp.id)}" alt="" loading="lazy"><span class="play"></span></button>
  <div><h3>Latest episode on YouTube</h3><h2>${esc(lastEp.who)}: ${esc(lastEp.t)}</h2><p>Premiered ${fdate(lastEp.f)}. Full interview with English audio.</p><a class="btn" href="${lastEp.slug}/">Watch the interview</a>
- <div class="next"><h3>New interview every Thursday</h3><span>Recorded in Spanish — the English audio track follows on YouTube.</span></div></div>
+ <div class="next"><h3>New interview every Thursday</h3><span>Interviews in Spanish carry an English audio track on YouTube — and more and more are recorded in English.</span></div></div>
 </section>` : ""}
 
 ${SERIES.map(sr => { const ps = NEWS.filter(n => n.series === sr.id).slice(0, 4); if (!ps.length) return "";
@@ -149,12 +149,12 @@ ${S.cats.map(c => {
   }).join("\n")}
 
 <section class="band"><div class="wrap band-in">
- <div><h2>How the English audio works</h2><p>The interviews are recorded in Spanish. On YouTube, each one carries an English audio track, so you can watch the whole conversation in English.</p></div>
+ <div><h2>How the English audio works</h2><p>Most of our interviews are recorded in Spanish. On YouTube, each one carries an English audio track, so you can watch the whole conversation in English. Interviews recorded in English are on the way.</p></div>
  ${HOWTO}
 </div></section>
 `;
   const ld = { "@context": "https://schema.org", "@type": "WebSite", name: "Straight 2D Chest", alternateName: "Recta Al Pecho (English)", url: SITE + "/", inLanguage: "en", publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC", url: "https://marrerobernalmedia.com/" } };
-  fs.writeFileSync(path.join(OUT, "index.html"), page({ rel: "", title: "Straight 2D Chest — Sports · Baseball Is the Passion", desc: "Uncensored interviews with Cuban and Latin baseball legends — MLB stars, defectors and the greats Cuba tried to erase. The English edition of Recta Al Pecho.", canon: SITE + "/", body, ld }));
+  fs.writeFileSync(path.join(OUT, "index.html"), page({ rel: "", title: "Straight 2D Chest — Sports · Baseball Is the Passion", desc: "Sports · Baseball is the passion. Long, uncensored interviews with the people who lived the game — big leaguers, legends and the stories nobody told. The English edition of Recta Al Pecho.", canon: SITE + "/", body, ld }));
 }
 
 // ── Interview pages
@@ -238,12 +238,12 @@ for (const v of V) {
   const body = `
 <main class="wrap prose">
  <h1>About Straight 2D Chest</h1>
- <p><strong>Straight 2D Chest</strong> is the English edition of <a href="https://rectaalpecho.com/" hreflang="es">Recta Al Pecho</a> — in Cuban baseball slang, a fastball thrown right at the letters. That is how we ask the questions.</p>
- <p>We sit down with the people who lived Cuban baseball: Serie Nacional stars, Team Cuba veterans, the players who defected and reached the Major Leagues, and the ones who stayed and were forgotten. The conversations are long, unedited in spirit and uncensored. Some were recorded in Miami, some in Cuba.</p>
- <p>The interviews are recorded in Spanish. Every video on this site has an <strong>English audio track</strong> on YouTube, so English-speaking fans can follow the whole conversation.</p>
+ <p><strong>Straight 2D Chest</strong> is the English edition of <a href="https://rectaalpecho.com/" hreflang="es">Recta Al Pecho</a> — in baseball slang, a fastball thrown right at the letters. That is how we ask the questions.</p>
+ <p>Sports, with baseball as the passion. We sit down with the people who lived the game: big leaguers, national-team veterans, the players who defected to reach the Major Leagues, and the legends who were forgotten. We started with Cuban baseball, and the conversation keeps growing — Venezuela, the rest of Latin America and, more and more, interviews recorded in English. The conversations are long, unedited in spirit and uncensored. Some were recorded in Miami, some in Cuba.</p>
+ <p>Most interviews so far were recorded in Spanish, and every one of them on this site has an <strong>English audio track</strong> on YouTube, so English-speaking fans can follow the whole conversation.</p>
  ${HOWTO}
  <h2>Who makes it</h2>
- <p>Straight 2D Chest and Recta Al Pecho are produced by <a href="https://marrerobernalmedia.com/">Marrero Bernal Media LLC</a>, an independent media company. New Spanish-language interviews premiere every Thursday on the <a href="${YT_CH}" rel="noopener">Recta Al Pecho YouTube channel</a>.</p>
+ <p>Straight 2D Chest and Recta Al Pecho are produced by <a href="https://marrerobernalmedia.com/">Marrero Bernal Media LLC</a>, an independent media company. New interviews premiere every Thursday on the <a href="${YT_CH}" rel="noopener">Recta Al Pecho YouTube channel</a>.</p>
 </main>`;
   fs.mkdirSync(path.join(OUT, "about"), { recursive: true });
   fs.writeFileSync(path.join(OUT, "about", "index.html"), page({ rel: "../", title: "About | Straight 2D Chest", desc: "Straight 2D Chest is the English edition of Recta Al Pecho, the sports interview show where baseball is the passion, by Marrero Bernal Media.", canon: SITE + "/about/", body }));
