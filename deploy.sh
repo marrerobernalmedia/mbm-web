@@ -15,6 +15,9 @@ rsync -a $EXC recta/  "$DEST/recta/"
 # Tema propio de rectaalpecho.com (themes/recta) → wp-content/themes/recta del sitio
 RECTA=$HOME/public_html/rectaalpecho
 [ -d themes/recta ] && [ -d "$RECTA/wp-content/themes" ] && rsync -a --delete themes/recta/ "$RECTA/wp-content/themes/recta/"
+# Tema propio de marrerobernal.com (themes/mba) → wp-content/themes/mba del dominio primario (public_html)
+MBA=$HOME/public_html
+[ -d themes/mba ] && [ -d "$MBA/wp-content/themes" ] && rsync -a --delete themes/mba/ "$MBA/wp-content/themes/mba/"
 # Enlace del sitio con las apps Android (assetlinks): va en la raíz del sitio
 mkdir -p "$DEST/.well-known" && cp .well-known/assetlinks.json "$DEST/.well-known/assetlinks.json"
 # Archivos sueltos de la raíz de marrerobernalmedia.com (verificaciones, etc.)
