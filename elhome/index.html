@@ -20,7 +20,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap">
 <style>
 html,body{margin:0}
-.inst{padding:9px 14px;border-radius:999px;background:var(--lime);color:#111;font-weight:800;font-size:13px;flex:none}
+.inst .l{display:none}@media (min-width:600px){.inst .l{display:inline}.inst .s{display:none}}
+.inst{flex:none;white-space:nowrap;padding:9px 14px;border-radius:999px;background:var(--lime);color:#111;font-weight:800;font-size:13px;flex:none}
 :root{
   --bg:#0c0a0d; --bg2:#151217; --card:#1c181f; --line:#2f2834;
   --fg:#f7f2ea; --mute:#a99fa8; --lime:#8fd11f; --purple:#8a4fd1; --bulb:#ffd36b; --door:#e2262f;
@@ -254,7 +255,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
       <div class="hd">
         <img src="brand/elhome-ico.png" alt="" style="object-fit:contain;background:transparent">
         <div class="brand"><b>El Home <i>de la</i> Risa</b><span>La casa del humor cubano</span></div>
-        <button class="inst" id="instBtn" hidden>Instalar</button>
+        <button class="inst" id="appBtn" aria-label="Descargar la app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;vertical-align:-3px;margin-right:5px"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7M9 11l3 3 3-3"/></svg><span class="l">Descargar la app</span><span class="s">App</span></button>
         <button class="bell" id="bellBtn" aria-label="Avisos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i></i></button>
       </div>
       <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Busca un humorista, un show o un tema: apagón, cola…"></label>
@@ -291,6 +292,28 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
       <div class="ic" style="background:var(--lime);color:#111"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7M9 11l3 3 3-3"/></svg></div>
       <div><b>Ponla en tu pantalla de inicio</b><span>Android: menú ⋮ → "Instalar app". iPhone: Compartir → "Agregar a inicio"</span></div></div>
     <button class="close" id="closeSheet">Listo</button>
+  </div>
+</div>
+
+<div id="appRoot" hidden>
+  <div class="scrim" data-appclose></div>
+  <div class="sheet" role="dialog" aria-label="Descargar la app">
+    <h3>Lleva El Home de la Risa en tu teléfono</h3>
+    <p>Gratis. Cada estreno, cada capítulo y los avisos, sin buscar en YouTube.</p>
+    <a class="opt" href="https://marrerobernalmedia.com/apk/elhome.apk">
+      <div class="ic" style="background:#3ddc84;color:#111"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 19h16"/></svg></div>
+      <div><b>Android: descargar la app (APK)</b><span>Abre el archivo y acepta "instalar de esta fuente" si el teléfono lo pide</span></div></a>
+    <button class="opt" id="instBtn" hidden style="width:100%;text-align:left">
+      <div class="ic" style="background:var(--lime);color:#111"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7M9 11l3 3 3-3"/></svg></div>
+      <div><b>Instalar desde el navegador</b><span>Un toque y queda en tu pantalla de inicio</span></div></button>
+    <div class="opt">
+      <div class="ic" style="background:#fff;color:#111"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><rect x="4" y="11" width="16" height="10" rx="2"/></svg></div>
+      <div><b>iPhone: añadir a pantalla de inicio</b><span>En Safari toca Compartir y luego "Agregar a inicio"</span></div></div>
+    <a class="opt" href="https://www.elhomedelarisa.com">
+      <div class="ic" style="background:var(--card);color:var(--fg)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+      <div><b>Usarla en el navegador</b><span>www.elhomedelarisa.com</span></div></a>
+    <p style="margin:4px 0 0;font-size:12px">Muy pronto en Google Play y App Store.</p>
+    <button class="close" data-appclose>Listo</button>
   </div>
 </div>
 
@@ -548,18 +571,22 @@ render();
 // --- diseño de página web en pantallas grandes: el menú pasa a la cabecera ---
 (() => {
   const mq = window.matchMedia("(min-width: 900px)"), nav = document.querySelector("nav.tabs"), hd = document.querySelector(".hd"), hdr = document.querySelector("header .wrap"), search = document.querySelector(".search");
-  const place = () => { if (mq.matches) { hd.insertBefore(nav, document.getElementById("instBtn")); hdr.classList.add("hdrow"); hd.appendChild(search); } else { document.body.appendChild(nav); hdr.classList.remove("hdrow"); hdr.appendChild(search); } };
+  const place = () => { if (mq.matches) { hd.insertBefore(nav, document.getElementById("appBtn")); hdr.classList.add("hdrow"); hd.appendChild(search); } else { document.body.appendChild(nav); hdr.classList.remove("hdrow"); hdr.appendChild(search); } };
   place(); mq.addEventListener("change", place);
   const fit = () => document.querySelectorAll("#view .row").forEach(r => { const n = r.children.length; r.style.setProperty("--cols", n >= 4 ? 4 : Math.max(1, n)); });
   new MutationObserver(fit).observe(document.getElementById("view"), { childList: true }); fit();
   const y = document.getElementById("yr"); if (y) y.textContent = new Date().getFullYear();
 })();
-// --- instalar como app (Android / Chrome) ---
+// --- descargar / instalar la app ---
 let deferred = null;
-const instBtn = document.getElementById("instBtn");
+const instBtn = document.getElementById("instBtn"), appRoot = document.getElementById("appRoot"), appBtn = document.getElementById("appBtn");
+const standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+if (standalone) appBtn.hidden = true;
+appBtn.onclick = () => { appRoot.hidden = false; };
+appRoot.addEventListener("click", e => { if (e.target.closest("[data-appclose]")) appRoot.hidden = true; });
 window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; instBtn.hidden = false; });
 instBtn.onclick = async () => { if (!deferred) return; deferred.prompt(); await deferred.userChoice; deferred = null; instBtn.hidden = true; };
-window.addEventListener("appinstalled", () => { instBtn.hidden = true; });
+window.addEventListener("appinstalled", () => { instBtn.hidden = true; appBtn.hidden = true; });
 if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {})); }
 </script>
 </body></html>
