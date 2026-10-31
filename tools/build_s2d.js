@@ -31,7 +31,7 @@ const SERIES = [
 const newsImg = n => n.image || (n.video ? big(n.video) : SITE + "/img/og.jpg");
 function ncard(n, P) {
   return `<a class="card" href="${P}news/${n.slug}/">
-  <span class="th"><img src="${newsImg(n)}" alt="" loading="lazy" width="480" height="270"><span class="en">Story</span></span>
+  <span class="th"><img src="${newsImg(n)}" alt="" loading="lazy" width="480" height="270"></span>
   <span class="who">${esc((SERIES.find(x => x.id === n.series) || {}).name || fdate(n.date))}</span>
   <span class="ttl">${esc(n.title)}</span>
 </a>`;
@@ -105,7 +105,7 @@ f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; p
 
 function card(v, P) {
   return `<a class="card" href="${P}${v.slug}/">
-  <span class="th"><img src="${thumb(v.id)}" alt="" loading="lazy" width="480" height="360">${v.d ? `<span class="dur">${v.d}</span>` : ""}<span class="en">EN audio</span></span>
+  <span class="th"><img src="${thumb(v.id)}" alt="" loading="lazy" width="480" height="360">${v.d ? `<span class="dur">${v.d}</span>` : ""}</span>
   <span class="who">${esc(v.who)}</span>
   <span class="ttl">${esc(v.t)}</span>
 </a>`;
