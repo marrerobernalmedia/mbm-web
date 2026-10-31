@@ -5,7 +5,7 @@ window.I18N_EN = {
 "Marrero Bernal Media es una productora con experiencia en el mercado latino: producimos, editamos y distribuimos contenido. Con cinco canales de YouTube y más de":"Marrero Bernal Media is a production company with deep experience in the Latino market. We produce, edit and distribute content, and with five YouTube channels and more than",
 "seguidores entre Facebook, Instagram y YouTube, no solo hacemos tu video: sabemos hacerlo llegar.":"followers across Facebook, Instagram and YouTube, we don't just make your video: we know how to get it seen.",
 "Cuéntanos tu proyecto":"Tell us about your project","Conoce la red ↓":"Meet the network ↓",
-"CANALES PROPIOS EN YOUTUBE":"OWNED YOUTUBE CHANNELS","SUSCRIPTORES EN YOUTUBE":"YOUTUBE SUBSCRIBERS","VISTAS ACUMULADAS":"TOTAL VIEWS","PIEZAS PUBLICADAS":"PIECES PUBLISHED","SEGUIDORES EN REDES":"SOCIAL FOLLOWERS",
+"CANALES EN YOUTUBE":"YOUTUBE CHANNELS","PÁGINAS EN FACEBOOK":"FACEBOOK PAGES","SEGUIDORES EN REDES · AL":"SOCIAL FOLLOWERS · AS OF","SUSCRIPTORES EN YOUTUBE":"YOUTUBE SUBSCRIBERS","VISTAS ACUMULADAS":"TOTAL VIEWS","PIEZAS PUBLICADAS":"PIECES PUBLISHED","SEGUIDORES EN REDES":"SOCIAL FOLLOWERS",
 "Una audiencia propia, construida semana a semana.":"An audience of our own, built week after week.",
 "Cinco canales de YouTube con estreno fijo cada semana y páginas de Facebook e Instagram que suman más de":"Five YouTube channels with a fixed weekly premiere, plus Facebook and Instagram pages with more than",
 "seguidores. Todo producido por nosotros.":"followers. All produced in-house.",
