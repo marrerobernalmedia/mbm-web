@@ -16,7 +16,7 @@
       </div>
       <div class="badges"><span>Licencia NV · CA · AZ</span><span>Agencia independiente · Farmers, Progressive y más</span><span>Español e inglés</span><span>Cotización sin costo</span></div>
     </div>
-    <div class="heroimg" style="background:url(img/eliam-retrato.jpg) center/cover">
+    <div class="heroimg" style="background:url(<?php echo esc_url(get_theme_file_uri('img/eliam-retrato.jpg')); ?>) center/cover">
       <div><span class="lab">Eliam Marrero Bernal · fundador</span><b>Te atendemos como a familia.</b></div>
     </div>
   </div>

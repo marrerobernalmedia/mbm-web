@@ -20,6 +20,7 @@ inline_js = body.split('<script>')[1].split('</script>')[0]
 U = "<?php echo esc_url(get_theme_file_uri('%s')); ?>"
 def fix(h):
     h = re.sub(r'src="img/([^"]+)"', lambda m: 'src="' + U % ('img/'+m.group(1)) + '"', h)
+    h = re.sub(r'url\(img/([^)]+)\)', lambda m: 'url(' + U % ('img/'+m.group(1)) + ')', h)
     h = h.replace('href="#"', 'href="#contacto"').replace('href="#contacto" data-lang', 'href="#" data-lang')
     h = h.replace('<a class="logo" href="#contacto">', '<a class="logo" href="<?php echo esc_url(home_url(\'/\')); ?>">')
     return h
