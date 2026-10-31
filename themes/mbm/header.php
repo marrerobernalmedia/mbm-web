@@ -14,6 +14,7 @@
     <a href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo esc_url(get_theme_file_uri('img/logo.svg')); ?>" alt="Marrero Bernal Media"></a>
     <ul>
       <li><a href="#red">La red</a></li>
+      <li><a href="#apps">Apps</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#trabajos">Trabajos</a></li>
       <li><a href="#publicidad">Publicidad</a></li>

@@ -49,6 +49,9 @@ function mbm_contacto() {
   wp_redirect($back . ($ok ? '?enviado=1' : '?error=1') . '#contacto'); exit;
 }
 
+/** La página vieja /apps/ pasa a la sección Apps de la portada. */
+add_action('template_redirect', function () { if (is_page('apps')) { wp_redirect(home_url('/#apps'), 301); exit; } });
+
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 remove_action('wp_head', 'wp_generator');

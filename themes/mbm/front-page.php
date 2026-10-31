@@ -53,6 +53,40 @@
   </div>
 </section>
 
+
+<section id="apps" style="background:var(--bg2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="kicker">Apps</div>
+    <h2>Nuestros shows, en tu teléfono.</h2>
+    <p class="lead">Dos apps gratis con todos los capítulos, los estrenos de la semana y avisos cuando sale uno nuevo. Se instalan desde el navegador en cualquier teléfono, y en Android también como APK. Muy pronto en Google Play y App Store.</p>
+    <div class="apps">
+      <div class="app">
+        <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/elhome.png')); ?>" alt="El Home de la Risa">
+        <div>
+          <h3>El Home de la Risa</h3>
+          <p>La casa del humor cubano: La Risa es Cosa Seria, La Cosa Es De Risa, Welcome to Apagonia y todos los shows, por capítulo y por humorista.</p>
+          <div class="ctas">
+            <a class="btn btn-acc" href="https://www.elhomedelarisa.com/" target="_blank" rel="noopener">Abrir la app</a>
+            <a class="btn btn-ghost" href="https://marrerobernalmedia.com/apk/elhome.apk">Descargar para Android (APK)</a>
+          </div>
+        </div>
+      </div>
+      <div class="app">
+        <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/recta.png')); ?>" alt="Recta Al Pecho">
+        <div>
+          <h3>Recta Al Pecho</h3>
+          <p>Béisbol sin filtro: las entrevistas, las series Las Fugas y Los Borrados, los mitos con su respuesta y las noticias de rectaalpecho.com.</p>
+          <div class="ctas">
+            <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/" target="_blank" rel="noopener">Abrir la app</a>
+            <a class="btn btn-ghost" href="https://marrerobernalmedia.com/apk/recta.apk">Descargar para Android (APK)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="color:var(--mut);font-size:13px;margin-top:16px">Para instalarla desde el navegador: abre la app, toca Compartir (iPhone) o el menú ⋮ (Android) y elige "Añadir a pantalla de inicio". El APK requiere permitir la instalación de apps de origen conocido.</p>
+  </div>
+</section>
+
 <section id="servicios" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="kicker">Servicios</div>
