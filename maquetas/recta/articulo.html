@@ -1,0 +1,243 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>La decisión que nadie firma — Recta al Pecho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root{--paper:#f6f3ec;--card:#fffdf8;--ink:#141a3a;--navy:#0d174e;--red:#c52323;--mute:#5d6176;--line:#dcd7ca;--chip:#ebe6d9;--inv:#f6f3ec;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f1226;--card:#171b35;--ink:#ecebe4;--navy:#dfe4ff;--red:#ff6b6b;--mute:#a3a7bd;--line:#2a2f50;--chip:#222747;--inv:#0f1226;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f1226;--card:#171b35;--ink:#ecebe4;--navy:#dfe4ff;--red:#ff6b6b;--mute:#a3a7bd;--line:#2a2f50;--chip:#222747;--inv:#0f1226;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 "Source Serif 4",Georgia,serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.cond{font-family:"Barlow Condensed","Arial Narrow",sans-serif}
+.ui{font-family:"Barlow",system-ui,sans-serif}
+/* topbar */
+.top{background:#0d174e;color:#f6f3ec}
+.top .wrap{display:flex;align-items:center;gap:18px;min-height:64px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:44px;width:auto;display:block}
+.brand b{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:26px;letter-spacing:.5px;text-transform:uppercase;line-height:1}
+.brand small{display:block;font:500 11px/1 "Barlow",sans-serif;letter-spacing:2.5px;text-transform:uppercase;opacity:.8;margin-top:4px}
+nav.main{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{font:600 15px/1 "Barlow",sans-serif;text-transform:uppercase;letter-spacing:1px;padding:10px 12px;border-radius:6px}
+nav.main a:hover{background:rgba(255,255,255,.1)}
+nav.main a.yt{background:var(--red);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:6px;padding:8px 10px;font:600 14px "Barlow",sans-serif}
+.ticker{background:var(--red);color:#fff;font:600 13px/1 "Barlow",sans-serif;letter-spacing:.5px}
+.ticker .wrap{display:flex;gap:18px;align-items:center;height:36px;overflow:hidden;white-space:nowrap}
+.ticker b{background:#fff;color:var(--red);padding:5px 8px;border-radius:3px;font-weight:800;letter-spacing:1.5px;font-size:11px}
+.ticker span{opacity:.95}
+/* hero */
+.hero{display:grid;grid-template-columns:7fr 5fr;gap:28px;align-items:stretch;padding-block:28px}
+.hero .big{position:relative;border-radius:14px;overflow:hidden;min-height:420px;background:#223;display:flex;align-items:flex-end;color:#fff}
+.hero .big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .big .txt{position:relative;padding:28px;background:linear-gradient(180deg,rgba(13,23,78,0) 0%,rgba(13,23,78,.85) 55%,rgba(13,23,78,.95) 100%);width:100%}
+.kicker{display:inline-block;font:800 12px/1 "Barlow",sans-serif;letter-spacing:2px;text-transform:uppercase;color:#fff;background:var(--red);padding:6px 9px;border-radius:3px}
+.hero h1{font:800 40px/1.05 "Barlow Condensed",sans-serif;margin:12px 0 8px;text-wrap:balance}
+.hero .big p{margin:0;font-size:16px;opacity:.95;max-width:60ch}
+.side{display:grid;gap:14px;align-content:start}
+.side h3{margin:0 0 2px;font:800 13px/1 "Barlow",sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+.mini{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.mini img{width:96px;height:72px;object-fit:cover;border-radius:6px}
+.mini b{font:700 17px/1.15 "Barlow Condensed",sans-serif;display:block}
+.mini small{color:var(--mute);font:500 12px "Barlow",sans-serif;letter-spacing:.5px;text-transform:uppercase}
+/* youtube strip */
+.yt-strip{background:var(--navy);color:var(--inv);border-radius:14px;padding:22px;display:grid;grid-template-columns:1.3fr 1fr;gap:22px;margin-block:8px 36px}
+.yt-strip .play{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:#000;display:block}
+.yt-strip .play img{width:100%;height:100%;object-fit:cover;display:block}
+.yt-strip .play::after{content:"▶";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:24px;padding-left:4px}
+.yt-strip h3{margin:0 0 6px;font:800 13px "Barlow",sans-serif;letter-spacing:2px;text-transform:uppercase;color:#ffb3b3}
+.yt-strip h2{margin:0 0 6px;font:800 30px/1.05 "Barlow Condensed",sans-serif}
+.yt-strip p{margin:0 0 14px;opacity:.9;font-size:15px}
+.next{border-top:1px solid rgba(255,255,255,.2);padding-top:14px;margin-top:14px}
+.next b{font:800 22px "Barlow Condensed",sans-serif}
+.btn{display:inline-block;font:700 14px/1 "Barlow",sans-serif;letter-spacing:1px;text-transform:uppercase;padding:12px 16px;border-radius:7px;background:var(--red);color:#fff}
+.btn.ghost{background:transparent;border:1px solid currentColor;color:inherit}
+/* sections */
+.sec{margin-block:36px}
+.sec-h{display:flex;align-items:baseline;gap:14px;border-bottom:3px solid var(--navy);margin-bottom:16px;padding-bottom:6px}
+.sec-h h2{margin:0;font:800 30px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.5px}
+.sec-h p{margin:0;color:var(--mute);font:500 14px "Barlow",sans-serif}
+.sec-h a{margin-left:auto;font:700 13px "Barlow",sans-serif;letter-spacing:1px;text-transform:uppercase;color:var(--red);white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.card .b{padding:12px 14px 16px;display:grid;gap:6px}
+.card .b small{font:600 11px "Barlow",sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--red)}
+.card h3{margin:0;font:700 19px/1.15 "Barlow Condensed",sans-serif;text-wrap:balance}
+.card p{margin:0;font-size:14px;color:var(--mute)}
+.card time{font:500 12px "Barlow",sans-serif;color:var(--mute)}
+/* mitos */
+.mitos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mito{background:var(--card);border-left:5px solid var(--red);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
+.mito .q{font:800 20px/1.1 "Barlow Condensed",sans-serif}
+.mito .q::before{content:"«";color:var(--red)} .mito .q::after{content:"»";color:var(--red)}
+.mito p{margin:0;font-size:15px}
+.mito a{font:700 12px "Barlow",sans-serif;letter-spacing:1px;text-transform:uppercase;color:var(--red)}
+/* about band */
+.band{background:var(--chip);border-radius:14px;padding:26px;display:grid;grid-template-columns:1.4fr 1fr;gap:26px;align-items:center;margin-block:36px}
+.band h2{margin:0 0 8px;font:800 32px/1.05 "Barlow Condensed",sans-serif}
+.band p{margin:0 0 12px}
+.apps{display:flex;gap:10px;flex-wrap:wrap}
+/* footer */
+footer{background:#0d174e;color:#f6f3ec;margin-top:40px}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:26px;padding-block:34px 44px}
+footer h4{margin:0 0 10px;font:800 13px "Barlow",sans-serif;letter-spacing:2px;text-transform:uppercase;color:#ffb3b3}
+footer a,footer p{display:block;font:500 15px/1.9 "Barlow",sans-serif;margin:0;opacity:.9}
+footer .sponsor{font:500 14px/1.5 "Barlow",sans-serif;opacity:.8;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;margin-top:14px}
+/* article */
+.art-hero{display:grid;grid-template-columns:1fr;gap:0;justify-items:start;padding-block:30px 10px;max-width:860px;margin:0 auto}
+.art-hero h1{font:800 46px/1.03 "Barlow Condensed",sans-serif;margin:12px 0 10px;text-wrap:balance}
+.art-hero .dek{font-size:21px;line-height:1.4;color:var(--mute);margin:0 0 18px;font-style:italic}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;font:600 13px "Barlow",sans-serif;letter-spacing:.5px;text-transform:uppercase;color:var(--mute);align-items:center}
+.meta .av{width:34px;height:34px;border-radius:50%;background:var(--navy);display:inline-grid;place-items:center;color:#fff;font:800 14px "Barlow Condensed",sans-serif;margin-right:8px}
+.art-img{max-width:1000px;margin:18px auto 0}
+.art-img img{width:100%;border-radius:14px;display:block;aspect-ratio:16/9;object-fit:cover}
+.art-img figcaption{font:500 13px "Barlow",sans-serif;color:var(--mute);margin-top:8px}
+.art{max-width:720px;margin:28px auto 0;font-size:18px;line-height:1.6}
+.art p{margin:0 0 18px}
+.art h2{font:800 30px/1.1 "Barlow Condensed",sans-serif;margin:34px 0 10px;text-transform:uppercase}
+.art h2::after{content:"";display:block;width:48px;height:4px;background:var(--red);margin-top:8px}
+.art blockquote{margin:22px 0;padding:6px 0 6px 22px;border-left:5px solid var(--red);font:700 26px/1.25 "Barlow Condensed",sans-serif}
+.art blockquote p{margin:0}
+.art a{color:var(--red);font-weight:700;border-bottom:2px solid transparent}
+.art a:hover{border-color:var(--red)}
+.art .lead{font-size:21px;line-height:1.5}
+.callout{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:26px 0;display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center}
+.callout img{width:150px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}
+.callout b{font:800 20px/1.15 "Barlow Condensed",sans-serif;display:block}
+.callout small{font:600 12px "Barlow",sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--red)}
+.credit{font:500 14px/1.5 "Barlow",sans-serif;color:var(--mute);border-top:1px solid var(--line);padding-top:14px;margin-top:30px}
+.share{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
+.share a{font:700 13px "Barlow",sans-serif;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--line);padding:9px 12px;border-radius:7px}
+.related{max-width:1000px;margin:40px auto 0}
+.note{background:#fff3cd;color:#5c4400;font:600 13px "Barlow",sans-serif;text-align:center;padding:8px}
+@media (max-width:900px){
+ .hero{grid-template-columns:1fr}.hero .big{min-height:340px}.hero h1{font-size:32px}
+ .yt-strip,.band{grid-template-columns:1fr}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .mitos{grid-template-columns:1fr}
+ footer .wrap{grid-template-columns:1fr 1fr}
+ nav.main{display:none}.burger{display:block}
+ .art-hero h1{font-size:34px}.art{font-size:17px}
+ .callout{grid-template-columns:1fr}
+}
+@media (max-width:560px){.grid{grid-template-columns:1fr}footer .wrap{grid-template-columns:1fr}}
+</style></head><body>
+<div class="note ui">MAQUETA de rediseño — no es el sitio real. Las imágenes y textos son los publicados en rectaalpecho.com.</div>
+<header class="top"><div class="wrap">
+ <a class="brand" href="index.html"><img src="https://rectaalpecho.com/wp-content/uploads/2025/12/Logo-Square-Transparent-150x150.png" alt=""><span><b>Recta al Pecho</b><small>La historia de la pelota cubana</small></span></a>
+ <nav class="main"><a href="#borrados">Los Borrados</a><a href="#fugas">Las Fugas</a><a href="#dijeronno">Los que dijeron no</a><a href="#glorias">Glorias</a><a href="#mitos">Mitos</a><a href="#about">Quiénes somos</a><a class="yt" href="https://www.youtube.com/@RectaAlPecho">▶ Entrevistas</a></nav>
+ <button class="burger">MENÚ</button>
+</div></header>
+<div class="ticker"><div class="wrap"><b>ESTE JUEVES</b><span>Rolando Viera · nueva entrevista en YouTube</span><span>•</span><span>Último capítulo: Luis Giraldo Casanova</span></div></div>
+<main class="wrap"><header class="art-hero"><span class="kicker">Las Fugas</span><h1>La decisión que nadie firma</h1><p class="dek">Irse o quedarse: la decisión más dura del pelotero cubano, contada por los que la tomaron en un sentido y en el otro.</p>
+<div class="meta"><span><span class="av">EM</span>Eliam Marrero Bernal</span><span>8 sep 2026</span><span>Lectura: 6 min</span></div></header>
+<figure class="art-img"><img src="https://rectaalpecho.com/wp-content/uploads/2026/09/ChatGPT-Image-Sep-6-2026-08_00_08-PM.png" alt=""><figcaption>La maleta, la gorra y la bandera: la decisión que no cabe en un contrato.</figcaption></figure>
+<article class="art">
+
+<p class="lead">En Cuba, la decisión más grande de la vida de un pelotero no se firma en ninguna oficina.</p>
+
+<p>No hay contrato, no hay agente, no hay abogado. Se toma de noche, en un hotel, en un monte, en una lancha, o en la mesa de la casa mirando a la madre. Y las dos respuestas posibles cuestan lo mismo: la vida que uno tenía.</p>
+
+<p><strong>Esta es la historia de esa decisión, contada por los que la tomaron en un sentido y en el otro.</strong></p>
+
+<p>Porque en este sitio hemos contado a los que se fueron y a los que se quedaron, y cuando se ponen juntos aparece algo que nadie dice en voz alta: no hubo elección buena. Hubo dos castigos, y cada uno escogió el suyo.</p>
+
+
+<h2>Lo que te ofrecían</h2>
+
+<p>Empecemos por desmontar una idea: que a todos les ofrecieron millones. No. Las ofertas reales llegaban solo a la élite, y llegaban escondidas.</p>
+
+<p>A <a href="https://rectaalpecho.com/antonio-scull/">Antonio Scull</a> un scout le entró de noche al hotel con un portafolio: cincuenta mil dólares en la mano y dos millones esperando. A <a href="https://rectaalpecho.com/lazaro-junco/">Lázaro Junco</a> le pasaron un cheque dentro de una revista. A <a href="https://rectaalpecho.com/gabriel-pierre/">Gabriel Pierre</a> un scout de los Orioles lo buscó por su nombre y le dijo la frase completa: «vas a ser millonario».</p>
+
+<p>Los tres dijeron que no en ese momento. Y los tres pagaron igual.</p>
+
+<p>Porque en Cuba la oferta no era un premio: era una prueba. Si te la hacían, alguien del sistema ya sabía que te la habían hecho.</p>
+
+
+<h2>Lo que costaba irse</h2>
+
+<p>El que se iba lo perdía todo de golpe: la familia, el nombre, el estadio y el país. Te borraban de las estadísticas, te sacaban de la televisión y, durante años, ni siquiera podías volver a enterrar a los tuyos.</p>
+
+<p>Rey Vicente Anglada, que dirigió al equipo Cuba, lo resume en una cifra que nadie quiere oír: de los que firman, solo alrededor del tres por ciento se establece en Grandes Ligas. El agente Carlos Pérez lo pone en otra proporción: llegar y mantenerse es treinta por ciento calidad y setenta por ciento suerte.</p>
+
+<p><a href="https://youtu.be/LhgEUVHLH2g">Yordanys Pérez</a> se fue en lancha. Le dieron ocho turnos al bate en Triple A y lo mandaron para la calle. Eso también es irse.</p>
+
+<p>Y los que sí llegaron tampoco llegaron enteros. Los que triunfaron afuera jugaron sabiendo que en su país ya no existían.</p>
+
+<p><strong>Irse no era ganar. Era apostar la vida entera a una moneda que caía bien tres veces de cada cien.</strong></p>
+
+
+<div class="callout"><img src="https://i.ytimg.com/vi/LhgEUVHLH2g/hqdefault.jpg" alt=""><div><small>Escúchalo de su boca</small><b>Yordanys Pérez: se fue en lancha por el mánager, 8 turnos en Triple A y a la calle</b><a href="https://youtu.be/LhgEUVHLH2g">Ver la entrevista →</a></div></div><h2>Lo que costaba quedarse</h2>
+
+<p>El que se quedaba creía que compraba paz. Compraba otra cosa.</p>
+
+<p><a href="https://rectaalpecho.com/braudilio-vinent/">Braudilio Vinent</a>, el Meteoro de La Maya, le dijo que no a los scouts y le regaló cada victoria a la Revolución. Hoy, a los setenta años, enseña sus medallas a la cámara para que alguien se acuerde de que está vivo.</p>
+
+<p>A Gabriel Pierre, el de los Orioles, no lo castigaron por la oferta. Lo citaron a una oficina de la Seguridad del Estado por acompañar a su esposa a estudiar la Biblia.</p>
+
+<p>A <a href="https://youtu.be/ix8VOOuqPeE">Carlos Tabares</a> lo sentaron cinco años sin decirle por qué. A <a href="https://rectaalpecho.com/eduardo-paret/">Eduardo Paret</a> le quitaron cuatro por una llamada de teléfono, sin juicio, y todavía no sabe quién dio la orden. A <a href="https://rectaalpecho.com/juan-carlos-millan/">Juan Carlos Millán</a> le prometieron un carro en 1992 que nunca llegó.</p>
+
+<p><a href="https://rectaalpecho.com/agustin-marquetti/">Agustín Marquetti</a>, el hombre del batazo más famoso de Cuba, se iba del estadio en bicicleta. Hoy lo dice sin rodeos:</p>
+
+<blockquote><p>«Si yo estuviera en Cuba, hace nueve años estuviera muerto.»</p></blockquote>
+
+<p>Y <a href="https://youtu.be/5L6Ux7o73jE">Hernán Valdés</a> hizo lo más difícil de todo: volvió. Volvió a Cuba por la pelota, y le costó cuarenta y nueve años poder salir otra vez. Su resumen cabe en dos palabras: «Nos engañaron».</p>
+
+<p><strong>Quedarse tampoco era ganar. Era entregar la carrera a cambio de una promesa que nadie pensaba cumplir.</strong></p>
+
+
+<h2>El «hubiera» no existe</h2>
+
+<p>Aquí es donde el fanático entra con la frase de siempre: «si se hubiera ido, hubiera brillado». O la contraria: «ese no llegaba ni en sueños».</p>
+
+<p>Las dos son el mismo error. En la pelota, lo que no se juega no es dato: es deseo.</p>
+
+<p>Tabares lo dice mejor que nadie. Desde el 98 tuvo oportunidades. A los veintidós años su padre sufrió un infarto cerebral; regresó a Cuba y no lo dejaron salir más. Él mismo reconoce que a lo mejor hubiera sido grande o a lo mejor no hubiera servido. Pero una cosa la tiene clara:</p>
+
+<blockquote><p>Firmar, iba a firmar.</p></blockquote>
+
+<p>Por eso en Recta no decimos que Tabares hubiera llegado. Decimos que nadie puede afirmar ni una cosa ni la otra. A veces no se intenta porque no se puede, no porque no se quiera: en Cuba irse era dejar a la familia, que te borraran y, si te descubrían, que te sancionaran.</p>
+
+
+<h2>Por qué nadie la firma</h2>
+
+<p>Hay una razón de fondo para que esta decisión no tenga papel, y conviene decirla completa.</p>
+
+<p>Una decisión se firma cuando las dos opciones son legales. Cuando una de ellas te convierte en traidor por ley, no hay nada que firmar: hay una salida de emergencia y un muro.</p>
+
+<p>Por eso no tiene sentido juzgar al que se fue ni al que se quedó. Los dos decidieron con una pistola en la mesa que ninguno puso. El de la lancha y el de la bicicleta son el mismo pelotero en dos noches distintas.</p>
+
+<p><strong>En Cuba todos eran víctimas. Y el que no puede escoger no decide: sobrevive.</strong></p>
+
+<p>Así que la próxima vez que alguien diga «ese se vendió» o «ese se quedó por cobarde», pregúntele una sola cosa: ¿cuál de las dos firmas hubiera puesto usted, si ninguna de las dos se podía poner?</p>
+
+
+<p class="ui" style="font-weight:800;letter-spacing:1px;text-transform:uppercase;font-size:13px;color:var(--red);margin:30px 0 8px">Ocho peloteros cuentan por qué se fueron</p>
+<div style="border-radius:12px;overflow:hidden;aspect-ratio:16/9"><iframe src="https://www.youtube.com/embed/kbNiUjH7zEY" title="Las Fugas 2 — Recta al Pecho" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+
+
+<p class="credit">
+Las declaraciones citadas están tomadas textualmente de las entrevistas de Recta al Pecho con Antonio Scull, Gabriel Pierre, Braudilio Vinent, Carlos Tabares, Eduardo Paret, Juan Carlos Millán, Agustín Marquetti, Hernán Valdés, Yordanys Pérez y Rey Vicente Anglada, disponibles íntegras en nuestro canal de YouTube. Cuestionario y dirección de Eliam Marrero Bernal.
+</p>
+
+
+
+<div class="share"><a href="#">Compartir en Facebook</a><a href="#">WhatsApp</a><a href="#">X</a><a href="#">Copiar enlace</a></div></article>
+<section class="related"><div class="sec-h"><h2>Sigue leyendo</h2><p>Las historias que se citan en este artículo.</p></div><div class="grid"><a class="card" href="articulo.html"><img src="https://rectaalpecho.com/wp-content/uploads/2026/09/Antonio-Scull.jpeg" alt="" loading="lazy"><div class="b"><small>Los que dijeron no</small><h3>Un scout entró de noche al hotel con un portafolio: «Aquí tienes $50,000, y dos millones te esperan». Antonio Scull dijo que no</h3><p>El primera base de Industriales y del Equipo Cuba de Atlanta 96 cuenta, desde San Miguel del Padrón, las ofertas que rechazó.</p><time>1 sep 2026</time></div></a><a class="card" href="articulo.html"><img src="https://rectaalpecho.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-06-at-10.11.04-AM-scaled.jpeg" alt="" loading="lazy"><div class="b"><small>Los que dijeron no</small><h3>Los Orioles le dijeron «vas a ser millonario». Cuba lo citó a una oficina de la Seguridad del Estado por estudiar la Biblia</h3><p>La tercera base de la Aplanadora Santiaguera, el físico de Grandes Ligas fabricado con picadillo de soya.</p><time>30 ago 2026</time></div></a><a class="card" href="articulo.html"><img src="https://rectaalpecho.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-06-at-7.47.01-PM.jpeg" alt="" loading="lazy"><div class="b"><small>Las glorias en el piso</small><h3>Braudilio Vinent rechazó los millones, se quedó en Cuba y esto es lo que recibió</h3><p>El Meteoro de La Maya le dijo que no a los scouts y le regaló cada victoria a la Revolución. Hoy, a los setenta, enseña sus medallas a la cámara.</p><time>7 sep 2026</time></div></a><a class="card" href="articulo.html"><img src="https://rectaalpecho.com/wp-content/uploads/2026/09/Marquetti-scaled.jpeg" alt="" loading="lazy"><div class="b"><small>Los Borrados</small><h3>El hombre que paralizó a Cuba con un batazo se iba del estadio en bicicleta</h3><p>«Si yo estuviera en Cuba, hace nueve años estuviera muerto.»</p><time>7 ago 2026</time></div></a></div></section></main>
+<section class="band wrap" id="about">
+ <div><h2>Recta al Pecho: la pelota cubana contada por los que la jugaron</h2>
+ <p>Entrevistas largas con peloteros cubanos de todas las épocas, dentro y fuera de la isla, y artículos que contrastan lo que repite el fanático con los números y los testimonios. Hablan los que lo vivieron.</p>
+ <div class="apps"><a class="btn" href="https://www.youtube.com/@RectaAlPecho">Ver las entrevistas</a><a class="btn ghost" href="https://marrerobernalmedia.com/recta/">Instalar la app</a></div></div>
+ <div><img src="https://rectaalpecho.com/wp-content/uploads/2026/07/Eliam-y-Rey-Vicente-Anglada.jpeg" alt="" style="width:100%;border-radius:10px;aspect-ratio:4/3;object-fit:cover"></div>
+</section>
+<footer><div class="wrap">
+ <div><h4>Recta al Pecho</h4><p>Un medio de Marrero Bernal Media, Las Vegas. La historia de la pelota cubana sin el relato oficial.</p>
+ <p class="sponsor">Patrocinado por Marrero Bernal &amp; Associates — impuestos, seguros, inmigración, notaría. marrerobernal.com</p></div>
+ <div><h4>Series</h4><a href="#borrados">Los Borrados</a><a href="#fugas">Las Fugas</a><a href="#dijeronno">Los que dijeron no</a><a href="#glorias">Las glorias en el piso</a><a href="#mitos">Mitos y análisis</a></div>
+ <div><h4>Síguenos</h4><a href="https://www.youtube.com/@RectaAlPecho">YouTube</a><a href="https://www.facebook.com/RectaAlPecho/">Facebook</a><a href="https://www.instagram.com/rectaalpecho/">Instagram</a><a href="https://marrerobernalmedia.com/recta/">App Recta al Pecho</a></div>
+ <div><h4>El sitio</h4><a href="#">Quiénes somos</a><a href="#">Contacto</a><a href="#">Política de privacidad</a><a href="#">Términos y condiciones</a></div>
+</div></footer>
+</body></html>

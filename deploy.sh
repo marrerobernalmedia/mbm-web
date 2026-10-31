@@ -10,5 +10,7 @@ git pull -q origin main
 EXC="--exclude=*-config.js --exclude=*-config.php --exclude=opiniones/ --exclude=.git"
 rsync -a $EXC elhome/ "$DEST/elhome/"
 rsync -a $EXC recta/  "$DEST/recta/"
+# Maquetas de rediseño de los sitios (solo para revisión de Eliam)
+[ -d maquetas ] && rsync -a --delete --exclude=build.py maquetas/ "$DEST/maquetas/"
 # Enlace del sitio con las apps Android (assetlinks): va en la raíz del sitio
 mkdir -p "$DEST/.well-known" && cp .well-known/assetlinks.json "$DEST/.well-known/assetlinks.json"
