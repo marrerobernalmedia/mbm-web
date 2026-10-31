@@ -322,7 +322,7 @@ function inicio(){
   return `
   <section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + last + "/maxresdefault.jpg" : img(last)}" onerror="this.onerror=null;this.src=img(last)" alt=""><span class="tag">● Último estreno</span></div>
     <div class="body"><div class="who">${esc(V[last].p)}</div><h3>${esc(V[last].t)}</h3><div class="meta">${V[last].d}</div>
-    <div class="btns"><a class="btn yt" href="${YT(last)}" target="_blank" rel="noopener">▶ Ver en YouTube</a><button class="btn ghost" data-open-sheet>🔔 Avísame</button></div></div></div></section>
+    <div class="btns"><a class="btn yt" href="${YT(last)}" target="_blank" rel="noopener">▶ Ver en YouTube</a><button class="btn ghost" data-open-sheet>🔔 Avísame</button><button class="btn ghost" data-share="${last}" data-t="${esc(V[last].p + ": " + V[last].t)}">📤 Compartir</button></div></div></div></section>
   <section>${H("Próximo jueves")}<div class="board"><div class="day"><small>${esc(d[0].toUpperCase())}</small><b>${esc(d[1])}</b><small>${esc((d[3]||"").slice(0,3).toUpperCase())}</small></div>
     <div><div class="name">${esc(p[0])}</div><p>Nueva entrevista en Recta Al Pecho. Suscríbete y toca la campanita para que YouTube te avise.</p></div></div></section>
   <section>${H("Las series", "", `<button class="more" data-go="series">Ver todas →</button>`)}<div class="row">${D.series.map(s => `<div class="tile">${card(s)}</div>`).join("")}</div></section>
@@ -368,6 +368,10 @@ function go(t){
   render(); window.scrollTo({top:0});
 }
 document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("click", () => { open = null; go(b.dataset.tab); }));
+document.addEventListener("click", e => { const b = e.target.closest("[data-share]"); if (!b) return; e.preventDefault();
+  const url = "https://youtu.be/" + b.dataset.share, text = b.dataset.t + " — " + url + "\nBaja la app: " + location.origin + location.pathname;
+  if (navigator.share) navigator.share({ title: b.dataset.t, text: b.dataset.t + "\nBaja la app: " + location.origin + location.pathname, url }).catch(() => {});
+  else window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank", "noopener"); });
 view.addEventListener("click", e => {
   const o = e.target.closest("[data-open]"), g = e.target.closest("[data-go]"), so = e.target.closest("[data-sort]");
   if (so){ sort = so.dataset.sort; render(); return; }
