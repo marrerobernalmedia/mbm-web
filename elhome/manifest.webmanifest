@@ -1,7 +1,7 @@
 {
   "name": "El Home de la Risa",
   "short_name": "El Home de la Risa",
-  "description": "Todos los shows del humor cubano en un solo lugar. Cada video se ve en YouTube.",
+  "description": "La casa del humor cubano: todos los shows en un solo lugar. Cada video se ve en YouTube.",
   "lang": "es",
   "start_url": "./",
   "scope": "./",
