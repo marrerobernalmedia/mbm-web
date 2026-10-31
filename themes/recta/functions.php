@@ -100,6 +100,11 @@ add_action('wp_head', function () {
 
 /** El tema manda: Elementor Pro no sustituye cabecera, pie ni plantillas de artículo. */
 add_filter('elementor/theme/need_override_location', '__return_false');
+add_action('elementor/theme/register_locations', function ($manager) {
+  // El tema declara que gestiona sus propias zonas; como nunca llama a elementor_theme_do_location(),
+  // las plantillas de cabecera/pie/single de Elementor Pro no se pintan.
+  $manager->register_all_core_location();
+});
 /** La portada es siempre la de este tema (no la página "Home" de Elementor). */
 add_filter('pre_option_show_on_front', fn() => 'posts');
 add_filter('pre_option_page_on_front', fn() => 0);
