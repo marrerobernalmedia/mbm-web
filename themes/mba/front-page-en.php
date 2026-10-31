@@ -1,0 +1,189 @@
+<?php get_header('en'); ?>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="kicker">North Las Vegas · since 2008</div>
+      <h1>Insurance, taxes and immigration, <em>in your language</em> and in one place.</h1>
+      <p class="lead">We are an independent insurance agency with contracts with multiple top-tier carriers, such as Farmers and Progressive, plus tax preparers and paperwork specialists. Seventeen years serving the Hispanic community of Nevada, California and Arizona.</p>
+      <div class="search" id="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+        <input id="q" type="search" placeholder="What do you need? E.g. auto insurance, Medicare, LLC, notary…" autocomplete="off">
+        <button type="button">Search</button>
+        <div class="sugg" id="sugg"></div>
+      </div>
+      <div class="pop">Most searched:
+        <a href="#s-auto">Auto insurance</a><a href="#s-medicare">Medicare Advantage</a><a href="#s-taxes">Personal taxes</a><a href="#s-llc">Form an LLC</a><a href="#s-inmigracion">Immigration</a><a href="#s-notaria">Notary</a>
+      </div>
+      <div class="badges"><span>Licensed NV · CA · AZ</span><span>Independent agency · 10 carriers</span><span>Spanish and English</span><span>Free quotes</span></div>
+    </div>
+    <div class="heroimg" style="background:url(<?php echo esc_url(get_theme_file_uri('img/eliam-retrato.jpg')); ?>) center/cover">
+      <div><span class="lab">Eliam Marrero Bernal · founder</span><b>We treat you like family.</b></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="tiles">
+    <a class="tile" href="#personal"><div class="ic">🚗</div><b>Personal insurance</b><span>Auto, home, life, pets, devices and more</span></a>
+    <a class="tile" href="#negocios"><div class="ic">🏢</div><b>Business insurance</b><span>Liability, commercial auto, workers' comp</span></a>
+    <a class="tile" href="#s-taxes"><div class="ic">🧾</div><b>Taxes</b><span>Personal and business, year-round</span></a>
+    <a class="tile" href="#s-inmigracion"><div class="ic">🛂</div><b>Immigration</b><span>USCIS forms and filings</span></a>
+    <a class="tile" href="#s-notaria"><div class="ic">✒️</div><b>Notary and translations</b><span>Certified documents in Spanish and English</span></a>
+    <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licenses and LLC</b><span>Open your business in Nevada</span></a>
+  </div>
+  <div class="carriers"><span>We work with</span><b>Farmers</b><b>Progressive</b><b>Travelers</b><b>Liberty Mutual</b><b>Mercury</b><b>National General</b><b>Bristol West</b><b>Foremost</b><b>Homeowners of America</b><b>Lemonade</b></div>
+  <div class="cli">
+    <a class="cli-card" href="https://marrerobernal.securefilepro.com/portal/#/login" target="_blank" rel="noopener"><div class="ic">🔐</div><div><b>Client access</b><span>Sign in to the secure portal to upload and download your documents (SecureFilePro).</span></div><em>Sign in →</em></a>
+    <a class="cli-card" href="https://55a7805c-ea2c-4f0e-951b-1aa3c932e857.paylinks.godaddy.com" target="_blank" rel="noopener"><div class="ic">💳</div><div><b>Pay online</b><span>Pay for your service securely by card, from your phone or computer.</span></div><em>Pay →</em></a>
+  </div>
+  <div class="quote" id="cotizar">
+    <div><div class="kicker" style="margin-bottom:6px">Quote online</div><h3>Your quote goes straight to our office.</h3><p>Five minutes, no phone calls. We review it and contact you with the best option.</p></div>
+    <div class="qbtns">
+      <a href="https://esales.farmers.com/fastquote?Lob=Auto&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🚗 Auto</a>
+      <a href="https://esales.farmers.com/fastquote?Lob=Home&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🏠 Home</a>
+      <a href="https://esales.farmers.com/fastquote?Lob=Condo&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🏢 Condo</a>
+      <a href="https://esales.farmers.com/fastquote?Lob=Renter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🔑 Renters</a>
+      <a href="https://esales.farmers.com/fastquote?Lob=Lifec&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">❤️ Life</a>
+      <a href="https://esales.farmers.com/fastquote?Lob=Business&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">💼 Business</a>
+      <a href="https://esales.farmers.com/fastquote?Lob=autoHome&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🚗+🏠 Auto + home</a>
+      <a href="https://esales.farmers.com/fastquote?Lob=autoRenter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🚗+🔑 Auto + renters</a>
+      <a href="https://farmers.bordersolutions.com/ap.php?a=67249W" target="_blank" rel="noopener">🇲🇽 Mexico auto</a>
+    </div>
+  </div>
+</div>
+
+<section class="svc" id="personal">
+  <div class="wrap">
+    <div class="kicker">Service index</div>
+    <h2>Everything we do, on one page.</h2>
+    <p class="lead">Each service has its own page with what to bring, how long it takes and FAQs. Click and find out before you call.</p>
+    <div class="cols">
+      <div class="card">
+        <img class="cimg" style="object-position:40% 55%" src="<?php echo esc_url(get_theme_file_uri('img/familia.jpg')); ?>" alt="Family in front of their home and car in North Las Vegas" width="1280" height="720" loading="lazy">
+        <h3>Personal</h3>
+        <div class="sub">For you and your family</div>
+        <div class="grp"><b>Vehicles</b><ul><li><a id="s-auto" href="https://esales.farmers.com/fastquote?Lob=Auto&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto · quote</a></li><li><a href="https://www.farmers.com/motorcycle/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Motorcycle</a></li><li><a href="https://www.farmers.com/recreational/boat-and-watercraft-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Boat and jet ski</a></li><li><a href="https://www.farmers.com/auto/collectible/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Classic cars</a></li><li><a href="https://www.farmers.com/recreational/offroad-vehicle/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">ATV and off-road</a></li><li><a href="https://www.farmers.com/recreational/motor-home/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">RV and motorhome</a></li></ul></div>
+        <div class="grp"><b>Property</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Home&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Home · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Condo&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Condo · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Renter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Renters · quote</a></li><li><a href="https://www.farmers.com/landlord-rental-properties/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Landlord</a></li><li><a href="https://www.farmers.com/home/mobile-manufactured/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Mobile home</a></li><li><a href="https://www.farmers.com/home/seasonal-vacation-homes/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Vacation home</a></li><li><a href="https://www.farmers.com/home/flood/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Flood</a></li><li><a href="https://www.farmers.com/home/earthquake/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Earthquake</a></li></ul></div>
+        <div class="grp"><b>Life and health</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Lifec&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Life · quote</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/term-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Term life</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/whole-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Whole life</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/universal-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Universal life</a></li><li><a id="s-medicare" href="#medicare">Medicare Advantage</a></li><li><a href="https://www.farmers.com/medicare-plans/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Medicare plans (Farmers)</a></li></ul></div>
+        <div class="grp"><b>Other insurance</b><ul><li><a href="https://www.farmers.com/umbrella/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Umbrella</a></li><li><a href="https://www.farmers.com/pet-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Pets</a></li><li><a href="https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Electronic devices</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoHome&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto + home bundle · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoRenter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto + renters bundle · quote</a></li><li><a href="https://farmers.bordersolutions.com/ap.php?a=67249W" target="_blank" rel="noopener">Auto insurance for Mexico · quote</a></li></ul></div>
+        <div class="grp"><b>Paperwork</b><ul><li><a id="s-taxes" href="#contacto">Personal taxes</a></li><li><a id="s-inmigracion" href="#contacto">Immigration</a></li><li><a id="s-notaria" href="#contacto">Notary</a></li><li><a href="#contacto">Certified translations</a></li><li><a href="#contacto">Free coverage review</a></li></ul></div>
+        <p class="note">Insurance through multiple top-tier carriers, including Farmers and Progressive. Coverage availability varies by carrier and state.</p>
+      </div>
+      <div class="card" id="negocios">
+        <img class="cimg" style="object-position:70% 12%" src="<?php echo esc_url(get_theme_file_uri('img/negocio.jpg')); ?>" alt="Small business owner in his shop" width="1280" height="720" loading="lazy">
+        <h3>Business</h3>
+        <div class="sub">For your business, from day one</div>
+        <div class="grp"><b>Commercial insurance</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Business&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Business insurance · quote</a></li><li><a href="https://www.farmers.com/business/auto-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Commercial auto</a></li><li><a href="https://www.farmers.com/business/property/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Commercial property</a></li><li><a href="https://www.farmers.com/business/general-liability-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">General liability</a></li><li><a href="https://www.farmers.com/business/workers-compensation/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Workers' compensation</a></li><li><a href="https://www.farmers.com/business/industry/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">By industry</a></li></ul></div>
+        <div class="grp"><b>Taxes and formation</b><ul><li><a href="#contacto">Business taxes</a></li><li><a href="#contacto">Business licenses</a></li><li><a id="s-llc" href="#contacto">LLC formation</a></li><li><a href="#contacto">EIN and state registration</a></li></ul></div>
+        <div class="grp"><b>Industries we serve</b><ul><li><a href="#contacto">Restaurants</a></li><li><a href="#contacto">Construction</a></li><li><a href="#contacto">Transportation</a></li><li><a href="#contacto">Cleaning</a></li><li><a href="#contacto">Salons and barbershops</a></li><li><a href="#contacto">Retail</a></li></ul></div>
+        <div style="margin-top:26px;padding:18px;background:var(--cream);border-radius:14px">
+          <b style="display:block;margin-bottom:4px">Opening a business?</b>
+          <span style="font-size:14px;color:var(--mut)">We form your LLC, get your license and set up your insurance in a single visit.</span>
+          <div style="margin-top:12px"><a class="btn btn-navy" href="#contacto">Talk to an advisor</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Why us</div>
+    <h2>Seventeen years, the same office, the same people.</h2>
+    <div class="why">
+      <div><b>2008</b><p>The year we opened in North Las Vegas. We're still in the same place.</p></div>
+      <div><b>3 states</b><p>Licensed to sell insurance in Nevada, California and Arizona.</p></div>
+      <div><b>10 carriers</b><p>We are independent. For auto we quote Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General and Bristol West; for home, Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America and Lemonade. You get the best option.</p></div>
+      <div><b>1 visit</b><p>Insurance, taxes, immigration and notary in the same office, in your language.</p></div>
+    </div>
+    <div class="resenas">
+      <h3>What our clients say on Google</h3>
+      <div class="ti"><?php echo do_shortcode('[trustindex no-registration=google]'); ?></div>
+      <div class="premios">
+        <a href="https://threebestrated.com/insurance-agents-in-north-las-vegas-nv" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/threebest.svg')); ?>" alt="Three Best Rated: best insurance agents in North Las Vegas 2024" width="200" height="200" loading="lazy"></a>
+        <a href="https://wallethub.com/insurance-agents/las-vegas-nv" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/wallethub.jpg')); ?>" alt="WalletHub: best insurance agent in Las Vegas" width="300" height="157" loading="lazy"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="med" id="medicare">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Health insurance</div>
+      <h2>Medicare Advantage, explained without the fine print.</h2>
+      <p class="lead">If you're 65 or older, or qualify through disability, we help you compare the Medicare Advantage plans available in your county and understand what each one covers: doctor, hospital, prescriptions, dental, vision and more.</p>
+      <ul>
+        <li>Free review of your current plan, no obligation.</li>
+        <li>Annual enrollment from October 15 to December 7.</li>
+        <li>Support in Spanish and English all year, not just during enrollment.</li>
+      </ul>
+      <div style="margin-top:26px"><a class="btn btn-acc" href="#contacto">Review my plan</a></div>
+    </div>
+    <div>
+    <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/medicare.jpg')); ?>" alt="Senior couple reviewing their health plan at home" width="1280" height="720" loading="lazy">
+    <div class="box">
+      <h3>Before you call, you should know:</h3>
+      <small>We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov or 1-800-MEDICARE to get information on all of your options.</small>
+      <small>Marrero Bernal &amp; Associates is a licensed independent insurance agency and is not affiliated with or endorsed by the U.S. government or the federal Medicare program.</small>
+      <small>Coverage, premiums and benefits vary by plan and county. Final wording follows current CMS marketing guidelines.</small>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="nosotros">
+  <div class="wrap">
+    <img src="<?php echo esc_url(get_theme_file_uri('img/eliam.jpg')); ?>" alt="Eliam Marrero Bernal helping clients at the office" style="border-radius:22px;border:1px solid var(--line)">
+    <div>
+      <div class="kicker">About us</div>
+      <h2>A neighborhood agency licensed in three states.</h2>
+      <p class="lead">Eliam Marrero Bernal founded Marrero Bernal &amp; Associates in 2008 with a simple idea: that a Cuban, a Mexican or a Salvadoran newly arrived in Las Vegas could sort out their insurance, taxes and paperwork with someone who spoke plainly and in their language.</p>
+      <p class="lead" style="margin-top:14px">Today we are an independent agency with contracts with several top-tier carriers, tax preparers and a team that knows every client by name. What we offer isn't a product: it's walking out of the office with the problem solved.</p>
+      <div class="creds"><span>Independent agency</span><span>LUTCF · FSCP · CSP</span><span><span data-seg="tot.mba">23K</span>+ social followers</span><span>Licensed NV · CA · AZ</span><span>The American College</span><span>Español · English</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--cream)">
+  <div class="wrap">
+    <div class="kicker">How it works</div>
+    <h2>Getting paperwork done shouldn't cost you a whole day.</h2>
+    <img class="simg" style="object-position:50% 15%" src="<?php echo esc_url(get_theme_file_uri('img/tramites.jpg')); ?>" alt="Client signing her documents at the office" width="1280" height="720" loading="lazy">
+    <div class="steps">
+      <div class="step"><h3>You tell us</h3><p>By phone, WhatsApp or at the office. No appointment needed for most services.</p></div>
+      <div class="step"><h3>We tell you what to bring</h3><p>A short, clear list of documents. If something's missing, we help you get it.</p></div>
+      <div class="step"><h3>We do it with you</h3><p>We quote, fill out and review everything in front of you, in your language.</p></div>
+      <div class="step"><h3>We're still here</h3><p>Claims, renewals, changes and questions: the same office, the same people.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="cinfo">
+      <div class="kicker">Contact</div>
+      <h2>Visit, call or write.</h2>
+      <a class="big" href="tel:+18888772583">888-877-2583</a><div style="font-size:14px;color:var(--mut);margin:-4px 0 10px">888-87-SALUD · toll-free from any state · local 702-997-2982</div>
+      <a class="wa" href="https://wa.me/17023027361" target="_blank" rel="noopener">💬 WhatsApp 702-302-7361</a>
+      <p style="margin-top:16px"><b style="color:var(--ink)">3455 W Craig Rd, Suite D</b><br>North Las Vegas, NV 89032</p>
+      <p>Monday to Friday, 9:00 AM – 5:00 PM<br>Closed Saturday and Sunday</p>
+      <div class="map"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=3455+W+Craig+Rd+Ste+D,+North+Las+Vegas,+NV+89032&output=embed" title="Map"></iframe></div>
+    </div>
+    <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+      <input type="hidden" name="action" value="mba_contacto"><?php wp_nonce_field('mba_contacto','mba_n'); ?><input type="text" name="empresa" style="display:none" tabindex="-1" autocomplete="off">
+      <b style="font-family:Fraunces,serif;font-size:22px">Request your free quote</b>
+      <input name="nombre" placeholder="Name" required>
+      <input name="telefono" placeholder="Phone or WhatsApp" required>
+      <input type="email" name="correo" placeholder="Email (optional)">
+      <select name="servicio"><option>What do you need?</option><option>Auto insurance</option><option>Home or renters insurance</option><option>Life insurance</option><option>Medicare Advantage</option><option>Business insurance</option><option>Taxes</option><option>Immigration</option><option>Notary or translation</option><option>License or LLC</option><option>Other</option></select>
+      <textarea name="mensaje" placeholder="Tell us briefly"></textarea>
+      <button class="btn btn-navy" type="submit" style="justify-self:start">Send</button>
+      <small>We reply the same business day. We never share your information.</small>
+      <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Received. We will contact you the same business day.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">Could not send. Call us at 888-877-2583.</div><?php endif; ?>
+    </form>
+  </div>
+</section>
+
+
+<?php get_footer('en'); ?>

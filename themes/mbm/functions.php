@@ -12,11 +12,11 @@ add_action('after_setup_theme', function () {
   add_theme_support('html5', ['search-form','gallery','caption','script','style']);
 });
 
-add_filter('pre_get_document_title', fn($t) => is_front_page() ? "Marrero Bernal Media · Productora audiovisual para el público latino" : $t);
+add_filter('pre_get_document_title', fn($t) => (is_front_page() && !mbm_is_en()) ? "Marrero Bernal Media · Productora audiovisual para el público latino" : $t);
 
 add_action('wp_head', function () {
   echo '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
-  if (is_front_page()) echo '<meta name="description" content="' . esc_attr("Marrero Bernal Media LLC: productora audiovisual en Las Vegas con su propia red de canales. Comerciales, video corporativo, postproducción, dron con licencia FAA, diseño, web, podcast y publicidad dentro de la red.") . '">' . "\n";
+  if (is_front_page() && !mbm_is_en()) echo '<meta name="description" content="' . esc_attr("Marrero Bernal Media LLC: productora audiovisual en Las Vegas con su propia red de canales. Comerciales, video corporativo, postproducción, dron con licencia FAA, diseño, web, podcast y publicidad dentro de la red.") . '">' . "\n";
   echo '<script>document.addEventListener("DOMContentLoaded",function(){var t=document.querySelector("title");if(t&&!t.getAttribute("data-en"))t.setAttribute("data-en",' . json_encode("Marrero Bernal Media · Video production, Las Vegas") . ');});</script>' . "\n";
 }, 1);
 
@@ -24,8 +24,6 @@ add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('mbm-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap', [], null);
   wp_enqueue_style('mbm', get_stylesheet_uri(), ['mbm-fonts'], @filemtime(get_stylesheet_directory() . '/style.css') ?: MBM_VER);
   wp_enqueue_script('mbm-seguidores', home_url('/seguidores.js'), [], @filemtime(ABSPATH . 'seguidores.js') ?: wp_date('YmdH'), true);
-  wp_enqueue_script('mbm-en', get_theme_file_uri('en.js'), [], @filemtime(get_theme_file_path('en.js')) ?: MBM_VER, true);
-  wp_enqueue_script('mbm-idioma', home_url('/idioma.js'), ['mbm-en'], @filemtime(ABSPATH . 'idioma.js') ?: wp_date('YmdH'), true);
 });
 
 /** La portada siempre es front-page.php, aunque la página tenga plantilla de Elementor guardada. */
@@ -37,7 +35,7 @@ add_filter('template_include', function ($t) {
 /** SEO: idioma español, vista previa al compartir y ficha de organización para Google. */
 add_filter('language_attributes', fn() => 'lang="es"');
 add_action('wp_head', function () {
-  if (!is_front_page()) return;
+  if (!is_front_page() || mbm_is_en()) return;
   $img = get_theme_file_uri('img/og.jpg');
   echo '<meta property="og:type" content="website"><meta property="og:site_name" content="Marrero Bernal Media"><meta property="og:locale" content="es_US"><meta property="og:url" content="' . esc_url(home_url('/')) . '"><meta property="og:title" content="' . esc_attr(wp_get_document_title()) . '"><meta property="og:image" content="' . esc_url($img) . '"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">' . "
 ";
@@ -77,3 +75,37 @@ add_action('template_redirect', function () { if (is_page('apps')) { wp_redirect
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 remove_action('wp_head', 'wp_generator');
+
+/** VERSIÓN EN INGLÉS legible por Google: /en/ (generada desde la maqueta con el diccionario en.js). */
+function mbm_is_en() { return (bool) get_query_var('mbm_en'); }
+add_filter('query_vars', function ($v) { $v[] = 'mbm_en'; return $v; });
+add_action('init', function () {
+  add_rewrite_rule('^en/?$', 'index.php?mbm_en=1', 'top');
+  if (get_option('mbm_en_rw') !== '2') { flush_rewrite_rules(false); update_option('mbm_en_rw', '2'); }
+});
+add_filter('redirect_canonical', fn($r) => mbm_is_en() ? false : $r);
+add_filter('template_include', function ($t) { if (mbm_is_en()) { $f = get_theme_file_path('front-page-en.php'); if (file_exists($f)) return $f; } return $t; }, 1000);
+add_filter('language_attributes', fn($a) => mbm_is_en() ? 'lang="en"' : 'lang="es"', 20);
+add_filter('pre_get_document_title', fn($t) => mbm_is_en() ? "Marrero Bernal Media · Video production, Las Vegas" : $t, 20);
+add_filter('body_class', fn($c) => mbm_is_en() ? array_merge($c, ['lang-en']) : $c);
+add_action('wp_head', function () {
+  if (!is_front_page() && !mbm_is_en()) return;
+  $es = home_url('/'); $en = home_url('/en/');
+  echo '<link rel="alternate" hreflang="es" href="' . esc_url($es) . '"><link rel="alternate" hreflang="en" href="' . esc_url($en) . '"><link rel="alternate" hreflang="x-default" href="' . esc_url($es) . '">' . "\n";
+  if (mbm_is_en()) {
+    echo '<link rel="canonical" href="' . esc_url($en) . '"><meta name="description" content="' . esc_attr("Marrero Bernal Media LLC: productora audiovisual en Las Vegas con su propia red de canales. Comerciales, video corporativo, postproducción, dron con licencia FAA, diseño, web, podcast y publicidad dentro de la red.") . '"><meta property="og:locale" content="en_US"><meta property="og:url" content="' . esc_url($en) . '"><meta property="og:title" content="' . esc_attr("Marrero Bernal Media · Video production, Las Vegas") . '"><meta property="og:description" content="' . esc_attr("Marrero Bernal Media LLC: productora audiovisual en Las Vegas con su propia red de canales. Comerciales, video corporativo, postproducción, dron con licencia FAA, diseño, web, podcast y publicidad dentro de la red.") . '">' . "\n";
+  }
+}, 4);
+/** En /en/ WordPress no pone su canonical de portada (lo pone el bloque de arriba). */
+add_action('wp', function () { if (mbm_is_en()) remove_action('wp_head', 'rel_canonical'); });
+/** Sitemap: añade /en/ al sitemap de WordPress. */
+add_filter('wp_sitemaps_posts_entry', function ($e, $post) { return $e; }, 10, 2);
+add_action('init', function () {
+  if (!function_exists('wp_register_sitemap_provider')) return;
+  wp_register_sitemap_provider('idiomas', new class extends WP_Sitemaps_Provider {
+    public function __construct() { $this->name = 'idiomas'; $this->object_type = 'idiomas'; }
+    public function get_url_list($page_num, $subtype = '') { return [['loc' => home_url('/')], ['loc' => home_url('/en/')]]; }
+    public function get_max_num_pages($subtype = '') { return 1; }
+  });
+});
+add_action('wp_footer', function () { echo "<script>(function(){try{var p=location.pathname.replace(/\\/+$/,'/'),en=p.indexOf('/en/')===0,s=localStorage.getItem('mb_lang');\ndocument.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('mb_lang',a.getAttribute('data-lang'))}catch(e){}})});\nif(!en&&p==='/'&&!s&&!/bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)&&!/^es/i.test(navigator.language||'es'))location.replace('/en/'+location.hash);}catch(e){}})();</script>"; }, 5);

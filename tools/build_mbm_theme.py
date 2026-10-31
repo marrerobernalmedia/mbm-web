@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Genera themes/mbm/ (tema WordPress de marrerobernalmedia.com) a partir de maquetas/mbm/index.html.
 Correr desde la raíz del repo cada vez que cambie la maqueta: python3 tools/build_mbm_theme.py"""
-import re, shutil, pathlib, json
+import re, shutil, pathlib, json, sys
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import i18n_en
 root = pathlib.Path(__file__).resolve().parent.parent
 src = (root/'maquetas/mbm/index.html').read_text()
 out = root/'themes/mbm'; out.mkdir(parents=True, exist_ok=True)
@@ -162,4 +164,24 @@ img = out/'img'; img.mkdir(exist_ok=True)
 for f in (root/'maquetas/mbm/img').rglob('*'):
     if f.is_file():
         d = img/f.relative_to(root/'maquetas/mbm/img'); d.parent.mkdir(parents=True, exist_ok=True); shutil.copy(f, d)
+
+# ---------- versión en inglés (/en/) ----------
+D = i18n_en.load_dict(root/'maquetas/mbm/en.js')
+title_es_ = re.search(r'<title[^>]*>(.*?)</title>', src).group(1)
+desc_en = D.get(desc, desc)
+hp = (out/'header.php').read_text()
+(out/'header.php').write_text(i18n_en.flags(hp, 'es'))
+(out/'header-en.php').write_text(i18n_en.translate(i18n_en.flags(hp, 'en'), D))
+(out/'footer-en.php').write_text(i18n_en.translate((out/'footer.php').read_text(), D))
+fp = (out/'front-page.php').read_text().replace('<?php get_header(); ?>', "<?php get_header('en'); ?>").replace('<?php get_footer(); ?>', "<?php get_footer('en'); ?>")
+fp = i18n_en.translate(fp, D)
+for a, b2 in [('✅ Recibido. Te contactamos el mismo día hábil.', '✅ Received. We will contact you the same business day.'), ('✅ Recibido. Respondemos en menos de un día hábil.', '✅ Received. We reply within one business day.'), ('No se pudo enviar. Llámanos al 888-877-2583.', 'Could not send. Call us at 888-877-2583.'), ('No se pudo enviar. Escríbenos a info@marrerobernalmedia.com.', 'Could not send. Email us at info@marrerobernalmedia.com.')]:
+    fp = fp.replace(a, b2)
+(out/'front-page-en.php').write_text(fp)
+fn = (out/'functions.php').read_text()
+fn = re.sub(r"\n\s*wp_enqueue_script\('mbm-en'[^\n]*", "", fn)
+fn = re.sub(r"\n\s*wp_enqueue_script\('mbm-idioma'[^\n]*", "", fn)
+fn = fn.replace("if (is_front_page()) wp_enqueue_script('mbm-buscador'", "if (is_front_page() || mbm_is_en()) wp_enqueue_script('mbm-buscador'").replace("is_front_page() ? ", "(is_front_page() && !mbm_is_en()) ? ").replace("if (!is_front_page()) return;", "if (!is_front_page() || mbm_is_en()) return;").replace("if (is_front_page()) echo '<meta name=\"description\"", "if (is_front_page() && !mbm_is_en()) echo '<meta name=\"description\"")
+fn += i18n_en.php_en('mbm', title_es_, title_en, desc, desc_en, '')
+(out/'functions.php').write_text(fn)
 print('tema generado en', out)

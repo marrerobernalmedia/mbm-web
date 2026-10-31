@@ -13,21 +13,19 @@ add_action('after_setup_theme', function () {
 });
 
 add_filter('pre_get_document_title', function ($t) {
-  return is_front_page() ? 'Marrero Bernal & Associates · Seguros, taxes e inmigración en Las Vegas' : $t;
+  return (is_front_page() && !mba_is_en()) ? 'Marrero Bernal & Associates · Seguros, taxes e inmigración en Las Vegas' : $t;
 });
 
 add_action('wp_head', function () {
   echo '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
-  if (is_front_page()) echo '<meta name="description" content="' . esc_attr("Marrero Bernal & Associates: agencia de seguros independiente en Las Vegas con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; taxes personales y de negocio, inmigración, notaría, traducciones y creación de LLC. En español, en North Las Vegas desde 2008.") . '">' . "\n";
+  if (is_front_page() && !mba_is_en()) echo '<meta name="description" content="' . esc_attr("Marrero Bernal & Associates: agencia de seguros independiente en Las Vegas con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; taxes personales y de negocio, inmigración, notaría, traducciones y creación de LLC. En español, en North Las Vegas desde 2008.") . '">' . "\n";
 }, 1);
 
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('mba-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap', [], null);
   wp_enqueue_style('mba', get_stylesheet_uri(), ['mba-fonts'], @filemtime(get_stylesheet_directory() . '/style.css') ?: MBA_VER);
   wp_enqueue_script('mba-seguidores', 'https://marrerobernalmedia.com/seguidores.js', [], wp_date('YmdH'), true);
-  wp_enqueue_script('mba-en', get_theme_file_uri('en.js'), [], @filemtime(get_theme_file_path('en.js')) ?: MBA_VER, true);
-  wp_enqueue_script('mba-idioma', 'https://marrerobernalmedia.com/idioma.js', ['mba-en'], wp_date('Ymd'), true);
-  if (is_front_page()) wp_enqueue_script('mba-buscador', get_theme_file_uri('buscador.js'), [], MBA_VER, true);
+  if (is_front_page() || mba_is_en()) wp_enqueue_script('mba-buscador', get_theme_file_uri('buscador.js'), [], MBA_VER, true);
 });
 
 /** Chat del CRM (LeadConnector), igual que el sitio anterior. */
@@ -42,7 +40,7 @@ add_action('wp_head', function () { echo '<script>document.addEventListener("DOM
 /** SEO: idioma español, vista previa al compartir y ficha de negocio local (InsuranceAgency) para Google. */
 add_filter('language_attributes', fn() => 'lang="es"');
 add_action('wp_head', function () {
-  if (!is_front_page()) return;
+  if (!is_front_page() || mba_is_en()) return;
   $img = get_theme_file_uri('img/og.jpg'); $t = 'Marrero Bernal & Associates · Seguros, taxes e inmigración en Las Vegas';
   echo '<meta property="og:type" content="website"><meta property="og:site_name" content="Marrero Bernal & Associates"><meta property="og:locale" content="es_US"><meta property="og:url" content="' . esc_url(home_url('/')) . '"><meta property="og:title" content="' . esc_attr($t) . '"><meta property="og:image" content="' . esc_url($img) . '"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">' . "
 ";
@@ -82,3 +80,37 @@ add_filter('template_include', function ($t) {
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
 remove_action('wp_head', 'wp_generator');
+
+/** VERSIÓN EN INGLÉS legible por Google: /en/ (generada desde la maqueta con el diccionario en.js). */
+function mba_is_en() { return (bool) get_query_var('mba_en'); }
+add_filter('query_vars', function ($v) { $v[] = 'mba_en'; return $v; });
+add_action('init', function () {
+  add_rewrite_rule('^en/?$', 'index.php?mba_en=1', 'top');
+  if (get_option('mba_en_rw') !== '2') { flush_rewrite_rules(false); update_option('mba_en_rw', '2'); }
+});
+add_filter('redirect_canonical', fn($r) => mba_is_en() ? false : $r);
+add_filter('template_include', function ($t) { if (mba_is_en()) { $f = get_theme_file_path('front-page-en.php'); if (file_exists($f)) return $f; } return $t; }, 1000);
+add_filter('language_attributes', fn($a) => mba_is_en() ? 'lang="en"' : 'lang="es"', 20);
+add_filter('pre_get_document_title', fn($t) => mba_is_en() ? "Marrero Bernal & Associates · Insurance, taxes and immigration in Las Vegas" : $t, 20);
+add_filter('body_class', fn($c) => mba_is_en() ? array_merge($c, ['lang-en']) : $c);
+add_action('wp_head', function () {
+  if (!is_front_page() && !mba_is_en()) return;
+  $es = home_url('/'); $en = home_url('/en/');
+  echo '<link rel="alternate" hreflang="es" href="' . esc_url($es) . '"><link rel="alternate" hreflang="en" href="' . esc_url($en) . '"><link rel="alternate" hreflang="x-default" href="' . esc_url($es) . '">' . "\n";
+  if (mba_is_en()) {
+    echo '<link rel="canonical" href="' . esc_url($en) . '"><meta name="description" content="' . esc_attr("Marrero Bernal & Associates: agencia de seguros independiente en Las Vegas con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; taxes personales y de negocio, inmigración, notaría, traducciones y creación de LLC. En español, en North Las Vegas desde 2008.") . '"><meta property="og:locale" content="en_US"><meta property="og:url" content="' . esc_url($en) . '"><meta property="og:title" content="' . esc_attr("Marrero Bernal & Associates · Insurance, taxes and immigration in Las Vegas") . '"><meta property="og:description" content="' . esc_attr("Marrero Bernal & Associates: agencia de seguros independiente en Las Vegas con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; taxes personales y de negocio, inmigración, notaría, traducciones y creación de LLC. En español, en North Las Vegas desde 2008.") . '">' . "\n";
+  }
+}, 4);
+/** En /en/ WordPress no pone su canonical de portada (lo pone el bloque de arriba). */
+add_action('wp', function () { if (mba_is_en()) remove_action('wp_head', 'rel_canonical'); });
+/** Sitemap: añade /en/ al sitemap de WordPress. */
+add_filter('wp_sitemaps_posts_entry', function ($e, $post) { return $e; }, 10, 2);
+add_action('init', function () {
+  if (!function_exists('wp_register_sitemap_provider')) return;
+  wp_register_sitemap_provider('idiomas', new class extends WP_Sitemaps_Provider {
+    public function __construct() { $this->name = 'idiomas'; $this->object_type = 'idiomas'; }
+    public function get_url_list($page_num, $subtype = '') { return [['loc' => home_url('/')], ['loc' => home_url('/en/')]]; }
+    public function get_max_num_pages($subtype = '') { return 1; }
+  });
+});
+add_action('wp_footer', function () { echo "<script>(function(){try{var p=location.pathname.replace(/\\/+$/,'/'),en=p.indexOf('/en/')===0,s=localStorage.getItem('mb_lang');\ndocument.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('mb_lang',a.getAttribute('data-lang'))}catch(e){}})});\nif(!en&&p==='/'&&!s&&!/bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)&&!/^es/i.test(navigator.language||'es'))location.replace('/en/'+location.hash);}catch(e){}})();</script>"; }, 5);
