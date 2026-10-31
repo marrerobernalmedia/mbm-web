@@ -32,5 +32,7 @@ $shown = [];
 <?php endif; ?>
 <div class="grid"><?php foreach ($ps as $p) recta_card($p); ?></div></section>
 <?php endforeach; ?>
+<section class="sec autores-strip"><div class="sec-h"><h2>Nuestros autores</h2><p>Periodistas y narradores que escriben en Recta al Pecho.</p><a href="<?php echo esc_url(home_url('/nuestros-autores/')); ?>">Conócelos →</a></div>
+<div class="autores"><?php foreach (recta_autores() as $a) echo recta_autor_card($a, 80); ?></div></section>
 </main>
 <?php get_footer();

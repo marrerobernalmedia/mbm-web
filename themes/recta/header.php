@@ -14,6 +14,7 @@
    <a href="<?php echo esc_url(get_category_link($c)); ?>"><?php echo esc_html($slug === 'la-hipocresia-en-el-beisbol' ? 'Mitos' : $s[0]); ?></a>
   <?php endif; endforeach; ?>
   <a href="<?php echo esc_url(home_url('/quienes-somos/')); ?>">Quiénes somos</a>
+  <a href="<?php echo esc_url(home_url('/nuestros-autores/')); ?>">Autores</a>
   <a class="yt" href="https://www.youtube.com/@RectaAlPecho" target="_blank" rel="noopener">▶ Entrevistas</a>
  </nav>
  <button class="burger" type="button" aria-expanded="false" aria-controls="menu-panel" onclick="var p=document.getElementById('menu-panel');p.classList.toggle('open');this.setAttribute('aria-expanded',p.classList.contains('open'))">MENÚ</button>
@@ -23,6 +24,7 @@
    <a href="<?php echo esc_url(get_category_link($c)); ?>"><?php echo esc_html($s[0]); ?></a>
   <?php endif; endforeach; ?>
   <a href="<?php echo esc_url(home_url('/quienes-somos/')); ?>">Quiénes somos</a>
+  <a href="<?php echo esc_url(home_url('/nuestros-autores/')); ?>">Nuestros autores</a>
   <a href="<?php echo esc_url(home_url('/contacto/')); ?>">Contacto</a>
   <a href="https://www.youtube.com/@RectaAlPecho" target="_blank" rel="noopener">▶ Entrevistas en YouTube</a>
 </div>
