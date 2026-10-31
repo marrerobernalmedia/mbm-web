@@ -21,7 +21,7 @@
       <li><a href="#facebook">Facebook</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
     </ul>
-    <span class="lang"><a href="#" data-lang="es">ES</a> · <a href="#" data-lang="en">EN</a></span>
+    <span class="lang" role="group" aria-label="Idioma / Language"><a href="#" data-lang="es" title="Español"><svg viewBox="0 0 30 20" width="24" height="16" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg><b>ES</b></a><a href="#" data-lang="en" title="English"><svg viewBox="0 0 38 20" width="24" height="16" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><g fill="#b22234"><rect width="38" height="1.54"/><rect y="3.08" width="38" height="1.54"/><rect y="6.15" width="38" height="1.54"/><rect y="9.23" width="38" height="1.54"/><rect y="12.31" width="38" height="1.54"/><rect y="15.38" width="38" height="1.54"/><rect y="18.46" width="38" height="1.54"/></g><rect width="15.2" height="10.77" fill="#3c3b6e"/></svg><b>EN</b></a></span>
     <a class="btn btn-acc" href="#contacto">Hablemos</a>
   </div>
 </header>
