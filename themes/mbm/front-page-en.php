@@ -35,7 +35,7 @@
       </a>
       <a class="ch" href="https://www.straight2dchest.com/" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/s2d.jpg')); ?>)"></div>
-        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_s2d.jpg')); ?>" alt="Straight 2D Chest"><div><h3>Straight 2D Chest</h3><p>Recta Al Pecho in English. Sports · Baseball is the passion: interviews with English audio.</p><span class="n"><span data-seg="yt.recta">19K</span> on YouTube · <span data-seg="fb.recta">71K</span> on Facebook · <span data-seg="ig.recta">9.2K</span> on Instagram</span></div></div>
+        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_s2d.jpg')); ?>" alt="Straight 2D Chest"><div><h3>Straight 2D Chest</h3><p>Sports · Baseball is the passion: interviews with English audio.</p><span class="n"><span data-seg="yt.recta">19K</span> on YouTube · <span data-seg="fb.recta">71K</span> on Facebook · <span data-seg="ig.recta">9.2K</span> on Instagram</span></div></div>
       </a>
       <a class="ch" href="https://www.lcedr.com" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cosa.jpg')); ?>)"></div>
@@ -96,9 +96,9 @@
       <div class="sv"><div class="ic">🎬</div><h3>Commercials and corporate video</h3><p>Spots for TV, social and screens; brand, institutional and testimonial videos with our own direction, cinematography and scripts.</p></div>
       <div class="sv"><div class="ic">✂️</div><h3>Editing and post-production</h3><p>Editing, color grading, sound design, subtitles and vertical cuts for every platform.</p></div>
       <div class="sv"><div class="ic">🚁</div><h3>Drone aerial operations</h3><p>Aerial footage by an FAA Part 107 certified pilot: real estate, construction, industrial, commercials and productions.</p></div>
-      <div class="sv"><div class="ic">🎙️</div><h3>Podcast and streaming for brands</h3><p>Format design, studio recording, production and distribution. Recta Al Pecho is our own success story.</p></div>
+      <div class="sv"><div class="ic">🎙️</div><h3>Podcast and streaming for brands</h3><p>Format design, studio recording, production and distribution. Straight 2D Chest is our own success story.</p></div>
       <div class="sv"><div class="ic">✦</div><h3>Graphic design and identity</h3><p>Logos, thumbnails, covers, banners and visual systems built to work on video and social.</p></div>
-      <div class="sv"><div class="ic">⌘</div><h3>Websites and apps</h3><p>Fast sites and installable apps like El Home de la Risa and Recta Al Pecho, with notifications and live content.</p></div>
+      <div class="sv"><div class="ic">⌘</div><h3>Websites and apps</h3><p>Fast sites and installable apps like El Home de la Risa and Straight 2D Chest, with notifications and live content.</p></div>
       <div class="sv"><div class="ic">📈</div><h3>Content and channel management</h3><p>Strategy, calendar, packaging (titles, thumbnails, SEO) and publishing on YouTube, Facebook and Instagram.</p></div>
       <div class="sv"><div class="ic">📣</div><h3>Advertising inside the network</h3><p>Your brand inside our shows: mentions, on-screen cards, sponsored segments and collaborations.</p></div>
     </div>
@@ -110,16 +110,16 @@
     <div>
       <div class="kicker">Advertising on the network</div>
       <h2>Reach the Latino audience where it's already watching.</h2>
-      <p class="lead">A spot in our programs isn't an ad to skip: it's part of the show. Our pages add up to more than <span data-seg="tot.todo" data-fmt="mil">1,080,000</span> followers: <span data-seg="tot.fbRed" data-fmt="mil">846,000</span> on Facebook, <span data-seg="tot.igRed" data-fmt="mil">106,000</span> on Instagram and <span data-seg="tot.ytRed" data-fmt="mil">130,000</span> YouTube subscribers. La Risa es Cosa Seria <span data-seg="fb.larisa" data-fmt="full">584,344</span> on Facebook and <span data-seg="ig.larisa" data-fmt="full">50,500</span> on Instagram · La Cosa Es De Risa <span data-seg="fb.lacosa" data-fmt="full">172,454</span> and <span data-seg="ig.lacosa" data-fmt="full">31,300</span> · Recta Al Pecho <span data-seg="fb.recta" data-fmt="full">71,612</span> and <span data-seg="ig.recta" data-fmt="full">9,202</span> · Marrero Bernal Media <span data-seg="ig.mbm" data-fmt="full">10,100</span> on Instagram. <small style="opacity:.6">Figures updated on <span data-seg="actualizado">2026-10-30</span>.</small> Every week our premieres reach tens of thousands of Cuban and Latino homes across the United States.</p>
+      <p class="lead">A spot in our programs isn't an ad to skip: it's part of the show. Our pages add up to more than <span data-seg="tot.todo" data-fmt="mil">1,080,000</span> followers: <span data-seg="tot.fbRed" data-fmt="mil">846,000</span> on Facebook, <span data-seg="tot.igRed" data-fmt="mil">106,000</span> on Instagram and <span data-seg="tot.ytRed" data-fmt="mil">130,000</span> YouTube subscribers. La Risa es Cosa Seria <span data-seg="fb.larisa" data-fmt="full">584,344</span> on Facebook and <span data-seg="ig.larisa" data-fmt="full">50,500</span> on Instagram · La Cosa Es De Risa <span data-seg="fb.lacosa" data-fmt="full">172,454</span> and <span data-seg="ig.lacosa" data-fmt="full">31,300</span> · Straight 2D Chest <span data-seg="fb.recta" data-fmt="full">71,612</span> and <span data-seg="ig.recta" data-fmt="full">9,202</span> · Marrero Bernal Media <span data-seg="ig.mbm" data-fmt="full">10,100</span> on Instagram. <small style="opacity:.6">Figures updated on <span data-seg="actualizado">2026-10-30</span>.</small> Every week our premieres reach tens of thousands of Cuban and Latino homes across the United States.</p>
       <ul class="list">
-        <li>Cards and mentions integrated into episodes of La Risa, Recta Al Pecho and the newscast.</li>
+        <li>Cards and mentions integrated into episodes of La Risa, Straight 2D Chest and the newscast.</li>
         <li>Sponsored segments and Facebook/Instagram collaborations with our pages.</li>
         <li>Ad production included: we make it ourselves, in the show's own style.</li>
         <li>Results report with real data from each platform.</li>
       </ul>
       <div class="ctas" style="margin-top:28px"><a class="btn btn-acc" href="#contacto">Request a proposal</a></div>
     </div>
-    <img src="<?php echo esc_url(get_theme_file_uri('img/recta.jpg')); ?>" alt="Recta Al Pecho">
+    <img src="<?php echo esc_url(get_theme_file_uri('img/recta.jpg')); ?>" alt="Straight 2D Chest">
   </div>
 </section>
 

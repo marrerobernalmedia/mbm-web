@@ -172,7 +172,7 @@ desc_en = D.get(desc, desc)
 hp = (out/'header.php').read_text()
 (out/'header.php').write_text(i18n_en.flags(hp, 'es'))
 (out/'header-en.php').write_text(i18n_en.translate(i18n_en.flags(hp, 'en'), D))
-(out/'footer-en.php').write_text(i18n_en.translate((out/'footer.php').read_text(), D))
+(out/'footer-en.php').write_text(i18n_en.translate((out/'footer.php').read_text(), D).replace('<a href="https://www.rectaalpecho.com">Recta Al Pecho</a>', '<a href="https://www.straight2dchest.com/">Straight 2D Chest</a>'))
 fp = (out/'front-page.php').read_text().replace('<?php get_header(); ?>', "<?php get_header('en'); ?>").replace('<?php get_footer(); ?>', "<?php get_footer('en'); ?>")
 fp = i18n_en.translate(fp, D)
 for a, b2 in [('✅ Recibido. Te contactamos el mismo día hábil.', '✅ Received. We will contact you the same business day.'), ('✅ Recibido. Respondemos en menos de un día hábil.', '✅ Received. We reply within one business day.'), ('No se pudo enviar. Llámanos al 888-877-2583.', 'Could not send. Call us at 888-877-2583.'), ('No se pudo enviar. Escríbenos a info@marrerobernalmedia.com.', 'Could not send. Email us at info@marrerobernalmedia.com.')]:
@@ -182,7 +182,7 @@ _ch = re.compile(r'<a class="ch" href="https://www\.youtube\.com/@RectaAlPecho\?
 def _s2d(m):
     b = m.group(0).replace('https://www.youtube.com/@RectaAlPecho?sub_confirmation=1', 'https://www.straight2dchest.com/')
     b = b.replace("img/av_recta.jpg", "img/av_s2d.jpg").replace('alt="Recta al Pecho"', 'alt="Straight 2D Chest"')
-    b = re.sub(r'<h3>[^<]*</h3><p>[^<]*</p>', '<h3>Straight 2D Chest</h3><p>Recta Al Pecho in English. Sports · Baseball is the passion: interviews with English audio.</p>', b)
+    b = re.sub(r'<h3>[^<]*</h3><p>[^<]*</p>', '<h3>Straight 2D Chest</h3><p>Sports · Baseball is the passion: interviews with English audio.</p>', b)
     return b
 fp, _n = _ch.subn(_s2d, fp, count=1)
 assert _n == 1, 'tarjeta de Recta no encontrada'
@@ -201,6 +201,9 @@ assert _n == 1, 'logo de Recta en Nosotros no encontrado'
 _ap = re.compile(r'<img src="([^"]*?)img/marcas/recta\.png([^"]*)" alt="Recta Al Pecho">\s*<div>\s*<h3>Recta Al Pecho</h3>\s*<p>[^<]*</p>\s*<div class="ctas">\s*<a class="btn btn-acc" href="https://marrerobernalmedia\.com/recta/"')
 fp, _n = _ap.subn(lambda m: '<img src="' + m.group(1) + 'img/marcas/s2d.png' + m.group(2) + '" alt="Straight 2D Chest">\n        <div>\n          <h3>Straight 2D Chest</h3>\n          <p>Sports, with baseball as the passion: the interviews with English audio, the series, the myths with their answers and the stories from straight2dchest.com.</p>\n          <div class="ctas">\n            <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/?lang=en"', fp, count=1)
 assert _n == 1, 'app de Recta en inglés no encontrada'
+# En inglés Recta Al Pecho se llama siempre Straight 2D Chest (Eliam, 31-oct-2026)
+fp = fp.replace('Recta Al Pecho', 'Straight 2D Chest').replace('Recta al Pecho', 'Straight 2D Chest')
+
 
 
 (out/'front-page-en.php').write_text(fp)
