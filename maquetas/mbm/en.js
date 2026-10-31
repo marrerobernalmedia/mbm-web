@@ -33,6 +33,7 @@ window.I18N_EN = {
 "Estrategia, calendario, empaque (títulos, miniaturas, SEO) y publicación en YouTube, Facebook e Instagram.":"Strategy, calendar, packaging (titles, thumbnails, SEO) and publishing on YouTube, Facebook and Instagram.",
 "Publicidad dentro de la red":"Advertising inside the network",
 "Tu marca dentro de nuestros shows: menciones, carteles en pantalla, segmentos patrocinados y colaboraciones.":"Your brand inside our shows: mentions, on-screen cards, sponsored segments and collaborations.",
+"Facebook":"Facebook","Nuestras páginas en Facebook":"Our Facebook pages","Nueve páginas, una sola red.":"Nine pages, one network.","Cada página tiene su público y su tono. Tu campaña puede salir en una, en varias o en todas a la vez, con la producción hecha por nosotros.":"Each page has its own audience and tone. Your campaign can run on one, several or all of them at once, with production done by us.","seguidores":"followers","seguidores · perfil del productor":"followers · the producer's profile","seguidores · patrocinador":"followers · sponsor","Total en Facebook:":"Facebook total:","seguidores, más":"followers, plus","en Instagram.":"on Instagram.",
 "Publicidad en la red":"Advertising on the network",
 "Llega al público latino donde ya está mirando.":"Reach the Latino audience where it's already watching.",
 "Un espacio en nuestros programas no es un anuncio que se salta: es parte del show. Nuestras páginas suman más de":"A spot in our programs isn't an ad to skip: it's part of the show. Our pages add up to more than",

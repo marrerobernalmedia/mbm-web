@@ -107,6 +107,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
 footer img{height:40px;opacity:.9}
 footer nav a{margin-left:18px}
 .lang{font-size:13px;color:var(--mut)}.lang a{opacity:.6}.lang a.on{opacity:1;color:var(--fg);font-weight:600}
+.fb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}@media(max-width:860px){.fb-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fb-grid{grid-template-columns:1fr}}
+.fb{display:grid;grid-template-columns:56px 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;background:#1a1a1f;border:1px solid var(--line);border-radius:16px;padding:14px 16px;color:var(--fg)}.fb img{grid-row:1/3;width:56px;height:56px;object-fit:contain}.fb b{font-size:15px}.fb span{font-size:13px;color:var(--mut)}.fb i{font-style:normal;color:var(--fg)}.fb:hover{border-color:var(--acc)}
 </style>
 </head>
 <body>
@@ -119,6 +121,7 @@ footer nav a{margin-left:18px}
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#trabajos">Trabajos</a></li>
       <li><a href="#publicidad">Publicidad</a></li>
+      <li><a href="#facebook">Facebook</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
     </ul>
     <span class="lang"><a href="#" data-lang="es">ES</a> · <a href="#" data-lang="en">EN</a></span>
@@ -212,6 +215,27 @@ footer nav a{margin-left:18px}
       <div class="ctas" style="margin-top:28px"><a class="btn btn-acc" href="#contacto">Pedir propuesta</a></div>
     </div>
     <img src="img/recta.jpg" alt="Recta Al Pecho">
+  </div>
+</section>
+
+
+<section id="facebook" style="background:var(--bg2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="kicker">Nuestras páginas en Facebook</div>
+    <h2>Nueve páginas, una sola red.</h2>
+    <p class="lead">Cada página tiene su público y su tono. Tu campaña puede salir en una, en varias o en todas a la vez, con la producción hecha por nosotros.</p>
+    <div class="fb-grid">
+      <a class="fb" href="#facebook" title="enlace pendiente" data-fb="larisa"><img src="img/marcas/larisa.png" alt=""><b>La Risa es Cosa Seria</b><span><i data-seg="fb.larisa" data-fmt="full">584,344</i> seguidores</span></a>
+      <a class="fb" href="#facebook" title="enlace pendiente" data-fb="lacosa"><img src="img/marcas/lacosa.png" alt=""><b>La Cosa Es De Risa</b><span><i data-seg="fb.lacosa" data-fmt="full">172,454</i> seguidores</span></a>
+      <a class="fb" href="https://www.facebook.com/RectaAlPecho/" data-fb="recta"><img src="img/marcas/recta.png" alt=""><b>Recta al Pecho</b><span><i data-seg="fb.recta" data-fmt="full">71,612</i> seguidores</span></a>
+      <a class="fb" href="#facebook" title="enlace pendiente" data-fb="elhome"><img src="img/marcas/elhome.png" alt=""><b>El Home De La Risa</b><span><i data-seg="fb.elhome" data-fmt="full">13,236</i> seguidores</span></a>
+      <a class="fb" href="https://www.facebook.com/eliam" data-fb="eliam"><img src="img/av_eliam.jpg" alt="" style="border-radius:50%"><b>Eliam M. Marrero Bernal</b><span><i data-seg="fb.eliam" data-fmt="full">11,223</i> seguidores · perfil del productor</span></a>
+      <a class="fb" href="https://www.facebook.com/sidecuerosetrata" data-fb="cuero"><img src="img/marcas/cuero.png" alt=""><b>Si de Cuero se Trata</b><span><i data-seg="fb.cuero" data-fmt="full">2,106</i> seguidores</span></a>
+      <a class="fb" href="#facebook" title="enlace pendiente" data-fb="welcome"><img src="img/marcas/welcome.png" alt=""><b>Welcome to Apagonia</b><span><i data-seg="fb.welcome" data-fmt="full">1,729</i> seguidores</span></a>
+      <a class="fb" href="https://www.facebook.com/marrerobernalmedia/" data-fb="mbm"><img src="img/mbm-iso.svg" alt=""><b>Marrero Bernal Media</b><span><i data-seg="fb.mbm" data-fmt="full">1,325</i> seguidores</span></a>
+      <a class="fb" href="https://www.facebook.com/marreroassociates" data-fb="mba"><img src="img/mba.svg" alt=""><b>Marrero Bernal &amp; Associates</b><span><i data-seg="fb.mba" data-fmt="full">5,214</i> seguidores · patrocinador</span></a>
+    </div>
+    <p style="color:var(--mut);font-size:13px;margin-top:18px">Total en Facebook: <b style="color:var(--fg)"><span data-seg="tot.fbTodo" data-fmt="full">863,243</span></b> seguidores, más <span data-seg="tot.igTodo" data-fmt="full">113,887</span> en Instagram.</p>
   </div>
 </section>
 
