@@ -414,7 +414,7 @@ function inicio(){
   const nuevos = all.filter(i => V[i].f).sort(byDate).slice(0, 10);
   const latest = nuevos[0];
   const yday = (() => { try { const d = new Date((window.MBM_TODAY || "") + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - 1); return d.toISOString().slice(0, 10); } catch (e) { return ""; } })();
-  const week = D.week.map(([d, s, note]) => `<button class="day" data-show="${s}"><b>${d}</b>${note?`<em>${esc(note)}</em>`:""}<span>${esc(sname(SH[s]))}</span></button>`).join("");
+  const week = D.week.map(([d, s, note, label]) => `<button class="day" data-show="${s}"><b>${d}</b>${note?`<em>${esc(note)}</em>`:""}<span>${esc(label || (s === "compilatorios" ? "La Risa es Cosa Seria" : sname(SH[s])))}</span></button>`).join("");
   const shelves = D.shows.filter(s => !s.soon).map(s => {
     const l = s.v.filter(live).sort(byDate).slice(0, 8);
     return `<section>${H(esc(sname(s)), "", `<button class="more" data-show="${s.id}">Ver todo →</button>`)}<div class="row">${l.map(tile).join("")}</div></section>`;
