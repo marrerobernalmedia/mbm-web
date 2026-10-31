@@ -182,7 +182,7 @@ function recta_autor_foto($uid, $size = 96) {
 function recta_autor_bio($uid) {
   $d = get_the_author_meta('description', $uid);
   if ($d) return $d;
-  return in_array('administrator', (array) get_userdata($uid)->roles, true) ? 'Director de Recta al Pecho y de Marrero Bernal Media. Entrevista a peloteros en Las Vegas, Miami y Cuba.' : 'Escribe para Recta al Pecho.';
+  return ($uid == 2 || in_array('administrator', (array) get_userdata($uid)->roles, true)) ? 'Director de Recta al Pecho y de Marrero Bernal Media. Entrevista a peloteros en Las Vegas, Miami y Cuba.' : 'Escribe para Recta al Pecho.';
 }
 add_action('show_user_profile', 'recta_perfil_foto'); add_action('edit_user_profile', 'recta_perfil_foto');
 function recta_perfil_foto($user) {
@@ -204,10 +204,23 @@ function recta_autor_foto_url($uid) {
   return file_exists(get_theme_file_path("img/autores/$k.jpg")) ? get_theme_file_uri("img/autores/$k.jpg") : '';
 }
 function recta_autores() {
-  $out = [];
-  foreach (get_users(['role__in' => ['administrator', 'editor', 'author', 'contributor'], 'orderby' => 'post_count', 'order' => 'DESC']) as $u) {
-    if ($u->ID === 1 || strtolower($u->user_login) === 'admin' || strtolower($u->display_name) === 'admin') continue;
-    $out[] = ['nombre' => $u->display_name, 'foto' => recta_autor_foto_url($u->ID), 'bio' => wp_trim_words(recta_autor_bio($u->ID), 22), 'url' => get_author_posts_url($u->ID), 'n' => (int) count_user_posts($u->ID), 'rol' => in_array('administrator', (array) $u->roles, true) ? 'Director y fundador' : 'Colaborador'];
+  // Orden fijo del equipo: Eliam primero, luego los colaboradores. Si alguno todavía no tiene usuario en WP, sale con su página de biografía.
+  $equipo = [
+    'eliammarrero' => ['Eliam Marrero Bernal', 'eliam', 'Director y fundador', 'Director, productor audiovisual y periodista. Fundador de Recta al Pecho y de Marrero Bernal Media.', '/eliam-marrero-bernal/'],
+    'arnelioalvarez' => ['Arnelio Álvarez de la Uz', 'arnelio', 'Colaborador', 'Periodista y analista deportivo cubano; décadas de rigor con las estadísticas y la crónica histórica del béisbol.', '/arnelio-alvarez/'],
+    'manuelalejandro' => ['Manuel Alejandro Pérez Capote', 'manolo', 'Colaborador', 'Narrador y comentarista con más de treinta años en COCO, Radio Rebelde y la televisión; cuatro Juegos Olímpicos.', '/manuel-alejandro/'],
+    'josealbertoportela' => ['José Alberto Portela', 'portela', 'Colaborador', 'Periodista especializado en béisbol; crónicas, análisis y entrevistas a las figuras del juego.', '/jose-alberto-portela/'],
+    'raulrodriguez' => ['Raúl Rodríguez', 'raul', 'Colaborador', 'Narrador y comentarista desde 1986; voz de la redacción deportiva de Radio Habana Cuba y cinco Juegos Olímpicos.', '/raul-rodriguez/'],
+  ];
+  $out = []; $vistos = [];
+  foreach ($equipo as $login => [$nombre, $k, $rol, $bio, $pag]) {
+    $u = get_user_by('login', $login);
+    if ($u) { $vistos[] = $u->ID; $out[] = ['nombre' => $u->display_name, 'foto' => recta_autor_foto_url($u->ID), 'bio' => wp_trim_words(get_the_author_meta('description', $u->ID) ?: $bio, 22), 'url' => count_user_posts($u->ID) ? get_author_posts_url($u->ID) : home_url($pag), 'n' => (int) count_user_posts($u->ID), 'rol' => $rol]; }
+    else $out[] = ['nombre' => $nombre, 'foto' => get_theme_file_uri("img/autores/$k.jpg"), 'bio' => $bio, 'url' => home_url($pag), 'n' => null, 'rol' => $rol];
+  }
+  foreach (get_users(['role__in' => ['administrator', 'editor', 'author', 'contributor'], 'exclude' => $vistos, 'has_published_posts' => true]) as $u) {
+    if ($u->ID === 1 || strtolower($u->user_login) === 'admin') continue;
+    $out[] = ['nombre' => $u->display_name, 'foto' => recta_autor_foto_url($u->ID), 'bio' => wp_trim_words(recta_autor_bio($u->ID), 22), 'url' => get_author_posts_url($u->ID), 'n' => (int) count_user_posts($u->ID), 'rol' => 'Autor'];
   }
   return $out;
 }
