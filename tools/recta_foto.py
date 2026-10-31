@@ -10,8 +10,9 @@ RED = (226, 38, 47)
 def main():
     a = sys.argv[1:]
     src, dst = a[0], a[1]
-    kicker = a[2] if len(a) > 2 and not a[2].startswith('--') else ''
-    name = a[3] if len(a) > 3 and not a[3].startswith('--') else ''
+    pos = [x for x in a[2:] if not x.startswith('--') and (a.index(x) < 2 or not a[a.index(x) - 1].startswith('--'))]
+    kicker = pos[0] if len(pos) > 0 else ''
+    name = pos[1] if len(pos) > 1 else ''
     zoom = float(a[a.index('--zoom') + 1]) if '--zoom' in a else 1.08
     fx, fy = (0.5, 0.45)
     if '--focus' in a: fx, fy = map(float, a[a.index('--focus') + 1].split(','))
