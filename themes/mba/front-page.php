@@ -14,7 +14,7 @@
       <div class="pop">Lo más buscado:
         <a href="#s-auto">Seguro de auto</a><a href="#s-medicare">Medicare Advantage</a><a href="#s-taxes">Taxes personales</a><a href="#s-llc">Crear una LLC</a><a href="#s-inmigracion">Inmigración</a><a href="#s-notaria">Notaría</a>
       </div>
-      <div class="badges"><span>Licencia NV · CA · AZ</span><span>Agencia independiente · Farmers, Progressive y más</span><span>Español e inglés</span><span>Cotización sin costo</span></div>
+      <div class="badges"><span>Licencia NV · CA · AZ</span><span>Agencia independiente · 10 aseguradoras</span><span>Español e inglés</span><span>Cotización sin costo</span></div>
     </div>
     <div class="heroimg" style="background:url(<?php echo esc_url(get_theme_file_uri('img/eliam-retrato.jpg')); ?>) center/cover">
       <div><span class="lab">Eliam Marrero Bernal · fundador</span><b>Te atendemos como a familia.</b></div>
@@ -31,7 +31,7 @@
     <a class="tile" href="#s-notaria"><div class="ic">✒️</div><b>Notaría y traducciones</b><span>Documentos certificados en español e inglés</span></a>
     <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licencias y LLC</b><span>Abre tu negocio en Nevada</span></a>
   </div>
-  <div class="carriers"><span>Trabajamos con</span><b>Farmers</b><b>Progressive</b><b>y otras compañías de primer nivel</b></div>
+  <div class="carriers"><span>Trabajamos con</span><b>Farmers</b><b>Progressive</b><b>Travelers</b><b>Liberty Mutual</b><b>Mercury</b><b>National General</b><b>Bristol West</b><b>Foremost</b><b>Homeowners of America</b><b>Lemonade</b></div>
   <div class="cli">
     <a class="cli-card" href="https://marrerobernal.securefilepro.com/portal/#/login" target="_blank" rel="noopener"><div class="ic">🔐</div><div><b>Acceso de clientes</b><span>Entra al portal seguro para subir y descargar tus documentos (SecureFilePro).</span></div><em>Entrar →</em></a>
     <a class="cli-card" href="https://55a7805c-ea2c-4f0e-951b-1aa3c932e857.paylinks.godaddy.com" target="_blank" rel="noopener"><div class="ic">💳</div><div><b>Pagar en línea</b><span>Paga tu servicio con tarjeta de forma segura, desde el teléfono o la computadora.</span></div><em>Pagar →</em></a>
@@ -91,13 +91,13 @@
     <div class="why">
       <div><b>2008</b><p>Año en que abrimos en North Las Vegas. Seguimos en el mismo lugar.</p></div>
       <div><b>3 estados</b><p>Licencia para vender seguros en Nevada, California y Arizona.</p></div>
-      <div><b>Varias compañías</b><p>Somos independientes: cotizamos con Farmers, Progressive y otras aseguradoras y te damos la mejor opción.</p></div>
+      <div><b>10 compañías</b><p>Somos independientes. En auto cotizamos con Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General y Bristol West; en casa, con Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America y Lemonade. Te damos la mejor opción.</p></div>
       <div><b>1 visita</b><p>Seguro, taxes, inmigración y notaría en la misma oficina, en español.</p></div>
     </div>
     <div class="resenas">
       <h3>Lo que dicen nuestros clientes en Google</h3>
       <div class="ti"><?php echo do_shortcode('[trustindex no-registration=google]'); ?></div>
-      <div class="badges">
+      <div class="premios">
         <a href="https://threebestrated.com/insurance-agents-in-north-las-vegas-nv" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/threebest.svg')); ?>" alt="Three Best Rated: mejores agentes de seguros en North Las Vegas 2024" width="200" height="200" loading="lazy"></a>
         <a href="https://wallethub.com/insurance-agents/las-vegas-nv" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/wallethub.jpg')); ?>" alt="WalletHub: mejor agente de seguros en Las Vegas" width="300" height="157" loading="lazy"></a>
       </div>
