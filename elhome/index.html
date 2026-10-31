@@ -183,6 +183,53 @@ h2 .more{flex:none;white-space:nowrap}
 .fbsend[disabled]{opacity:.5}
 .fbmsg{font-size:14px;text-align:center;color:var(--mute);min-height:1.2em}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ===== Versión de página web (pantallas grandes): mismo contenido, diseño de sitio ===== */
+@media (min-width: 900px){
+  .app{max-width:1200px;padding-bottom:40px}
+  .wrap{padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
+  header{background:var(--bg);border-bottom:1px solid var(--line)}
+  .hd{gap:18px;padding-block:14px}
+  .hd>img{width:54px;height:54px}
+  .brand b{font-size:24px}.brand span{font-size:13px}
+  .brand{flex:none;margin-right:10px}
+  nav.tabs{position:static;background:none;border:0;padding:0;flex:1;backdrop-filter:none}
+  nav.tabs div{max-width:none;margin:0;display:flex;gap:4px}
+  nav.tabs button{flex-direction:row;gap:8px;padding:10px 14px;font-size:14px;font-weight:700;border-radius:10px}
+  nav.tabs button[aria-selected="true"]{background:var(--card);color:var(--fg)}
+  nav.tabs svg{width:18px;height:18px}
+  .search{max-width:360px;margin:0 0 0 auto;padding:8px 12px}
+  .hdrow{display:flex;align-items:center;gap:16px}
+  .hdrow .hd{flex:none;padding-block:0}
+  .hdrow .search{margin-bottom:0}
+  section{margin-top:34px}
+  h2{font-size:26px}
+  .home-top{display:grid;grid-template-columns:7fr 5fr;gap:24px;align-items:start}
+  .home-top>div>section:first-child{margin-top:0}
+  .hero h3{font-size:26px}
+  .hero .body{padding:18px 22px 22px}
+  .next{padding:14px}.next img{width:150px}.next b{font-size:15px}
+  .row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;overflow:visible;margin-inline:0;padding-inline:0;scroll-snap-type:none}
+  .tile{flex:none;max-width:none}
+  .tile h4,.item h4{font-size:15px}
+  .list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px}
+  .shows{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+  .comics{grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+  .shead{display:grid;grid-template-columns:5fr 7fr}
+  .shead .pic img{height:100%}
+  .shead .b{border-top:0;border-left:4px solid var(--sc);padding:22px 26px;align-self:center}
+  .shead h1{font-size:36px}
+  .subs{margin:12px 0 0;padding:0 0 4px;flex-wrap:wrap}
+  .sheet{top:50%;bottom:auto;transform:translateY(-50%);max-width:560px;border-radius:20px;border:1px solid var(--line);max-height:80vh}
+  .post{max-width:720px}
+  .webfoot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px;margin-top:48px;padding:30px 0 10px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+  .webfoot b{display:block;color:var(--fg);font-family:var(--display);font-weight:400;font-size:16px;margin-bottom:8px}
+  .webfoot a{display:block;line-height:1.9}
+  .foot{display:none}
+}
+.webfoot{display:none}
+.deskonly{display:none}
+@media (min-width:900px){.deskonly{display:block}.mobonly{display:none}.list.one{grid-template-columns:1fr;gap:12px}.list.one .item{grid-template-columns:38% 1fr}}
 </style>
 <script src="onesignal-config.js"></script>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
@@ -199,7 +246,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
     <div class="wrap">
       <div class="hd">
         <img src="thumbs/logo-home.jpg" alt="">
-        <div class="brand"><b>El Home <i>de la</i> Risa</b><span>Todos los shows del humor cubano en un solo lugar</span></div>
+        <div class="brand"><b>El Home <i>de la</i> Risa</b><span>La casa del humor cubano</span></div>
         <button class="inst" id="instBtn" hidden>Instalar</button>
         <button class="bell" id="bellBtn" aria-label="Avisos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i></i></button>
       </div>
@@ -207,6 +254,11 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
     </div>
   </header>
   <main class="wrap" id="view"></main>
+  <footer class="webfoot wrap">
+    <div><b>El Home de la Risa</b>La casa del humor cubano: todos los shows de Marrero Bernal Media en un solo lugar. Cada video se ve en YouTube.<br><br>© <span id="yr"></span> Marrero Bernal Media LLC. Todos los derechos reservados.</div>
+    <div><b>Los canales</b><a href="https://www.ehdlr.com" target="_blank" rel="noopener">El Home de la Risa en YouTube</a><a href="https://www.youtube.com/@LaRisaEsCosaSeria" target="_blank" rel="noopener">La Risa es Cosa Seria</a><a href="https://www.youtube.com/@LaCosaEsDeRisa" target="_blank" rel="noopener">La Cosa es de Risa</a><a href="https://www.youtube.com/@WelcomeToApagonia" target="_blank" rel="noopener">Welcome to Apagonia</a></div>
+    <div><b>La casa</b><a href="https://marrerobernalmedia.com" target="_blank" rel="noopener">Marrero Bernal Media</a><a href="https://marrerobernalmedia.com/apps/" target="_blank" rel="noopener">Descargar la app</a><a href="https://chat.whatsapp.com/BibOkpcOvAg19Mc25grPvi" target="_blank" rel="noopener">Comunidad de WhatsApp</a><a href="https://www.rectaalpecho.com" target="_blank" rel="noopener">Recta al Pecho (deportes)</a></div>
+  </footer>
 </div>
 
 <nav class="tabs" aria-label="Secciones"><div role="tablist">
@@ -333,18 +385,20 @@ function inicio(){
     return `<section>${H(esc(sname(s)), "", `<button class="more" data-show="${s.id}">Ver todo →</button>`)}<div class="row">${l.map(tile).join("")}</div></section>`;
   }).join("");
   const funny = D.comics.slice(0, 10);
-  return `
+  return `<div class="home-top"><div>
   ${latest ? (() => { const sh = SH[showOf[latest]] || SH.lrecs; const f = V[latest].f || ""; const tag = f === window.MBM_TODAY ? "● Estreno de hoy" : f === yday ? "● Estrenó ayer" : "● Último estreno";
     return `<section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt=""><span class="tag">${tag}</span></div>
     <div class="body"><span class="show" style="--sc:${sh.col}">${esc(sname(sh))}${V[latest].n ? " " + esc(V[latest].n) : ""}</span><h3>${esc(V[latest].t)}</h3>${who(latest)}
     <div class="btns"><a class="btn yt" href="${YT(latest)}" target="_blank" rel="noopener">▶ Verlo ahora</a>${next ? `<button class="btn ghost" data-open-sheet>🔔 Avísame</button>` : ""}</div></div></div></section>`; })() : ""}
+  </div><div>
   ${next ? `<section><a class="next" href="${YT(next)}" target="_blank" rel="noopener"><img src="${img(next)}" alt=""><div><em>Próximo estreno · ${esc(SH[showOf[next]] ? sname(SH[showOf[next]]) : "La Risa es Cosa Seria")}${V[next].n ? " " + esc(V[next].n) : ""}</em><b>${esc(V[next].t)}</b><span>Toca y dale a la campanita en YouTube</span></div></a></section>` : ""}
   <section>${H("La semana en El Home")}<div class="week">${week}</div></section>
+  <section class="deskonly">${H("Los más vistos de la casa")}<div class="list one">${all.slice().sort(byViews).slice(0,6).map((id,i)=>item(id,i+1)).join("")}</div></section></div></div>
   <section>${H("Los shows de la casa", "", `<button class="more" data-tab-go="shows">Ver todos →</button>`)}<div class="row">${D.shows.map(s => `<div class="tile">${showCard(s)}</div>`).join("")}</div></section>
   <section>${H("Lo nuevo de la casa")}<div class="row">${nuevos.map(tile).join("")}</div></section>
   <section>${H("Los humoristas", "", `<button class="more" data-tab-go="humoristas">Ver todos →</button>`)}<div class="row">${funny.map(c => `<div class="tile">${comicCard(c)}</div>`).join("")}</div></section>
   ${shelves}
-  <section>${H("Los más vistos de la casa")}<div class="list">${all.sort(byViews).slice(0,10).map((id,i)=>item(id,i+1)).join("")}</div></section>
+  <section class="mobonly">${H("Los más vistos de la casa")}<div class="list">${all.sort(byViews).slice(0,10).map((id,i)=>item(id,i+1)).join("")}</div></section>
   <p class="foot">Cada video se abre en YouTube · El Home de la Risa</p>`;
 }
 function shows(){
@@ -477,6 +531,13 @@ if (window.ONESIGNAL_APP_ID && pushBtn) {
   });
 }
 render();
+// --- diseño de página web en pantallas grandes: el menú pasa a la cabecera ---
+(() => {
+  const mq = window.matchMedia("(min-width: 900px)"), nav = document.querySelector("nav.tabs"), hd = document.querySelector(".hd"), hdr = document.querySelector("header .wrap"), search = document.querySelector(".search");
+  const place = () => { if (mq.matches) { hd.insertBefore(nav, document.getElementById("instBtn")); hdr.classList.add("hdrow"); hd.appendChild(search); } else { document.body.appendChild(nav); hdr.classList.remove("hdrow"); hdr.appendChild(search); } };
+  place(); mq.addEventListener("change", place);
+  const y = document.getElementById("yr"); if (y) y.textContent = new Date().getFullYear();
+})();
 // --- instalar como app (Android / Chrome) ---
 let deferred = null;
 const instBtn = document.getElementById("instBtn");
