@@ -152,3 +152,12 @@ add_filter('wpseo_robots', function ($r) {
   if ((is_category() && get_queried_object()->slug === 'uncategorized') || is_tag() || is_search() || is_date()) return 'noindex, follow';
   return $r;
 });
+
+/** ads.txt de AdSense servido por el tema (el ID de editor es público: está en el código de AdSense del sitio). */
+add_action('init', function () {
+  if (($_SERVER['REQUEST_URI'] ?? '') === '/ads.txt') {
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "google.com, pub-9995971644235129, DIRECT, f08c47fec0942fa0\n";
+    exit;
+  }
+});
