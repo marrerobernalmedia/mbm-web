@@ -33,13 +33,13 @@ if (!file_exists("$dir/.htaccess")) file_put_contents("$dir/.htaccess", "<IfModu
 $registro = "$dir/avisos_enviados.json";
 $enviados = file_exists($registro) ? (json_decode(file_get_contents($registro), true) ?: []) : [];
 
-function mandar($appId, $key, $titulo, $texto, $url, $imagen) {
+function mandar($appId, $key, $titulo, $texto, $url, $imagen, $tituloEn = '', $textoEn = '') {
   $cuerpo = [
     'app_id' => $appId,
     'target_channel' => 'push',
     'included_segments' => ['Total Subscriptions'],
-    'headings' => ['en' => $titulo, 'es' => $titulo],
-    'contents' => ['en' => $texto, 'es' => $texto],
+    'headings' => ['en' => ($tituloEn ?: $titulo), 'es' => $titulo],
+    'contents' => ['en' => ($textoEn ?: $texto), 'es' => $texto],   // el idioma lo elige cada suscriptor en la app (ES/EN)
     'url' => $url,
   ];
   if ($imagen) $cuerpo['chrome_web_image'] = $imagen;
@@ -67,7 +67,7 @@ foreach ($avisos as $a) {
   if (($a['fecha'] ?? '') !== $hoy) continue;
   $id = $a['fecha'] . '|' . ($a['url'] ?? '') . '|' . ($a['titulo'] ?? '');
   if (isset($enviados[$id])) continue;
-  [$code, $res] = mandar($ONESIGNAL_APP_ID, $ONESIGNAL_REST_KEY, $a['titulo'] ?? '', $a['texto'] ?? '', $a['url'] ?? '', $a['imagen'] ?? '');
+  [$code, $res] = mandar($ONESIGNAL_APP_ID, $ONESIGNAL_REST_KEY, $a['titulo'] ?? '', $a['texto'] ?? '', $a['url'] ?? '', $a['imagen'] ?? '', $a['titulo_en'] ?? '', $a['texto_en'] ?? '');
   if ($code >= 200 && $code < 300) { $enviados[$id] = date('c'); $hechos++; echo "Enviado: {$a['titulo']}\n"; }
   else echo "Error $code al enviar {$a['titulo']}: $res\n";
 }
