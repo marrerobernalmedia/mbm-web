@@ -24,3 +24,9 @@ MBA=$HOME/public_html
 mkdir -p "$DEST/.well-known" && cp .well-known/assetlinks.json "$DEST/.well-known/assetlinks.json"
 # Archivos sueltos de la raíz de marrerobernalmedia.com (verificaciones, etc.)
 [ -d root ] && cp root/* "$DEST/"
+# Straight 2D Chest (www.straight2dchest.com, sitio en inglés generado por tools/build_s2d.js).
+# Vista previa en marrerobernalmedia.com/s2d/ y, cuando exista la carpeta del dominio adicional, en el dominio.
+[ -d s2d ] && rsync -a --delete $EXC s2d/ "$DEST/s2d/"
+for D in "$HOME/public_html/straight2dchest.com" "$HOME/straight2dchest.com"; do
+  [ -d s2d ] && [ -d "$D" ] && rsync -a --delete --exclude=.well-known --exclude=cgi-bin $EXC s2d/ "$D/"
+done

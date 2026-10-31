@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.straight2dchest.com/sitemap.xml

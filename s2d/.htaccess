@@ -1,0 +1,14 @@
+# straight2dchest.com — sitio estático (generado por tools/build_s2d.js)
+ErrorDocument 404 /404.html
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTP_HOST} straight2dchest\.com$ [NC]
+RewriteRule ^ https://www.straight2dchest.com%{REQUEST_URI} [L,R=301]
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/webp "access plus 30 days"
+ExpiresByType image/png "access plus 30 days"
+ExpiresByType image/jpeg "access plus 30 days"
+ExpiresByType text/css "access plus 7 days"
+</IfModule>
