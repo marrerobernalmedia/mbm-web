@@ -12,5 +12,8 @@ rsync -a $EXC elhome/ "$DEST/elhome/"
 rsync -a $EXC recta/  "$DEST/recta/"
 # Maquetas de rediseño de los sitios (solo para revisión de Eliam)
 [ -d maquetas ] && rsync -a --delete --exclude=build.py maquetas/ "$DEST/maquetas/"
+# Tema propio de rectaalpecho.com (themes/recta) → wp-content/themes/recta del sitio
+RECTA=$HOME/public_html/rectaalpecho
+[ -d themes/recta ] && [ -d "$RECTA/wp-content/themes" ] && rsync -a --delete themes/recta/ "$RECTA/wp-content/themes/recta/"
 # Enlace del sitio con las apps Android (assetlinks): va en la raíz del sitio
 mkdir -p "$DEST/.well-known" && cp .well-known/assetlinks.json "$DEST/.well-known/assetlinks.json"
