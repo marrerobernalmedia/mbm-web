@@ -93,10 +93,30 @@ add_filter('get_the_categories', function ($cats) {
   return array_values(array_filter($cats, fn($c) => $c->slug !== 'uncategorized'));
 });
 
-/** SEO básico sin depender de plugins: descripción en portada. */
+/** SEO. Lema del sitio (manda sobre el de Ajustes) y textos de portada para Yoast; sin meta duplicada. */
+define('RECTA_TAGLINE', 'Deportes · El béisbol es la pasión');
+define('RECTA_HOME_TITLE', 'Recta al Pecho — Entrevistas con peloteros cubanos y las historias del béisbol');
+define('RECTA_HOME_DESC', 'Recta al Pecho: canal de deportes donde el béisbol es la pasión. Entrevistas largas con peloteros cubanos, las historias que el relato oficial borró, los que dijeron no, las fugas y los mitos frente a los números.');
+add_filter('pre_option_blogdescription', fn() => RECTA_TAGLINE);
+add_filter('wpseo_title', fn($t) => (is_front_page() || is_home()) ? RECTA_HOME_TITLE : $t);
+add_filter('wpseo_opengraph_title', fn($t) => (is_front_page() || is_home()) ? RECTA_HOME_TITLE : $t);
+add_filter('wpseo_metadesc', fn($d) => (is_front_page() || is_home()) ? RECTA_HOME_DESC : ($d ?: (is_singular() ? recta_excerpt(null, 28) : (is_category() ? (recta_series()[get_queried_object()->slug][1] ?? $d) : $d))));
+add_filter('wpseo_opengraph_desc', fn($d) => (is_front_page() || is_home()) ? RECTA_HOME_DESC : $d);
+add_filter('wpseo_opengraph_image', fn($i) => $i ?: get_theme_file_uri('img/portada.jpg'));
+add_filter('wpseo_schema_website', function ($data) { $data['description'] = RECTA_HOME_DESC; return $data; });
+add_filter('wpseo_schema_organization', function ($data) {
+  $data['description'] = RECTA_HOME_DESC; $data['url'] = home_url('/');
+  $data['sameAs'] = ['https://www.youtube.com/@RectaAlPecho', 'https://www.facebook.com/RectaAlPecho/', 'https://www.instagram.com/rectaalpecho/'];
+  return $data;
+});
+/** Si Yoast no está activo, cabecera mínima propia. */
 add_action('wp_head', function () {
-  if (is_front_page()) echo '<meta name="description" content="Recta al Pecho: canal de deportes donde el béisbol es la pasión. Entrevistas con peloteros cubanos, las historias que el relato oficial borró y los mitos frente a los números.">' . "\n";
+  if (defined('WPSEO_VERSION')) return;
+  $d = (is_front_page() || is_home()) ? RECTA_HOME_DESC : (is_singular() ? recta_excerpt(null, 28) : '');
+  if ($d) echo '<meta name="description" content="' . esc_attr($d) . '">' . "\n";
 }, 2);
+/** Títulos legibles en archivos de serie. */
+add_filter('wpseo_title', function ($t) { if (is_category() && ($l = recta_serie_label(get_queried_object()->slug))) return $l . ' — Recta al Pecho'; return $t; }, 20);
 
 /** El tema manda: Elementor Pro no sustituye cabecera, pie ni plantillas de artículo. */
 add_filter('elementor/theme/need_override_location', '__return_false');
