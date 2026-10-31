@@ -234,3 +234,20 @@ function recta_autor_card($a, $size = 96) {
   $img = $a['foto'] ? '<img class="av av-img" src="' . esc_url($a['foto']) . '" alt="' . esc_attr($a['nombre']) . '" width="' . $size . '" height="' . $size . '" loading="lazy">' : '<span class="av">' . esc_html(mb_strtoupper(mb_substr($a['nombre'], 0, 1))) . '</span>';
   return '<a class="autor-card" href="' . esc_url($a['url']) . '">' . $img . '<b>' . esc_html($a['nombre']) . '</b><small>' . esc_html($a['rol']) . '</small><p>' . esc_html($a['bio']) . '</p></a>';
 }
+
+/** Versión en inglés (Straight 2D Chest): en_map.json lo genera tools/build_s2d.js (artículo → su traducción). */
+function recta_en_map() {
+  static $m = null;
+  if ($m === null) { $f = get_theme_file_path('en_map.json'); $m = file_exists($f) ? (json_decode(file_get_contents($f), true) ?: []) : []; }
+  return $m;
+}
+function recta_en_url() {
+  if (is_single()) { $p = get_post(); $m = recta_en_map(); if ($p && isset($m[$p->post_name])) return $m[$p->post_name]; }
+  return 'https://www.straight2dchest.com/';
+}
+add_action('wp_head', function () {
+  if (is_front_page()) { echo '<link rel="alternate" hreflang="es" href="' . esc_url(home_url('/')) . '"><link rel="alternate" hreflang="en" href="https://www.straight2dchest.com/">' . "\n"; return; }
+  if (!is_single()) return;
+  $p = get_post(); $m = recta_en_map();
+  if ($p && isset($m[$p->post_name])) echo '<link rel="alternate" hreflang="es" href="' . esc_url(get_permalink($p)) . '"><link rel="alternate" hreflang="en" href="' . esc_url($m[$p->post_name]) . '">' . "\n";
+}, 5);

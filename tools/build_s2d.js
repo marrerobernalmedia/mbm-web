@@ -14,6 +14,22 @@ const V = S.v.map(([id, c, slug, who, t, sum]) => {
   return { id, c, slug, who, t, sum, d: r.d || "", f: r.f || "", views: r.v || 0 };
 });
 const byId = Object.fromEntries(V.map(v => [v.id, v]));
+// Noticias en inglés: una por artículo de rectaalpecho.com (tools/s2d_news/*.json). Solo salen las de fecha <= hoy (Las Vegas).
+const TODAY = new Date(Date.now() - 8 * 3600e3).toISOString().slice(0, 10);
+const NEWS_DIR = path.join(__dirname, "s2d_news");
+const NEWS = (fs.existsSync(NEWS_DIR) ? fs.readdirSync(NEWS_DIR).filter(f => f.endsWith(".json")) : [])
+  .map(f => JSON.parse(fs.readFileSync(path.join(NEWS_DIR, f), "utf8")))
+  .filter(n => n.date <= TODAY)
+  .sort((a, b) => b.date.localeCompare(a.date) || b.recta_id - a.recta_id);
+const newsImg = n => n.image || (n.video ? `https://i.ytimg.com/vi/${n.video}/hqdefault.jpg` : SITE + "/img/og.jpg");
+function ncard(n, P) {
+  return `<a class="card" href="${P}news/${n.slug}/">
+  <span class="th"><img src="${newsImg(n)}" alt="" loading="lazy" width="480" height="270"><span class="en">Story</span></span>
+  <span class="who">${fdate(n.date)}</span>
+  <span class="ttl">${esc(n.title)}</span>
+</a>`;
+}
+
 const thumb = id => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const isoDur = d => { const p = d.split(":").map(Number); while (p.length < 3) p.unshift(0); return `PT${p[0] ? p[0] + "H" : ""}${p[1]}M${p[2]}S`; };
 const human = d => { const p = d.split(":").map(Number); if (p.length === 3) return `${p[0]} h ${p[1]} min`; return `${p[0]} min`; };
@@ -25,7 +41,7 @@ const css = fs.readFileSync(path.join(__dirname, "s2d_style.css"), "utf8");
 fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(path.join(OUT, "style.css"), css);
 
-function page({ rel, title, desc, canon, body, og, ld, type }) {
+function page({ rel, title, desc, canon, body, og, ld, type, alt_es }) {
   const P = rel; // prefijo relativo a la raíz ("" o "../")
   return `<!doctype html>
 <html lang="en">
@@ -35,7 +51,7 @@ function page({ rel, title, desc, canon, body, og, ld, type }) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${canon}">
-${rel === "" ? `<link rel="alternate" hreflang="en" href="${SITE}/"><link rel="alternate" hreflang="es" href="https://rectaalpecho.com/">` : ""}
+${rel === "" ? `<link rel="alternate" hreflang="en" href="${SITE}/"><link rel="alternate" hreflang="es" href="https://rectaalpecho.com/">` : ""}${alt_es ? `<link rel="alternate" hreflang="en" href="${canon}"><link rel="alternate" hreflang="es" href="${alt_es}">` : ""}
 <meta property="og:type" content="${type || "website"}">
 <meta property="og:site_name" content="Straight 2D Chest">
 <meta property="og:title" content="${esc(title)}">
@@ -54,8 +70,8 @@ ${ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : ""}
 <body>
 <header class="top"><div class="wrap top-in">
  <a class="brand" href="${P || "./"}"><img src="${P}img/logo-h.webp" alt="Straight 2D Chest" width="560" height="285"></a>
- <nav><a href="${P}#interviews">Interviews</a><a href="${P}about/">About</a><a class="sub" href="${YT_CH}?sub_confirmation=1" rel="noopener">Subscribe</a></nav>
- <span class="lang" role="group" aria-label="Language / Idioma"><a href="https://rectaalpecho.com/" hreflang="es" lang="es" title="Español — Recta Al Pecho"><svg viewBox="0 0 30 20" width="22" height="15" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg><b>ES</b></a><a href="${P || "./"}" hreflang="en" class="on" title="English"><svg viewBox="0 0 38 20" width="22" height="15" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><g fill="#b22234"><rect width="38" height="1.54"/><rect y="3.08" width="38" height="1.54"/><rect y="6.15" width="38" height="1.54"/><rect y="9.23" width="38" height="1.54"/><rect y="12.31" width="38" height="1.54"/><rect y="15.38" width="38" height="1.54"/><rect y="18.46" width="38" height="1.54"/></g><rect width="15.2" height="10.77" fill="#3c3b6e"/></svg><b>EN</b></a></span>
+ <nav><a href="${P}#interviews">Interviews</a><a href="${P}news/">Stories</a><a href="${P}about/">About</a><a class="sub" href="${YT_CH}?sub_confirmation=1" rel="noopener">Subscribe</a></nav>
+ <span class="lang" role="group" aria-label="Language / Idioma"><a href="${alt_es || "https://rectaalpecho.com/"}" hreflang="es" lang="es" title="Español — Recta Al Pecho"><svg viewBox="0 0 30 20" width="22" height="15" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg><b>ES</b></a><a href="${canon}" hreflang="en" class="on" title="English"><svg viewBox="0 0 38 20" width="22" height="15" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><g fill="#b22234"><rect width="38" height="1.54"/><rect y="3.08" width="38" height="1.54"/><rect y="6.15" width="38" height="1.54"/><rect y="9.23" width="38" height="1.54"/><rect y="12.31" width="38" height="1.54"/><rect y="15.38" width="38" height="1.54"/><rect y="18.46" width="38" height="1.54"/></g><rect width="15.2" height="10.77" fill="#3c3b6e"/></svg><b>EN</b></a></span>
 </div></header>
 ${body}
 <footer class="foot"><div class="wrap foot-in">
@@ -109,6 +125,7 @@ const HOWTO = `<div class="howto"><strong>Hear it in English</strong><ol><li>Pre
  </div>
 </section>
 
+${NEWS.length ? `<section class="wrap cat" id="stories"><div class="cat-head"><h2 class="sec">Latest stories</h2><p>The stories behind the interviews, translated from Recta Al Pecho. <a href="news/">All stories →</a></p></div><div class="grid">${NEWS.slice(0, 4).map(n => ncard(n, "")).join("")}</div></section>` : ""}
 <div id="interviews"></div>
 ${S.cats.map(c => {
     const list = V.filter(v => v.c === c.id);
@@ -161,6 +178,37 @@ for (const v of V) {
   fs.writeFileSync(path.join(OUT, v.slug, "index.html"), page({ rel: "../", title: `${v.who}: ${v.t} | Straight 2D Chest`, desc: v.sum, canon: `${SITE}/${v.slug}/`, body, og: `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`, ld, type: "video.other" }));
 }
 
+// ── Stories (news)
+{
+  fs.rmSync(path.join(OUT, "news"), { recursive: true, force: true });
+  fs.mkdirSync(path.join(OUT, "news"), { recursive: true });
+  const body = `<main class="wrap"><section class="cat"><div class="cat-head"><h1 class="sec">Stories</h1><p>English editions of the Recta Al Pecho articles: the stories behind the interviews.</p></div><div class="grid">${NEWS.map(n => ncard(n, "../")).join("")}</div></section></main>`;
+  fs.writeFileSync(path.join(OUT, "news", "index.html"), page({ rel: "../", title: "Stories | Straight 2D Chest", desc: "Cuban baseball stories in English — the English editions of the Recta Al Pecho articles.", canon: SITE + "/news/", body }));
+  for (const n of NEWS) {
+    const iv = n.video && byId[n.video];
+    const more = NEWS.filter(x => x.slug !== n.slug).slice(0, 4);
+    const body = `
+<main class="wrap art">
+ <p class="crumb"><a href="../../">Home</a> › <a href="../">Stories</a></p>
+ <article>
+  <p class="who">${fdate(n.date)} · By Eliam Marrero Bernal</p>
+  <h1>${esc(n.title)}</h1>
+  <p class="dek">${esc(n.dek)}</p>
+  ${n.video ? `<button class="player" data-yt="${n.video}" aria-label="Play the interview"><img src="https://i.ytimg.com/vi/${n.video}/maxresdefault.jpg" alt="" width="1280" height="720"><span class="play"></span></button><p class="meta">Watch the full interview — English audio: ⚙ Settings → Audio track → English.${iv ? ` <a href="../../${iv.slug}/">Interview page →</a>` : ""}</p>` : (n.image ? `<img class="hero-img" src="${n.image}" alt="">` : "")}
+  <div class="prose-body">${n.body_html}</div>
+  <p class="orig">Originally published in Spanish on <a href="${n.recta_url}" hreflang="es">Recta Al Pecho</a>.</p>
+ </article>
+ ${more.length ? `<section class="cat"><h2 class="sec">More stories</h2><div class="grid">${more.map(x => ncard(x, "../../")).join("")}</div></section>` : ""}
+</main>`;
+    const ld = { "@context": "https://schema.org", "@type": "NewsArticle", headline: n.title, description: n.dek, datePublished: n.date, inLanguage: "en", image: [newsImg(n)], author: { "@type": "Person", name: "Eliam Marrero Bernal" }, publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC" }, mainEntityOfPage: `${SITE}/news/${n.slug}/`, translationOfWork: { "@type": "Article", url: n.recta_url, inLanguage: "es" } };
+    fs.mkdirSync(path.join(OUT, "news", n.slug), { recursive: true });
+    fs.writeFileSync(path.join(OUT, "news", n.slug, "index.html"), page({ rel: "../../", title: `${n.title} | Straight 2D Chest`, desc: n.dek, canon: `${SITE}/news/${n.slug}/`, body, og: newsImg(n), ld, type: "article", alt_es: n.recta_url }));
+  }
+  // Mapa para el selector de idioma de rectaalpecho.com: artículo en español → su versión en inglés
+  const map = Object.fromEntries(NEWS.map(n => [n.recta_slug, `${SITE}/news/${n.slug}/`]));
+  fs.writeFileSync(path.join(ROOT, "themes/recta/en_map.json"), JSON.stringify(map, null, 1));
+}
+
 // ── About
 {
   const body = `
@@ -180,7 +228,7 @@ for (const v of V) {
 // ── 404, robots, sitemap, .htaccess
 fs.writeFileSync(path.join(OUT, "404.html"), page({ rel: "/", title: "Page not found | Straight 2D Chest", desc: "Page not found.", canon: SITE + "/", body: `<main class="wrap prose"><h1>Strike three — page not found.</h1><p><a class="btn" href="/">Back to the interviews</a></p></main>` }));
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
-const urls = [SITE + "/", SITE + "/about/", ...V.map(v => `${SITE}/${v.slug}/`)];
+const urls = [SITE + "/", SITE + "/about/", SITE + "/news/", ...V.map(v => `${SITE}/${v.slug}/`), ...NEWS.map(n => `${SITE}/news/${n.slug}/`)];
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `<url><loc>${u}</loc><lastmod>${BUILD}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 fs.writeFileSync(path.join(OUT, ".htaccess"), `# straight2dchest.com — sitio estático (generado por tools/build_s2d.js)
 ErrorDocument 404 /404.html
