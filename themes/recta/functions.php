@@ -144,7 +144,7 @@ add_filter('emoji_svg_url', '__return_false');
 
 /** Páginas viejas de Elementor que quedaron vacías con el tema: redirección permanente a su equivalente (no se borra nada). */
 function recta_redirects() {
-  return ['home' => '/', 'beisbol' => '/', 'los-borrados' => '/category/los-borrados/', 'las-fugas-2' => '/category/las-fugas/', 'nuestros-autores' => '/quienes-somos/'];
+  return ['home' => '/', 'beisbol' => '/', 'los-borrados' => '/category/los-borrados/', 'las-fugas-2' => '/category/las-fugas/', 'beisbol-2' => '/'];
 }
 add_action('template_redirect', function () {
   if (is_page()) { $slug = get_queried_object()->post_name ?? ''; $r = recta_redirects(); if (isset($r[$slug])) { wp_redirect(home_url($r[$slug]), 301); exit; } }
@@ -170,3 +170,32 @@ add_action('init', function () {
     exit;
   }
 });
+
+/** AUTORES (escritores colaboradores). Foto propia en el perfil (URL o subida a la biblioteca), bio y página de autor. */
+function recta_autor_foto($uid, $size = 96) {
+  $u = get_user_meta($uid, 'recta_foto', true);
+  if ($u) return '<img class="av av-img" src="' . esc_url($u) . '" alt="" width="' . $size . '" height="' . $size . '" loading="lazy">';
+  $n = get_the_author_meta('display_name', $uid);
+  $ini = mb_strtoupper(mb_substr(get_the_author_meta('first_name', $uid) ?: $n, 0, 1) . mb_substr(get_the_author_meta('last_name', $uid) ?: '', 0, 1));
+  return '<span class="av">' . esc_html($ini) . '</span>';
+}
+function recta_autor_bio($uid) {
+  $d = get_the_author_meta('description', $uid);
+  if ($d) return $d;
+  return in_array('administrator', (array) get_userdata($uid)->roles, true) ? 'Director de Recta al Pecho y de Marrero Bernal Media. Entrevista a peloteros en Las Vegas, Miami y Cuba.' : 'Escribe para Recta al Pecho.';
+}
+add_action('show_user_profile', 'recta_perfil_foto'); add_action('edit_user_profile', 'recta_perfil_foto');
+function recta_perfil_foto($user) {
+  $v = esc_attr(get_user_meta($user->ID, 'recta_foto', true));
+  echo '<h2>Recta al Pecho</h2><table class="form-table"><tr><th><label for="recta_foto">Foto de autor</label></th><td><input type="url" class="regular-text" name="recta_foto" id="recta_foto" value="' . $v . '" placeholder="https://rectaalpecho.com/wp-content/uploads/..."><p class="description">Sube tu foto en Medios → Añadir nuevo, copia la URL del archivo y pégala aquí (cuadrada, mínimo 400×400). La biografía de arriba sale debajo de cada artículo tuyo.</p></td></tr></table>';
+}
+add_action('personal_options_update', 'recta_perfil_foto_guardar'); add_action('edit_user_profile_update', 'recta_perfil_foto_guardar');
+function recta_perfil_foto_guardar($uid) { if (current_user_can('edit_user', $uid) && isset($_POST['recta_foto'])) update_user_meta($uid, 'recta_foto', esc_url_raw($_POST['recta_foto'])); }
+/** Los autores (rol Autor/Colaborador) pueden subir su foto e imágenes de sus artículos. */
+add_action('init', function () { foreach (['author', 'contributor'] as $r) { if ($role = get_role($r)) $role->add_cap('upload_files'); } });
+/** Página "Nuestros autores" (/nuestros-autores/) con la plantilla del tema aunque la página esté vacía. */
+add_filter('template_include', function ($t) { if (is_page('nuestros-autores')) { $f = get_theme_file_path('page-autores.php'); if (file_exists($f)) return $f; } return $t; }, 999);
+function recta_autores() {
+  $us = get_users(['role__in' => ['administrator', 'editor', 'author', 'contributor'], 'orderby' => 'post_count', 'order' => 'DESC']);
+  return array_values(array_filter($us, fn($u) => $u->user_login !== 'admin'));
+}
