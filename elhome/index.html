@@ -228,6 +228,7 @@ h2 .more{flex:none;white-space:nowrap}
   .foot{display:none}
 }
 .webfoot{display:none}
+.uplist{display:grid;gap:10px}.up{display:grid;grid-template-columns:auto 128px 1fr;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;text-decoration:none;color:inherit}.up .date{font-family:inherit;font-weight:800;font-size:12px;letter-spacing:.04em;color:var(--bulb);border:1px solid var(--bulb);border-radius:8px;padding:6px 8px;white-space:nowrap;text-align:center;line-height:1.1}.up img{width:128px;aspect-ratio:16/9;object-fit:cover;border-radius:8px}.up em{display:block;font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--sc,var(--bulb))}.up b{display:block;font-size:14px;line-height:1.25;margin:3px 0}.up:hover{border-color:var(--bulb)}
 .deskonly{display:none}
 @media (min-width:900px){.deskonly{display:block}.mobonly{display:none}.fbstrip{display:none}.row{grid-template-columns:repeat(var(--cols,4),minmax(0,1fr))}.list.one{grid-template-columns:1fr;gap:12px}.list.one .item{grid-template-columns:38% 1fr}}
 </style>
@@ -374,7 +375,10 @@ function showCard(s){
   return `<button class="sc" data-show="${s.id}" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt="" loading="lazy">${s.soon?`<span class="soon">Próximamente</span>`:""}</div><div class="b"><b>${esc(sname(s))}</b><span>${s.soon?esc(s.soon):n+" videos · "+esc(s.ch)}</span></div></button>`;
 }
 function inicio(){
-  const next = Object.keys(V).find(i => V[i].k === "proximo");
+  const upcoming = Object.keys(V).filter(i => V[i].k === "proximo" && V[i].f).sort((a,b) => V[a].f.localeCompare(V[b].f));
+  const next = upcoming[0] || Object.keys(V).find(i => V[i].k === "proximo");
+  const fdate = f => { try { const d = new Date(f + "T12:00:00Z"); return ["DOM","LUN","MAR","MIÉ","JUE","VIE","SÁB"][d.getUTCDay()] + " " + d.getUTCDate() + " " + ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"][d.getUTCMonth()]; } catch (e) { return ""; } };
+  const upnext = upcoming.slice(0, 4).map(id => { const sh = SH[showOf[id]] || SH.lrecs; return `<a class="up" href="${YT(id)}" target="_blank" rel="noopener"><span class="date">${fdate(V[id].f)}</span><img src="${img(id)}" alt="" loading="lazy"><div><em style="--sc:${sh.col}">${esc(sname(sh))}${V[id].n ? " " + esc(V[id].n) : ""}</em><b>${esc(V[id].t)}</b>${who(id)}</div></a>`; }).join("");
   const all = [...new Set(D.shows.flatMap(s => s.v.concat((s.subs || []).flatMap(x => x.v))))].filter(live);
   const nuevos = all.filter(i => V[i].f).sort(byDate).slice(0, 10);
   const latest = nuevos[0];
@@ -390,6 +394,7 @@ function inicio(){
     return `<section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt=""><span class="tag">${tag}</span></div>
     <div class="body"><span class="show" style="--sc:${sh.col}">${esc(sname(sh))}${V[latest].n ? " " + esc(V[latest].n) : ""}</span><h3>${esc(V[latest].t)}</h3>${who(latest)}
     <div class="btns"><a class="btn yt" href="${YT(latest)}" target="_blank" rel="noopener">▶ Verlo ahora</a>${next ? `<button class="btn ghost" data-open-sheet>🔔 Avísame</button>` : ""}</div></div></div></section>`; })() : ""}
+  ${upnext ? `<section class="deskonly">${H("Próximos estrenos en la red")}<div class="uplist">${upnext}</div></section>` : ""}
   </div><div>
   ${next ? `<section><a class="next" href="${YT(next)}" target="_blank" rel="noopener"><img src="${img(next)}" alt=""><div><em>Próximo estreno · ${esc(SH[showOf[next]] ? sname(SH[showOf[next]]) : "La Risa es Cosa Seria")}${V[next].n ? " " + esc(V[next].n) : ""}</em><b>${esc(V[next].t)}</b><span>Toca y dale a la campanita en YouTube</span></div></a></section>` : ""}
   <section>${H("La semana en El Home")}<div class="week">${week}</div></section>
