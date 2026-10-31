@@ -182,7 +182,7 @@ _ch = re.compile(r'<a class="ch" href="https://www\.youtube\.com/@RectaAlPecho\?
 def _s2d(m):
     b = m.group(0).replace('https://www.youtube.com/@RectaAlPecho?sub_confirmation=1', 'https://www.straight2dchest.com/')
     b = b.replace("img/av_recta.jpg", "img/av_s2d.jpg").replace('alt="Recta al Pecho"', 'alt="Straight 2D Chest"')
-    b = re.sub(r'<h3>[^<]*</h3><p>[^<]*</p>', '<h3>Straight 2D Chest</h3><p>Recta Al Pecho in English: Cuban and Latin baseball interviews with English audio.</p>', b)
+    b = re.sub(r'<h3>[^<]*</h3><p>[^<]*</p>', '<h3>Straight 2D Chest</h3><p>Recta Al Pecho in English. Sports · Baseball is the passion: interviews with English audio.</p>', b)
     return b
 fp, _n = _ch.subn(_s2d, fp, count=1)
 assert _n == 1, 'tarjeta de Recta no encontrada'

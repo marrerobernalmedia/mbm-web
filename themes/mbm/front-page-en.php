@@ -35,7 +35,7 @@
       </a>
       <a class="ch" href="https://www.straight2dchest.com/" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/s2d.jpg')); ?>)"></div>
-        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_s2d.jpg')); ?>" alt="Straight 2D Chest"><div><h3>Straight 2D Chest</h3><p>Recta Al Pecho in English: Cuban and Latin baseball interviews with English audio.</p><span class="n"><span data-seg="yt.recta">19K</span> on YouTube · <span data-seg="fb.recta">71K</span> on Facebook · <span data-seg="ig.recta">9.2K</span> on Instagram</span></div></div>
+        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_s2d.jpg')); ?>" alt="Straight 2D Chest"><div><h3>Straight 2D Chest</h3><p>Recta Al Pecho in English. Sports · Baseball is the passion: interviews with English audio.</p><span class="n"><span data-seg="yt.recta">19K</span> on YouTube · <span data-seg="fb.recta">71K</span> on Facebook · <span data-seg="ig.recta">9.2K</span> on Instagram</span></div></div>
       </a>
       <a class="ch" href="https://www.lcedr.com" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cosa.jpg')); ?>)"></div>
