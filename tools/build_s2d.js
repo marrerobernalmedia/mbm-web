@@ -21,7 +21,7 @@ const NEWS = (fs.existsSync(NEWS_DIR) ? fs.readdirSync(NEWS_DIR).filter(f => f.e
   .map(f => JSON.parse(fs.readFileSync(path.join(NEWS_DIR, f), "utf8")))
   .filter(n => n.date <= TODAY)
   .sort((a, b) => b.date.localeCompare(a.date) || b.recta_id - a.recta_id);
-const newsImg = n => n.image || (n.video ? `https://i.ytimg.com/vi/${n.video}/hqdefault.jpg` : SITE + "/img/og.jpg");
+const newsImg = n => n.image || (n.video ? big(n.video) : SITE + "/img/og.jpg");
 function ncard(n, P) {
   return `<a class="card" href="${P}news/${n.slug}/">
   <span class="th"><img src="${newsImg(n)}" alt="" loading="lazy" width="480" height="270"><span class="en">Story</span></span>
@@ -30,7 +30,10 @@ function ncard(n, P) {
 </a>`;
 }
 
-const thumb = id => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+// Miniatura en inglés propia (s2d/img/th/<id>.jpg, 1280x720) si existe; si no, la de YouTube.
+const hasTh = id => fs.existsSync(path.join(OUT, "img/th", id + ".jpg"));
+const thumb = id => hasTh(id) ? `${SITE}/img/th/${id}.jpg` : `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const big = id => hasTh(id) ? `${SITE}/img/th/${id}.jpg` : `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 const isoDur = d => { const p = d.split(":").map(Number); while (p.length < 3) p.unshift(0); return `PT${p[0] ? p[0] + "H" : ""}${p[1]}M${p[2]}S`; };
 const human = d => { const p = d.split(":").map(Number); if (p.length === 3) return `${p[0]} h ${p[1]} min`; return `${p[0]} min`; };
 const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -120,7 +123,7 @@ const HOWTO = `<div class="howto"><strong>Hear it in English</strong><ol><li>Pre
 <section class="wrap feat">
  <h2 class="sec">Start here</h2>
  <div class="feat-grid">
-  <a class="feat-lead" href="${lead.slug}/"><span class="th"><img src="https://i.ytimg.com/vi/${lead.id}/maxresdefault.jpg" alt="" width="1280" height="720"><span class="en">EN audio</span></span><span class="who">${esc(lead.who)}</span><span class="ttl big">${esc(lead.t)}</span><span class="sum">${esc(lead.sum)}</span></a>
+  <a class="feat-lead" href="${lead.slug}/"><span class="th"><img src="${big(lead.id)}" alt="" width="1280" height="720"><span class="en">EN audio</span></span><span class="who">${esc(lead.who)}</span><span class="ttl big">${esc(lead.t)}</span><span class="sum">${esc(lead.sum)}</span></a>
   <div class="feat-side">${feat.slice(1).map(v => card(v, "")).join("")}</div>
  </div>
 </section>
@@ -154,7 +157,7 @@ for (const v of V) {
  <p class="crumb"><a href="../">Home</a> › <a href="../#${cat.id}">${esc(cat.name)}</a></p>
  <div class="vid-grid">
   <div>
-   <button class="player" data-yt="${v.id}" aria-label="Play: ${esc(v.t)}"><img src="https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg" alt="" width="1280" height="720"><span class="play"></span></button>
+   <button class="player" data-yt="${v.id}" aria-label="Play: ${esc(v.t)}"><img src="${big(v.id)}" alt="" width="1280" height="720"><span class="play"></span></button>
    <p class="who">${esc(v.who)}</p>
    <h1>${esc(v.t)}</h1>
    <p class="meta">${meta}</p>
@@ -167,7 +170,7 @@ for (const v of V) {
 </main>`;
   const ld = {
     "@context": "https://schema.org", "@type": "VideoObject", name: v.t, description: v.sum,
-    thumbnailUrl: [`https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`, thumb(v.id)],
+    thumbnailUrl: [big(v.id)],
     embedUrl: `https://www.youtube.com/embed/${v.id}`, contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
     inLanguage: "es", publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC" }
   };
@@ -175,7 +178,7 @@ for (const v of V) {
   if (v.f) ld.uploadDate = v.f;
   if (v.views) ld.interactionStatistic = { "@type": "InteractionCounter", interactionType: { "@type": "WatchAction" }, userInteractionCount: v.views };
   fs.mkdirSync(path.join(OUT, v.slug), { recursive: true });
-  fs.writeFileSync(path.join(OUT, v.slug, "index.html"), page({ rel: "../", title: `${v.who}: ${v.t} | Straight 2D Chest`, desc: v.sum, canon: `${SITE}/${v.slug}/`, body, og: `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`, ld, type: "video.other" }));
+  fs.writeFileSync(path.join(OUT, v.slug, "index.html"), page({ rel: "../", title: `${v.who}: ${v.t} | Straight 2D Chest`, desc: v.sum, canon: `${SITE}/${v.slug}/`, body, og: big(v.id), ld, type: "video.other" }));
 }
 
 // ── Stories (news)
@@ -194,7 +197,7 @@ for (const v of V) {
   <p class="who">${fdate(n.date)} · By Eliam Marrero Bernal</p>
   <h1>${esc(n.title)}</h1>
   <p class="dek">${esc(n.dek)}</p>
-  ${n.video ? `<button class="player" data-yt="${n.video}" aria-label="Play the interview"><img src="https://i.ytimg.com/vi/${n.video}/maxresdefault.jpg" alt="" width="1280" height="720"><span class="play"></span></button><p class="meta">Watch the full interview — English audio: ⚙ Settings → Audio track → English.${iv ? ` <a href="../../${iv.slug}/">Interview page →</a>` : ""}</p>` : (n.image ? `<img class="hero-img" src="${n.image}" alt="">` : "")}
+  ${n.video ? `<button class="player" data-yt="${n.video}" aria-label="Play the interview"><img src="${big(n.video)}" alt="" width="1280" height="720"><span class="play"></span></button><p class="meta">Watch the full interview — English audio: ⚙ Settings → Audio track → English.${iv ? ` <a href="../../${iv.slug}/">Interview page →</a>` : ""}</p>` : (n.image ? `<img class="hero-img" src="${n.image}" alt="">` : "")}
   <div class="prose-body">${n.body_html}</div>
   <p class="orig">Originally published in Spanish on <a href="${n.recta_url}" hreflang="es">Recta Al Pecho</a>.</p>
  </article>
