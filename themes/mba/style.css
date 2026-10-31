@@ -30,8 +30,8 @@ section{padding-block:clamp(56px,8vw,100px)}
 .topbar .wrap{display:flex;gap:22px;align-items:center;height:38px;flex-wrap:wrap}
 .topbar a{color:#fff;font-weight:600}
 .topbar .sp{flex:1}
-.topbar .lang a{opacity:.7}.topbar .lang a.on{opacity:1;text-decoration:underline}
-@media(max-width:760px){.topbar .hide-m{display:none}}
+.topbar .lang{display:inline-flex;gap:3px;padding:2px;border:1px solid rgba(255,255,255,.22);border-radius:999px}.topbar .lang a{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-weight:700;opacity:.75;color:#cfd6e2;text-decoration:none}.topbar .lang a svg{border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.25);flex:none}.topbar .lang a:hover{opacity:1}.topbar .lang a.on{opacity:1;color:#fff;background:rgba(255,255,255,.16)}
+@media(max-width:760px){.topbar .hide-m{display:none}.topbar .wrap{gap:10px;flex-wrap:nowrap}.topbar small{display:none}.topbar .lang a b{display:none}.topbar .lang a{padding:4px 8px}}
 /* nav */
 header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;gap:26px;height:76px}

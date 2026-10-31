@@ -29,8 +29,8 @@ section{padding-block:clamp(56px,8vw,100px)}
 .topbar .wrap{display:flex;gap:22px;align-items:center;height:38px;flex-wrap:wrap}
 .topbar a{color:#fff;font-weight:600}
 .topbar .sp{flex:1}
-.topbar .lang a{opacity:.7}.topbar .lang a.on{opacity:1;text-decoration:underline}
-@media(max-width:760px){.topbar .hide-m{display:none}}
+.topbar .lang{display:inline-flex;gap:3px;padding:2px;border:1px solid rgba(255,255,255,.22);border-radius:999px}.topbar .lang a{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-weight:700;opacity:.75;color:#cfd6e2;text-decoration:none}.topbar .lang a svg{border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.25);flex:none}.topbar .lang a:hover{opacity:1}.topbar .lang a.on{opacity:1;color:#fff;background:rgba(255,255,255,.16)}
+@media(max-width:760px){.topbar .hide-m{display:none}.topbar .wrap{gap:10px;flex-wrap:nowrap}.topbar small{display:none}.topbar .lang a b{display:none}.topbar .lang a{padding:4px 8px}}
 /* nav */
 header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;gap:26px;height:76px}
@@ -148,7 +148,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
     <span class="hide-m">🕘 Lun–Vie 9:00 AM – 5:00 PM</span>
     <span class="hide-m">📍 3455 W Craig Rd, Ste D, North Las Vegas</span>
     <span class="sp"></span>
-    <span class="lang"><a href="#" data-lang="es">ES</a> · <a href="#" data-lang="en">EN</a></span>
+    <span class="lang" role="group" aria-label="Idioma / Language"><a href="#" data-lang="es" title="Español"><svg viewBox="0 0 30 20" width="22" height="15" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg><b>ES</b></a><a href="#" data-lang="en" title="English"><svg viewBox="0 0 38 20" width="22" height="15" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><g fill="#b22234"><rect width="38" height="1.54"/><rect y="3.08" width="38" height="1.54"/><rect y="6.15" width="38" height="1.54"/><rect y="9.23" width="38" height="1.54"/><rect y="12.31" width="38" height="1.54"/><rect y="15.38" width="38" height="1.54"/><rect y="18.46" width="38" height="1.54"/></g><rect width="15.2" height="10.77" fill="#3c3b6e"/></svg><b>EN</b></a></span>
   </div>
 </div>
 
