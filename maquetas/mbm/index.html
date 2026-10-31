@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Marrero Bernal Media · Productora audiovisual para el público latino</title>
+<title data-en="Marrero Bernal Media · Video production, Las Vegas">Marrero Bernal Media · Productora audiovisual para el público latino</title>
 <meta name="description" content="Marrero Bernal Media LLC: productora audiovisual en Las Vegas con su propia red de canales. Comerciales, video corporativo, postproducción, dron con licencia FAA, diseño, web, podcast y publicidad dentro de la red.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -90,7 +90,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.82);backdrop-f
 /* about */
 .about .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
 @media(max-width:860px){.about .wrap{grid-template-columns:1fr}}
-.about .ph{aspect-ratio:4/5;border-radius:18px;background:#1a1a1f;border:1px solid var(--line);display:grid;place-items:center;color:var(--mut);font-size:13px;text-align:center;padding:20px}
+.about .marcas{display:grid;grid-template-columns:1fr 1fr;gap:14px}.about .marcas img{width:100%;aspect-ratio:1;object-fit:contain;background:#1a1a1f;border:1px solid var(--line);border-radius:18px;padding:22px;box-sizing:border-box}
 .creds{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
 .creds span{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12px;color:var(--mut)}
 /* contacto */
@@ -106,6 +106,7 @@ footer{padding:36px 0;border-top:1px solid var(--line);font-size:12px;color:var(
 footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
 footer img{height:40px;opacity:.9}
 footer nav a{margin-left:18px}
+.lang{font-size:13px;color:var(--mut)}.lang a{opacity:.6}.lang a.on{opacity:1;color:var(--fg);font-weight:600}
 </style>
 </head>
 <body>
@@ -120,6 +121,7 @@ footer nav a{margin-left:18px}
       <li><a href="#publicidad">Publicidad</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
     </ul>
+    <span class="lang"><a href="#" data-lang="es">ES</a> · <a href="#" data-lang="en">EN</a></span>
     <a class="btn btn-acc" href="#contacto">Hablemos</a>
   </div>
 </header>
@@ -129,7 +131,7 @@ footer nav a{margin-left:18px}
   <div class="wrap">
     <div class="kicker">Productora audiovisual · Las Vegas</div>
     <h1>Historias que llegan al corazón de <em>nuestra gente</em>.</h1>
-    <p class="lead">Marrero Bernal Media produce, edita y distribuye contenido para el público latino. Con cinco canales de YouTube y más de <span data-seg="tot.todo" data-fmt="mil">1,080,000</span> seguidores entre Facebook, Instagram y YouTube, no solo hacemos tu video: sabemos hacerlo llegar.</p>
+    <p class="lead">Marrero Bernal Media es una productora con experiencia en el mercado latino: producimos, editamos y distribuimos contenido. Con cinco canales de YouTube y más de <span data-seg="tot.todo" data-fmt="mil">1,080,000</span> seguidores entre Facebook, Instagram y YouTube, no solo hacemos tu video: sabemos hacerlo llegar.</p>
     <div class="ctas">
       <a class="btn btn-acc" href="#contacto">Cuéntanos tu proyecto</a>
       <a class="btn btn-ghost" href="#red">Conoce la red ↓</a>
@@ -231,11 +233,13 @@ footer nav a{margin-left:18px}
 
 <section id="nosotros" class="about" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
-    <div class="ph">Foto de Eliam Marrero Bernal en set<br>(se coloca la foto real)</div>
+    <div class="marcas">
+      <img src="img/marcas/larisa.png" alt="La Risa es Cosa Seria"><img src="img/marcas/recta.png" alt="Recta Al Pecho"><img src="img/marcas/lacosa.png" alt="La Cosa Es De Risa"><img src="img/marcas/welcome.png" alt="Welcome to Apagonia"><img src="img/marcas/elhome.png" alt="El Home de la Risa"><img src="img/marcas/cuero.png" alt="Si de Cuero se Trata">
+    </div>
     <div>
       <div class="kicker">Nosotros</div>
       <h2>Una productora con la mirada de un director.</h2>
-      <p class="lead">Marrero Bernal Media LLC nace en Las Vegas de la mano de Eliam Marrero Bernal, director y director de fotografía con créditos en cine y televisión. Lo que empezó como un canal de humor cubano es hoy una red de cinco canales, siete páginas en Meta y un equipo de producción que estrena contenido todas las semanas del año.</p>
+      <p class="lead">Marrero Bernal Media LLC nace en Las Vegas con Eliam Marrero Bernal como productor: director y director de fotografía con créditos en cine y televisión. Lo que empezó como un canal de humor cubano es hoy una red de cinco canales, siete páginas en Meta y un equipo de producción que estrena contenido todas las semanas del año.</p>
       <p class="lead" style="margin-top:14px">Trabajamos con el mismo rigor para un capítulo de nuestra serie que para el comercial de un cliente: guion, luz, sonido, ritmo y, sobre todo, saber a quién le hablamos.</p>
       <div class="creds">
         <span>Dirección y fotografía</span><span>Créditos en IMDb</span><span>Piloto FAA Part 107</span><span>Las Vegas · Miami</span><span>Español e inglés</span>
@@ -288,5 +292,7 @@ footer nav a{margin-left:18px}
   </div>
 </footer>
 <script src="https://marrerobernalmedia.com/seguidores.js"></script>
+<script src="en.js"></script>
+<script src="https://marrerobernalmedia.com/idioma.js"></script>
 </body>
 </html>
