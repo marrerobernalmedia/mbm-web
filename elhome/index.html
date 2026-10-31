@@ -253,7 +253,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
   <header>
     <div class="wrap">
       <div class="hd">
-        <img src="brand/elhome-ico.png" alt="" style="object-fit:contain;background:transparent">
+        <img src="brand/elhome-ico.png" alt="El Home de la Risa" style="object-fit:contain;background:transparent">
         <div class="brand"><b>El Home <i>de la</i> Risa</b><span>La casa del humor cubano</span></div>
         <button class="inst" id="appBtn" aria-label="Descargar la app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;vertical-align:-3px;margin-right:5px"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7M9 11l3 3 3-3"/></svg><span class="l">Descargar la app</span><span class="s">App</span></button>
         <button class="bell" id="bellBtn" aria-label="Avisos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i></i></button>
@@ -395,15 +395,15 @@ const cover = s => s.banner || img(s.v.slice().sort(byViews)[0]);
 
 function tile(id){
   const v = V[id];
-  return `<a class="tile" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div>${showTag(id)}<h4>${esc(v.t)}</h4>${who(id)}</a>`;
+  return `<a class="tile" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="${esc(v.t)}" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div>${showTag(id)}<h4>${esc(v.t)}</h4>${who(id)}</a>`;
 }
 function item(id, rank){
   const v = V[id];
-  return `<a class="item" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div><div>${rank?`<div class="rank">${rank}</div>`:""}${showTag(id)}<h4>${esc(v.t)}</h4>${who(id)}${v.v?`<div class="meta">${fmt(v.v)} vistas</div>`:""}</div></a>`;
+  return `<a class="item" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="${esc(v.t)}" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div><div>${rank?`<div class="rank">${rank}</div>`:""}${showTag(id)}<h4>${esc(v.t)}</h4>${who(id)}${v.v?`<div class="meta">${fmt(v.v)} vistas</div>`:""}</div></a>`;
 }
 function showCard(s){
   const n = s.v.filter(live).length;
-  return `<button class="sc" data-show="${s.id}" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt="" loading="lazy">${s.soon?`<span class="soon">Próximamente</span>`:""}</div><div class="b"><b>${esc(sname(s))}</b><span>${s.soon?esc(s.soon):n+" videos · "+esc(s.ch)}</span></div></button>`;
+  return `<button class="sc" data-show="${s.id}" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt="${esc(sname(s))}" loading="lazy">${s.soon?`<span class="soon">Próximamente</span>`:""}</div><div class="b"><b>${esc(sname(s))}</b><span>${s.soon?esc(s.soon):n+" videos · "+esc(s.ch)}</span></div></button>`;
 }
 function inicio(){
   const upcoming = Object.keys(V).filter(i => V[i].k === "proximo" && V[i].f).sort((a,b) => V[a].f.localeCompare(V[b].f));
@@ -422,12 +422,12 @@ function inicio(){
   const funny = D.comics.slice(0, window.matchMedia("(min-width: 900px)").matches ? 12 : 10);
   return `<div class="home-top"><div>
   ${latest ? (() => { const sh = SH[showOf[latest]] || SH.lrecs; const f = V[latest].f || ""; const tag = f === window.MBM_TODAY ? "● Estreno de hoy" : f === yday ? "● Estrenó ayer" : "● Último estreno";
-    return `<section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt=""><span class="tag">${tag}</span></div>
+    return `<section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt="${esc(V[latest].t)}"><span class="tag">${tag}</span></div>
     <div class="body"><span class="show" style="--sc:${sh.col}">${esc(sname(sh))}${V[latest].n ? " " + esc(V[latest].n) : ""}</span><h3>${esc(V[latest].t)}</h3>${who(latest)}
     <div class="btns"><a class="btn yt" href="${YT(latest)}" target="_blank" rel="noopener">▶ Verlo ahora</a>${next ? `<button class="btn ghost" data-open-sheet>🔔 Avísame</button>` : ""}</div></div></div></section>`; })() : ""}
   ${upnext ? `<section class="deskonly">${H("Próximos estrenos en la red")}<div class="uplist">${upnext}</div></section>` : ""}
   </div><div>
-  ${next ? `<section><a class="next" href="${YT(next)}" target="_blank" rel="noopener"><img src="${img(next)}" alt=""><div><em>Próximo estreno · ${esc(SH[showOf[next]] ? sname(SH[showOf[next]]) : "La Risa es Cosa Seria")}${V[next].n ? " " + esc(V[next].n) : ""}</em><b>${esc(V[next].t)}</b><span>Toca y dale a la campanita en YouTube</span></div></a></section>` : ""}
+  ${next ? `<section><a class="next" href="${YT(next)}" target="_blank" rel="noopener"><img src="${img(next)}" alt="${esc(V[next].t)}"><div><em>Próximo estreno · ${esc(SH[showOf[next]] ? sname(SH[showOf[next]]) : "La Risa es Cosa Seria")}${V[next].n ? " " + esc(V[next].n) : ""}</em><b>${esc(V[next].t)}</b><span>Toca y dale a la campanita en YouTube</span></div></a></section>` : ""}
   <section>${H("La semana en El Home")}<div class="week">${week}</div></section>
   <section class="deskonly">${H("Los más vistos de la casa")}<div class="list one">${all.slice().sort(byViews).slice(0,6).map((id,i)=>item(id,i+1)).join("")}</div></section></div></div>
   <section>${H("Los shows de la casa", "", `<button class="more" data-tab-go="shows">Ver todos →</button>`)}<div class="row">${D.shows.map(s => `<div class="tile">${showCard(s)}</div>`).join("")}</div></section>${true ? `<section class="redwrap"><div class="lbl">Los canales de la red · toca uno y suscríbete en YouTube</div><div class="red">${[["larisa","La Risa es Cosa Seria"],["lacosa","La Cosa Es De Risa"],["welcome","Welcome to Apagonia"],["elhome","El Home de la Risa"]].map(([k,n]) => `<a href="${CHL[n][1]}?sub_confirmation=1" target="_blank" rel="noopener" title="${n}"><img src="brand/${k}.png" alt="${n}"><i>▶ YouTube</i></a>`).join("")}<a href="https://www.youtube.com/@RectaAlPecho?sub_confirmation=1" target="_blank" rel="noopener" title="Recta Al Pecho"><img src="brand/recta.png" alt="Recta Al Pecho"><i>▶ YouTube</i></a></div></section>` : ""}
@@ -451,7 +451,7 @@ function showPage(s){
   const cur = lists[Math.min(sub, lists.length-1)];
   const l = sorted(cur.v);
   return `<button class="back" data-back>← Todos los shows</button>
-  <section style="margin-top:8px"><div class="shead" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt=""></div><div class="b"><h1>${esc(s.name)}</h1><p>${esc(s.tag)}</p><div class="meta" style="margin-top:6px">${s.soon?esc(s.soon):""}</div>${chLogos(s)}
+  <section style="margin-top:8px"><div class="shead" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt="${esc(s.name)}"></div><div class="b"><h1>${esc(s.name)}</h1><p>${esc(s.tag)}</p><div class="meta" style="margin-top:6px">${s.soon?esc(s.soon):""}</div>${chLogos(s)}
   <div class="btns"><a class="btn yt" href="${s.sub}" target="_blank" rel="noopener">Suscribirme al canal</a></div></div></div>
   ${lists.length > 1 ? `<div class="subs">${lists.map((x,k) => `<button class="chip" data-sub="${k}" aria-pressed="${k===sub}">${esc(x.name)}</button>`).join("")}</div>` : ""}</section>
   <section>${H(esc(s.soon ? "Mientras tanto" : cur.name), l.length + " videos")}
@@ -459,7 +459,7 @@ function showPage(s){
   <div class="list">${l.map(id => item(id)).join("")}</div></section>`;
 }
 function comicCard(c){
-  return `<button class="cm${c.banner?"":" noart"}" data-comic="${esc(c.name)}"><div class="th" data-n="${esc(c.name)}"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="" loading="lazy"></div>${c.banner?"":""}<b>${esc(c.name)}</b><span>${c.aka ? esc(c.aka.join(" · ")) + " · " : ""}${c.all.filter(live).length} videos · ${fmt(c.views)} vistas</span></button>`;
+  return `<button class="cm${c.banner?"":" noart"}" data-comic="${esc(c.name)}"><div class="th" data-n="${esc(c.name)}"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="${esc(c.name)}" loading="lazy"></div>${c.banner?"":""}<b>${esc(c.name)}</b><span>${c.aka ? esc(c.aka.join(" · ")) + " · " : ""}${c.all.filter(live).length} videos · ${fmt(c.views)} vistas</span></button>`;
 }
 function humoristas(){
   if (openComic) return comicPage(CM[openComic]);
@@ -470,7 +470,7 @@ function comicPage(c){
   const rest = c.all.filter(i => live(i) && !c.lr.includes(i));
   const groups = D.shows.map(s => [s, rest.filter(i => showOf[i] === s.id)]).filter(([, g]) => g.length);
   return `<button class="back" data-back>← Todos los humoristas</button>
-  <section style="margin-top:8px"><div class="shead"><div class="pic"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt=""></div><div class="b" style="--sc:var(--lime)"><h1>${esc(c.name)}</h1><p>${c.aka ? "También como " + esc(c.aka.join(" y ")) + " · " : ""}${c.all.filter(live).length} videos en El Home de la Risa</p></div></div></section>
+  <section style="margin-top:8px"><div class="shead"><div class="pic"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="${esc(c.name)}"></div><div class="b" style="--sc:var(--lime)"><h1>${esc(c.name)}</h1><p>${c.aka ? "También como " + esc(c.aka.join(" y ")) + " · " : ""}${c.all.filter(live).length} videos en El Home de la Risa</p></div></div></section>
   ${lr.length ? `<section>${H("En La Risa es Cosa Seria", lr.length + "")}<div class="list">${lr.map(i => item(i)).join("")}</div></section>` : ""}
   ${groups.map(([s, g]) => `<section>${H(esc(s.id==="lrecs"?"Más de La Risa es Cosa Seria":sname(s)), g.length + "")}<div class="list">${g.sort(byViews).map(i => item(i)).join("")}</div></section>`).join("")}`;
 }

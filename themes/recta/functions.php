@@ -84,8 +84,8 @@ add_filter('excerpt_length', fn() => 24);
 function recta_card($post) {
   [$serie, $link] = recta_post_serie($post->ID);
   $img = get_the_post_thumbnail_url($post, 'recta-card') ?: get_theme_file_uri('img/portada.jpg');
-  printf('<a class="card" href="%s"><img src="%s" alt="" loading="lazy"><div class="b"><small>%s</small><h3>%s</h3><p>%s</p><time datetime="%s">%s</time></div></a>',
-    esc_url(get_permalink($post)), esc_url($img), esc_html($serie), esc_html(get_the_title($post)), esc_html(recta_excerpt($post)), esc_attr(get_the_date('c', $post)), esc_html(recta_fecha($post)));
+  printf('<a class="card" href="%s"><img src="%s" alt="%s" loading="lazy"><div class="b"><small>%s</small><h3>%s</h3><p>%s</p><time datetime="%s">%s</time></div></a>',
+    esc_url(get_permalink($post)), esc_url($img), esc_attr(get_the_title($post)), esc_html($serie), esc_html(get_the_title($post)), esc_html(recta_excerpt($post)), esc_attr(get_the_date('c', $post)), esc_html(recta_fecha($post)));
 }
 
 /** Sin "Uncategorized" en el sitio: lo que no tiene serie se muestra como Historias. */
@@ -103,6 +103,10 @@ add_filter('wpseo_opengraph_title', fn($t) => (is_front_page() || is_home()) ? R
 add_filter('wpseo_metadesc', fn($d) => (is_front_page() || is_home()) ? RECTA_HOME_DESC : ($d ?: (is_singular() ? recta_excerpt(null, 28) : (is_category() ? (recta_series()[get_queried_object()->slug][1] ?? $d) : $d))));
 add_filter('wpseo_opengraph_desc', fn($d) => (is_front_page() || is_home()) ? RECTA_HOME_DESC : $d);
 add_filter('wpseo_opengraph_image', fn($i) => (is_front_page() || is_home() || !$i) ? get_theme_file_uri('img/og.jpg') : $i);
+/** Yoast no pone og:image en la portada ni en páginas sin foto: se añade la del tema. */
+add_action('wpseo_add_opengraph_additional_images', function ($images) {
+  if (is_front_page() || is_home() || !(is_singular() && has_post_thumbnail())) $images->add_image(['url' => get_theme_file_uri('img/og.jpg'), 'width' => 1200, 'height' => 630]);
+});
 add_filter('wpseo_twitter_image', fn($i) => (is_front_page() || is_home() || !$i) ? get_theme_file_uri('img/og.jpg') : $i);
 /** Vista previa al compartir (Facebook, WhatsApp, iMessage): logo de Recta, nunca una foto. Si Yoast no está, lo pone el tema. */
 add_action('wp_head', function () {
@@ -174,7 +178,7 @@ add_action('init', function () {
 /** AUTORES (escritores colaboradores). Foto propia en el perfil (URL o subida a la biblioteca), bio y página de autor. */
 function recta_autor_foto($uid, $size = 96) {
   $u = recta_autor_foto_url($uid);
-  if ($u) return '<img class="av av-img" src="' . esc_url($u) . '" alt="" width="' . $size . '" height="' . $size . '" loading="lazy">';
+  if ($u) return '<img class="av av-img" src="' . esc_url($u) . '" alt="' . esc_attr(get_the_author_meta('display_name', $uid)) . '" width="' . $size . '" height="' . $size . '" loading="lazy">';
   $n = get_the_author_meta('display_name', $uid);
   $ini = mb_strtoupper(mb_substr(get_the_author_meta('first_name', $uid) ?: $n, 0, 1) . mb_substr(get_the_author_meta('last_name', $uid) ?: '', 0, 1));
   return '<span class="av">' . esc_html($ini) . '</span>';
@@ -225,6 +229,6 @@ function recta_autores() {
   return $out;
 }
 function recta_autor_card($a, $size = 96) {
-  $img = $a['foto'] ? '<img class="av av-img" src="' . esc_url($a['foto']) . '" alt="" width="' . $size . '" height="' . $size . '" loading="lazy">' : '<span class="av">' . esc_html(mb_strtoupper(mb_substr($a['nombre'], 0, 1))) . '</span>';
+  $img = $a['foto'] ? '<img class="av av-img" src="' . esc_url($a['foto']) . '" alt="' . esc_attr($a['nombre']) . '" width="' . $size . '" height="' . $size . '" loading="lazy">' : '<span class="av">' . esc_html(mb_strtoupper(mb_substr($a['nombre'], 0, 1))) . '</span>';
   return '<a class="autor-card" href="' . esc_url($a['url']) . '">' . $img . '<b>' . esc_html($a['nombre']) . '</b><small>' . esc_html($a['rol']) . '</small><p>' . esc_html($a['bio']) . '</p></a>';
 }

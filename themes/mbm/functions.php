@@ -34,6 +34,21 @@ add_filter('template_include', function ($t) {
   return $t;
 }, 999);
 
+/** SEO: idioma español, vista previa al compartir y ficha de organización para Google. */
+add_filter('language_attributes', fn() => 'lang="es"');
+add_action('wp_head', function () {
+  if (!is_front_page()) return;
+  $img = get_theme_file_uri('img/og.jpg');
+  echo '<meta property="og:type" content="website"><meta property="og:site_name" content="Marrero Bernal Media"><meta property="og:locale" content="es_US"><meta property="og:url" content="' . esc_url(home_url('/')) . '"><meta property="og:title" content="' . esc_attr(wp_get_document_title()) . '"><meta property="og:image" content="' . esc_url($img) . '"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">' . "
+";
+  $ld = ['@context' => 'https://schema.org', '@type' => 'Organization', '@id' => home_url('/#mbm'), 'name' => 'Marrero Bernal Media LLC', 'alternateName' => 'Marrero Bernal Media', 'url' => home_url('/'), 'logo' => get_theme_file_uri('img/logo-color.svg'), 'image' => $img, 'foundingLocation' => 'Las Vegas, Nevada',
+    'founder' => ['@type' => 'Person', 'name' => 'Eliam Marrero Bernal', 'sameAs' => ['https://www.imdb.com/name/nm3952887/']],
+    'email' => 'info@marrerobernalmedia.com', 'telephone' => '+1-833-627-7376',
+    'sameAs' => ['https://www.youtube.com/@marrerobernalmedia', 'https://www.facebook.com/marrerobernalmedia', 'https://www.youtube.com/@LaRisaEsCosaSeria', 'https://www.youtube.com/@RectaAlPecho', 'https://www.elhomedelarisa.com/', 'https://rectaalpecho.com/']];
+  echo '<script type="application/ld+json">' . wp_json_encode($ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "
+";
+}, 3);
+
 /** Formulario de contacto → correo. */
 add_action('admin_post_nopriv_mbm_contacto', 'mbm_contacto');
 add_action('admin_post_mbm_contacto', 'mbm_contacto');

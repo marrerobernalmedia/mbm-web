@@ -17,7 +17,7 @@ $shown = [];
 
 <?php if (!empty($live['last']['id'])): $l = $live['last']; ?>
 <section class="yt-strip">
- <a class="play" href="https://youtu.be/<?php echo esc_attr($l['id']); ?>" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/<?php echo esc_attr($l['id']); ?>/maxresdefault.jpg" alt="" loading="lazy"></a>
+ <a class="play" href="https://youtu.be/<?php echo esc_attr($l['id']); ?>" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/<?php echo esc_attr($l['id']); ?>/maxresdefault.jpg" alt="<?php echo esc_attr($l['guest'] ?? 'Último capítulo de Recta al Pecho'); ?>" loading="lazy"></a>
  <div><h3>Último capítulo en YouTube</h3><h2><?php echo esc_html($l['guest']); ?>: <?php echo esc_html($l['title']); ?></h2><p>Estrenado el <?php echo esc_html($l['date']); ?>. Entrevista completa en el canal.</p><a class="btn" href="https://youtu.be/<?php echo esc_attr($l['id']); ?>" target="_blank" rel="noopener">Ver la entrevista</a>
  <?php if (!empty($live['next']['guest'])): ?><div class="next"><h3>Próximo estreno</h3><b><?php echo esc_html($live['next']['guest']); ?></b> · <?php echo esc_html($live['next']['date']); ?><br><span class="ui" style="font-size:14px;opacity:.85">Activa los avisos en la app y te llega al teléfono el día del estreno.</span></div><?php endif; ?>
  </div>
@@ -33,7 +33,7 @@ $shown = [];
 <div class="grid"><?php foreach ($ps as $p) recta_card($p); ?></div></section>
 <?php endforeach; ?>
 <section class="app-band" id="app">
- <img src="<?php echo esc_url(get_theme_file_uri('img/app-icon.png')); ?>" alt="" width="120" height="120" loading="lazy">
+ <img src="<?php echo esc_url(get_theme_file_uri('img/app-icon.png')); ?>" alt="App Recta al Pecho" width="120" height="120" loading="lazy">
  <div>
   <small>App gratis</small><h2>Lleva Recta al Pecho en tu teléfono</h2>
   <p>Cada entrevista, cada estreno y los avisos, sin buscar en YouTube.</p>
