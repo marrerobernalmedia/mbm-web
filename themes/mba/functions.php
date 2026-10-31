@@ -54,6 +54,12 @@ function mba_contacto() {
   wp_redirect($back . ($ok ? '?enviado=1' : '?error=1') . '#contacto'); exit;
 }
 
+/** La portada siempre es front-page.php, aunque la página tenga plantilla de Elementor guardada. */
+add_filter('template_include', function ($t) {
+  if (is_front_page() && !is_admin()) { $f = get_theme_file_path('front-page.php'); if (file_exists($f)) return $f; }
+  return $t;
+}, 999);
+
 /** Sin emojis de WP, sin feeds de comentarios: página de una sola pieza. */
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
