@@ -186,6 +186,18 @@ def _s2d(m):
     return b
 fp, _n = _ch.subn(_s2d, fp, count=1)
 assert _n == 1, 'tarjeta de Recta no encontrada'
+# Resto de la versión en inglés: Trabajos, páginas de Facebook y logos de "Nosotros" (Eliam, 31-oct-2026)
+fp = fp.replace("img/recta.jpg')); ?>)\"></div>\n        <div class=\"body\"><img class=\"av\" src=\"<?php echo esc_url(get_theme_file_uri('img/av_s2d.jpg", "img/s2d.jpg')); ?>)\"></div>\n        <div class=\"body\"><img class=\"av\" src=\"<?php echo esc_url(get_theme_file_uri('img/av_s2d.jpg")
+_wk = re.compile(r'<a class="wk" style="background-image:url\(<\?php echo esc_url\(get_theme_file_uri\(\'img/recta\.jpg\'\)\); \?>\)" href="https://www\.youtube\.com/@RectaAlPecho\?sub_confirmation=1"(.*?)</a>', re.S)
+fp, _n = _wk.subn(lambda m: m.group(0).replace("img/recta.jpg", "img/s2d.jpg").replace("https://www.youtube.com/@RectaAlPecho?sub_confirmation=1", "https://www.straight2dchest.com/").replace("<b>Recta Al Pecho</b>", "<b>Straight 2D Chest</b>"), fp, count=1)
+assert _n == 1, 'trabajo de Recta no encontrado'
+_fb = re.compile(r'(<a class="fb" href="https://www\.facebook\.com/RectaAlPecho/"[^>]*>)<img src="([^"]*?)img/marcas/recta\.png([^"]*)" alt="Recta al Pecho"><b>Recta al Pecho</b>')
+fp, _n = _fb.subn(lambda m: m.group(1) + '<img src="' + m.group(2) + 'img/marcas/s2d.png' + m.group(3) + '" alt="Straight 2D Chest"><b>Recta Al Pecho · Straight 2D Chest</b>', fp, count=1)
+assert _n == 1, 'página de Facebook de Recta no encontrada'
+_lg = re.compile(r'<a href="https://www\.youtube\.com/@RectaAlPecho\?sub_confirmation=1" target="_blank" rel="noopener"><img src="([^"]*?)img/marcas/recta\.png([^"]*)" alt="Recta Al Pecho"></a>')
+fp, _n = _lg.subn(lambda m: '<a href="https://www.straight2dchest.com/" target="_blank" rel="noopener"><img src="' + m.group(1) + 'img/marcas/s2d.png' + m.group(2) + '" alt="Straight 2D Chest"></a>', fp, count=1)
+assert _n == 1, 'logo de Recta en Nosotros no encontrado'
+
 (out/'front-page-en.php').write_text(fp)
 fn = (out/'functions.php').read_text()
 fn = re.sub(r"\n\s*wp_enqueue_script\('mbm-en'[^\n]*", "", fn)
