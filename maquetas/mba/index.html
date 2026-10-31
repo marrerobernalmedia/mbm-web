@@ -138,6 +138,7 @@ footer a:hover{color:#fff}
 footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;font-size:11.5px;color:#8b97ab;line-height:1.6}
 .cli{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0}@media(max-width:700px){.cli{grid-template-columns:1fr}}.cli-card{display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:center;background:var(--navy);color:#fff;border-radius:16px;padding:18px 20px}.cli-card .ic{font-size:26px}.cli-card b{display:block;font-size:17px}.cli-card span{font-size:13px;opacity:.85}.cli-card em{font-style:normal;font-weight:700;color:var(--acc2)}
 .resenas{margin-top:44px;padding-top:34px;border-top:1px solid var(--line)}.resenas h3{font-family:Fraunces,serif;font-size:24px;margin:0 0 18px}.resenas .ti{min-height:40px}.resenas .ti-demo{color:var(--mut)}@media(max-width:600px){.carriers{gap:8px 14px;padding-inline:4px}.carriers span{width:100%;text-align:center}.carriers b{font-size:16px}}.premios{display:flex;flex-wrap:wrap;gap:22px;align-items:center;margin-top:26px}.premios img{height:110px;width:auto;display:block}@media(max-width:520px){.premios img{height:80px}}
+.cimg{height:auto;width:calc(100% + 56px);margin:-28px -28px 22px;aspect-ratio:16/8;object-fit:cover;border-radius:22px 22px 0 0;display:block;max-width:none}.mimg{height:auto;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:20px;margin-bottom:18px;display:block}.simg{height:auto;width:100%;aspect-ratio:21/7;object-fit:cover;border-radius:22px;display:block;margin:6px 0 30px}
 </style>
 </head>
 <body>
@@ -231,6 +232,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
     <p class="lead">Cada servicio tiene su propia página con lo que necesitas traer, cuánto demora y preguntas frecuentes. Haz clic y entérate antes de llamar.</p>
     <div class="cols">
       <div class="card">
+        <img class="cimg" style="object-position:40% 55%" src="img/familia.jpg" alt="Familia frente a su casa y su auto en North Las Vegas" width="1280" height="720" loading="lazy">
         <h3>Personal</h3>
         <div class="sub">Para ti y tu familia</div>
         <div class="grp"><b>Vehículos</b><ul><li><a id="s-auto" href="https://esales.farmers.com/fastquote?Lob=Auto&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto · cotizar</a></li><li><a href="https://www.farmers.com/motorcycle/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Motocicleta</a></li><li><a href="https://www.farmers.com/recreational/boat-and-watercraft-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Bote y jet ski</a></li><li><a href="https://www.farmers.com/auto/collectible/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Autos clásicos</a></li><li><a href="https://www.farmers.com/recreational/offroad-vehicle/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">ATV y off-road</a></li><li><a href="https://www.farmers.com/recreational/motor-home/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">RV y casa rodante</a></li></ul></div>
@@ -241,6 +243,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
         <p class="note">Seguros con múltiples compañías de primer nivel, entre ellas Farmers y Progressive. La disponibilidad de coberturas varía por compañía y por estado.</p>
       </div>
       <div class="card" id="negocios">
+        <img class="cimg" style="object-position:70% 12%" src="img/negocio.jpg" alt="Dueño de un negocio en su local" width="1280" height="720" loading="lazy">
         <h3>Negocios</h3>
         <div class="sub">Para tu empresa, desde el primer día</div>
         <div class="grp"><b>Seguros comerciales</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Business&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Seguro de negocio · cotizar</a></li><li><a href="https://www.farmers.com/business/auto-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Auto comercial</a></li><li><a href="https://www.farmers.com/business/property/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Propiedad comercial</a></li><li><a href="https://www.farmers.com/business/general-liability-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Responsabilidad civil</a></li><li><a href="https://www.farmers.com/business/workers-compensation/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Workers' compensation</a></li><li><a href="https://www.farmers.com/business/industry/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Por industria</a></li></ul></div>
@@ -290,11 +293,14 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
       </ul>
       <div style="margin-top:26px"><a class="btn btn-acc" href="#contacto">Revisar mi plan</a></div>
     </div>
+    <div>
+    <img class="mimg" src="img/medicare.jpg" alt="Pareja mayor revisando su plan de salud en casa" width="1280" height="720" loading="lazy">
     <div class="box">
       <h3>Antes de que llames, debes saber:</h3>
       <small>No ofrecemos todos los planes disponibles en su área. Cualquier información que proporcionemos se limita a los planes que ofrecemos en su área. Comuníquese con Medicare.gov o al 1-800-MEDICARE para obtener información sobre todas sus opciones.</small>
       <small>Marrero Bernal &amp; Associates es una agencia de seguros independiente con licencia y no está afiliada ni respaldada por el gobierno de EE. UU. ni por el programa federal Medicare.</small>
       <small>Las coberturas, primas y beneficios varían según el plan y el condado. Los textos finales se ajustan a la guía de mercadeo de CMS vigente.</small>
+    </div>
     </div>
   </div>
 </section>
@@ -316,6 +322,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
   <div class="wrap">
     <div class="kicker">Cómo funciona</div>
     <h2>Resolver un trámite no tiene que ser un día perdido.</h2>
+    <img class="simg" style="object-position:50% 15%" src="img/tramites.jpg" alt="Clienta firmando sus documentos en la oficina" width="1280" height="720" loading="lazy">
     <div class="steps">
       <div class="step"><h3>Nos cuentas</h3><p>Por teléfono, WhatsApp o en la oficina. Sin cita para la mayoría de los trámites.</p></div>
       <div class="step"><h3>Te decimos qué traer</h3><p>Una lista corta y clara de documentos. Si falta algo, te ayudamos a conseguirlo.</p></div>

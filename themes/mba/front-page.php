@@ -59,6 +59,7 @@
     <p class="lead">Cada servicio tiene su propia página con lo que necesitas traer, cuánto demora y preguntas frecuentes. Haz clic y entérate antes de llamar.</p>
     <div class="cols">
       <div class="card">
+        <img class="cimg" style="object-position:40% 55%" src="<?php echo esc_url(get_theme_file_uri('img/familia.jpg')); ?>" alt="Familia frente a su casa y su auto en North Las Vegas" width="1280" height="720" loading="lazy">
         <h3>Personal</h3>
         <div class="sub">Para ti y tu familia</div>
         <div class="grp"><b>Vehículos</b><ul><li><a id="s-auto" href="https://esales.farmers.com/fastquote?Lob=Auto&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto · cotizar</a></li><li><a href="https://www.farmers.com/motorcycle/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Motocicleta</a></li><li><a href="https://www.farmers.com/recreational/boat-and-watercraft-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Bote y jet ski</a></li><li><a href="https://www.farmers.com/auto/collectible/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Autos clásicos</a></li><li><a href="https://www.farmers.com/recreational/offroad-vehicle/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">ATV y off-road</a></li><li><a href="https://www.farmers.com/recreational/motor-home/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">RV y casa rodante</a></li></ul></div>
@@ -69,6 +70,7 @@
         <p class="note">Seguros con múltiples compañías de primer nivel, entre ellas Farmers y Progressive. La disponibilidad de coberturas varía por compañía y por estado.</p>
       </div>
       <div class="card" id="negocios">
+        <img class="cimg" style="object-position:70% 12%" src="<?php echo esc_url(get_theme_file_uri('img/negocio.jpg')); ?>" alt="Dueño de un negocio en su local" width="1280" height="720" loading="lazy">
         <h3>Negocios</h3>
         <div class="sub">Para tu empresa, desde el primer día</div>
         <div class="grp"><b>Seguros comerciales</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Business&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Seguro de negocio · cotizar</a></li><li><a href="https://www.farmers.com/business/auto-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Auto comercial</a></li><li><a href="https://www.farmers.com/business/property/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Propiedad comercial</a></li><li><a href="https://www.farmers.com/business/general-liability-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Responsabilidad civil</a></li><li><a href="https://www.farmers.com/business/workers-compensation/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Workers' compensation</a></li><li><a href="https://www.farmers.com/business/industry/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Por industria</a></li></ul></div>
@@ -118,11 +120,14 @@
       </ul>
       <div style="margin-top:26px"><a class="btn btn-acc" href="#contacto">Revisar mi plan</a></div>
     </div>
+    <div>
+    <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/medicare.jpg')); ?>" alt="Pareja mayor revisando su plan de salud en casa" width="1280" height="720" loading="lazy">
     <div class="box">
       <h3>Antes de que llames, debes saber:</h3>
       <small>No ofrecemos todos los planes disponibles en su área. Cualquier información que proporcionemos se limita a los planes que ofrecemos en su área. Comuníquese con Medicare.gov o al 1-800-MEDICARE para obtener información sobre todas sus opciones.</small>
       <small>Marrero Bernal &amp; Associates es una agencia de seguros independiente con licencia y no está afiliada ni respaldada por el gobierno de EE. UU. ni por el programa federal Medicare.</small>
       <small>Las coberturas, primas y beneficios varían según el plan y el condado. Los textos finales se ajustan a la guía de mercadeo de CMS vigente.</small>
+    </div>
     </div>
   </div>
 </section>
@@ -144,6 +149,7 @@
   <div class="wrap">
     <div class="kicker">Cómo funciona</div>
     <h2>Resolver un trámite no tiene que ser un día perdido.</h2>
+    <img class="simg" style="object-position:50% 15%" src="<?php echo esc_url(get_theme_file_uri('img/tramites.jpg')); ?>" alt="Clienta firmando sus documentos en la oficina" width="1280" height="720" loading="lazy">
     <div class="steps">
       <div class="step"><h3>Nos cuentas</h3><p>Por teléfono, WhatsApp o en la oficina. Sin cita para la mayoría de los trámites.</p></div>
       <div class="step"><h3>Te decimos qué traer</h3><p>Una lista corta y clara de documentos. Si falta algo, te ayudamos a conseguirlo.</p></div>
