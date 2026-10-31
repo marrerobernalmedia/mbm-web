@@ -17,3 +17,11 @@
   ExpiresByType text/javascript "access plus 0 seconds"
   ExpiresByType application/manifest+json "access plus 0 seconds"
 </IfModule>
+
+# Sitio www.elhomedelarisa.com (mismo código que la app). Las reglas de WordPress del directorio padre no aplican aquí.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^elhomedelarisa\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.elhomedelarisa.com/$1 [R=301,L]
+</IfModule>
+ErrorDocument 404 /404.html

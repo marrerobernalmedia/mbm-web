@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /feedback.php
+Disallow: /avisos.php
+
+Sitemap: https://www.elhomedelarisa.com/sitemap.xml
