@@ -82,7 +82,7 @@ ${ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : ""}
 <body>
 <header class="top"><div class="wrap top-in">
  <a class="brand" href="${P || "./"}"><img src="${P}img/logo-h.webp" alt="Straight 2D Chest" width="560" height="285"></a>
- <nav>${SERIES.map(x => `<a href="${P}series/${x.slug}/">${x.name.replace(" & Analysis", "")}</a>`).join("")}<a href="${P}#interviews">Interviews</a><a href="${P}about/">About</a><a class="sub" href="${YT_CH}?sub_confirmation=1" rel="noopener">Subscribe</a></nav>
+ <nav>${SERIES.map(x => `<a href="${P}series/${x.slug}/">${x.name.replace(" & Analysis", "")}</a>`).join("")}<a href="${P}#interviews">Interviews</a><a href="${P}about/">About</a><a class="app" href="${P}#app">📲 App</a><a class="sub" href="${YT_CH}?sub_confirmation=1" rel="noopener">Subscribe</a></nav>
  <span class="lang" role="group" aria-label="Language / Idioma"><a href="${alt_es || "https://rectaalpecho.com/"}" hreflang="es" lang="es" title="Español — Recta Al Pecho"><svg viewBox="0 0 30 20" width="22" height="15" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg><b>ES</b></a><a href="${canon}" hreflang="en" class="on" title="English"><svg viewBox="0 0 38 20" width="22" height="15" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><g fill="#b22234"><rect width="38" height="1.54"/><rect y="3.08" width="38" height="1.54"/><rect y="6.15" width="38" height="1.54"/><rect y="9.23" width="38" height="1.54"/><rect y="12.31" width="38" height="1.54"/><rect y="15.38" width="38" height="1.54"/><rect y="18.46" width="38" height="1.54"/></g><rect width="15.2" height="10.77" fill="#3c3b6e"/></svg><b>EN</b></a></span>
 </div></header>
 ${body}
@@ -147,6 +147,19 @@ ${S.cats.map(c => {
  <div class="grid">${list.map(v => card(v, "")).join("")}</div>
 </section>`;
   }).join("\n")}
+
+<section class="appband" id="app"><div class="wrap appband-in">
+ <img src="img/icon-512.png" alt="Straight 2D Chest app" width="120" height="120" loading="lazy">
+ <div>
+  <small>Free app</small><h2>Get Straight 2D Chest on your phone</h2>
+  <p>Every interview with English audio, the series, the myths and the stories — plus an alert when a new episode premieres.</p>
+  <div class="app-btns">
+   <a class="btn" href="https://marrerobernalmedia.com/recta/?lang=en" rel="noopener">Open the app</a>
+   <a class="btn ghost" href="https://marrerobernalmedia.com/apk/recta.apk">Android · Download (APK)</a>
+  </div>
+  <p class="nota">iPhone: open the app in Safari, tap Share, then “Add to Home Screen”. Android: Chrome menu ⋮ → “Install app”, or download the APK. Coming soon to Google Play and the App Store.</p>
+ </div>
+</div></section>
 
 <section class="band"><div class="wrap band-in">
  <div><h2>How the English audio works</h2><p>Most of our interviews are recorded in Spanish. On YouTube, each one carries an English audio track, so you can watch the whole conversation in English. Interviews recorded in English are on the way.</p></div>
