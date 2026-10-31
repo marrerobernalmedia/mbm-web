@@ -23,10 +23,10 @@ add_action('wp_head', function () {
 
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('mba-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap', [], null);
-  wp_enqueue_style('mba', get_stylesheet_uri(), ['mba-fonts'], MBA_VER);
-  wp_enqueue_script('mba-seguidores', 'https://marrerobernalmedia.com/seguidores.js', [], null, true);
-  wp_enqueue_script('mba-en', get_theme_file_uri('en.js'), [], MBA_VER, true);
-  wp_enqueue_script('mba-idioma', 'https://marrerobernalmedia.com/idioma.js', ['mba-en'], null, true);
+  wp_enqueue_style('mba', get_stylesheet_uri(), ['mba-fonts'], @filemtime(get_stylesheet_directory() . '/style.css') ?: MBA_VER);
+  wp_enqueue_script('mba-seguidores', 'https://marrerobernalmedia.com/seguidores.js', [], wp_date('YmdH'), true);
+  wp_enqueue_script('mba-en', get_theme_file_uri('en.js'), [], @filemtime(get_theme_file_path('en.js')) ?: MBA_VER, true);
+  wp_enqueue_script('mba-idioma', 'https://marrerobernalmedia.com/idioma.js', ['mba-en'], wp_date('Ymd'), true);
   if (is_front_page()) wp_enqueue_script('mba-buscador', get_theme_file_uri('buscador.js'), [], MBA_VER, true);
 });
 

@@ -102,10 +102,10 @@ add_action('wp_head', function () {
 
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('mbm-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap', [], null);
-  wp_enqueue_style('mbm', get_stylesheet_uri(), ['mbm-fonts'], MBM_VER);
-  wp_enqueue_script('mbm-seguidores', home_url('/seguidores.js'), [], null, true);
-  wp_enqueue_script('mbm-en', get_theme_file_uri('en.js'), [], MBM_VER, true);
-  wp_enqueue_script('mbm-idioma', home_url('/idioma.js'), ['mbm-en'], null, true);
+  wp_enqueue_style('mbm', get_stylesheet_uri(), ['mbm-fonts'], @filemtime(get_stylesheet_directory() . '/style.css') ?: MBM_VER);
+  wp_enqueue_script('mbm-seguidores', home_url('/seguidores.js'), [], @filemtime(ABSPATH . 'seguidores.js') ?: wp_date('YmdH'), true);
+  wp_enqueue_script('mbm-en', get_theme_file_uri('en.js'), [], @filemtime(get_theme_file_path('en.js')) ?: MBM_VER, true);
+  wp_enqueue_script('mbm-idioma', home_url('/idioma.js'), ['mbm-en'], @filemtime(ABSPATH . 'idioma.js') ?: wp_date('YmdH'), true);
 });
 
 /** La portada siempre es front-page.php, aunque la página tenga plantilla de Elementor guardada. */
