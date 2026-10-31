@@ -60,7 +60,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdro
 .pop a{display:inline-block;margin:6px 8px 0 0;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font-weight:500}
 .pop a:hover{border-color:var(--acc)}
 .heroimg{aspect-ratio:4/5;border-radius:24px;background:linear-gradient(160deg,#1b2d49,#0f1b2d);position:relative;overflow:hidden;color:#fff;display:flex;align-items:flex-end;padding:26px;border:1px solid var(--line)}
-.heroimg::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(230,182,74,.35),transparent 50%)}
+.heroimg::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(15,27,45,.85))}
 .heroimg .lab{position:relative;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
 .heroimg b{position:relative;display:block;font-family:Fraunces,serif;font-size:26px;font-weight:600;margin-top:6px}
 .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
@@ -185,8 +185,8 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
       </div>
       <div class="badges"><span>Licencia NV · CA · AZ</span><span>Agencia independiente · Farmers, Progressive y más</span><span>Español e inglés</span><span>Cotización sin costo</span></div>
     </div>
-    <div class="heroimg">
-      <div><span class="lab">Imagen generada · familia latina frente a su casa en Las Vegas</span><b>Protegemos lo que construiste.</b></div>
+    <div class="heroimg" style="background:url(img/eliam-retrato.jpg) center/cover">
+      <div><span class="lab">Eliam Marrero Bernal · fundador</span><b>Te atendemos como a familia.</b></div>
     </div>
   </div>
 </section>
@@ -283,7 +283,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
 
 <section class="about" id="nosotros">
   <div class="wrap">
-    <div class="ph">Foto real de Eliam Marrero Bernal en la oficina<br>(se coloca al construir)</div>
+    <img src="img/eliam.jpg" alt="Eliam Marrero Bernal atendiendo clientes en la oficina" style="border-radius:22px;border:1px solid var(--line)">
     <div>
       <div class="kicker">Quiénes somos</div>
       <h2>Una agencia de barrio con licencia en tres estados.</h2>
