@@ -95,14 +95,23 @@ add_filter('get_the_categories', function ($cats) {
 
 /** SEO. Lema del sitio (manda sobre el de Ajustes) y textos de portada para Yoast; sin meta duplicada. */
 define('RECTA_TAGLINE', 'Deportes · El béisbol es la pasión');
-define('RECTA_HOME_TITLE', 'Recta al Pecho — Entrevistas con peloteros cubanos y las historias del béisbol');
-define('RECTA_HOME_DESC', 'Recta al Pecho: canal de deportes donde el béisbol es la pasión. Entrevistas largas con peloteros cubanos, las historias que el relato oficial borró, los que dijeron no, las fugas y los mitos frente a los números.');
+define('RECTA_HOME_TITLE', 'Recta al Pecho — Entrevistas con peloteros y las historias del béisbol');
+define('RECTA_HOME_DESC', 'Recta al Pecho: canal de deportes donde el béisbol es la pasión. Entrevistas largas con peloteros, las historias que el relato oficial borró, los que dijeron no, las fugas y los mitos frente a los números.');
 add_filter('pre_option_blogdescription', fn() => RECTA_TAGLINE);
 add_filter('wpseo_title', fn($t) => (is_front_page() || is_home()) ? RECTA_HOME_TITLE : $t);
 add_filter('wpseo_opengraph_title', fn($t) => (is_front_page() || is_home()) ? RECTA_HOME_TITLE : $t);
 add_filter('wpseo_metadesc', fn($d) => (is_front_page() || is_home()) ? RECTA_HOME_DESC : ($d ?: (is_singular() ? recta_excerpt(null, 28) : (is_category() ? (recta_series()[get_queried_object()->slug][1] ?? $d) : $d))));
 add_filter('wpseo_opengraph_desc', fn($d) => (is_front_page() || is_home()) ? RECTA_HOME_DESC : $d);
-add_filter('wpseo_opengraph_image', fn($i) => $i ?: get_theme_file_uri('img/portada.jpg'));
+add_filter('wpseo_opengraph_image', fn($i) => (is_front_page() || is_home() || !$i) ? get_theme_file_uri('img/og.jpg') : $i);
+add_filter('wpseo_twitter_image', fn($i) => (is_front_page() || is_home() || !$i) ? get_theme_file_uri('img/og.jpg') : $i);
+/** Vista previa al compartir (Facebook, WhatsApp, iMessage): logo de Recta, nunca una foto. Si Yoast no está, lo pone el tema. */
+add_action('wp_head', function () {
+  if (defined('WPSEO_VERSION')) return;
+  $t = (is_front_page() || is_home()) ? RECTA_HOME_TITLE : wp_get_document_title();
+  $d = (is_front_page() || is_home()) ? RECTA_HOME_DESC : (is_singular() ? recta_excerpt(null, 28) : RECTA_HOME_DESC);
+  $i = (is_singular() && has_post_thumbnail()) ? get_the_post_thumbnail_url(null, 'recta-hero') : get_theme_file_uri('img/og.jpg');
+  printf('<meta property="og:type" content="website"><meta property="og:site_name" content="Recta al Pecho"><meta property="og:title" content="%s"><meta property="og:description" content="%s"><meta property="og:image" content="%s"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">' . "\n", esc_attr($t), esc_attr($d), esc_url($i));
+}, 3);
 add_filter('wpseo_schema_website', function ($data) { $data['description'] = RECTA_HOME_DESC; return $data; });
 add_filter('wpseo_schema_organization', function ($data) {
   $data['description'] = RECTA_HOME_DESC; $data['url'] = home_url('/');

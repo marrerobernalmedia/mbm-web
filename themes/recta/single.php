@@ -16,7 +16,7 @@
  <a href="https://wa.me/?text=<?php echo rawurlencode(get_the_title() . ' ' . get_permalink()); ?>" target="_blank" rel="noopener">WhatsApp</a>
  <a href="https://x.com/intent/tweet?url=<?php echo rawurlencode(get_permalink()); ?>&text=<?php echo rawurlencode(get_the_title()); ?>" target="_blank" rel="noopener">X</a>
 </div>
-<div class="author-box"><span class="av"><?php echo esc_html(mb_strtoupper(mb_substr(get_the_author(), 0, 1))); ?></span><div><b><?php the_author(); ?></b><p><?php echo esc_html(get_the_author_meta('description') ?: 'Director de Recta al Pecho y de Marrero Bernal Media. Entrevista a los peloteros cubanos en Las Vegas, Miami y Cuba.'); ?></p></div></div>
+<div class="author-box"><span class="av"><?php echo esc_html(mb_strtoupper(mb_substr(get_the_author(), 0, 1))); ?></span><div><b><?php the_author(); ?></b><p><?php echo esc_html(get_the_author_meta('description') ?: 'Director de Recta al Pecho y de Marrero Bernal Media. Entrevista a peloteros en Las Vegas, Miami y Cuba.'); ?></p></div></div>
 <div class="sponsor-box">🤝 Recta al Pecho es patrocinado por <a href="https://www.marrerobernal.com" target="_blank" rel="noopener">Marrero Bernal &amp; Associates</a>: impuestos personales y comerciales, seguros, préstamos de casa, Medicare, inmigración, notaría y traducciones. Atendemos en línea: <a href="https://www.marrerobernal.com" target="_blank" rel="noopener">www.marrerobernal.com</a></div>
 </article>
 <?php
