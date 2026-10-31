@@ -192,7 +192,7 @@ svg{width:22px;height:22px;flex:none}
 <script>
 window.OneSignalDeferred = window.OneSignalDeferred || [];
 if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
-  await OS.init({ appId: window.ONESIGNAL_APP_ID, serviceWorkerPath: "recta/sw.js", serviceWorkerParam: { scope: "/recta/" } });
+  const BASE = location.pathname.replace(/[^/]*$/, ""); await OS.init({ appId: window.ONESIGNAL_APP_ID, serviceWorkerPath: BASE.replace(/^\//, "") + "sw.js", serviceWorkerParam: { scope: BASE } });
 });
 </script>
 </head><body>
