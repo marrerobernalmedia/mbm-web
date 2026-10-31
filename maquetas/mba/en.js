@@ -2,7 +2,7 @@ window.I18N_EN = {
 "Marrero Bernal & Associates · Seguros, taxes e inmigración en Las Vegas":"Marrero Bernal & Associates · Insurance, taxes and immigration in Las Vegas",
 "🕘 Lun–Vie 9:00 AM – 6:00 PM":"🕘 Mon–Fri 9:00 AM – 6:00 PM",
 "Personal":"Personal","Negocios":"Business","Medicare":"Medicare","Quiénes somos":"About us","Contacto":"Contact",
-"Acceso de clientes":"Client access","Pagar en línea":"Pay online","Cotizar en línea":"Get a quote",
+"Acceso de clientes":"Client access","🔐 Clientes":"🔐 Clients","💳 Pagar":"💳 Pay","Entra al portal seguro para subir y descargar tus documentos (SecureFilePro).":"Sign in to the secure portal to upload and download your documents (SecureFilePro).","Entrar →":"Sign in →","Paga tu servicio con tarjeta de forma segura, desde el teléfono o la computadora.":"Pay for your service securely by card, from your phone or computer.","Pagar →":"Pay →","Pagar en línea":"Pay online","Cotizar en línea":"Get a quote",
 "North Las Vegas · desde 2008":"North Las Vegas · since 2008",
 "Seguros, taxes e inmigración,":"Insurance, taxes and immigration,","en tu idioma":"in your language","y en un solo lugar.":"and in one place.",
 "Somos una agencia de seguros independiente con contratos con múltiples compañías de primer nivel, como Farmers y Progressive, además de preparadores de impuestos y especialistas en trámites. Diecisiete años atendiendo a la comunidad hispana de Nevada, California y Arizona.":"We are an independent insurance agency with contracts with multiple top-tier carriers, such as Farmers and Progressive, plus tax preparers and paperwork specialists. Seventeen years serving the Hispanic community of Nevada, California and Arizona.",

@@ -39,7 +39,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdro
 .nav ul a:hover{color:var(--acc)}
 .nav .cta{display:flex;gap:10px}
 .nav .cta .btn{padding:10px 16px;font-size:13px}
-@media(max-width:960px){.nav ul{display:none}.nav .cta .btn-ghost{display:none}}
+.nav .cta .btn .l{display:inline}.nav .cta .btn .s{display:none}
+@media(max-width:960px){.nav ul{display:none}.nav .cta .btn-acc{display:none}.nav .cta .btn .l{display:none}.nav .cta .btn .s{display:inline}.nav .cta .btn{padding:9px 12px;border-color:var(--navy)}}
 /* hero */
 .hero{background:linear-gradient(180deg,var(--cream),#fff);padding-block:clamp(48px,7vw,96px)}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
@@ -135,6 +136,7 @@ footer b{display:block;color:#fff;font-weight:700;margin-bottom:10px;font-size:1
 footer a{display:block;margin:5px 0}
 footer a:hover{color:#fff}
 footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;font-size:11.5px;color:#8b97ab;line-height:1.6}
+.cli{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0}@media(max-width:700px){.cli{grid-template-columns:1fr}}.cli-card{display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:center;background:var(--navy);color:#fff;border-radius:16px;padding:18px 20px}.cli-card .ic{font-size:26px}.cli-card b{display:block;font-size:17px}.cli-card span{font-size:13px;opacity:.85}.cli-card em{font-style:normal;font-weight:700;color:var(--acc2)}
 </style>
 </head>
 <body>
@@ -161,8 +163,8 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="cta">
-      <a class="btn btn-ghost" href="https://marrerobernal.securefilepro.com/portal/#/login" target="_blank" rel="noopener">Acceso de clientes</a>
-      <a class="btn btn-ghost" href="https://55a7805c-ea2c-4f0e-951b-1aa3c932e857.paylinks.godaddy.com" target="_blank" rel="noopener">Pagar en línea</a>
+      <a class="btn btn-ghost" href="https://marrerobernal.securefilepro.com/portal/#/login" target="_blank" rel="noopener"><span class="l">Acceso de clientes</span><span class="s">🔐 Clientes</span></a>
+      <a class="btn btn-ghost" href="https://55a7805c-ea2c-4f0e-951b-1aa3c932e857.paylinks.godaddy.com" target="_blank" rel="noopener"><span class="l">Pagar en línea</span><span class="s">💳 Pagar</span></a>
       <a class="btn btn-acc" href="#cotizar">Cotizar en línea</a>
     </div>
   </div>
@@ -201,6 +203,10 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
     <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licencias y LLC</b><span>Abre tu negocio en Nevada</span></a>
   </div>
   <div class="carriers"><span>Trabajamos con</span><b>Farmers</b><b>Progressive</b><b>y otras compañías de primer nivel</b></div>
+  <div class="cli">
+    <a class="cli-card" href="https://marrerobernal.securefilepro.com/portal/#/login" target="_blank" rel="noopener"><div class="ic">🔐</div><div><b>Acceso de clientes</b><span>Entra al portal seguro para subir y descargar tus documentos (SecureFilePro).</span></div><em>Entrar →</em></a>
+    <a class="cli-card" href="https://55a7805c-ea2c-4f0e-951b-1aa3c932e857.paylinks.godaddy.com" target="_blank" rel="noopener"><div class="ic">💳</div><div><b>Pagar en línea</b><span>Paga tu servicio con tarjeta de forma segura, desde el teléfono o la computadora.</span></div><em>Pagar →</em></a>
+  </div>
   <div class="quote" id="cotizar">
     <div><div class="kicker" style="margin-bottom:6px">Cotiza en línea</div><h3>Tu cotización llega directo a nuestra oficina.</h3><p>Cinco minutos, sin llamadas. La revisamos y te contactamos con la mejor opción.</p></div>
     <div class="qbtns">
