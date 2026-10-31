@@ -49,6 +49,7 @@ const fdate = f => { if (!f) return ""; const [y, m, d] = f.split("-").map(Numbe
 const BUILD = new Date().toISOString().slice(0, 10);
 
 const css = fs.readFileSync(path.join(__dirname, "s2d_style.css"), "utf8");
+const CSSV = require("crypto").createHash("md5").update(css).digest("hex").slice(0, 8); // cambia cuando cambia el CSS (evita la caché vieja)
 fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(path.join(OUT, "style.css"), css);
 
@@ -75,7 +76,7 @@ ${rel === "" ? `<link rel="alternate" hreflang="en" href="${SITE}/"><link rel="a
 <link rel="apple-touch-icon" href="${P}img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${P}style.css?v=${BUILD}">
+<link rel="stylesheet" href="${P}style.css?v=${CSSV}">
 ${ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : ""}
 </head>
 <body>
