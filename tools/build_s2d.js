@@ -89,7 +89,7 @@ ${body}
 <footer class="foot"><div class="wrap foot-in">
  <img src="${P}img/logo-h.webp" alt="" width="280" height="142" loading="lazy">
  <div>
-  <p><strong>Straight 2D Chest</strong> is the English edition of <a href="https://rectaalpecho.com/" hreflang="es">Recta Al Pecho</a>, the uncensored Cuban baseball interview show.</p>
+  <p><strong>Straight 2D Chest</strong> is the English edition of <a href="https://rectaalpecho.com/" hreflang="es">Recta Al Pecho</a>, the sports interview show where baseball is the passion.</p>
   <p><a href="${YT_CH}" rel="noopener">YouTube</a> · <a href="${P}about/">About</a> · <a href="https://marrerobernalmedia.com/" rel="noopener">Marrero Bernal Media</a></p>
   <p class="legal">© ${BUILD.slice(0, 4)} Marrero Bernal Media LLC. All rights reserved.</p>
  </div>
@@ -154,7 +154,7 @@ ${S.cats.map(c => {
 </div></section>
 `;
   const ld = { "@context": "https://schema.org", "@type": "WebSite", name: "Straight 2D Chest", alternateName: "Recta Al Pecho (English)", url: SITE + "/", inLanguage: "en", publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC", url: "https://marrerobernalmedia.com/" } };
-  fs.writeFileSync(path.join(OUT, "index.html"), page({ rel: "", title: "Straight 2D Chest — Cuban Baseball Interviews in English", desc: "Uncensored interviews with Cuban and Latin baseball legends — MLB stars, defectors and the greats Cuba tried to erase. The English edition of Recta Al Pecho.", canon: SITE + "/", body, ld }));
+  fs.writeFileSync(path.join(OUT, "index.html"), page({ rel: "", title: "Straight 2D Chest — Sports · Baseball Is the Passion", desc: "Uncensored interviews with Cuban and Latin baseball legends — MLB stars, defectors and the greats Cuba tried to erase. The English edition of Recta Al Pecho.", canon: SITE + "/", body, ld }));
 }
 
 // ── Interview pages
@@ -196,7 +196,7 @@ for (const v of V) {
   fs.rmSync(path.join(OUT, "news"), { recursive: true, force: true });
   fs.mkdirSync(path.join(OUT, "news"), { recursive: true });
   const body = `<main class="wrap"><section class="cat"><div class="cat-head"><h1 class="sec">Stories</h1><p>English editions of the Recta Al Pecho articles: the stories behind the interviews.</p></div><div class="grid">${NEWS.map(n => ncard(n, "../")).join("")}</div></section></main>`;
-  fs.writeFileSync(path.join(OUT, "news", "index.html"), page({ rel: "../", title: "Stories | Straight 2D Chest", desc: "Cuban baseball stories in English — the English editions of the Recta Al Pecho articles.", canon: SITE + "/news/", body }));
+  fs.writeFileSync(path.join(OUT, "news", "index.html"), page({ rel: "../", title: "Stories | Straight 2D Chest", desc: "Baseball stories in English — the English editions of the Recta Al Pecho articles.", canon: SITE + "/news/", body }));
   for (const n of NEWS) {
     const iv = n.video && byId[n.video];
     const more = NEWS.filter(x => x.slug !== n.slug).slice(0, 4);
@@ -246,7 +246,7 @@ for (const v of V) {
  <p>Straight 2D Chest and Recta Al Pecho are produced by <a href="https://marrerobernalmedia.com/">Marrero Bernal Media LLC</a>, an independent media company. New Spanish-language interviews premiere every Thursday on the <a href="${YT_CH}" rel="noopener">Recta Al Pecho YouTube channel</a>.</p>
 </main>`;
   fs.mkdirSync(path.join(OUT, "about"), { recursive: true });
-  fs.writeFileSync(path.join(OUT, "about", "index.html"), page({ rel: "../", title: "About | Straight 2D Chest", desc: "Straight 2D Chest is the English edition of Recta Al Pecho, the uncensored Cuban baseball interview show by Marrero Bernal Media.", canon: SITE + "/about/", body }));
+  fs.writeFileSync(path.join(OUT, "about", "index.html"), page({ rel: "../", title: "About | Straight 2D Chest", desc: "Straight 2D Chest is the English edition of Recta Al Pecho, the sports interview show where baseball is the passion, by Marrero Bernal Media.", canon: SITE + "/about/", body }));
 }
 
 // ── 404, robots, sitemap, .htaccess

@@ -477,7 +477,7 @@ document.querySelectorAll(".lng [data-lang]").forEach(b => { b.classList.toggle(
   b.addEventListener("click", () => { if (b.dataset.lang === LANG) return; try { localStorage.setItem("recta_lang", b.dataset.lang); } catch (e) {} location.reload(); }); });
 if (EN) {
   const T = {
-    "Deportes · El béisbol es la pasión · estreno cada jueves": "Cuban baseball in English · every Thursday",
+    "Deportes · El béisbol es la pasión · estreno cada jueves": "Sports · Baseball is the passion · new episode every Thursday",
     "Descargar la app": "Get the app", "Inicio": "Home", "Series": "Series", "Mitos": "Myths", "Noticias": "Stories",
     "Que no se te escape un jueves": "Don't miss a Thursday",
     "Cada jueves estrena una entrevista nueva. Elige cómo quieres enterarte.": "A new interview premieres every Thursday. Choose how you want to hear about it.",
