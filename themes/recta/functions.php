@@ -132,3 +132,23 @@ add_filter('pre_option_page_on_front', fn() => 0);
 /** Limpieza de cabecera. */
 remove_action('wp_head', 'wp_generator');
 add_filter('emoji_svg_url', '__return_false');
+
+/** Páginas viejas de Elementor que quedaron vacías con el tema: redirección permanente a su equivalente (no se borra nada). */
+function recta_redirects() {
+  return ['home' => '/', 'beisbol' => '/', 'los-borrados' => '/category/los-borrados/', 'las-fugas-2' => '/category/las-fugas/', 'nuestros-autores' => '/quienes-somos/'];
+}
+add_action('template_redirect', function () {
+  if (is_page()) { $slug = get_queried_object()->post_name ?? ''; $r = recta_redirects(); if (isset($r[$slug])) { wp_redirect(home_url($r[$slug]), 301); exit; } }
+  if (is_author()) { wp_redirect(home_url('/quienes-somos/'), 301); exit; }
+});
+add_filter('wpseo_sitemap_entry', function ($url, $type, $post) {
+  if ($type === 'post' && is_object($post) && $post->post_type === 'page' && isset(recta_redirects()[$post->post_name])) return false;
+  return $url;
+}, 10, 3);
+add_filter('wpseo_sitemap_exclude_author', '__return_true');
+add_filter('wpseo_sitemap_exclude_taxonomy', fn($x, $tax) => $tax === 'post_tag' ? true : $x, 10, 2);
+/** Sin indexar: archivo "Uncategorized", búsquedas y paginaciones de etiquetas. */
+add_filter('wpseo_robots', function ($r) {
+  if ((is_category() && get_queried_object()->slug === 'uncategorized') || is_tag() || is_search() || is_date()) return 'noindex, follow';
+  return $r;
+});
