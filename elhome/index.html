@@ -577,6 +577,10 @@ render();
   new MutationObserver(fit).observe(document.getElementById("view"), { childList: true }); fit();
   const y = document.getElementById("yr"); if (y) y.textContent = new Date().getFullYear();
 })();
+// --- enlaces directos desde las páginas de humorista y de show: /?humorista=Nombre · /?show=id ---
+(() => { const q = new URLSearchParams(location.search), h = q.get("humorista"), sh = q.get("show");
+  if (h && D.comics.some(c => c.name === h)) { openComic = h; go("humoristas"); }
+  else if (sh && SH[sh]) { openShow = sh; sub = 0; sort = "show"; go("shows"); } })();
 // --- descargar / instalar la app ---
 let deferred = null;
 const instBtn = document.getElementById("instBtn"), appRoot = document.getElementById("appRoot"), appBtn = document.getElementById("appBtn");
