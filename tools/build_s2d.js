@@ -21,11 +21,18 @@ const NEWS = (fs.existsSync(NEWS_DIR) ? fs.readdirSync(NEWS_DIR).filter(f => f.e
   .map(f => JSON.parse(fs.readFileSync(path.join(NEWS_DIR, f), "utf8")))
   .filter(n => n.date <= TODAY)
   .sort((a, b) => b.date.localeCompare(a.date) || b.recta_id - a.recta_id);
+const SERIES = [
+  { id: "los-borrados", slug: "the-erased", name: "The Erased", tag: "The players Cuba wiped from the record books and from television." },
+  { id: "las-fugas", slug: "the-defections", name: "The Defections", tag: "How they got out, told in the first person." },
+  { id: "los-que-dijeron-no", slug: "they-said-no", name: "They Said No", tag: "They turned down the millions. This is what they got." },
+  { id: "las-glorias-en-el-piso", slug: "forgotten-champions", name: "Forgotten Champions", tag: "Team Cuba champions who live forgotten today." },
+  { id: "la-hipocresia-en-el-beisbol", slug: "myths", name: "Myths & Analysis", tag: "What fans keep repeating, against the numbers." }
+];
 const newsImg = n => n.image || (n.video ? big(n.video) : SITE + "/img/og.jpg");
 function ncard(n, P) {
   return `<a class="card" href="${P}news/${n.slug}/">
   <span class="th"><img src="${newsImg(n)}" alt="" loading="lazy" width="480" height="270"><span class="en">Story</span></span>
-  <span class="who">${fdate(n.date)}</span>
+  <span class="who">${esc((SERIES.find(x => x.id === n.series) || {}).name || fdate(n.date))}</span>
   <span class="ttl">${esc(n.title)}</span>
 </a>`;
 }
@@ -74,7 +81,7 @@ ${ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : ""}
 <body>
 <header class="top"><div class="wrap top-in">
  <a class="brand" href="${P || "./"}"><img src="${P}img/logo-h.webp" alt="Straight 2D Chest" width="560" height="285"></a>
- <nav><a href="${P}#interviews">Interviews</a><a href="${P}news/">Stories</a><a href="${P}about/">About</a><a class="sub" href="${YT_CH}?sub_confirmation=1" rel="noopener">Subscribe</a></nav>
+ <nav>${SERIES.map(x => `<a href="${P}series/${x.slug}/">${x.name.replace(" & Analysis", "")}</a>`).join("")}<a href="${P}#interviews">Interviews</a><a href="${P}about/">About</a><a class="sub" href="${YT_CH}?sub_confirmation=1" rel="noopener">Subscribe</a></nav>
  <span class="lang" role="group" aria-label="Language / Idioma"><a href="${alt_es || "https://rectaalpecho.com/"}" hreflang="es" lang="es" title="Español — Recta Al Pecho"><svg viewBox="0 0 30 20" width="22" height="15" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg><b>ES</b></a><a href="${canon}" hreflang="en" class="on" title="English"><svg viewBox="0 0 38 20" width="22" height="15" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><g fill="#b22234"><rect width="38" height="1.54"/><rect y="3.08" width="38" height="1.54"/><rect y="6.15" width="38" height="1.54"/><rect y="9.23" width="38" height="1.54"/><rect y="12.31" width="38" height="1.54"/><rect y="15.38" width="38" height="1.54"/><rect y="18.46" width="38" height="1.54"/></g><rect width="15.2" height="10.77" fill="#3c3b6e"/></svg><b>EN</b></a></span>
 </div></header>
 ${body}
@@ -106,35 +113,36 @@ function card(v, P) {
 
 const HOWTO = `<div class="howto"><strong>Hear it in English</strong><ol><li>Press play.</li><li>Open <b>⚙ Settings</b> (on the YouTube app: <b>⋮</b>).</li><li>Choose <b>Audio track → English</b>.</li></ol></div>`;
 
-// ── Home
+// ── Home (misma estructura que rectaalpecho.com: portada con lo último, último capítulo, series, entrevistas)
 {
-  const feat = S.featured.map(id => byId[id]);
-  const lead = feat[0];
+  const lead = NEWS[0], side = NEWS.slice(1, 4);
+  const lastEp = V.filter(v => v.f).sort((x, y) => y.f.localeCompare(x.f))[0];
+  const serieOf = n => SERIES.find(x => x.id === n.series);
   const body = `
-<section class="hero"><div class="wrap hero-in">
- <div class="hero-txt">
-  <p class="kick">The English edition of Recta Al Pecho</p>
-  <h1>Cuban baseball,<br><span>straight to the chest.</span></h1>
-  <p class="lede">Long, uncensored conversations with the players who made Cuban baseball — big leaguers, defectors and the legends the system tried to erase. Every interview here has an English audio track.</p>
-  <p class="cta"><a class="btn" href="#interviews">Browse the interviews</a><a class="btn ghost" href="${YT_CH}?sub_confirmation=1" rel="noopener">Subscribe on YouTube</a></p>
- </div>
- <img class="hero-logo" src="img/logo-sq.webp" alt="Straight 2D Chest logo: a batter in the stance" width="640" height="588">
-</div></section>
+<main class="wrap">
+${lead ? `<section class="r-hero">
+ <a class="r-big" href="news/${lead.slug}/"><img src="${newsImg(lead)}" alt="" fetchpriority="high"><div class="txt">${serieOf(lead) ? `<span class="kicker">${esc(serieOf(lead).name)}</span>` : ""}<h1>${esc(lead.title)}</h1><p>${esc(lead.dek)}</p></div></a>
+ <aside class="r-side"><h3>Latest</h3>
+ ${side.map(n => `<a class="mini" href="news/${n.slug}/"><img src="${newsImg(n)}" alt="" loading="lazy"><span><small>${esc(serieOf(n) ? serieOf(n).name : "Story")}</small><b>${esc(n.title)}</b></span></a>`).join("")}
+ </aside>
+</section>` : ""}
 
-<section class="wrap feat">
- <h2 class="sec">Start here</h2>
- <div class="feat-grid">
-  <a class="feat-lead" href="${lead.slug}/"><span class="th"><img src="${big(lead.id)}" alt="" width="1280" height="720"><span class="en">EN audio</span></span><span class="who">${esc(lead.who)}</span><span class="ttl big">${esc(lead.t)}</span><span class="sum">${esc(lead.sum)}</span></a>
-  <div class="feat-side">${feat.slice(1).map(v => card(v, "")).join("")}</div>
- </div>
-</section>
+${lastEp ? `<section class="r-yt">
+ <button class="player" data-yt="${lastEp.id}" aria-label="Play: ${esc(lastEp.t)}"><img src="${big(lastEp.id)}" alt="" loading="lazy"><span class="play"></span></button>
+ <div><h3>Latest episode on YouTube</h3><h2>${esc(lastEp.who)}: ${esc(lastEp.t)}</h2><p>Premiered ${fdate(lastEp.f)}. Full interview with English audio.</p><a class="btn" href="${lastEp.slug}/">Watch the interview</a>
+ <div class="next"><h3>New interview every Thursday</h3><span>Recorded in Spanish — the English audio track follows on YouTube.</span></div></div>
+</section>` : ""}
 
-${NEWS.length ? `<section class="wrap cat" id="stories"><div class="cat-head"><h2 class="sec">Latest stories</h2><p>The stories behind the interviews, translated from Recta Al Pecho. <a href="news/">All stories →</a></p></div><div class="grid">${NEWS.slice(0, 4).map(n => ncard(n, "")).join("")}</div></section>` : ""}
+${SERIES.map(sr => { const ps = NEWS.filter(n => n.series === sr.id).slice(0, 4); if (!ps.length) return "";
+  return `<section class="r-sec" id="${sr.slug}"><div class="sec-h"><h2>${esc(sr.name)}</h2><p>${esc(sr.tag)}</p><a href="series/${sr.slug}/">See all →</a></div><div class="grid">${ps.map(n => ncard(n, "")).join("")}</div></section>`; }).join("\n")}
+</main>
+
 <div id="interviews"></div>
+<section class="wrap cat"><div class="cat-head"><h2 class="sec">Interviews with English audio</h2><p>Every full interview here has an English audio track on YouTube.</p></div></section>
 ${S.cats.map(c => {
     const list = V.filter(v => v.c === c.id);
     return `<section class="wrap cat" id="${c.id}">
- <div class="cat-head"><h2 class="sec">${esc(c.name)}</h2><p>${esc(c.tag)}</p></div>
+ <div class="cat-head"><h2 class="sec sm">${esc(c.name)}</h2><p>${esc(c.tag)}</p></div>
  <div class="grid">${list.map(v => card(v, "")).join("")}</div>
 </section>`;
   }).join("\n")}
@@ -213,6 +221,17 @@ for (const v of V) {
   fs.writeFileSync(path.join(ROOT, "themes/recta/en_map.json"), JSON.stringify(map, null, 1));
 }
 
+// ── Series pages
+{
+  fs.rmSync(path.join(OUT, "series"), { recursive: true, force: true });
+  for (const sr of SERIES) {
+    const ps = NEWS.filter(n => n.series === sr.id);
+    const body = `<main class="wrap"><section class="cat"><p class="crumb"><a href="../../">Home</a> › Series</p><div class="cat-head"><h1 class="sec">${esc(sr.name)}</h1><p>${esc(sr.tag)}</p></div><div class="grid">${ps.map(n => ncard(n, "../../")).join("")}</div></section></main>`;
+    fs.mkdirSync(path.join(OUT, "series", sr.slug), { recursive: true });
+    fs.writeFileSync(path.join(OUT, "series", sr.slug, "index.html"), page({ rel: "../../", title: `${sr.name} | Straight 2D Chest`, desc: sr.tag, canon: `${SITE}/series/${sr.slug}/`, body, alt_es: `https://rectaalpecho.com/category/${sr.id}/` }));
+  }
+}
+
 // ── About
 {
   const body = `
@@ -232,7 +251,7 @@ for (const v of V) {
 // ── 404, robots, sitemap, .htaccess
 fs.writeFileSync(path.join(OUT, "404.html"), page({ rel: "/", title: "Page not found | Straight 2D Chest", desc: "Page not found.", canon: SITE + "/", body: `<main class="wrap prose"><h1>Strike three — page not found.</h1><p><a class="btn" href="/">Back to the interviews</a></p></main>` }));
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
-const urls = [SITE + "/", SITE + "/about/", SITE + "/news/", ...V.map(v => `${SITE}/${v.slug}/`), ...NEWS.map(n => `${SITE}/news/${n.slug}/`)];
+const urls = [SITE + "/", SITE + "/about/", SITE + "/news/", ...SERIES.map(x => `${SITE}/series/${x.slug}/`), ...V.map(v => `${SITE}/${v.slug}/`), ...NEWS.map(n => `${SITE}/news/${n.slug}/`)];
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `<url><loc>${u}</loc><lastmod>${BUILD}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 fs.writeFileSync(path.join(OUT, ".htaccess"), `# straight2dchest.com — sitio estático (generado por tools/build_s2d.js)
 ErrorDocument 404 /404.html
