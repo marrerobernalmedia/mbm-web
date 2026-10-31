@@ -156,3 +156,7 @@ footer .sponsor{font:500 14px/1.5 "Barlow",sans-serif;opacity:.8;border-top:1px 
 .menu-panel{display:none;background:#0d174e;border-top:1px solid rgba(255,255,255,.15)}
 .menu-panel.open{display:block}
 .menu-panel a{display:block;padding:12px 16px;color:#fff;font:600 16px "Barlow",sans-serif;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,.08)}
+/* Elementor deja colores globales en h1–h4: el tema manda. */
+h1,h2,h3,h4{color:inherit!important}
+.art-img img{height:auto}
+.hero .big h1{color:#fff!important}
