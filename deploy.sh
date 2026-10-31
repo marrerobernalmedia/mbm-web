@@ -18,6 +18,8 @@ RECTA=$HOME/public_html/rectaalpecho
 # Tema propio de marrerobernal.com (themes/mba) → wp-content/themes/mba del dominio primario (public_html)
 MBA=$HOME/public_html
 [ -d themes/mba ] && [ -d "$MBA/wp-content/themes" ] && rsync -a --delete themes/mba/ "$MBA/wp-content/themes/mba/"
+# Tema propio de marrerobernalmedia.com (themes/mbm) → wp-content/themes/mbm del mismo DEST
+[ -d themes/mbm ] && [ -d "$DEST/wp-content/themes" ] && rsync -a --delete themes/mbm/ "$DEST/wp-content/themes/mbm/"
 # Enlace del sitio con las apps Android (assetlinks): va en la raíz del sitio
 mkdir -p "$DEST/.well-known" && cp .well-known/assetlinks.json "$DEST/.well-known/assetlinks.json"
 # Archivos sueltos de la raíz de marrerobernalmedia.com (verificaciones, etc.)
