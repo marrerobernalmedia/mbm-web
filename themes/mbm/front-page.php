@@ -15,7 +15,7 @@
 <div class="stats">
   <div class="wrap">
     <div class="stat"><b>5</b><span>CANALES EN YOUTUBE</span></div>
-    <div class="stat"><b>9</b><span>PÁGINAS EN FACEBOOK</span></div>
+    <div class="stat"><b>10</b><span>PÁGINAS EN FACEBOOK</span></div>
     <div class="stat"><b>130K+</b><span>SUSCRIPTORES EN YOUTUBE</span></div>
     <div class="stat"><b>27M+</b><span>VISTAS ACUMULADAS</span></div>
     <div class="stat"><b>4,500+</b><span>PIEZAS PUBLICADAS</span></div>
@@ -127,7 +127,7 @@
 <section id="facebook" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="kicker">Nuestras páginas en Facebook</div>
-    <h2>Nueve páginas, una sola red.</h2>
+    <h2>Diez páginas, una sola red.</h2>
     <p class="lead">Cada página tiene su público y su tono. Tu campaña puede salir en una, en varias o en todas a la vez, con la producción hecha por nosotros.</p>
     <div class="fb-grid">
       <a class="fb" href="https://www.facebook.com/RisaEsCosaSeria/" target="_blank" rel="noopener" data-fb="larisa"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/larisa.png')); ?>" alt="La Risa es Cosa Seria"><b>La Risa es Cosa Seria</b><span><i data-seg="fb.larisa" data-fmt="full">584,344</i> seguidores</span></a>
@@ -138,6 +138,7 @@
       <a class="fb" href="https://www.facebook.com/sidecuerosetrata" target="_blank" rel="noopener" data-fb="cuero"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/cuero.png')); ?>" alt="Si de Cuero Se Trata"><b>Si de Cuero se Trata</b><span><i data-seg="fb.cuero" data-fmt="full">2,106</i> seguidores</span></a>
       <a class="fb" href="https://www.facebook.com/apagonia" target="_blank" rel="noopener" data-fb="welcome"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/welcome.png')); ?>" alt="Welcome to Apagonia"><b>Welcome to Apagonia</b><span><i data-seg="fb.welcome" data-fmt="full">1,729</i> seguidores</span></a>
       <a class="fb" href="https://www.facebook.com/marrerobernalmedia/" target="_blank" rel="noopener" data-fb="mbm"><img src="<?php echo esc_url(get_theme_file_uri('img/mbm-iso.svg')); ?>" alt="Marrero Bernal Media"><b>Marrero Bernal Media</b><span><i data-seg="fb.mbm" data-fmt="full">1,325</i> seguidores</span></a>
+      <a class="fb" href="https://www.facebook.com/aquinoserienadie/" target="_blank" rel="noopener" data-fb="ansn"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/ansn.jpg')); ?>" alt="Aquí No Se Ríe Nadie" style="border-radius:10px"><b>Aquí No Se Ríe Nadie</b><span>Nueva · estreno primavera 2027</span></a>
       <a class="fb" href="https://www.facebook.com/marrerobernal" target="_blank" rel="noopener" data-fb="mba"><img src="<?php echo esc_url(get_theme_file_uri('img/mba.svg')); ?>" alt="Marrero Bernal & Associates"><b>Marrero Bernal &amp; Associates</b><span><i data-seg="fb.mba" data-fmt="full">5,214</i> seguidores · patrocinador</span></a>
     </div>
     <p style="color:var(--mut);font-size:13px;margin-top:18px">Total en Facebook: <b style="color:var(--fg)"><span data-seg="tot.fbTodo" data-fmt="full">863,243</span></b> seguidores, más <span data-seg="tot.igTodo" data-fmt="full">113,887</span> en Instagram.</p>
@@ -155,6 +156,7 @@
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cosa.jpg')); ?>)" href="https://www.lcedr.com" target="_blank" rel="noopener"><div><b>La Risa News</b><span>Noticiero semanal · formato propio</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/home.jpg')); ?>)" href="https://www.elhomedelarisa.com" target="_blank" rel="noopener"><div><b>El Home de la Risa</b><span>La marca que agrupa nuestras producciones de humor · próximamente comedy clubs físicos</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cuero.jpg')); ?>)" href="https://www.lcedr.com" target="_blank" rel="noopener"><div><b>Si de Cuero se Trata · En producción</b><span>El roast cubano · formato propio, estreno diciembre</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/ansn.jpg')); ?>)" href="https://www.facebook.com/aquinoserienadie/" target="_blank" rel="noopener"><div><b>Aquí No Se Ríe Nadie · Primavera 2027</b><span>El duelo cubano: el que se ríe, toma · formato propio</span></div></a>
       <a class="wk" style="background:#1a1a1f" href="https://www.youtube.com/@marrerobernalmedia" target="_blank" rel="noopener"><div><b>Comerciales para clientes</b><span>Ver la lista de comerciales en nuestro canal →</span></div></a>
     </div>
   </div>

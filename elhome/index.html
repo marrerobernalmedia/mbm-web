@@ -454,9 +454,9 @@ function showPage(s){
   <section style="margin-top:8px"><div class="shead" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt="${esc(s.name)}"></div><div class="b"><h1>${esc(s.name)}</h1><p>${esc(s.tag)}</p><div class="meta" style="margin-top:6px">${s.soon?esc(s.soon):""}</div>${chLogos(s)}
   <div class="btns"><a class="btn yt" href="${s.sub}" target="_blank" rel="noopener">Suscribirme al canal</a></div></div></div>
   ${lists.length > 1 ? `<div class="subs">${lists.map((x,k) => `<button class="chip" data-sub="${k}" aria-pressed="${k===sub}">${esc(x.name)}</button>`).join("")}</div>` : ""}</section>
-  <section>${H(esc(s.soon ? "Mientras tanto" : cur.name), l.length + " videos")}
+  ${!l.length ? `<section>${H("Muy pronto")}<p style="color:var(--mute);max-width:62ch">${esc(s.name)} está en producción. Síguelo en Facebook para ver las fotos del rodaje y enterarte del estreno.</p>${s.fb ? `<a class="btn yt" style="display:inline-block;margin-top:6px;background:#1877f2" href="${s.fb}" target="_blank" rel="noopener">Seguir en Facebook</a>` : ""}</section>` : `<section>${H(esc(s.soon ? "Mientras tanto" : cur.name), l.length + " videos")}
   <div class="sortbar"><button class="chip" data-sort="show" aria-pressed="${sort==="show"}">Orden del show</button><button class="chip" data-sort="vistos" aria-pressed="${sort==="vistos"}">Más vistos</button></div>
-  <div class="list">${l.map(id => item(id)).join("")}</div></section>`;
+  <div class="list">${l.map(id => item(id)).join("")}</div></section>`}`;
 }
 function comicCard(c){
   return `<button class="cm${c.banner?"":" noart"}" data-comic="${esc(c.name)}"><div class="th" data-n="${esc(c.name)}"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="${esc(c.name)}" loading="lazy"></div>${c.banner?"":""}<b>${esc(c.name)}</b><span>${c.aka ? esc(c.aka.join(" · ")) + " · " : ""}${c.all.filter(live).length} videos · ${fmt(c.views)} vistas</span></button>`;
