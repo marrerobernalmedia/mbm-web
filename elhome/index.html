@@ -381,7 +381,7 @@ function inicio(){
   const upcoming = Object.keys(V).filter(i => V[i].k === "proximo" && V[i].f).sort((a,b) => V[a].f.localeCompare(V[b].f));
   const next = upcoming[0] || Object.keys(V).find(i => V[i].k === "proximo");
   const fdate = f => { try { const d = new Date(f + "T12:00:00Z"); return ["DOM","LUN","MAR","MIÉ","JUE","VIE","SÁB"][d.getUTCDay()] + " " + d.getUTCDate() + " " + ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"][d.getUTCMonth()]; } catch (e) { return ""; } };
-  const upnext = upcoming.slice(0, 4).map(id => { const sh = SH[showOf[id]] || SH.lrecs; return `<a class="up" href="${YT(id)}" target="_blank" rel="noopener"><span class="date">${fdate(V[id].f)}</span><img src="${img(id)}" alt="" loading="lazy"><div><em style="--sc:${sh.col}">${esc(sname(sh))}${V[id].n ? " " + esc(V[id].n) : ""}</em><b>${esc(V[id].t)}</b>${who(id)}</div></a>`; }).join("");
+  const upnext = upcoming.slice(0, 6).map(id => { const sh = SH[showOf[id]] || SH.lrecs; return `<a class="up" href="${YT(id)}" target="_blank" rel="noopener"><span class="date">${fdate(V[id].f)}</span><img src="${img(id)}" alt="" loading="lazy"><div><em style="--sc:${sh.col}">${esc(sname(sh))}${V[id].n ? " " + esc(V[id].n) : ""}</em><b>${esc(V[id].t)}</b>${who(id)}</div></a>`; }).join("");
   const all = [...new Set(D.shows.flatMap(s => s.v.concat((s.subs || []).flatMap(x => x.v))))].filter(live);
   const nuevos = all.filter(i => V[i].f).sort(byDate).slice(0, 10);
   const latest = nuevos[0];
