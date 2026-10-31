@@ -192,7 +192,7 @@ _wk = re.compile(r'<a class="wk" style="background-image:url\(<\?php echo esc_ur
 fp, _n = _wk.subn(lambda m: m.group(0).replace("img/recta.jpg", "img/s2d.jpg").replace("https://www.youtube.com/@RectaAlPecho?sub_confirmation=1", "https://www.straight2dchest.com/").replace("<b>Recta Al Pecho</b>", "<b>Straight 2D Chest</b>"), fp, count=1)
 assert _n == 1, 'trabajo de Recta no encontrado'
 _fb = re.compile(r'(<a class="fb" href="https://www\.facebook\.com/RectaAlPecho/"[^>]*>)<img src="([^"]*?)img/marcas/recta\.png([^"]*)" alt="Recta al Pecho"><b>Recta al Pecho</b>')
-fp, _n = _fb.subn(lambda m: m.group(1) + '<img src="' + m.group(2) + 'img/marcas/s2d.png' + m.group(3) + '" alt="Straight 2D Chest"><b>Recta Al Pecho · Straight 2D Chest</b>', fp, count=1)
+fp, _n = _fb.subn(lambda m: m.group(1) + '<img src="' + m.group(2) + 'img/marcas/s2d.png' + m.group(3) + '" alt="Straight 2D Chest"><b>Straight 2D Chest</b>', fp, count=1)
 assert _n == 1, 'página de Facebook de Recta no encontrada'
 _lg = re.compile(r'<a href="https://www\.youtube\.com/@RectaAlPecho\?sub_confirmation=1" target="_blank" rel="noopener"><img src="([^"]*?)img/marcas/recta\.png([^"]*)" alt="Recta Al Pecho"></a>')
 fp, _n = _lg.subn(lambda m: '<a href="https://www.straight2dchest.com/" target="_blank" rel="noopener"><img src="' + m.group(1) + 'img/marcas/s2d.png' + m.group(2) + '" alt="Straight 2D Chest"></a>', fp, count=1)
