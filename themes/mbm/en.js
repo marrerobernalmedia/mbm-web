@@ -52,7 +52,7 @@ window.I18N_EN = {
 "Programa de entrevistas · set, grabación y distribución":"Interview show · set, recording and distribution",
 "Noticiero semanal · formato propio":"Weekly newscast · original format",
 "La marca que agrupa nuestras producciones de humor · próximamente comedy clubs físicos":"The brand behind our comedy productions · physical comedy clubs coming soon",
-"Si de Cuero se Trata · En producción":"Si de Cuero se Trata · In production","El roast cubano · formato propio, estreno diciembre":"The Cuban roast · original format, premiering in December",
+"Si de Cuero se Trata · En producción":"Si de Cuero se Trata · In production","El roast cubano · formato propio · estreno 18 de diciembre":"The Cuban roast · original format · premieres December 18",
 "Comerciales para clientes":"Commercials for clients","Ver la lista de comerciales en nuestro canal →":"See the commercials playlist on our channel →",
 "Una productora con la mirada de un director.":"A production company with a director's eye.",
 "Marrero Bernal Media LLC nace en Las Vegas con":"Marrero Bernal Media LLC was founded in Las Vegas with","como productor: director y director de fotografía con créditos en cine y televisión. Lo que empezó como un canal de humor cubano es hoy una red de cinco canales, siete páginas en Meta y un equipo de producción que estrena contenido todas las semanas del año.":"as producer: a director and cinematographer with film and television credits. What began as a Cuban comedy channel is today a network of five channels, seven Meta pages and a production team that premieres new content every week of the year.",
