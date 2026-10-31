@@ -8,7 +8,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); $live = recta_live(); ?>
 <header class="top"><div class="wrap">
- <a class="brand" href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo esc_url(get_theme_file_uri('img/logo.png')); ?>" alt="Recta al Pecho"><span><small>Deportes · El béisbol es la pasión</small></span></a>
+ <a class="brand" href="<?php echo esc_url(home_url('/')); ?>" aria-label="Recta al Pecho — inicio"><img src="<?php echo esc_url(get_theme_file_uri('img/logo-h.png')); ?>" alt="Recta al Pecho" width="158" height="80"></a>
  <nav class="main" aria-label="Series">
   <?php foreach (recta_series() as $slug => $s): if ($c = get_category_by_slug($slug)): ?>
    <a href="<?php echo esc_url(get_category_link($c)); ?>"><?php echo esc_html($slug === 'la-hipocresia-en-el-beisbol' ? 'Mitos' : $s[0]); ?></a>
