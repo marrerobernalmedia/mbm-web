@@ -187,6 +187,7 @@ svg{width:22px;height:22px;flex:none}
 .fbsend[disabled]{opacity:.5}
 .fbmsg{font-size:14px;text-align:center;color:var(--mute);min-height:1.2em}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.lng{display:inline-flex;margin-left:auto;margin-right:6px;flex:none}.lng button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:7px 9px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font:700 12px/1 system-ui,sans-serif;color:#fff}.lng button::after{content:attr(data-lang);text-transform:uppercase}.lng button svg{border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.3)}.lng button.on{display:none}
 </style>
 <script src="onesignal-config.js"></script>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
@@ -204,6 +205,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
       <div class="hd">
         <img src="thumbs/logo.jpg" alt="">
         <div class="brand"><b>Recta <i>Al</i> Pecho</b><span>Deportes · El béisbol es la pasión · estreno cada jueves</span></div>
+        <span class="lng" role="group" aria-label="Idioma / Language"><button type="button" data-lang="es" title="Español"><svg viewBox="0 0 30 20" width="20" height="14" aria-hidden="true"><rect width="30" height="20" fill="#c60b1e"/><rect y="5" width="30" height="10" fill="#ffc400"/></svg></button><button type="button" data-lang="en" title="English"><svg viewBox="0 0 38 20" width="20" height="14" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><g fill="#b22234"><rect width="38" height="1.54"/><rect y="3.08" width="38" height="1.54"/><rect y="6.15" width="38" height="1.54"/><rect y="9.23" width="38" height="1.54"/><rect y="12.31" width="38" height="1.54"/><rect y="15.38" width="38" height="1.54"/><rect y="18.46" width="38" height="1.54"/></g><rect width="15.2" height="10.77" fill="#3c3b6e"/></svg></button></span>
         <button class="inst" id="appBtn" aria-label="Descargar la app"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;vertical-align:-3px;margin-right:5px"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7M9 11l3 3 3-3"/></svg><span class="l">Descargar la app</span><span class="s">App</span></button>
         <button class="bell" id="bellBtn" aria-label="Avisos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i></i></button>
       </div>
@@ -266,6 +268,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
 <div id="fbMount"></div>
 <script>window.THUMB_REMOTE = true;</script>
 <script src="data.js"></script>
+<script src="en.js"></script>
 <script>
 const FB_HTML = `
 <div id="fbRoot" hidden>
@@ -300,7 +303,22 @@ const D = window.APPDATA;
   Object.values(D.vid).forEach(v => { if (v.k === "proximo" && v.f && (v.f < today || (v.f === today && hour >= 8))) { v.k = "episodio"; if (v.d === "Próximamente") v.d = ""; v.nuevo = true; } });
 } catch (e) {} })();
 const YT = id => "https://youtu.be/" + id;
-const img = id => window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg" : "thumbs/" + id + ".jpg";
+// ── Idioma (ES / EN). EN = Straight 2D Chest: solo las entrevistas con audio en inglés, textos de en.js
+const LANG = (() => { try { const s = localStorage.getItem("recta_lang"); if (s === "es" || s === "en") return s; } catch (e) {} return /^es/i.test(navigator.language || "es") ? "es" : "en"; })();
+const EN = LANG === "en" && !!window.RECTA_EN;
+const L = (es, en) => EN ? en : es;
+if (EN) { const E = window.RECTA_EN;
+  Object.keys(D.vid).forEach(id => { const e = E.vid[id]; if (!e) delete D.vid[id]; else { D.vid[id].t = e.t; D.vid[id].p = e.p; if (D.vid[id].d === "Próximamente") D.vid[id].d = "Coming soon"; } });
+  const fix = s => { s.v = s.v.filter(i => D.vid[i]); const tr = E.series[s.id]; if (tr) { s.name = tr[0]; s.tag = tr[1]; } return s; };
+  D.series = D.series.map(fix).filter(s => s.v.length); D.cols = D.cols.map(fix).filter(s => s.v.length);
+  if (!D.vid[D.last]) D.last = Object.keys(D.vid).filter(i => D.vid[i].f && D.vid[i].k !== "proximo").sort((a, b) => D.vid[b].f.localeCompare(D.vid[a].f))[0];
+  D.m = E.myths; D.n = E.stories;
+  const W = {lunes:"monday",martes:"tuesday","miércoles":"wednesday",jueves:"thursday",viernes:"friday","sábado":"saturday",domingo:"sunday",enero:"january",febrero:"february",marzo:"march",abril:"april",mayo:"may",junio:"june",julio:"july",agosto:"august",septiembre:"september",octubre:"october",noviembre:"november",diciembre:"december"};
+  D.prox = [D.prox[0], String(D.prox[1] || "").split(" ").map(w => W[w.toLowerCase()] || w).join(" ")];
+  document.documentElement.lang = "en"; document.title = "Straight 2D Chest";
+}
+const TH_EN = EN ? new Set(window.RECTA_EN.th) : new Set();
+const img = id => TH_EN.has(id) ? "https://www.straight2dchest.com/img/th/" + id + ".jpg" : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg" : "thumbs/" + id + ".jpg";
 const fmt = n => n >= 1e6 ? (n/1e6).toFixed(1).replace(".0","") + "M" : n >= 1000 ? Math.round(n/1000) + "K" : String(n||0);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const V = D.vid, ALL = [...D.series, ...D.cols], BY = Object.fromEntries(ALL.map(s => [s.id, s]));
@@ -313,50 +331,50 @@ const tag = id => serOf[id] ? `<span class="meta" style="color:${serOf[id].col}"
 function tile(id){ const v = V[id];
   return `<a class="tile" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div>${v.p?`<div class="who">${esc(v.p)}</div>`:""}<h4>${esc(v.t)}</h4></a>`; }
 function item(id, rank){ const v = V[id];
-  return `<a class="item" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div><div>${rank?`<div class="rank">${rank}</div>`:""}${v.p?`<div class="who">${esc(v.p)}</div>`:""}<h4>${esc(v.t)}</h4><div class="meta">${v.v?fmt(v.v)+" vistas":""}</div></div></a>`; }
+  return `<a class="item" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div><div>${rank?`<div class="rank">${rank}</div>`:""}${v.p?`<div class="who">${esc(v.p)}</div>`:""}<h4>${esc(v.t)}</h4><div class="meta">${v.v?fmt(v.v)+L(" vistas"," views"):""}</div></div></a>`; }
 const card = s => `<button class="sc" data-open="${s.id}" style="--sc:${s.col}"><img src="${s.banner}" alt="" loading="lazy"><div class="b"><b>${esc(s.name)}</b><span>${s.v.length} videos</span></div></button>`;
 const colRow = c => `<button class="col" data-open="${c.id}"><div class="stack">${c.v.slice(0,3).map(i=>`<img src="${img(i)}" alt="" loading="lazy">`).join("")}</div><div><b>${esc(c.name)}</b><span>${esc(c.tag)} · ${c.v.length} videos</span></div></button>`;
 function inicio(){
   const last = D.last, p = D.prox, d = p[1].split(" ");
-  const shelves = D.series.map(s => `<section>${H(esc(s.name), "", `<button class="more" data-open="${s.id}">Ver todo →</button>`)}<div class="row">${s.v.slice(0,8).map(tile).join("")}</div></section>`).join("");
+  const shelves = D.series.map(s => `<section>${H(esc(s.name), "", `<button class="more" data-open="${s.id}">${L("Ver todo →","See all →")}</button>`)}<div class="row">${s.v.slice(0,8).map(tile).join("")}</div></section>`).join("");
   return `
-  <section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + last + "/maxresdefault.jpg" : img(last)}" onerror="this.onerror=null;this.src=img(last)" alt=""><span class="tag">● Último estreno</span></div>
+  <section><div class="hero"><div class="pic"><img src="${TH_EN.has(last) ? img(last) : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + last + "/maxresdefault.jpg" : img(last)}" onerror="this.onerror=null;this.src=img(last)" alt=""><span class="tag">${L("● Último estreno","● Latest episode")}</span></div>
     <div class="body"><div class="who">${esc(V[last].p)}</div><h3>${esc(V[last].t)}</h3><div class="meta">${V[last].d}</div>
-    <div class="btns"><a class="btn yt" href="${YT(last)}" target="_blank" rel="noopener">▶ Ver en YouTube</a><button class="btn ghost" data-open-sheet>🔔 Avísame</button><button class="btn ghost" data-share="${last}" data-t="${esc(V[last].p + ": " + V[last].t)}">📤 Compartir</button></div></div></div></section>
-  <section>${H("Próximo jueves")}<div class="board"><div class="day"><small>${esc(d[0].toUpperCase())}</small><b>${esc(d[1])}</b><small>${esc((d[3]||"").slice(0,3).toUpperCase())}</small></div>
-    <div><div class="name">${esc(p[0])}</div><p>Nueva entrevista en Recta Al Pecho. Suscríbete y toca la campanita para que YouTube te avise.</p></div></div></section>
-  <section>${H("Las series", "", `<button class="more" data-go="series">Ver todas →</button>`)}<div class="row">${D.series.map(s => `<div class="tile">${card(s)}</div>`).join("")}</div></section>
+    <div class="btns"><a class="btn yt" href="${YT(last)}" target="_blank" rel="noopener">${L("▶ Ver en YouTube","▶ Watch on YouTube")}</a><button class="btn ghost" data-open-sheet>${L("🔔 Avísame","🔔 Notify me")}</button><button class="btn ghost" data-share="${last}" data-t="${esc(V[last].p + ": " + V[last].t)}">${L("📤 Compartir","📤 Share")}</button></div>${EN?`<p class="meta" style="margin-top:10px">🎧 English audio: ⚙ Settings → Audio track → English</p>`:""}</div></div></section>
+  <section>${H(L("Próximo jueves","Next Thursday"))}<div class="board"><div class="day"><small>${esc(d[0].toUpperCase())}</small><b>${esc(d[1])}</b><small>${esc((d[3]||"").slice(0,3).toUpperCase())}</small></div>
+    <div><div class="name">${esc(p[0])}</div><p>${L("Nueva entrevista en Recta Al Pecho. Suscríbete y toca la campanita para que YouTube te avise.","New interview on Recta Al Pecho, recorded in Spanish. The English audio track usually follows on YouTube.")}</p></div></div></section>
+  <section>${H(L("Las series","The series"), "", `<button class="more" data-go="series">${L("Ver todas →","See all →")}</button>`)}<div class="row">${D.series.map(s => `<div class="tile">${card(s)}</div>`).join("")}</div></section>
   ${shelves}
-  <section>${H("Colecciones")}<div class="list">${D.cols.slice(0,5).map(colRow).join("")}</div><button class="more" data-go="series" style="display:block;margin:12px 0 0 auto">Todas las colecciones →</button></section>
-  <section>${H("Los más vistos")}<div class="list">${Object.keys(V).sort(byViews).slice(0,5).map((i,k)=>item(i,k+1)).join("")}</div></section>
-  <p class="foot">Cada entrevista se abre en YouTube · Recta Al Pecho</p>`;
+  <section>${H(L("Colecciones","Collections"))}<div class="list">${D.cols.slice(0,5).map(colRow).join("")}</div><button class="more" data-go="series" style="display:block;margin:12px 0 0 auto">${L("Todas las colecciones →","All collections →")}</button></section>
+  <section>${H(L("Los más vistos","Most watched"))}<div class="list">${Object.keys(V).sort(byViews).slice(0,5).map((i,k)=>item(i,k+1)).join("")}</div></section>
+  <p class="foot">${L("Cada entrevista se abre en YouTube · Recta Al Pecho","Every interview opens on YouTube · Straight 2D Chest · straight2dchest.com")}</p>`;
 }
 function series(){
   if (open) return page(BY[open]);
-  return `<section>${H("Las series", D.series.length + " series")}<div class="sgrid">${D.series.map(card).join("")}</div></section>
-  <section>${H("Colecciones", D.cols.length + "")}<div class="list">${D.cols.map(colRow).join("")}</div></section>`;
+  return `<section>${H(L("Las series","The series"), D.series.length + " series")}<div class="sgrid">${D.series.map(card).join("")}</div></section>
+  <section>${H(L("Colecciones","Collections"), D.cols.length + "")}<div class="list">${D.cols.map(colRow).join("")}</div></section>`;
 }
 function page(s){
   const l = sort === "vistos" ? s.v.slice().sort(byViews) : s.v;
-  return `<button class="back" data-back>← Series y colecciones</button>
+  return `<button class="back" data-back>${L("← Series y colecciones","← Series and collections")}</button>
   <section style="margin-top:8px"><div class="shead">${s.banner?`<img src="${s.banner}" alt="">`:`<img src="${img(s.v[0])}" alt="">`}<div class="b"><h1>${esc(s.name)}</h1><p>${esc(s.tag)}</p>
-  <div class="btns"><a class="btn yt" href="https://www.youtube.com/@RectaAlPecho?sub_confirmation=1" target="_blank" rel="noopener">Suscribirme al canal</a></div></div></div></section>
-  <section>${H("Las entrevistas", s.v.length + "")}<div class="sortbar"><button class="chip" data-sort="serie" aria-pressed="${sort==="serie"}">Orden de la serie</button><button class="chip" data-sort="vistos" aria-pressed="${sort==="vistos"}">Más vistos</button></div>
+  <div class="btns"><a class="btn yt" href="https://www.youtube.com/@RectaAlPecho?sub_confirmation=1" target="_blank" rel="noopener">${L("Suscribirme al canal","Subscribe to the channel")}</a></div></div></div></section>
+  <section>${H(L("Las entrevistas","The interviews"), s.v.length + "")}<div class="sortbar"><button class="chip" data-sort="serie" aria-pressed="${sort==="serie"}">${L("Orden de la serie","Series order")}</button><button class="chip" data-sort="vistos" aria-pressed="${sort==="vistos"}">${L("Más vistos","Most watched")}</button></div>
   <div class="list">${l.map(i=>item(i)).join("")}</div></section>`;
 }
 function mitos(){
-  return `<section>${H("Mitos de la pelota cubana")}<p class="lede">Lo que se repite en las peñas y en los comentarios, y lo que dicen los números. Cada respuesta tiene su entrevista.</p></section>
-  <section><div class="list">${D.m.map((m,i)=>`<article class="mito"><div class="q"><div class="lbl">El mito <span class="num">#${i+1}</span></div><p>${esc(m[0])}</p></div>
-  <a class="a" href="${YT(m[2])}" target="_blank" rel="noopener"><div><div class="lbl">Recta al pecho</div><p>${esc(m[1])}</p></div><div class="th"><img src="${img(m[2])}" alt="" loading="lazy"></div></a></article>`).join("")}</div></section>`;
+  return `<section>${H(L("Mitos de la pelota cubana","Cuban baseball myths"))}<p class="lede">${L("Lo que se repite en las peñas y en los comentarios, y lo que dicen los números. Cada respuesta tiene su entrevista.","What fans keep repeating, and what the numbers say. Every answer has its interview.")}</p></section>
+  <section><div class="list">${D.m.map((m,i)=>`<article class="mito"><div class="q"><div class="lbl">${L("El mito","The myth")} <span class="num">#${i+1}</span></div><p>${esc(m[0])}</p></div>
+  <a class="a" href="${YT(m[2])}" target="_blank" rel="noopener"><div><div class="lbl">${L("Recta al pecho","Straight to the chest")}</div><p>${esc(m[1])}</p></div><div class="th"><img src="${img(m[2])}" alt="" loading="lazy"></div></a></article>`).join("")}</div></section>`;
 }
 function noticias(){
-  return `<section>${H("Noticias", "de rectaalpecho.com")}<div class="list">${D.n.map(n=>`<article class="post"><div class="ph"><img src="thumbs/logo.jpg" alt=""><div><b>rectaalpecho.com</b><span>${esc(n[1])}</span></div></div><h3>${esc(n[0])}</h3><p>${esc(n[4])}</p><a href="${n[2]}" target="_blank" rel="noopener"><img src="${img(n[3])}" alt="" loading="lazy"></a><div class="act"><a href="${n[2]}" target="_blank" rel="noopener">Leer el artículo →</a></div></article>`).join("")}</div></section>`;
+  return `<section>${H(L("Noticias","Stories"), L("de rectaalpecho.com","from straight2dchest.com"))}<div class="list">${D.n.map(n=>`<article class="post"><div class="ph"><img src="thumbs/logo.jpg" alt=""><div><b>${L("rectaalpecho.com","straight2dchest.com")}</b><span>${esc(n[1])}</span></div></div><h3>${esc(n[0])}</h3><p>${esc(n[4])}</p><a href="${n[2]}" target="_blank" rel="noopener"><img src="${n[5] || img(n[3])}" alt="" loading="lazy"></a><div class="act"><a href="${n[2]}" target="_blank" rel="noopener">${L("Leer el artículo →","Read the story →")}</a></div></article>`).join("")}</div></section>`;
 }
 function search(q){
   const n = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
   const k = n(q.trim());
   const l = Object.keys(V).filter(i => n(V[i].p+" "+V[i].t).includes(k)).sort(byViews);
-  return `<section>${H("Resultados", String(l.length))}${l.length?`<div class="list">${l.map(i=>item(i)).join("")}</div>`:`<p class="empty">No encontramos nada con "${esc(q)}".</p>`}</section>`;
+  return `<section>${H(L("Resultados","Results"), String(l.length))}${l.length?`<div class="list">${l.map(i=>item(i)).join("")}</div>`:`<p class="empty">${L("No encontramos nada con","Nothing found for")} "${esc(q)}".</p>`}</section>`;
 }
 function render(){
   const q = document.getElementById("q").value;
@@ -369,8 +387,8 @@ function go(t){
 }
 document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("click", () => { open = null; go(b.dataset.tab); }));
 document.addEventListener("click", e => { const b = e.target.closest("[data-share]"); if (!b) return; e.preventDefault();
-  const url = "https://youtu.be/" + b.dataset.share, text = b.dataset.t + " — " + url + "\nBaja la app: " + location.origin + location.pathname;
-  if (navigator.share) navigator.share({ title: b.dataset.t, text: b.dataset.t + "\nBaja la app: " + location.origin + location.pathname, url }).catch(() => {});
+  const url = "https://youtu.be/" + b.dataset.share, text = b.dataset.t + " — " + url + L("\nBaja la app: ","\nGet the app: ") + location.origin + location.pathname;
+  if (navigator.share) navigator.share({ title: b.dataset.t, text: b.dataset.t + L("\nBaja la app: ","\nGet the app: ") + location.origin + location.pathname, url }).catch(() => {});
   else window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank", "noopener"); });
 view.addEventListener("click", e => {
   const o = e.target.closest("[data-open]"), g = e.target.closest("[data-go]"), so = e.target.closest("[data-sort]");
@@ -419,7 +437,7 @@ document.getElementById("fbForm").addEventListener("submit", async e => {
   } finally { send.disabled = false; }
 });
 document.addEventListener("click", e => { if (e.target.closest("[data-fb]")) openFb(true); });
-const fbStrip = () => `<button class="fbstrip" data-fb><div class="ic">💬</div><div><b>¿Cómo mejoramos la app?</b><span>Danos tu opinión: ideas, fallos o lo que quieres ver.</span></div></button>`;
+const fbStrip = () => `<button class="fbstrip" data-fb><div class="ic">💬</div><div><b>${L("¿Cómo mejoramos la app?","How can we improve the app?")}</b><span>${L("Danos tu opinión: ideas, fallos o lo que quieres ver.","Tell us: ideas, bugs or what you want to see.")}</span></div></button>`;
 
 // --- avisos al teléfono (OneSignal; solo en la versión publicada con su configuración) ---
 const pushBtn = document.getElementById("pushBtn"), pushLbl = document.getElementById("pushLbl");
@@ -452,5 +470,36 @@ window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferr
 instBtn.onclick = async () => { if (!deferred) return; deferred.prompt(); await deferred.userChoice; deferred = null; instBtn.hidden = true; };
 window.addEventListener("appinstalled", () => { instBtn.hidden = true; appBtn.hidden = true; });
 if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {})); }
+
+// ── Textos fijos en inglés y selector de idioma
+document.querySelectorAll(".lng [data-lang]").forEach(b => { b.classList.toggle("on", b.dataset.lang === LANG);
+  b.addEventListener("click", () => { if (b.dataset.lang === LANG) return; try { localStorage.setItem("recta_lang", b.dataset.lang); } catch (e) {} location.reload(); }); });
+if (EN) {
+  const T = {
+    "Deportes · El béisbol es la pasión · estreno cada jueves": "Cuban baseball in English · every Thursday",
+    "Descargar la app": "Get the app", "Inicio": "Home", "Series": "Series", "Mitos": "Myths", "Noticias": "Stories",
+    "Que no se te escape un jueves": "Don't miss a Thursday",
+    "Cada jueves estrena una entrevista nueva. Elige cómo quieres enterarte.": "A new interview premieres every Thursday. Choose how you want to hear about it.",
+    "Activar avisos de estrenos": "Turn on premiere alerts", "Te avisamos en este teléfono el día que sale un capítulo nuevo": "We'll notify this phone the day a new episode comes out",
+    "Suscríbete y toca la campanita": "Subscribe and tap the bell", "YouTube te avisa en el momento del estreno": "YouTube notifies you when it premieres",
+    "Lee los artículos en rectaalpecho.com": "Read the stories on straight2dchest.com", "Las Fugas, Los Borrados, Los que dijeron no": "The Defections, The Erased, They Said No",
+    "Ponla en tu pantalla de inicio": "Add it to your home screen", "Listo": "Done",
+    "Lleva Recta al Pecho en tu teléfono": "Get Straight 2D Chest on your phone",
+    "Gratis. Cada estreno, cada capítulo y los avisos, sin buscar en YouTube.": "Free. Every premiere, every episode and alerts, without searching YouTube.",
+    "Android: descargar la app (APK)": "Android: download the app (APK)",
+    "Instalar desde el navegador": "Install from the browser", "Un toque y queda en tu pantalla de inicio": "One tap and it's on your home screen",
+    "iPhone: añadir a pantalla de inicio": "iPhone: add to home screen", "En Safari toca Compartir y luego \"Agregar a inicio\"": "In Safari tap Share, then \"Add to Home Screen\"",
+    "Usarla en el navegador": "Use it in the browser", "Muy pronto en Google Play y App Store.": "Coming soon to Google Play and the App Store.",
+    "Danos tu opinión": "Tell us what you think", "Cuéntanos": "Tell us", "Enviar mi opinión": "Send", "Tu nombre o WhatsApp (si quieres que te respondamos)": "Your name or WhatsApp (if you'd like a reply)",
+    "Abre el archivo y acepta \"instalar de esta fuente\" si el teléfono lo pide": "Open the file and allow \"install from this source\" if your phone asks",
+    "Android: menú ⋮ → \"Instalar app\". iPhone: Compartir → \"Agregar a inicio\"": "Android: menu ⋮ → \"Install app\". iPhone: Share → \"Add to Home Screen\""
+  };
+  const walk = n => { if (n.nodeType === 3) { const k = n.nodeValue.trim(); if (T[k]) n.nodeValue = n.nodeValue.replace(k, T[k]); return; } if (n.nodeType === 1 && n.id !== "view") n.childNodes.forEach(walk); };
+  walk(document.body);
+  document.querySelectorAll('a[href="https://rectaalpecho.com/"]').forEach(a => a.href = "https://www.straight2dchest.com/news/");
+  const q = document.getElementById("q"); q.placeholder = "Search a player: Liván, Soler, Casanova…";
+  const b = document.querySelector(".brand b"); if (b) b.innerHTML = "Straight <i>2D</i> Chest";
+  const lg = document.querySelector(".hd > img"); if (lg) lg.src = "https://www.straight2dchest.com/img/apple-touch-icon.png";
+}
 </script>
 </body></html>

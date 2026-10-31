@@ -270,3 +270,16 @@ ExpiresByType text/css "access plus 7 days"
 </IfModule>
 `);
 console.log(`s2d: ${V.length} entrevistas, ${urls.length} URLs en el sitemap`);
+
+// ── recta/en.js: la app de Recta en inglés usa estos datos (mismos textos que straight2dchest.com)
+{
+  const thIds = fs.readdirSync(path.join(OUT, "img/th")).filter(f => f.endsWith(".jpg")).map(f => f.replace(/\.jpg$/, ""));
+  const E = {
+    vid: Object.fromEntries(V.map(v => [v.id, { t: v.t, p: v.who, s: v.slug }])),
+    th: thIds,
+    series: S.appSeries || {},
+    myths: (S.appMyths || []).filter(m => byId[m[2]]),
+    stories: NEWS.slice(0, 15).map(n => [n.title, fdate(n.date), `${SITE}/news/${n.slug}/`, n.video && byId[n.video] ? n.video : "", n.dek, newsImg(n)])
+  };
+  fs.writeFileSync(path.join(ROOT, "recta/en.js"), "// Generado por tools/build_s2d.js — no editar a mano\nwindow.RECTA_EN = " + JSON.stringify(E) + ";\n");
+}

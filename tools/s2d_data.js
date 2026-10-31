@@ -65,3 +65,32 @@ module.exports = {
     ["vLtMug4i3M4", "specials", "nene-ricardo", "Nené Ricardo", "The Question Nobody Dared Ask Germán Mesa", "Nené Ricardo came to baseball by accident — he was a soccer player — and ended up seeing Cuban baseball from the inside."]
   ]
 };
+// Inglés para la app de Recta (recta/en.js): nombres de series/colecciones y mitos
+module.exports.appSeries = {
+  "PLca-N9KrXOJE": ["The Road to the Big Leagues", "The defections and the Cuban ballplayer's road to the Major Leagues."],
+  "PLEhm-0fhQeks": ["The Defections", "The players tell, in the first person, how they escaped Cuba."],
+  "PLEOnVqVQg9-s": ["After Baseball", "The players who make a living doing something else today: life after baseball."],
+  "PLKawhIW_Y_7g": ["Recorded in Cuba", "The interviews recorded in Cuba."],
+  "PLF_WM-yaVC5w": ["Myths & Analysis", "Cuban baseball myths against the numbers."],
+  "PLLsEUkzu90pA": ["Chronicles of the King", "Rey Vicente Anglada, the manager who saw it all."],
+  "PLaTGBnf6Kovg": ["Specials", "Documentaries, full games and big stories."],
+  "PLL6ju6LwgKpE": ["Legends Cuba Forgot", "Greats of Cuban baseball and the National Series"],
+  "PLOjbIbSNSkpZLZbyzlR7vcP3GvUI6nniX": ["Cuba's Stars", "The big names of Cuban baseball and MLB"],
+  "PLSvwimT9ar0Q": ["The Talent Cuba Burned", "Cuban players, the National Series and MLB"],
+  "PLXRpxyvduDww": ["They Shut the Doors", "Cuban players and Team Cuba"],
+  "PLOjbIbSNSkpaffFuDT5aqRHWZn1SfHxx0": ["Industriales", "The Havana Lions: the team's great names"],
+  "PLOjbIbSNSkpZYsSbf2bfvWmy9djxQx5OI": ["Pure Big Leagues", "Cuban players who made it to MLB"],
+  "PLEC_da5aban8": ["Straight 2D Chest", "Latin baseball legends, uncensored"],
+  "PLP2OLNyjRaqo": ["The A's and the Aviators", "Cubans in Oakland and Las Vegas"],
+  "PLOjbIbSNSkpbdSugKXqGoIBOyHv8MfGYd": ["Games for History", "The games that defined eras in Cuba"],
+  "PLOjbIbSNSkpZIKaW0Z3b34T_Cms5hGO__": ["The Santiago Steamroller", "The greats of Santiago de Cuba baseball"]
+};
+module.exports.appMyths = [
+  ["“Cuban baseball in the '80s was big-league level”", "Cuba sent professionals disguised as amateurs against college kids. Against real professionals, it was a different story.", "eoXBslJ-ecw"],
+  ["“He's the best because I saw him”", "Your eyes saw twenty games; the scorekeeper saw them all, and he roots for nobody.", "qRSWVf9m864"],
+  ["“They owe their success to the Revolution”", "Cuban baseball was already among the best in the world before 1959. Cuba paid more than the big leagues.", "5L6Ux7o73jE"],
+  ["“Linares was the greatest ever”", "He hit .368 with aluminum. In Japan, against professionals: .246.", "HAw4DE2KYgk"],
+  ["“If nobody in Cuba mentions him, he wasn't great”", "Tito Fuentes: 13 big-league seasons, 1,491 hits and the Giants Wall of Fame.", "QZamWqu-N5E"],
+  ["“The best Cuban is a National Series player”", "There are six Cubans in Cooperstown and none played in a National Series.", "5I7xajTMsVk"],
+  ["“Canseco and Palmeiro don't count: steroids”", "The first 40-40 in history, and the 3,000-hit, 500-homer club. Nobody has shown a drug test from the National Series.", "b8kzcj3DRAk"]
+];
