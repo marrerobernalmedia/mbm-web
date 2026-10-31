@@ -514,7 +514,8 @@ document.getElementById("fbForm").addEventListener("submit", async e => {
   } finally { send.disabled = false; }
 });
 document.addEventListener("click", e => { if (e.target.closest("[data-fb]")) openFb(true); });
-const fbStrip = () => `<button class="fbstrip" data-fb><div class="ic">💬</div><div><b>¿Cómo mejoramos la app?</b><span>Danos tu opinión: ideas, fallos o lo que quieres ver.</span></div></button>`;
+const IS_SITE = /elhomedelarisa\.com$/.test(location.hostname);
+const fbStrip = () => IS_SITE ? "" : `<button class="fbstrip" data-fb><div class="ic">💬</div><div><b>¿Cómo mejoramos la app?</b><span>Danos tu opinión: ideas, fallos o lo que quieres ver.</span></div></button>`;
 
 // --- avisos al teléfono (OneSignal; solo en la versión publicada con su configuración) ---
 const pushBtn = document.getElementById("pushBtn"), pushLbl = document.getElementById("pushLbl");
