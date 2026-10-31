@@ -25,6 +25,9 @@ def fix(h):
     h = h.replace('<a class="logo" href="#contacto">', '<a class="logo" href="<?php echo esc_url(home_url(\'/\')); ?>">')
     return h
 
+# reseñas de Google (Trustindex) en el sitio real
+main_html = main_html.replace('<!--TRUSTINDEX--><p class="ti-demo">★★★★★ Aquí aparecen las reseñas de Google de la oficina.</p>', "<?php echo do_shortcode('[trustindex no-registration=google]'); ?>")
+
 # formulario real → admin-post
 form_old = re.search(r'<form onsubmit="[^"]*">', main_html).group(0)
 main_html = main_html.replace(form_old, '<form method="post" action="<?php echo esc_url(admin_url(\'admin-post.php\')); ?>">\n      <input type="hidden" name="action" value="mba_contacto"><?php wp_nonce_field(\'mba_contacto\',\'mba_n\'); ?><input type="text" name="empresa" style="display:none" tabindex="-1" autocomplete="off">')

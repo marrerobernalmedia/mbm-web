@@ -94,6 +94,14 @@
       <div><b>Varias compañías</b><p>Somos independientes: cotizamos con Farmers, Progressive y otras aseguradoras y te damos la mejor opción.</p></div>
       <div><b>1 visita</b><p>Seguro, taxes, inmigración y notaría en la misma oficina, en español.</p></div>
     </div>
+    <div class="resenas">
+      <h3>Lo que dicen nuestros clientes en Google</h3>
+      <div class="ti"><?php echo do_shortcode('[trustindex no-registration=google]'); ?></div>
+      <div class="badges">
+        <a href="https://threebestrated.com/insurance-agents-in-north-las-vegas-nv" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/threebest.svg')); ?>" alt="Three Best Rated: mejores agentes de seguros en North Las Vegas 2024" width="200" height="200" loading="lazy"></a>
+        <a href="https://wallethub.com/insurance-agents/las-vegas-nv" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/wallethub.jpg')); ?>" alt="WalletHub: mejor agente de seguros en Las Vegas" width="300" height="157" loading="lazy"></a>
+      </div>
+    </div>
   </div>
 </section>
 
