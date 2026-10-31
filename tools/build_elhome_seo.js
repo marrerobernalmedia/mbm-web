@@ -7,13 +7,18 @@
 //   node tools/build_elhome_seo.js
 const fs = require("fs"), path = require("path");
 const root = path.resolve(__dirname, ".."), out = path.join(root, "elhome");
-global.window = {}; require(path.join(out, "data.js"));
+global.window = {}; require(path.join(out, "data.js")); require(path.join(out, "ajustes.js"));
+window.AJUSTAR(window.APPDATA);
 const D = window.APPDATA, V = D.vid, SITE = "https://www.elhomedelarisa.com";
 const today = new Date().toISOString().slice(0, 10);
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const slug = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const live = id => V[id] && V[id].k !== "proximo" && V[id].k !== "futuro";
+const soon = id => V[id] && (V[id].k === "proximo" || V[id].k === "futuro");
+const fEst = f => f ? new Date(f + "T12:00:00").toLocaleDateString("es", { weekday: "long", day: "numeric", month: "long" }) : "muy pronto";
+const pcard = id => { const v = V[id]; return `<a class="v" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(v.t)}</h3><small style="color:var(--bulb)">Estreno ${esc(fEst(v.f))}${v.n ? " · " + esc(v.n) : ""} · ver el tráiler</small></a>`; };
+const upSec = ids => { const l = ids.filter(soon).sort((a, b) => (V[a].f || "9").localeCompare(V[b].f || "9")); return l.length ? `<h2>Próximo estreno</h2><div class="grid">${l.map(pcard).join("")}</div>` : ""; };
 const thumb = id => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const abs = u => !u ? "" : /^https?:/.test(u) ? u : `${SITE}/${u.replace(/^\//, "")}`;
 const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(".0", "") + "M" : n >= 1e3 ? Math.round(n / 1e3) + "K" : String(n || 0);
@@ -55,26 +60,33 @@ const vcard = id => { const v = V[id], s = showOf[id]; return `<a class="v" href
 const videoLD = ids => ids.slice(0, 30).map((id, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "VideoObject", name: V[id].t, thumbnailUrl: thumb(id), uploadDate: V[id].f || undefined, embedUrl: `https://www.youtube.com/embed/${id}`, url: `https://www.youtube.com/watch?v=${id}` } }));
 const write = (rel, html) => { const p = path.join(out, rel, "index.html"); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, html); };
 
+const FEM = new Set(["Yamira Díaz"]);
 const urls = [{ loc: `${SITE}/`, pr: "1.0", cf: "daily" }];
 // limpia generaciones anteriores
 for (const d of ["humorista", "show"]) fs.rmSync(path.join(out, d), { recursive: true, force: true });
 
 // Humoristas
-const comics = D.comics.map(c => ({ ...c, ids: (c.all || []).filter(live).sort((a, b) => (V[b].v || 0) - (V[a].v || 0)) })).filter(c => c.ids.length);
+const comics = D.comics.map(c => ({ ...c, up: (c.all || []).filter(soon), ids: (c.all || []).filter(live).sort((a, b) => (V[b].v || 0) - (V[a].v || 0)) })).filter(c => c.ids.length || c.up.length);
 for (const c of comics) {
   const s = slug(c.name), url = `${SITE}/humorista/${s}/`, shows = [...new Set(c.ids.map(id => showOf[id]).filter(Boolean).map(sname))];
   const total = c.ids.reduce((a, id) => a + (V[id].v || 0), 0);
-  const desc = `${c.name}, humorista cubano: todas sus presentaciones en ${shows.slice(0, 3).join(", ") || "El Home de la Risa"}. ${c.ids.length} videos${total ? " con " + fmt(total) + " vistas" : ""}, juntos en El Home de la Risa, la casa del humor cubano.`;
-  const image = abs(c.banner) || thumb(c.ids[0]);
-  write(`humorista/${s}`, page({ url, title: `${c.name} — humorista cubano: todos sus videos | El Home de la Risa`, desc, image,
-    body: `<section class="hero"><img src="${esc(image)}" alt="${esc(c.name)}"><div><h1>${esc(c.name)}</h1><p class="lead">${esc(desc)}</p><div class="btns"><a class="btn b1" href="https://www.youtube.com/watch?v=${c.ids[0]}" target="_blank" rel="noopener">▶ Ver su video más visto</a><a class="btn b2" href="/?humorista=${encodeURIComponent(c.name)}">Abrir en El Home</a></div></div></section>
-<h2>Todas sus presentaciones</h2><div class="grid">${c.ids.map(vcard).join("")}</div>
+  const first = c.ids[0] || c.up[0];
+  const desc = !c.ids.length ? `${c.name}, humorista cubana en La Risa es Cosa Seria: estreno el ${fEst(V[c.up[0]].f)}. Mira el tráiler y activa la campanita en El Home de la Risa, la casa del humor cubano.` : `${c.name}, humorista cubano: todas sus presentaciones en ${shows.slice(0, 3).join(", ") || "El Home de la Risa"}. ${c.ids.length} videos${total ? " con " + fmt(total) + " vistas" : ""}, juntos en El Home de la Risa, la casa del humor cubano.`;
+  const image = abs(c.banner) || thumb(first);
+  write(`humorista/${s}`, page({ url, title: `${c.name} — ${FEM.has(c.name) ? "humorista cubana" : "humorista cubano"}: todos sus videos | El Home de la Risa`, desc, image,
+    body: `<section class="hero"><img src="${esc(image)}" alt="${esc(c.name)}"><div><h1>${esc(c.name)}</h1><p class="lead">${esc(desc)}</p><div class="btns"><a class="btn b1" href="https://www.youtube.com/watch?v=${first}" target="_blank" rel="noopener">${c.ids.length ? "▶ Ver su video más visto" : "▶ Ver el tráiler"}</a><a class="btn b2" href="/?humorista=${encodeURIComponent(c.name)}">Abrir en El Home</a></div></div></section>
+${upSec(c.up)}${c.ids.length ? `<h2>Todas sus presentaciones</h2><div class="grid">${c.ids.map(vcard).join("")}</div>` : ""}
 <h2>Más humoristas</h2><div class="chips">${comics.filter(o => o !== c).slice(0, 24).map(o => `<a class="chip" href="/humorista/${slug(o.name)}/">${esc(o.name)}</a>`).join("")}</div>`,
     ld: { "@context": "https://schema.org", "@graph": [
       { "@type": "Person", "@id": url + "#persona", name: c.name, jobTitle: "Humorista", nationality: "Cuba", url, image },
-      { "@type": "ItemList", name: `Videos de ${c.name}`, itemListElement: videoLD(c.ids) },
+      { "@type": "ItemList", name: `Videos de ${c.name}`, itemListElement: videoLD(c.ids.length ? c.ids : c.up) },
       { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "El Home de la Risa", item: SITE + "/" }, { "@type": "ListItem", position: 2, name: "Humoristas", item: SITE + "/humoristas/" }, { "@type": "ListItem", position: 3, name: c.name, item: url }] }] } }));
   urls.push({ loc: url, pr: "0.8", cf: "weekly" });
+}
+// Nombres artísticos unidos a otra ficha: su página vieja manda a la ficha principal
+for (const [from, to] of [["Kamilo Kabello", "Dani Quintero"], ["Wattage", "Newito"]]) {
+  const u = `${SITE}/humorista/${slug(to)}/`;
+  write(`humorista/${slug(from)}`, `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${esc(from)} — ${esc(to)}</title><link rel="canonical" href="${u}"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=${u}"></head><body><a href="${u}">${esc(to)}</a></body></html>`);
 }
 // Shows
 const shows = D.shows.map(s => ({ ...s, ids: (s.v || []).filter(live) })).filter(s => s.ids.length);
@@ -87,7 +99,7 @@ for (const sh of shows) {
   write(`show/${s}`, page({ url, title: `${sh.name} — todos los episodios | El Home de la Risa`, desc, image,
     body: `<section class="hero"><img src="${esc(image)}" alt="${esc(sh.name)}"><div><h1>${esc(sh.name)}</h1><p class="lead">${esc(desc)}</p><div class="btns"><a class="btn b1" href="https://www.youtube.com/watch?v=${byDate[0]}" target="_blank" rel="noopener">▶ Ver el último episodio</a><a class="btn b2" href="/?show=${sh.id}">Abrir en El Home</a>${sh.sub ? `<a class="btn b2" href="${esc(sh.sub)}" target="_blank" rel="noopener">Suscribirme en YouTube</a>` : ""}</div></div></section>
 ${cast.length ? `<h2>Humoristas</h2><div class="chips">${cast.map(n => comics.find(c => c.name === n) ? `<a class="chip" href="/humorista/${slug(n)}/">${esc(n)}</a>` : `<span class="chip">${esc(n)}</span>`).join("")}</div>` : ""}
-<h2>Episodios</h2><div class="grid">${byDate.map(vcard).join("")}</div>`,
+${upSec(sh.v || [])}<h2>Episodios</h2><div class="grid">${byDate.map(vcard).join("")}</div>`,
     ld: { "@context": "https://schema.org", "@graph": [
       { "@type": "TVSeries", "@id": url + "#serie", name: sh.name, description: sh.tag, url, image, inLanguage: "es", genre: "Comedia", productionCompany: { "@type": "Organization", name: "Marrero Bernal Media LLC", url: "https://marrerobernalmedia.com/" }, actor: cast.map(n => ({ "@type": "Person", name: n })) },
       { "@type": "ItemList", name: `Episodios de ${sh.name}`, itemListElement: videoLD(byDate) },
@@ -96,7 +108,7 @@ ${cast.length ? `<h2>Humoristas</h2><div class="chips">${cast.map(n => comics.fi
 }
 // Índices
 write("humoristas", page({ url: `${SITE}/humoristas/`, title: "Humoristas cubanos — todos sus videos | El Home de la Risa", desc: `Los ${comics.length} humoristas de El Home de la Risa, cada uno con todas sus presentaciones: ${comics.slice(0, 8).map(c => c.name).join(", ")} y más.`, image: `${SITE}/og.jpg`,
-  body: `<h1 style="margin-top:28px">Humoristas</h1><p class="lead">Cada humorista con todas sus presentaciones, de la primera a la última.</p><div class="cards">${comics.map(c => `<a class="card" href="/humorista/${slug(c.name)}/"><img src="${esc(abs(c.banner) || thumb(c.ids[0]))}" alt="${esc(c.name)}" loading="lazy"><div><b>${esc(c.name)}</b><small>${c.ids.length} videos</small></div></a>`).join("")}</div>`,
+  body: `<h1 style="margin-top:28px">Humoristas</h1><p class="lead">Cada humorista con todas sus presentaciones, de la primera a la última.</p><div class="cards">${comics.map(c => `<a class="card" href="/humorista/${slug(c.name)}/"><img src="${esc(abs(c.banner) || thumb(c.ids[0] || c.up[0]))}" alt="${esc(c.name)}" loading="lazy"><div><b>${esc(c.name)}</b><small>${c.ids.length ? c.ids.length + " videos" : "Estreno el " + esc(fEst(V[c.up[0]].f))}</small></div></a>`).join("")}</div>`,
   ld: { "@context": "https://schema.org", "@type": "CollectionPage", name: "Humoristas de El Home de la Risa", url: `${SITE}/humoristas/` } }));
 write("shows", page({ url: `${SITE}/shows/`, title: "Shows de humor cubano | El Home de la Risa", desc: `Todos los shows de El Home de la Risa: ${shows.map(s => s.name).join(", ")}.`, image: `${SITE}/og.jpg`,
   body: `<h1 style="margin-top:28px">Shows</h1><p class="lead">Todos los programas de la casa del humor cubano.</p><div class="cards">${shows.map(s => `<a class="card" href="/show/${slug(s.id === "lrecs" ? s.name : sname(s))}/"><img src="${esc(abs(s.banner) || thumb(s.ids[0]))}" alt="${esc(s.name)}" loading="lazy"><div><b>${esc(s.name)}</b><small>${s.ids.length} episodios</small></div></a>`).join("")}</div>`,
