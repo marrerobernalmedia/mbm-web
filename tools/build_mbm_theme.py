@@ -142,6 +142,13 @@ function mbm_contacto() {
   wp_redirect($back . ($ok ? '?enviado=1' : '?error=1') . '#contacto'); exit;
 }
 
+/** El tema manda: Elementor Pro no sustituye cabecera ni pie (su cabecera vieja traía el selector de TranslatePress). */
+add_filter('elementor/theme/need_override_location', '__return_false');
+add_action('elementor/theme/register_locations', function ($manager) { $manager->register_all_core_location(); });
+/** Sin selector flotante de TranslatePress: el idioma lo cambia el ES · EN de la cabecera. */
+add_filter('trp_floating_ls_html', '__return_empty_string');
+add_action('wp_enqueue_scripts', function () { wp_dequeue_script('trp-language-switcher-js-v2'); wp_dequeue_style('trp-language-switcher-v2'); }, 100);
+
 /** La página vieja /apps/ pasa a la sección Apps de la portada. */
 add_action('template_redirect', function () { if (is_page('apps')) { wp_redirect(home_url('/#apps'), 301); exit; } });
 
