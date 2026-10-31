@@ -61,9 +61,9 @@ a{color:inherit;text-decoration:none}
 .top{background:#0d174e;color:#f6f3ec}
 .top .wrap{display:flex;align-items:center;gap:18px;min-height:64px}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{height:44px;width:auto;display:block}
+.brand img{height:58px;width:auto;display:block}
 .brand b{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:26px;letter-spacing:.5px;text-transform:uppercase;line-height:1}
-.brand small{display:block;font:500 11px/1 "Barlow",sans-serif;letter-spacing:2.5px;text-transform:uppercase;opacity:.8;margin-top:4px}
+.brand small{display:block;font:600 11px/1.3 "Barlow",sans-serif;letter-spacing:2px;text-transform:uppercase;opacity:.85;max-width:120px}
 nav.main{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
 nav.main a{font:600 15px/1 "Barlow",sans-serif;text-transform:uppercase;letter-spacing:1px;padding:10px 12px;border-radius:6px}
 nav.main a:hover{background:rgba(255,255,255,.1)}
@@ -178,7 +178,7 @@ HEAD = """<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name=
 <style>%s</style></head><body>
 <div class="note ui">MAQUETA de rediseño — no es el sitio real. Las imágenes y textos son los publicados en rectaalpecho.com.</div>
 <header class="top"><div class="wrap">
- <a class="brand" href="index.html"><img src="https://rectaalpecho.com/wp-content/uploads/2025/12/Logo-Square-Transparent-150x150.png" alt=""><span><b>Recta al Pecho</b><small>La historia de la pelota cubana</small></span></a>
+ <a class="brand" href="index.html"><img src="https://rectaalpecho.com/wp-content/uploads/2025/12/TEXTO-LOGO-TRANSPARENT.png" alt="Recta al Pecho"><span><small>Deportes · El béisbol es la pasión</small></span></a>
  <nav class="main"><a href="#borrados">Los Borrados</a><a href="#fugas">Las Fugas</a><a href="#dijeronno">Los que dijeron no</a><a href="#glorias">Glorias</a><a href="#mitos">Mitos</a><a href="#about">Quiénes somos</a><a class="yt" href="https://www.youtube.com/@RectaAlPecho">▶ Entrevistas</a></nav>
  <button class="burger">MENÚ</button>
 </div></header>
@@ -187,13 +187,13 @@ HEAD = """<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name=
 
 FOOT = """
 <section class="band wrap" id="about">
- <div><h2>Recta al Pecho: la pelota cubana contada por los que la jugaron</h2>
- <p>Entrevistas largas con peloteros cubanos de todas las épocas, dentro y fuera de la isla, y artículos que contrastan lo que repite el fanático con los números y los testimonios. Hablan los que lo vivieron.</p>
+ <div><h2>Recta al Pecho: deportes con la pelota como pasión</h2>
+ <p>Un canal de deportes donde el béisbol es la pasión: entrevistas largas con peloteros de todas las épocas, dentro y fuera de Cuba, historias que el relato oficial borró y artículos que ponen los mitos del fanático frente a los números. Hablan los que lo vivieron.</p>
  <div class="apps"><a class="btn" href="https://www.youtube.com/@RectaAlPecho">Ver las entrevistas</a><a class="btn ghost" href="https://marrerobernalmedia.com/recta/">Instalar la app</a></div></div>
  <div><img src="https://rectaalpecho.com/wp-content/uploads/2026/07/Eliam-y-Rey-Vicente-Anglada.jpeg" alt="" style="width:100%;border-radius:10px;aspect-ratio:4/3;object-fit:cover"></div>
 </section>
 <footer><div class="wrap">
- <div><h4>Recta al Pecho</h4><p>Un medio de Marrero Bernal Media, Las Vegas. La historia de la pelota cubana sin el relato oficial.</p>
+ <div><h4>Recta al Pecho</h4><p>Canal de deportes de Marrero Bernal Media, Las Vegas. El béisbol es la pasión; las historias, de los que las vivieron.</p>
  <p class="sponsor">Patrocinado por Marrero Bernal &amp; Associates — impuestos, seguros, inmigración, notaría. marrerobernal.com</p></div>
  <div><h4>Series</h4><a href="#borrados">Los Borrados</a><a href="#fugas">Las Fugas</a><a href="#dijeronno">Los que dijeron no</a><a href="#glorias">Las glorias en el piso</a><a href="#mitos">Mitos y análisis</a></div>
  <div><h4>Síguenos</h4><a href="https://www.youtube.com/@RectaAlPecho">YouTube</a><a href="https://www.facebook.com/RectaAlPecho/">Facebook</a><a href="https://www.instagram.com/rectaalpecho/">Instagram</a><a href="https://marrerobernalmedia.com/recta/">App Recta al Pecho</a></div>
@@ -207,7 +207,7 @@ def card(p):
     return f'<a class="card" href="articulo.html"><img src="{img}" alt="" loading="lazy"><div class="b"><small>{e(SERIES[c][0])}</small><h3>{e(t)}</h3><p>{e(x)}</p><time>{fecha(d)}</time></div></a>'
 
 def home():
-    h = HEAD % ("Recta al Pecho — La historia de la pelota cubana", CSS, e(NEXT[0]), e(LAST[1]))
+    h = HEAD % ("Recta al Pecho — Deportes: el béisbol es la pasión", CSS, e(NEXT[0]), e(LAST[1]))
     lead = bypost["irse-o-quedarse"]; others = ["braudilio-vinent","peloteros-cubanos-80","antonio-scull"]
     h += '<main class="wrap">'
     h += f'''<section class="hero"><a class="big" href="articulo.html"><img src="{lead[5]}" alt=""><div class="txt"><span class="kicker">{e(SERIES[lead[3]][0])}</span><h1>{e(lead[1])}</h1><p>{e(lead[4])}</p></div></a>
