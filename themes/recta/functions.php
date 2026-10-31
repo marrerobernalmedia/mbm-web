@@ -98,6 +98,12 @@ add_action('wp_head', function () {
   if (is_front_page()) echo '<meta name="description" content="Recta al Pecho: canal de deportes donde el béisbol es la pasión. Entrevistas con peloteros cubanos, las historias que el relato oficial borró y los mitos frente a los números.">' . "\n";
 }, 2);
 
+/** El tema manda: Elementor Pro no sustituye cabecera, pie ni plantillas de artículo. */
+add_filter('elementor/theme/need_override_location', '__return_false');
+/** La portada es siempre la de este tema (no la página "Home" de Elementor). */
+add_filter('pre_option_show_on_front', fn() => 'posts');
+add_filter('pre_option_page_on_front', fn() => 0);
+
 /** Limpieza de cabecera. */
 remove_action('wp_head', 'wp_generator');
 add_filter('emoji_svg_url', '__return_false');
