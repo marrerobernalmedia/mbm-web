@@ -15,7 +15,7 @@
   <?php endif; endforeach; ?>
   <a href="<?php echo esc_url(home_url('/quienes-somos/')); ?>">Quiénes somos</a>
   <a href="<?php echo esc_url(home_url('/nuestros-autores/')); ?>">Autores</a>
-  <a class="app" href="<?php echo esc_url(home_url('/#app')); ?>">📲 App</a>
+  <a class="app" href="<?php echo esc_url(home_url('/#app')); ?>"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7M9 11l3 3 3-3"/></svg>App</a>
   <a class="yt" href="https://www.youtube.com/@RectaAlPecho" target="_blank" rel="noopener">▶ Entrevistas</a>
  </nav>
  <button class="burger" type="button" aria-expanded="false" aria-controls="menu-panel" onclick="var p=document.getElementById('menu-panel');p.classList.toggle('open');this.setAttribute('aria-expanded',p.classList.contains('open'))">MENÚ</button>
@@ -27,7 +27,7 @@
   <a href="<?php echo esc_url(home_url('/quienes-somos/')); ?>">Quiénes somos</a>
   <a href="<?php echo esc_url(home_url('/nuestros-autores/')); ?>">Nuestros autores</a>
   <a href="<?php echo esc_url(home_url('/contacto/')); ?>">Contacto</a>
-  <a href="<?php echo esc_url(home_url('/#app')); ?>">📲 Descargar la app</a>
+  <a href="<?php echo esc_url(home_url('/#app')); ?>"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:4px"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7v7M9 11l3 3 3-3"/></svg>Descargar la app</a>
   <a href="https://www.youtube.com/@RectaAlPecho" target="_blank" rel="noopener">▶ Entrevistas en YouTube</a>
 </div>
 </header>

@@ -145,6 +145,8 @@ add_filter('pre_option_page_on_front', fn() => 0);
 /** Limpieza de cabecera. */
 remove_action('wp_head', 'wp_generator');
 add_filter('emoji_svg_url', '__return_false');
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
 
 /** Páginas viejas de Elementor que quedaron vacías con el tema: redirección permanente a su equivalente (no se borra nada). */
 function recta_redirects() {

@@ -193,3 +193,5 @@ body{background:var(--paper)!important;color:var(--ink)!important}
 .app-btns .b1{background:var(--red);color:#fff}.app-btns .b2{border:1px solid rgba(255,255,255,.5);color:#fff}
 .app-band .nota{margin:0;font-size:13px;color:#a3a7bd}.app-band .nota a{color:#fff;text-decoration:underline}
 @media (max-width:760px){.app-band{grid-template-columns:1fr;text-align:center;justify-items:center}.app-btns{justify-content:center}}
+
+@media(min-width:1100px){nav.main{flex-wrap:nowrap;gap:2px}nav.main a{white-space:nowrap;font-size:14px;letter-spacing:.6px;padding:10px 9px}}
