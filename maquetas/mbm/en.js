@@ -69,4 +69,4 @@ window.I18N_EN = {
 "¿Qué necesitas?":"What do you need?","Comercial o video corporativo":"Commercial or corporate video","Dron":"Drone","Podcast o streaming":"Podcast or streaming","Diseño gráfico":"Graphic design","Web o app":"Website or app","Gestión de canales":"Channel management",
 "Cuéntanos brevemente el proyecto":"Briefly describe the project","Enviar":"Send",
 "Marrero Bernal Media LLC. Todos los derechos reservados.":"Marrero Bernal Media LLC. All rights reserved."
-,"Aquí No Se Ríe Nadie · Primavera 2027":"Aquí No Se Ríe Nadie · Spring 2027","El duelo cubano: el que se ríe, toma · formato propio":"The Cuban laugh-off: whoever laughs, drinks · original format","Nueva · estreno primavera 2027":"New · premieres spring 2027"};
+,"Aquí No Se Ríe Nadie · Primavera 2027":"Aquí No Se Ríe Nadie · Spring 2027","El duelo cubano: el que se ríe, toma · formato propio":"The Cuban laugh-off: whoever laughs, drinks · original format","seguidores · estreno primavera 2027":"followers · premieres spring 2027"};
