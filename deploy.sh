@@ -17,3 +17,5 @@ RECTA=$HOME/public_html/rectaalpecho
 [ -d themes/recta ] && [ -d "$RECTA/wp-content/themes" ] && rsync -a --delete themes/recta/ "$RECTA/wp-content/themes/recta/"
 # Enlace del sitio con las apps Android (assetlinks): va en la raíz del sitio
 mkdir -p "$DEST/.well-known" && cp .well-known/assetlinks.json "$DEST/.well-known/assetlinks.json"
+# Archivos sueltos de la raíz de marrerobernalmedia.com (verificaciones, etc.)
+[ -d root ] && cp root/* "$DEST/"
