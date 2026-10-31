@@ -72,12 +72,12 @@
         </div>
       </div>
       <div class="app">
-        <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/recta.png')); ?>" alt="Recta Al Pecho">
+        <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/s2d.png')); ?>" alt="Straight 2D Chest">
         <div>
-          <h3>Recta Al Pecho</h3>
-          <p>Unfiltered baseball: the interviews, the series Las Fugas and Los Borrados, the myths with their answers and the news from rectaalpecho.com.</p>
+          <h3>Straight 2D Chest</h3>
+          <p>Sports, with baseball as the passion: the interviews with English audio, the series, the myths with their answers and the stories from straight2dchest.com.</p>
           <div class="ctas">
-            <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/" target="_blank" rel="noopener">Open the app</a>
+            <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/?lang=en" target="_blank" rel="noopener">Open the app</a>
             <a class="btn btn-ghost" href="https://marrerobernalmedia.com/apk/recta.apk">Download for Android (APK)</a>
           </div>
         </div>

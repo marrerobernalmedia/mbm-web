@@ -305,7 +305,7 @@ const D = window.APPDATA;
 } catch (e) {} })();
 const YT = id => "https://youtu.be/" + id;
 // ── Idioma (ES / EN). EN = Straight 2D Chest: solo las entrevistas con audio en inglés, textos de en.js
-const LANG = (() => { try { const s = localStorage.getItem("recta_lang"); if (s === "es" || s === "en") return s; } catch (e) {} return /^es/i.test(navigator.language || "es") ? "es" : "en"; })();
+const LANG = (() => { try { const u = new URLSearchParams(location.search).get("lang"); if (u === "es" || u === "en") localStorage.setItem("recta_lang", u); } catch (e) {} try { const s = localStorage.getItem("recta_lang"); if (s === "es" || s === "en") return s; } catch (e) {} return /^es/i.test(navigator.language || "es") ? "es" : "en"; })();
 const EN = LANG === "en" && !!window.RECTA_EN;
 const L = (es, en) => EN ? en : es;
 if (EN) { const E = window.RECTA_EN;

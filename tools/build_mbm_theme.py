@@ -197,6 +197,11 @@ assert _n == 1, 'página de Facebook de Recta no encontrada'
 _lg = re.compile(r'<a href="https://www\.youtube\.com/@RectaAlPecho\?sub_confirmation=1" target="_blank" rel="noopener"><img src="([^"]*?)img/marcas/recta\.png([^"]*)" alt="Recta Al Pecho"></a>')
 fp, _n = _lg.subn(lambda m: '<a href="https://www.straight2dchest.com/" target="_blank" rel="noopener"><img src="' + m.group(1) + 'img/marcas/s2d.png' + m.group(2) + '" alt="Straight 2D Chest"></a>', fp, count=1)
 assert _n == 1, 'logo de Recta en Nosotros no encontrado'
+# Apps en inglés: la app de Recta abre en inglés como Straight 2D Chest (Eliam, 31-oct-2026)
+_ap = re.compile(r'<img src="([^"]*?)img/marcas/recta\.png([^"]*)" alt="Recta Al Pecho">\s*<div>\s*<h3>Recta Al Pecho</h3>\s*<p>[^<]*</p>\s*<div class="ctas">\s*<a class="btn btn-acc" href="https://marrerobernalmedia\.com/recta/"')
+fp, _n = _ap.subn(lambda m: '<img src="' + m.group(1) + 'img/marcas/s2d.png' + m.group(2) + '" alt="Straight 2D Chest">\n        <div>\n          <h3>Straight 2D Chest</h3>\n          <p>Sports, with baseball as the passion: the interviews with English audio, the series, the myths with their answers and the stories from straight2dchest.com.</p>\n          <div class="ctas">\n            <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/?lang=en"', fp, count=1)
+assert _n == 1, 'app de Recta en inglés no encontrada'
+
 
 (out/'front-page-en.php').write_text(fp)
 fn = (out/'functions.php').read_text()
