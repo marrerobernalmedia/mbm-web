@@ -152,6 +152,8 @@ svg{width:22px;height:22px;flex:none}
 
 .sc .pic img{aspect-ratio:16/9}
 .shead .pic img{aspect-ratio:16/9}
+.chl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}.chl a{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:10px;padding:5px 10px;font-size:11px;font-weight:700;color:#111;text-decoration:none}.chl img{height:26px;width:auto}
+.red{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap;padding:18px 0 6px}.red a{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:16px;padding:10px 18px;height:92px;min-width:150px;transition:.2s}.red a:hover{transform:translateY(-3px)}.red img{max-height:70px;max-width:170px;width:auto;height:auto}.red .lbl{width:100%;text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:-6px}
 .cm .th img{aspect-ratio:16/9}
 .cm.noart .th{position:relative}
 .cm.noart .th::after{content:attr(data-n);position:absolute;inset:auto 0 0;padding:18px 10px 8px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-family:var(--display);font-size:15px;color:var(--bulb)}
@@ -249,7 +251,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
   <header>
     <div class="wrap">
       <div class="hd">
-        <img src="thumbs/logo-home.jpg" alt="">
+        <img src="brand/elhome-ico.png" alt="" style="object-fit:contain;background:transparent">
         <div class="brand"><b>El Home <i>de la</i> Risa</b><span>La casa del humor cubano</span></div>
         <button class="inst" id="instBtn" hidden>Instalar</button>
         <button class="bell" id="bellBtn" aria-label="Avisos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><i></i></button>
@@ -352,6 +354,8 @@ const EXTRA_LR = { "Newito": ["qQ72eLSjGy8"] };
 D.comics.forEach(c => { c.views = (c.all || []).reduce((n, id) => n + ((D.vid[id] && D.vid[id].v) || 0), 0); });
 D.comics.sort((a, b) => b.views - a.views);
 const CM = Object.fromEntries(D.comics.map(c => [c.name, c]));
+const CHL = {"La Risa es Cosa Seria":["larisa","https://www.youtube.com/channel/UC5kBXpuyCjoLKV8MhJlG2Gw"],"El Home de la Risa":["elhome","https://www.youtube.com/channel/UCItBxtE_Ky-C7Q3IfvC5ZMg"],"La Cosa Es De Risa":["lacosa","https://www.youtube.com/channel/UCsLPvvD_UDgwo91eeUOZUSQ"],"Welcome to Apagonia":["welcome","https://www.youtube.com/channel/UCtf5fq1TdwirbFswJfZSWCA"]};
+function chLogos(s){ return `<div class="chl">${s.ch.split(" · ").map(c => CHL[c] ? `<a href="${CHL[c][1]}" target="_blank" rel="noopener"><img src="brand/${CHL[c][0]}-ico.png" alt="">${esc(c)}</a>` : "").join("")}</div>`; }
 const showOf = {}; D.shows.forEach(s => s.v.forEach(i => { if (!showOf[i]) showOf[i] = s.id; }));
 (SH.lrecs.subs||[]).forEach(sub => sub.v.forEach(i => { if (!showOf[i]) showOf[i] = "lrecs"; }));
 const live = id => V[id] && V[id].k !== "proximo" && V[id].k !== "futuro";
@@ -402,7 +406,7 @@ function inicio(){
   ${next ? `<section><a class="next" href="${YT(next)}" target="_blank" rel="noopener"><img src="${img(next)}" alt=""><div><em>Próximo estreno · ${esc(SH[showOf[next]] ? sname(SH[showOf[next]]) : "La Risa es Cosa Seria")}${V[next].n ? " " + esc(V[next].n) : ""}</em><b>${esc(V[next].t)}</b><span>Toca y dale a la campanita en YouTube</span></div></a></section>` : ""}
   <section>${H("La semana en El Home")}<div class="week">${week}</div></section>
   <section class="deskonly">${H("Los más vistos de la casa")}<div class="list one">${all.slice().sort(byViews).slice(0,6).map((id,i)=>item(id,i+1)).join("")}</div></section></div></div>
-  <section>${H("Los shows de la casa", "", `<button class="more" data-tab-go="shows">Ver todos →</button>`)}<div class="row">${D.shows.map(s => `<div class="tile">${showCard(s)}</div>`).join("")}</div></section>
+  <section>${H("Los shows de la casa", "", `<button class="more" data-tab-go="shows">Ver todos →</button>`)}<div class="row">${D.shows.map(s => `<div class="tile">${showCard(s)}</div>`).join("")}</div></section>${IS_SITE ? `<section class="red"><div class="lbl">Los canales de la red</div>${[["larisa","La Risa es Cosa Seria"],["lacosa","La Cosa Es De Risa"],["welcome","Welcome to Apagonia"],["elhome","El Home de la Risa"]].map(([k,n]) => `<a href="${CHL[n][1]}" target="_blank" rel="noopener" title="${n}"><img src="brand/${k}.png" alt="${n}"></a>`).join("")}<a href="https://www.youtube.com/@RectaAlPecho" target="_blank" rel="noopener" title="Recta Al Pecho"><img src="brand/recta.png" alt="Recta Al Pecho"></a></section>` : ""}
   <section>${H("Lo nuevo de la casa")}<div class="row">${nuevos.map(tile).join("")}</div></section>
   <section>${H("Los humoristas", "", `<button class="more" data-tab-go="humoristas">Ver todos →</button>`)}<div class="row">${funny.map(c => `<div class="tile">${comicCard(c)}</div>`).join("")}</div></section>
   ${shelves}
@@ -423,7 +427,7 @@ function showPage(s){
   const cur = lists[Math.min(sub, lists.length-1)];
   const l = sorted(cur.v);
   return `<button class="back" data-back>← Todos los shows</button>
-  <section style="margin-top:8px"><div class="shead" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt=""></div><div class="b"><h1>${esc(s.name)}</h1><p>${esc(s.tag)}</p><div class="meta" style="margin-top:6px">${esc(s.ch)}${s.soon?" · "+esc(s.soon):""}</div>
+  <section style="margin-top:8px"><div class="shead" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt=""></div><div class="b"><h1>${esc(s.name)}</h1><p>${esc(s.tag)}</p><div class="meta" style="margin-top:6px">${s.soon?esc(s.soon):""}</div>${chLogos(s)}
   <div class="btns"><a class="btn yt" href="${s.sub}" target="_blank" rel="noopener">Suscribirme al canal</a></div></div></div>
   ${lists.length > 1 ? `<div class="subs">${lists.map((x,k) => `<button class="chip" data-sub="${k}" aria-pressed="${k===sub}">${esc(x.name)}</button>`).join("")}</div>` : ""}</section>
   <section>${H(esc(s.soon ? "Mientras tanto" : cur.name), l.length + " videos")}
@@ -477,8 +481,8 @@ view.addEventListener("click", e => {
   if (e.target.closest("[data-open-sheet]")) openSheet(true);
 });
 document.getElementById("q").addEventListener("input", render);
-const subs = [["La Risa es Cosa Seria","logo-larisa.jpg","lrecs"],["El Home de la Risa","logo-home.jpg","home"],["Welcome to Apagonia","logo-welcome.jpg","conozca"],["La Cosa Es De Risa","logo-lacosa.jpg","bacallao"]];
-document.getElementById("subs").innerHTML = subs.map(([n, l, s]) => `<a class="opt" href="${SH[s].sub}" target="_blank" rel="noopener"><img src="thumbs/${l}" alt=""><div><b>${n}</b><span>Suscribirme y activar la campanita</span></div></a>`).join("");
+const subs = [["La Risa es Cosa Seria","larisa-ico.png","lrecs"],["El Home de la Risa","elhome-ico.png","home"],["Welcome to Apagonia","welcome-ico.png","conozca"],["La Cosa Es De Risa","lacosa-ico.png","bacallao"]];
+document.getElementById("subs").innerHTML = subs.map(([n, l, s]) => `<a class="opt" href="${SH[s].sub}" target="_blank" rel="noopener"><img src="brand/${l}" alt="" style="object-fit:contain;background:#fff"><div><b>${n}</b><span>Suscribirme y activar la campanita</span></div></a>`).join("");
 const sheet = document.getElementById("sheetRoot");
 function openSheet(on){ sheet.hidden = !on; }
 document.getElementById("bellBtn").onclick = () => openSheet(true);
