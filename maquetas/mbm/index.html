@@ -90,7 +90,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.82);backdrop-f
 /* about */
 .about .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
 @media(max-width:860px){.about .wrap{grid-template-columns:1fr}}
-.about .marcas{display:grid;grid-template-columns:1fr 1fr;gap:14px}.about .marcas img{width:100%;aspect-ratio:1;object-fit:contain;background:#1a1a1f;border:1px solid var(--line);border-radius:18px;padding:22px;box-sizing:border-box}
+.about .marcas{display:grid;grid-template-columns:1fr 1fr;gap:14px}.about .marcas a{display:block}.about .marcas img{width:100%;aspect-ratio:1;object-fit:contain;background:#1a1a1f;border:1px solid var(--line);border-radius:18px;padding:22px;box-sizing:border-box;transition:.2s}.about .marcas a:hover img{border-color:var(--acc);transform:translateY(-3px)}
 .creds{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
 .creds span{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12px;color:var(--mut)}
 /* contacto */
@@ -259,7 +259,7 @@ footer nav a{margin-left:18px}
 <section id="nosotros" class="about" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="marcas">
-      <img src="img/marcas/larisa.png" alt="La Risa es Cosa Seria"><img src="img/marcas/recta.png" alt="Recta Al Pecho"><img src="img/marcas/lacosa.png" alt="La Cosa Es De Risa"><img src="img/marcas/welcome.png" alt="Welcome to Apagonia"><img src="img/marcas/elhome.png" alt="El Home de la Risa"><img src="img/marcas/cuero.png" alt="Si de Cuero se Trata">
+      <a href="https://www.youtube.com/@LaRisaEsCosaSeria" target="_blank" rel="noopener"><img src="img/marcas/larisa.png" alt="La Risa es Cosa Seria"></a><a href="https://www.youtube.com/@RectaAlPecho" target="_blank" rel="noopener"><img src="img/marcas/recta.png" alt="Recta Al Pecho"></a><a href="https://www.youtube.com/channel/UCsLPvvD_UDgwo91eeUOZUSQ" target="_blank" rel="noopener"><img src="img/marcas/lacosa.png" alt="La Cosa Es De Risa"></a><a href="https://www.youtube.com/channel/UCtf5fq1TdwirbFswJfZSWCA" target="_blank" rel="noopener"><img src="img/marcas/welcome.png" alt="Welcome to Apagonia"></a><a href="https://www.youtube.com/channel/UCItBxtE_Ky-C7Q3IfvC5ZMg" target="_blank" rel="noopener"><img src="img/marcas/elhome.png" alt="El Home de la Risa"></a><a href="https://www.youtube.com/channel/UCItBxtE_Ky-C7Q3IfvC5ZMg" target="_blank" rel="noopener"><img src="img/marcas/cuero.png" alt="Si de Cuero se Trata"></a>
     </div>
     <div>
       <div class="kicker">Nosotros</div>
