@@ -42,7 +42,7 @@ add_action('wp_head', function () {
   $ld = ['@context' => 'https://schema.org', '@type' => 'Organization', '@id' => home_url('/#mbm'), 'name' => 'Marrero Bernal Media LLC', 'alternateName' => 'Marrero Bernal Media', 'url' => home_url('/'), 'logo' => get_theme_file_uri('img/logo-color.svg'), 'image' => $img, 'foundingLocation' => 'Las Vegas, Nevada',
     'founder' => ['@type' => 'Person', 'name' => 'Eliam Marrero Bernal', 'sameAs' => ['https://www.imdb.com/name/nm3952887/']],
     'email' => 'info@marrerobernalmedia.com', 'telephone' => '+1-833-627-7376',
-    'sameAs' => ['https://www.youtube.com/@marrerobernalmedia', 'https://www.facebook.com/marrerobernalmedia', 'https://www.youtube.com/@LaRisaEsCosaSeria', 'https://www.youtube.com/@RectaAlPecho', 'https://www.elhomedelarisa.com/', 'https://rectaalpecho.com/']];
+    'sameAs' => ['https://www.youtube.com/@marrerobernalmedia', 'https://www.facebook.com/marrerobernalmedia', 'https://x.com/MarreroBernalTV', 'https://www.youtube.com/@LaRisaEsCosaSeria', 'https://www.youtube.com/@RectaAlPecho', 'https://www.elhomedelarisa.com/', 'https://rectaalpecho.com/']];
   echo '<script type="application/ld+json">' . wp_json_encode($ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "
 ";
 }, 3);
