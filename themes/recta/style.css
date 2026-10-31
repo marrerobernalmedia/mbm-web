@@ -160,3 +160,5 @@ footer .sponsor{font:500 14px/1.5 "Barlow",sans-serif;opacity:.8;border-top:1px 
 h1,h2,h3,h4{color:inherit!important}
 .art-img img{height:auto}
 .hero .big h1{color:#fff!important}
+html{background:var(--paper)}
+body{background:var(--paper)!important;color:var(--ink)!important}
