@@ -195,3 +195,6 @@ body{background:var(--paper)!important;color:var(--ink)!important}
 @media (max-width:760px){.app-band{grid-template-columns:1fr;text-align:center;justify-items:center}.app-btns{justify-content:center}}
 
 @media(min-width:1100px){nav.main{flex-wrap:nowrap;gap:2px}nav.main a{white-space:nowrap;font-size:14px;letter-spacing:.6px;padding:10px 9px}}
+
+/* Selector de idioma: ES = rectaalpecho.com, EN = straight2dchest.com */
+.lang{display:inline-flex;gap:3px;padding:3px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.05);margin-left:10px;flex:none}.lang a{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;font:700 13px/1 "Barlow",sans-serif;color:#cfd8ea;opacity:.75;text-decoration:none;text-transform:uppercase;letter-spacing:.04em}.lang a svg{border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.25);flex:none}.lang a:hover{opacity:1}.lang a.on{opacity:1;color:#fff;background:rgba(255,255,255,.14)}@media(max-width:640px){.lang a b{display:none}.lang a{padding:6px 7px}.lang{margin-left:auto;margin-right:8px}}
