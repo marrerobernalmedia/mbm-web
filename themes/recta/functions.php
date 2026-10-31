@@ -173,8 +173,7 @@ add_action('init', function () {
 
 /** AUTORES (escritores colaboradores). Foto propia en el perfil (URL o subida a la biblioteca), bio y página de autor. */
 function recta_autor_foto($uid, $size = 96) {
-  $u = get_user_meta($uid, 'recta_foto', true);
-  if (!$u && in_array('administrator', (array) get_userdata($uid)->roles, true)) $u = get_theme_file_uri('img/autores/eliam.jpg');
+  $u = recta_autor_foto_url($uid);
   if ($u) return '<img class="av av-img" src="' . esc_url($u) . '" alt="" width="' . $size . '" height="' . $size . '" loading="lazy">';
   $n = get_the_author_meta('display_name', $uid);
   $ini = mb_strtoupper(mb_substr(get_the_author_meta('first_name', $uid) ?: $n, 0, 1) . mb_substr(get_the_author_meta('last_name', $uid) ?: '', 0, 1));
@@ -196,23 +195,20 @@ function recta_perfil_foto_guardar($uid) { if (current_user_can('edit_user', $ui
 add_action('init', function () { foreach (['author', 'contributor'] as $r) { if ($role = get_role($r)) $role->add_cap('upload_files'); } });
 /** Página "Nuestros autores" (/nuestros-autores/) con la plantilla del tema aunque la página esté vacía. */
 add_filter('template_include', function ($t) { if (is_page('nuestros-autores')) { $f = get_theme_file_path('page-autores.php'); if (file_exists($f)) return $f; } return $t; }, 999);
-/** Equipo de autores. Los que ya tienen usuario en WP salen con su página de autor; los colaboradores sin usuario todavía (hasta que se les cree la cuenta) salen con su página de biografía del sitio. Cuando un colaborador reciba usuario, se quita de esta lista y entra solo. */
-function recta_colaboradores() {
-  return [
-    ['Arnelio Álvarez de la Uz', 'arnelio', 'Periodista y analista deportivo cubano; décadas de rigor con las estadísticas y la crónica histórica del béisbol.', '/arnelio-alvarez/'],
-    ['Manuel Alejandro Pérez Capote', 'manolo', 'Narrador y comentarista con más de treinta años en COCO, Radio Rebelde y la televisión; cuatro Juegos Olímpicos.', '/manuel-alejandro/'],
-    ['José Alberto Portela', 'portela', 'Periodista especializado en béisbol; crónicas, análisis y entrevistas a las figuras del juego.', '/jose-alberto-portela/'],
-    ['Raúl Rodríguez', 'raul', 'Narrador y comentarista desde 1986; voz de la redacción deportiva de Radio Habana Cuba y cinco Juegos Olímpicos.', '/raul-rodriguez/'],
-  ];
+/** Equipo de autores: todos los usuarios con rol de escritura menos "admin" (cuenta técnica). Foto: campo del perfil o, si no, la del tema por nombre de usuario (img/autores/<login>.jpg). */
+function recta_fotos_tema() { return ['eliammarrero' => 'eliam', 'arnelioalvarez' => 'arnelio', 'manuelalejandro' => 'manolo', 'josealbertoportela' => 'portela', 'raulrodriguez' => 'raul']; }
+function recta_autor_foto_url($uid) {
+  if ($u = get_user_meta($uid, 'recta_foto', true)) return $u;
+  $login = get_userdata($uid)->user_login ?? '';
+  $k = recta_fotos_tema()[$login] ?? $login;
+  return file_exists(get_theme_file_path("img/autores/$k.jpg")) ? get_theme_file_uri("img/autores/$k.jpg") : '';
 }
 function recta_autores() {
   $out = [];
   foreach (get_users(['role__in' => ['administrator', 'editor', 'author', 'contributor'], 'orderby' => 'post_count', 'order' => 'DESC']) as $u) {
-    if ($u->user_login === 'admin') continue;
-    $foto = get_user_meta($u->ID, 'recta_foto', true) ?: (in_array('administrator', (array) $u->roles, true) ? get_theme_file_uri('img/autores/eliam.jpg') : '');
-    $out[] = ['nombre' => $u->display_name, 'foto' => $foto, 'bio' => recta_autor_bio($u->ID), 'url' => get_author_posts_url($u->ID), 'n' => (int) count_user_posts($u->ID), 'rol' => in_array('administrator', (array) $u->roles, true) ? 'Director y fundador' : 'Autor'];
+    if ($u->ID === 1 || strtolower($u->user_login) === 'admin' || strtolower($u->display_name) === 'admin') continue;
+    $out[] = ['nombre' => $u->display_name, 'foto' => recta_autor_foto_url($u->ID), 'bio' => wp_trim_words(recta_autor_bio($u->ID), 22), 'url' => get_author_posts_url($u->ID), 'n' => (int) count_user_posts($u->ID), 'rol' => in_array('administrator', (array) $u->roles, true) ? 'Director y fundador' : 'Colaborador'];
   }
-  foreach (recta_colaboradores() as [$n, $k, $bio, $url]) $out[] = ['nombre' => $n, 'foto' => get_theme_file_uri("img/autores/$k.jpg"), 'bio' => $bio, 'url' => home_url($url), 'n' => null, 'rol' => 'Colaborador'];
   return $out;
 }
 function recta_autor_card($a, $size = 96) {
