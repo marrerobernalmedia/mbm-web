@@ -229,7 +229,7 @@ h2 .more{flex:none;white-space:nowrap}
 }
 .webfoot{display:none}
 .deskonly{display:none}
-@media (min-width:900px){.deskonly{display:block}.mobonly{display:none}.list.one{grid-template-columns:1fr;gap:12px}.list.one .item{grid-template-columns:38% 1fr}}
+@media (min-width:900px){.deskonly{display:block}.mobonly{display:none}.fbstrip{display:none}.row{grid-template-columns:repeat(var(--cols,4),minmax(0,1fr))}.list.one{grid-template-columns:1fr;gap:12px}.list.one .item{grid-template-columns:38% 1fr}}
 </style>
 <script src="onesignal-config.js"></script>
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
@@ -384,7 +384,7 @@ function inicio(){
     const l = s.v.filter(live).sort(byDate).slice(0, 8);
     return `<section>${H(esc(sname(s)), "", `<button class="more" data-show="${s.id}">Ver todo →</button>`)}<div class="row">${l.map(tile).join("")}</div></section>`;
   }).join("");
-  const funny = D.comics.slice(0, 10);
+  const funny = D.comics.slice(0, window.matchMedia("(min-width: 900px)").matches ? 12 : 10);
   return `<div class="home-top"><div>
   ${latest ? (() => { const sh = SH[showOf[latest]] || SH.lrecs; const f = V[latest].f || ""; const tag = f === window.MBM_TODAY ? "● Estreno de hoy" : f === yday ? "● Estrenó ayer" : "● Último estreno";
     return `<section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt=""><span class="tag">${tag}</span></div>
@@ -536,6 +536,8 @@ render();
   const mq = window.matchMedia("(min-width: 900px)"), nav = document.querySelector("nav.tabs"), hd = document.querySelector(".hd"), hdr = document.querySelector("header .wrap"), search = document.querySelector(".search");
   const place = () => { if (mq.matches) { hd.insertBefore(nav, document.getElementById("instBtn")); hdr.classList.add("hdrow"); hd.appendChild(search); } else { document.body.appendChild(nav); hdr.classList.remove("hdrow"); hdr.appendChild(search); } };
   place(); mq.addEventListener("change", place);
+  const fit = () => document.querySelectorAll("#view .row").forEach(r => { const n = r.children.length; r.style.setProperty("--cols", n >= 4 ? 4 : Math.max(1, n)); });
+  new MutationObserver(fit).observe(document.getElementById("view"), { childList: true }); fit();
   const y = document.getElementById("yr"); if (y) y.textContent = new Date().getFullYear();
 })();
 // --- instalar como app (Android / Chrome) ---
