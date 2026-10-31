@@ -80,7 +80,6 @@ module.exports.appSeries = {
   "PLXRpxyvduDww": ["They Shut the Doors", "Cuban players and Team Cuba"],
   "PLOjbIbSNSkpaffFuDT5aqRHWZn1SfHxx0": ["Industriales", "The Havana Lions: the team's great names"],
   "PLOjbIbSNSkpZYsSbf2bfvWmy9djxQx5OI": ["Pure Big Leagues", "Cuban players who made it to MLB"],
-  "PLEC_da5aban8": ["Straight 2D Chest", "Latin baseball legends, uncensored"],
   "PLP2OLNyjRaqo": ["The A's and the Aviators", "Cubans in Oakland and Las Vegas"],
   "PLOjbIbSNSkpbdSugKXqGoIBOyHv8MfGYd": ["Games for History", "The games that defined eras in Cuba"],
   "PLOjbIbSNSkpZIKaW0Z3b34T_Cms5hGO__": ["The Santiago Steamroller", "The greats of Santiago de Cuba baseball"]
