@@ -1,6 +1,6 @@
 window.I18N_EN = {
 "Marrero Bernal & Associates · Seguros, taxes e inmigración en Las Vegas":"Marrero Bernal & Associates · Insurance, taxes and immigration in Las Vegas",
-"🕘 Lun–Vie 9:00 AM – 6:00 PM":"🕘 Mon–Fri 9:00 AM – 6:00 PM",
+"🕘 Lun–Vie 9:00 AM – 5:00 PM":"🕘 Mon–Fri 9:00 AM – 5:00 PM",
 "Personal":"Personal","Negocios":"Business","Medicare":"Medicare","Quiénes somos":"About us","Contacto":"Contact",
 "Acceso de clientes":"Client access","🔐 Clientes":"🔐 Clients","💳 Pagar":"💳 Pay","Entra al portal seguro para subir y descargar tus documentos (SecureFilePro).":"Sign in to the secure portal to upload and download your documents (SecureFilePro).","Entrar →":"Sign in →","Paga tu servicio con tarjeta de forma segura, desde el teléfono o la computadora.":"Pay for your service securely by card, from your phone or computer.","Pagar →":"Pay →","Pagar en línea":"Pay online","Cotizar en línea":"Get a quote",
 "North Las Vegas · desde 2008":"North Las Vegas · since 2008",
@@ -56,7 +56,7 @@ window.I18N_EN = {
 "Te decimos qué traer":"We tell you what to bring","Una lista corta y clara de documentos. Si falta algo, te ayudamos a conseguirlo.":"A short, clear list of documents. If something's missing, we help you get it.",
 "Lo hacemos contigo":"We do it with you","Cotizamos, llenamos y revisamos todo delante de ti, en tu idioma.":"We quote, fill out and review everything in front of you, in your language.",
 "Seguimos ahí":"We're still here","Reclamos, renovaciones, cambios y preguntas: la misma oficina, la misma gente.":"Claims, renewals, changes and questions: the same office, the same people.",
-"Ven, llama o escribe.":"Visit, call or write.","Lunes a viernes, 9:00 AM – 6:00 PM":"Monday to Friday, 9:00 AM – 6:00 PM","Sábados y domingos cerrado":"Closed Saturday and Sunday","Mapa":"Map",
+"Ven, llama o escribe.":"Visit, call or write.","Lunes a viernes, 9:00 AM – 5:00 PM":"Monday to Friday, 9:00 AM – 5:00 PM","Sábados y domingos cerrado":"Closed Saturday and Sunday","Mapa":"Map",
 "Pide tu cotización gratis":"Request your free quote","Nombre":"Name","Teléfono o WhatsApp":"Phone or WhatsApp","Correo (opcional)":"Email (optional)","¿Qué necesitas?":"What do you need?",
 "Seguro de casa o renters":"Home or renters insurance","Seguro de vida":"Life insurance","Seguro de negocio":"Business insurance","Notaría o traducción":"Notary or translation","Licencia o LLC":"License or LLC","Otro":"Other",
 "Cuéntanos brevemente":"Tell us briefly","Enviar":"Send","Respondemos el mismo día hábil. Nunca compartimos tus datos.":"We reply the same business day. We never share your information.",
