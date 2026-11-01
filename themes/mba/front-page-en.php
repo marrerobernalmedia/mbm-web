@@ -195,12 +195,12 @@
         <h2>Nevada DMV-approved translator.</h2>
         <p>To get a driver license, a Driver Authorization Card or an ID card in Nevada, the DMV requires every document that isn't in English to be translated by a DMV-approved translator.</p>
         <p>Our founder, Eliam Marrero Bernal, is a Nevada DMV-approved translator. And since the DMV isn't accepting new translators, we're one of the few who can do it.</p>
-        <div class="irs-btns"><a class="btn btn-acc" href="#contacto">Translate my documents</a><a class="btn btn-ghost" href="https://dmv.nv.gov/translators.Asp" target="_blank" rel="noopener">See it on the DMV website</a></div>
+        <div class="irs-btns"><a class="btn btn-acc" href="#contacto">Translate my documents</a><a class="btn btn-ghost" href="https://dmv.nv.gov/translators.htm" target="_blank" rel="noopener">See it on the DMV website</a></div>
       </div>
       <ul>
         <li>Birth certificates, passports and ID documents.</li>
         <li>Driver licenses from other countries.</li>
-        <li>Typed translations, as the DMV requires.</li>
+        <li>Complete, typed translation with the date, signature, our DMV translator number and the certification on the same page, exactly as the DMV requires.</li><li>Without a valid translator number, the DMV rejects the translation at the office.</li>
         <li>Serving Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump and Moapa Valley / Mesquite.</li>
       </ul>
     </div>
