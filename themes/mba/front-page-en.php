@@ -66,7 +66,7 @@
         <div class="grp"><b>Property</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Home&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Home · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Condo&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Condo · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Renter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Renters · quote</a></li><li><a href="https://www.farmers.com/landlord-rental-properties/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Landlord</a></li><li><a href="https://www.farmers.com/home/mobile-manufactured/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Mobile home</a></li><li><a href="https://www.farmers.com/home/seasonal-vacation-homes/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Vacation home</a></li><li><a href="https://www.farmers.com/home/flood/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Flood</a></li><li><a href="https://www.farmers.com/home/earthquake/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Earthquake</a></li></ul></div>
         <div class="grp"><b>Life and health</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Lifec&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Life · quote</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/term-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Term life</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/whole-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Whole life</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/universal-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Universal life</a></li><li><a id="s-medicare" href="#medicare">Medicare Advantage</a></li><li><a href="https://www.farmers.com/medicare-plans/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Medicare plans (Farmers)</a></li></ul></div>
         <div class="grp"><b>Other insurance</b><ul><li><a href="https://www.farmers.com/umbrella/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Umbrella</a></li><li><a href="https://www.farmers.com/pet-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Pets</a></li><li><a href="https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Electronic devices</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoHome&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto + home bundle · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoRenter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto + renters bundle · quote</a></li><li><a href="https://farmers.bordersolutions.com/ap.php?a=67249W" target="_blank" rel="noopener">Auto insurance for Mexico · quote</a></li></ul></div>
-        <div class="grp"><b>Paperwork</b><ul><li><a id="s-taxes" href="#contacto">Personal taxes</a></li><li><a id="s-inmigracion" href="#contacto">Immigration</a></li><li><a id="s-notaria" href="#contacto">Notary</a></li><li><a href="#contacto">Certified translations</a></li><li><a href="#contacto">Free coverage review</a></li></ul></div>
+        <div class="grp"><b>Paperwork</b><ul><li><a id="s-taxes" href="#contacto">Personal taxes</a></li><li><a href="#irs">Direct IRS e-file</a></li><li><a href="#irs">ITIN number (Acceptance Agent)</a></li><li><a id="s-inmigracion" href="#contacto">Immigration</a></li><li><a id="s-notaria" href="#contacto">Notary</a></li><li><a href="#contacto">Certified translations</a></li><li><a href="#contacto">Free coverage review</a></li></ul></div>
         <p class="note">Insurance through multiple top-tier carriers, including Farmers and Progressive. Coverage availability varies by carrier and state.</p>
       </div>
       <div class="card" id="negocios">
@@ -128,6 +128,38 @@
       <small>Marrero Bernal &amp; Associates is a licensed independent insurance agency and is not affiliated with or endorsed by the U.S. government or the federal Medicare program.</small>
       <small>Coverage, premiums and benefits vary by plan and county. Final wording follows current CMS marketing guidelines.</small>
     </div>
+    </div>
+  </div>
+</section>
+
+<section class="irs" id="irs">
+  <div class="wrap">
+    <div class="kicker">Taxes & ITIN</div>
+    <h2>Your taxes go straight to the IRS. No middleman.</h2>
+    <div class="irs-grid">
+      <div class="card">
+        <div class="ic">📡</div>
+        <h3>Authorized IRS e-file Provider</h3>
+        <p>To get online you need an internet service provider in the middle. Taxes work the same way: many offices depend on another company to send your return.</p>
+        <p>We are an authorized IRS e-file provider: we transmit your return directly to the IRS, with no middleman.</p>
+        <div class="irs-pro">
+          <b>Are you a tax preparer?</b>
+          <span>You can also transmit your returns to the IRS through us.</span>
+          <a class="btn btn-navy" href="#contacto">I want to transmit with you</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ic">🪪</div>
+        <h3>IRS Acceptance Agent for your ITIN</h3>
+        <p>If you apply for an ITIN on your own, you have to mail your original documents, like your passport, to the IRS, and they can get lost.</p>
+        <p>As an IRS-authorized Acceptance Agent, we review and validate your documents here at the office, so you don't have to mail the originals.</p>
+        <ul>
+          <li>New ITIN applications or renewals.</li>
+          <li>Your documents stay with you.</li>
+          <li>We stay with you until your number arrives.</li>
+        </ul>
+        <a class="btn btn-acc" href="#contacto">Apply for my ITIN</a>
+      </div>
     </div>
   </div>
 </section>
