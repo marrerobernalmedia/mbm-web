@@ -106,6 +106,11 @@ ${upSec(sh.v || [])}<h2>Episodios</h2><div class="grid">${byDate.map(vcard).join
       { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "El Home de la Risa", item: SITE + "/" }, { "@type": "ListItem", position: 2, name: "Shows", item: SITE + "/shows/" }, { "@type": "ListItem", position: 3, name: sh.name, item: url }] }] } }));
   urls.push({ loc: url, pr: "0.8", cf: "weekly" });
 }
+// Shows renombrados: la URL vieja manda a la nueva
+for (const [from, to] of [["Noticias de Ayer", "Manual del Cubano"]]) {
+  const u = `${SITE}/show/${slug(to)}/`;
+  write(`show/${slug(from)}`, `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${esc(from)} — ${esc(to)}</title><link rel="canonical" href="${u}"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=${u}"></head><body><a href="${u}">${esc(to)}</a></body></html>`);
+}
 // Índices
 write("humoristas", page({ url: `${SITE}/humoristas/`, title: "Humoristas cubanos — todos sus videos | El Home de la Risa", desc: `Los ${comics.length} humoristas de El Home de la Risa, cada uno con todas sus presentaciones: ${comics.slice(0, 8).map(c => c.name).join(", ")} y más.`, image: `${SITE}/og.jpg`,
   body: `<h1 style="margin-top:28px">Humoristas</h1><p class="lead">Cada humorista con todas sus presentaciones, de la primera a la última.</p><div class="cards">${comics.map(c => `<a class="card" href="/humorista/${slug(c.name)}/"><img src="${esc(abs(c.banner) || thumb(c.ids[0] || c.up[0]))}" alt="${esc(c.name)}" loading="lazy"><div><b>${esc(c.name)}</b><small>${c.ids.length ? c.ids.length + " videos" : "Estreno el " + esc(fEst(V[c.up[0]].f))}</small></div></a>`).join("")}</div>`,
