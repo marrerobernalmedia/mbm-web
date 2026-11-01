@@ -140,7 +140,8 @@
       <div class="ic">🌎</div>
       <div>
         <h3>Remote taxes, nationwide and from abroad</h3>
-        <p>You don't have to live in Nevada. We prepare taxes for clients in any U.S. state and for Americans living abroad. Send us your documents through our secure client portal, we walk you through everything by phone or video call, and we transmit your return straight to the IRS.</p>
+        <p>You don't have to live in Nevada. We prepare taxes for clients in any U.S. state and for Americans living abroad. Send us your documents through our secure client portal or by mail to our office, we walk you through everything by phone or video call, and we transmit your return straight to the IRS.</p>
+        <p class="irs-dir">Mailing address: Marrero Bernal &amp; Associates · 3455 W Craig Rd Ste D · North Las Vegas, NV 89032</p>
         <div class="irs-btns"><a class="btn btn-acc" href="https://marrerobernal.securefilepro.com/portal/#/login" target="_blank" rel="noopener">Upload my documents</a><a class="btn btn-navy" href="#contacto">Talk to a tax preparer</a></div>
       </div>
     </div>
@@ -163,7 +164,7 @@
         <p>We have IRS Certifying Acceptance Agents (CAA): we review and certify your documents here at the office, so you don't have to mail the originals.</p>
         <ul>
           <li>New ITIN applications or renewals.</li>
-          <li>Your documents stay with you.</li>
+          <li>Your documents stay in our hands: they don't go to the IRS.</li><li>Can't come in? Mail them to our office, we certify them and send them back to you.</li>
           <li>We stay with you until your number arrives.</li>
         </ul>
         <a class="btn btn-acc" href="#contacto">Apply for my ITIN</a>

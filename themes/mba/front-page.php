@@ -140,7 +140,8 @@
       <div class="ic">🌎</div>
       <div>
         <h3>Taxes a distancia, en todo el país y desde el extranjero</h3>
-        <p>No tienes que vivir en Nevada. Preparamos los taxes de clientes en cualquier estado de EE. UU. y también de estadounidenses que viven en otros países. Nos mandas tus documentos por el portal seguro de clientes, te explicamos todo por teléfono o videollamada y transmitimos tu declaración directo al IRS.</p>
+        <p>No tienes que vivir en Nevada. Preparamos los taxes de clientes en cualquier estado de EE. UU. y también de estadounidenses que viven en otros países. Nos mandas tus documentos por el portal seguro de clientes o por correo a nuestra oficina, te explicamos todo por teléfono o videollamada y transmitimos tu declaración directo al IRS.</p>
+        <p class="irs-dir">Dirección para correo: Marrero Bernal &amp; Associates · 3455 W Craig Rd Ste D · North Las Vegas, NV 89032</p>
         <div class="irs-btns"><a class="btn btn-acc" href="https://marrerobernal.securefilepro.com/portal/#/login" target="_blank" rel="noopener">Subir mis documentos</a><a class="btn btn-navy" href="#contacto">Hablar con un preparador</a></div>
       </div>
     </div>
@@ -163,7 +164,7 @@
         <p>Contamos con Agentes de Aceptación Certificados (CAA) del IRS: revisamos y certificamos tus documentos aquí en la oficina y tú no tienes que mandar los originales.</p>
         <ul>
           <li>Solicitud del ITIN nueva o renovación.</li>
-          <li>Tus documentos se quedan contigo.</li>
+          <li>Tus documentos no salen de nuestras manos: no van al IRS.</li><li>¿No puedes venir? Nos los envías por correo a la oficina, los certificamos y te los devolvemos.</li>
           <li>Te acompañamos hasta que llega tu número.</li>
         </ul>
         <a class="btn btn-acc" href="#contacto">Solicitar mi ITIN</a>
