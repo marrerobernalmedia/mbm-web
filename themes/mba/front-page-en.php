@@ -3,6 +3,7 @@
   <div class="wrap">
     <div>
       <div class="kicker">Since 2008 · In person and remote</div>
+      <span class="habla">Hablamos español</span>
       <h1>Insurance, taxes and paperwork, <em>in your language</em> and in one place.</h1>
       <p class="lead">We're an independent insurance agency with contracts with multiple top-tier carriers like Farmers and Progressive, plus tax preparers and paperwork specialists. Seventeen years serving the Hispanic community, at our office and remotely, across the United States and from anywhere in the world.</p>
       <div class="search" id="search">
@@ -94,7 +95,7 @@
       <div><b>2008</b><p>The year we opened in North Las Vegas. We're still in the same place.</p></div>
       <div><b>No borders</b><p>Taxes, ITIN, translations and paperwork done remotely for all of the U.S. and for people living abroad. Insurance licensed in Nevada, California and Arizona.</p></div>
       <div><b>10 carriers</b><p>We are independent. For auto we quote Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General and Bristol West; for home, Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America and Lemonade. You get the best option.</p></div>
-      <div><b>1 visit</b><p>Insurance, taxes, ITIN, translations, notary and more, in one office and in Spanish.</p></div>
+      <div><b>1 visit</b><p>Insurance, taxes, ITIN, translations, notary and more, all in one office.</p></div>
     </div>
     <div class="resenas">
       <h3>What our clients say on Google</h3>

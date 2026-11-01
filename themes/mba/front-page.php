@@ -3,6 +3,7 @@
   <div class="wrap">
     <div>
       <div class="kicker">Desde 2008 · En persona y a distancia</div>
+      <span class="habla">We speak English</span>
       <h1>Seguros, taxes y trámites, <em>en tu idioma</em> y en un solo lugar.</h1>
       <p class="lead">Somos una agencia de seguros independiente con contratos con múltiples compañías de primer nivel, como Farmers y Progressive, además de preparadores de impuestos y especialistas en trámites. Diecisiete años atendiendo a la comunidad hispana, en nuestra oficina y a distancia, en todo Estados Unidos y desde cualquier parte del mundo.</p>
       <div class="search" id="search">
@@ -94,7 +95,7 @@
       <div><b>2008</b><p>Año en que abrimos en North Las Vegas. Seguimos en el mismo lugar.</p></div>
       <div><b>Sin fronteras</b><p>Taxes, ITIN, traducciones y trámites a distancia para todo Estados Unidos y para quienes viven en otros países. Seguros con licencia en Nevada, California y Arizona.</p></div>
       <div><b>10 compañías</b><p>Somos independientes. En auto cotizamos con Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General y Bristol West; en casa, con Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America y Lemonade. Te damos la mejor opción.</p></div>
-      <div><b>1 visita</b><p>Seguro, taxes, ITIN, traducciones, notaría y más, en la misma oficina y en español.</p></div>
+      <div><b>1 visita</b><p>Seguro, taxes, ITIN, traducciones, notaría y más, en la misma oficina.</p></div>
     </div>
     <div class="resenas">
       <h3>Lo que dicen nuestros clientes en Google</h3>
