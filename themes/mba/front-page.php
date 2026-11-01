@@ -101,7 +101,7 @@
       <div class="ti"><?php echo do_shortcode('[trustindex no-registration=google]'); ?></div>
       <div class="premios">
         <a href="https://threebestrated.com/insurance-agents-in-north-las-vegas-nv" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/threebest.svg')); ?>" alt="Three Best Rated: mejores agentes de seguros en North Las Vegas 2024" width="200" height="200" loading="lazy"></a>
-        <a href="https://wallethub.com/insurance-agents/las-vegas-nv" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/wallethub.jpg')); ?>" alt="WalletHub: mejor agente de seguros en Las Vegas" width="300" height="157" loading="lazy"></a>
+        <a class="wh" href="https://wallethub.com/profile/eliam-bernal-67214649i#reviews" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/wallethub-best.svg')); ?>" alt="WalletHub Best Award: mejor agente de seguros" width="120" height="181" loading="lazy"><span><b>Mejor agente de seguros en Las Vegas</b><small>según WalletHub · 4.8 ★ · 81 reseñas</small></span></a>
       </div>
     </div>
   </div>
