@@ -3,7 +3,7 @@
   <div class="wrap">
     <div>
       <div class="kicker">Since 2008 · In person and remote</div>
-      <h1>Insurance, taxes and immigration, <em>in your language</em> and in one place.</h1>
+      <h1>Insurance, taxes and paperwork, <em>in your language</em> and in one place.</h1>
       <p class="lead">We're an independent insurance agency with contracts with multiple top-tier carriers like Farmers and Progressive, plus tax preparers and paperwork specialists. Seventeen years serving the Hispanic community, at our office and remotely, across the United States and from anywhere in the world.</p>
       <div class="search" id="search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
@@ -12,7 +12,7 @@
         <div class="sugg" id="sugg"></div>
       </div>
       <div class="pop">Most searched:
-        <a href="#s-auto">Auto insurance</a><a href="#s-medicare">Medicare Advantage</a><a href="#s-taxes">Personal taxes</a><a href="#s-llc">Form an LLC</a><a href="#inmigracion">Immigration</a><a href="#s-notaria">Notary</a>
+        <a href="#s-auto">Auto insurance</a><a href="#s-medicare">Medicare Advantage</a><a href="#s-taxes">Personal taxes</a><a href="#s-llc">Form an LLC</a><a href="#dmv">DMV translations</a><a href="#s-notaria">Notary</a>
       </div>
       <div class="badges"><span>Licensed NV · CA · AZ</span><span>Independent agency · 10 carriers</span><span>Spanish and English</span><span>Free quotes</span></div>
     </div>
@@ -27,7 +27,7 @@
     <a class="tile" href="#personal"><div class="ic">🚗</div><b>Personal insurance</b><span>Auto, home, life, pets, devices and more</span></a>
     <a class="tile" href="#negocios"><div class="ic">🏢</div><b>Business insurance</b><span>Liability, commercial auto, workers' comp</span></a>
     <a class="tile" href="#s-taxes"><div class="ic">🧾</div><b>Taxes</b><span>Personal and business, from anywhere in the country</span></a>
-    <a class="tile" href="#inmigracion"><div class="ic">🛂</div><b>Immigration</b><span>USCIS forms and filings</span></a>
+    <a class="tile" href="#dmv"><div class="ic">📝</div><b>Translations</b><span>Approved by the Nevada DMV</span></a>
     <a class="tile" href="#s-notaria"><div class="ic">✒️</div><b>Notary and translations</b><span>Certified documents in Spanish and English</span></a>
     <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licenses and LLC</b><span>Start your business</span></a>
   </div>
@@ -66,7 +66,7 @@
         <div class="grp"><b>Property</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Home&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Home · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Condo&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Condo · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Renter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Renters · quote</a></li><li><a href="https://www.farmers.com/landlord-rental-properties/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Landlord</a></li><li><a href="https://www.farmers.com/home/mobile-manufactured/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Mobile home</a></li><li><a href="https://www.farmers.com/home/seasonal-vacation-homes/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Vacation home</a></li><li><a href="https://www.farmers.com/home/flood/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Flood</a></li><li><a href="https://www.farmers.com/home/earthquake/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Earthquake</a></li></ul></div>
         <div class="grp"><b>Life and health</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Lifec&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Life · quote</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/term-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Term life</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/whole-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Whole life</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/universal-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Universal life</a></li><li><a id="s-medicare" href="#medicare">Medicare Advantage</a></li><li><a href="https://www.farmers.com/medicare-plans/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Medicare plans (Farmers)</a></li></ul></div>
         <div class="grp"><b>Other insurance</b><ul><li><a href="https://www.farmers.com/umbrella/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Umbrella</a></li><li><a href="https://www.farmers.com/pet-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Pets</a></li><li><a href="https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Electronic devices</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoHome&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto + home bundle · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoRenter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto + renters bundle · quote</a></li><li><a href="https://farmers.bordersolutions.com/ap.php?a=67249W" target="_blank" rel="noopener">Auto insurance for Mexico · quote</a></li></ul></div>
-        <div class="grp"><b>Paperwork</b><ul><li><a id="s-taxes" href="#contacto">Personal taxes</a></li><li><a href="#irs">Direct IRS e-file</a></li><li><a href="#irs">ITIN number (Certifying Acceptance Agents)</a></li><li><a id="s-inmigracion" href="#inmigracion">Immigration</a></li><li><a id="s-notaria" href="#contacto">Notary</a></li><li><a href="#contacto">Certified translations</a></li><li><a href="#dmv">DMV translations (approved translator)</a></li><li><a href="#contacto">Free coverage review</a></li></ul></div>
+        <div class="grp"><b>Paperwork</b><ul><li><a id="s-taxes" href="#contacto">Personal taxes</a></li><li><a href="#irs">Direct IRS e-file</a></li><li><a href="#irs">ITIN number (Certifying Acceptance Agents)</a></li><li><a id="s-notaria" href="#contacto">Notary</a></li><li><a href="#contacto">Certified translations</a></li><li><a href="#dmv">DMV translations (approved translator)</a></li><li><a href="#contacto">Free coverage review</a></li></ul></div>
         <p class="note">Insurance through multiple top-tier carriers, including Farmers and Progressive. Coverage availability varies by carrier and state.</p>
       </div>
       <div class="card" id="negocios">
@@ -94,7 +94,7 @@
       <div><b>2008</b><p>The year we opened in North Las Vegas. We're still in the same place.</p></div>
       <div><b>No borders</b><p>Taxes, ITIN, translations and paperwork done remotely for all of the U.S. and for people living abroad. Insurance licensed in Nevada, California and Arizona.</p></div>
       <div><b>10 carriers</b><p>We are independent. For auto we quote Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General and Bristol West; for home, Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America and Lemonade. You get the best option.</p></div>
-      <div><b>1 visit</b><p>Insurance, taxes, immigration and notary in the same office, in your language.</p></div>
+      <div><b>1 visit</b><p>Insurance, taxes, ITIN, translations and notary in one office, in Spanish.</p></div>
     </div>
     <div class="resenas">
       <h3>What our clients say on Google</h3>
@@ -104,27 +104,6 @@
         <a class="wh" href="https://wallethub.com/profile/eliam-bernal-67214649i#reviews" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/wallethub-best.svg')); ?>" alt="WalletHub Best Award: best insurance agent" width="120" height="181" loading="lazy"><span><b>Best insurance agent in Las Vegas</b><small>according to WalletHub · 4.8 ★ · 81 reviews</small></span></a>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="inm" id="inmigracion">
-  <div class="wrap">
-    <div class="inm-head">
-      <div class="kicker">Immigration</div>
-      <h2>Dreaming of becoming a U.S. citizen?</h2>
-      <p class="lead">The day you raise your hand, take the oath and walk out with your citizenship certificate. The American dream starts with paperwork done right, and we walk you through it step by step, in your language.</p>
-    </div>
-    <div class="inm-grid">
-      <div class="inm-card"><div class="ic">🇺🇸</div><h3>Citizenship</h3><p>We prepare your naturalization application and help you get ready for the test and the interview.</p></div>
-      <div class="inm-card"><div class="ic">👨‍👩‍👧</div><h3>Your family, here legally</h3><p>Family petitions to bring your spouse, your children, your parents and your siblings to the United States the legal way.</p></div>
-      <div class="inm-card"><div class="ic">🪪</div><h3>Residency and green card</h3><p>Adjustment of status, including the Cuban Adjustment Act, and renewal or replacement of your green card.</p></div>
-      <div class="inm-card"><div class="ic">💼</div><h3>Permits and renewals</h3><p>Work permits, travel documents, renewals and other USCIS filings, without mistakes that set you back months.</p></div>
-    </div>
-    <div class="inm-cta">
-      <div><b>Your case starts with a conversation.</b><span>Tell us your situation and we'll explain how we work and which documents you'll need to gather.</span></div>
-      <a class="btn btn-acc" href="#contacto">I want to start my case</a>
-    </div>
-    <p class="inm-legal">We are not attorneys and do not give legal advice. We prepare and file immigration forms based on the client's information and instructions. If your case needs an attorney, we'll tell you.</p>
   </div>
 </section>
 
@@ -272,7 +251,7 @@
       <input name="nombre" placeholder="Name" required>
       <input name="telefono" placeholder="Phone or WhatsApp" required>
       <input type="email" name="correo" placeholder="Email (optional)">
-      <select name="servicio"><option>What do you need?</option><option>Auto insurance</option><option>Home or renters insurance</option><option>Life insurance</option><option>Medicare Advantage</option><option>Business insurance</option><option>Taxes</option><option>Immigration</option><option>Notary or translation</option><option>License or LLC</option><option>Other</option></select>
+      <select name="servicio"><option>What do you need?</option><option>Auto insurance</option><option>Home or renters insurance</option><option>Life insurance</option><option>Medicare Advantage</option><option>Business insurance</option><option>Taxes</option><option>Notary or translation</option><option>License or LLC</option><option>Other</option></select>
       <textarea name="mensaje" placeholder="Tell us briefly"></textarea>
       <button class="btn btn-navy" type="submit" style="justify-self:start">Send</button>
       <small>We reply the same business day. We never share your information.</small>

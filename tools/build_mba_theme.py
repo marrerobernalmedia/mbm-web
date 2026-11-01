@@ -45,7 +45,7 @@ main_html = main_html.replace('<small>Respondemos el mismo día hábil. Nunca co
 Theme Name: Marrero Bernal & Associates
 Theme URI: https://marrerobernal.com
 Author: Marrero Bernal Media LLC
-Description: Tema propio de marrerobernal.com (agencia de seguros independiente, taxes, inmigración, notaría). Diseño aprobado por Eliam el 31-oct-2026. Se genera desde la maqueta con tools/build_mba_theme.py.
+Description: Tema propio de marrerobernal.com (agencia de seguros independiente, taxes, ITIN, traducciones, notaría). Diseño aprobado por Eliam el 31-oct-2026. Se genera desde la maqueta con tools/build_mba_theme.py.
 Version: 1.0.0
 Requires PHP: 8.0
 License: Proprietary
@@ -105,7 +105,7 @@ add_action('after_setup_theme', function () {
 });
 
 add_filter('pre_get_document_title', function ($t) {
-  return is_front_page() ? 'Marrero Bernal & Associates · Seguros, taxes e inmigración en Las Vegas' : $t;
+  return is_front_page() ? 'Marrero Bernal & Associates · Seguros, taxes y trámites · Las Vegas, todo EE. UU. y el mundo' : $t;
 });
 
 add_action('wp_head', function () {
@@ -135,7 +135,7 @@ add_action('wp_head', function () { echo '<script>document.addEventListener("DOM
 add_filter('language_attributes', fn() => 'lang="es"');
 add_action('wp_head', function () {
   if (!is_front_page()) return;
-  $img = get_theme_file_uri('img/og.jpg'); $t = 'Marrero Bernal & Associates · Seguros, taxes e inmigración en Las Vegas';
+  $img = get_theme_file_uri('img/og.jpg'); $t = 'Marrero Bernal & Associates · Seguros, taxes y trámites · Las Vegas, todo EE. UU. y el mundo';
   echo '<meta property="og:type" content="website"><meta property="og:site_name" content="Marrero Bernal & Associates"><meta property="og:locale" content="es_US"><meta property="og:url" content="' . esc_url(home_url('/')) . '"><meta property="og:title" content="' . esc_attr($t) . '"><meta property="og:image" content="' . esc_url($img) . '"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">' . "\n";
   $ld = ['@context' => 'https://schema.org', '@type' => 'InsuranceAgency', '@id' => home_url('/#agencia'), 'name' => 'Marrero Bernal & Associates', 'url' => home_url('/'), 'logo' => get_theme_file_uri('img/logo.svg'), 'image' => $img,
     'telephone' => '+1-888-877-2583', 'priceRange' => '$$', 'foundingDate' => '2008', 'knowsLanguage' => ['es', 'en'],

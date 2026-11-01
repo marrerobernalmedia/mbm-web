@@ -3,7 +3,7 @@
   <div class="wrap">
     <div>
       <div class="kicker">Desde 2008 · En persona y a distancia</div>
-      <h1>Seguros, taxes e inmigración, <em>en tu idioma</em> y en un solo lugar.</h1>
+      <h1>Seguros, taxes y trámites, <em>en tu idioma</em> y en un solo lugar.</h1>
       <p class="lead">Somos una agencia de seguros independiente con contratos con múltiples compañías de primer nivel, como Farmers y Progressive, además de preparadores de impuestos y especialistas en trámites. Diecisiete años atendiendo a la comunidad hispana, en nuestra oficina y a distancia, en todo Estados Unidos y desde cualquier parte del mundo.</p>
       <div class="search" id="search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
@@ -12,7 +12,7 @@
         <div class="sugg" id="sugg"></div>
       </div>
       <div class="pop">Lo más buscado:
-        <a href="#s-auto">Seguro de auto</a><a href="#s-medicare">Medicare Advantage</a><a href="#s-taxes">Taxes personales</a><a href="#s-llc">Crear una LLC</a><a href="#inmigracion">Inmigración</a><a href="#s-notaria">Notaría</a>
+        <a href="#s-auto">Seguro de auto</a><a href="#s-medicare">Medicare Advantage</a><a href="#s-taxes">Taxes personales</a><a href="#s-llc">Crear una LLC</a><a href="#dmv">Traducciones DMV</a><a href="#s-notaria">Notaría</a>
       </div>
       <div class="badges"><span>Licencia NV · CA · AZ</span><span>Agencia independiente · 10 aseguradoras</span><span>Español e inglés</span><span>Cotización sin costo</span></div>
     </div>
@@ -27,7 +27,7 @@
     <a class="tile" href="#personal"><div class="ic">🚗</div><b>Seguros personales</b><span>Auto, hogar, vida, mascotas, dispositivos y más</span></a>
     <a class="tile" href="#negocios"><div class="ic">🏢</div><b>Seguros de negocio</b><span>Responsabilidad, auto comercial, workers' comp</span></a>
     <a class="tile" href="#s-taxes"><div class="ic">🧾</div><b>Taxes</b><span>Personales y de negocio, desde cualquier parte del país</span></a>
-    <a class="tile" href="#inmigracion"><div class="ic">🛂</div><b>Inmigración</b><span>Formularios y trámites con USCIS</span></a>
+    <a class="tile" href="#dmv"><div class="ic">📝</div><b>Traducciones</b><span>Aprobadas por el DMV de Nevada</span></a>
     <a class="tile" href="#s-notaria"><div class="ic">✒️</div><b>Notaría y traducciones</b><span>Documentos certificados en español e inglés</span></a>
     <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licencias y LLC</b><span>Abre tu negocio</span></a>
   </div>
@@ -66,7 +66,7 @@
         <div class="grp"><b>Propiedad</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Home&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Casa · cotizar</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Condo&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Condominio · cotizar</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Renter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Renters · cotizar</a></li><li><a href="https://www.farmers.com/landlord-rental-properties/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Landlord</a></li><li><a href="https://www.farmers.com/home/mobile-manufactured/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Casa móvil</a></li><li><a href="https://www.farmers.com/home/seasonal-vacation-homes/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Casa de vacaciones</a></li><li><a href="https://www.farmers.com/home/flood/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Inundación</a></li><li><a href="https://www.farmers.com/home/earthquake/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Terremoto</a></li></ul></div>
         <div class="grp"><b>Vida y salud</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Lifec&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Vida · cotizar</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/term-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Vida a término</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/whole-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Vida entera</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/universal-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Vida universal</a></li><li><a id="s-medicare" href="#medicare">Medicare Advantage</a></li><li><a href="https://www.farmers.com/medicare-plans/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Planes Medicare (Farmers)</a></li></ul></div>
         <div class="grp"><b>Otros seguros</b><ul><li><a href="https://www.farmers.com/umbrella/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Umbrella</a></li><li><a href="https://www.farmers.com/pet-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Mascotas</a></li><li><a href="https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Dispositivos electrónicos</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoHome&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Paquete auto + casa · cotizar</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoRenter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Paquete auto + renters · cotizar</a></li><li><a href="https://farmers.bordersolutions.com/ap.php?a=67249W" target="_blank" rel="noopener">Auto para manejar en México · cotizar</a></li></ul></div>
-        <div class="grp"><b>Trámites</b><ul><li><a id="s-taxes" href="#contacto">Taxes personales</a></li><li><a href="#irs">E-file directo al IRS</a></li><li><a href="#irs">Número ITIN (Agentes Certificados CAA)</a></li><li><a id="s-inmigracion" href="#inmigracion">Inmigración</a></li><li><a id="s-notaria" href="#contacto">Notaría</a></li><li><a href="#contacto">Traducciones certificadas</a></li><li><a href="#dmv">Traducciones para el DMV (traductor aprobado)</a></li><li><a href="#contacto">Revisión gratuita de coberturas</a></li></ul></div>
+        <div class="grp"><b>Trámites</b><ul><li><a id="s-taxes" href="#contacto">Taxes personales</a></li><li><a href="#irs">E-file directo al IRS</a></li><li><a href="#irs">Número ITIN (Agentes Certificados CAA)</a></li><li><a id="s-notaria" href="#contacto">Notaría</a></li><li><a href="#contacto">Traducciones certificadas</a></li><li><a href="#dmv">Traducciones para el DMV (traductor aprobado)</a></li><li><a href="#contacto">Revisión gratuita de coberturas</a></li></ul></div>
         <p class="note">Seguros con múltiples compañías de primer nivel, entre ellas Farmers y Progressive. La disponibilidad de coberturas varía por compañía y por estado.</p>
       </div>
       <div class="card" id="negocios">
@@ -94,7 +94,7 @@
       <div><b>2008</b><p>Año en que abrimos en North Las Vegas. Seguimos en el mismo lugar.</p></div>
       <div><b>Sin fronteras</b><p>Taxes, ITIN, traducciones y trámites a distancia para todo Estados Unidos y para quienes viven en otros países. Seguros con licencia en Nevada, California y Arizona.</p></div>
       <div><b>10 compañías</b><p>Somos independientes. En auto cotizamos con Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General y Bristol West; en casa, con Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America y Lemonade. Te damos la mejor opción.</p></div>
-      <div><b>1 visita</b><p>Seguro, taxes, inmigración y notaría en la misma oficina, en español.</p></div>
+      <div><b>1 visita</b><p>Seguro, taxes, ITIN, traducciones y notaría en la misma oficina, en español.</p></div>
     </div>
     <div class="resenas">
       <h3>Lo que dicen nuestros clientes en Google</h3>
@@ -104,27 +104,6 @@
         <a class="wh" href="https://wallethub.com/profile/eliam-bernal-67214649i#reviews" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/wallethub-best.svg')); ?>" alt="WalletHub Best Award: mejor agente de seguros" width="120" height="181" loading="lazy"><span><b>Mejor agente de seguros en Las Vegas</b><small>según WalletHub · 4.8 ★ · 81 reseñas</small></span></a>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="inm" id="inmigracion">
-  <div class="wrap">
-    <div class="inm-head">
-      <div class="kicker">Inmigración</div>
-      <h2>¿Sueñas con ser ciudadano de los Estados Unidos?</h2>
-      <p class="lead">Ese día en que levantas la mano, juras la bandera y sales con tu certificado de ciudadanía. El sueño americano empieza con papeles bien hechos, y en eso te acompañamos paso a paso, en tu idioma.</p>
-    </div>
-    <div class="inm-grid">
-      <div class="inm-card"><div class="ic">🇺🇸</div><h3>Ciudadanía</h3><p>Preparamos tu solicitud de naturalización y te ayudamos a prepararte para el examen y la entrevista.</p></div>
-      <div class="inm-card"><div class="ic">👨‍👩‍👧</div><h3>Tu familia, legalmente aquí</h3><p>Peticiones familiares para traer a tu esposo o esposa, tus hijos, tus padres y tus hermanos a Estados Unidos por la vía legal.</p></div>
-      <div class="inm-card"><div class="ic">🪪</div><h3>Residencia y green card</h3><p>Ajuste de estatus, incluida la Ley de Ajuste Cubano, y renovación o reemplazo de tu tarjeta de residente.</p></div>
-      <div class="inm-card"><div class="ic">💼</div><h3>Permisos y renovaciones</h3><p>Permiso de trabajo, documento de viaje, renovaciones y otros trámites ante USCIS, sin errores que te atrasen meses.</p></div>
-    </div>
-    <div class="inm-cta">
-      <div><b>Tu caso empieza con una conversación.</b><span>Cuéntanos tu situación y te explicamos cómo trabajamos y qué documentos vas a necesitar reunir.</span></div>
-      <a class="btn btn-acc" href="#contacto">Quiero empezar mi trámite</a>
-    </div>
-    <p class="inm-legal">No somos abogados y no damos asesoría legal. Preparamos y presentamos formularios de inmigración según la información y las instrucciones del cliente. Si tu caso necesita un abogado, te lo decimos.</p>
   </div>
 </section>
 
@@ -272,7 +251,7 @@
       <input name="nombre" placeholder="Nombre" required>
       <input name="telefono" placeholder="Teléfono o WhatsApp" required>
       <input type="email" name="correo" placeholder="Correo (opcional)">
-      <select name="servicio"><option>¿Qué necesitas?</option><option>Seguro de auto</option><option>Seguro de casa o renters</option><option>Seguro de vida</option><option>Medicare Advantage</option><option>Seguro de negocio</option><option>Taxes</option><option>Inmigración</option><option>Notaría o traducción</option><option>Licencia o LLC</option><option>Otro</option></select>
+      <select name="servicio"><option>¿Qué necesitas?</option><option>Seguro de auto</option><option>Seguro de casa o renters</option><option>Seguro de vida</option><option>Medicare Advantage</option><option>Seguro de negocio</option><option>Taxes</option><option>Notaría o traducción</option><option>Licencia o LLC</option><option>Otro</option></select>
       <textarea name="mensaje" placeholder="Cuéntanos brevemente"></textarea>
       <button class="btn btn-navy" type="submit" style="justify-self:start">Enviar</button>
       <small>Respondemos el mismo día hábil. Nunca compartimos tus datos.</small>
