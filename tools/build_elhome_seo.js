@@ -57,7 +57,12 @@ function page({ url, title, desc, image, h1, body, ld }) {
 </body></html>`;
 }
 const vcard = id => { const v = V[id], s = showOf[id]; return `<a class="v" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(v.t)}</h3><small>${esc(s ? sname(s) : "")}${v.n ? " " + esc(v.n) : ""}${v.v ? " · " + fmt(v.v) + " vistas" : ""}</small></a>`; };
-const videoLD = ids => ids.slice(0, 30).map((id, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "VideoObject", name: V[id].t, thumbnailUrl: thumb(id), uploadDate: V[id].f || undefined, embedUrl: `https://www.youtube.com/embed/${id}`, url: `https://www.youtube.com/watch?v=${id}` } }));
+// Fechas para el dato estructurado de Google: elhome/fechas.json (publishedAt real de YouTube) o, si no, la fecha de estreno "f" a las 8:00 AM de Las Vegas.
+const PUB = (() => { try { return JSON.parse(fs.readFileSync(path.join(out, "fechas.json"), "utf8")); } catch (e) { return {}; } })();
+const lvOff = f => { const n = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", timeZoneName: "shortOffset" }).formatToParts(new Date(f + "T16:00:00Z")).find(x => x.type === "timeZoneName").value.replace("GMT", ""); const m = n.match(/^([+-])(\d+)(?::(\d+))?$/); return m ? `${m[1]}${m[2].padStart(2, "0")}:${(m[3] || "00").padStart(2, "0")}` : "-08:00"; };
+const upDate = id => PUB[id] || (/^\d{4}-\d{2}-\d{2}$/.test(V[id].f || "") ? `${V[id].f}T08:00:00${lvOff(V[id].f)}` : null);
+const vDesc = id => { const v = V[id], s = showOf[id], c = (v.c || []).join(", "); return `${v.t}${c ? " — " + c : ""}${s ? ". " + sname(s) : ""}${v.n ? " " + v.n : ""}. Humor cubano en El Home de la Risa.`; };
+const videoLD = ids => ids.filter(id => upDate(id)).slice(0, 30).map((id, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "VideoObject", name: V[id].t, description: vDesc(id), thumbnailUrl: thumb(id), uploadDate: upDate(id), embedUrl: `https://www.youtube.com/embed/${id}`, url: `https://www.youtube.com/watch?v=${id}` } }));
 const write = (rel, html) => { const p = path.join(out, rel, "index.html"); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, html); };
 
 const FEM = new Set(["Yamira Díaz"]);
