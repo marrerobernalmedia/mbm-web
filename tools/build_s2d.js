@@ -7,11 +7,14 @@ const YT_CH = "https://www.youtube.com/@RectaAlPecho";
 const S = require("./s2d_data.js");
 global.window = {}; require(path.join(ROOT, "recta/data.js"));
 const RV = window.APPDATA.vid;
+// Fechas y duración de YouTube (vidIQ) para los videos que recta/data.js no trae: Google pide uploadDate en VideoObject
+const DT = (() => { try { return require("./s2d_dates.json"); } catch (e) { return {}; } })();
 
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const V = S.v.map(([id, c, slug, who, t, sum]) => {
   const r = RV[id] || {};
-  return { id, c, slug, who, t, sum, d: r.d || "", f: r.f || "", views: r.v || 0 };
+  const dt = DT[id] || {};
+  return { id, c, slug, who, t, sum, d: r.d || "", f: r.f || dt.f || "", iso: dt.dur || "", views: r.v || 0 };
 });
 const byId = Object.fromEntries(V.map(v => [v.id, v]));
 // Noticias en inglés: una por artículo de rectaalpecho.com (tools/s2d_news/*.json). Solo salen las de fecha <= hoy (Las Vegas).
@@ -53,7 +56,7 @@ const CSSV = require("crypto").createHash("md5").update(css).digest("hex").slice
 fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(path.join(OUT, "style.css"), css);
 
-function page({ rel, title, desc, canon, body, og, ld, type, alt_es }) {
+function page({ rel, title, desc, canon, body, og, ld, type, alt_es, noindex }) {
   const P = rel; // prefijo relativo a la raíz ("" o "../")
   return `<!doctype html>
 <html lang="en">
@@ -62,7 +65,7 @@ function page({ rel, title, desc, canon, body, og, ld, type, alt_es }) {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
-<link rel="canonical" href="${canon}">
+${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${canon}">`}
 ${rel === "" ? `<link rel="alternate" hreflang="en" href="${SITE}/"><link rel="alternate" hreflang="es" href="https://rectaalpecho.com/">` : ""}${alt_es ? `<link rel="alternate" hreflang="en" href="${canon}"><link rel="alternate" hreflang="es" href="${alt_es}">` : ""}
 <meta property="og:type" content="${type || "website"}">
 <meta property="og:site_name" content="Straight 2D Chest">
@@ -170,8 +173,12 @@ ${S.cats.map(c => {
  ${HOWTO}
 </div></section>
 `;
-  const ld = { "@context": "https://schema.org", "@type": "WebSite", name: "Straight 2D Chest", alternateName: "Recta Al Pecho (English)", url: SITE + "/", inLanguage: "en", publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC", url: "https://marrerobernalmedia.com/" } };
-  fs.writeFileSync(path.join(OUT, "index.html"), page({ rel: "", title: "Straight 2D Chest — Sports · Baseball Is the Passion", desc: "Sports · Baseball is the passion. Long, uncensored interviews with the people who lived the game — big leaguers, legends and the stories nobody told. The English edition of Recta Al Pecho.", canon: SITE + "/", body, ld }));
+  const ld = { "@context": "https://schema.org", "@type": "WebSite", name: "Straight 2D Chest", alternateName: "Recta Al Pecho (English)", url: SITE + "/", inLanguage: "en", publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC", url: "https://marrerobernalmedia.com/", sameAs: ["https://x.com/MarreroBernalTV"] },
+  };
+  const org = { "@context": "https://schema.org", "@type": "Organization", name: "Straight 2D Chest", alternateName: "Recta Al Pecho", url: SITE + "/", logo: SITE + "/img/icon-512.png",
+    sameAs: ["https://www.youtube.com/@RectaAlPecho", "https://www.facebook.com/RectaAlPecho", "https://rectaalpecho.com/"],
+    parentOrganization: { "@type": "Organization", name: "Marrero Bernal Media LLC", url: "https://marrerobernalmedia.com/" } };
+  fs.writeFileSync(path.join(OUT, "index.html"), page({ rel: "", title: "Straight 2D Chest — Sports · Baseball Is the Passion", desc: "Sports · Baseball is the passion. Long, uncensored interviews with the people who lived the game — big leaguers, legends and the stories nobody told. The English edition of Recta Al Pecho.", canon: SITE + "/", body, ld: [ld, org] }));
 }
 
 // ── Interview pages
@@ -201,11 +208,15 @@ for (const v of V) {
     embedUrl: `https://www.youtube.com/embed/${v.id}`, contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
     inLanguage: "es", publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC" }
   };
-  if (v.d) ld.duration = isoDur(v.d);
+  if (v.d) ld.duration = isoDur(v.d); else if (v.iso) ld.duration = v.iso;
   if (v.f) ld.uploadDate = v.f;
   if (v.views) ld.interactionStatistic = { "@type": "InteractionCounter", interactionType: { "@type": "WatchAction" }, userInteractionCount: v.views };
+  const crumbs = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Straight 2D Chest", item: SITE + "/" },
+    { "@type": "ListItem", position: 2, name: cat.name, item: SITE + "/#" + v.c },
+    { "@type": "ListItem", position: 3, name: v.who, item: `${SITE}/${v.slug}/` }] };
   fs.mkdirSync(path.join(OUT, v.slug), { recursive: true });
-  fs.writeFileSync(path.join(OUT, v.slug, "index.html"), page({ rel: "../", title: `${v.who}: ${v.t} | Straight 2D Chest`, desc: v.sum, canon: `${SITE}/${v.slug}/`, body, og: big(v.id), ld, type: "video.other" }));
+  fs.writeFileSync(path.join(OUT, v.slug, "index.html"), page({ rel: "../", title: `${v.who}: ${v.t} | Straight 2D Chest`, desc: v.sum, canon: `${SITE}/${v.slug}/`, body, og: big(v.id), ld: [ld, crumbs], type: "video.other" }));
 }
 
 // ── Stories (news)
@@ -267,7 +278,9 @@ for (const v of V) {
 }
 
 // ── 404, robots, sitemap, .htaccess
-fs.writeFileSync(path.join(OUT, "404.html"), page({ rel: "/", title: "Page not found | Straight 2D Chest", desc: "Page not found.", canon: SITE + "/", body: `<main class="wrap prose"><h1>Strike three — page not found.</h1><p><a class="btn" href="/">Back to the interviews</a></p></main>` }));
+fs.writeFileSync(path.join(OUT, "404.html"), page({ rel: "/", title: "Page not found | Straight 2D Chest", desc: "Page not found.", canon: SITE + "/", noindex: true, body: `<main class="wrap prose"><h1>Strike three — page not found.</h1><p><a class="btn" href="/">Back to the interviews</a></p></main>` }));
+// Verificación de Google Search Console (cuenta personal de Eliam; mismo archivo que El Home y MBM). No borrar.
+fs.writeFileSync(path.join(OUT, "googlea64675e7d49037bc.html"), "google-site-verification: googlea64675e7d49037bc.html");
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
 const urls = [SITE + "/", SITE + "/about/", SITE + "/news/", ...SERIES.map(x => `${SITE}/series/${x.slug}/`), ...V.map(v => `${SITE}/${v.slug}/`), ...NEWS.map(n => `${SITE}/news/${n.slug}/`)];
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `<url><loc>${u}</loc><lastmod>${BUILD}</lastmod></url>`).join("\n")}\n</urlset>\n`);
