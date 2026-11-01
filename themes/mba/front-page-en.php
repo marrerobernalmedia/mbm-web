@@ -66,7 +66,7 @@
         <div class="grp"><b>Property</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Home&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Home · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Condo&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Condo · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Renter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Renters · quote</a></li><li><a href="https://www.farmers.com/landlord-rental-properties/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Landlord</a></li><li><a href="https://www.farmers.com/home/mobile-manufactured/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Mobile home</a></li><li><a href="https://www.farmers.com/home/seasonal-vacation-homes/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Vacation home</a></li><li><a href="https://www.farmers.com/home/flood/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Flood</a></li><li><a href="https://www.farmers.com/home/earthquake/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Earthquake</a></li></ul></div>
         <div class="grp"><b>Life and health</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Lifec&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Life · quote</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/term-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Term life</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/whole-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Whole life</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/universal-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Universal life</a></li><li><a id="s-medicare" href="#medicare">Medicare Advantage</a></li><li><a href="https://www.farmers.com/medicare-plans/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Medicare plans (Farmers)</a></li></ul></div>
         <div class="grp"><b>Other insurance</b><ul><li><a href="https://www.farmers.com/umbrella/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Umbrella</a></li><li><a href="https://www.farmers.com/pet-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Pets</a></li><li><a href="https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Electronic devices</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoHome&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto + home bundle · quote</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoRenter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Auto + renters bundle · quote</a></li><li><a href="https://farmers.bordersolutions.com/ap.php?a=67249W" target="_blank" rel="noopener">Auto insurance for Mexico · quote</a></li></ul></div>
-        <div class="grp"><b>Paperwork</b><ul><li><a id="s-taxes" href="#contacto">Personal taxes</a></li><li><a href="#irs">Direct IRS e-file</a></li><li><a href="#irs">ITIN number (Certifying Acceptance Agents)</a></li><li><a id="s-inmigracion" href="#contacto">Immigration</a></li><li><a id="s-notaria" href="#contacto">Notary</a></li><li><a href="#contacto">Certified translations</a></li><li><a href="#contacto">Free coverage review</a></li></ul></div>
+        <div class="grp"><b>Paperwork</b><ul><li><a id="s-taxes" href="#contacto">Personal taxes</a></li><li><a href="#irs">Direct IRS e-file</a></li><li><a href="#irs">ITIN number (Certifying Acceptance Agents)</a></li><li><a id="s-inmigracion" href="#contacto">Immigration</a></li><li><a id="s-notaria" href="#contacto">Notary</a></li><li><a href="#contacto">Certified translations</a></li><li><a href="#dmv">DMV translations (approved translator)</a></li><li><a href="#contacto">Free coverage review</a></li></ul></div>
         <p class="note">Insurance through multiple top-tier carriers, including Farmers and Progressive. Coverage availability varies by carrier and state.</p>
       </div>
       <div class="card" id="negocios">
@@ -183,6 +183,26 @@
         </ul>
         <a class="btn btn-acc" href="#contacto">Apply for my ITIN</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="dmvt" id="dmv">
+  <div class="wrap">
+    <div class="dmvt-in">
+      <div>
+        <div class="kicker">DMV translations</div>
+        <h2>Nevada DMV-approved translator.</h2>
+        <p>To get a driver license, a Driver Authorization Card or an ID card in Nevada, the DMV requires every document that isn't in English to be translated by a DMV-approved translator.</p>
+        <p>Our founder, Eliam Marrero Bernal, is a Nevada DMV-approved translator. And since the DMV isn't accepting new translators, we're one of the few who can do it.</p>
+        <div class="irs-btns"><a class="btn btn-acc" href="#contacto">Translate my documents</a><a class="btn btn-ghost" href="https://dmv.nv.gov/translators.Asp" target="_blank" rel="noopener">See it on the DMV website</a></div>
+      </div>
+      <ul>
+        <li>Birth certificates, passports and ID documents.</li>
+        <li>Driver licenses from other countries.</li>
+        <li>Typed translations, as the DMV requires.</li>
+        <li>Serving Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump and Moapa Valley / Mesquite.</li>
+      </ul>
     </div>
   </div>
 </section>

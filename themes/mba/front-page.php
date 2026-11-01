@@ -66,7 +66,7 @@
         <div class="grp"><b>Propiedad</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Home&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Casa · cotizar</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Condo&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Condominio · cotizar</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=Renter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Renters · cotizar</a></li><li><a href="https://www.farmers.com/landlord-rental-properties/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Landlord</a></li><li><a href="https://www.farmers.com/home/mobile-manufactured/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Casa móvil</a></li><li><a href="https://www.farmers.com/home/seasonal-vacation-homes/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Casa de vacaciones</a></li><li><a href="https://www.farmers.com/home/flood/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Inundación</a></li><li><a href="https://www.farmers.com/home/earthquake/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Terremoto</a></li></ul></div>
         <div class="grp"><b>Vida y salud</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Lifec&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Vida · cotizar</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/term-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Vida a término</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/whole-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Vida entera</a></li><li><a href="https://www.farmers.com/life-insurance/coverage/universal-life/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Vida universal</a></li><li><a id="s-medicare" href="#medicare">Medicare Advantage</a></li><li><a href="https://www.farmers.com/medicare-plans/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Planes Medicare (Farmers)</a></li></ul></div>
         <div class="grp"><b>Otros seguros</b><ul><li><a href="https://www.farmers.com/umbrella/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Umbrella</a></li><li><a href="https://www.farmers.com/pet-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Mascotas</a></li><li><a href="https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Dispositivos electrónicos</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoHome&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Paquete auto + casa · cotizar</a></li><li><a href="https://esales.farmers.com/fastquote?Lob=autoRenter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Paquete auto + renters · cotizar</a></li><li><a href="https://farmers.bordersolutions.com/ap.php?a=67249W" target="_blank" rel="noopener">Auto para manejar en México · cotizar</a></li></ul></div>
-        <div class="grp"><b>Trámites</b><ul><li><a id="s-taxes" href="#contacto">Taxes personales</a></li><li><a href="#irs">E-file directo al IRS</a></li><li><a href="#irs">Número ITIN (Agentes Certificados CAA)</a></li><li><a id="s-inmigracion" href="#contacto">Inmigración</a></li><li><a id="s-notaria" href="#contacto">Notaría</a></li><li><a href="#contacto">Traducciones certificadas</a></li><li><a href="#contacto">Revisión gratuita de coberturas</a></li></ul></div>
+        <div class="grp"><b>Trámites</b><ul><li><a id="s-taxes" href="#contacto">Taxes personales</a></li><li><a href="#irs">E-file directo al IRS</a></li><li><a href="#irs">Número ITIN (Agentes Certificados CAA)</a></li><li><a id="s-inmigracion" href="#contacto">Inmigración</a></li><li><a id="s-notaria" href="#contacto">Notaría</a></li><li><a href="#contacto">Traducciones certificadas</a></li><li><a href="#dmv">Traducciones para el DMV (traductor aprobado)</a></li><li><a href="#contacto">Revisión gratuita de coberturas</a></li></ul></div>
         <p class="note">Seguros con múltiples compañías de primer nivel, entre ellas Farmers y Progressive. La disponibilidad de coberturas varía por compañía y por estado.</p>
       </div>
       <div class="card" id="negocios">
@@ -183,6 +183,26 @@
         </ul>
         <a class="btn btn-acc" href="#contacto">Solicitar mi ITIN</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="dmvt" id="dmv">
+  <div class="wrap">
+    <div class="dmvt-in">
+      <div>
+        <div class="kicker">Traducciones para el DMV</div>
+        <h2>Traductor aprobado por el DMV de Nevada.</h2>
+        <p>Para sacar la licencia de manejo, la Driver Authorization Card o la tarjeta de identificación en Nevada, el DMV exige que todo documento que no esté en inglés venga traducido por un traductor aprobado por el DMV.</p>
+        <p>Nuestro fundador, Eliam Marrero Bernal, es traductor aprobado por el DMV de Nevada. Y como el DMV no está aceptando nuevos traductores, somos de los pocos que pueden hacerlo.</p>
+        <div class="irs-btns"><a class="btn btn-acc" href="#contacto">Traducir mis documentos</a><a class="btn btn-ghost" href="https://dmv.nv.gov/translators.Asp" target="_blank" rel="noopener">Verlo en el sitio del DMV</a></div>
+      </div>
+      <ul>
+        <li>Actas de nacimiento, pasaportes y documentos de identidad.</li>
+        <li>Licencias de manejo de otros países.</li>
+        <li>Traducción escrita a máquina, como la pide el DMV.</li>
+        <li>Atención en Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump y Moapa Valley / Mesquite.</li>
+      </ul>
     </div>
   </div>
 </section>
