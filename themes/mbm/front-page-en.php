@@ -72,7 +72,7 @@
         </div>
       </div>
       <div class="app">
-        <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/s2d.png')); ?>" alt="Straight 2D Chest">
+        <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/pelotero.png')); ?>" alt="Straight 2D Chest">
         <div>
           <h3>Straight 2D Chest</h3>
           <p>Sports, with baseball as the passion: the interviews with English audio, the series, the myths with their answers and the stories from straight2dchest.com.</p>

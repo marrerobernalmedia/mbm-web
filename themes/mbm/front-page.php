@@ -72,7 +72,7 @@
         </div>
       </div>
       <div class="app">
-        <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/recta.png')); ?>" alt="Recta Al Pecho">
+        <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/pelotero.png')); ?>" alt="Recta Al Pecho">
         <div>
           <h3>Recta Al Pecho</h3>
           <p>Béisbol sin filtro: las entrevistas, las series Las Fugas y Los Borrados, los mitos con su respuesta y las noticias de rectaalpecho.com.</p>
