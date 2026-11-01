@@ -145,6 +145,20 @@
         <div class="irs-btns"><a class="btn btn-acc" href="https://marrerobernal.securefilepro.com/portal/#/login" target="_blank" rel="noopener">Subir mis documentos</a><a class="btn btn-navy" href="#contacto">Hablar con un preparador</a></div>
       </div>
     </div>
+    <div class="irs-pp">
+      <img src="<?php echo esc_url(get_theme_file_uri('img/protectionplus.jpg')); ?>" alt="Protection Plus: $1 Million Tax Protection" width="1250" height="488" loading="lazy">
+      <div>
+        <div class="kicker">Tus taxes, protegidos</div>
+        <h3>¿«Te garantizamos el mayor reembolso»? ¿Te lo dan por escrito?</h3>
+        <p>Es la frase más repetida en los anuncios de taxes. Pero, ¿te has preguntado cómo te lo garantizan y qué pasa si después el IRS te manda una carta?</p>
+        <p>Con nosotros, tu declaración va protegida con Protection Plus, por escrito y no de palabra:</p>
+        <ul>
+          <li>Hasta $1,000,000 en servicios de defensa si recibes una carta, una auditoría o una consulta del IRS o del estado.</li>
+          <li>Evaluación profesional de tu caso, respuesta preparada por expertos y representación ante el IRS o el estado.</li>
+          <li>Ayuda para restaurar tu identidad si te la roban.</li>
+        </ul>
+      </div>
+    </div>
     <div class="irs-grid">
       <div class="card">
         <div class="ic">📡</div>

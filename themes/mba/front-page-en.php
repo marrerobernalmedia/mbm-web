@@ -145,6 +145,20 @@
         <div class="irs-btns"><a class="btn btn-acc" href="https://marrerobernal.securefilepro.com/portal/#/login" target="_blank" rel="noopener">Upload my documents</a><a class="btn btn-navy" href="#contacto">Talk to a tax preparer</a></div>
       </div>
     </div>
+    <div class="irs-pp">
+      <img src="<?php echo esc_url(get_theme_file_uri('img/protectionplus.jpg')); ?>" alt="Protection Plus: $1 Million Tax Protection" width="1250" height="488" loading="lazy">
+      <div>
+        <div class="kicker">Your taxes, protected</div>
+        <h3>“Biggest refund, guaranteed”? Do they put it in writing?</h3>
+        <p>It's the most common line in tax ads. But have you ever asked how they guarantee it, and what happens if the IRS sends you a letter later?</p>
+        <p>With us, your return is protected by Protection Plus, in writing, not just in words:</p>
+        <ul>
+          <li>Up to $1,000,000 in defense services if you get a letter, an audit or an inquiry from the IRS or the state.</li>
+          <li>Professional case assessment, an expert-prepared response and representation before the IRS or the state.</li>
+          <li>Help restoring your identity if it's stolen.</li>
+        </ul>
+      </div>
+    </div>
     <div class="irs-grid">
       <div class="card">
         <div class="ic">📡</div>
