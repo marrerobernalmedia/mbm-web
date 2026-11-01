@@ -2,9 +2,9 @@
 <section class="hero">
   <div class="wrap">
     <div>
-      <div class="kicker">North Las Vegas · desde 2008</div>
+      <div class="kicker">Desde 2008 · En persona y a distancia</div>
       <h1>Seguros, taxes e inmigración, <em>en tu idioma</em> y en un solo lugar.</h1>
-      <p class="lead">Somos una agencia de seguros independiente con contratos con múltiples compañías de primer nivel, como Farmers y Progressive, además de preparadores de impuestos y especialistas en trámites. Diecisiete años atendiendo a la comunidad hispana de Nevada, California y Arizona.</p>
+      <p class="lead">Somos una agencia de seguros independiente con contratos con múltiples compañías de primer nivel, como Farmers y Progressive, además de preparadores de impuestos y especialistas en trámites. Diecisiete años atendiendo a la comunidad hispana, en nuestra oficina y a distancia, en todo Estados Unidos y desde cualquier parte del mundo.</p>
       <div class="search" id="search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
         <input id="q" type="search" placeholder="¿Qué necesitas? Ej. seguro de auto, Medicare, LLC, notaría…" autocomplete="off">
@@ -29,7 +29,7 @@
     <a class="tile" href="#s-taxes"><div class="ic">🧾</div><b>Taxes</b><span>Personales y de negocio, desde cualquier parte del país</span></a>
     <a class="tile" href="#s-inmigracion"><div class="ic">🛂</div><b>Inmigración</b><span>Formularios y trámites con USCIS</span></a>
     <a class="tile" href="#s-notaria"><div class="ic">✒️</div><b>Notaría y traducciones</b><span>Documentos certificados en español e inglés</span></a>
-    <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licencias y LLC</b><span>Abre tu negocio en Nevada</span></a>
+    <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licencias y LLC</b><span>Abre tu negocio</span></a>
   </div>
   <div class="carriers"><span>Trabajamos con</span><b>Farmers</b><b>Progressive</b><b>Travelers</b><b>Liberty Mutual</b><b>Mercury</b><b>National General</b><b>Bristol West</b><b>Foremost</b><b>Homeowners of America</b><b>Lemonade</b></div>
   <div class="cli">
@@ -89,10 +89,10 @@
 <section>
   <div class="wrap">
     <div class="kicker">Por qué nosotros</div>
-    <h2>Diecisiete años, la misma oficina, la misma gente.</h2>
+    <h2>Diecisiete años, la misma gente, para clientes en todo el mundo.</h2>
     <div class="why">
       <div><b>2008</b><p>Año en que abrimos en North Las Vegas. Seguimos en el mismo lugar.</p></div>
-      <div><b>3 estados</b><p>Licencia para vender seguros en Nevada, California y Arizona.</p></div>
+      <div><b>Sin fronteras</b><p>Taxes, ITIN, traducciones y trámites a distancia para todo Estados Unidos y para quienes viven en otros países. Seguros con licencia en Nevada, California y Arizona.</p></div>
       <div><b>10 compañías</b><p>Somos independientes. En auto cotizamos con Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General y Bristol West; en casa, con Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America y Lemonade. Te damos la mejor opción.</p></div>
       <div><b>1 visita</b><p>Seguro, taxes, inmigración y notaría en la misma oficina, en español.</p></div>
     </div>
@@ -212,9 +212,9 @@
     <img src="<?php echo esc_url(get_theme_file_uri('img/eliam.jpg')); ?>" alt="Eliam Marrero Bernal atendiendo clientes en la oficina" style="border-radius:22px;border:1px solid var(--line)">
     <div>
       <div class="kicker">Quiénes somos</div>
-      <h2>Una agencia de barrio con licencia en tres estados.</h2>
+      <h2>Nacimos en el barrio. Hoy atendemos a todo el mundo.</h2>
       <p class="lead">Eliam Marrero Bernal fundó Marrero Bernal &amp; Associates en 2008 con una idea simple: que un cubano, un mexicano o un salvadoreño recién llegado a Las Vegas pudiera resolver su seguro, sus taxes y sus papeles con alguien que le hablara claro y en su idioma.</p>
-      <p class="lead" style="margin-top:14px">Hoy somos una agencia independiente con contratos con varias compañías de primer nivel, preparadores de impuestos y un equipo que conoce a cada cliente por su nombre. Lo que ofrecemos no es un producto: es que salgas de la oficina con el problema resuelto.</p>
+      <p class="lead" style="margin-top:14px">Hoy somos una agencia independiente con contratos con varias compañías de primer nivel, preparadores de impuestos y un equipo que conoce a cada cliente por su nombre. Lo que ofrecemos no es un producto: es que tengas tu problema resuelto, vengas a la oficina o nos escribas desde el otro lado del mundo.</p>
       <div class="creds"><span>Agencia independiente</span><span>LUTCF · FSCP · CSP</span><span><span data-seg="tot.mba">23K</span>+ seguidores en redes</span><span>Licencia NV · CA · AZ</span><span>The American College</span><span>Español · English</span></div>
     </div>
   </div>

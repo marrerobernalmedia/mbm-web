@@ -2,9 +2,9 @@
 <section class="hero">
   <div class="wrap">
     <div>
-      <div class="kicker">North Las Vegas · since 2008</div>
+      <div class="kicker">Since 2008 · In person and remote</div>
       <h1>Insurance, taxes and immigration, <em>in your language</em> and in one place.</h1>
-      <p class="lead">We are an independent insurance agency with contracts with multiple top-tier carriers, such as Farmers and Progressive, plus tax preparers and paperwork specialists. Seventeen years serving the Hispanic community of Nevada, California and Arizona.</p>
+      <p class="lead">We're an independent insurance agency with contracts with multiple top-tier carriers like Farmers and Progressive, plus tax preparers and paperwork specialists. Seventeen years serving the Hispanic community, at our office and remotely, across the United States and from anywhere in the world.</p>
       <div class="search" id="search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
         <input id="q" type="search" placeholder="What do you need? E.g. auto insurance, Medicare, LLC, notary…" autocomplete="off">
@@ -29,7 +29,7 @@
     <a class="tile" href="#s-taxes"><div class="ic">🧾</div><b>Taxes</b><span>Personal and business, from anywhere in the country</span></a>
     <a class="tile" href="#s-inmigracion"><div class="ic">🛂</div><b>Immigration</b><span>USCIS forms and filings</span></a>
     <a class="tile" href="#s-notaria"><div class="ic">✒️</div><b>Notary and translations</b><span>Certified documents in Spanish and English</span></a>
-    <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licenses and LLC</b><span>Open your business in Nevada</span></a>
+    <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licenses and LLC</b><span>Start your business</span></a>
   </div>
   <div class="carriers"><span>We work with</span><b>Farmers</b><b>Progressive</b><b>Travelers</b><b>Liberty Mutual</b><b>Mercury</b><b>National General</b><b>Bristol West</b><b>Foremost</b><b>Homeowners of America</b><b>Lemonade</b></div>
   <div class="cli">
@@ -89,10 +89,10 @@
 <section>
   <div class="wrap">
     <div class="kicker">Why us</div>
-    <h2>Seventeen years, the same office, the same people.</h2>
+    <h2>Seventeen years, the same people, serving clients worldwide.</h2>
     <div class="why">
       <div><b>2008</b><p>The year we opened in North Las Vegas. We're still in the same place.</p></div>
-      <div><b>3 states</b><p>Licensed to sell insurance in Nevada, California and Arizona.</p></div>
+      <div><b>No borders</b><p>Taxes, ITIN, translations and paperwork done remotely for all of the U.S. and for people living abroad. Insurance licensed in Nevada, California and Arizona.</p></div>
       <div><b>10 carriers</b><p>We are independent. For auto we quote Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General and Bristol West; for home, Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America and Lemonade. You get the best option.</p></div>
       <div><b>1 visit</b><p>Insurance, taxes, immigration and notary in the same office, in your language.</p></div>
     </div>
@@ -212,9 +212,9 @@
     <img src="<?php echo esc_url(get_theme_file_uri('img/eliam.jpg')); ?>" alt="Eliam Marrero Bernal helping clients at the office" style="border-radius:22px;border:1px solid var(--line)">
     <div>
       <div class="kicker">About us</div>
-      <h2>A neighborhood agency licensed in three states.</h2>
+      <h2>Born in the neighborhood. Today we serve the whole world.</h2>
       <p class="lead">Eliam Marrero Bernal founded Marrero Bernal &amp; Associates in 2008 with a simple idea: that a Cuban, a Mexican or a Salvadoran newly arrived in Las Vegas could sort out their insurance, taxes and paperwork with someone who spoke plainly and in their language.</p>
-      <p class="lead" style="margin-top:14px">Today we are an independent agency with contracts with several top-tier carriers, tax preparers and a team that knows every client by name. What we offer isn't a product: it's walking out of the office with the problem solved.</p>
+      <p class="lead" style="margin-top:14px">Today we're an independent agency with contracts with several top-tier carriers, tax preparers and a team that knows every client by name. What we offer isn't a product: it's getting your problem solved, whether you walk into our office or write to us from the other side of the world.</p>
       <div class="creds"><span>Independent agency</span><span>LUTCF · FSCP · CSP</span><span><span data-seg="tot.mba">23K</span>+ social followers</span><span>Licensed NV · CA · AZ</span><span>The American College</span><span>Español · English</span></div>
     </div>
   </div>

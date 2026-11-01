@@ -18,7 +18,7 @@ add_filter('pre_get_document_title', function ($t) {
 
 add_action('wp_head', function () {
   echo '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
-  if (is_front_page() && !mba_is_en()) echo '<meta name="description" content="' . esc_attr("Marrero Bernal & Associates: agencia de seguros independiente en Las Vegas con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; taxes personales y de negocio, inmigración, notaría, traducciones y creación de LLC. En español, en North Las Vegas desde 2008.") . '">' . "\n";
+  if (is_front_page() && !mba_is_en()) echo '<meta name="description" content="' . esc_attr("Marrero Bernal & Associates: agencia independiente con sede en Las Vegas que atiende clientes en todo Estados Unidos y el extranjero, con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; taxes personales y de negocio, inmigración, notaría, traducciones y creación de LLC. En español, en North Las Vegas desde 2008.") . '">' . "\n";
 }, 1);
 
 add_action('wp_enqueue_scripts', function () {
@@ -35,7 +35,7 @@ add_action('wp_footer', function () {
 
 /** Título en inglés para el conmutador de idioma. */
 add_filter('document_title_parts', fn($p) => $p);
-add_action('wp_head', function () { echo '<script>document.addEventListener("DOMContentLoaded",function(){var t=document.querySelector("title");if(t&&!t.getAttribute("data-en"))t.setAttribute("data-en",' . json_encode("Marrero Bernal & Associates · Insurance, taxes and immigration in Las Vegas") . ');});</script>' . "\n"; }, 2);
+add_action('wp_head', function () { echo '<script>document.addEventListener("DOMContentLoaded",function(){var t=document.querySelector("title");if(t&&!t.getAttribute("data-en"))t.setAttribute("data-en",' . json_encode("Marrero Bernal & Associates · Insurance, taxes and immigration · Las Vegas, nationwide and worldwide") . ');});</script>' . "\n"; }, 2);
 
 /** SEO: idioma español, vista previa al compartir y ficha de negocio local (InsuranceAgency) para Google. */
 add_filter('language_attributes', fn() => 'lang="es"');
@@ -92,14 +92,14 @@ add_action('init', function () {
 add_filter('redirect_canonical', fn($r) => mba_is_en() ? false : $r);
 add_filter('template_include', function ($t) { if (mba_is_en()) { $f = get_theme_file_path('front-page-en.php'); if (file_exists($f)) return $f; } return $t; }, 1000);
 add_filter('language_attributes', fn($a) => mba_is_en() ? 'lang="en"' : 'lang="es"', 20);
-add_filter('pre_get_document_title', fn($t) => mba_is_en() ? "Marrero Bernal & Associates · Insurance, taxes and immigration in Las Vegas" : $t, 20);
+add_filter('pre_get_document_title', fn($t) => mba_is_en() ? "Marrero Bernal & Associates · Insurance, taxes and immigration · Las Vegas, nationwide and worldwide" : $t, 20);
 add_filter('body_class', fn($c) => mba_is_en() ? array_merge($c, ['lang-en']) : $c);
 add_action('wp_head', function () {
   if (!is_front_page() && !mba_is_en()) return;
   $es = home_url('/'); $en = home_url('/en/');
   echo '<link rel="alternate" hreflang="es" href="' . esc_url($es) . '"><link rel="alternate" hreflang="en" href="' . esc_url($en) . '"><link rel="alternate" hreflang="x-default" href="' . esc_url($es) . '">' . "\n";
   if (mba_is_en()) {
-    echo '<link rel="canonical" href="' . esc_url($en) . '"><meta name="description" content="' . esc_attr("Marrero Bernal & Associates: agencia de seguros independiente en Las Vegas con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; taxes personales y de negocio, inmigración, notaría, traducciones y creación de LLC. En español, en North Las Vegas desde 2008.") . '"><meta property="og:locale" content="en_US"><meta property="og:url" content="' . esc_url($en) . '"><meta property="og:title" content="' . esc_attr("Marrero Bernal & Associates · Insurance, taxes and immigration in Las Vegas") . '"><meta property="og:description" content="' . esc_attr("Marrero Bernal & Associates: agencia de seguros independiente en Las Vegas con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; taxes personales y de negocio, inmigración, notaría, traducciones y creación de LLC. En español, en North Las Vegas desde 2008.") . '">' . "\n";
+    echo '<link rel="canonical" href="' . esc_url($en) . '"><meta name="description" content="' . esc_attr("Marrero Bernal & Associates: agencia independiente con sede en Las Vegas que atiende clientes en todo Estados Unidos y el extranjero, con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; taxes personales y de negocio, inmigración, notaría, traducciones y creación de LLC. En español, en North Las Vegas desde 2008.") . '"><meta property="og:locale" content="en_US"><meta property="og:url" content="' . esc_url($en) . '"><meta property="og:title" content="' . esc_attr("Marrero Bernal & Associates · Insurance, taxes and immigration · Las Vegas, nationwide and worldwide") . '"><meta property="og:description" content="' . esc_attr("Marrero Bernal & Associates: agencia independiente con sede en Las Vegas que atiende clientes en todo Estados Unidos y el extranjero, con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; taxes personales y de negocio, inmigración, notaría, traducciones y creación de LLC. En español, en North Las Vegas desde 2008.") . '">' . "\n";
   }
 }, 4);
 /** En /en/ WordPress no pone su canonical de portada (lo pone el bloque de arriba). */
