@@ -72,7 +72,7 @@
         </div>
       </div>
       <div class="app">
-        <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/pelotero.png?v=2?v=2')); ?>" alt="Straight 2D Chest">
+        <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/pelotero.png?v=2')); ?>" alt="Straight 2D Chest">
         <div>
           <h3>Straight 2D Chest</h3>
           <p>Sports, with baseball as the passion: the interviews with English audio, the series, the myths with their answers and the stories from straight2dchest.com.</p>
@@ -132,7 +132,7 @@
     <div class="fb-grid">
       <a class="fb" href="https://www.facebook.com/RisaEsCosaSeria/" target="_blank" rel="noopener" data-fb="larisa"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/iso_larisa.jpg')); ?>" alt="La Risa es Cosa Seria"><b>La Risa es Cosa Seria</b><span><i data-seg="fb.larisa" data-fmt="full">584,344</i> followers</span></a>
       <a class="fb" href="https://www.facebook.com/LaCosaEsDeRisa/" target="_blank" rel="noopener" data-fb="lacosa"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/iso_lacosa.jpg')); ?>" alt="La Cosa Es De Risa"><b>La Cosa Es De Risa</b><span><i data-seg="fb.lacosa" data-fmt="full">172,454</i> followers</span></a>
-      <a class="fb" href="https://www.facebook.com/RectaAlPecho/" target="_blank" rel="noopener" data-fb="recta"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/pelotero.png?v=2?v=2')); ?>" alt="Straight 2D Chest"><b>Straight 2D Chest</b><span><i data-seg="fb.recta" data-fmt="full">71,612</i> followers</span></a>
+      <a class="fb" href="https://www.facebook.com/RectaAlPecho/" target="_blank" rel="noopener" data-fb="recta"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/pelotero.png?v=2')); ?>" alt="Straight 2D Chest"><b>Straight 2D Chest</b><span><i data-seg="fb.recta" data-fmt="full">71,612</i> followers</span></a>
       <a class="fb" href="https://www.facebook.com/ElHomeDeLaRisa/" target="_blank" rel="noopener" data-fb="elhome"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/elhome.png')); ?>" alt="El Home de la Risa"><b>El Home De La Risa</b><span><i data-seg="fb.elhome" data-fmt="full">13,236</i> followers</span></a>
       <a class="fb" href="https://www.facebook.com/eliam" target="_blank" rel="noopener" data-fb="eliam"><img src="<?php echo esc_url(get_theme_file_uri('img/av_eliam.jpg?v=2')); ?>" alt="Eliam Marrero Bernal" style="border-radius:50%"><b>Eliam M. Marrero Bernal</b><span><i data-seg="fb.eliam" data-fmt="full">11,223</i> followers · our founder</span></a>
       <a class="fb" href="https://www.facebook.com/sidecuerosetrata" target="_blank" rel="noopener" data-fb="cuero"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/cuero.png')); ?>" alt="Si de Cuero Se Trata"><b>Si de Cuero se Trata</b><span><i data-seg="fb.cuero" data-fmt="full">2,106</i> followers</span></a>

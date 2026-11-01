@@ -192,14 +192,14 @@ _wk = re.compile(r'<a class="wk" style="background-image:url\(<\?php echo esc_ur
 fp, _n = _wk.subn(lambda m: m.group(0).replace("img/recta.jpg", "img/s2d.jpg").replace("https://www.youtube.com/@RectaAlPecho?sub_confirmation=1", "https://www.straight2dchest.com/").replace("<b>Recta Al Pecho</b>", "<b>Straight 2D Chest</b>"), fp, count=1)
 assert _n == 1, 'trabajo de Recta no encontrado'
 _fb = re.compile(r'(<a class="fb" href="https://www\.facebook\.com/RectaAlPecho/"[^>]*>)<img src="([^"]*?)img/marcas/pelotero\.png([^"]*)" alt="Recta al Pecho"><b>Recta al Pecho</b>')
-fp, _n = _fb.subn(lambda m: m.group(1) + '<img src="' + m.group(2) + 'img/marcas/pelotero.png?v=2' + m.group(3) + '" alt="Straight 2D Chest"><b>Straight 2D Chest</b>', fp, count=1)
+fp, _n = _fb.subn(lambda m: m.group(1) + '<img src="' + m.group(2) + 'img/marcas/pelotero.png' + m.group(3) + '" alt="Straight 2D Chest"><b>Straight 2D Chest</b>', fp, count=1)
 assert _n == 1, 'página de Facebook de Recta no encontrada'
 _lg = re.compile(r'<a href="https://www\.youtube\.com/@RectaAlPecho\?sub_confirmation=1" target="_blank" rel="noopener"><img src="([^"]*?)img/marcas/recta\.png([^"]*)" alt="Recta Al Pecho"></a>')
 fp, _n = _lg.subn(lambda m: '<a href="https://www.straight2dchest.com/" target="_blank" rel="noopener"><img src="' + m.group(1) + 'img/marcas/s2d.png' + m.group(2) + '" alt="Straight 2D Chest"></a>', fp, count=1)
 assert _n == 1, 'logo de Recta en Nosotros no encontrado'
 # Apps en inglés: la app de Recta abre en inglés como Straight 2D Chest (Eliam, 31-oct-2026)
 _ap = re.compile(r'<img src="([^"]*?)img/marcas/pelotero\.png([^"]*)" alt="Recta Al Pecho">\s*<div>\s*<h3>Recta Al Pecho</h3>\s*<p>[^<]*</p>\s*<div class="ctas">\s*<a class="btn btn-acc" href="https://marrerobernalmedia\.com/recta/"')
-fp, _n = _ap.subn(lambda m: '<img src="' + m.group(1) + 'img/marcas/pelotero.png?v=2' + m.group(2) + '" alt="Straight 2D Chest">\n        <div>\n          <h3>Straight 2D Chest</h3>\n          <p>Sports, with baseball as the passion: the interviews with English audio, the series, the myths with their answers and the stories from straight2dchest.com.</p>\n          <div class="ctas">\n            <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/?lang=en"', fp, count=1)
+fp, _n = _ap.subn(lambda m: '<img src="' + m.group(1) + 'img/marcas/pelotero.png' + m.group(2) + '" alt="Straight 2D Chest">\n        <div>\n          <h3>Straight 2D Chest</h3>\n          <p>Sports, with baseball as the passion: the interviews with English audio, the series, the myths with their answers and the stories from straight2dchest.com.</p>\n          <div class="ctas">\n            <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/?lang=en"', fp, count=1)
 assert _n == 1, 'app de Recta en inglés no encontrada'
 # En inglés Recta Al Pecho se llama siempre Straight 2D Chest (Eliam, 31-oct-2026)
 fp = fp.replace('Recta Al Pecho', 'Straight 2D Chest').replace('Recta al Pecho', 'Straight 2D Chest')
