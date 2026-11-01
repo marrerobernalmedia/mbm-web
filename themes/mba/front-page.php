@@ -26,7 +26,7 @@
   <div class="tiles">
     <a class="tile" href="#personal"><div class="ic">🚗</div><b>Seguros personales</b><span>Auto, hogar, vida, mascotas, dispositivos y más</span></a>
     <a class="tile" href="#negocios"><div class="ic">🏢</div><b>Seguros de negocio</b><span>Responsabilidad, auto comercial, workers' comp</span></a>
-    <a class="tile" href="#s-taxes"><div class="ic">🧾</div><b>Taxes</b><span>Personales y de negocio, todo el año</span></a>
+    <a class="tile" href="#s-taxes"><div class="ic">🧾</div><b>Taxes</b><span>Personales y de negocio, desde cualquier parte del país</span></a>
     <a class="tile" href="#s-inmigracion"><div class="ic">🛂</div><b>Inmigración</b><span>Formularios y trámites con USCIS</span></a>
     <a class="tile" href="#s-notaria"><div class="ic">✒️</div><b>Notaría y traducciones</b><span>Documentos certificados en español e inglés</span></a>
     <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licencias y LLC</b><span>Abre tu negocio en Nevada</span></a>
@@ -136,6 +136,14 @@
   <div class="wrap">
     <div class="kicker">Impuestos e ITIN</div>
     <h2>Tus taxes van directo al IRS. Sin intermediarios.</h2>
+    <div class="irs-remoto">
+      <div class="ic">🌎</div>
+      <div>
+        <h3>Taxes a distancia, en todo el país y desde el extranjero</h3>
+        <p>No tienes que vivir en Nevada. Preparamos los taxes de clientes en cualquier estado de EE. UU. y también de estadounidenses que viven en otros países. Nos mandas tus documentos por el portal seguro de clientes, te explicamos todo por teléfono o videollamada y transmitimos tu declaración directo al IRS.</p>
+        <div class="irs-btns"><a class="btn btn-acc" href="https://marrerobernal.securefilepro.com/portal/#/login" target="_blank" rel="noopener">Subir mis documentos</a><a class="btn btn-navy" href="#contacto">Hablar con un preparador</a></div>
+      </div>
+    </div>
     <div class="irs-grid">
       <div class="card">
         <div class="ic">📡</div>

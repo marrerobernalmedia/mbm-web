@@ -50,6 +50,7 @@ add_action('wp_head', function () {
     'openingHoursSpecification' => [['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens' => '09:00', 'closes' => '17:00']],
     'contactPoint' => [['@type' => 'ContactPoint', 'telephone' => '+1-888-877-2583', 'contactType' => 'customer service', 'availableLanguage' => ['Spanish','English']], ['@type' => 'ContactPoint', 'telephone' => '+1-702-997-2982', 'contactType' => 'sales', 'areaServed' => 'US-NV']],
     'areaServed' => [['@type' => 'State', 'name' => 'Nevada'], ['@type' => 'State', 'name' => 'California'], ['@type' => 'State', 'name' => 'Arizona']],
+    'makesOffer' => [['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Preparación de impuestos a distancia (IRS e-file)', 'serviceType' => 'Tax preparation', 'areaServed' => [['@type' => 'Country', 'name' => 'United States'], ['@type' => 'Place', 'name' => 'Worldwide']]]], ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Solicitud de ITIN con Agentes de Aceptación Certificados (CAA)', 'serviceType' => 'ITIN application']]],
     'sameAs' => ['https://www.facebook.com/marrerobernal']];
   echo '<script type="application/ld+json">' . wp_json_encode($ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "
 ";
