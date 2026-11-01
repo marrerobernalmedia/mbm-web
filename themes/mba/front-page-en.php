@@ -94,7 +94,7 @@
       <div><b>2008</b><p>The year we opened in North Las Vegas. We're still in the same place.</p></div>
       <div><b>No borders</b><p>Taxes, ITIN, translations and paperwork done remotely for all of the U.S. and for people living abroad. Insurance licensed in Nevada, California and Arizona.</p></div>
       <div><b>10 carriers</b><p>We are independent. For auto we quote Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General and Bristol West; for home, Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America and Lemonade. You get the best option.</p></div>
-      <div><b>1 visit</b><p>Insurance, taxes, ITIN, translations and notary in one office, in Spanish.</p></div>
+      <div><b>1 visit</b><p>Insurance, taxes, ITIN, translations, notary and more, in one office and in Spanish.</p></div>
     </div>
     <div class="resenas">
       <h3>What our clients say on Google</h3>
