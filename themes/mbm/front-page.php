@@ -150,7 +150,7 @@
     <div class="kicker">Trabajos</div>
     <h2>Producciones propias y para clientes.</h2>
     <div class="works">
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/risa.jpg')); ?>)" href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener"><div><b>La Risa es Cosa Seria · Temporada 8</b><span>Serie de stand-up · producción completa</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/risa.jpg')); ?>)" href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener"><div><b>La Risa es Cosa Seria</b><span>Serie de stand-up · producción completa</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/welcome.jpg')); ?>)" href="https://www.welcometoapagonia.com" target="_blank" rel="noopener"><div><b>Welcome to Apagonia</b><span>Serie de comedia situacional · guion, dirección y post</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/recta.jpg')); ?>)" href="https://www.youtube.com/@RectaAlPecho?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Recta Al Pecho</b><span>Programa de entrevistas · set, grabación y distribución</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cosa.jpg')); ?>)" href="https://www.lcedr.com" target="_blank" rel="noopener"><div><b>La Risa News</b><span>Noticiero semanal · formato propio</span></div></a>

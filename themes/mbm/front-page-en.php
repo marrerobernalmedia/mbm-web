@@ -150,7 +150,7 @@
     <div class="kicker">Work</div>
     <h2>Our own productions and client work.</h2>
     <div class="works">
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/risa.jpg')); ?>)" href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener"><div><b>La Risa es Cosa Seria · Season 8</b><span>Stand-up series · full production</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/risa.jpg')); ?>)" href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener"><div><b>La Risa es Cosa Seria</b><span>Stand-up series · full production</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/welcome.jpg')); ?>)" href="https://www.welcometoapagonia.com" target="_blank" rel="noopener"><div><b>Welcome to Apagonia</b><span>Sitcom series · writing, directing and post</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/s2d.jpg')); ?>)" href="https://www.straight2dchest.com/" target="_blank" rel="noopener"><div><b>Straight 2D Chest</b><span>Interview show · set, recording and distribution</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cosa.jpg')); ?>)" href="https://www.lcedr.com" target="_blank" rel="noopener"><div><b>La Risa News</b><span>Weekly newscast · original format</span></div></a>
