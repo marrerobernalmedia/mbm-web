@@ -30,3 +30,19 @@ mkdir -p "$DEST/.well-known" && cp .well-known/assetlinks.json "$DEST/.well-know
 for D in "$HOME/public_html/straight2dchest.com" "$HOME/straight2dchest.com"; do
   [ -d s2d ] && [ -d "$D" ] && rsync -a --delete --exclude=.well-known --exclude=cgi-bin $EXC s2d/ "$D/"
 done
+# Avisos de estreno (OneSignal): se mandan desde aquí cada 5 minutos, así no dependen de otro cron.
+# avisos.php no repite un aviso ya enviado (lo anota en opiniones/avisos_enviados.json) y no manda nada antes de las 8:00 AM LV.
+# El resultado de la última corrida queda en <app>/avisos-estado.txt (sin claves) para poder revisarlo desde fuera.
+PHP=""
+for P in /usr/local/bin/php /usr/bin/php /opt/cpanel/ea-php82/root/usr/bin/php /opt/cpanel/ea-php81/root/usr/bin/php "$(command -v php 2>/dev/null)"; do
+  [ -n "$P" ] && [ -x "$P" ] && { PHP="$P"; break; }
+done
+for A in elhome recta; do
+  [ -f "$DEST/$A/avisos.php" ] || continue
+  if [ -n "$PHP" ]; then
+    OUT=$(cd "$DEST/$A" && "$PHP" avisos.php 2>&1 | tail -n 5) || true
+  else
+    OUT="No encontré php en el servidor"
+  fi
+  { TZ=America/Los_Angeles date '+%Y-%m-%d %H:%M:%S'; echo "$OUT" | head -c 500; echo; } > "$DEST/$A/avisos-estado.txt" 2>/dev/null || true
+done
