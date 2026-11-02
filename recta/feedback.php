@@ -6,7 +6,7 @@
 // ============================================================
 
 // Correo que recibe un aviso con cada opinión. Si se deja vacío, solo se guarda en el archivo.
-$AVISAR_A = '';
+$AVISAR_A = 'theboss@marrerobernal.com';
 $APP = 'Recta Al Pecho';
 
 header('Content-Type: application/json; charset=utf-8');
