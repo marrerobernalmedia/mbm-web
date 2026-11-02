@@ -119,6 +119,7 @@
         <li>FAA-registered drone with Remote ID.</li>
         <li>Day and night flights, as Part 107 allows, with anti-collision lights visible for 3 miles.</li>
         <li>Permits handled in advance: controlled-airspace authorization (LAANC or FAA DroneZone), city or county film permits when required, and written permission from the property owner.</li>
+        <li>Maximum altitude per the FAA map: near airports the authorized ceiling drops (from 400 feet down to 0), and areas such as military bases, dams, national parks and critical facilities need special permission, which we request before the shoot date.</li>
         <li>Flight plan and checks of weather, temporary flight restrictions (TFRs) and crew and public safety before every flight.</li>
         <li>Real estate, construction progress, corporate events, commercials, tourism and video productions.</li>
       </ul>
