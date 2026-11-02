@@ -97,8 +97,8 @@
       <div class="sv"><div class="ic">✂️</div><h3>Edición y postproducción</h3><p>Montaje, corrección de color, diseño sonoro, subtítulos y versiones verticales para cada plataforma.</p></div>
       <div class="sv"><div class="ic">🚁</div><h3>Operaciones aéreas con dron</h3><p>Tomas aéreas con piloto certificado FAA Part 107: inmobiliaria, construcción, industria, comerciales y producciones.</p></div>
       <div class="sv"><div class="ic">🎙️</div><h3>Podcast y streaming para marcas</h3><p>Diseño del formato, grabación en set, producción y distribución. Recta Al Pecho es nuestro propio caso de éxito.</p></div>
-      <div class="sv"><div class="ic">✦</div><h3>Diseño gráfico e identidad</h3><p>Logos, miniaturas, carátulas, banners y sistemas visuales pensados para funcionar en video y en redes.</p></div>
-      <div class="sv"><div class="ic">⌘</div><h3>Páginas web y apps</h3><p>Sitios rápidos y apps instalables como las de El Home de la Risa y Recta Al Pecho, con notificaciones y contenido en vivo.</p></div>
+      <div class="sv"><div class="ic">✦</div><h3>Diseño e identidad corporativa</h3><p>Logos, manual de marca, papelería, tarjetas, señalética y sistemas visuales para video y redes: tu marca, igual de sólida en todas partes.</p></div>
+      <div class="sv"><div class="ic">⌘</div><h3>Creación de páginas web y apps</h3><p>Diseño y desarrollo de sitios rápidos y bilingües, con SEO, formularios y chat, y apps instalables con notificaciones, como las de El Home de la Risa y Recta Al Pecho. Hosting y mantenimiento incluidos si los necesitas.</p></div>
       <div class="sv"><div class="ic">📈</div><h3>Contenido y gestión de canales</h3><p>Estrategia, calendario, empaque (títulos, miniaturas, SEO) y publicación en YouTube, Facebook e Instagram.</p></div>
       <div class="sv"><div class="ic">📣</div><h3>Publicidad dentro de la red</h3><p>Tu marca dentro de nuestros shows: menciones, carteles en pantalla, segmentos patrocinados y colaboraciones.</p></div>
     </div>
@@ -158,6 +158,8 @@
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cuero.jpg')); ?>)" href="https://www.lcedr.com" target="_blank" rel="noopener"><div><b>Si de Cuero se Trata · Estreno 18 de diciembre</b><span>El roast cubano · formato propio</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/ansn.jpg')); ?>)" href="https://www.facebook.com/aquinoserienadie/" target="_blank" rel="noopener"><div><b>Aquí No Se Ríe Nadie · Primavera 2027</b><span>El duelo cubano: el que se ríe, toma · formato propio</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/comerciales.jpg')); ?>)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Comerciales para clientes</b><span>Ver la lista de comerciales en nuestro canal →</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/web.jpg')); ?>)" href="#contacto"><div><b>Páginas web y apps para clientes</b><span>Sitios rápidos, bilingües y apps con notificaciones · pide tu propuesta →</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/identidad.jpg')); ?>)" href="#contacto"><div><b>Diseño e identidad corporativa</b><span>Logos, manual de marca, papelería y redes · pide tu propuesta →</span></div></a>
     </div>
   </div>
 </section>
@@ -208,7 +210,7 @@
       <input name="empresa" placeholder="Empresa">
       <input type="email" name="correo" placeholder="Correo" required>
       <input name="telefono" placeholder="Teléfono o WhatsApp">
-      <select name="servicio"><option>¿Qué necesitas?</option><option>Comercial o video corporativo</option><option>Edición y postproducción</option><option>Dron</option><option>Podcast o streaming</option><option>Diseño gráfico</option><option>Web o app</option><option>Gestión de canales</option><option>Publicidad en la red</option></select>
+      <select name="servicio"><option>¿Qué necesitas?</option><option>Comercial o video corporativo</option><option>Edición y postproducción</option><option>Dron</option><option>Podcast o streaming</option><option>Diseño e identidad corporativa</option><option>Página web o app</option><option>Gestión de canales</option><option>Publicidad en la red</option></select>
       <textarea name="mensaje" placeholder="Cuéntanos brevemente el proyecto"></textarea>
       <button class="btn btn-acc" type="submit" style="justify-self:start">Enviar</button>
       <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Recibido. Respondemos en menos de un día hábil.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#3a1a1a;color:#ffb4b4">No se pudo enviar. Escríbenos a info@marrerobernalmedia.com.</div><?php endif; ?>
