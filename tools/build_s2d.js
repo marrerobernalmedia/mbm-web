@@ -10,6 +10,9 @@ const RV = window.APPDATA.vid;
 // Fechas y duración de YouTube (vidIQ) para los videos que recta/data.js no trae: Google pide uploadDate en VideoObject
 const DT = (() => { try { return require("./s2d_dates.json"); } catch (e) { return {}; } })();
 
+// uploadDate/datePublished con hora y zona (Search Console: "uploadDate is missing a timezone"), 8 AM Las Vegas
+const lvOff = f => { const n = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", timeZoneName: "shortOffset" }).formatToParts(new Date(f + "T16:00:00Z")).find(x => x.type === "timeZoneName").value.replace("GMT", ""); const m = n.match(/^([+-])(\d+)(?::(\d+))?$/); return m ? `${m[1]}${m[2].padStart(2, "0")}:${(m[3] || "00").padStart(2, "0")}` : "-08:00"; };
+const isoTZ = f => { f = String(f || "").trim(); if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?(Z|[+-]\d{2}:\d{2})$/.test(f)) return f; const d = f.slice(0, 10); return /^\d{4}-\d{2}-\d{2}$/.test(d) && !isNaN(Date.parse(d)) ? `${d}T08:00:00${lvOff(d)}` : null; };
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const V = S.v.map(([id, c, slug, who, t, sum]) => {
   const r = RV[id] || {};
@@ -209,7 +212,7 @@ for (const v of V) {
     inLanguage: "es", publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC" }
   };
   if (v.d) ld.duration = isoDur(v.d); else if (v.iso) ld.duration = v.iso;
-  if (v.f) ld.uploadDate = v.f;
+  if (isoTZ(v.f)) ld.uploadDate = isoTZ(v.f);
   if (v.views) ld.interactionStatistic = { "@type": "InteractionCounter", interactionType: { "@type": "WatchAction" }, userInteractionCount: v.views };
   const crumbs = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: "Straight 2D Chest", item: SITE + "/" },
@@ -241,7 +244,7 @@ for (const v of V) {
  </article>
  ${more.length ? `<section class="cat"><h2 class="sec">More stories</h2><div class="grid">${more.map(x => ncard(x, "../../")).join("")}</div></section>` : ""}
 </main>`;
-    const ld = { "@context": "https://schema.org", "@type": "NewsArticle", headline: n.title, description: n.dek, datePublished: n.date, inLanguage: "en", image: [newsImg(n)], author: { "@type": "Person", name: "Eliam Marrero Bernal" }, publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC" }, mainEntityOfPage: `${SITE}/news/${n.slug}/`, translationOfWork: { "@type": "Article", url: n.recta_url, inLanguage: "es" } };
+    const ld = { "@context": "https://schema.org", "@type": "NewsArticle", headline: n.title, description: n.dek, datePublished: isoTZ(n.date) || n.date, inLanguage: "en", image: [newsImg(n)], author: { "@type": "Person", name: "Eliam Marrero Bernal" }, publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC" }, mainEntityOfPage: `${SITE}/news/${n.slug}/`, translationOfWork: { "@type": "Article", url: n.recta_url, inLanguage: "es" } };
     fs.mkdirSync(path.join(OUT, "news", n.slug), { recursive: true });
     fs.writeFileSync(path.join(OUT, "news", n.slug, "index.html"), page({ rel: "../../", title: `${n.title} | Straight 2D Chest`, desc: n.dek, canon: `${SITE}/news/${n.slug}/`, body, og: newsImg(n), ld, type: "article", alt_es: n.recta_url }));
   }
