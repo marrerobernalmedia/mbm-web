@@ -113,11 +113,12 @@
     <div>
       <div class="kicker">Drone filming</div>
       <h2>Legal, safe aerial shots with cinema quality.</h2>
-      <p class="lead">Our producer is an FAA-certified remote pilot (Part 107). We fly within federal rules, with a registered drone and the right airspace authorizations, so your project has no surprises.</p>
+      <p class="lead">Our producer is an FAA-certified remote pilot (Part 107). We fly within federal, state and local rules, day or night, with permits secured and the flight planned in advance, so your project has no surprises.</p>
       <ul class="list">
         <li>Current FAA Part 107 remote pilot certificate, with recurrent training up to date.</li>
         <li>FAA-registered drone with Remote ID.</li>
-        <li>We handle controlled-airspace authorization (LAANC): most of the Las Vegas valley is near airports.</li>
+        <li>Day and night flights, as Part 107 allows, with anti-collision lights visible for 3 miles.</li>
+        <li>Permits handled in advance: controlled-airspace authorization (LAANC or FAA DroneZone), city or county film permits when required, and written permission from the property owner.</li>
         <li>Flight plan and checks of weather, temporary flight restrictions (TFRs) and crew and public safety before every flight.</li>
         <li>Real estate, construction progress, corporate events, commercials, tourism and video productions.</li>
       </ul>
