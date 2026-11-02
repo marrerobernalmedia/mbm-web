@@ -103,7 +103,10 @@
     <div class="sv-grid">
       <div class="sv"><div class="ic">✂️</div><h3>Editing and post-production</h3><p>Editing, color grading, sound design, subtitles and vertical cuts for every platform.</p></div>
       <div class="sv"><div class="ic">🎙️</div><h3>Podcast and streaming for brands</h3><p>Format design, studio recording, production and distribution. Straight 2D Chest is our own success story.</p></div>
-      <div class="sv"><div class="ic">📈</div><h3>Content and channel management</h3><p>Strategy, calendar, packaging (titles, thumbnails, SEO) and publishing on YouTube, Facebook and Instagram.</p></div>
+      <div class="sv"><div class="ic">📈</div><h3>Content and channel management</h3><p>YouTube channel optimization and growth: strategy, calendar, packaging (titles, thumbnails, SEO) and publishing on YouTube, Facebook and Instagram.</p></div>
+      <div class="sv"><div class="ic">📷</div><h3>Professional photography</h3><p>Product, corporate portraits, events and real estate. Pair it with drone shots for a complete package.</p></div>
+      <div class="sv"><div class="ic">🎥</div><h3>Multi-camera event coverage</h3><p>Conferences, launches and live-audience shows, shot with multiple cameras and professional sound, the way we record our own shows.</p></div>
+      <div class="sv"><div class="ic">🌎</div><h3>Bilingual content</h3><p>Translation, subtitles and voice-over in Spanish and English so your video reaches both audiences in Las Vegas and across the U.S.</p></div>
       <div class="sv"><div class="ic">📣</div><h3>Advertising inside the network</h3><p>Your brand inside our shows: mentions, on-screen cards, sponsored segments and collaborations.</p></div>
     </div>
   </div>
@@ -232,7 +235,7 @@
       <input name="empresa" placeholder="Company">
       <input type="email" name="correo" placeholder="Email" required>
       <input name="telefono" placeholder="Phone or WhatsApp">
-      <select name="servicio"><option>What do you need?</option><option>Commercial or corporate video</option><option>Editing and post-production</option><option>Drone filming</option><option>AI animation</option><option>Podcast or streaming</option><option>Design and corporate identity</option><option>Website or app</option><option>Channel management</option><option>Advertising on the network</option></select>
+      <select name="servicio"><option>What do you need?</option><option>Commercial or corporate video</option><option>Editing and post-production</option><option>Drone filming</option><option>Photography</option><option>Event coverage</option><option>Translation, subtitles or voice-over</option><option>AI animation</option><option>Podcast or streaming</option><option>Design and corporate identity</option><option>Website or app</option><option>Channel management</option><option>Advertising on the network</option></select>
       <textarea name="mensaje" placeholder="Briefly describe the project"></textarea>
       <button class="btn btn-acc" type="submit" style="justify-self:start">Send</button>
       <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Received. We reply within one business day.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#3a1a1a;color:#ffb4b4">Could not send. Email us at info@marrerobernalmedia.com.</div><?php endif; ?>

@@ -103,7 +103,10 @@
     <div class="sv-grid">
       <div class="sv"><div class="ic">✂️</div><h3>Edición y postproducción</h3><p>Montaje, corrección de color, diseño sonoro, subtítulos y versiones verticales para cada plataforma.</p></div>
       <div class="sv"><div class="ic">🎙️</div><h3>Podcast y streaming para marcas</h3><p>Diseño del formato, grabación en set, producción y distribución. Recta Al Pecho es nuestro propio caso de éxito.</p></div>
-      <div class="sv"><div class="ic">📈</div><h3>Contenido y gestión de canales</h3><p>Estrategia, calendario, empaque (títulos, miniaturas, SEO) y publicación en YouTube, Facebook e Instagram.</p></div>
+      <div class="sv"><div class="ic">📈</div><h3>Contenido y gestión de canales</h3><p>Optimización y crecimiento de canales de YouTube: estrategia, calendario, empaque (títulos, miniaturas, SEO) y publicación en YouTube, Facebook e Instagram.</p></div>
+      <div class="sv"><div class="ic">📷</div><h3>Fotografía profesional</h3><p>Producto, retratos corporativos, eventos y bienes raíces. Combínala con tomas de dron para un paquete completo.</p></div>
+      <div class="sv"><div class="ic">🎥</div><h3>Cobertura de eventos multicámara</h3><p>Conferencias, lanzamientos y shows con público, grabados con varias cámaras y sonido profesional, como grabamos nuestros propios shows.</p></div>
+      <div class="sv"><div class="ic">🌎</div><h3>Contenido bilingüe</h3><p>Traducción, subtítulos y locución en español e inglés para que tu video llegue a los dos públicos de Las Vegas y de todo EE. UU.</p></div>
       <div class="sv"><div class="ic">📣</div><h3>Publicidad dentro de la red</h3><p>Tu marca dentro de nuestros shows: menciones, carteles en pantalla, segmentos patrocinados y colaboraciones.</p></div>
     </div>
   </div>
@@ -232,7 +235,7 @@
       <input name="empresa" placeholder="Empresa">
       <input type="email" name="correo" placeholder="Correo" required>
       <input name="telefono" placeholder="Teléfono o WhatsApp">
-      <select name="servicio"><option>¿Qué necesitas?</option><option>Comercial o video corporativo</option><option>Edición y postproducción</option><option>Filmación con dron</option><option>Animación con IA</option><option>Podcast o streaming</option><option>Diseño e identidad corporativa</option><option>Página web o app</option><option>Gestión de canales</option><option>Publicidad en la red</option></select>
+      <select name="servicio"><option>¿Qué necesitas?</option><option>Comercial o video corporativo</option><option>Edición y postproducción</option><option>Filmación con dron</option><option>Fotografía</option><option>Cobertura de evento</option><option>Traducción, subtítulos o locución</option><option>Animación con IA</option><option>Podcast o streaming</option><option>Diseño e identidad corporativa</option><option>Página web o app</option><option>Gestión de canales</option><option>Publicidad en la red</option></select>
       <textarea name="mensaje" placeholder="Cuéntanos brevemente el proyecto"></textarea>
       <button class="btn btn-acc" type="submit" style="justify-self:start">Enviar</button>
       <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Recibido. Respondemos en menos de un día hábil.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#3a1a1a;color:#ffb4b4">No se pudo enviar. Escríbenos a info@marrerobernalmedia.com.</div><?php endif; ?>

@@ -59,7 +59,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.82);backdrop-f
 .ch p{margin:4px 0 0;font-size:13px;color:var(--mut)}
 .ch .n{display:block;font-size:12px;color:var(--acc);margin-top:8px;font-weight:600}
 /* servicios */
-.sv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:44px}
+.sv-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:44px}.sv-grid>.sv:last-child:nth-child(odd){grid-column:span 2}@media(max-width:1000px){.sv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.sv-grid{grid-template-columns:1fr}.sv-grid>.sv:last-child:nth-child(odd){grid-column:auto}}
 .sv{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;transition:.25s}
 .sv:hover{border-color:var(--acc)}
 .sv .ic{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#2a2a31,#1a1a1f);display:grid;place-items:center;color:var(--acc);font-size:20px;border:1px solid var(--line)}
