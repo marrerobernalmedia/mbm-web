@@ -93,7 +93,8 @@
     <h2>What we produce for brands and businesses.</h2>
     <p class="lead">The same team and the same standard behind our own shows, working for your brand.</p>
     <div class="works svc">
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/comerciales.jpg')); ?>)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Commercial and corporate video production</b><span>TV, social and screen spots, brand videos and testimonials · see the commercials on our channel →</span></div></a>
+      <a class="wk big" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/comerciales.jpg')); ?>)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Commercial and corporate video production</b><span>TV, social and screen spots, brand videos and testimonials · see the commercials on our channel →</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/ia.jpg')); ?>)" href="#contacto"><div><b>AI animation and visual production</b><span>AI-generated sets, animated characters and professional graphics for commercials and social media · request a proposal →</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/dron.jpg')); ?>)" href="#dron"><div><b>Aerial drone filming</b><span>FAA Part 107 certified pilot · real estate, construction, corporate events and productions →</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/web.jpg')); ?>)" href="#contacto"><div><b>Websites and apps for clients</b><span>Fast bilingual websites and apps with notifications · request a proposal →</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/identidad.jpg')); ?>)" href="#contacto"><div><b>Design and corporate identity</b><span>Logos, brand guidelines, stationery and social media · request a proposal →</span></div></a>
@@ -231,7 +232,7 @@
       <input name="empresa" placeholder="Company">
       <input type="email" name="correo" placeholder="Email" required>
       <input name="telefono" placeholder="Phone or WhatsApp">
-      <select name="servicio"><option>What do you need?</option><option>Commercial or corporate video</option><option>Editing and post-production</option><option>Drone filming</option><option>Podcast or streaming</option><option>Design and corporate identity</option><option>Website or app</option><option>Channel management</option><option>Advertising on the network</option></select>
+      <select name="servicio"><option>What do you need?</option><option>Commercial or corporate video</option><option>Editing and post-production</option><option>Drone filming</option><option>AI animation</option><option>Podcast or streaming</option><option>Design and corporate identity</option><option>Website or app</option><option>Channel management</option><option>Advertising on the network</option></select>
       <textarea name="mensaje" placeholder="Briefly describe the project"></textarea>
       <button class="btn btn-acc" type="submit" style="justify-self:start">Send</button>
       <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Received. We reply within one business day.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#3a1a1a;color:#ffb4b4">Could not send. Email us at info@marrerobernalmedia.com.</div><?php endif; ?>

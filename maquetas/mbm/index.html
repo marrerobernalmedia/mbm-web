@@ -81,7 +81,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.82);backdrop-f
 .step h3{font-size:18px;font-weight:600;margin:10px 0 8px}
 .step p{margin:0;color:var(--mut);font-size:14px}
 /* trabajos */
-.works.svc{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:700px){.works.svc{grid-template-columns:1fr}}
+.works.svc{grid-template-columns:repeat(2,minmax(0,1fr))}.works.svc .wk.big{grid-column:1/-1;aspect-ratio:21/8}@media(max-width:700px){.works.svc .wk.big{aspect-ratio:16/9}}@media(max-width:700px){.works.svc{grid-template-columns:1fr}}
 .works{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:44px}
 .wk{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/9;background:#222 center/cover;border:1px solid var(--line)}
 .wk::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(0,0,0,.92))}
@@ -226,7 +226,8 @@ footer nav a{margin-left:18px}
     <h2>Lo que producimos para marcas y empresas.</h2>
     <p class="lead">El mismo equipo y el mismo estándar con que producimos nuestros shows, al servicio de tu marca.</p>
     <div class="works svc">
-      <a class="wk" style="background-image:url(img/comerciales.jpg)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Filmación de comerciales y video corporativo</b><span>Spots para TV, redes y pantallas, videos de marca y testimoniales · ver comerciales en nuestro canal →</span></div></a>
+      <a class="wk big" style="background-image:url(img/comerciales.jpg)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Filmación de comerciales y video corporativo</b><span>Spots para TV, redes y pantallas, videos de marca y testimoniales · ver comerciales en nuestro canal →</span></div></a>
+      <a class="wk" style="background-image:url(img/ia.jpg)" href="#contacto"><div><b>Animación y producción visual con IA</b><span>Escenarios, personajes animados y gráficos profesionales generados con IA para comerciales y redes · pide tu propuesta →</span></div></a>
       <a class="wk" style="background-image:url(img/dron.jpg)" href="#dron"><div><b>Filmación aérea con dron</b><span>Piloto certificado por la FAA (Part 107) · bienes raíces, construcción, eventos corporativos y producciones →</span></div></a>
       <a class="wk" style="background-image:url(img/web.jpg)" href="#contacto"><div><b>Páginas web y apps para clientes</b><span>Sitios rápidos, bilingües y apps con notificaciones · pide tu propuesta →</span></div></a>
       <a class="wk" style="background-image:url(img/identidad.jpg)" href="#contacto"><div><b>Diseño e identidad corporativa</b><span>Logos, manual de marca, papelería y redes · pide tu propuesta →</span></div></a>
@@ -363,7 +364,7 @@ footer nav a{margin-left:18px}
       <input placeholder="Empresa">
       <input type="email" placeholder="Correo" required>
       <input placeholder="Teléfono o WhatsApp">
-      <select><option>¿Qué necesitas?</option><option>Comercial o video corporativo</option><option>Edición y postproducción</option><option>Filmación con dron</option><option>Podcast o streaming</option><option>Diseño e identidad corporativa</option><option>Página web o app</option><option>Gestión de canales</option><option>Publicidad en la red</option></select>
+      <select><option>¿Qué necesitas?</option><option>Comercial o video corporativo</option><option>Edición y postproducción</option><option>Filmación con dron</option><option>Animación con IA</option><option>Podcast o streaming</option><option>Diseño e identidad corporativa</option><option>Página web o app</option><option>Gestión de canales</option><option>Publicidad en la red</option></select>
       <textarea placeholder="Cuéntanos brevemente el proyecto"></textarea>
       <button class="btn btn-acc" type="submit" style="justify-self:start">Enviar</button>
     </form>

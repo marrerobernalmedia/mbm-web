@@ -93,7 +93,8 @@
     <h2>Lo que producimos para marcas y empresas.</h2>
     <p class="lead">El mismo equipo y el mismo estándar con que producimos nuestros shows, al servicio de tu marca.</p>
     <div class="works svc">
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/comerciales.jpg')); ?>)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Filmación de comerciales y video corporativo</b><span>Spots para TV, redes y pantallas, videos de marca y testimoniales · ver comerciales en nuestro canal →</span></div></a>
+      <a class="wk big" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/comerciales.jpg')); ?>)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Filmación de comerciales y video corporativo</b><span>Spots para TV, redes y pantallas, videos de marca y testimoniales · ver comerciales en nuestro canal →</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/ia.jpg')); ?>)" href="#contacto"><div><b>Animación y producción visual con IA</b><span>Escenarios, personajes animados y gráficos profesionales generados con IA para comerciales y redes · pide tu propuesta →</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/dron.jpg')); ?>)" href="#dron"><div><b>Filmación aérea con dron</b><span>Piloto certificado por la FAA (Part 107) · bienes raíces, construcción, eventos corporativos y producciones →</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/web.jpg')); ?>)" href="#contacto"><div><b>Páginas web y apps para clientes</b><span>Sitios rápidos, bilingües y apps con notificaciones · pide tu propuesta →</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/identidad.jpg')); ?>)" href="#contacto"><div><b>Diseño e identidad corporativa</b><span>Logos, manual de marca, papelería y redes · pide tu propuesta →</span></div></a>
@@ -231,7 +232,7 @@
       <input name="empresa" placeholder="Empresa">
       <input type="email" name="correo" placeholder="Correo" required>
       <input name="telefono" placeholder="Teléfono o WhatsApp">
-      <select name="servicio"><option>¿Qué necesitas?</option><option>Comercial o video corporativo</option><option>Edición y postproducción</option><option>Filmación con dron</option><option>Podcast o streaming</option><option>Diseño e identidad corporativa</option><option>Página web o app</option><option>Gestión de canales</option><option>Publicidad en la red</option></select>
+      <select name="servicio"><option>¿Qué necesitas?</option><option>Comercial o video corporativo</option><option>Edición y postproducción</option><option>Filmación con dron</option><option>Animación con IA</option><option>Podcast o streaming</option><option>Diseño e identidad corporativa</option><option>Página web o app</option><option>Gestión de canales</option><option>Publicidad en la red</option></select>
       <textarea name="mensaje" placeholder="Cuéntanos brevemente el proyecto"></textarea>
       <button class="btn btn-acc" type="submit" style="justify-self:start">Enviar</button>
       <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Recibido. Respondemos en menos de un día hábil.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#3a1a1a;color:#ffb4b4">No se pudo enviar. Escríbenos a info@marrerobernalmedia.com.</div><?php endif; ?>
