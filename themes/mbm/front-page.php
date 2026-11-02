@@ -92,16 +92,38 @@
     <div class="kicker">Servicios</div>
     <h2>Lo que producimos para marcas y empresas.</h2>
     <p class="lead">El mismo equipo y el mismo estándar con que producimos nuestros shows, al servicio de tu marca.</p>
+    <div class="works svc">
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/comerciales.jpg')); ?>)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Filmación de comerciales y video corporativo</b><span>Spots para TV, redes y pantallas, videos de marca y testimoniales · ver comerciales en nuestro canal →</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/dron.jpg')); ?>)" href="#dron"><div><b>Filmación aérea con dron</b><span>Piloto certificado por la FAA (Part 107) · bienes raíces, construcción, eventos corporativos y producciones →</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/web.jpg')); ?>)" href="#contacto"><div><b>Páginas web y apps para clientes</b><span>Sitios rápidos, bilingües y apps con notificaciones · pide tu propuesta →</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/identidad.jpg')); ?>)" href="#contacto"><div><b>Diseño e identidad corporativa</b><span>Logos, manual de marca, papelería y redes · pide tu propuesta →</span></div></a>
+    </div>
+    <h3 style="margin-top:40px;font-size:18px">Y además</h3>
     <div class="sv-grid">
-      <div class="sv"><div class="ic">🎬</div><h3>Comerciales y video corporativo</h3><p>Spots para TV, redes y pantallas; videos de marca, institucionales y testimoniales con dirección, fotografía y guion propios.</p></div>
       <div class="sv"><div class="ic">✂️</div><h3>Edición y postproducción</h3><p>Montaje, corrección de color, diseño sonoro, subtítulos y versiones verticales para cada plataforma.</p></div>
-      <div class="sv"><div class="ic">🚁</div><h3>Operaciones aéreas con dron</h3><p>Tomas aéreas con piloto certificado FAA Part 107: inmobiliaria, construcción, industria, comerciales y producciones.</p></div>
       <div class="sv"><div class="ic">🎙️</div><h3>Podcast y streaming para marcas</h3><p>Diseño del formato, grabación en set, producción y distribución. Recta Al Pecho es nuestro propio caso de éxito.</p></div>
-      <div class="sv"><div class="ic">✦</div><h3>Diseño e identidad corporativa</h3><p>Logos, manual de marca, papelería, tarjetas, señalética y sistemas visuales para video y redes: tu marca, igual de sólida en todas partes.</p></div>
-      <div class="sv"><div class="ic">⌘</div><h3>Creación de páginas web y apps</h3><p>Diseño y desarrollo de sitios rápidos y bilingües, con SEO, formularios y chat, y apps instalables con notificaciones, como las de El Home de la Risa y Recta Al Pecho. Hosting y mantenimiento incluidos si los necesitas.</p></div>
       <div class="sv"><div class="ic">📈</div><h3>Contenido y gestión de canales</h3><p>Estrategia, calendario, empaque (títulos, miniaturas, SEO) y publicación en YouTube, Facebook e Instagram.</p></div>
       <div class="sv"><div class="ic">📣</div><h3>Publicidad dentro de la red</h3><p>Tu marca dentro de nuestros shows: menciones, carteles en pantalla, segmentos patrocinados y colaboraciones.</p></div>
     </div>
+  </div>
+</section>
+
+<section id="dron" class="band">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Filmación con dron</div>
+      <h2>Tomas aéreas legales, seguras y con calidad de cine.</h2>
+      <p class="lead">Nuestro productor es piloto remoto certificado por la FAA (Part 107). Volamos dentro de las reglas federales, con el dron registrado y los permisos de espacio aéreo en regla, para que tu proyecto no tenga sorpresas.</p>
+      <ul class="list">
+        <li>Certificado de piloto remoto FAA Part 107 vigente, con su capacitación periódica al día.</li>
+        <li>Dron registrado en la FAA y con identificación remota (Remote ID).</li>
+        <li>Autorización de espacio aéreo controlado (LAANC) gestionada por nosotros: en Las Vegas casi todo el valle está cerca de aeropuertos.</li>
+        <li>Plan de vuelo y revisión de clima, restricciones temporales (TFR) y seguridad del equipo y del público antes de cada vuelo.</li>
+        <li>Bienes raíces, construcción y avance de obra, eventos corporativos, comerciales, turismo y producciones de video.</li>
+      </ul>
+      <div class="ctas" style="margin-top:28px"><a class="btn btn-acc" href="#contacto">Pedir propuesta</a></div>
+    </div>
+    <img src="<?php echo esc_url(get_theme_file_uri('img/dron.jpg')); ?>" alt="Filmación aérea con dron en Las Vegas">
   </div>
 </section>
 
@@ -147,8 +169,8 @@
 
 <section id="trabajos">
   <div class="wrap">
-    <div class="kicker">Trabajos</div>
-    <h2>Producciones propias y para clientes.</h2>
+    <div class="kicker">Nuestras producciones</div>
+    <h2>Shows y formatos propios de la casa.</h2>
     <div class="works">
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/risa.jpg')); ?>)" href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener"><div><b>La Risa es Cosa Seria</b><span>Serie de stand-up · producción completa</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/welcome.jpg')); ?>)" href="https://www.welcometoapagonia.com" target="_blank" rel="noopener"><div><b>Welcome to Apagonia</b><span>Serie de comedia situacional · guion, dirección y post</span></div></a>
@@ -157,9 +179,6 @@
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/home.jpg')); ?>)" href="https://www.elhomedelarisa.com" target="_blank" rel="noopener"><div><b>El Home de la Risa</b><span>La marca que agrupa todas nuestras producciones de humor</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cuero.jpg')); ?>)" href="https://www.lcedr.com" target="_blank" rel="noopener"><div><b>Si de Cuero se Trata · Estreno 18 de diciembre</b><span>El roast cubano · formato propio</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/ansn.jpg')); ?>)" href="https://www.facebook.com/aquinoserienadie/" target="_blank" rel="noopener"><div><b>Aquí No Se Ríe Nadie · Primavera 2027</b><span>El duelo cubano: el que se ríe, toma · formato propio</span></div></a>
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/comerciales.jpg')); ?>)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Comerciales para clientes</b><span>Ver la lista de comerciales en nuestro canal →</span></div></a>
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/web.jpg')); ?>)" href="#contacto"><div><b>Páginas web y apps para clientes</b><span>Sitios rápidos, bilingües y apps con notificaciones · pide tu propuesta →</span></div></a>
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/identidad.jpg')); ?>)" href="#contacto"><div><b>Diseño e identidad corporativa</b><span>Logos, manual de marca, papelería y redes · pide tu propuesta →</span></div></a>
     </div>
   </div>
 </section>
@@ -210,7 +229,7 @@
       <input name="empresa" placeholder="Empresa">
       <input type="email" name="correo" placeholder="Correo" required>
       <input name="telefono" placeholder="Teléfono o WhatsApp">
-      <select name="servicio"><option>¿Qué necesitas?</option><option>Comercial o video corporativo</option><option>Edición y postproducción</option><option>Dron</option><option>Podcast o streaming</option><option>Diseño e identidad corporativa</option><option>Página web o app</option><option>Gestión de canales</option><option>Publicidad en la red</option></select>
+      <select name="servicio"><option>¿Qué necesitas?</option><option>Comercial o video corporativo</option><option>Edición y postproducción</option><option>Filmación con dron</option><option>Podcast o streaming</option><option>Diseño e identidad corporativa</option><option>Página web o app</option><option>Gestión de canales</option><option>Publicidad en la red</option></select>
       <textarea name="mensaje" placeholder="Cuéntanos brevemente el proyecto"></textarea>
       <button class="btn btn-acc" type="submit" style="justify-self:start">Enviar</button>
       <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Recibido. Respondemos en menos de un día hábil.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#3a1a1a;color:#ffb4b4">No se pudo enviar. Escríbenos a info@marrerobernalmedia.com.</div><?php endif; ?>

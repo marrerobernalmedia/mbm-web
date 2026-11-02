@@ -92,16 +92,38 @@
     <div class="kicker">Services</div>
     <h2>What we produce for brands and businesses.</h2>
     <p class="lead">The same team and the same standard behind our own shows, working for your brand.</p>
+    <div class="works svc">
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/comerciales.jpg')); ?>)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Commercial and corporate video production</b><span>TV, social and screen spots, brand videos and testimonials · see the commercials on our channel →</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/dron.jpg')); ?>)" href="#dron"><div><b>Aerial drone filming</b><span>FAA Part 107 certified pilot · real estate, construction, corporate events and productions →</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/web.jpg')); ?>)" href="#contacto"><div><b>Websites and apps for clients</b><span>Fast bilingual websites and apps with notifications · request a proposal →</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/identidad.jpg')); ?>)" href="#contacto"><div><b>Design and corporate identity</b><span>Logos, brand guidelines, stationery and social media · request a proposal →</span></div></a>
+    </div>
+    <h3 style="margin-top:40px;font-size:18px">And also</h3>
     <div class="sv-grid">
-      <div class="sv"><div class="ic">🎬</div><h3>Commercials and corporate video</h3><p>Spots for TV, social and screens; brand, institutional and testimonial videos with our own direction, cinematography and scripts.</p></div>
       <div class="sv"><div class="ic">✂️</div><h3>Editing and post-production</h3><p>Editing, color grading, sound design, subtitles and vertical cuts for every platform.</p></div>
-      <div class="sv"><div class="ic">🚁</div><h3>Drone aerial operations</h3><p>Aerial footage by an FAA Part 107 certified pilot: real estate, construction, industrial, commercials and productions.</p></div>
       <div class="sv"><div class="ic">🎙️</div><h3>Podcast and streaming for brands</h3><p>Format design, studio recording, production and distribution. Straight 2D Chest is our own success story.</p></div>
-      <div class="sv"><div class="ic">✦</div><h3>Design and corporate identity</h3><p>Logos, brand guidelines, stationery, business cards, signage and visual systems for video and social media: your brand, equally strong everywhere.</p></div>
-      <div class="sv"><div class="ic">⌘</div><h3>Website and app development</h3><p>Design and development of fast, bilingual websites with SEO, forms and chat, plus installable apps with notifications, like the El Home de la Risa and Straight 2D Chest apps. Hosting and maintenance included if you need them.</p></div>
       <div class="sv"><div class="ic">📈</div><h3>Content and channel management</h3><p>Strategy, calendar, packaging (titles, thumbnails, SEO) and publishing on YouTube, Facebook and Instagram.</p></div>
       <div class="sv"><div class="ic">📣</div><h3>Advertising inside the network</h3><p>Your brand inside our shows: mentions, on-screen cards, sponsored segments and collaborations.</p></div>
     </div>
+  </div>
+</section>
+
+<section id="dron" class="band">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Drone filming</div>
+      <h2>Legal, safe aerial shots with cinema quality.</h2>
+      <p class="lead">Our producer is an FAA-certified remote pilot (Part 107). We fly within federal rules, with a registered drone and the right airspace authorizations, so your project has no surprises.</p>
+      <ul class="list">
+        <li>Current FAA Part 107 remote pilot certificate, with recurrent training up to date.</li>
+        <li>FAA-registered drone with Remote ID.</li>
+        <li>We handle controlled-airspace authorization (LAANC): most of the Las Vegas valley is near airports.</li>
+        <li>Flight plan and checks of weather, temporary flight restrictions (TFRs) and crew and public safety before every flight.</li>
+        <li>Real estate, construction progress, corporate events, commercials, tourism and video productions.</li>
+      </ul>
+      <div class="ctas" style="margin-top:28px"><a class="btn btn-acc" href="#contacto">Request a proposal</a></div>
+    </div>
+    <img src="<?php echo esc_url(get_theme_file_uri('img/dron.jpg')); ?>" alt="Aerial drone filming in Las Vegas">
   </div>
 </section>
 
@@ -147,8 +169,8 @@
 
 <section id="trabajos">
   <div class="wrap">
-    <div class="kicker">Work</div>
-    <h2>Our own productions and client work.</h2>
+    <div class="kicker">Our productions</div>
+    <h2>Our own shows and formats.</h2>
     <div class="works">
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/risa.jpg')); ?>)" href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener"><div><b>La Risa es Cosa Seria</b><span>Stand-up series · full production</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/welcome.jpg')); ?>)" href="https://www.welcometoapagonia.com" target="_blank" rel="noopener"><div><b>Welcome to Apagonia</b><span>Sitcom series · writing, directing and post</span></div></a>
@@ -157,9 +179,6 @@
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/home.jpg')); ?>)" href="https://www.elhomedelarisa.com" target="_blank" rel="noopener"><div><b>El Home de la Risa</b><span>The brand that brings together all our comedy productions</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cuero.jpg')); ?>)" href="https://www.lcedr.com" target="_blank" rel="noopener"><div><b>Si de Cuero se Trata · Premieres December 18</b><span>The Cuban roast · original format</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/ansn.jpg')); ?>)" href="https://www.facebook.com/aquinoserienadie/" target="_blank" rel="noopener"><div><b>Aquí No Se Ríe Nadie · Spring 2027</b><span>The Cuban laugh-off: whoever laughs, drinks · original format</span></div></a>
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/comerciales.jpg')); ?>)" href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Commercials for clients</b><span>See the commercials playlist on our channel →</span></div></a>
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/web.jpg')); ?>)" href="#contacto"><div><b>Websites and apps for clients</b><span>Fast bilingual websites and apps with notifications · request a proposal →</span></div></a>
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/identidad.jpg')); ?>)" href="#contacto"><div><b>Design and corporate identity</b><span>Logos, brand guidelines, stationery and social media · request a proposal →</span></div></a>
     </div>
   </div>
 </section>
@@ -210,7 +229,7 @@
       <input name="empresa" placeholder="Company">
       <input type="email" name="correo" placeholder="Email" required>
       <input name="telefono" placeholder="Phone or WhatsApp">
-      <select name="servicio"><option>What do you need?</option><option>Commercial or corporate video</option><option>Editing and post-production</option><option>Drone</option><option>Podcast or streaming</option><option>Design and corporate identity</option><option>Website or app</option><option>Channel management</option><option>Advertising on the network</option></select>
+      <select name="servicio"><option>What do you need?</option><option>Commercial or corporate video</option><option>Editing and post-production</option><option>Drone filming</option><option>Podcast or streaming</option><option>Design and corporate identity</option><option>Website or app</option><option>Channel management</option><option>Advertising on the network</option></select>
       <textarea name="mensaje" placeholder="Briefly describe the project"></textarea>
       <button class="btn btn-acc" type="submit" style="justify-self:start">Send</button>
       <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Received. We reply within one business day.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#3a1a1a;color:#ffb4b4">Could not send. Email us at info@marrerobernalmedia.com.</div><?php endif; ?>
