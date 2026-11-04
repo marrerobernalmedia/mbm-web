@@ -43,7 +43,7 @@
       </a>
       <a class="ch" href="https://www.welcometoapagonia.com" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/welcome.jpg')); ?>)"></div>
-        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_welcome.jpg')); ?>" alt="Welcome to Apagonia"><div><h3>Welcome to Apagonia</h3><p>Sitcom series. Saturdays.</p><span class="n"><span data-seg="yt.welcome">2.7K</span> on YouTube · <span data-seg="fb.welcome">1.7K</span> on Facebook · <span data-seg="ig.welcome">3.7K</span> on Instagram</span></div></div>
+        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_welcome.jpg')); ?>" alt="Welcome to Apagonia"><div><h3>Welcome to Apagonia</h3><p>Sitcom series. Coming soon.</p><span class="n"><span data-seg="yt.welcome">2.7K</span> on YouTube · <span data-seg="fb.welcome">1.7K</span> on Facebook · <span data-seg="ig.welcome">3.7K</span> on Instagram</span></div></div>
       </a>
       <a class="ch" href="https://www.elhomedelarisa.com" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/home.jpg')); ?>)"></div>
@@ -179,7 +179,7 @@
     <h2>Our own shows and formats.</h2>
     <div class="works">
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/risa.jpg')); ?>)" href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener"><div><b>La Risa es Cosa Seria</b><span>Stand-up series · full production</span></div></a>
-      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/welcome.jpg')); ?>)" href="https://www.welcometoapagonia.com" target="_blank" rel="noopener"><div><b>Welcome to Apagonia</b><span>Sitcom series · writing, directing and post</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/welcome.jpg')); ?>)" href="https://www.welcometoapagonia.com" target="_blank" rel="noopener"><div><b>Welcome to Apagonia · Coming soon</b><span>Sitcom series · writing, directing and post</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/s2d.jpg')); ?>)" href="https://www.straight2dchest.com/" target="_blank" rel="noopener"><div><b>Straight 2D Chest</b><span>Interview show · set, recording and distribution</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cosa.jpg')); ?>)" href="https://www.lcedr.com" target="_blank" rel="noopener"><div><b>La Cosa Es De Risa</b><span>Apagonia Hoy, the newscast, plus the Bacallao Sin Pan and Despingovery segments and more · original format</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/home.jpg')); ?>)" href="https://www.elhomedelarisa.com" target="_blank" rel="noopener"><div><b>El Home de la Risa</b><span>The brand that brings together all our comedy productions</span></div></a>

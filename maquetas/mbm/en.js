@@ -12,7 +12,7 @@ window.I18N_EN = {
 "Stand-up y comedia cubana. Estrenos martes y viernes.":"Cuban stand-up and comedy. New episodes Tuesdays and Fridays.",
 "Entrevistas y análisis de béisbol latino. Jueves.":"Latin baseball interviews and analysis. Thursdays.",
 "El noticiero oficial de Apagonia. Domingos.":"Apagonia's official newscast. Sundays.",
-"Serie de comedia situacional. Sábados.":"Sitcom series. Saturdays.",
+"Serie de comedia situacional. Próximamente.":"Sitcom series. Coming soon.",
 "La marca principal que agrupa todas nuestras producciones de humor. Lunes.":"The flagship brand that brings together all our comedy productions. Mondays.",
 "en YouTube ·":"on YouTube ·","en Facebook ·":"on Facebook ·","en Instagram":"on Instagram",
 "Lo que producimos para marcas y empresas.":"What we produce for brands and businesses.",
@@ -85,4 +85,4 @@ window.I18N_EN = {
 "¿Qué necesitas?":"What do you need?","Comercial o video corporativo":"Commercial or corporate video","Dron":"Drone","Podcast o streaming":"Podcast or streaming","Diseño gráfico":"Graphic design","Web o app":"Website or app","Gestión de canales":"Channel management",
 "Cuéntanos brevemente el proyecto":"Briefly describe the project","Enviar":"Send",
 "Marrero Bernal Media LLC. Todos los derechos reservados.":"Marrero Bernal Media LLC. All rights reserved."
-,"Aquí No Se Ríe Nadie · Primavera 2027":"Aquí No Se Ríe Nadie · Spring 2027","El duelo cubano: el que se ríe, toma · formato propio":"The Cuban laugh-off: whoever laughs, drinks · original format","seguidores · estreno primavera 2027":"followers · premieres spring 2027","Si de Cuero se Trata · Estreno 18 de diciembre":"Si de Cuero se Trata · Premieres December 18","El roast cubano · formato propio":"The Cuban roast · original format"};
+,"Aquí No Se Ríe Nadie · Primavera 2027":"Aquí No Se Ríe Nadie · Spring 2027","El duelo cubano: el que se ríe, toma · formato propio":"The Cuban laugh-off: whoever laughs, drinks · original format","seguidores · estreno primavera 2027":"followers · premieres spring 2027","Welcome to Apagonia · Próximamente":"Welcome to Apagonia · Coming soon","Si de Cuero se Trata · Estreno 18 de diciembre":"Si de Cuero se Trata · Premieres December 18","El roast cubano · formato propio":"The Cuban roast · original format"};
