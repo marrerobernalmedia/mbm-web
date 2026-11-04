@@ -33,6 +33,7 @@ module.exports = {
     ["LhgEUVHLH2g", "defect", "yordanys-perez", "Yordanys Pérez", "He Left by Boat Because of His Manager: 8 At-Bats in Triple-A and Out", "Ciego de Ávila's leadoff hitter — eight Serie Nacional seasons, .358 at age 24 — tells why he said \"I'm leaving\" in 2009 and what came next."],
     ["WX5Z2-aXFoU", "defect", "yadier-torres", "Yadier \"Pipe\" Torres", "He Threw 94 mph and Never Signed: \"The Lawyer Killed It\"", "The first door closed on Yadier \"Pipe\" Torres when he was twelve. Two boats and a 94 mph fastball later, a contract still never came."],
     ["MAuDMHcRkwo", "defect", "geisbel-rodriguez", "Geisbel Rodríguez", "Pushed Out of Baseball at 25 for Not Being From Havana", "He came up with Isla de la Juventud in 1999-2000, in the best generation that team ever had. Four seasons later, his career in Cuba was over."],
+    ["hOvzR8mE96A", "defect", "michel-fors", "Michel Fors", "The Decision Michel Fors Made in Panama That Changed Everything", "Michel Fors, \"the Ford from Artemisa\", on the provincial veto that nearly ended his career, the best season of his life in Cuban baseball, the choice he made in Panama, and how he now trains future stars in Miami."],
     ["kbNiUjH7zEY", "defect", "the-defections-2", "The Defections, Part 2", "\"We Left\": 8 Cuban Ballplayers Tell Why Cuba Pushed Them Out", "Eight players, in the first person, on WHY they left. Not the mechanics of the escape: the humiliation before it and the price after."],
 
     // ── Legends Cuba Forgot
