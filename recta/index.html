@@ -328,6 +328,8 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 const V = D.vid, ALL = [...D.series, ...D.cols], BY = Object.fromEntries(ALL.map(s => [s.id, s]));
 const serOf = {}; D.series.forEach(s => s.v.forEach(i => { if (!serOf[i]) serOf[i] = s; }));
 const byViews = (a,b) => (V[b].v||0) - (V[a].v||0);
+// Eventos en vivo / juegos completos: nunca en "Los más vistos" (Eliam, 3-nov)
+const EVENTO = i => /JUEGO COMPLETO|EN VIVO|VOLVIERON AL DIAMANTE/i.test(V[i].t||"") || (D.cols||[]).some(c => /Juegos para La Historia/i.test(c.name) && c.v.includes(i));
 const view = document.getElementById("view");
 let tab = "inicio", open = null, sort = "serie";
 const H = (t, s, more) => `<h2>${t}${s?` <small>${s}</small>`:""}${more||""}</h2><div class="stitch"></div>`;
@@ -350,7 +352,7 @@ function inicio(){
   <section>${H(L("Las series","The series"), "", `<button class="more" data-go="series">${L("Ver todas →","See all →")}</button>`)}<div class="row">${D.series.map(s => `<div class="tile">${card(s)}</div>`).join("")}</div></section>
   ${shelves}
   <section>${H(L("Colecciones","Collections"))}<div class="list">${D.cols.slice(0,5).map(colRow).join("")}</div><button class="more" data-go="series" style="display:block;margin:12px 0 0 auto">${L("Todas las colecciones →","All collections →")}</button></section>
-  <section>${H(L("Los más vistos","Most watched"))}<div class="list">${Object.keys(V).sort(byViews).slice(0,5).map((i,k)=>item(i,k+1)).join("")}</div></section>
+  <section>${H(L("Los más vistos","Most watched"))}<div class="list">${Object.keys(V).filter(i => !EVENTO(i)).sort(byViews).slice(0,5).map((i,k)=>item(i,k+1)).join("")}</div></section>
   <p class="foot">${L("Cada entrevista se abre en YouTube · Recta Al Pecho","Every interview opens on YouTube · Straight 2D Chest · straight2dchest.com")}</p>`;
 }
 function series(){
