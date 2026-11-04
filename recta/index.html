@@ -81,7 +81,7 @@ h2 small{font-family:var(--body);font-weight:400;font-size:12.5px;color:var(--mu
 .board .name{font-family:var(--display);font-weight:800;font-size:24px;text-transform:uppercase;letter-spacing:.03em;line-height:1}
 .board p{margin:4px 0 0;font-size:13.5px;color:var(--mute)}
 a.board{color:inherit;text-decoration:none;cursor:pointer}a.board:active{transform:scale(.99)}
-.board .trl{display:inline-block;margin-top:8px;font-weight:700;font-size:14px;color:var(--red2)}
+.board .trl{display:inline-block;margin-top:10px;padding:9px 14px;border-radius:10px;background:var(--red);color:#fff;font-weight:700;font-size:14px}
 
 .row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}
 .row::-webkit-scrollbar{display:none}
@@ -354,7 +354,7 @@ function inicio(){
     <div class="body"><div class="who">${esc(V[last].p)}</div><h3>${esc(V[last].t)}</h3><div class="meta">${V[last].d}</div>
     <div class="btns"><a class="btn yt" href="${YT(last)}" target="_blank" rel="noopener">${L("▶ Ver en YouTube","▶ Watch on YouTube")}</a><button class="btn ghost" data-open-sheet>${L("🔔 Avísame","🔔 Notify me")}</button><button class="btn ghost" data-share="${last}" data-t="${esc(V[last].p + ": " + V[last].t)}">${L("📤 Compartir","📤 Share")}</button></div>${EN?`<p class="meta" style="margin-top:10px">🎧 English audio: ⚙ Settings → Audio track → English</p>`:""}</div></div></section>
   <section>${H(L("Próximo jueves","Next Thursday"))}<${proxId?`a href="${YT(proxId)}" target="_blank" rel="noopener"`:"div"} class="board"><div class="day"><small>${esc(d[0].toUpperCase())}</small><b>${esc(d[1])}</b><small>${esc((d[3]||"").slice(0,3).toUpperCase())}</small></div>
-    <div><div class="name">${esc(p[0])}</div><p>${L("Nueva entrevista en Recta Al Pecho. Suscríbete y toca la campanita para que YouTube te avise.","New interview on Recta Al Pecho, recorded in Spanish. The English audio track usually follows on YouTube.")}</p>${proxId?`<span class="trl">${L("▶ Ver el tráiler en YouTube","▶ Watch the trailer on YouTube")}</span>`:""}</div></${proxId?"a":"div"}></section>
+    <div><div class="name">${esc(p[0])}</div><p>${proxId ? L("Ya está programado en YouTube. Entra, mira el tráiler y toca «Notificarme» para que YouTube te avise cuando empiece el estreno.","Already scheduled on YouTube. Watch the trailer and tap “Notify me” so YouTube alerts you when the premiere starts.") : L("Nueva entrevista en Recta Al Pecho. Suscríbete y toca la campanita para que YouTube te avise.","New interview on Recta Al Pecho, recorded in Spanish. The English audio track usually follows on YouTube.")}</p>${proxId?`<span class="trl">${L("🔔 Avísame del estreno","🔔 Remind me on YouTube")}</span>`:""}</div></${proxId?"a":"div"}></section>
   <section>${H(L("Las series","The series"), "", `<button class="more" data-go="series">${L("Ver todas →","See all →")}</button>`)}<div class="row">${D.series.map(s => `<div class="tile">${card(s)}</div>`).join("")}</div></section>
   ${shelves}
   <section>${H(L("Colecciones","Collections"))}<div class="list">${D.cols.slice(0,5).map(colRow).join("")}</div><button class="more" data-go="series" style="display:block;margin:12px 0 0 auto">${L("Todas las colecciones →","All collections →")}</button></section>
