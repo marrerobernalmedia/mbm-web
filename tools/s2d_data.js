@@ -37,6 +37,7 @@ module.exports = {
     ["kbNiUjH7zEY", "defect", "the-defections-2", "The Defections, Part 2", "\"We Left\": 8 Cuban Ballplayers Tell Why Cuba Pushed Them Out", "Eight players, in the first person, on WHY they left. Not the mechanics of the escape: the humiliation before it and the price after."],
 
     // ── Legends Cuba Forgot
+    ["56ieZ9LGdxY", "legends", "rolando-viera", "Rolando Viera", "From Industriales to the Red Sox Without Defecting, and Cuba Branded Him a Traitor", "He never defected: the Industriales pitcher left Cuba legally in 2001, and Cuba still banned him from baseball for life and erased the Viera name from his nephew's jersey. Then came the Red Sox, Pedro Martínez, Manny Ramírez and seven months in a COVID coma."],
     ["E_YTKkq8-Gw", "legends", "luis-giraldo-casanova", "Luis Giraldo Casanova", "The Cuban Regime Stole His Olympics and Cut Him at 33", "He went 5-for-6 with three home runs against Korea at the World Championship. The regime used him as a flag — and then threw him away."],
     ["FNwoULmlz-4", "legends", "piro-barreiro", "Luis \"Piro\" Barreiro", "Nobody Scored on Him for Team Cuba — and They Paid Him One Peso a Day", "Luis \"Piro\" Barreiro pitched for Team Cuba in 1973 and 1974: five wins, no losses, and not a single run allowed to an international rival."],
     ["TnHtyTaAxGU", "legends", "jose-manuel-cortina", "José Manuel Cortina", "The Pitching Teacher Cuba Ignored and Mariano Rivera Recognized", "One of the names who know the most about pitching in Cuban baseball. Cuba ignored him; Mariano Rivera did not."],

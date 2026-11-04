@@ -17,7 +17,9 @@ const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(
 const V = S.v.map(([id, c, slug, who, t, sum]) => {
   const r = RV[id] || {};
   const dt = DT[id] || {};
-  return { id, c, slug, who, t, sum, d: r.d || "", f: r.f || dt.f || "", iso: dt.dur || "", views: r.v || 0 };
+  // soon = estreno programado que aún no sale (k "proximo"/"futuro" en recta/data.js): sin duración, "Premiere: <fecha>", uploadDate = cuando se subió (dt.up)
+  const soon = r.k === "proximo" || r.k === "futuro";
+  return { id, c, slug, who, t, sum, soon, up: dt.up || "", d: (r.d && !/^(Próximamente|Coming soon)$/i.test(r.d)) ? r.d : "", f: r.f || dt.f || "", iso: dt.dur || "", views: r.v || 0 };
 });
 const byId = Object.fromEntries(V.map(v => [v.id, v]));
 // Noticias en inglés: una por artículo de rectaalpecho.com (tools/s2d_news/*.json). Solo salen las de fecha <= hoy (Las Vegas).
@@ -124,7 +126,7 @@ const HOWTO = `<div class="howto"><strong>Hear it in English</strong><ol><li>Pre
 // ── Home (misma estructura que rectaalpecho.com: portada con lo último, último capítulo, series, entrevistas)
 {
   const lead = NEWS[0], side = NEWS.slice(1, 4);
-  const lastEp = V.filter(v => v.f).sort((x, y) => y.f.localeCompare(x.f))[0];
+  const lastEp = V.filter(v => v.f && !v.soon).sort((x, y) => y.f.localeCompare(x.f))[0];
   const serieOf = n => SERIES.find(x => x.id === n.series);
   const body = `
 <main class="wrap">
@@ -188,7 +190,7 @@ ${S.cats.map(c => {
 for (const v of V) {
   const cat = S.cats.find(c => c.id === v.c);
   const more = V.filter(x => x.c === v.c && x.id !== v.id).slice(0, 4);
-  const meta = [v.d && human(v.d), v.f && fdate(v.f), "Spanish with English audio"].filter(Boolean).join(" · ");
+  const meta = [v.d && human(v.d), v.f && (v.soon ? "Premiere: " + fdate(v.f) : fdate(v.f)), "Spanish with English audio"].filter(Boolean).join(" · ");
   const body = `
 <main class="wrap vid">
  <p class="crumb"><a href="../">Home</a> › <a href="../#${cat.id}">${esc(cat.name)}</a></p>
@@ -199,7 +201,7 @@ for (const v of V) {
    <h1>${esc(v.t)}</h1>
    <p class="meta">${meta}</p>
    <p class="sum">${esc(v.sum)}</p>
-   <p class="cta"><a class="btn" href="https://www.youtube.com/watch?v=${v.id}" rel="noopener">Watch on YouTube</a><a class="btn ghost" href="${YT_CH}?sub_confirmation=1" rel="noopener">Subscribe</a></p>
+   <p class="cta"><a class="btn" href="https://www.youtube.com/watch?v=${v.id}" rel="noopener">${v.soon ? "🔔 Remind me on YouTube" : "Watch on YouTube"}</a><a class="btn ghost" href="${YT_CH}?sub_confirmation=1" rel="noopener">Subscribe</a></p>
   </div>
   <aside>${HOWTO}<div class="es"><strong>¿Prefieres en español?</strong><p>Este video es de <a href="https://rectaalpecho.com/" hreflang="es">Recta Al Pecho</a>. En YouTube, el audio original es el español.</p></div></aside>
  </div>
@@ -212,7 +214,7 @@ for (const v of V) {
     inLanguage: "es", publisher: { "@type": "Organization", name: "Marrero Bernal Media LLC" }
   };
   if (v.d) ld.duration = isoDur(v.d); else if (v.iso) ld.duration = v.iso;
-  if (isoTZ(v.f)) ld.uploadDate = isoTZ(v.f);
+  if (v.soon && isoTZ(v.up)) ld.uploadDate = isoTZ(v.up); else if (isoTZ(v.f)) ld.uploadDate = isoTZ(v.f);
   if (v.views) ld.interactionStatistic = { "@type": "InteractionCounter", interactionType: { "@type": "WatchAction" }, userInteractionCount: v.views };
   const crumbs = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: "Straight 2D Chest", item: SITE + "/" },
