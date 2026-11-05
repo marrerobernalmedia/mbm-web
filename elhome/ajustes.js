@@ -34,10 +34,10 @@
         var src = byName[r]; if (!src) return;
         if (!dst) { src.name = actor; dst = byName[actor] = src; }
         else if (src !== dst) { dst.all = Array.from(new Set(dst.all.concat(src.all))); dst.lr = Array.from(new Set(dst.lr.concat(src.lr))); dst.banner = dst.banner || src.banner; D.comics.splice(D.comics.indexOf(src), 1); }
-        delete byName[r];
       });
-      if (dst) dst.aka = Array.from(new Set((dst.aka || []).concat(roles)));
-      Object.keys(V).forEach(function (id) { var v = V[id]; if (v.c) v.c = Array.from(new Set(v.c.map(function (n) { return roles.indexOf(n) >= 0 ? actor : n; }))); });
+      if (dst) { dst.aka = Array.from(new Set((dst.aka || []).concat(roles))); roles.forEach(function (r) { byName[r] = dst; }); }
+      // En cada capítulo se queda el nombre del personaje (Mariconchi / Genaro Pomposo); los de Manrufo van a su ficha
+      if (dst) Object.keys(V).forEach(function (id) { var v = V[id]; if ((v.c || []).some(function (n) { return n === actor || roles.indexOf(n) >= 0; })) { if (dst.all.indexOf(id) < 0) dst.all.push(id); } });
     });
     Object.keys(V).forEach(function (id) { var v = V[id]; if (v.c) v.c = Array.from(new Set(v.c.map(function (n) { return ALIAS[n] || n; }))); });
     var lrecs = {}; D.shows.forEach(function (s) { if (s.id === "lrecs") (s.v || []).forEach(function (i) { lrecs[i] = 1; }); });

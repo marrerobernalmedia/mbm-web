@@ -103,7 +103,7 @@ for (const sh of shows) {
   const image = abs(sh.banner) || thumb(byDate[0]);
   write(`show/${s}`, page({ url, title: `${sh.name} — todos los episodios | El Home de la Risa`, desc, image,
     body: `<section class="hero"><img src="${esc(image)}" alt="${esc(sh.name)}"><div><h1>${esc(sh.name)}</h1><p class="lead">${esc(desc)}</p><div class="btns"><a class="btn b1" href="https://www.youtube.com/watch?v=${byDate[0]}" target="_blank" rel="noopener">▶ Ver el último episodio</a><a class="btn b2" href="/?show=${sh.id}">Abrir en El Home</a>${sh.sub ? `<a class="btn b2" href="${esc(sh.sub)}" target="_blank" rel="noopener">Suscribirme en YouTube</a>` : ""}</div></div></section>
-${cast.length ? `<h2>Humoristas</h2><div class="chips">${cast.map(n => comics.find(c => c.name === n) ? `<a class="chip" href="/humorista/${slug(n)}/">${esc(n)}</a>` : `<span class="chip">${esc(n)}</span>`).join("")}</div>` : ""}
+${cast.length ? `<h2>Humoristas</h2><div class="chips">${cast.map(n => { const o = comics.find(c => c.name === n || (c.aka || []).includes(n)); return o ? `<a class="chip" href="/humorista/${slug(o.name)}/">${esc(n)}</a>` : `<span class="chip">${esc(n)}</span>`; }).join("")}</div>` : ""}
 ${upSec(sh.v || [])}<h2>Episodios</h2><div class="grid">${byDate.map(vcard).join("")}</div>`,
     ld: { "@context": "https://schema.org", "@graph": [
       { "@type": "TVSeries", "@id": url + "#serie", name: sh.name, description: sh.tag, url, image, inLanguage: "es", genre: "Comedia", productionCompany: { "@type": "Organization", name: "Marrero Bernal Media LLC", url: "https://marrerobernalmedia.com/" }, actor: cast.map(n => ({ "@type": "Person", name: n })) },
