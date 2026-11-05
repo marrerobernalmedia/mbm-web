@@ -15,6 +15,8 @@
   // todavía no tiene ficha, se le crea (Eliam, 31-oct-2026: Yamira Díaz).
   window.AJUSTAR = function (D) {
     var V = D.vid, byName = {};
+    // Series que se ven en su orden (Lección 1, 2, 3…), también en la página principal (Eliam, 5-nov-2026)
+    D.shows.forEach(function (s) { if (s.id === "ayer") s.asc = true; });
     D.comics.forEach(function (c) { c.lr = c.lr || []; c.all = c.all || []; byName[c.name] = c; });
     Object.keys(ALIAS).forEach(function (from) {
       var src = byName[from], dst = byName[ALIAS[from]]; if (!src || !dst) return;

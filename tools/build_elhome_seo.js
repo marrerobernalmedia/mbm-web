@@ -97,7 +97,7 @@ for (const [from, to] of [["Kamilo Kabello", "Dani Quintero"], ["Wattage", "Newi
 const shows = D.shows.map(s => ({ ...s, ids: (s.v || []).filter(live) })).filter(s => s.ids.length);
 for (const sh of shows) {
   const s = slug(sh.id === "lrecs" ? sh.name : sname(sh)), url = `${SITE}/show/${s}/`;
-  const byDate = sh.ids.slice().sort((a, b) => (V[b].f || "").localeCompare(V[a].f || ""));
+  const byDate = sh.asc ? sh.ids.slice() : sh.ids.slice().sort((a, b) => (V[b].f || "").localeCompare(V[a].f || ""));
   const cast = [...new Set(sh.ids.flatMap(id => V[id].c || []))].slice(0, 12);
   const desc = `${sh.name}: ${sh.tag || "humor cubano"} ${sh.ids.length} episodios${cast.length ? " con " + cast.slice(0, 5).join(", ") : ""}. En El Home de la Risa.`.replace(/\.\s*(\d)/, ". $1");
   const image = abs(sh.banner) || thumb(byDate[0]);

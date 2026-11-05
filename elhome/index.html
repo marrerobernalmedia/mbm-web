@@ -410,7 +410,7 @@ function inicio(){
   const yday = (() => { try { const d = new Date((window.MBM_TODAY || "") + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - 1); return d.toISOString().slice(0, 10); } catch (e) { return ""; } })();
   const week = D.week.map(([d, s, note, label]) => `<button class="day" data-show="${s}"><b>${d}</b>${note?`<em>${esc(note)}</em>`:""}<span>${esc(label || (s === "compilatorios" ? "La Risa es Cosa Seria" : sname(SH[s])))}</span></button>`).join("");
   const shelves = D.shows.filter(s => !s.soon).map(s => {
-    const l = s.v.filter(live).sort(byDate).slice(0, 8);
+    const l = (s.asc ? s.v.filter(live) : s.v.filter(live).sort(byDate)).slice(0, 8); // series por lecciones: en su orden (Eliam, 5-nov-2026)
     return `<section>${H(esc(sname(s)), "", `<button class="more" data-show="${s.id}">Ver todo →</button>`)}<div class="row">${l.map(tile).join("")}</div></section>`;
   }).join("");
   const funny = D.comics.slice(0, window.matchMedia("(min-width: 900px)").matches ? 12 : 10);
