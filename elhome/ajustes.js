@@ -8,8 +8,9 @@
   var EXTRA_LR = { "Newito": ["qQ72eLSjGy8"] };
   // Estrenos que data.js trae sin humorista
   var CAST = { "9vWXC53rrWs": ["Bacallao"] };
-  // Capítulos donde Manrufo hace de Genaro Pomposo (el primo de Mariconchi), no de Mariconchi (Eliam, 5-nov-2026)
-  var PERSONAJE = { "Mydt9_uTtjs": ["Mariconchi", "Genaro Pomposo"], "1AkgnrzQehA": ["Mariconchi", "Genaro Pomposo"] };
+  // El actor va por su nombre, con sus personajes dentro (Eliam, 5-nov-2026): Orlando Manrufo hace de
+  // Mariconchi y de Genaro Pomposo; una sola ficha "Manrufo" con los videos de los dos personajes
+  var ACTOR = { "Manrufo": ["Mariconchi", "Genaro Pomposo"] };
   // Los estrenos programados (con su tráiler) entran ya en la ficha del humorista; si el humorista
   // todavía no tiene ficha, se le crea (Eliam, 31-oct-2026: Yamira Díaz).
   window.AJUSTAR = function (D) {
@@ -27,13 +28,16 @@
       EXTRA_LR[name].forEach(function (id) { if (!V[id]) return; if (c.lr.indexOf(id) < 0) c.lr.unshift(id); if (c.all.indexOf(id) < 0) c.all.unshift(id); V[id].c = Array.from(new Set((V[id].c || []).concat(name))); });
     });
     Object.keys(CAST).forEach(function (id) { if (V[id] && !(V[id].c || []).length) V[id].c = CAST[id].slice(); });
-    Object.keys(PERSONAJE).forEach(function (id) {
-      if (!V[id]) return; var from = PERSONAJE[id][0], to = PERSONAJE[id][1];
-      V[id].c = Array.from(new Set((V[id].c || []).map(function (n) { return n === from ? to : n; })));
-      var src = byName[from], dst = byName[to];
-      if (!dst) { dst = byName[to] = { name: to, banner: null, lr: [], all: [] }; D.comics.splice(src ? D.comics.indexOf(src) + 1 : D.comics.length, 0, dst); }
-      if (src) { src.lr = src.lr.filter(function (x) { return x !== id; }); src.all = src.all.filter(function (x) { return x !== id; }); }
-      if (dst.lr.indexOf(id) < 0) dst.lr.push(id); if (dst.all.indexOf(id) < 0) dst.all.push(id);
+    Object.keys(ACTOR).forEach(function (actor) {
+      var roles = ACTOR[actor], dst = byName[actor];
+      roles.forEach(function (r) {
+        var src = byName[r]; if (!src) return;
+        if (!dst) { src.name = actor; dst = byName[actor] = src; }
+        else if (src !== dst) { dst.all = Array.from(new Set(dst.all.concat(src.all))); dst.lr = Array.from(new Set(dst.lr.concat(src.lr))); dst.banner = dst.banner || src.banner; D.comics.splice(D.comics.indexOf(src), 1); }
+        delete byName[r];
+      });
+      if (dst) dst.aka = Array.from(new Set((dst.aka || []).concat(roles)));
+      Object.keys(V).forEach(function (id) { var v = V[id]; if (v.c) v.c = Array.from(new Set(v.c.map(function (n) { return roles.indexOf(n) >= 0 ? actor : n; }))); });
     });
     Object.keys(V).forEach(function (id) { var v = V[id]; if (v.c) v.c = Array.from(new Set(v.c.map(function (n) { return ALIAS[n] || n; }))); });
     var lrecs = {}; D.shows.forEach(function (s) { if (s.id === "lrecs") (s.v || []).forEach(function (i) { lrecs[i] = 1; }); });
