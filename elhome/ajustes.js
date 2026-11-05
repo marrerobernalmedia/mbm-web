@@ -8,6 +8,8 @@
   var EXTRA_LR = { "Newito": ["qQ72eLSjGy8"] };
   // Estrenos que data.js trae sin humorista
   var CAST = { "9vWXC53rrWs": ["Bacallao"] };
+  // Capítulos donde Manrufo hace de Genaro Pomposo (el primo de Mariconchi), no de Mariconchi (Eliam, 5-nov-2026)
+  var PERSONAJE = { "Mydt9_uTtjs": ["Mariconchi", "Genaro Pomposo"], "1AkgnrzQehA": ["Mariconchi", "Genaro Pomposo"] };
   // Los estrenos programados (con su tráiler) entran ya en la ficha del humorista; si el humorista
   // todavía no tiene ficha, se le crea (Eliam, 31-oct-2026: Yamira Díaz).
   window.AJUSTAR = function (D) {
@@ -25,6 +27,14 @@
       EXTRA_LR[name].forEach(function (id) { if (!V[id]) return; if (c.lr.indexOf(id) < 0) c.lr.unshift(id); if (c.all.indexOf(id) < 0) c.all.unshift(id); V[id].c = Array.from(new Set((V[id].c || []).concat(name))); });
     });
     Object.keys(CAST).forEach(function (id) { if (V[id] && !(V[id].c || []).length) V[id].c = CAST[id].slice(); });
+    Object.keys(PERSONAJE).forEach(function (id) {
+      if (!V[id]) return; var from = PERSONAJE[id][0], to = PERSONAJE[id][1];
+      V[id].c = Array.from(new Set((V[id].c || []).map(function (n) { return n === from ? to : n; })));
+      var src = byName[from], dst = byName[to];
+      if (!dst) { dst = byName[to] = { name: to, banner: null, lr: [], all: [] }; D.comics.splice(src ? D.comics.indexOf(src) + 1 : D.comics.length, 0, dst); }
+      if (src) { src.lr = src.lr.filter(function (x) { return x !== id; }); src.all = src.all.filter(function (x) { return x !== id; }); }
+      if (dst.lr.indexOf(id) < 0) dst.lr.push(id); if (dst.all.indexOf(id) < 0) dst.all.push(id);
+    });
     Object.keys(V).forEach(function (id) { var v = V[id]; if (v.c) v.c = Array.from(new Set(v.c.map(function (n) { return ALIAS[n] || n; }))); });
     var lrecs = {}; D.shows.forEach(function (s) { if (s.id === "lrecs") (s.v || []).forEach(function (i) { lrecs[i] = 1; }); });
     Object.keys(V).forEach(function (id) {
