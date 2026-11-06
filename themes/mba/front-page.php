@@ -26,7 +26,7 @@
 <div class="wrap">
   <div class="tiles">
     <a class="tile" href="#personal"><div class="ic">🚗</div><b>Seguros personales</b><span>Auto, hogar, vida, mascotas, dispositivos y más</span></a>
-    <a class="tile" href="#negocios"><div class="ic">🏢</div><b>Seguros de negocio</b><span>Responsabilidad, auto comercial, workers' comp</span></a>
+    <a class="tile" href="#workers-comp"><div class="ic">🏢</div><b>Seguros de negocio</b><span>Workers' comp, responsabilidad, auto comercial · contabilidad y nómina</span></a>
     <a class="tile" href="#s-taxes"><div class="ic">🧾</div><b>Taxes</b><span>Personales y de negocio, desde cualquier parte del país</span></a>
     <a class="tile" href="#dmv"><div class="ic">📝</div><b>Traducciones</b><span>Aprobadas por el DMV de Nevada</span></a>
     <a class="tile" href="#s-notaria"><div class="ic">✒️</div><b>Notaría y traducciones</b><span>Documentos certificados en español e inglés</span></a>
@@ -75,6 +75,7 @@
         <h3>Negocios</h3>
         <div class="sub">Para tu empresa, desde el primer día</div>
         <div class="grp"><b>Seguros comerciales</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Business&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Seguro de negocio · cotizar</a></li><li><a href="https://www.farmers.com/business/auto-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Auto comercial</a></li><li><a href="https://www.farmers.com/business/property/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Propiedad comercial</a></li><li><a href="https://www.farmers.com/business/general-liability-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Responsabilidad civil</a></li><li><a href="https://www.farmers.com/business/workers-compensation/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Workers' compensation</a></li><li><a href="https://www.farmers.com/business/industry/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Por industria</a></li></ul></div>
+        <div class="grp"><b>Contabilidad y nómina <span class="nuevo">Nuevo</span></b><ul><li><a href="#contabilidad">Contabilidad (bookkeeping)</a></li><li><a href="#contabilidad">Nómina (payroll)</a></li></ul></div>
         <div class="grp"><b>Impuestos y formación</b><ul><li><a href="#contacto">Taxes de negocio</a></li><li><a href="#contacto">Licencias de negocio</a></li><li><a id="s-llc" href="#contacto">Creación de LLC</a></li><li><a href="#contacto">EIN y registro estatal</a></li></ul></div>
         <div class="grp"><b>Industrias que atendemos</b><ul><li><a href="#contacto">Restaurantes</a></li><li><a href="#contacto">Construcción</a></li><li><a href="#contacto">Transporte</a></li><li><a href="#contacto">Limpieza</a></li><li><a href="#contacto">Salones y barberías</a></li><li><a href="#contacto">Tiendas</a></li></ul></div>
         <div style="margin-top:26px;padding:18px;background:var(--cream);border-radius:14px">
@@ -87,6 +88,31 @@
   </div>
 </section>
 
+<section class="dmvt wcsec" id="workers-comp">
+  <div class="wrap">
+    <div class="kicker">Seguros comerciales para el negocio hispano</div>
+    <h2>Workers' Compensation: el seguro que más te van a pedir.</h2>
+    <p>En Nevada, si tienes uno o más empleados, la ley te obliga a tener seguro de compensación al trabajador (workers' comp). Y aunque trabajes solo, muchos contratistas generales, dueños de obra y clientes no te dan el trabajo sin un certificado de seguro. Te lo cotizamos en español y te mandamos los certificados cuando te los pidan.</p>
+    <div class="why2">
+      <div><b>Obligatorio en Nevada</b><p>Con uno o más empleados. En construcción, aunque el trabajo sea corto.</p></div>
+      <div><b>Multas de hasta $15,000</b><p>Sin cobertura, el estado puede multarte y ordenar que cierres el negocio hasta tener el seguro, y pagas tú los costos de cualquier accidente de trabajo.</p></div>
+      <div><b>Certificados cuando te los pidan</b><p>Si un contratista o un cliente te pide el certificado de seguro, te lo enviamos para que no pierdas el trabajo.</p></div>
+      <div><b>Todo el negocio</b><p>Además del workers' comp: responsabilidad civil, auto comercial, propiedad y paquetes por industria.</p></div>
+    </div>
+    <div class="chips"><span>Construcción</span><span>Limpieza</span><span>Jardinería</span><span>Restaurantes</span><span>Transporte y camiones</span><span>Salones y barberías</span><span>Tiendas</span></div>
+    <div class="btns"><a class="btn btn-acc" href="#contacto">Cotizar mi workers' comp</a><a class="btn btn-ghost" href="tel:+18888772583">Llamar al 888-877-2583</a></div>
+    <small>Fuente de los requisitos: División de Relaciones Industriales de Nevada. Las coberturas y las primas dependen de la aseguradora, la industria y la nómina.</small>
+    <div class="libros" id="contabilidad">
+      <div>
+        <div class="kicker" style="color:var(--acc)">Nuevo servicio</div>
+        <h3>Contabilidad (bookkeeping) y nómina (payroll).</h3>
+        <p>Llevamos los libros de tu negocio y la nómina de tus empleados, para que tú te ocupes de trabajar. Y como también preparamos tus taxes y tu seguro de workers' comp, que se calcula sobre la nómina, todo cuadra en un mismo lugar.</p>
+      </div>
+      <ul><li>Contabilidad mensual del negocio</li><li>Nómina de empleados</li><li>Todo en español, en la oficina o a distancia</li><li><a href="#contacto">Pregúntanos por el plan para tu negocio →</a></li></ul>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="kicker">Por qué nosotros</div>
@@ -95,7 +121,7 @@
       <div><b>2008</b><p>Año en que abrimos en North Las Vegas. Seguimos en el mismo lugar.</p></div>
       <div><b>Sin fronteras</b><p>Taxes, ITIN, traducciones y trámites a distancia para todo Estados Unidos y para quienes viven en otros países. Seguros con licencia en Nevada, California y Arizona.</p></div>
       <div><b>10 compañías</b><p>Somos independientes. En auto cotizamos con Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General y Bristol West; en casa, con Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America y Lemonade. Te damos la mejor opción.</p></div>
-      <div><b>1 visita</b><p>Seguro, taxes, ITIN, traducciones, notaría y más, en la misma oficina.</p></div>
+      <div><b>1 visita</b><p>Seguro, taxes, contabilidad, nómina, ITIN, traducciones, notaría y más, en la misma oficina.</p></div>
     </div>
     <div class="resenas">
       <h3>Lo que dicen nuestros clientes en Google</h3>
@@ -252,7 +278,7 @@
       <input name="nombre" placeholder="Nombre" required>
       <input name="telefono" placeholder="Teléfono o WhatsApp" required>
       <input type="email" name="correo" placeholder="Correo (opcional)">
-      <select name="servicio"><option>¿Qué necesitas?</option><option>Seguro de auto</option><option>Seguro de casa o renters</option><option>Seguro de vida</option><option>Medicare Advantage</option><option>Obamacare (Nevada Health Link)</option><option>Protección de dispositivos</option><option>Seguro de negocio</option><option>Taxes</option><option>Notaría o traducción</option><option>Licencia o LLC</option><option>Otro</option></select>
+      <select name="servicio"><option>¿Qué necesitas?</option><option>Seguro de auto</option><option>Seguro de casa o renters</option><option>Seguro de vida</option><option>Medicare Advantage</option><option>Obamacare (Nevada Health Link)</option><option>Protección de dispositivos</option><option>Seguro de negocio</option><option>Workers' compensation</option><option>Contabilidad y nómina</option><option>Taxes</option><option>Notaría o traducción</option><option>Licencia o LLC</option><option>Otro</option></select>
       <textarea name="mensaje" placeholder="Cuéntanos brevemente"></textarea>
       <button class="btn btn-navy" type="submit" style="justify-self:start">Enviar</button>
       <small>Respondemos el mismo día hábil. Nunca compartimos tus datos.</small>

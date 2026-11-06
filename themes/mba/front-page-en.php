@@ -26,7 +26,7 @@
 <div class="wrap">
   <div class="tiles">
     <a class="tile" href="#personal"><div class="ic">🚗</div><b>Personal insurance</b><span>Auto, home, life, pets, devices and more</span></a>
-    <a class="tile" href="#negocios"><div class="ic">🏢</div><b>Business insurance</b><span>Liability, commercial auto, workers' comp</span></a>
+    <a class="tile" href="#workers-comp"><div class="ic">🏢</div><b>Business insurance</b><span>Workers' comp, liability, commercial auto · bookkeeping and payroll</span></a>
     <a class="tile" href="#s-taxes"><div class="ic">🧾</div><b>Taxes</b><span>Personal and business, from anywhere in the country</span></a>
     <a class="tile" href="#dmv"><div class="ic">📝</div><b>Translations</b><span>Approved by the Nevada DMV</span></a>
     <a class="tile" href="#s-notaria"><div class="ic">✒️</div><b>Notary and translations</b><span>Certified documents in Spanish and English</span></a>
@@ -75,14 +75,40 @@
         <h3>Business</h3>
         <div class="sub">For your business, from day one</div>
         <div class="grp"><b>Commercial insurance</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Business&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Business insurance · quote</a></li><li><a href="https://www.farmers.com/business/auto-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Commercial auto</a></li><li><a href="https://www.farmers.com/business/property/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Commercial property</a></li><li><a href="https://www.farmers.com/business/general-liability-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">General liability</a></li><li><a href="https://www.farmers.com/business/workers-compensation/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Workers' compensation</a></li><li><a href="https://www.farmers.com/business/industry/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">By industry</a></li></ul></div>
+        <div class="grp"><b>Bookkeeping and payroll <span class="nuevo">New</span></b><ul><li><a href="#contabilidad">Bookkeeping</a></li><li><a href="#contabilidad">Payroll</a></li></ul></div>
         <div class="grp"><b>Taxes and formation</b><ul><li><a href="#contacto">Business taxes</a></li><li><a href="#contacto">Business licenses</a></li><li><a id="s-llc" href="#contacto">LLC formation</a></li><li><a href="#contacto">EIN and state registration</a></li></ul></div>
-        <div class="grp"><b>Industries we serve</b><ul><li><a href="#contacto">Restaurants</a></li><li><a href="#contacto">Construction</a></li><li><a href="#contacto">Transportation</a></li><li><a href="#contacto">Cleaning</a></li><li><a href="#contacto">Salons and barbershops</a></li><li><a href="#contacto">Retail</a></li></ul></div>
+        <div class="grp"><b>Industries we serve</b><ul><li><a href="#contacto">Restaurants</a></li><li><a href="#contacto">Construction</a></li><li><a href="#contacto">Transportation</a></li><li><a href="#contacto">Cleaning</a></li><li><a href="#contacto">Salons and barbershops</a></li><li><a href="#contacto">Retail stores</a></li></ul></div>
         <div style="margin-top:26px;padding:18px;background:var(--cream);border-radius:14px">
           <b style="display:block;margin-bottom:4px">Opening a business?</b>
           <span style="font-size:14px;color:var(--mut)">We form your LLC, get your license and set up your insurance in a single visit.</span>
           <div style="margin-top:12px"><a class="btn btn-navy" href="#contacto">Talk to an advisor</a></div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="dmvt wcsec" id="workers-comp">
+  <div class="wrap">
+    <div class="kicker">Commercial insurance for Hispanic-owned businesses</div>
+    <h2>Workers' Compensation: the coverage you will be asked for most.</h2>
+    <p>In Nevada, if you have one or more employees, the law requires workers' compensation insurance. And even if you work alone, many general contractors, property owners and clients will not give you the job without a certificate of insurance. We quote it for you in Spanish or English and send the certificates whenever they are requested.</p>
+    <div class="why2">
+      <div><b>Required in Nevada</b><p>With one or more employees. In construction, even for short jobs.</p></div>
+      <div><b>Fines up to $15,000</b><p>Without coverage, the state can fine you and order your business closed until you are insured, and you pay the costs of any work injury.</p></div>
+      <div><b>Certificates when you need them</b><p>If a contractor or client asks for your certificate of insurance, we send it so you do not lose the job.</p></div>
+      <div><b>Your whole business</b><p>Besides workers' comp: general liability, commercial auto, property and industry packages.</p></div>
+    </div>
+    <div class="chips"><span>Construction</span><span>Cleaning</span><span>Landscaping</span><span>Restaurants</span><span>Transportation and trucking</span><span>Salons and barbershops</span><span>Retail stores</span></div>
+    <div class="btns"><a class="btn btn-acc" href="#contacto">Quote my workers' comp</a><a class="btn btn-ghost" href="tel:+18888772583">Call 888-877-2583</a></div>
+    <small>Source for the requirements: Nevada Division of Industrial Relations. Coverage and premiums depend on the insurer, the industry and payroll.</small>
+    <div class="libros" id="contabilidad">
+      <div>
+        <div class="kicker" style="color:var(--acc)">New service</div>
+        <h3>Bookkeeping and payroll.</h3>
+        <p>We keep your business books and run your employees' payroll so you can focus on the work. And since we also prepare your taxes and your workers' comp, which is priced on payroll, everything adds up in one place.</p>
+      </div>
+      <ul><li>Monthly business bookkeeping</li><li>Employee payroll</li><li>In Spanish or English, at the office or remotely</li><li><a href="#contacto">Ask about a plan for your business →</a></li></ul>
     </div>
   </div>
 </section>
@@ -95,7 +121,7 @@
       <div><b>2008</b><p>The year we opened in North Las Vegas. We're still in the same place.</p></div>
       <div><b>No borders</b><p>Taxes, ITIN, translations and paperwork done remotely for all of the U.S. and for people living abroad. Insurance licensed in Nevada, California and Arizona.</p></div>
       <div><b>10 carriers</b><p>We are independent. For auto we quote Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General and Bristol West; for home, Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America and Lemonade. You get the best option.</p></div>
-      <div><b>1 visit</b><p>Insurance, taxes, ITIN, translations, notary and more, all in one office.</p></div>
+      <div><b>1 visit</b><p>Insurance, taxes, bookkeeping, payroll, ITIN, translations, notary and more, in one office.</p></div>
     </div>
     <div class="resenas">
       <h3>What our clients say on Google</h3>
@@ -252,7 +278,7 @@
       <input name="nombre" placeholder="Name" required>
       <input name="telefono" placeholder="Phone or WhatsApp" required>
       <input type="email" name="correo" placeholder="Email (optional)">
-      <select name="servicio"><option>What do you need?</option><option>Auto insurance</option><option>Home or renters insurance</option><option>Life insurance</option><option>Medicare Advantage</option><option>Obamacare (Nevada Health Link)</option><option>Device protection</option><option>Business insurance</option><option>Taxes</option><option>Notary or translation</option><option>License or LLC</option><option>Other</option></select>
+      <select name="servicio"><option>What do you need?</option><option>Auto insurance</option><option>Home or renters insurance</option><option>Life insurance</option><option>Medicare Advantage</option><option>Obamacare (Nevada Health Link)</option><option>Device protection</option><option>Business insurance</option><option>Workers' compensation</option><option>Bookkeeping and payroll</option><option>Taxes</option><option>Notary or translation</option><option>License or LLC</option><option>Other</option></select>
       <textarea name="mensaje" placeholder="Tell us briefly"></textarea>
       <button class="btn btn-navy" type="submit" style="justify-self:start">Send</button>
       <small>We reply the same business day. We never share your information.</small>
