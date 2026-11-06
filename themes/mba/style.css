@@ -144,3 +144,18 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
 
 .ok{background:#e7f6ee;color:#135c3a;border-radius:12px;padding:12px 14px;font-weight:600}
 .page-wrap{max-width:860px;margin:0 auto;padding:40px 20px 70px}.page-wrap h1{font-family:Fraunces,serif;font-size:40px;margin:0 0 20px}.page-wrap img{height:auto}
+
+/* ---- subpáginas (build_mba_paginas.py) ---- */
+.subpage .sub-hero{background:var(--cream);padding:56px 0}.subpage .sub-hero.med{background:var(--navy);color:#fff}.subpage .sub-hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+@media(max-width:900px){.subpage .sub-hero .wrap{grid-template-columns:1fr}}
+.subpage h1{font-family:Fraunces,serif;font-size:clamp(30px,4.4vw,48px);line-height:1.08;margin:8px 0 16px;text-wrap:balance}
+.subpage .sub-hero .mimg{margin:0}.subpage .sub-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.subpage .sub-hero.med .btn-ghost{color:#fff;border-color:#4a5a75}
+.subpage .sub{padding:50px 0 70px}.subpage .sub .wrap{max-width:900px}.subpage .sub h2{font-family:Fraunces,serif;font-size:28px;margin:40px 0 14px}.subpage .sub p{line-height:1.65;font-size:16px}
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0}
+.sub-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}.sub-card b{display:block;font-size:17px;margin-bottom:6px}.sub-card p{margin:0;font-size:15px!important;color:var(--mut)}
+.sub-card .precio{font-family:Fraunces,serif;font-size:34px;font-weight:700;color:var(--navy);margin:2px 0 8px}.sub-card .precio small{font-size:15px;color:var(--mut);font-family:Inter,sans-serif}
+.sub-card.destacado{border:2px solid var(--acc)}
+.sub-list{padding-left:20px;display:grid;gap:8px;line-height:1.55}.sub-steps{padding-left:20px;display:grid;gap:10px;line-height:1.55}
+.sub-alert{background:#fff6e2;border:1px solid #f0d699;border-radius:14px;padding:16px 18px;margin:8px 0 18px;line-height:1.55}
+.sub-nota{font-size:13px!important;color:var(--mut)}
+.sub-legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}.sub-legal p{font-size:13px!important;color:var(--mut);line-height:1.55}

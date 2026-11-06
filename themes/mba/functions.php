@@ -115,3 +115,4 @@ add_action('init', function () {
   });
 });
 add_action('wp_footer', function () { echo "<script>(function(){try{var p=location.pathname.replace(/\\/+$/,'/'),en=p.indexOf('/en/')===0,s=localStorage.getItem('mb_lang');\ndocument.querySelectorAll('[data-lang]').forEach(function(a){a.addEventListener('click',function(){try{localStorage.setItem('mb_lang',a.getAttribute('data-lang'))}catch(e){}})});\nif(!en&&p==='/'&&!s&&!/bot|crawl|spider|slurp|google|bing|lighthouse|headless/i.test(navigator.userAgent)&&!/^es/i.test(navigator.language||'es'))location.replace('/en/'+location.hash);}catch(e){}})();</script>"; }, 5);
+require_once __DIR__ . '/paginas.php';

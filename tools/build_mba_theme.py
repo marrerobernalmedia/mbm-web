@@ -200,3 +200,4 @@ fn = fn.replace("if (is_front_page()) wp_enqueue_script('mba-buscador'", "if (is
 fn += i18n_en.php_en('mba', title_es_, title_en, desc, desc_en, '')
 (out/'functions.php').write_text(fn)
 print('tema generado en', out)
+import runpy; runpy.run_path(str(root/'tools/build_mba_paginas.py'))
