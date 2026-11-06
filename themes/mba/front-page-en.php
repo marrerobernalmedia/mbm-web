@@ -144,6 +144,7 @@
         <li>Free review of your current plan, no obligation.</li>
         <li>Annual enrollment from October 15 to December 7.</li>
         <li>Support in Spanish and English all year, not just during enrollment.</li>
+        <li>We work with Alignment Health, Humana, SCAN and UnitedHealthcare.</li>
       </ul>
       <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-acc" href="#contacto">Review my plan</a><a class="btn btn-ghost" style="background:transparent;color:#fff;border-color:#4a5a75" href="/en/medicare/">All about Medicare</a></div>
     </div>

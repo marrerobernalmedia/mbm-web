@@ -144,6 +144,7 @@
         <li>Revisión gratuita de tu plan actual, sin compromiso.</li>
         <li>Inscripción anual del 15 de octubre al 7 de diciembre.</li>
         <li>Atención en español durante todo el año, no solo en temporada.</li>
+        <li>Trabajamos con Alignment Health, Humana, SCAN y UnitedHealthcare.</li>
       </ul>
       <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-acc" href="#contacto">Revisar mi plan</a><a class="btn btn-ghost" style="background:transparent;color:#fff;border-color:#4a5a75" href="/medicare/">Todo sobre Medicare</a></div>
     </div>

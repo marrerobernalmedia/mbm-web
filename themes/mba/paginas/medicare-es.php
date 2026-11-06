@@ -18,6 +18,8 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'medicare', 'me
     <div class="sub-card"><b>Cuando cumples 65</b><p>Tienes un período de 7 meses: los 3 meses antes de tu cumpleaños, el mes del cumpleaños y los 3 meses después.</p></div>
     <div class="sub-card"><b>Períodos especiales</b><p>Una mudanza, perder la cobertura del trabajo o tener Medicaid, entre otros casos, te pueden abrir un período para cambiar fuera de esas fechas.</p></div>
   </div>
+  <h2>Con quién trabajamos</h2>
+  <p>Tenemos contrato para Medicare Advantage con <b>Alignment Health, Humana, SCAN y UnitedHealthcare</b>. Revisamos contigo los planes de estas compañías disponibles en tu condado.</p>
   <h2>Qué revisamos contigo</h2>
   <ul class="sub-list">
     <li>Que tus médicos y hospitales estén en la red del plan.</li>

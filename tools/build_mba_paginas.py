@@ -37,6 +37,8 @@ P['medicare'] = dict(
     <div class="sub-card"><b>Cuando cumples 65</b><p>Tienes un período de 7 meses: los 3 meses antes de tu cumpleaños, el mes del cumpleaños y los 3 meses después.</p></div>
     <div class="sub-card"><b>Períodos especiales</b><p>Una mudanza, perder la cobertura del trabajo o tener Medicaid, entre otros casos, te pueden abrir un período para cambiar fuera de esas fechas.</p></div>
   </div>
+  <h2>Con quién trabajamos</h2>
+  <p>Tenemos contrato para Medicare Advantage con <b>Alignment Health, Humana, SCAN y UnitedHealthcare</b>. Revisamos contigo los planes de estas compañías disponibles en tu condado.</p>
   <h2>Qué revisamos contigo</h2>
   <ul class="sub-list">
     <li>Que tus médicos y hospitales estén en la red del plan.</li>
@@ -78,6 +80,8 @@ P['medicare'] = dict(
     <div class="sub-card"><b>When you turn 65</b><p>You have a 7-month window: the 3 months before your birthday, your birthday month and the 3 months after.</p></div>
     <div class="sub-card"><b>Special periods</b><p>Moving, losing employer coverage or having Medicaid, among other cases, can open a period to change outside those dates.</p></div>
   </div>
+  <h2>Who we work with</h2>
+  <p>We are appointed for Medicare Advantage with <b>Alignment Health, Humana, SCAN and UnitedHealthcare</b>. We review the plans from these companies available in your county.</p>
   <h2>What we review with you</h2>
   <ul class="sub-list">
     <li>That your doctors and hospitals are in the plan's network.</li>

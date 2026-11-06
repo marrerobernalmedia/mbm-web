@@ -18,6 +18,8 @@ ob_start(); get_header('en'); echo mba_pag_fix(ob_get_clean(), 'en', 'medicare',
     <div class="sub-card"><b>When you turn 65</b><p>You have a 7-month window: the 3 months before your birthday, your birthday month and the 3 months after.</p></div>
     <div class="sub-card"><b>Special periods</b><p>Moving, losing employer coverage or having Medicaid, among other cases, can open a period to change outside those dates.</p></div>
   </div>
+  <h2>Who we work with</h2>
+  <p>We are appointed for Medicare Advantage with <b>Alignment Health, Humana, SCAN and UnitedHealthcare</b>. We review the plans from these companies available in your county.</p>
   <h2>What we review with you</h2>
   <ul class="sub-list">
     <li>That your doctors and hospitals are in the plan's network.</li>
