@@ -152,7 +152,12 @@ add_filter('trp_floating_ls_html', '__return_empty_string');
 add_action('wp_enqueue_scripts', function () { wp_dequeue_script('trp-language-switcher-js-v2'); wp_dequeue_style('trp-language-switcher-v2'); }, 100);
 
 /** La página vieja /apps/ pasa a la sección Apps de la portada. */
-add_action('template_redirect', function () { if (is_page('apps')) { wp_redirect(home_url('/#apps'), 301); exit; } });
+add_action('template_redirect', function () {
+  /* Páginas viejas (Elementor) ya en la papelera: sus URL van a la sección nueva */
+  $p = trim(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?? '', '/');
+  $m = ['apps' => '/#apps', 'sample-page' => '/', 'hello-world' => '/'];
+  if (isset($m[$p])) { wp_redirect(home_url($m[$p]), 301); exit; }
+}, 1);
 
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
