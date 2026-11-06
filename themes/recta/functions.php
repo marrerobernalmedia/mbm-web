@@ -150,10 +150,11 @@ remove_action('wp_print_styles', 'print_emoji_styles');
 
 /** Páginas viejas de Elementor que quedaron vacías con el tema: redirección permanente a su equivalente (no se borra nada). */
 function recta_redirects() {
-  return ['home' => '/', 'beisbol' => '/', 'los-borrados' => '/category/los-borrados/', 'las-fugas-2' => '/category/las-fugas/', 'beisbol-2' => '/'];
+  return ['home' => '/', 'beisbol' => '/', 'los-borrados' => '/category/los-borrados/', 'las-fugas-2' => '/category/las-fugas/', 'beisbol-2' => '/', 'articulos' => '/'];
 }
 add_action('template_redirect', function () {
-  if (is_page()) { $slug = get_queried_object()->post_name ?? ''; $r = recta_redirects(); if (isset($r[$slug])) { wp_redirect(home_url($r[$slug]), 301); exit; } }
+  /* por RUTA: las páginas viejas de Elementor están en la papelera (6-nov-2026) y su URL sigue llevando a lo nuevo */
+  $slug = trim(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?? '', '/'); $r = recta_redirects(); if (isset($r[$slug])) { wp_redirect(home_url($r[$slug]), 301); exit; }
   if (is_author()) { wp_redirect(home_url('/quienes-somos/'), 301); exit; }
 });
 add_filter('wpseo_sitemap_entry', function ($url, $type, $post) {
