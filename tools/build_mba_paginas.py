@@ -408,6 +408,7 @@ function mba_pag_fix($h, $lang, $self, $other) {
 add_action('template_redirect', function () {
   $map = json_decode(""" + "'" + J(REDIR).replace("\\", "\\\\").replace("'", "\\'") + "'" + """, true);
   $path = trim(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?? '', '/');
+  if (!isset($map[$path]) && preg_match('#^\\d{4}/\\d{2}/\\d{2}/([^/]+)$#', $path, $mm)) $path = $mm[1];
   if (isset($map[$path])) { $to = $map[$path]; if ($to[0] === '/') $to = home_url($to); wp_redirect($to, 301, 'Marrero Bernal & Associates'); exit; }
 }, 1);
 /** …y salen del sitemap. */
