@@ -152,7 +152,7 @@
     <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/medicare.jpg')); ?>" alt="Senior couple reviewing their health plan at home" width="1280" height="720" loading="lazy">
     <div class="box">
       <h3>Before you call, you should know:</h3>
-      <small>We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov or 1-800-MEDICARE to get information on all of your options.</small>
+      <small>We do not offer every plan available in your area. Currently we represent 4 organizations which offer 38 products in your area. Please contact Medicare.gov, 1-800-MEDICARE (TTY 1-877-486-2048), or your local State Health Insurance Program (SHIP) to get information on all of your options.</small>
       <small>Marrero Bernal &amp; Associates is a licensed independent insurance agency and is not affiliated with or endorsed by the U.S. government or the federal Medicare program.</small>
       <small>Coverage, premiums and benefits vary by plan and county. Final wording follows current CMS marketing guidelines.</small>
     </div>

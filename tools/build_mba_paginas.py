@@ -55,7 +55,7 @@ P['medicare'] = dict(
     <li><b>Seguimos contigo.</b> Atención en español durante todo el año, no solo en temporada.</li>
   </ol>
   <div class="sub-legal">
-    <p>No ofrecemos todos los planes disponibles en su área. Cualquier información que proporcionemos se limita a los planes que ofrecemos en su área. Comuníquese con Medicare.gov, al 1-800-MEDICARE (TTY 1-877-486-2048) o con su Programa Estatal de Asistencia sobre Seguros de Salud (SHIP) para obtener información sobre todas sus opciones. En Nevada, el SHIP es el Medicare Assistance Program (MAP): 1-800-307-4444.</p>
+    <p>No ofrecemos todos los planes disponibles en su área. Actualmente representamos 4 organizaciones que ofrecen 38 productos en su área. Comuníquese con Medicare.gov, al 1-800-MEDICARE (TTY 1-877-486-2048) o con su Programa Estatal de Asistencia sobre Seguros de Salud (SHIP) para obtener información sobre todas sus opciones. En Nevada, el SHIP es el Medicare Assistance Program (MAP): 1-800-307-4444.</p>
     <p>Al llamar, hablará con un agente de seguros con licencia. Marrero Bernal &amp; Associates es una agencia de seguros independiente y no está afiliada ni respaldada por el gobierno de EE. UU. ni por el programa federal Medicare. Las coberturas, primas y beneficios varían según el plan y el condado.</p>
   </div>
 </div></section>'''),
@@ -98,7 +98,7 @@ P['medicare'] = dict(
     <li><b>We stay with you.</b> Service all year round, not just during enrollment season.</li>
   </ol>
   <div class="sub-legal">
-    <p>We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov, 1-800-MEDICARE (TTY 1-877-486-2048), or your local State Health Insurance Program (SHIP) to get information on all of your options. In Nevada, the SHIP is the Medicare Assistance Program (MAP): 1-800-307-4444.</p>
+    <p>We do not offer every plan available in your area. Currently we represent 4 organizations which offer 38 products in your area. Please contact Medicare.gov, 1-800-MEDICARE (TTY 1-877-486-2048), or your local State Health Insurance Program (SHIP) to get information on all of your options. In Nevada, the SHIP is the Medicare Assistance Program (MAP): 1-800-307-4444.</p>
     <p>By calling, you will speak with a licensed insurance agent. Marrero Bernal &amp; Associates is an independent insurance agency and is not connected with or endorsed by the U.S. government or the federal Medicare program. Coverage, premiums and benefits vary by plan and county.</p>
   </div>
 </div></section>'''))
