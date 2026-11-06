@@ -111,6 +111,12 @@ footer nav a{margin-left:18px}
 .fb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}@media(max-width:860px){.fb-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fb-grid{grid-template-columns:1fr}}
 .fb{display:grid;grid-template-columns:56px 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;background:#1a1a1f;border:1px solid var(--line);border-radius:16px;padding:14px 16px;color:var(--fg)}.fb img{grid-row:1/3;width:56px;height:56px;object-fit:contain}.fb img[src*="iso_"],.fb img[src*="pelotero"]{border-radius:12px;object-fit:cover}.fb b{font-size:15px}.fb span{font-size:13px;color:var(--mut)}.fb i{font-style:normal;color:var(--fg)}.fb:hover{border-color:var(--acc)}
 .apps{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}@media(max-width:860px){.apps{grid-template-columns:1fr}}.app{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:start;background:#1a1a1f;border:1px solid var(--line);border-radius:18px;padding:20px}.app img{width:110px;height:110px;object-fit:contain;background:#111114;border-radius:16px;padding:12px}.app img[src*="pelotero"]{padding:0;object-fit:cover}.app h3{margin:0 0 6px;font-size:20px}.app p{margin:0 0 14px;color:var(--mut);font-size:14px}.app .ctas{gap:10px;flex-wrap:wrap;justify-content:flex-start;margin:0}@media(max-width:520px){.app{grid-template-columns:1fr}}
+.ests{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}@media(max-width:900px){.ests{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.ests{grid-template-columns:1fr}}
+.est{display:flex;flex-direction:column;gap:8px;min-width:0;color:inherit;text-decoration:none}
+.est img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;border:1px solid var(--line);background:#222}
+.est .k{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.est b{font-weight:600;font-size:15px;line-height:1.35}
+.est:hover b{color:var(--acc)}
 </style>
 </head>
 <body>
@@ -186,6 +192,16 @@ footer nav a{margin-left:18px}
   </div>
 </section>
 
+
+<section id="estrenos" style="background:var(--bg2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="kicker">Estrenos</div>
+    <h2>Lo último que salió en la red.</h2>
+    <p class="lead">Los estrenos más recientes de nuestros canales de YouTube. Se actualiza solo con cada estreno.</p>
+    <div class="ests" id="estrenos-lista"><p style="color:var(--mut)">Cargando los estrenos…</p></div>
+  </div>
+</section>
+<script src="/estrenos.js" defer></script>
 
 <section id="apps" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">

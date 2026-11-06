@@ -54,6 +54,16 @@
 </section>
 
 
+<section id="estrenos" style="background:var(--bg2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="kicker">Premieres</div>
+    <h2>The latest from our network.</h2>
+    <p class="lead">The newest premieres on our YouTube channels. Updated automatically with every release.</p>
+    <div class="ests" id="estrenos-lista"><p style="color:var(--mut)">Loading premieres…</p></div>
+  </div>
+</section>
+<script src="/estrenos.js" defer></script>
+
 <section id="apps" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="kicker">Apps</div>
