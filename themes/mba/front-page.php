@@ -119,7 +119,7 @@
         <li>Inscripción anual del 15 de octubre al 7 de diciembre.</li>
         <li>Atención en español durante todo el año, no solo en temporada.</li>
       </ul>
-      <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-acc" href="#contacto">Revisar mi plan</a><a class="btn btn-ghost" style="color:#fff;border-color:#4a5a75" href="/medicare/">Todo sobre Medicare</a></div>
+      <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-acc" href="#contacto">Revisar mi plan</a><a class="btn btn-ghost" style="background:transparent;color:#fff;border-color:#4a5a75" href="/medicare/">Todo sobre Medicare</a></div>
     </div>
     <div>
     <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/medicare.jpg')); ?>" alt="Pareja mayor revisando su plan de salud en casa" width="1280" height="720" loading="lazy">

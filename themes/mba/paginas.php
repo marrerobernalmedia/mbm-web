@@ -36,6 +36,7 @@ add_action('wp_head', function () {
 function mba_pag_fix($h, $lang, $self, $other) {
   $home = $lang === 'en' ? home_url('/en/') : home_url('/');
   $h = preg_replace('/href="#(?!")/', 'href="' . esc_url($home) . '#', $h);
+  if ($lang === 'en') $h = str_replace('<a class="logo" href="' . esc_url(home_url('/')) . '"', '<a class="logo" href="' . esc_url($home) . '"', $h);
   $es = $lang === 'es' ? home_url('/' . $self . '/') : home_url('/' . $other . '/');
   $en = $lang === 'en' ? home_url('/en/' . $self . '/') : home_url('/en/' . $other . '/');
   $h = preg_replace('/href="[^"]*"(\s+hreflang="es")/', 'href="' . esc_url($es) . '"$1', $h);

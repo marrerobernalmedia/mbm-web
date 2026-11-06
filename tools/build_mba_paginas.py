@@ -367,6 +367,7 @@ add_action('wp_head', function () {
 function mba_pag_fix($h, $lang, $self, $other) {
   $home = $lang === 'en' ? home_url('/en/') : home_url('/');
   $h = preg_replace('/href="#(?!")/', 'href="' . esc_url($home) . '#', $h);
+  if ($lang === 'en') $h = str_replace('<a class="logo" href="' . esc_url(home_url('/')) . '"', '<a class="logo" href="' . esc_url($home) . '"', $h);
   $es = $lang === 'es' ? home_url('/' . $self . '/') : home_url('/' . $other . '/');
   $en = $lang === 'en' ? home_url('/en/' . $self . '/') : home_url('/en/' . $other . '/');
   $h = preg_replace('/href="[^"]*"(\\s+hreflang="es")/', 'href="' . esc_url($es) . '"$1', $h);
@@ -404,7 +405,7 @@ CSS = '''
 .subpage .sub-hero{background:var(--cream);padding:56px 0}.subpage .sub-hero.med{background:var(--navy);color:#fff}.subpage .sub-hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
 @media(max-width:900px){.subpage .sub-hero .wrap{grid-template-columns:1fr}}
 .subpage h1{font-family:Fraunces,serif;font-size:clamp(30px,4.4vw,48px);line-height:1.08;margin:8px 0 16px;text-wrap:balance}
-.subpage .sub-hero .mimg{margin:0}.subpage .sub-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.subpage .sub-hero.med .btn-ghost{color:#fff;border-color:#4a5a75}
+.subpage .sub-hero .mimg{margin:0}.subpage .sub-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.subpage .sub-hero.med .btn-ghost{background:transparent;color:#fff;border-color:#4a5a75}
 .subpage .sub{padding:50px 0 70px}.subpage .sub .wrap{max-width:900px}.subpage .sub h2{font-family:Fraunces,serif;font-size:28px;margin:40px 0 14px}.subpage .sub p{line-height:1.65;font-size:16px}
 .sub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0}
 .sub-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}.sub-card b{display:block;font-size:17px;margin-bottom:6px}.sub-card p{margin:0;font-size:15px!important;color:var(--mut)}
