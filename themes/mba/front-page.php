@@ -75,7 +75,7 @@
         <h3>Negocios</h3>
         <div class="sub">Para tu empresa, desde el primer día</div>
         <div class="grp"><b>Seguros comerciales</b><ul><li><a href="https://esales.farmers.com/fastquote?Lob=Business&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">Seguro de negocio · cotizar</a></li><li><a href="https://www.farmers.com/business/auto-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Auto comercial</a></li><li><a href="https://www.farmers.com/business/property/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Propiedad comercial</a></li><li><a href="https://www.farmers.com/business/general-liability-insurance/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Responsabilidad civil</a></li><li><a href="https://www.farmers.com/business/workers-compensation/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Workers' compensation</a></li><li><a href="https://www.farmers.com/business/industry/?Agent_Code=67249W%2430306E%248833H2&Source_Indicator=AP" target="_blank" rel="noopener">Por industria</a></li></ul></div>
-        <div class="grp"><b>Contabilidad y nómina <span class="nuevo">Nuevo</span></b><ul><li><a href="#contabilidad">Contabilidad (bookkeeping)</a></li><li><a href="#contabilidad">Nómina (payroll)</a></li></ul></div>
+        <div class="grp"><b>Contabilidad y nómina</b><ul><li><a href="#contabilidad">Contabilidad (bookkeeping)</a></li><li><a href="#contabilidad">Nómina (payroll)</a></li></ul></div>
         <div class="grp"><b>Impuestos y formación</b><ul><li><a href="#contacto">Taxes de negocio</a></li><li><a href="#contacto">Licencias de negocio</a></li><li><a id="s-llc" href="#contacto">Creación de LLC</a></li><li><a href="#contacto">EIN y registro estatal</a></li></ul></div>
         <div class="grp"><b>Industrias que atendemos</b><ul><li><a href="#contacto">Restaurantes</a></li><li><a href="#contacto">Construcción</a></li><li><a href="#contacto">Transporte</a></li><li><a href="#contacto">Limpieza</a></li><li><a href="#contacto">Salones y barberías</a></li><li><a href="#contacto">Tiendas</a></li></ul></div>
         <div style="margin-top:26px;padding:18px;background:var(--cream);border-radius:14px">
@@ -104,7 +104,7 @@
     <small>Fuente de los requisitos: División de Relaciones Industriales de Nevada. Las coberturas y las primas dependen de la aseguradora, la industria y la nómina.</small>
     <div class="libros" id="contabilidad">
       <div>
-        <div class="kicker" style="color:var(--acc)">Nuevo servicio</div>
+        <div class="kicker" style="color:var(--acc)">Para tu negocio</div>
         <h3>Contabilidad (bookkeeping) y nómina (payroll).</h3>
         <p>Llevamos los libros de tu negocio y la nómina de tus empleados, para que tú te ocupes de trabajar. Y como también preparamos tus taxes y tu seguro de workers' comp, que se calcula sobre la nómina, todo cuadra en un mismo lugar.</p>
       </div>
