@@ -90,9 +90,11 @@
 
 <section class="dmvt wcsec" id="workers-comp">
   <div class="wrap">
+    <div class="wc-top"><div>
     <div class="kicker">Seguros comerciales para el negocio hispano</div>
     <h2>Workers' Compensation: el seguro que más te van a pedir.</h2>
     <p>En Nevada, si tienes uno o más empleados, la ley te obliga a tener seguro de compensación al trabajador (workers' comp). Y aunque trabajes solo, muchos contratistas generales, dueños de obra y clientes no te dan el trabajo sin un certificado de seguro. Te lo cotizamos en español y te mandamos los certificados cuando te los pidan.</p>
+    </div><img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/workers.jpg')); ?>" alt="Dueño de una cuadrilla de construcción con su agente de seguros en la obra" width="1280" height="720" loading="lazy"></div>
     <div class="why2">
       <div><b>Obligatorio en Nevada</b><p>Con uno o más empleados. En construcción, aunque el trabajo sea corto.</p></div>
       <div><b>Multas de hasta $15,000</b><p>Sin cobertura, el estado puede multarte y ordenar que cierres el negocio hasta tener el seguro, y pagas tú los costos de cualquier accidente de trabajo.</p></div>
@@ -103,6 +105,7 @@
     <div class="btns"><a class="btn btn-acc" href="#contacto">Cotizar mi workers' comp</a><a class="btn btn-ghost" href="tel:+18888772583">Llamar al 888-877-2583</a></div>
     <small>Fuente de los requisitos: División de Relaciones Industriales de Nevada. Las coberturas y las primas dependen de la aseguradora, la industria y la nómina.</small>
     <div class="libros" id="contabilidad">
+      <img class="limg" src="<?php echo esc_url(get_theme_file_uri('img/contabilidad.jpg')); ?>" alt="Dueña de un negocio revisando su contabilidad y nómina con un contador" width="1280" height="720" loading="lazy">
       <div>
         <div class="kicker" style="color:var(--acc)">Para tu negocio</div>
         <h3>Contabilidad (bookkeeping) y nómina (payroll).</h3>

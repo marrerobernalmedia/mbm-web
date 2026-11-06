@@ -90,9 +90,11 @@
 
 <section class="dmvt wcsec" id="workers-comp">
   <div class="wrap">
+    <div class="wc-top"><div>
     <div class="kicker">Commercial insurance for Hispanic-owned businesses</div>
     <h2>Workers' Compensation: the coverage you will be asked for most.</h2>
     <p>In Nevada, if you have one or more employees, the law requires workers' compensation insurance. And even if you work alone, many general contractors, property owners and clients will not give you the job without a certificate of insurance. We quote it for you in Spanish or English and send the certificates whenever they are requested.</p>
+    </div><img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/workers.jpg')); ?>" alt="Construction crew owner with his insurance agent at the job site" width="1280" height="720" loading="lazy"></div>
     <div class="why2">
       <div><b>Required in Nevada</b><p>With one or more employees. In construction, even for short jobs.</p></div>
       <div><b>Fines up to $15,000</b><p>Without coverage, the state can fine you and order your business closed until you are insured, and you pay the costs of any work injury.</p></div>
@@ -103,6 +105,7 @@
     <div class="btns"><a class="btn btn-acc" href="#contacto">Quote my workers' comp</a><a class="btn btn-ghost" href="tel:+18888772583">Call 888-877-2583</a></div>
     <small>Source for the requirements: Nevada Division of Industrial Relations. Coverage and premiums depend on the insurer, the industry and payroll.</small>
     <div class="libros" id="contabilidad">
+      <img class="limg" src="<?php echo esc_url(get_theme_file_uri('img/contabilidad.jpg')); ?>" alt="Business owner reviewing her books and payroll with a bookkeeper" width="1280" height="720" loading="lazy">
       <div>
         <div class="kicker" style="color:var(--acc)">For your business</div>
         <h3>Bookkeeping and payroll.</h3>
