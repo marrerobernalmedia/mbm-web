@@ -466,6 +466,8 @@ for key, pair in P.items():
     routes[pair['en']['slug'] + '|en'] = dict(file=f'{key}-en', title=pair['en']['title'], desc=pair['en']['desc'], img=pair['en']['img'], pair='/' + pair['es']['slug'] + '/', self='/en/' + pair['en']['slug'] + '/')
 
 J = lambda o: json.dumps(o, ensure_ascii=False)
+import hashlib
+RWV = hashlib.md5(','.join(sorted(routes)).encode()).hexdigest()[:8]  # cambia sola cuando hay rutas nuevas → vuelve a generar las reglas de WP
 php = """<?php
 /** Páginas propias (Medicare, Obamacare, Medicaid, dispositivos) y redirecciones de páginas viejas.
  *  GENERADO por tools/build_mba_paginas.py — no editar a mano. */
@@ -481,7 +483,7 @@ add_action('init', function () {
     $re = ($lang === 'en' ? '^en/' : '^') . preg_quote($slug, '#') . '/?$';
     add_rewrite_rule($re, 'index.php?mba_pag=' . $slug . '&mba_pl=' . $lang, 'top');
   }
-  if (get_option('mba_pag_rw') !== '3') { flush_rewrite_rules(false); update_option('mba_pag_rw', '3'); }
+  if (get_option('mba_pag_rw') !== '""" + RWV + """') { flush_rewrite_rules(false); update_option('mba_pag_rw', '""" + RWV + """'); }
 });
 add_filter('redirect_canonical', fn($r) => mba_pag() ? false : $r);
 add_action('wp', function () { global $wp_query; if (mba_pag()) { $wp_query->is_404 = false; $wp_query->is_home = false; status_header(200); remove_action('wp_head', 'rel_canonical'); } });

@@ -13,7 +13,7 @@ add_action('init', function () {
     $re = ($lang === 'en' ? '^en/' : '^') . preg_quote($slug, '#') . '/?$';
     add_rewrite_rule($re, 'index.php?mba_pag=' . $slug . '&mba_pl=' . $lang, 'top');
   }
-  if (get_option('mba_pag_rw') !== '3') { flush_rewrite_rules(false); update_option('mba_pag_rw', '3'); }
+  if (get_option('mba_pag_rw') !== '02d8f13b') { flush_rewrite_rules(false); update_option('mba_pag_rw', '02d8f13b'); }
 });
 add_filter('redirect_canonical', fn($r) => mba_pag() ? false : $r);
 add_action('wp', function () { global $wp_query; if (mba_pag()) { $wp_query->is_404 = false; $wp_query->is_home = false; status_header(200); remove_action('wp_head', 'rel_canonical'); } });
