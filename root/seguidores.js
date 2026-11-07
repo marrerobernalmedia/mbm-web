@@ -4,8 +4,8 @@
    editar este archivo y hacer push. */
 window.SEGUIDORES = {
   "actualizado": "2026-11-06",
-  "fb": {"larisa":584344,"lacosa":172454,"recta":71612,"elhome":13236,"mba":5214,"cuero":2106,"welcome":1729,"mbm":1325,"eliam":11223,"nadie":263},
-  "ig": {"larisa":50500,"lacosa":31300,"mbm":10100,"recta":9202,"welcome":3670,"elhome":1668,"nadie":45,"cuero":19,"mba":217,"eliam":7166},
+  "fb": {"larisa":585419,"lacosa":173265,"recta":72242,"elhome":14126,"mba":5214,"cuero":2327,"welcome":3576,"mbm":1365,"eliam":11223,"nadie":451},
+  "ig": {"larisa":50585,"lacosa":31381,"mbm":10231,"recta":9394,"welcome":3696,"elhome":1906,"nadie":46,"cuero":19,"mba":218,"eliam":7163},
   "yt": {"larisa":91703,"recta":19097,"lacosa":13892,"elhome":3295,"welcome":2760,"mbm":16}
 };
 (function(){
