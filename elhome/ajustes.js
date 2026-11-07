@@ -60,14 +60,19 @@
 // humorista que ya sale debajo, se le quita. En la app y en las páginas de Google; en YouTube no cambia.
 const _n = x => String(x).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 const _sep = "[\\s|:·,\\-–—!¡?¿.\\p{Extended_Pictographic}\\uFE0F\\u200D]";
+// Nombre completo del actor, para quitarlo también del título (Eliam, 7-nov-2026: "ORLANDO MANRUFO")
+const NOMBRE_COMPLETO = { "Manrufo": ["Orlando Manrufo"] };
 window.TITULO_LIMPIO = function (D, id) { const V = D.vid, v = V[id]; let t = v.t; const CM = {}; D.comics.forEach(c => { CM[c.name] = c; (c.aka || []).forEach(a => { CM[a] = CM[a] || c; }); });
-  const names = [...new Set((v.c || []).flatMap(n => { const c = CM[n]; const l = [n].concat(c ? [c.name].concat(c.aka || []) : []); return l.flatMap(x => { const w = x.split(" ")[0]; return w.length >= 5 && w !== x ? [x, w] : [x]; }); }))].sort((a, b) => b.length - a.length);
+  t = t.replace(/&vert;/g, "|");
+  // La etiqueta del show ya sale arriba (LA RISA ES COSA SERIA #96): se quita el "| LRECS #96" del final
+  t = t.replace(/[\s|·\-–—\p{Extended_Pictographic}\uFE0F\u200D]*\bLRECS(\s*(EP\.?\s*)?#?\s*\d+)?\s*$/iu, "").trim() || v.t;
+  const names = [...new Set((v.c || []).flatMap(n => { const c = CM[n]; const l = [n].concat(c ? [c.name].concat(c.aka || [], NOMBRE_COMPLETO[c.name] || []) : []); return l.flatMap(x => { const w = x.split(" ")[0]; return w.length >= 5 && w !== x ? [x, w] : [x]; }); }))].sort((a, b) => b.length - a.length);
   if (!names.length) return t;
-  for (let k = 0; k < 3; k++) { const b = t; const nt = _n(t);
+  // Se quita un solo nombre (el del principio o el del final), para no comerse la frase
+  { const nt = _n(t);
     for (const nm of names) { const q = _n(nm).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       let m = nt.match(new RegExp("(^|\\s)" + q + "(" + _sep + "*)$", "u"));
       if (m && m.index + m[1].length > 0 && !/(^|\s)(de|del|con|y|e|a|al|por|para|sin|en|la|el|los|las|cu)$/.test(nt.slice(0, m.index).trim())) { t = t.slice(0, m.index + m[1].length).replace(/[\s|:·,\-–—\p{Extended_Pictographic}\uFE0F\u200D]+$/u, "").trim(); break; }
       m = nt.match(new RegExp("^" + q + "(\\s*(?:[|:·\\-–—]|\\p{Extended_Pictographic})" + _sep + "*)", "u"));
-      if (m && m[0].length < nt.length) { t = t.slice(m[0].length).trim(); break; } }
-    if (t === b) break; }
+      if (m && m[0].length < nt.length) { t = t.slice(m[0].length).trim(); break; } } }
   return t || v.t; };
