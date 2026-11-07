@@ -174,6 +174,7 @@ add_action('init', function () {
   if (($_SERVER['REQUEST_URI'] ?? '') === '/ads.txt') {
     header('Content-Type: text/plain; charset=utf-8');
     echo "google.com, pub-9995971644235129, DIRECT, f08c47fec0942fa0\n";
+    echo "google.com, pub-1881437690199180, DIRECT, f08c47fec0942fa0\n"; // Marrero Bernal Media LLC (la cuenta definitiva; la línea de arriba se quita al mover el sitio)
     exit;
   }
 });

@@ -85,6 +85,7 @@ ${rel === "" ? `<link rel="alternate" hreflang="en" href="${SITE}/"><link rel="a
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${P}style.css?v=${CSSV}">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1881437690199180" crossorigin="anonymous"></script>
 ${ld ? `<script type="application/ld+json">${JSON.stringify(ld)}</script>` : ""}
 </head>
 <body>
@@ -285,6 +286,8 @@ for (const v of V) {
 // ── 404, robots, sitemap, .htaccess
 fs.writeFileSync(path.join(OUT, "404.html"), page({ rel: "/", title: "Page not found | Straight 2D Chest", desc: "Page not found.", canon: SITE + "/", noindex: true, body: `<main class="wrap prose"><h1>Strike three — page not found.</h1><p><a class="btn" href="/">Back to the interviews</a></p></main>` }));
 // Verificación de Google Search Console (cuenta personal de Eliam; mismo archivo que El Home y MBM). No borrar.
+// AdSense de Marrero Bernal Media LLC (cuenta ampliada desde AdSense for YouTube, 6-nov-2026)
+fs.writeFileSync(path.join(OUT, "ads.txt"), "google.com, pub-1881437690199180, DIRECT, f08c47fec0942fa0\n");
 fs.writeFileSync(path.join(OUT, "googlea64675e7d49037bc.html"), "google-site-verification: googlea64675e7d49037bc.html");
 fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
 const urls = [SITE + "/", SITE + "/about/", SITE + "/news/", ...SERIES.map(x => `${SITE}/series/${x.slug}/`), ...V.map(v => `${SITE}/${v.slug}/`), ...NEWS.map(n => `${SITE}/news/${n.slug}/`)];
