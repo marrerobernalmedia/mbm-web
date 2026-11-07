@@ -17,9 +17,10 @@ const slug = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().repla
 const live = id => V[id] && V[id].k !== "proximo" && V[id].k !== "futuro";
 const soon = id => V[id] && (V[id].k === "proximo" || V[id].k === "futuro");
 const fEst = f => f ? new Date(f + "T12:00:00").toLocaleDateString("es", { weekday: "long", day: "numeric", month: "long" }) : "muy pronto";
-const pcard = id => { const v = V[id]; return `<a class="v" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(v.t)}</h3><small style="color:var(--bulb)">Estreno ${esc(fEst(v.f))}${v.n ? " · " + esc(v.n) : ""} · ver el tráiler</small></a>`; };
+const pcard = id => { const v = V[id]; return `<a class="v" href="${wurl(id)}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(v.t)}</h3><small style="color:var(--bulb)">Estreno ${esc(fEst(v.f))}${v.n ? " · " + esc(v.n) : ""} · ver el tráiler</small></a>`; };
 const upSec = ids => { const l = ids.filter(soon).sort((a, b) => (V[a].f || "9").localeCompare(V[b].f || "9")); return l.length ? `<h2>Próximo estreno</h2><div class="grid">${l.map(pcard).join("")}</div>` : ""; };
-const thumb = id => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const thumb = id => V[id] && V[id].img ? abs(V[id].img) : `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+const wurl = id => (V[id] && V[id].url) || `https://www.youtube.com/watch?v=${id}`;
 const abs = u => !u ? "" : /^https?:/.test(u) ? u : `${SITE}/${u.replace(/^\//, "")}`;
 const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(1).replace(".0", "") + "M" : n >= 1e3 ? Math.round(n / 1e3) + "K" : String(n || 0);
 const showOf = {}; D.shows.forEach(s => (s.v || []).forEach(i => { if (!showOf[i]) showOf[i] = s; }));
@@ -56,13 +57,13 @@ function page({ url, title, desc, image, h1, body, ld }) {
 <footer><div class="wrap"><a href="/">Inicio</a><a href="/shows/">Shows</a><a href="/humoristas/">Humoristas</a><a href="https://marrerobernalmedia.com/apk/elhome.apk">Descargar la app (Android)</a><p>© ${today.slice(0, 4)} Marrero Bernal Media LLC. Todos los derechos reservados.</p></div></footer>
 </body></html>`;
 }
-const vcard = id => { const v = V[id], s = showOf[id]; return `<a class="v" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(v.t)}</h3><small>${esc(s ? sname(s) : "")}${v.n ? " " + esc(v.n) : ""}${v.v ? " · " + fmt(v.v) + " vistas" : ""}</small></a>`; };
+const vcard = id => { const v = V[id], s = showOf[id]; return `<a class="v" href="${wurl(id)}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(v.t)}</h3><small>${esc(s ? sname(s) : "")}${v.n ? " " + esc(v.n) : ""}${v.v ? " · " + fmt(v.v) + " vistas" : ""}</small></a>`; };
 // Fechas para el dato estructurado de Google: elhome/fechas.json (publishedAt real de YouTube) o, si no, la fecha de estreno "f" a las 8:00 AM de Las Vegas.
 const PUB = (() => { try { return JSON.parse(fs.readFileSync(path.join(out, "fechas.json"), "utf8")); } catch (e) { return {}; } })();
 const lvOff = f => { const n = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", timeZoneName: "shortOffset" }).formatToParts(new Date(f + "T16:00:00Z")).find(x => x.type === "timeZoneName").value.replace("GMT", ""); const m = n.match(/^([+-])(\d+)(?::(\d+))?$/); return m ? `${m[1]}${m[2].padStart(2, "0")}:${(m[3] || "00").padStart(2, "0")}` : "-08:00"; };
 const upDate = id => PUB[id] || (/^\d{4}-\d{2}-\d{2}$/.test(V[id].f || "") ? `${V[id].f}T08:00:00${lvOff(V[id].f)}` : null);
 const vDesc = id => { const v = V[id], s = showOf[id], c = (v.c || []).join(", "); return `${v.t}${c ? " — " + c : ""}${s ? ". " + sname(s) : ""}${v.n ? " " + v.n : ""}. Humor cubano en El Home de la Risa.`; };
-const videoLD = ids => ids.filter(id => upDate(id)).slice(0, 30).map((id, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "VideoObject", name: V[id].t, description: vDesc(id), thumbnailUrl: thumb(id), uploadDate: upDate(id), embedUrl: `https://www.youtube.com/embed/${id}`, url: `https://www.youtube.com/watch?v=${id}` } }));
+const videoLD = ids => ids.filter(id => upDate(id) && !V[id].url).slice(0, 30).map((id, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "VideoObject", name: V[id].t, description: vDesc(id), thumbnailUrl: thumb(id), uploadDate: upDate(id), embedUrl: `https://www.youtube.com/embed/${id}`, url: `https://www.youtube.com/watch?v=${id}` } }));
 const write = (rel, html) => { const p = path.join(out, rel, "index.html"); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, html); };
 
 const FEM = new Set(["Yamira Díaz"]);
@@ -79,7 +80,7 @@ for (const c of comics) {
   const desc = !c.ids.length ? `${c.name}, humorista cubana en La Risa es Cosa Seria: estreno el ${fEst(V[c.up[0]].f)}. Mira el tráiler y activa la campanita en El Home de la Risa, la casa del humor cubano.` : `${c.name}, humorista cubano: todas sus presentaciones en ${shows.slice(0, 3).join(", ") || "El Home de la Risa"}. ${c.ids.length} videos${total ? " con " + fmt(total) + " vistas" : ""}, juntos en El Home de la Risa, la casa del humor cubano.`;
   const image = abs(c.banner) || thumb(first);
   write(`humorista/${s}`, page({ url, title: `${c.name} — ${FEM.has(c.name) ? "humorista cubana" : "humorista cubano"}: todos sus videos | El Home de la Risa`, desc, image,
-    body: `<section class="hero"><img src="${esc(image)}" alt="${esc(c.name)}"><div><h1>${esc(c.name)}</h1><p class="lead">${esc(desc)}</p><div class="btns"><a class="btn b1" href="https://www.youtube.com/watch?v=${first}" target="_blank" rel="noopener">${c.ids.length ? "▶ Ver su video más visto" : "▶ Ver el tráiler"}</a><a class="btn b2" href="/?humorista=${encodeURIComponent(c.name)}">Abrir en El Home</a></div></div></section>
+    body: `<section class="hero"><img src="${esc(image)}" alt="${esc(c.name)}"><div><h1>${esc(c.name)}</h1><p class="lead">${esc(desc)}</p><div class="btns"><a class="btn b1" href="${wurl(first)}" target="_blank" rel="noopener">${c.ids.length ? "▶ Ver su video más visto" : "▶ Ver el tráiler"}</a><a class="btn b2" href="/?humorista=${encodeURIComponent(c.name)}">Abrir en El Home</a></div></div></section>
 ${upSec(c.up)}${c.ids.length ? `<h2>Todas sus presentaciones</h2><div class="grid">${c.ids.map(vcard).join("")}</div>` : ""}
 <h2>Más humoristas</h2><div class="chips">${comics.filter(o => o !== c).slice(0, 24).map(o => `<a class="chip" href="/humorista/${slug(o.name)}/">${esc(o.name)}</a>`).join("")}</div>`,
     ld: { "@context": "https://schema.org", "@graph": [
@@ -102,7 +103,7 @@ for (const sh of shows) {
   const desc = `${sh.name}: ${sh.tag || "humor cubano"} ${sh.ids.length} episodios${cast.length ? " con " + cast.slice(0, 5).join(", ") : ""}. En El Home de la Risa.`.replace(/\.\s*(\d)/, ". $1");
   const image = abs(sh.banner) || thumb(byDate[0]);
   write(`show/${s}`, page({ url, title: `${sh.name} — todos los episodios | El Home de la Risa`, desc, image,
-    body: `<section class="hero"><img src="${esc(image)}" alt="${esc(sh.name)}"><div><h1>${esc(sh.name)}</h1><p class="lead">${esc(desc)}</p><div class="btns"><a class="btn b1" href="https://www.youtube.com/watch?v=${byDate[0]}" target="_blank" rel="noopener">▶ Ver el último episodio</a><a class="btn b2" href="/?show=${sh.id}">Abrir en El Home</a>${sh.sub ? `<a class="btn b2" href="${esc(sh.sub)}" target="_blank" rel="noopener">Suscribirme en YouTube</a>` : ""}</div></div></section>
+    body: `<section class="hero"><img src="${esc(image)}" alt="${esc(sh.name)}"><div><h1>${esc(sh.name)}</h1><p class="lead">${esc(desc)}</p><div class="btns"><a class="btn b1" href="${wurl(byDate[0])}" target="_blank" rel="noopener">▶ Ver el último episodio</a><a class="btn b2" href="/?show=${sh.id}">Abrir en El Home</a>${sh.sub ? `<a class="btn b2" href="${esc(sh.sub)}" target="_blank" rel="noopener">Suscribirme en YouTube</a>` : ""}</div></div></section>
 ${cast.length ? `<h2>Humoristas</h2><div class="chips">${cast.map(n => { const o = comics.find(c => c.name === n || (c.aka || []).includes(n)); return o ? `<a class="chip" href="/humorista/${slug(o.name)}/">${esc(n)}</a>` : `<span class="chip">${esc(n)}</span>`; }).join("")}</div>` : ""}
 ${upSec(sh.v || [])}<h2>Episodios</h2><div class="grid">${byDate.map(vcard).join("")}</div>`,
     ld: { "@context": "https://schema.org", "@graph": [

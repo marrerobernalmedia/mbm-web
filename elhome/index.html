@@ -355,8 +355,9 @@ const D = window.APPDATA;
   const g = t => p.find(x => x.type === t).value; const today = g("year") + "-" + g("month") + "-" + g("day"), hour = +g("hour"); window.MBM_TODAY = today;
   Object.values(D.vid).forEach(v => { if (v.k === "proximo" && v.f && (v.f < today || (v.f === today && hour >= 8))) { v.k = "episodio"; if (v.d === "Próximamente") v.d = ""; v.nuevo = true; } });
 } catch (e) {} })();
-const YT = id => "https://youtu.be/" + id;
-const img = id => window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg" : "thumbs/" + id + ".jpg";
+// Estreno anunciado sin enlace todavía (Eliam, 7-nov-2026): el video trae su propia miniatura ("img") y enlace provisional ("url")
+const YT = id => (D.vid[id] && D.vid[id].url) || "https://youtu.be/" + id;
+const img = id => (D.vid[id] && D.vid[id].img) ? D.vid[id].img : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg" : "thumbs/" + id + ".jpg";
 const fmt = n => n >= 1e6 ? (n/1e6).toFixed(1).replace(".0","") + "M" : n >= 1000 ? Math.round(n/1000) + "K" : String(n||0);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const V = D.vid, SH = Object.fromEntries(D.shows.map(s => [s.id, s]));
@@ -416,7 +417,7 @@ function inicio(){
   const funny = D.comics.slice(0, window.matchMedia("(min-width: 900px)").matches ? 12 : 10);
   return `<div class="home-top"><div>
   ${latest ? (() => { const sh = SH[showOf[latest]] || SH.lrecs; const f = V[latest].f || ""; const tag = f === window.MBM_TODAY ? "● Estreno de hoy" : f === yday ? "● Estrenó ayer" : "● Último estreno";
-    return `<section><div class="hero"><div class="pic"><img src="${window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt="${esc(V[latest].t)}"><span class="tag">${tag}</span></div>
+    return `<section><div class="hero"><div class="pic"><img src="${V[latest].img ? V[latest].img : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt="${esc(V[latest].t)}"><span class="tag">${tag}</span></div>
     <div class="body"><span class="show" style="--sc:${sh.col}">${esc(sname(sh))}${V[latest].n ? " " + esc(V[latest].n) : ""}</span><h3>${esc(V[latest].t)}</h3>${who(latest)}
     <div class="btns"><a class="btn yt" href="${YT(latest)}" target="_blank" rel="noopener">▶ Verlo ahora</a>${next ? `<button class="btn ghost" data-open-sheet>🔔 Avísame</button>` : ""}<button class="btn ghost" data-share="${latest}" data-t="${esc(V[latest].t)}">📤 Compartir</button></div></div></div></section>`; })() : ""}
   ${upnext ? `<section class="deskonly">${H("Próximos estrenos en la red")}<div class="uplist">${upnext}</div></section>` : ""}
@@ -543,7 +544,7 @@ document.getElementById("fbForm").addEventListener("submit", async e => {
 });
 document.addEventListener("click", e => { if (e.target.closest("[data-fb]")) openFb(true); });
 document.addEventListener("click", e => { const b = e.target.closest("[data-share]"); if (!b) return; e.preventDefault();
-  const url = "https://youtu.be/" + b.dataset.share, text = b.dataset.t + " — " + url + "\nBaja la app: " + location.origin + location.pathname;
+  const url = YT(b.dataset.share), text = b.dataset.t + " — " + url + "\nBaja la app: " + location.origin + location.pathname;
   if (navigator.share) navigator.share({ title: b.dataset.t, text: b.dataset.t + "\nBaja la app: " + location.origin + location.pathname, url }).catch(() => {});
   else window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank", "noopener"); });
 const IS_SITE = /elhomedelarisa\.com$/.test(location.hostname);
