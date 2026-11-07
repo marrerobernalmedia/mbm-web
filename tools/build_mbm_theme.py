@@ -180,7 +180,7 @@ hp = (out/'header.php').read_text()
 (out/'footer-en.php').write_text(i18n_en.translate((out/'footer.php').read_text(), D).replace('<a href="https://www.rectaalpecho.com">Recta Al Pecho</a>', '<a href="https://www.straight2dchest.com/">Straight 2D Chest</a>'))
 fp = (out/'front-page.php').read_text().replace('<?php get_header(); ?>', "<?php get_header('en'); ?>").replace('<?php get_footer(); ?>', "<?php get_footer('en'); ?>")
 fp = i18n_en.translate(fp, D)
-for a, b2 in [('✅ Recibido. Te contactamos el mismo día hábil.', '✅ Received. We will contact you the same business day.'), ('✅ Recibido. Respondemos en menos de un día hábil.', '✅ Received. We reply within one business day.'), ('No se pudo enviar. Llámanos al 888-877-2583.', 'Could not send. Call us at 888-877-2583.'), ('No se pudo enviar. Escríbenos a info@marrerobernalmedia.com.', 'Could not send. Email us at info@marrerobernalmedia.com.')]:
+for a, b2 in [('✅ Recibido. Te contactamos el mismo día hábil.', '✅ Received. We will contact you the same business day.'), ('✅ Recibido. Respondemos en menos de un día hábil.', '✅ Received. We reply within one business day.'), ('No se pudo enviar. Llámanos al 833-877-2583.', 'Could not send. Call us at 833-877-2583.'), ('No se pudo enviar. Escríbenos a info@marrerobernalmedia.com.', 'Could not send. Email us at info@marrerobernalmedia.com.')]:
     fp = fp.replace(a, b2)
 # En inglés, la tarjeta de Recta en "La red" es Straight 2D Chest (Recta en inglés) — Eliam, 31-oct-2026
 _ch = re.compile(r'<a class="ch" href="https://www\.youtube\.com/@RectaAlPecho\?sub_confirmation=1"(.*?)</a>', re.S)

@@ -6,7 +6,7 @@ ob_start(); get_header('en'); echo mba_pag_fix(ob_get_clean(), 'en', 'medicaid-n
     <div class="kicker">Health insurance · Medicaid</div>
     <h1>Nevada Medicaid: we explain how to apply.</h1>
     <p class="lead">Medicaid and Nevada Check Up are state programs for people and families with limited income. We do not sell Medicaid or file the application: we guide you so you know if you may qualify and where to apply.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="https://accessnevada.nv.gov/public/landing-page" target="_blank" rel="noopener">Go to Access Nevada</a><a class="btn btn-ghost" href="tel:+18888772583">I have a question</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="https://accessnevada.nv.gov/public/landing-page" target="_blank" rel="noopener">Go to Access Nevada</a><a class="btn btn-ghost" href="tel:+18338772583">I have a question</a></div>
   </div>
   <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/medicaid.jpg')); ?>" alt="Mother with her child at a clinic front desk" width="1280" height="720">
 </div></section>

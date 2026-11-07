@@ -102,7 +102,7 @@
       <div><b>Todo el negocio</b><p>Además del workers' comp: responsabilidad civil, auto comercial, propiedad y paquetes por industria.</p></div>
     </div>
     <div class="chips"><span>Construcción</span><span>Limpieza</span><span>Jardinería</span><span>Restaurantes</span><span>Transporte y camiones</span><span>Salones y barberías</span><span>Tiendas</span></div>
-    <div class="btns"><a class="btn btn-acc" href="#contacto">Cotizar mi workers' comp</a><a class="btn btn-ghost" href="tel:+18888772583">Llamar al 888-877-2583</a></div>
+    <div class="btns"><a class="btn btn-acc" href="#contacto">Cotizar mi workers' comp</a><a class="btn btn-ghost" href="tel:+18338772583">Llamar al 833-877-2583</a></div>
     <small>Fuente de los requisitos: División de Relaciones Industriales de Nevada. Las coberturas y las primas dependen de la aseguradora, la industria y la nómina.</small>
     <div class="libros" id="contabilidad">
       <img class="limg" src="<?php echo esc_url(get_theme_file_uri('img/contabilidad.jpg')); ?>" alt="Dueña de un negocio revisando su contabilidad y nómina con un contador" width="1280" height="720" loading="lazy">
@@ -270,7 +270,7 @@
     <div class="cinfo">
       <div class="kicker">Contacto</div>
       <h2>Ven, llama o escribe.</h2>
-      <a class="big" href="tel:+18888772583">888-877-2583</a><div style="font-size:14px;color:var(--mut);margin:-4px 0 10px">888-87-SALUD · gratis desde cualquier estado · local 702-997-2982</div>
+      <a class="big" href="tel:+18338772583">833-877-2583</a><div style="font-size:14px;color:var(--mut);margin:-4px 0 10px">833-87-SALUD · gratis desde cualquier estado · local 702-997-2982</div>
       <a class="wa" href="https://wa.me/17023027361" target="_blank" rel="noopener">💬 WhatsApp 702-302-7361</a>
       <p style="margin-top:16px"><b style="color:var(--ink)">3455 W Craig Rd, Suite D</b><br>North Las Vegas, NV 89032</p>
       <p>Lunes a viernes, 9:00 AM – 5:00 PM<br>Sábados y domingos cerrado</p>
@@ -286,7 +286,7 @@
       <textarea name="mensaje" placeholder="Cuéntanos brevemente"></textarea>
       <button class="btn btn-navy" type="submit" style="justify-self:start">Enviar</button>
       <small>Respondemos el mismo día hábil. Nunca compartimos tus datos.</small>
-      <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Recibido. Te contactamos el mismo día hábil.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">No se pudo enviar. Llámanos al 888-877-2583.</div><?php endif; ?>
+      <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Recibido. Te contactamos el mismo día hábil.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">No se pudo enviar. Llámanos al 833-877-2583.</div><?php endif; ?>
     </form>
   </div>
 </section>

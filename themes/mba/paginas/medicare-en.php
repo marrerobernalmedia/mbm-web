@@ -6,7 +6,7 @@ ob_start(); get_header('en'); echo mba_pag_fix(ob_get_clean(), 'en', 'medicare',
     <div class="kicker">Health insurance · Medicare</div>
     <h1>Medicare Advantage and drug plans, explained clearly.</h1>
     <p class="lead">If you are 65 or older, or have Medicare because of a disability, we help you compare the plans we offer in your county and understand what each one covers before you decide.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18888772583">Call 888-877-2583</a><a class="btn btn-ghost" href="#contacto">Review my plan</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18338772583">Call 833-877-2583</a><a class="btn btn-ghost" href="#contacto">Review my plan</a></div>
   </div>
   <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/medicare.jpg')); ?>" alt="Older couple reviewing their health plan at home" width="1280" height="720">
 </div></section>

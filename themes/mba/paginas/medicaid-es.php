@@ -6,7 +6,7 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'medicaid-nevad
     <div class="kicker">Seguros de salud · Medicaid</div>
     <h1>Medicaid de Nevada: te explicamos cómo solicitarlo.</h1>
     <p class="lead">Medicaid y Nevada Check Up son programas del estado para personas y familias con ingresos limitados. No vendemos Medicaid ni hacemos la solicitud: te orientamos en español para que sepas si puedes calificar y dónde solicitar.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="https://accessnevada.nv.gov/public/landing-page" target="_blank" rel="noopener">Ir a Access Nevada</a><a class="btn btn-ghost" href="tel:+18888772583">Tengo una pregunta</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="https://accessnevada.nv.gov/public/landing-page" target="_blank" rel="noopener">Ir a Access Nevada</a><a class="btn btn-ghost" href="tel:+18338772583">Tengo una pregunta</a></div>
   </div>
   <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/medicaid.jpg')); ?>" alt="Madre con su hijo en la recepción de una clínica" width="1280" height="720">
 </div></section>
