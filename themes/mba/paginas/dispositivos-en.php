@@ -6,7 +6,7 @@ ob_start(); get_header('en'); echo mba_pag_fix(ob_get_clean(), 'en', 'device-pro
     <div class="kicker">Personal insurance · Devices</div>
     <h1>Protection for your phones and electronics.</h1>
     <p class="lead">A cracked screen, a spill, a theft or a device that stops working. With Farmers device protection you cover your household phones and electronics with a monthly plan and no long-term contract.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&amp;Source_Indicator=AP" target="_blank" rel="noopener">See plans and enroll</a><a class="btn btn-ghost" href="tel:+18338772583">Call 833-877-2583</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&amp;Source_Indicator=AP" target="_blank" rel="noopener">See plans and enroll</a><a class="btn btn-ghost" href="tel:+18888772583">Call 888-877-2583</a></div>
   </div>
   <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/dispositivos.jpg')); ?>" alt="Family at home with a phone, laptop, tablet and TV" width="1280" height="720">
 </div></section>

@@ -102,7 +102,7 @@
       <div><b>Your whole business</b><p>Besides workers' comp: general liability, commercial auto, property and industry packages.</p></div>
     </div>
     <div class="chips"><span>Construction</span><span>Cleaning</span><span>Landscaping</span><span>Restaurants</span><span>Transportation and trucking</span><span>Salons and barbershops</span><span>Retail stores</span></div>
-    <div class="btns"><a class="btn btn-acc" href="#contacto">Quote my workers' comp</a><a class="btn btn-ghost" href="tel:+18338772583">Call 833-877-2583</a></div>
+    <div class="btns"><a class="btn btn-acc" href="#contacto">Quote my workers' comp</a><a class="btn btn-ghost" href="tel:+18888772583">Call 888-877-2583</a></div>
     <small>Source for the requirements: Nevada Division of Industrial Relations. Coverage and premiums depend on the insurer, the industry and payroll.</small>
     <div class="libros" id="contabilidad">
       <img class="limg" src="<?php echo esc_url(get_theme_file_uri('img/contabilidad.jpg')); ?>" alt="Business owner reviewing her books and payroll with a bookkeeper" width="1280" height="720" loading="lazy">
@@ -270,7 +270,7 @@
     <div class="cinfo">
       <div class="kicker">Contact</div>
       <h2>Visit, call or write.</h2>
-      <a class="big" href="tel:+18338772583">833-877-2583</a><div style="font-size:14px;color:var(--mut);margin:-4px 0 10px">833-87-SALUD · toll-free from any state · local 702-997-2982</div>
+      <a class="big" href="tel:+18888772583">888-877-2583</a><div style="font-size:14px;color:var(--mut);margin:-4px 0 10px">888-87-SALUD · toll-free from any state · local 702-997-2982</div>
       <a class="wa" href="https://wa.me/17023027361" target="_blank" rel="noopener">💬 WhatsApp 702-302-7361</a>
       <p style="margin-top:16px"><b style="color:var(--ink)">3455 W Craig Rd, Suite D</b><br>North Las Vegas, NV 89032</p>
       <p>Monday to Friday, 9:00 AM – 5:00 PM<br>Closed Saturday and Sunday</p>
@@ -286,7 +286,7 @@
       <textarea name="mensaje" placeholder="Tell us briefly"></textarea>
       <button class="btn btn-navy" type="submit" style="justify-self:start">Send</button>
       <small>We reply the same business day. We never share your information.</small>
-      <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Received. We will contact you the same business day.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">Could not send. Call us at 833-877-2583.</div><?php endif; ?>
+      <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Received. We will contact you the same business day.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">Could not send. Call us at 888-877-2583.</div><?php endif; ?>
     </form>
   </div>
 </section>

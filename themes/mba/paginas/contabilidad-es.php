@@ -6,7 +6,7 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'contabilidad-y
     <div class="kicker">Para tu negocio · Contabilidad y nómina</div>
     <h1>Tu nómina, tus libros y tus declaraciones, al día con el IRS y con Nevada.</h1>
     <p class="lead">Calculamos la nómina de tus empleados, presentamos las planillas federales y estatales a tiempo, declaramos el impuesto sobre las ventas y llevamos la contabilidad del negocio. Tú te ocupas de trabajar; nosotros, de que no te llegue una multa.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="/#contacto">Pide una consulta</a><a class="btn btn-ghost" href="tel:+18338772583">Llamar al 833-877-2583</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="/#contacto">Pide una consulta</a><a class="btn btn-ghost" href="tel:+18888772583">Llamar al 888-877-2583</a></div>
   </div>
   <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/contabilidad.jpg')); ?>" alt="Dueña de un negocio revisando su contabilidad y nómina con un contador" width="1280" height="720">
 </div></section>

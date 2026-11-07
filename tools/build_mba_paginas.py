@@ -9,7 +9,7 @@ root = pathlib.Path(__file__).resolve().parent.parent
 out = root / 'themes/mba'
 (out / 'paginas').mkdir(parents=True, exist_ok=True)
 
-TEL = '<a href="tel:+18338772583">833-877-2583</a>'
+TEL = '<a href="tel:+18888772583">888-877-2583</a>'
 FARMERS_DEV = 'https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&amp;Source_Indicator=AP'
 
 # ---------------------------------------------------------------- contenido
@@ -25,7 +25,7 @@ P['medicare'] = dict(
     <div class="kicker">Seguros de salud · Medicare</div>
     <h1>Medicare Advantage y planes de medicinas, explicados en español.</h1>
     <p class="lead">Si tienes 65 años o más, o tienes Medicare por discapacidad, te ayudamos a comparar los planes que ofrecemos en tu condado y a entender qué cubre cada uno antes de decidir.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18338772583">Llamar al 833-877-2583</a><a class="btn btn-ghost" href="#contacto">Revisar mi plan</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18888772583">Llamar al 888-877-2583</a><a class="btn btn-ghost" href="#contacto">Revisar mi plan</a></div>
   </div>
   <img class="mimg" src="IMG" alt="Pareja mayor revisando su plan de salud en casa" width="1280" height="720">
 </div></section>
@@ -68,7 +68,7 @@ P['medicare'] = dict(
     <div class="kicker">Health insurance · Medicare</div>
     <h1>Medicare Advantage and drug plans, explained clearly.</h1>
     <p class="lead">If you are 65 or older, or have Medicare because of a disability, we help you compare the plans we offer in your county and understand what each one covers before you decide.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18338772583">Call 833-877-2583</a><a class="btn btn-ghost" href="#contacto">Review my plan</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18888772583">Call 888-877-2583</a><a class="btn btn-ghost" href="#contacto">Review my plan</a></div>
   </div>
   <img class="mimg" src="IMG" alt="Older couple reviewing their health plan at home" width="1280" height="720">
 </div></section>
@@ -113,7 +113,7 @@ P['obamacare'] = dict(
     <div class="kicker">Seguros de salud · Nevada Health Link</div>
     <h1>Obamacare en Nevada, con un broker certificado que te habla en español.</h1>
     <p class="lead">Somos broker certificado de Nevada Health Link, el mercado de seguros médicos del estado. Te ayudamos a comparar los planes, a ver si calificas para ayuda con el pago y a inscribirte.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18338772583">Llamar al 833-877-2583</a><a class="btn btn-ghost" href="#contacto">Quiero que me llamen</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18888772583">Llamar al 888-877-2583</a><a class="btn btn-ghost" href="#contacto">Quiero que me llamen</a></div>
   </div>
   <img class="mimg" src="IMG" alt="Familia revisando opciones de seguro médico con una agente" width="1280" height="720">
 </div></section>
@@ -148,7 +148,7 @@ P['obamacare'] = dict(
     <div class="kicker">Health insurance · Nevada Health Link</div>
     <h1>Obamacare in Nevada, with a certified broker who speaks your language.</h1>
     <p class="lead">We are a certified broker with Nevada Health Link, the state's health insurance marketplace. We help you compare plans, see if you qualify for financial help and enroll.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18338772583">Call 833-877-2583</a><a class="btn btn-ghost" href="#contacto">Have us call me</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18888772583">Call 888-877-2583</a><a class="btn btn-ghost" href="#contacto">Have us call me</a></div>
   </div>
   <img class="mimg" src="IMG" alt="Family reviewing health insurance options with an agent" width="1280" height="720">
 </div></section>
@@ -185,7 +185,7 @@ P['medicaid'] = dict(
     <div class="kicker">Seguros de salud · Medicaid</div>
     <h1>Medicaid de Nevada: te explicamos cómo solicitarlo.</h1>
     <p class="lead">Medicaid y Nevada Check Up son programas del estado para personas y familias con ingresos limitados. No vendemos Medicaid ni hacemos la solicitud: te orientamos en español para que sepas si puedes calificar y dónde solicitar.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="https://accessnevada.nv.gov/public/landing-page" target="_blank" rel="noopener">Ir a Access Nevada</a><a class="btn btn-ghost" href="tel:+18338772583">Tengo una pregunta</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="https://accessnevada.nv.gov/public/landing-page" target="_blank" rel="noopener">Ir a Access Nevada</a><a class="btn btn-ghost" href="tel:+18888772583">Tengo una pregunta</a></div>
   </div>
   <img class="mimg" src="IMG" alt="Madre con su hijo en la recepción de una clínica" width="1280" height="720">
 </div></section>
@@ -214,7 +214,7 @@ P['medicaid'] = dict(
     <div class="kicker">Health insurance · Medicaid</div>
     <h1>Nevada Medicaid: we explain how to apply.</h1>
     <p class="lead">Medicaid and Nevada Check Up are state programs for people and families with limited income. We do not sell Medicaid or file the application: we guide you so you know if you may qualify and where to apply.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="https://accessnevada.nv.gov/public/landing-page" target="_blank" rel="noopener">Go to Access Nevada</a><a class="btn btn-ghost" href="tel:+18338772583">I have a question</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="https://accessnevada.nv.gov/public/landing-page" target="_blank" rel="noopener">Go to Access Nevada</a><a class="btn btn-ghost" href="tel:+18888772583">I have a question</a></div>
   </div>
   <img class="mimg" src="IMG" alt="Mother with her child at a clinic front desk" width="1280" height="720">
 </div></section>
@@ -245,7 +245,7 @@ P['dispositivos'] = dict(
     <div class="kicker">Seguros personales · Dispositivos</div>
     <h1>Protección para tus teléfonos y tus equipos electrónicos.</h1>
     <p class="lead">Pantalla rota, un derrame, un robo o un equipo que deja de funcionar. Con la protección de dispositivos de Farmers cubres los teléfonos de la casa y tus electrónicos con un plan mensual, sin contrato a largo plazo.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="{FARMERS_DEV}" target="_blank" rel="noopener">Ver planes e inscribirme</a><a class="btn btn-ghost" href="tel:+18338772583">Llamar al 833-877-2583</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="{FARMERS_DEV}" target="_blank" rel="noopener">Ver planes e inscribirme</a><a class="btn btn-ghost" href="tel:+18888772583">Llamar al 888-877-2583</a></div>
   </div>
   <img class="mimg" src="IMG" alt="Familia en casa con teléfono, laptop, tableta y televisor" width="1280" height="720">
 </div></section>
@@ -277,7 +277,7 @@ P['dispositivos'] = dict(
     <div class="kicker">Personal insurance · Devices</div>
     <h1>Protection for your phones and electronics.</h1>
     <p class="lead">A cracked screen, a spill, a theft or a device that stops working. With Farmers device protection you cover your household phones and electronics with a monthly plan and no long-term contract.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="{FARMERS_DEV}" target="_blank" rel="noopener">See plans and enroll</a><a class="btn btn-ghost" href="tel:+18338772583">Call 833-877-2583</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="{FARMERS_DEV}" target="_blank" rel="noopener">See plans and enroll</a><a class="btn btn-ghost" href="tel:+18888772583">Call 888-877-2583</a></div>
   </div>
   <img class="mimg" src="IMG" alt="Family at home with a phone, laptop, tablet and TV" width="1280" height="720">
 </div></section>
@@ -311,7 +311,7 @@ P['contabilidad'] = dict(
     <div class="kicker">Para tu negocio · Contabilidad y nómina</div>
     <h1>Tu nómina, tus libros y tus declaraciones, al día con el IRS y con Nevada.</h1>
     <p class="lead">Calculamos la nómina de tus empleados, presentamos las planillas federales y estatales a tiempo, declaramos el impuesto sobre las ventas y llevamos la contabilidad del negocio. Tú te ocupas de trabajar; nosotros, de que no te llegue una multa.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="/#contacto">Pide una consulta</a><a class="btn btn-ghost" href="tel:+18338772583">Llamar al 833-877-2583</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="/#contacto">Pide una consulta</a><a class="btn btn-ghost" href="tel:+18888772583">Llamar al 888-877-2583</a></div>
   </div>
   <img class="mimg" src="IMG" alt="Dueña de un negocio revisando su contabilidad y nómina con un contador" width="1280" height="720">
 </div></section>
@@ -364,7 +364,7 @@ P['contabilidad'] = dict(
     <div class="kicker">For your business · Bookkeeping and payroll</div>
     <h1>Your payroll, your books and your filings, up to date with the IRS and Nevada.</h1>
     <p class="lead">We run your employees' payroll, file your federal and state returns on time, file your sales tax and keep your business books. You run your business; we make sure no penalty letter shows up.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="/en/#contacto">Request a consultation</a><a class="btn btn-ghost" href="tel:+18338772583">Call 833-877-2583</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="/en/#contacto">Request a consultation</a><a class="btn btn-ghost" href="tel:+18888772583">Call 888-877-2583</a></div>
   </div>
   <img class="mimg" src="IMG" alt="Business owner reviewing her books and payroll with an accountant" width="1280" height="720">
 </div></section>

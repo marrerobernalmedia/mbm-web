@@ -6,7 +6,7 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'medicare', 'me
     <div class="kicker">Seguros de salud · Medicare</div>
     <h1>Medicare Advantage y planes de medicinas, explicados en español.</h1>
     <p class="lead">Si tienes 65 años o más, o tienes Medicare por discapacidad, te ayudamos a comparar los planes que ofrecemos en tu condado y a entender qué cubre cada uno antes de decidir.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18338772583">Llamar al 833-877-2583</a><a class="btn btn-ghost" href="#contacto">Revisar mi plan</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18888772583">Llamar al 888-877-2583</a><a class="btn btn-ghost" href="#contacto">Revisar mi plan</a></div>
   </div>
   <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/medicare.jpg')); ?>" alt="Pareja mayor revisando su plan de salud en casa" width="1280" height="720">
 </div></section>

@@ -6,7 +6,7 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'obamacare-neva
     <div class="kicker">Seguros de salud · Nevada Health Link</div>
     <h1>Obamacare en Nevada, con un broker certificado que te habla en español.</h1>
     <p class="lead">Somos broker certificado de Nevada Health Link, el mercado de seguros médicos del estado. Te ayudamos a comparar los planes, a ver si calificas para ayuda con el pago y a inscribirte.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18338772583">Llamar al 833-877-2583</a><a class="btn btn-ghost" href="#contacto">Quiero que me llamen</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="tel:+18888772583">Llamar al 888-877-2583</a><a class="btn btn-ghost" href="#contacto">Quiero que me llamen</a></div>
   </div>
   <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/salud.jpg')); ?>" alt="Familia revisando opciones de seguro médico con una agente" width="1280" height="720">
 </div></section>

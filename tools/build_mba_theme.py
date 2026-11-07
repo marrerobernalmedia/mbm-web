@@ -39,7 +39,7 @@ main_html = main_html.replace('<input type="email" placeholder="Correo (opcional
 main_html = main_html.replace('<select><option>¿Qué necesitas?</option>', '<select name="servicio"><option>¿Qué necesitas?</option>')
 main_html = main_html.replace('<textarea placeholder="Cuéntanos brevemente"></textarea>', '<textarea name="mensaje" placeholder="Cuéntanos brevemente"></textarea>')
 main_html = main_html.replace('<small>Respondemos el mismo día hábil. Nunca compartimos tus datos.</small>',
-  '<small>Respondemos el mismo día hábil. Nunca compartimos tus datos.</small>\n      <?php if (isset($_GET[\'enviado\'])): ?><div class="ok">✅ Recibido. Te contactamos el mismo día hábil.</div><?php elseif (isset($_GET[\'error\'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">No se pudo enviar. Llámanos al 833-877-2583.</div><?php endif; ?>')
+  '<small>Respondemos el mismo día hábil. Nunca compartimos tus datos.</small>\n      <?php if (isset($_GET[\'enviado\'])): ?><div class="ok">✅ Recibido. Te contactamos el mismo día hábil.</div><?php elseif (isset($_GET[\'error\'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">No se pudo enviar. Llámanos al 888-877-2583.</div><?php endif; ?>')
 
 (out/'style.css').write_text('''/*
 Theme Name: Marrero Bernal & Associates
@@ -86,7 +86,7 @@ Text Domain: mba
 ''')
 (out/'page.php').write_text((out/'index.php').read_text())
 (out/'404.php').write_text('''<?php get_header(); ?>
-<div class="page-wrap"><h1>Esta página no existe.</h1><p>Lo que buscas seguramente está en la portada: <a href="<?php echo esc_url(home_url('/')); ?>">marrerobernal.com</a>, o llámanos al <a href="tel:+18338772583">833-877-2583</a>.</p></div>
+<div class="page-wrap"><h1>Esta página no existe.</h1><p>Lo que buscas seguramente está en la portada: <a href="<?php echo esc_url(home_url('/')); ?>">marrerobernal.com</a>, o llámanos al <a href="tel:+18888772583">888-877-2583</a>.</p></div>
 <?php get_footer(); ?>
 ''')
 
@@ -138,10 +138,10 @@ add_action('wp_head', function () {
   $img = get_theme_file_uri('img/og.jpg'); $t = 'Marrero Bernal & Associates · Seguros, taxes y trámites · Las Vegas, todo EE. UU. y el mundo';
   echo '<meta property="og:type" content="website"><meta property="og:site_name" content="Marrero Bernal & Associates"><meta property="og:locale" content="es_US"><meta property="og:url" content="' . esc_url(home_url('/')) . '"><meta property="og:title" content="' . esc_attr($t) . '"><meta property="og:image" content="' . esc_url($img) . '"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">' . "\n";
   $ld = ['@context' => 'https://schema.org', '@type' => 'InsuranceAgency', '@id' => home_url('/#agencia'), 'name' => 'Marrero Bernal & Associates', 'url' => home_url('/'), 'logo' => get_theme_file_uri('img/logo.svg'), 'image' => $img,
-    'telephone' => '+1-833-877-2583', 'priceRange' => '$$', 'foundingDate' => '2008', 'knowsLanguage' => ['es', 'en'],
+    'telephone' => '+1-888-877-2583', 'priceRange' => '$$', 'foundingDate' => '2008', 'knowsLanguage' => ['es', 'en'],
     'address' => ['@type' => 'PostalAddress', 'streetAddress' => '3455 W Craig Rd Ste D', 'addressLocality' => 'North Las Vegas', 'addressRegion' => 'NV', 'postalCode' => '89032', 'addressCountry' => 'US'],
     'openingHoursSpecification' => [['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens' => '09:00', 'closes' => '17:00']],
-    'contactPoint' => [['@type' => 'ContactPoint', 'telephone' => '+1-833-877-2583', 'contactType' => 'customer service', 'availableLanguage' => ['Spanish','English']], ['@type' => 'ContactPoint', 'telephone' => '+1-702-997-2982', 'contactType' => 'sales', 'areaServed' => 'US-NV']],
+    'contactPoint' => [['@type' => 'ContactPoint', 'telephone' => '+1-888-877-2583', 'contactType' => 'customer service', 'availableLanguage' => ['Spanish','English']], ['@type' => 'ContactPoint', 'telephone' => '+1-702-997-2982', 'contactType' => 'sales', 'areaServed' => 'US-NV']],
     'areaServed' => [['@type' => 'State', 'name' => 'Nevada'], ['@type' => 'State', 'name' => 'California'], ['@type' => 'State', 'name' => 'Arizona']],
     'makesOffer' => [['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Preparación de impuestos a distancia (IRS e-file)', 'serviceType' => 'Tax preparation', 'areaServed' => [['@type' => 'Country', 'name' => 'United States'], ['@type' => 'Place', 'name' => 'Worldwide']]]], ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Solicitud de ITIN con Agentes de Aceptación Certificados (CAA)', 'serviceType' => 'ITIN application']]],
     'sameAs' => ['https://www.facebook.com/marrerobernal']];
@@ -190,7 +190,7 @@ hp = (out/'header.php').read_text()
 (out/'footer-en.php').write_text(i18n_en.translate((out/'footer.php').read_text(), D))
 fp = (out/'front-page.php').read_text().replace('<?php get_header(); ?>', "<?php get_header('en'); ?>").replace('<?php get_footer(); ?>', "<?php get_footer('en'); ?>")
 fp = i18n_en.translate(fp, D)
-for a, b2 in [('✅ Recibido. Te contactamos el mismo día hábil.', '✅ Received. We will contact you the same business day.'), ('✅ Recibido. Respondemos en menos de un día hábil.', '✅ Received. We reply within one business day.'), ('No se pudo enviar. Llámanos al 833-877-2583.', 'Could not send. Call us at 833-877-2583.'), ('No se pudo enviar. Escríbenos a info@marrerobernalmedia.com.', 'Could not send. Email us at info@marrerobernalmedia.com.')]:
+for a, b2 in [('✅ Recibido. Te contactamos el mismo día hábil.', '✅ Received. We will contact you the same business day.'), ('✅ Recibido. Respondemos en menos de un día hábil.', '✅ Received. We reply within one business day.'), ('No se pudo enviar. Llámanos al 888-877-2583.', 'Could not send. Call us at 888-877-2583.'), ('No se pudo enviar. Escríbenos a info@marrerobernalmedia.com.', 'Could not send. Email us at info@marrerobernalmedia.com.')]:
     fp = fp.replace(a, b2)
 (out/'front-page-en.php').write_text(fp)
 fn = (out/'functions.php').read_text()

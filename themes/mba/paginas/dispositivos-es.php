@@ -6,7 +6,7 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'proteccion-de-
     <div class="kicker">Seguros personales · Dispositivos</div>
     <h1>Protección para tus teléfonos y tus equipos electrónicos.</h1>
     <p class="lead">Pantalla rota, un derrame, un robo o un equipo que deja de funcionar. Con la protección de dispositivos de Farmers cubres los teléfonos de la casa y tus electrónicos con un plan mensual, sin contrato a largo plazo.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&amp;Source_Indicator=AP" target="_blank" rel="noopener">Ver planes e inscribirme</a><a class="btn btn-ghost" href="tel:+18338772583">Llamar al 833-877-2583</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="https://www.farmers.com/electronic-device-insurance/?Agent_Code=67249W%2430306E%248833H2&amp;Source_Indicator=AP" target="_blank" rel="noopener">Ver planes e inscribirme</a><a class="btn btn-ghost" href="tel:+18888772583">Llamar al 888-877-2583</a></div>
   </div>
   <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/dispositivos.jpg')); ?>" alt="Familia en casa con teléfono, laptop, tableta y televisor" width="1280" height="720">
 </div></section>
