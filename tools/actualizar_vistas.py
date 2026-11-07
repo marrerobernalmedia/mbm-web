@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
-"""Pone al día las vistas ("v") de los videos de elhome/data.js con un JSON de vidIQ.
+"""Pone al día las vistas ("v") de los videos de elhome/data.js o recta/data.js con un JSON de vidIQ.
 
-Uso: python3 tools/actualizar_vistas.py <resultado_vidiq.json>
+Uso: python3 tools/actualizar_vistas.py [--app elhome|recta] <resultado_vidiq.json> [más archivos]
 El JSON es la salida de vidiq_get_videos_by_ids ({videos:[{id, viewCount}]}) o una lista [{id, viewCount}].
 Solo cambia el número de vistas (nunca lo baja) y deja el resto del archivo igual.
 """
 import json, re, sys, os
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DJ = os.path.join(R, 'elhome', 'data.js')
-d = json.load(open(sys.argv[1], encoding='utf-8'))
-vids = d.get('videos', d) if isinstance(d, dict) else d
+args = sys.argv[1:]
+app = 'elhome'
+if '--app' in args:
+    i = args.index('--app'); app = args[i + 1]; del args[i:i + 2]
+DJ = os.path.join(R, app, 'data.js')
+vids = []
+for a in args:
+    d = json.load(open(a, encoding='utf-8'))
+    vids += d.get('videos', d) if isinstance(d, dict) else d
 src = open(DJ, encoding='utf-8').read()
 cambios = []
 for x in vids:
