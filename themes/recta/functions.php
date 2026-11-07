@@ -173,8 +173,7 @@ add_filter('wpseo_robots', function ($r) {
 add_action('init', function () {
   if (($_SERVER['REQUEST_URI'] ?? '') === '/ads.txt') {
     header('Content-Type: text/plain; charset=utf-8');
-    echo "google.com, pub-9995971644235129, DIRECT, f08c47fec0942fa0\n";
-    echo "google.com, pub-1881437690199180, DIRECT, f08c47fec0942fa0\n"; // Marrero Bernal Media LLC (la cuenta definitiva; la línea de arriba se quita al mover el sitio)
+    echo "google.com, pub-1881437690199180, DIRECT, f08c47fec0942fa0\n"; // AdSense de Marrero Bernal Media LLC (desde 6-nov-2026)
     exit;
   }
 });
@@ -253,3 +252,8 @@ add_action('wp_head', function () {
   $p = get_post(); $m = recta_en_map();
   if ($p && isset($m[$p->post_name])) echo '<link rel="alternate" hreflang="es" href="' . esc_url(get_permalink($p)) . '"><link rel="alternate" hreflang="en" href="' . esc_url($m[$p->post_name]) . '">' . "\n";
 }, 5);
+
+/** Código de AdSense de Marrero Bernal Media LLC (reemplaza al de la cuenta personal que estaba en WPCode, 6-nov-2026). */
+add_action('wp_head', function () {
+  echo '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1881437690199180" crossorigin="anonymous"></script>' . "\n";
+}, 1);
