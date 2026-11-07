@@ -111,7 +111,7 @@
         <h3>Contabilidad (bookkeeping) y nómina (payroll).</h3>
         <p>Llevamos los libros de tu negocio y la nómina de tus empleados, para que tú te ocupes de trabajar. Y como también preparamos tus taxes y tu seguro de workers' comp, que se calcula sobre la nómina, todo cuadra en un mismo lugar.</p>
       </div>
-      <ul><li>Contabilidad mensual del negocio</li><li>Nómina de empleados</li><li>Todo en español, en la oficina o a distancia</li><li><a href="#contacto">Pregúntanos por el plan para tu negocio →</a></li></ul>
+      <ul><li>Contabilidad mensual del negocio</li><li>Nómina de empleados con las planillas del IRS y de Nevada</li><li>Declaraciones de sales tax</li><li>Todo en español, en la oficina o a distancia</li><li><a href="/contabilidad-y-nomina/">Qué incluye: 941, 940, DETR, MBT y sales tax →</a></li></ul>
     </div>
   </div>
 </section>

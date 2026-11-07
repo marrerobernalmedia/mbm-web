@@ -111,7 +111,7 @@
         <h3>Bookkeeping and payroll.</h3>
         <p>We keep your business books and run your employees' payroll so you can focus on the work. And since we also prepare your taxes and your workers' comp, which is priced on payroll, everything adds up in one place.</p>
       </div>
-      <ul><li>Monthly business bookkeeping</li><li>Employee payroll</li><li>In Spanish or English, at the office or remotely</li><li><a href="#contacto">Ask about a plan for your business →</a></li></ul>
+      <ul><li>Monthly business bookkeeping</li><li>Employee payroll with IRS and Nevada filings</li><li>Sales tax returns</li><li>In Spanish or English, at the office or remotely</li><li><a href="/en/bookkeeping-payroll/">What's included: 941, 940, DETR, MBT and sales tax →</a></li></ul>
     </div>
   </div>
 </section>
