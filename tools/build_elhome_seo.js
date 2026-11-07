@@ -17,7 +17,7 @@ const slug = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().repla
 const live = id => V[id] && V[id].k !== "proximo" && V[id].k !== "futuro";
 const soon = id => V[id] && (V[id].k === "proximo" || V[id].k === "futuro");
 const fEst = f => f ? new Date(f + "T12:00:00").toLocaleDateString("es", { weekday: "long", day: "numeric", month: "long" }) : "muy pronto";
-const pcard = id => { const v = V[id]; return `<a class="v" href="${wurl(id)}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(v.t)}</h3><small style="color:var(--bulb)">Estreno ${esc(fEst(v.f))}${v.n ? " · " + esc(v.n) : ""} · ver el tráiler</small></a>`; };
+const pcard = id => { const v = V[id]; return `<a class="v" href="${wurl(id)}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(window.TITULO_LIMPIO(D, id))}</h3><small style="color:var(--bulb)">Estreno ${esc(fEst(v.f))}${v.n ? " · " + esc(v.n) : ""} · ver el tráiler</small></a>`; };
 const upSec = ids => { const l = ids.filter(soon).sort((a, b) => (V[a].f || "9").localeCompare(V[b].f || "9")); return l.length ? `<h2>Próximo estreno</h2><div class="grid">${l.map(pcard).join("")}</div>` : ""; };
 const thumb = id => V[id] && V[id].img ? abs(V[id].img) : `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const wurl = id => (V[id] && V[id].url) || `https://www.youtube.com/watch?v=${id}`;
@@ -57,7 +57,7 @@ function page({ url, title, desc, image, h1, body, ld }) {
 <footer><div class="wrap"><a href="/">Inicio</a><a href="/shows/">Shows</a><a href="/humoristas/">Humoristas</a><a href="https://marrerobernalmedia.com/apk/elhome.apk">Descargar la app (Android)</a><p>© ${today.slice(0, 4)} Marrero Bernal Media LLC. Todos los derechos reservados.</p></div></footer>
 </body></html>`;
 }
-const vcard = id => { const v = V[id], s = showOf[id]; return `<a class="v" href="${wurl(id)}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(v.t)}</h3><small>${esc(s ? sname(s) : "")}${v.n ? " " + esc(v.n) : ""}${v.v ? " · " + fmt(v.v) + " vistas" : ""}</small></a>`; };
+const vcard = id => { const v = V[id], s = showOf[id]; return `<a class="v" href="${wurl(id)}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(window.TITULO_LIMPIO(D, id))}</h3><small>${esc(s ? sname(s) : "")}${v.n ? " " + esc(v.n) : ""}${v.v ? " · " + fmt(v.v) + " vistas" : ""}</small></a>`; };
 // Fechas para el dato estructurado de Google: elhome/fechas.json (publishedAt real de YouTube) o, si no, la fecha de estreno "f" a las 8:00 AM de Las Vegas.
 const PUB = (() => { try { return JSON.parse(fs.readFileSync(path.join(out, "fechas.json"), "utf8")); } catch (e) { return {}; } })();
 const lvOff = f => { const n = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", timeZoneName: "shortOffset" }).formatToParts(new Date(f + "T16:00:00Z")).find(x => x.type === "timeZoneName").value.replace("GMT", ""); const m = n.match(/^([+-])(\d+)(?::(\d+))?$/); return m ? `${m[1]}${m[2].padStart(2, "0")}:${(m[3] || "00").padStart(2, "0")}` : "-08:00"; };
