@@ -315,6 +315,7 @@ console.log(`s2d: ${V.length} entrevistas, ${urls.length} URLs en el sitemap`);
   const E = {
     vid: Object.fromEntries(V.map(v => [v.id, { t: v.t, p: v.who, s: v.slug }])),
     th: thIds,
+    th_sm: fs.readdirSync(path.join(OUT, "img/th_sm")).filter(f => f.endsWith(".jpg")).map(f => f.replace(/\.jpg$/, "")).filter(id => !thIds.includes(id)),
     series: S.appSeries || {},
     myths: (S.appMyths || []).filter(m => byId[m[2]]),
     stories: NEWS.slice(0, 15).map(n => [n.title, fdate(n.date), `${SITE}/news/${n.slug}/`, n.video && byId[n.video] ? n.video : "", n.dek, newsImg(n)])

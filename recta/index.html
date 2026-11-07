@@ -339,7 +339,8 @@ if (EN) { const E = window.RECTA_EN;
   document.documentElement.lang = "en"; document.title = "Straight 2D Chest";
 }
 const TH_EN = EN ? new Set(window.RECTA_EN.th) : new Set();
-const img = id => TH_EN.has(id) ? "https://www.straight2dchest.com/img/th/" + id + ".jpg" : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg" : "thumbs/" + id + ".jpg";
+const TH_SM = EN ? new Set(window.RECTA_EN.th_sm || []) : new Set();
+const img = id => TH_EN.has(id) ? "https://www.straight2dchest.com/img/th/" + id + ".jpg" : TH_SM.has(id) ? "https://www.straight2dchest.com/img/th_sm/" + id + ".jpg" : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg" : "thumbs/" + id + ".jpg";
 const fmt = n => n >= 1e6 ? (n/1e6).toFixed(1).replace(".0","") + "M" : n >= 1000 ? Math.round(n/1000) + "K" : String(n||0);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const V = D.vid, ALL = [...D.series, ...D.cols], BY = Object.fromEntries(ALL.map(s => [s.id, s]));
