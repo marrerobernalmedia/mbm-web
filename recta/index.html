@@ -326,8 +326,8 @@ const YT = id => "https://youtu.be/" + id;
 const LANG = (() => { try { const u = new URLSearchParams(location.search).get("lang"); if (u === "es" || u === "en") localStorage.setItem("recta_lang", u); } catch (e) {} try { const s = localStorage.getItem("recta_lang"); if (s === "es" || s === "en") return s; } catch (e) {} return /^es/i.test(navigator.language || "es") ? "es" : "en"; })();
 const EN = LANG === "en" && !!window.RECTA_EN;
 const L = (es, en) => EN ? en : es;
-// Portadas de las series en inglés con la marca Straight 2D Chest (Eliam, 6-nov-2026); la de CUBA es igual en los dos idiomas
-const BANNER_EN = ["PLEOnVqVQg9-s","PLEhm-0fhQeks","PLF_WM-yaVC5w","PLLsEUkzu90pA","PLaTGBnf6Kovg","PLca-N9KrXOJE"];
+// Portadas de las series en inglés con la marca Straight 2D Chest (Eliam, 6-nov-2026); la de CUBA conserva la palabra y cambia solo el logo
+const BANNER_EN = ["PLEOnVqVQg9-s","PLEhm-0fhQeks","PLF_WM-yaVC5w","PLLsEUkzu90pA","PLaTGBnf6Kovg","PLca-N9KrXOJE","PLKawhIW_Y_7g"];
 if (EN) { const E = window.RECTA_EN;
   Object.keys(D.vid).forEach(id => { const e = E.vid[id]; if (!e) delete D.vid[id]; else { D.vid[id].t = e.t; D.vid[id].p = e.p; if (D.vid[id].d === "Próximamente") D.vid[id].d = "Coming soon"; } });
   const fix = s => { s.v = s.v.filter(i => D.vid[i]); const tr = E.series[s.id]; if (tr) { s.name = tr[0]; s.tag = tr[1]; } if (s.banner && BANNER_EN.includes(s.id)) s.banner = "banners/en/" + s.id + ".jpg"; return s; };
