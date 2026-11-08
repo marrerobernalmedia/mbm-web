@@ -46,6 +46,12 @@
       if (dst) Object.keys(V).forEach(function (id) { var v = V[id]; if ((v.c || []).some(function (n) { return n === actor || roles.indexOf(n) >= 0; })) { if (dst.all.indexOf(id) < 0) dst.all.push(id); } });
     });
     Object.keys(V).forEach(function (id) { var v = V[id]; if (v.c) v.c = Array.from(new Set(v.c.map(function (n) { return ALIAS[n] || n; }))); });
+    // Apagonia Hoy es un noticiero de elenco fijo (Bacallao, Lady Bhagga y casi siempre Dani Quintero) y ningún
+    // capítulo está dedicado a un humorista: sus capítulos van SOLO en Apagonia Hoy, sin nombres debajo y fuera
+    // de las fichas de los humoristas (Eliam, 8-nov-2026)
+    var soloShow = {}; D.shows.forEach(function (s) { if (s.id === "hoy") (s.v || []).concat((s.subs || []).flatMap(function (x) { return x.v || []; })).forEach(function (i) { soloShow[i] = 1; }); });
+    Object.keys(soloShow).forEach(function (id) { if (V[id]) V[id].c = []; });
+    D.comics.forEach(function (c) { c.all = c.all.filter(function (i) { return !soloShow[i]; }); c.lr = c.lr.filter(function (i) { return !soloShow[i]; }); });
     var lrecs = {}; D.shows.forEach(function (s) { if (s.id === "lrecs") (s.v || []).forEach(function (i) { lrecs[i] = 1; }); });
     Object.keys(V).forEach(function (id) {
       var v = V[id]; if (!(v.k === "proximo" || v.k === "futuro" || v.nuevo) || !(v.c || []).length) return;
