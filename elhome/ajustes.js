@@ -94,7 +94,8 @@
       "Gda0eiRjizI": ["Juan Karlos"], "kbbLN6JpwoU": ["Eddy Ceballos"],
       "sfbGeaBQsxM": ["El Habanero"], "JXRfSgv2his": ["El Habanero"], "5X1cNhJalCs": ["El Habanero", "El Rubio"],
       "mq8kpm3klM8": ["El Rubio"], "BUCsZYIoUyU": ["Genaro Pomposo"], "M57sV2raNsw": ["Mariconchi"],
-      "Rv-MZasqyfQ": ["Minerva"], "cSPSxDnfpKg": ["Philips"], "wRd8XMnIj-I": ["Javier Darío"]
+      "Rv-MZasqyfQ": ["Minerva"], "cSPSxDnfpKg": ["Philips"], "wRd8XMnIj-I": ["Javier Darío"],
+      "DAx42djn-iA": ["Dani Quintero"], "_456m4SuYSw": ["Bacallao"]
     };
     Object.keys(soloShow).forEach(function (id) { if (V[id]) V[id].n = ""; });
     Object.keys(HOY_INVITADOS).forEach(function (id) { if (!V[id]) return;
