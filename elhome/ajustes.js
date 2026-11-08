@@ -21,7 +21,9 @@
     "IFXkzeovKzM": ["Rigo Ferrera"], "P1bSrakbi2A": ["Cabo Pantera"] };
   // El actor va por su nombre, con sus personajes dentro (Eliam, 5-nov-2026): Orlando Manrufo hace de
   // Mariconchi y de Genaro Pomposo; una sola ficha "Manrufo" con los videos de los dos personajes
-  var ACTOR = { "Manrufo": ["Mariconchi", "Genaro Pomposo"] };
+  var ACTOR = { "Manrufo": ["Mariconchi", "Genaro Pomposo"],
+    // Burumba (Manolo Parkinson) es un personaje de Eddy Ceballos, alias Eddy Jones (Eliam, 8-nov-2026)
+    "Eddy Ceballos": ["Burumba", "Manolo Parkinson", "Eddy Jones"] };
   // Los estrenos programados (con su tráiler) entran ya en la ficha del humorista; si el humorista
   // todavía no tiene ficha, se le crea (Eliam, 31-oct-2026: Yamira Díaz).
   window.AJUSTAR = function (D) {
