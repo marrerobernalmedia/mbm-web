@@ -12,7 +12,9 @@
   var CAST = { "9vWXC53rrWs": ["Bacallao"] };
   // Humoristas que faltan en un capítulo que ya trae otro (Eliam, 8-nov-2026): "Habla 4 IDIOMAS…" de
   // Bacallao Sin Pan es también con Genaro Pomposo (Orlando Manrufo) → entra en la ficha de Manrufo
-  var SUMAR = { "Upd19ziJMH4": ["Genaro Pomposo"] };
+  // y los especiales de La Risa con dos humoristas (Eliam, 8-nov-2026): el capítulo entra también en la ficha del otro
+  var SUMAR = { "Upd19ziJMH4": ["Genaro Pomposo"], "6dbNi1XFZxs": ["El Habanero"], "5jffAxE5-dc": ["El Habanero"],
+    "-bRT6Gi1aRE": ["Mentepollo", "Cabo Pantera"], "SWV7QPHBM-U": ["La Llave"], "NaB7wj5LbUI": ["Eddy Ceballos"] };
   // El actor va por su nombre, con sus personajes dentro (Eliam, 5-nov-2026): Orlando Manrufo hace de
   // Mariconchi y de Genaro Pomposo; una sola ficha "Manrufo" con los videos de los dos personajes
   var ACTOR = { "Manrufo": ["Mariconchi", "Genaro Pomposo"] };
@@ -36,7 +38,9 @@
       EXTRA_LR[name].forEach(function (id) { if (!V[id]) return; if (c.lr.indexOf(id) < 0) c.lr.unshift(id); if (c.all.indexOf(id) < 0) c.all.unshift(id); V[id].c = Array.from(new Set((V[id].c || []).concat(name))); });
     });
     Object.keys(CAST).forEach(function (id) { if (V[id] && !(V[id].c || []).length) V[id].c = CAST[id].slice(); });
-    Object.keys(SUMAR).forEach(function (id) { if (V[id]) V[id].c = Array.from(new Set((V[id].c || []).concat(SUMAR[id]))); });
+    var enLR = {}; D.shows.forEach(function (s) { if (s.id === "lrecs") (s.v || []).concat((s.subs || []).flatMap(function (x) { return x.v || []; })).forEach(function (i) { enLR[i] = 1; }); });
+    Object.keys(SUMAR).forEach(function (id) { if (!V[id]) return; V[id].c = Array.from(new Set((V[id].c || []).concat(SUMAR[id])));
+      SUMAR[id].forEach(function (n) { var c = byName[n]; if (!c) return; if (c.all.indexOf(id) < 0) c.all.push(id); if (enLR[id] && c.lr.indexOf(id) < 0) c.lr.push(id); }); });
     Object.keys(ACTOR).forEach(function (actor) {
       var roles = ACTOR[actor], dst = byName[actor];
       roles.forEach(function (r) {
