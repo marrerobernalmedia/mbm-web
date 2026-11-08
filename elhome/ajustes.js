@@ -82,8 +82,9 @@
     // Cada capítulo de Apagonia Hoy tiene un actor invitado (Eliam, 8-nov-2026): va delante de los fijos y el capítulo
     // entra en la ficha del invitado. Sin número de episodio (ninguno lo lleva).
     var HOY_INVITADOS = {
-      // Manrufo: en Apagonia Hoy lo entrevistan siempre como él mismo, Orlando Manrufo (Eliam, 8-nov-2026)
-      "eXfx56gUutQ": ["Orlando Manrufo"], "NMpPuEm8bwI": ["Mayito el Gladiador"], "jgdWgzIt724": ["Orlando Manrufo", "Nieto de Juana"],
+      // Manrufo: en Apagonia Hoy lo entrevistan como él mismo, Orlando Manrufo, salvo en "Murió la libreta" y
+      // "Ni en pobreza", donde sale como Mariconchi (Eliam, 8-nov-2026)
+      "eXfx56gUutQ": ["Orlando Manrufo"], "NMpPuEm8bwI": ["Mayito el Gladiador"], "jgdWgzIt724": ["Mariconchi", "Nieto de Juana"],
       "RoSEL5ufLfw": ["Burumba", "Julio Meireles"], "B5MnYHBJFNk": ["Burumba", "Julio Meireles"],
       "wroK9S73DcA": ["Mayito el Gladiador"], "ImQ0QYJloR0": ["Mayito el Gladiador"],
       "rDCbNKUIoRY": ["Mentepollo"], "uaG6X7E6tck": ["Mentepollo"],
@@ -94,7 +95,7 @@
       "_mMIlsYH8tQ": ["Voltímetro"], "yLH7LoHnj0g": ["Voltímetro"],
       "Gda0eiRjizI": ["Juan Karlos"], "kbbLN6JpwoU": ["Eddy Ceballos"],
       "sfbGeaBQsxM": ["El Habanero"], "JXRfSgv2his": ["El Habanero"], "5X1cNhJalCs": ["El Habanero", "El Rubio"],
-      "mq8kpm3klM8": ["El Rubio"], "BUCsZYIoUyU": ["Orlando Manrufo"], "M57sV2raNsw": ["Orlando Manrufo"],
+      "mq8kpm3klM8": ["El Rubio"], "BUCsZYIoUyU": ["Orlando Manrufo"], "M57sV2raNsw": ["Mariconchi"],
       "Rv-MZasqyfQ": ["Minerva"], "cSPSxDnfpKg": ["Philips"], "wRd8XMnIj-I": ["Javier Darío"],
       "DAx42djn-iA": ["Dani Quintero"], "_456m4SuYSw": ["Bacallao"],
       "d0IwhM1jxMY": ["Narciso", "Marcos Medina"], "depAnCzOROU": ["Narciso", "Marcos Medina"],
