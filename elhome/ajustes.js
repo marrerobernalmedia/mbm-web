@@ -21,7 +21,7 @@
     "IFXkzeovKzM": ["Rigo Ferrera"], "P1bSrakbi2A": ["Cabo Pantera"] };
   // El actor va por su nombre, con sus personajes dentro (Eliam, 5-nov-2026): Orlando Manrufo hace de
   // Mariconchi y de Genaro Pomposo; una sola ficha "Manrufo" con los videos de los dos personajes
-  var ACTOR = { "Manrufo": ["Mariconchi", "Genaro Pomposo"],
+  var ACTOR = { "Manrufo": ["Mariconchi", "Genaro Pomposo", "Orlando Manrufo"],
     // Burumba (Manolo Parkinson) es un personaje de Eddy Ceballos, alias Eddy Jones (Eliam, 8-nov-2026)
     "Eddy Ceballos": ["Burumba", "Manolo Parkinson", "Eddy Jones"] };
   // Los estrenos programados (con su tráiler) entran ya en la ficha del humorista; si el humorista
@@ -82,7 +82,8 @@
     // Cada capítulo de Apagonia Hoy tiene un actor invitado (Eliam, 8-nov-2026): va delante de los fijos y el capítulo
     // entra en la ficha del invitado. Sin número de episodio (ninguno lo lleva).
     var HOY_INVITADOS = {
-      "eXfx56gUutQ": ["Mariconchi"], "NMpPuEm8bwI": ["Mayito el Gladiador"], "jgdWgzIt724": ["Mariconchi", "Nieto de Juana"],
+      // Manrufo: en Apagonia Hoy lo entrevistan siempre como él mismo, Orlando Manrufo (Eliam, 8-nov-2026)
+      "eXfx56gUutQ": ["Orlando Manrufo"], "NMpPuEm8bwI": ["Mayito el Gladiador"], "jgdWgzIt724": ["Orlando Manrufo", "Nieto de Juana"],
       "RoSEL5ufLfw": ["Burumba", "Julio Meireles"], "B5MnYHBJFNk": ["Burumba", "Julio Meireles"],
       "wroK9S73DcA": ["Mayito el Gladiador"], "ImQ0QYJloR0": ["Mayito el Gladiador"],
       "rDCbNKUIoRY": ["Mentepollo"], "uaG6X7E6tck": ["Mentepollo"],
@@ -93,11 +94,11 @@
       "_mMIlsYH8tQ": ["Voltímetro"], "yLH7LoHnj0g": ["Voltímetro"],
       "Gda0eiRjizI": ["Juan Karlos"], "kbbLN6JpwoU": ["Eddy Ceballos"],
       "sfbGeaBQsxM": ["El Habanero"], "JXRfSgv2his": ["El Habanero"], "5X1cNhJalCs": ["El Habanero", "El Rubio"],
-      "mq8kpm3klM8": ["El Rubio"], "BUCsZYIoUyU": ["Genaro Pomposo"], "M57sV2raNsw": ["Mariconchi"],
+      "mq8kpm3klM8": ["El Rubio"], "BUCsZYIoUyU": ["Orlando Manrufo"], "M57sV2raNsw": ["Orlando Manrufo"],
       "Rv-MZasqyfQ": ["Minerva"], "cSPSxDnfpKg": ["Philips"], "wRd8XMnIj-I": ["Javier Darío"],
       "DAx42djn-iA": ["Dani Quintero"], "_456m4SuYSw": ["Bacallao"],
       "d0IwhM1jxMY": ["Narciso", "Marcos Medina"], "depAnCzOROU": ["Narciso", "Marcos Medina"],
-      "UmWVGA1qI6s": ["Mariconchi"], "cbbJyuVwVPE": ["Migdalia"], "1kBZb7UJfzo": ["Bacallao"]
+      "UmWVGA1qI6s": ["Orlando Manrufo"], "cbbJyuVwVPE": ["Migdalia"], "1kBZb7UJfzo": ["Bacallao"]
     };
     Object.keys(soloShow).forEach(function (id) { if (V[id]) V[id].n = ""; });
     Object.keys(HOY_INVITADOS).forEach(function (id) { if (!V[id]) return;
