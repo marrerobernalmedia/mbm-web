@@ -7,6 +7,8 @@
   // Videos que la lista de YouTube no trae pero son del humorista (Eliam, 30-oct-2026): van en "En La Risa es Cosa Seria"
   var EXTRA_LR = { "Newito": ["qQ72eLSjGy8"] };
   // Estrenos que data.js trae sin humorista
+  // Capítulos que data.js trae solo con el nombre del humorista: su título real de YouTube (Eliam, 8-nov-2026)
+  var TITULOS = { "L8Wp7E1EGuo": "La novela de donde NADIE SE VA, el apagón ROMÁNTICO y Leopoldo en la balsa. LRECS #84 | MIGDALIA", "-BAEkShCWcU": "LISANDRA de 👁️de AGUA que no AGUANTÓ, la tarjeta CRICAR y el hombre del APAGÓN. LRECS #83 | NARCISO", "t4WxtA1VkQc": "Soy el MAPA: el trauma de los niños, el papelito y la chancleta. LRECS #82 | DANI QUINTERO", "wjOs64ijv2k": "¿Dónde está EDDY? La i-220a, la operación y el apagón que lo volvió. LRECS #81 | EDDY CEBALLOS", "K86J-zYlH4I": "CHISTES DE BORRACHOS: El perdido de Los Alpes y García el policía. LRECS #80 | Juan Karlos el Gordo", "Pmjdz2_9tFU": "La MACHI llama al ENEMIGO: ¿A qué hora es el ATAQUE? 😱 LRECS #78 | Marcos Medina", "72DG3nlOl8E": "El PARTO vs los \"3 minutos\", la MENOPAUSIA y lo que aguanta la cubana. LRECS #77 | Yaneza", "y4IoY70R1qU": "65 SEMANAS de embarazo \"hasta que ..\", el repelente EN DÓLARES y el chikungunya. LRECS #76 | Philips", "Y4VBGdENl30": "La CASA de 3 pisos… ¡de TIERRA!, la de WhatsApp y la canción del gago. LRECS #75 | Marcos el Pío", "nv2W_Bhxg5g": "Le canta a su CALVA, el que cocina con HIGIENE EXTREMA y la maleta. LRECS #49 | Marcos Medina", "d3oBhlzHFts": "Los baches que se comen los carros, el safari urbano y La Habana del 2030. LRECS #44 | Eddy Ceballos", "Xc-c64wvToE": "El dólar que se fue de jonrón, el consultorio de los síntomas y el mosquito. LRECS #43 | BAUDILIO", "ugzU5DL9xrY": "El yogur de SOYA, la suegra encantadora de SERPIENTES y la SARNA. LRECS #15 | VISTI CÁRDENAS", "a7ffHQAqZcg": "VISTI CÁRDENAS | Esto solo pasa en CUBA cu | LRECS #14" };
   var CAST = { "9vWXC53rrWs": ["Bacallao"] };
   // Humoristas que faltan en un capítulo que ya trae otro (Eliam, 8-nov-2026): "Habla 4 IDIOMAS…" de
   // Bacallao Sin Pan es también con Genaro Pomposo (Orlando Manrufo) → entra en la ficha de Manrufo
@@ -18,6 +20,7 @@
   // todavía no tiene ficha, se le crea (Eliam, 31-oct-2026: Yamira Díaz).
   window.AJUSTAR = function (D) {
     var V = D.vid, byName = {};
+    Object.keys(TITULOS).forEach(function (id) { if (V[id]) V[id].t = TITULOS[id]; });
     // Series que se ven en su orden (Lección 1, 2, 3…), también en la página principal (Eliam, 5-nov-2026)
     D.shows.forEach(function (s) { if (s.id === "ayer") s.asc = true; });
     D.comics.forEach(function (c) { c.lr = c.lr || []; c.all = c.all || []; byName[c.name] = c; });
@@ -78,6 +81,8 @@ const _sep = "[\\s|:·,\\-–—!¡?¿.\\p{Extended_Pictographic}\\uFE0F\\u200D]
 const NOMBRE_COMPLETO = { "Manrufo": ["Orlando Manrufo"] };
 window.TITULO_LIMPIO = function (D, id) { const V = D.vid, v = V[id]; let t = v.t; const CM = {}; D.comics.forEach(c => { CM[c.name] = c; (c.aka || []).forEach(a => { CM[a] = CM[a] || c; }); });
   t = t.replace(/&vert;/g, "|");
+  // "… y la chancleta. LRECS #82 | DANI QUINTERO": el número y el nombre ya salen arriba y debajo (Eliam, 8-nov-2026)
+  t = t.replace(/[\s.|·\-–—]*\bLRECS\s*#?\s*\d+\s*\|\s*[^|]{1,40}$/iu, "").trim() || v.t;
   // La etiqueta del show ya sale arriba (LA RISA ES COSA SERIA #96): se quita el "| LRECS #96" del final
   t = t.replace(/[\s|·\-–—\p{Extended_Pictographic}\uFE0F\u200D]*\bLRECS(\s*(EP\.?\s*)?#?\s*\d+)?\s*$/iu, "").trim() || v.t;
   const names = [...new Set((v.c || []).flatMap(n => { const c = CM[n]; const l = [n].concat(c ? [c.name].concat(c.aka || [], NOMBRE_COMPLETO[c.name] || []) : []); return l.flatMap(x => { const w = x.split(" ")[0]; return w.length >= 5 && w !== x ? [x, w] : [x]; }); }))].sort((a, b) => b.length - a.length);
