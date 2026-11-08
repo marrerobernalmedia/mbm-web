@@ -77,11 +77,29 @@
     // Kamilo Kabello (con K las dos veces; lo hace Dani Quintero) y la conductora Juana Sin Armas (la hace
     // Yanelsi, la de Lady Bhagga). Solo como nombre debajo: no entran en ninguna ficha de humorista.
     Object.keys(soloShow).forEach(function (id) { if (V[id]) V[id].c = ["Kamilo Kabello", "Juana Sin Armas"]; });
-    // Excepción: el EP.23 es la última entrevista de Orlando Manrufo, con Mariconchi en la portada (Eliam, 8-nov-2026):
-    // lleva también a Mariconchi y entra en la ficha de Manrufo
-    var HOY_CON = { "eXfx56gUutQ": "Mariconchi" };
-    Object.keys(HOY_CON).forEach(function (id) { if (!V[id]) return; var n = HOY_CON[id], c = byName[n];
-      V[id].c = [n].concat(V[id].c); if (c) { if (c.all.indexOf(id) < 0) c.all.unshift(id); } });
+    // Cada capítulo de Apagonia Hoy tiene un actor invitado (Eliam, 8-nov-2026): va delante de los fijos y el capítulo
+    // entra en la ficha del invitado. Sin número de episodio (ninguno lo lleva).
+    var HOY_INVITADOS = {
+      "eXfx56gUutQ": ["Mariconchi"], "NMpPuEm8bwI": ["Mayito el Gladiador"], "jgdWgzIt724": ["Mariconchi", "Nieto de Juana"],
+      "RoSEL5ufLfw": ["Burumba", "Julio Meireles"], "B5MnYHBJFNk": ["Burumba", "Julio Meireles"],
+      "wroK9S73DcA": ["Mayito el Gladiador"], "ImQ0QYJloR0": ["Mayito el Gladiador"],
+      "rDCbNKUIoRY": ["Mentepollo"], "uaG6X7E6tck": ["Mentepollo"],
+      "KTDyO6Vunrk": ["Cabo Pantera"], "uA_OQ5wLKqo": ["Cabo Pantera"],
+      "Ypwwhoc4Cbw": ["Voltímetro", "El Rubio"], "V7kR6ISOZi0": ["Voltímetro", "El Rubio"],
+      "9YUyqlIElh0": ["Marcos Medina", "Philips"], "4YV4c6xOGiQ": ["Marcos Medina", "Philips"],
+      "030feE-J8EY": ["Yaneza"], "9H6FAa1kSN0": ["Yaneza"],
+      "_mMIlsYH8tQ": ["Voltímetro"], "yLH7LoHnj0g": ["Voltímetro"],
+      "Gda0eiRjizI": ["Juan Karlos"], "kbbLN6JpwoU": ["Eddy Ceballos"],
+      "sfbGeaBQsxM": ["El Habanero"], "JXRfSgv2his": ["El Habanero"], "5X1cNhJalCs": ["El Habanero", "El Rubio"],
+      "mq8kpm3klM8": ["El Rubio"], "BUCsZYIoUyU": ["Genaro Pomposo"], "M57sV2raNsw": ["Mariconchi"],
+      "Rv-MZasqyfQ": ["Minerva"], "cSPSxDnfpKg": ["Philips"], "wRd8XMnIj-I": ["Javier Darío"]
+    };
+    Object.keys(soloShow).forEach(function (id) { if (V[id]) V[id].n = ""; });
+    Object.keys(HOY_INVITADOS).forEach(function (id) { if (!V[id]) return;
+      V[id].c = HOY_INVITADOS[id].concat(V[id].c);
+      HOY_INVITADOS[id].forEach(function (n) { var c = byName[n];
+        if (!c) { c = byName[n] = { name: n, banner: null, lr: [], all: [] }; D.comics.push(c); }
+        if (c.all.indexOf(id) < 0) c.all.push(id); }); });
     return D;
   };
 })();
