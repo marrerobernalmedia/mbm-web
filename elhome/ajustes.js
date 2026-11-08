@@ -62,6 +62,10 @@
         if (c.all.indexOf(id) < 0) c.all.unshift(id);
       });
     });
+    // Debajo de cada capítulo de Apagonia Hoy van los personajes fijos (Eliam, 8-nov-2026): el presentador
+    // Kamilo Kabello (con K las dos veces; lo hace Dani Quintero) y la conductora Juana Sin Armas (la hace
+    // Yanelsi, la de Lady Bhagga). Solo como nombre debajo: no entran en ninguna ficha de humorista.
+    Object.keys(soloShow).forEach(function (id) { if (V[id]) V[id].c = ["Kamilo Kabello", "Juana Sin Armas"]; });
     return D;
   };
 })();
