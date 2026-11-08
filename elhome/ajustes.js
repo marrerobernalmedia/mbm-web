@@ -17,7 +17,7 @@
     "-bRT6Gi1aRE": ["Mentepollo", "Cabo Pantera"], "SWV7QPHBM-U": ["La Llave"], "NaB7wj5LbUI": ["Eddy Ceballos"],
     // Compilatorios: los que salen en la portada/título (Eliam, 8-nov-2026: Lindoro en "La televisión cubana")
     "ravQUTT4dco": ["Lindoro"], "lApWsQw4Aio": ["Mariconchi", "Rigo Ferrera"], "IokEG-yY0ds": ["El Habanero", "Mariconchi"],
-    "Z9f8IATzAuw": ["Mentepollo"], "11KYGWub6Zk": ["La Llave", "El Habanero"], "HVZEbcBsDvc": ["Bacallao"],
+    "Z9f8IATzAuw": ["Mentepollo"], "11KYGWub6Zk": ["La Llave", "El Habanero", "Mariconchi"], "HVZEbcBsDvc": ["Bacallao"],
     "IFXkzeovKzM": ["Rigo Ferrera"], "P1bSrakbi2A": ["Cabo Pantera"] };
   // El actor va por su nombre, con sus personajes dentro (Eliam, 5-nov-2026): Orlando Manrufo hace de
   // Mariconchi y de Genaro Pomposo; una sola ficha "Manrufo" con los videos de los dos personajes
