@@ -67,6 +67,9 @@ const videoLD = ids => ids.filter(id => upDate(id) && !V[id].url).slice(0, 30).m
 const write = (rel, html) => { const p = path.join(out, rel, "index.html"); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, html); };
 
 const FEM = new Set(["Yamira Díaz"]);
+// Otros nombres artísticos (sus páginas viejas son noindex y mandan aquí): van en el título, la descripción y el dato estructurado de la ficha principal
+const AKA = { "Manrufo": ["Mariconchi", "Genaro Pomposo"], "Dani Quintero": ["Kamilo Kabello"], "Newito": ["Wattage"] };
+const akaTxt = n => AKA[n] ? ` (${AKA[n].join(", ")})` : "";
 const urls = [{ loc: `${SITE}/`, pr: "1.0", cf: "daily" }];
 // limpia generaciones anteriores
 for (const d of ["humorista", "show"]) fs.rmSync(path.join(out, d), { recursive: true, force: true });
@@ -77,14 +80,14 @@ for (const c of comics) {
   const s = slug(c.name), url = `${SITE}/humorista/${s}/`, shows = [...new Set(c.ids.map(id => showOf[id]).filter(Boolean).map(sname))];
   const total = c.ids.reduce((a, id) => a + (V[id].v || 0), 0);
   const first = c.ids[0] || c.up[0];
-  const desc = !c.ids.length ? `${c.name}, humorista cubana en La Risa es Cosa Seria: estreno el ${fEst(V[c.up[0]].f)}. Mira el tráiler y activa la campanita en El Home de la Risa, la casa del humor cubano.` : `${c.name}, humorista cubano: todas sus presentaciones en ${shows.slice(0, 3).join(", ") || "El Home de la Risa"}. ${c.ids.length} videos${total ? " con " + fmt(total) + " vistas" : ""}, juntos en El Home de la Risa, la casa del humor cubano.`;
+  const desc = !c.ids.length ? `${c.name}, humorista cubana en La Risa es Cosa Seria: estreno el ${fEst(V[c.up[0]].f)}. Mira el tráiler y activa la campanita en El Home de la Risa, la casa del humor cubano.` : `${c.name}${akaTxt(c.name)}, humorista cubano: todas sus presentaciones en ${shows.slice(0, 3).join(", ") || "El Home de la Risa"}. ${c.ids.length} videos${total ? " con " + fmt(total) + " vistas" : ""}, juntos en El Home de la Risa, la casa del humor cubano.`;
   const image = abs(c.banner) || thumb(first);
-  write(`humorista/${s}`, page({ url, title: `${c.name} — ${FEM.has(c.name) ? "humorista cubana" : "humorista cubano"}: todos sus videos | El Home de la Risa`, desc, image,
+  write(`humorista/${s}`, page({ url, title: `${c.name}${akaTxt(c.name)} — ${FEM.has(c.name) ? "humorista cubana" : "humorista cubano"}: todos sus videos | El Home de la Risa`, desc, image,
     body: `<section class="hero"><img src="${esc(image)}" alt="${esc(c.name)}"><div><h1>${esc(c.name)}</h1><p class="lead">${esc(desc)}</p><div class="btns"><a class="btn b1" href="${wurl(first)}" target="_blank" rel="noopener">${c.ids.length ? "▶ Ver su video más visto" : "▶ Ver el tráiler"}</a><a class="btn b2" href="/?humorista=${encodeURIComponent(c.name)}">Abrir en El Home</a></div></div></section>
 ${upSec(c.up)}${c.ids.length ? `<h2>Todas sus presentaciones</h2><div class="grid">${c.ids.map(vcard).join("")}</div>` : ""}
 <h2>Más humoristas</h2><div class="chips">${comics.filter(o => o !== c).slice(0, 24).map(o => `<a class="chip" href="/humorista/${slug(o.name)}/">${esc(o.name)}</a>`).join("")}</div>`,
     ld: { "@context": "https://schema.org", "@graph": [
-      { "@type": "Person", "@id": url + "#persona", name: c.name, jobTitle: "Humorista", nationality: "Cuba", url, image },
+      { "@type": "Person", "@id": url + "#persona", name: c.name, ...(AKA[c.name] ? { alternateName: AKA[c.name] } : {}), jobTitle: "Humorista", nationality: "Cuba", url, image },
       { "@type": "ItemList", name: `Videos de ${c.name}`, itemListElement: videoLD(c.ids.length ? c.ids : c.up) },
       { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "El Home de la Risa", item: SITE + "/" }, { "@type": "ListItem", position: 2, name: "Humoristas", item: SITE + "/humoristas/" }, { "@type": "ListItem", position: 3, name: c.name, item: url }] }] } }));
   urls.push({ loc: url, pr: "0.8", cf: "weekly" });
