@@ -590,7 +590,7 @@ render();
 let deferred = null;
 const instBtn = document.getElementById("instBtn"), appRoot = document.getElementById("appRoot"), appBtn = document.getElementById("appBtn");
 const standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
-if (standalone) appBtn.hidden = true;
+if (standalone) { appBtn.hidden = true; document.querySelectorAll("#sheetRoot .opt").forEach(o => { if (/pantalla de inicio|home screen/i.test(o.textContent)) o.style.display = "none"; }); }
 appBtn.onclick = () => { appRoot.hidden = false; };
 appRoot.addEventListener("click", e => { if (e.target.closest("[data-appclose]")) appRoot.hidden = true; });
 window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; instBtn.hidden = false; });
