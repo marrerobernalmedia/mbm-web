@@ -1,18 +1,27 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.marrerobernalmedia.elhome",
-      "sha256_cert_fingerprints": ["57:D9:45:AA:FC:D9:77:09:2F:68:96:56:0B:39:96:BA:F1:91:42:F8:FA:D8:8B:DF:8B:99:C5:08:A8:22:AD:55"]
+      "sha256_cert_fingerprints": [
+        "57:D9:45:AA:FC:D9:77:09:2F:68:96:56:0B:39:96:BA:F1:91:42:F8:FA:D8:8B:DF:8B:99:C5:08:A8:22:AD:55",
+        "EA:52:B4:25:B7:E6:AF:0B:D9:32:53:72:FE:FC:33:CF:7C:11:89:81:EC:14:4F:38:33:8C:EA:B1:42:1D:F6:CC"
+      ]
     }
   },
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.marrerobernalmedia.recta",
-      "sha256_cert_fingerprints": ["B7:B6:73:50:08:1E:D2:4D:6A:A7:9F:04:CC:6F:3D:4D:62:C5:D2:D1:C3:92:F0:DB:B4:62:30:34:31:5D:7A:6D"]
+      "sha256_cert_fingerprints": [
+        "B7:B6:73:50:08:1E:D2:4D:6A:A7:9F:04:CC:6F:3D:4D:62:C5:D2:D1:C3:92:F0:DB:B4:62:30:34:31:5D:7A:6D"
+      ]
     }
   }
 ]
