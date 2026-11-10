@@ -4,7 +4,7 @@
    editar este archivo y hacer push. */
 window.SEGUIDORES = {
   "actualizado": "2026-11-10",
-  "fb": {"larisa":585725,"lacosa":173701,"recta":72407,"elhome":14449,"mba":5213,"cuero":2330,"welcome":3726,"mbm":1397,"eliam":11329,"nadie":456},
+  "fb": {"larisa":585725,"lacosa":173701,"recta":72407,"elhome":14449,"mba":5213,"cuero":2330,"welcome":3726,"mbm":1397,"eliam":11445,"nadie":456},
   "ig": {"larisa":50597,"lacosa":31382,"mbm":10256,"recta":9422,"welcome":3705,"elhome":2040,"nadie":46,"cuero":19,"mba":218,"eliam":7163},
   "yt": {"larisa":91835,"recta":19133,"lacosa":14010,"elhome":3364,"welcome":2824,"mbm":17}
 };
