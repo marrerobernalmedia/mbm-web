@@ -93,7 +93,7 @@ ${upSec(c.up)}${c.ids.length ? `<h2>Todas sus presentaciones</h2><div class="gri
   urls.push({ loc: url, pr: "0.8", cf: "weekly" });
 }
 // Nombres artísticos unidos a otra ficha: su página vieja manda a la ficha principal
-for (const [from, to] of [["Kamilo Kabello", "Dani Quintero"], ["Wattage", "Newito"], ["Mariconchi", "Manrufo"], ["Genaro Pomposo", "Manrufo"]]) {
+for (const [from, to] of [["Nieto de Juana", "El Nieto de Juana"], ["Kamilo Kabello", "Dani Quintero"], ["Wattage", "Newito"], ["Mariconchi", "Manrufo"], ["Genaro Pomposo", "Manrufo"]]) {
   const u = `${SITE}/humorista/${slug(to)}/`;
   write(`humorista/${slug(from)}`, `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${esc(from)} — ${esc(to)}</title><link rel="canonical" href="${u}"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=${u}"></head><body><a href="${u}">${esc(to)}</a></body></html>`);
 }
