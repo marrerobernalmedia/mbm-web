@@ -84,6 +84,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px 6px;b
   <?php else: $g = $G[$r['grabacion']] ?? ['titulo' => $r['grabacion'], 'fecha' => '']; ?>
   <div class="card <?= $r['entro'] ? '' : ($r['estado'] === 'confirmada' ? 'ok' : '') ?>">
     <p class="mute"><?= $h($g['titulo']) ?> · <?= $h($g['fecha'] ? $fechaLarga($g['fecha']) : '') ?></p>
+    <?php if (!empty($g['hora'])): ?><h2 style="margin:0;color:var(--bulb)">TURNO DE LAS <?= $h($g['hora']) ?></h2><?php endif; ?>
     <div class="big"><?= (int)$r['cantidad'] ?> <?= $r['cantidad'] == 1 ? 'entrada' : 'entradas' ?></div>
     <h1 style="margin:6px 0"><?= $h($r['nombre']) ?></h1>
     <p><a href="<?= $h($wa($r['telefono'])) ?>"><?= $h($r['telefono']) ?></a> · código <b><?= $h($r['codigo']) ?></b> · <span class="e <?= $h($r['estado']) ?>"><?= $h($r['estado']) ?></span></p>
@@ -106,7 +107,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px 6px;b
     usort($l, fn($a, $b) => strcmp($a['creada'], $b['creada']));
     $conf = ocupadas($db, $gid); $esp = en_espera($db, $gid);
     $ent = array_sum(array_map(fn($r) => $r['entro'] ? $r['cantidad'] : 0, $l)); ?>
-    <h2><?= $h($g['titulo']) ?> — <?= $h($g['sub'] ?? '') ?></h2>
+    <h2><?= $h($g['titulo']) ?><?= !empty($g['hora']) ? ' · turno de las ' . $h($g['hora']) : '' ?> — <?= $h($g['sub'] ?? '') ?></h2>
     <div class="mute"><?= $h($fechaLarga($g['fecha'])) ?><?= !empty($g['hora']) ? ' · ' . $h($g['hora']) : '' ?><?= !empty($g['lugar']) ? ' · ' . $h($g['lugar']) : '' ?> · <?= empty($g['abierta']) ? 'reservas cerradas' : 'reservas abiertas' ?></div>
     <div class="stats"><div><b><?= $conf ?> / <?= $g['cupo'] ?></b>confirmadas</div><div><b><?= $esp ?></b>en espera</div><div><b><?= $ent ?></b>ya entraron</div><div><b><?= count(array_filter($l, fn($r) => $r['estado'] !== 'cancelada')) ?></b>reservas</div></div>
     <p><a class="b g" style="text-decoration:none;display:inline-block" href="<?= $h($yo) ?>?csv=<?= $h($gid) ?>">Descargar para Excel</a></p>

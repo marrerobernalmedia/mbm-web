@@ -36,7 +36,11 @@
 .en-cal b{display:block;font-size:22px;line-height:1.3}
 .en-when div:last-child{font-size:13.5px;line-height:1.35}
 .en-when em{font-style:normal;color:var(--mute)}
-.en-cupo{font-size:12.5px;font-weight:700;color:var(--lime);margin-bottom:10px}
+.en-cupo{font-size:12.5px;font-weight:700;color:var(--lime);margin-bottom:8px}
+.en-elige{font-size:13px;font-weight:700;color:var(--mute);margin:2px 0 8px}
+.en-turno{display:flex;gap:12px;align-items:center;border-top:1px solid var(--line);padding:12px 0 4px}
+.en-hora{flex:none;width:86px;text-align:center}.en-hora b{display:block;font-size:19px;font-weight:800;white-space:nowrap}.en-hora small{color:var(--mute);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.en-tc{flex:1;min-width:0}
 .en-cupo.lleno{color:var(--bulb)}
 .en-go{width:100%;border:0;border-radius:12px;padding:13px;font-weight:800;font-size:15px;background:var(--lime);color:#111;cursor:pointer;font-family:inherit}
 .en-go.mia{background:var(--bulb)}
@@ -59,7 +63,7 @@
 .en-store{display:flex;align-items:center;gap:10px;justify-content:center;background:#000;color:#fff;border:1px solid #444;border-radius:12px;padding:12px;font-weight:800;text-decoration:none;margin:8px 0}`;
   const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
 
-  let G = null, cupos = {}, mias = [], cargado = 0, cargando = null;
+  let G = null, F = [], cupos = {}, mias = [], cargado = 0, cargando = null;
   const cargar = (forzar) => {
     if (cargando) return cargando;
     if (!forzar && G && Date.now() - cargado < 60000) return Promise.resolve();
@@ -69,6 +73,9 @@
       fetch("reservas.php?accion=mias&disp=" + disp, { cache: "no-store" }).then(r => r.json()).catch(() => null)
     ]).then(([g, c, m]) => {
       G = (g || []).filter(x => x.fecha >= hoy()).sort((a, b) => a.fecha.localeCompare(b.fecha));
+      // Turnos (p. ej. 4 PM y 6 PM): cada turno es una función con su propio cupo e id "<grabación>-<turno>"
+      G.forEach(x => { x.funciones = (x.turnos && x.turnos.length ? x.turnos : [{ id: "", hora: x.hora, cupo: x.cupo }]).map(t => Object.assign({}, x, { turnos: null, funciones: null, grupo: x.id, id: t.id ? x.id + "-" + t.id : x.id, hora: t.hora || "", cupo: t.cupo })); });
+      F = G.flatMap(x => x.funciones);
       cupos = (c && c.cupos) || cupos;
       if (m && m.reservas) { mias = m.reservas; ls.set("mbm_mias", JSON.stringify(mias)); }
       else { try { mias = JSON.parse(ls.get("mbm_mias") || "[]"); } catch (e) {} }
@@ -79,15 +86,19 @@
   const mia = id => mias.find(r => r.grabacion === id && r.estado !== "cancelada");
   const libres = g => { const c = cupos[g.id]; return c ? Math.max(0, c.cupo - c.ocupadas) : g.cupo; };
 
+  const lugarHtml = g => g.lugar ? `📍 ${esc(g.lugar)}${g.direccion ? `<br><em>${esc(g.direccion)}</em>` : ""}${g.mapa ? `<br><a href="${esc(g.mapa)}" target="_blank" rel="noopener" data-yt style="color:var(--lime);font-weight:700">Cómo llegar →</a>` : ""}` : "<em>El lugar te lo avisamos en la app</em>";
+  function turno(f, varios) {
+    const r = mia(f.id), l = libres(f), otra = !r && f.grupo !== f.id && F.some(x => x.grupo === f.grupo && x.id !== f.id && mia(x.id));
+    const cupo = r ? (r.estado === "espera" ? "Estás en la lista de espera" : `Tienes ${r.cantidad} ${r.cantidad == 1 ? "entrada" : "entradas"}`) : !f.abierta ? "Reservas cerradas" : l <= 0 ? "Lleno · lista de espera" : l <= Math.max(10, f.cupo * 0.25) ? `¡Quedan solo ${l}!` : "Entradas gratis · cupo limitado";
+    const btn = r ? `<button class="en-go mia" data-en-ver="${esc(f.id)}">🎟️ Ver mi entrada</button>` : !f.abierta || otra ? "" : `<button class="en-go" data-en-res="${esc(f.id)}">🎟️ Reservar${varios ? "" : " gratis"}</button>`;
+    return `<div class="en-turno">${f.hora ? `<div class="en-hora"><b>${esc(f.hora)}</b>${varios ? "<small>turno</small>" : ""}</div>` : ""}<div class="en-tc"><div class="en-cupo${l <= 0 && !r ? " lleno" : ""}">${cupo}</div>${btn}</div></div>`;
+  }
   function tarjeta(g) {
-    const r = mia(g.id), l = libres(g), [, m, d] = g.fecha.split("-").map(Number);
-    const cupo = r ? "" : !g.abierta ? `<div class="en-cupo lleno">Reservas cerradas</div>` : l <= 0 ? `<div class="en-cupo lleno">Lleno · puedes anotarte en la lista de espera</div>` : l <= Math.max(10, g.cupo * 0.25) ? `<div class="en-cupo">¡Quedan solo ${l} entradas!</div>` : `<div class="en-cupo">Entradas gratis · cupo limitado</div>`;
-    const btn = r ? `<button class="en-go mia" data-en-ver="${esc(g.id)}">🎟️ Ver mi entrada${r.estado === "espera" ? " (lista de espera)" : ""}</button>`
-      : g.abierta ? `<button class="en-go" data-en-res="${esc(g.id)}">🎟️ Reservar gratis</button>` : "";
+    const [, m, d] = g.fecha.split("-").map(Number), varios = g.funciones.length > 1;
     return `<div class="en-card"><div class="en-pic"><img src="${esc(g.banner || "og.jpg")}" alt="" loading="lazy"><span class="en-badge">GRABACIÓN CON PÚBLICO</span></div>
 <div class="en-body"><h3>${esc(g.titulo)}</h3><div class="en-sub">${esc(g.sub || "")}</div>
-<div class="en-when"><div class="en-cal"><small>${MES[m - 1].slice(0, 3)}</small><b>${d}</b></div><div><b>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · " + esc(g.hora) : ""}</b><br>${g.lugar ? esc(g.lugar) + (g.direccion ? `<br><em>${esc(g.direccion)}</em>` : "") : "<em>La hora y el lugar te los avisamos en la app</em>"}</div></div>
-${cupo}${btn}</div></div>`;
+<div class="en-when"><div class="en-cal"><small>${MES[m - 1].slice(0, 3)}</small><b>${d}</b></div><div><b>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}</b>${varios ? ` · ${g.funciones.length} turnos` : ""}<br>${lugarHtml(g)}</div></div>
+${varios ? `<div class="en-elige">Elige tu turno:</div>` : ""}${g.funciones.map(f => turno(f, varios)).join("")}</div></div>`;
   }
   const html = () => `<h2>Entradas gratis <small>a las grabaciones</small></h2><div class="bulbs"></div>` + (!G ? `<p class="en-vacio">Cargando…</p>` : G.length ? `<div class="en-list">${G.map(tarjeta).join("")}</div>` : `<p class="en-vacio">Por ahora no hay grabaciones con público anunciadas. Activa los avisos 🔔 y te avisamos cuando se abran las entradas.</p>`);
   function seccion() { return `<section class="en-sec" id="entradasSec">${html()}</section>`; }
@@ -111,7 +122,7 @@ ${cupo}${btn}</div></div>`;
 
   function bajarApp(g) {
     hoja(`<h3>Las entradas se reservan en la app</h3>
-<p>Baja gratis la app de El Home de la Risa y reserva tus entradas para <b>${esc(g.titulo)}</b> (${esc(larga(g.fecha))}). En la app también tienes tu entrada con código para la puerta y los avisos de la grabación.</p>
+<p>Baja gratis la app de El Home de la Risa y reserva tus entradas para <b>${esc(g.titulo)}</b> (${esc(larga(g.fecha))}${g.hora ? ", turno de las " + esc(g.hora) : ""}). En la app también tienes tu entrada con código para la puerta y los avisos de la grabación.</p>
 <a class="en-store" href="${PLAY}" target="_blank" rel="noopener">▶ Bajar en Google Play</a>
 <p style="font-size:13px;text-align:center">iPhone y iPad: muy pronto en la App Store.</p>
 <button class="close" data-en-x>Cerrar</button>`);
@@ -121,7 +132,7 @@ ${cupo}${btn}</div></div>`;
     const max = Math.max(1, g.max || 4), l = libres(g);
     let n = Math.min(2, max);
     hoja(`<h3>Reservar entradas gratis</h3>
-<p><b>${esc(g.titulo)}</b> · ${esc(g.sub || "")}<br>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · " + esc(g.hora) : ""}${g.lugar ? " · " + esc(g.lugar) : ""}</p>
+<p><b>${esc(g.titulo)}</b> · ${esc(g.sub || "")}<br>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · <b>turno de las " + esc(g.hora) + "</b>" : ""}${g.lugar ? "<br>📍 " + esc(g.lugar) + (g.direccion ? ", " + esc(g.direccion) : "") : ""}</p>
 ${l <= 0 ? `<p style="color:var(--bulb)">Ya no quedan entradas. Si te anotas, quedas en la lista de espera y te avisamos si se libera un lugar.</p>` : ""}
 <form class="en-f" id="enForm">
 <label for="enNom">Tu nombre</label><input id="enNom" name="nombre" autocomplete="name" maxlength="80" required value="${esc(ls.get("mbm_nom") || "")}">
@@ -163,7 +174,7 @@ ${l <= 0 ? `<p style="color:var(--bulb)">Ya no quedan entradas. Si te anotas, qu
     const pushOn = document.getElementById("pushLbl") && /✓/.test(document.getElementById("pushLbl").textContent);
     hoja(`<h3>${recien ? (r.estado === "espera" ? "Estás en la lista de espera" : "¡Listo! Tienes tus entradas") : "Tu entrada"}</h3>
 ${r.estado === "espera" ? `<p>La grabación está llena. Si alguien cancela, tu reserva pasa sola a confirmada y aquí lo vas a ver.</p>` : `<p>Muestra este código en la puerta. También lo encuentras siempre aquí, en la app.</p>`}
-<div class="en-ticket"><h4>${esc(g.titulo)}</h4><p>${esc(g.sub || "")}</p><p><b>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · " + esc(g.hora) : ""}</b></p>${g.lugar ? `<p>${esc(g.lugar)}</p>` : ""}
+<div class="en-ticket"><h4>${esc(g.titulo)}</h4><p>${esc(g.sub || "")}</p><p><b>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · " + esc(g.hora) : ""}</b></p>${g.lugar ? `<p>📍 ${esc(g.lugar)}${g.direccion ? "<br>" + esc(g.direccion) : ""}</p>` : ""}${g.mapa ? `<p><a href="${esc(g.mapa)}" target="_blank" rel="noopener" data-yt style="color:#0a58ca;font-weight:700">Cómo llegar →</a></p>` : ""}
 <div class="qr" id="enQr"></div><div class="en-est ${esc(r.estado)}">${r.estado === "espera" ? "LISTA DE ESPERA" : "CONFIRMADA"}</div>
 <p style="font-size:16px"><b>${esc(r.nombre)}</b> · ${r.cantidad} ${r.cantidad == 1 ? "entrada" : "entradas"}</p><div class="cod">${esc(r.codigo)}</div></div>
 ${!pushOn && document.getElementById("pushBtn") && !document.getElementById("pushBtn").hidden ? `<button class="en-go" data-en-push>🔔 Activar avisos para recordarte la grabación</button>` : ""}
@@ -183,7 +194,7 @@ ${!pushOn && document.getElementById("pushBtn") && !document.getElementById("pus
 
   document.addEventListener("click", e => {
     const a = e.target.closest("[data-en-res],[data-en-ver]"); if (!a || !G) return;
-    const g = G.find(x => x.id === (a.dataset.enRes || a.dataset.enVer)); if (!g) return;
+    const g = F.find(x => x.id === (a.dataset.enRes || a.dataset.enVer)); if (!g) return;
     if (a.dataset.enVer) return entrada(g);
     if (!esApp()) return bajarApp(g);
     formulario(g);

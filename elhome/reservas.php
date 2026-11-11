@@ -51,7 +51,12 @@ if ($accion === 'reservar') {
   if ($cant < 1 || $cant > $max) fallo("Puedes reservar de 1 a $max entradas.");
   if (!limite('reservar', 8, 3600)) fallo('Demasiados intentos. Prueba en un rato.', 429);
 
-  $res = con_reservas(function (&$db) use ($gid, $g, $nombre, $tel, $dig, $cant, $disp) {
+  $res = con_reservas(function (&$db) use ($gid, $g, $G, $nombre, $tel, $dig, $cant, $disp) {
+    // Un teléfono, un solo turno por grabación
+    foreach ($db['reservas'] as $x) {
+      if ($x['grabacion'] !== $gid && $x['estado'] !== 'cancelada' && ($G[$x['grabacion']]['grupo'] ?? '') === $g['grupo'] && preg_replace('/\D/', '', $x['telefono']) === $dig)
+        return ['otro' => $G[$x['grabacion']]['hora'] ?? ''];
+    }
     // Mismo teléfono y misma grabación: se actualiza la reserva que ya tiene
     foreach ($db['reservas'] as &$r) {
       if ($r['grabacion'] === $gid && $r['estado'] !== 'cancelada' && preg_replace('/\D/', '', $r['telefono']) === $dig) {
@@ -71,6 +76,7 @@ if ($accion === 'reservar') {
     return ['r' => $r, 'nueva' => true];
   });
   if (!$res) fallo('No se pudo guardar. Prueba otra vez.', 500);
+  if (isset($res['otro'])) fallo('Ya tienes entradas para el turno de las ' . $res['otro'] . ' de esta grabación. Si quieres cambiar de turno, cancela esas primero.');
   echo json_encode(['ok' => true, 'reserva' => publica($res['r']), 'nueva' => $res['nueva']]); exit;
 }
 

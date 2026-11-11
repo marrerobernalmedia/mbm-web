@@ -14,9 +14,18 @@ function limpio($s, $max) { return mb_substr(trim(strip_tags((string)$s)), 0, $m
 function fallo($msg, $code = 400) { http_response_code($code); echo json_encode(['ok' => false, 'error' => $msg]); exit; }
 function hoy_lv() { return date('Y-m-d'); }
 
+// Cada grabación puede tener varios TURNOS (p. ej. 4 PM y 6 PM): cada turno es una función con su propio cupo
+// y su propio id "<grabación>-<turno>"; "grupo" = la grabación a la que pertenece.
 function grabaciones() {
   $l = json_decode(@file_get_contents(__DIR__ . '/grabaciones.json'), true) ?: [];
-  $o = []; foreach ($l as $g) if (!empty($g['id'])) { $g['cupo'] = intval($g['cupo'] ?? 0); $o[$g['id']] = $g; }
+  $o = [];
+  foreach ($l as $g) {
+    if (empty($g['id'])) continue;
+    $turnos = $g['turnos'] ?? null; unset($g['turnos']);
+    $g['grupo'] = $g['id'];
+    if (!$turnos) { $g['cupo'] = intval($g['cupo'] ?? 0); $o[$g['id']] = $g; continue; }
+    foreach ($turnos as $t) { $f = $g; $f['id'] = $g['id'] . '-' . $t['id']; $f['hora'] = $t['hora'] ?? ''; $f['cupo'] = intval($t['cupo'] ?? 0); $o[$f['id']] = $f; }
+  }
   return $o;
 }
 function leer_reservas() {

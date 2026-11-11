@@ -6,12 +6,24 @@
     "sub": "Grabación de la primera temporada",
     "fecha": "2027-02-02",
     "hora": "",
-    "lugar": "",
+    "lugar": "Bar Industria 8",
     "direccion": "",
-    "cupo": 100,
     "max": 4,
     "abierta": true,
-    "banner": "banners/cuero.jpg"
+    "banner": "banners/cuero.jpg",
+    "mapa": "https://maps.app.goo.gl/8J1vZLF6Hpyu3Ngv7",
+    "turnos": [
+      {
+        "id": "4pm",
+        "hora": "4:00 PM",
+        "cupo": 100
+      },
+      {
+        "id": "6pm",
+        "hora": "6:00 PM",
+        "cupo": 100
+      }
+    ]
   },
   {
     "id": "lrecs-t9",
@@ -20,11 +32,23 @@
     "sub": "Grabación de la temporada 9",
     "fecha": "2027-03-02",
     "hora": "",
-    "lugar": "",
+    "lugar": "Bar Industria 8",
     "direccion": "",
-    "cupo": 100,
     "max": 4,
     "abierta": true,
-    "banner": "banners/lrecs.jpg"
+    "banner": "banners/lrecs.jpg",
+    "mapa": "https://maps.app.goo.gl/8J1vZLF6Hpyu3Ngv7",
+    "turnos": [
+      {
+        "id": "4pm",
+        "hora": "4:00 PM",
+        "cupo": 100
+      },
+      {
+        "id": "6pm",
+        "hora": "6:00 PM",
+        "cupo": 100
+      }
+    ]
   }
 ]
