@@ -5,6 +5,8 @@
   // Un humorista, una sola ficha: los nombres artísticos se unen al nombre principal (Eliam, 30-oct-2026)
   var ALIAS = { "Kamilo Kabello": "Dani Quintero", "Wattage": "Newito" };
   // Videos que la lista de YouTube no trae pero son del humorista (Eliam, 30-oct-2026): van en "En La Risa es Cosa Seria"
+  // Miniatura propia de humoristas cuya ficha se crea aquí (todavía no vienen en data.js) (Eliam, 11-nov-2026)
+  var BANNERS = { "Yamira Díaz": "banners/yamira-diaz.jpg" };
   var EXTRA_LR = { "Newito": ["qQ72eLSjGy8"] };
   // Estrenos que data.js trae sin humorista
   // Capítulos que data.js trae solo con el nombre del humorista: su título real de YouTube (Eliam, 8-nov-2026)
@@ -31,7 +33,7 @@
     Object.keys(TITULOS).forEach(function (id) { if (V[id]) V[id].t = TITULOS[id]; });
     // Series que se ven en su orden (Lección 1, 2, 3…), también en la página principal (Eliam, 5-nov-2026)
     D.shows.forEach(function (s) { if (s.id === "ayer") s.asc = true; });
-    D.comics.forEach(function (c) { c.lr = c.lr || []; c.all = c.all || []; byName[c.name] = c; });
+    D.comics.forEach(function (c) { c.lr = c.lr || []; c.all = c.all || []; if (!c.banner && BANNERS[c.name]) c.banner = BANNERS[c.name]; byName[c.name] = c; });
     Object.keys(ALIAS).forEach(function (from) {
       var src = byName[from], dst = byName[ALIAS[from]]; if (!src || !dst) return;
       dst.all = Array.from(new Set(dst.all.concat(src.all)));
@@ -70,7 +72,7 @@
       var v = V[id]; if (!(v.k === "proximo" || v.k === "futuro" || v.nuevo) || !(v.c || []).length) return;
       v.c.forEach(function (name) {
         var c = byName[name];
-        if (!c) { c = byName[name] = { name: name, banner: null, lr: [], all: [] }; D.comics.push(c); }
+        if (!c) { c = byName[name] = { name: name, banner: BANNERS[name] || null, lr: [], all: [] }; D.comics.push(c); }
         if (lrecs[id] && c.lr.indexOf(id) < 0) c.lr.unshift(id);
         if (c.all.indexOf(id) < 0) c.all.unshift(id);
       });
@@ -105,7 +107,7 @@
     Object.keys(HOY_INVITADOS).forEach(function (id) { if (!V[id]) return;
       V[id].c = HOY_INVITADOS[id].concat(V[id].c);
       HOY_INVITADOS[id].forEach(function (n) { var c = byName[n];
-        if (!c) { c = byName[n] = { name: n, banner: null, lr: [], all: [] }; D.comics.push(c); }
+        if (!c) { c = byName[n] = { name: n, banner: BANNERS[n] || null, lr: [], all: [] }; D.comics.push(c); }
         if (c.all.indexOf(id) < 0) c.all.push(id); }); });
     return D;
   };
