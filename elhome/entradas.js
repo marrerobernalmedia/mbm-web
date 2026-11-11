@@ -96,7 +96,7 @@
   function tarjeta(g) {
     const [, m, d] = g.fecha.split("-").map(Number), varios = g.funciones.length > 1;
     return `<div class="en-card"><div class="en-pic"><img src="${esc(g.banner || "og.jpg")}" alt="" loading="lazy"></div>
-<div class="en-body"><h3>${esc(g.titulo)}</h3><div class="en-sub">${esc(g.sub || "")}</div>
+<div class="en-body"><h3>${esc(g.titulo)}</h3>${g.sub ? `<div class="en-sub">${esc(g.sub)}</div>` : ""}
 <div class="en-when"><div class="en-cal"><small>${MES[m - 1].slice(0, 3)}</small><b>${d}</b></div><div><b>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}</b>${varios ? ` · ${g.funciones.length} turnos` : ""}<br>${lugarHtml(g)}</div></div>
 ${varios ? `<div class="en-elige">Elige tu turno:</div>` : ""}${g.funciones.map(f => turno(f, varios)).join("")}</div></div>`;
   }
