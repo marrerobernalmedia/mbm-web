@@ -84,7 +84,7 @@
     var HOY_INVITADOS = {
       // Manrufo: en Apagonia Hoy lo entrevistan como él mismo, Orlando Manrufo, salvo en "Murió la libreta" y
       // "Ni en pobreza", donde sale como Mariconchi (Eliam, 8-nov-2026)
-      "eXfx56gUutQ": ["Orlando Manrufo"], "NMpPuEm8bwI": ["Mayito el Gladiador"], "jgdWgzIt724": ["Mariconchi", "Nieto de Juana"],
+      "eXfx56gUutQ": ["Orlando Manrufo"], "NMpPuEm8bwI": ["Mayito el Gladiador"], "jgdWgzIt724": ["Mariconchi", "El Nieto de Juana"],
       "RoSEL5ufLfw": ["Burumba", "Julio Meireles"], "B5MnYHBJFNk": ["Burumba", "Julio Meireles"],
       "wroK9S73DcA": ["Mayito el Gladiador"], "ImQ0QYJloR0": ["Mayito el Gladiador"],
       "rDCbNKUIoRY": ["Mentepollo"], "uaG6X7E6tck": ["Mentepollo"],
