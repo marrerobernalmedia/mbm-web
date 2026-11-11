@@ -132,7 +132,7 @@ ${varios ? `<div class="en-elige">Elige tu turno:</div>` : ""}${g.funciones.map(
     const max = Math.max(1, g.max || 4), l = libres(g);
     let n = Math.min(2, max);
     hoja(`<h3>Reservar entradas gratis</h3>
-<p><b>${esc(g.titulo)}</b> · ${esc(g.sub || "")}<br>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · <b>turno de las " + esc(g.hora) + "</b>" : ""}${g.lugar ? "<br>📍 " + esc(g.lugar) + (g.direccion ? ", " + esc(g.direccion) : "") : ""}</p>
+<p><b>${esc(g.titulo)}</b>${g.sub ? " · " + esc(g.sub) : ""}<br>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · <b>turno de las " + esc(g.hora) + "</b>" : ""}${g.lugar ? "<br>📍 " + esc(g.lugar) + (g.direccion ? ", " + esc(g.direccion) : "") : ""}</p>
 ${l <= 0 ? `<p style="color:var(--bulb)">Ya no quedan entradas. Si te anotas, quedas en la lista de espera y te avisamos si se libera un lugar.</p>` : ""}
 <form class="en-f" id="enForm">
 <label for="enNom">Tu nombre</label><input id="enNom" name="nombre" autocomplete="name" maxlength="80" required value="${esc(ls.get("mbm_nom") || "")}">
@@ -174,7 +174,7 @@ ${l <= 0 ? `<p style="color:var(--bulb)">Ya no quedan entradas. Si te anotas, qu
     const pushOn = document.getElementById("pushLbl") && /✓/.test(document.getElementById("pushLbl").textContent);
     hoja(`<h3>${recien ? (r.estado === "espera" ? "Estás en la lista de espera" : "¡Listo! Tienes tus entradas") : "Tu entrada"}</h3>
 ${r.estado === "espera" ? `<p>La grabación está llena. Si alguien cancela, tu reserva pasa sola a confirmada y aquí lo vas a ver.</p>` : `<p>Muestra este código en la puerta. También lo encuentras siempre aquí, en la app.</p>`}
-<div class="en-ticket"><h4>${esc(g.titulo)}</h4><p>${esc(g.sub || "")}</p><p><b>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · " + esc(g.hora) : ""}</b></p>${g.lugar ? `<p>📍 ${esc(g.lugar)}${g.direccion ? "<br>" + esc(g.direccion) : ""}</p>` : ""}${g.mapa ? `<p><a href="${esc(g.mapa)}" target="_blank" rel="noopener" data-yt style="color:#0a58ca;font-weight:700">Cómo llegar →</a></p>` : ""}
+<div class="en-ticket"><h4>${esc(g.titulo)}</h4>${g.sub ? `<p>${esc(g.sub)}</p>` : ""}<p><b>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · " + esc(g.hora) : ""}</b></p>${g.lugar ? `<p>📍 ${esc(g.lugar)}${g.direccion ? "<br>" + esc(g.direccion) : ""}</p>` : ""}${g.mapa ? `<p><a href="${esc(g.mapa)}" target="_blank" rel="noopener" data-yt style="color:#0a58ca;font-weight:700">Cómo llegar →</a></p>` : ""}
 <div class="qr" id="enQr"></div><div class="en-est ${esc(r.estado)}">${r.estado === "espera" ? "LISTA DE ESPERA" : "CONFIRMADA"}</div>
 <p style="font-size:16px"><b>${esc(r.nombre)}</b> · ${r.cantidad} ${r.cantidad == 1 ? "entrada" : "entradas"}</p><div class="cod">${esc(r.codigo)}</div></div>
 ${!pushOn && document.getElementById("pushBtn") && !document.getElementById("pushBtn").hidden ? `<button class="en-go" data-en-push>🔔 Activar avisos para recordarte la grabación</button>` : ""}
