@@ -273,6 +273,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
 <script>window.THUMB_REMOTE = true;</script>
 <script src="data.js"></script>
 <script src="en.js"></script>
+<script src="player.js" defer></script>
 <script>
 const FB_HTML = `
 <div id="fbRoot" hidden>
@@ -322,7 +323,7 @@ let DESPUES = [];
 } catch (e) {} })();
 // ID del próximo capítulo ya programado (antes de filtrar el modo EN, que quita los que no tienen audio en inglés): prox[2] o el video "proximo"/"futuro" de ese pelotero
 const PROX_ID = (() => { const pn = String((D.prox||[])[0]||"").toLowerCase(); return (D.prox||[])[2] || Object.keys(D.vid).find(i => (D.vid[i].k==="proximo"||D.vid[i].k==="futuro") && String(D.vid[i].p||"").toLowerCase()===pn) || ""; })();
-const YT = id => "https://youtu.be/" + id;
+const YTU = id => "https://youtu.be/" + id;
 // ── Idioma (ES / EN). EN = Straight 2D Chest: solo las entrevistas con audio en inglés, textos de en.js
 const LANG = (() => { try { const u = new URLSearchParams(location.search).get("lang"); if (u === "es" || u === "en") localStorage.setItem("recta_lang", u); } catch (e) {} try { const s = localStorage.getItem("recta_lang"); if (s === "es" || s === "en") return s; } catch (e) {} return /^es/i.test(navigator.language || "es") ? "es" : "en"; })();
 const EN = LANG === "en" && !!window.RECTA_EN;
@@ -353,10 +354,19 @@ const view = document.getElementById("view");
 let tab = "inicio", open = null, sort = "serie";
 const H = (t, s, more) => `<h2>${t}${s?` <small>${s}</small>`:""}${more||""}</h2><div class="stitch"></div>`;
 const tag = id => serOf[id] ? `<span class="meta" style="color:${serOf[id].col}">${esc(serOf[id].name)}</span>` : "";
+// Reproductor dentro de la app (player.js): qué se muestra y qué sigue después de cada video
+const vivo = i => V[i] && V[i].k !== "proximo" && V[i].k !== "futuro";
+window.PLAYER = { en: EN,
+  info: id => { const v = V[id]; if (!v) return { t: "" }; return { t: v.t, sub: [v.p, serOf[id] && serOf[id].name].filter(Boolean).join(" · "), img: img(id), d: v.d }; },
+  next: id => { const out = [], add = l => (l || []).forEach(i => { if (i !== id && vivo(i) && !out.includes(i)) out.push(i); });
+    const v = V[id]; if (v && v.p) add(Object.keys(V).filter(i => V[i].p === v.p));
+    ALL.filter(s => s.v.includes(id)).forEach(s => { const k = s.v.indexOf(id); add(s.v.slice(k + 1).concat(s.v.slice(0, k))); });
+    add(Object.keys(V).filter(i => V[i].v && !EVENTO(i)).sort(byViews).slice(0, 30)); return out; }
+};
 function tile(id){ const v = V[id];
-  return `<a class="tile" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div>${v.p?`<div class="who">${esc(v.p)}</div>`:""}<h4>${esc(v.t)}</h4></a>`; }
+  return `<a class="tile" href="${YTU(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div>${v.p?`<div class="who">${esc(v.p)}</div>`:""}<h4>${esc(v.t)}</h4></a>`; }
 function item(id, rank){ const v = V[id];
-  return `<a class="item" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div><div>${rank?`<div class="rank">${rank}</div>`:""}${v.p?`<div class="who">${esc(v.p)}</div>`:""}<h4>${esc(v.t)}</h4><div class="meta">${v.v?fmt(v.v)+L(" vistas"," views"):""}</div></div></a>`; }
+  return `<a class="item" href="${YTU(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div><div>${rank?`<div class="rank">${rank}</div>`:""}${v.p?`<div class="who">${esc(v.p)}</div>`:""}<h4>${esc(v.t)}</h4><div class="meta">${v.v?fmt(v.v)+L(" vistas"," views"):""}</div></div></a>`; }
 const card = s => `<button class="sc" data-open="${s.id}" style="--sc:${s.col}"><img src="${s.banner}" alt="" loading="lazy"><div class="b"><b>${esc(s.name)}</b><span>${s.v.length} videos</span></div></button>`;
 const colRow = c => `<button class="col" data-open="${c.id}"><div class="stack">${c.v.slice(0,3).map(i=>`<img src="${img(i)}" alt="" loading="lazy">`).join("")}</div><div><b>${esc(c.name)}</b><span>${esc(c.tag)} · ${c.v.length} videos</span></div></button>`;
 function inicio(){
@@ -367,8 +377,8 @@ function inicio(){
   return `
   <section><div class="hero"><div class="pic"><img src="${TH_EN.has(last) ? img(last) : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + last + "/maxresdefault.jpg" : img(last)}" onerror="this.onerror=null;this.src=img(last)" alt=""><span class="tag">${L("● Último estreno","● Latest episode")}</span></div>
     <div class="body"><div class="who">${esc(V[last].p)}</div><h3>${esc(V[last].t)}</h3><div class="meta">${V[last].d}</div>
-    <div class="btns"><a class="btn yt" href="${YT(last)}" target="_blank" rel="noopener">${L("▶ Ver en YouTube","▶ Watch on YouTube")}</a><button class="btn ghost" data-open-sheet>${L("🔔 Avísame","🔔 Notify me")}</button><button class="btn ghost" data-share="${last}" data-t="${esc(V[last].p + ": " + V[last].t)}">${L("📤 Compartir","📤 Share")}</button></div>${EN?`<p class="meta" style="margin-top:10px">🎧 English audio: ⚙ Settings → Audio track → English</p>`:""}</div></div></section>
-  <section>${H(L("Próximo jueves","Next Thursday"))}<${proxId?`a href="${YT(proxId)}" target="_blank" rel="noopener"`:"div"} class="board"><div class="day"><small>${esc(d[0].toUpperCase())}</small><b>${esc(d[1])}</b><small>${esc((d[3]||"").slice(0,3).toUpperCase())}</small></div>
+    <div class="btns"><a class="btn yt" href="${YTU(last)}" target="_blank" rel="noopener">${L("▶ Ver en YouTube","▶ Watch on YouTube")}</a><button class="btn ghost" data-open-sheet>${L("🔔 Avísame","🔔 Notify me")}</button><button class="btn ghost" data-share="${last}" data-t="${esc(V[last].p + ": " + V[last].t)}">${L("📤 Compartir","📤 Share")}</button></div>${EN?`<p class="meta" style="margin-top:10px">🎧 English audio: ⚙ Settings → Audio track → English</p>`:""}</div></div></section>
+  <section>${H(L("Próximo jueves","Next Thursday"))}<${proxId?`a href="${YTU(proxId)}" target="_blank" rel="noopener"`:"div"} class="board"><div class="day"><small>${esc(d[0].toUpperCase())}</small><b>${esc(d[1])}</b><small>${esc((d[3]||"").slice(0,3).toUpperCase())}</small></div>
     <div><div class="name">${esc(p[0])}</div><p>${proxId ? L("Ya está programado en YouTube. Entra, mira el tráiler y toca «Notificarme» para que YouTube te avise cuando empiece el estreno.","Already scheduled on YouTube. Watch the trailer and tap “Notify me” so YouTube alerts you when the premiere starts.") : L("Nueva entrevista en Recta Al Pecho. Suscríbete y toca la campanita para que YouTube te avise.","New interview on Recta Al Pecho, recorded in Spanish. The English audio track usually follows on YouTube.")}</p>${proxId?`<span class="trl">${L("🔔 Avísame del estreno","🔔 Remind me on YouTube")}</span>`:""}</div></${proxId?"a":"div"}>${DESPUES.length?`<div class="next">${DESPUES.map(c => { const [y,m,dd] = c.f.split("-").map(Number); const MS = EN ? ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"] : ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"]; return `<div><small>${L("Después","Up next")} · ${EN ? "Thu " + MS[m-1] + " " + dd : "jue " + dd + " " + MS[m-1]}</small><b>${esc(c.p)}</b></div>`; }).join("")}</div>`:""}</section>
   <section>${H(L("Las series","The series"), "", `<button class="more" data-go="series">${L("Ver todas →","See all →")}</button>`)}<div class="row">${D.series.map(s => `<div class="tile">${card(s)}</div>`).join("")}</div></section>
   ${shelves}
@@ -392,7 +402,7 @@ function page(s){
 function mitos(){
   return `<section>${H(L("Mitos de la pelota cubana","Cuban baseball myths"))}<p class="lede">${L("Lo que se repite en las peñas y en los comentarios, y lo que dicen los números. Cada respuesta tiene su entrevista.","What fans keep repeating, and what the numbers say. Every answer has its interview.")}</p></section>
   <section><div class="list">${D.m.map((m,i)=>`<article class="mito"><div class="q"><div class="lbl">${L("El mito","The myth")} <span class="num">#${i+1}</span></div><p>${esc(m[0])}</p></div>
-  <a class="a" href="${YT(m[2])}" target="_blank" rel="noopener"><div><div class="lbl">${L("Recta al pecho","Straight to the chest")}</div><p>${esc(m[1])}</p></div><div class="th"><img src="${img(m[2])}" alt="" loading="lazy"></div></a></article>`).join("")}</div></section>`;
+  <a class="a" href="${YTU(m[2])}" target="_blank" rel="noopener"><div><div class="lbl">${L("Recta al pecho","Straight to the chest")}</div><p>${esc(m[1])}</p></div><div class="th"><img src="${img(m[2])}" alt="" loading="lazy"></div></a></article>`).join("")}</div></section>`;
 }
 function noticias(){
   return `<section>${H(L("Noticias","Stories"), L("de rectaalpecho.com","from straight2dchest.com"))}<div class="list">${D.n.map(n=>`<article class="post"><div class="ph"><img src="thumbs/logo.jpg" alt=""><div><b>${L("rectaalpecho.com","straight2dchest.com")}</b><span>${esc(n[1])}</span></div></div><h3>${esc(n[0])}</h3><p>${esc(n[4])}</p><a href="${n[2]}" target="_blank" rel="noopener"><img src="${n[5] || img(n[3])}" alt="" loading="lazy"></a><div class="act"><a href="${n[2]}" target="_blank" rel="noopener">${L("Leer el artículo →","Read the story →")}</a></div></article>`).join("")}</div></section>`;

@@ -322,6 +322,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
 <script>window.THUMB_REMOTE = true;</script>
 <script src="data.js"></script>
 <script src="ajustes.js"></script>
+<script src="player.js" defer></script>
 <script>
 const FB_HTML = `
 <div id="fbRoot" hidden>
@@ -357,7 +358,7 @@ const D = window.APPDATA;
   Object.values(D.vid).forEach(v => { if (v.k === "proximo" && v.f && (v.f < today || (v.f === today && hour >= 8))) { v.k = "episodio"; if (v.d === "Próximamente") v.d = ""; v.nuevo = true; } });
 } catch (e) {} })();
 // Estreno anunciado sin enlace todavía (Eliam, 7-nov-2026): el video trae su propia miniatura ("img") y enlace provisional ("url")
-const YT = id => (D.vid[id] && D.vid[id].url) || "https://youtu.be/" + id;
+const YTU = id => (D.vid[id] && D.vid[id].url) || "https://youtu.be/" + id;
 const img = id => (D.vid[id] && D.vid[id].img) ? D.vid[id].img : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg" : "thumbs/" + id + ".jpg";
 const fmt = n => n >= 1e6 ? (n/1e6).toFixed(1).replace(".0","") + "M" : n >= 1000 ? Math.round(n/1000) + "K" : String(n||0);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -387,13 +388,21 @@ const showTag = id => { const s = SH[showOf[id]]; return s ? `<span class="show"
 const who = id => V[id].c.length ? `<div class="who">${esc(V[id].c.join(" · "))}</div>` : "";
 const cover = s => s.banner || img(s.v.slice().sort(byViews)[0]);
 
+// Reproductor dentro de la app (player.js): qué se muestra y qué sigue después de cada video
+window.PLAYER = {
+  info: id => { const v = V[id]; if (!v) return { t: "" }; const sh = SH[showOf[id]]; return { t: tt(id), sub: [v.c.join(" · "), sh ? sname(sh) + (v.n ? " " + v.n : "") : ""].filter(Boolean).join(" · "), img: img(id), d: v.d }; },
+  next: id => { const v = V[id], out = [], add = l => (l || []).forEach(i => { if (i !== id && live(i) && !out.includes(i)) out.push(i); });
+    if (v) { v.c.forEach(c => add(((CM[c] || {}).all || []).filter(i => V[i]).sort(byDate)));
+      const s = SH[showOf[id]]; if (s) { const k = s.v.indexOf(id); add(k >= 0 ? s.v.slice(k + 1).concat(s.v.slice(0, k)) : s.v); } }
+    add(Object.keys(V).filter(i => V[i].v).sort(byViews).slice(0, 30)); return out; }
+};
 function tile(id){
   const v = V[id];
-  return `<a class="tile" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="${esc(v.t)}" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div>${showTag(id)}<h4>${esc(tt(id))}</h4>${who(id)}</a>`;
+  return `<a class="tile" href="${YTU(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="${esc(v.t)}" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div>${showTag(id)}<h4>${esc(tt(id))}</h4>${who(id)}</a>`;
 }
 function item(id, rank){
   const v = V[id];
-  return `<a class="item" href="${YT(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="${esc(v.t)}" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div><div>${rank?`<div class="rank">${rank}</div>`:""}${showTag(id)}<h4>${esc(tt(id))}</h4>${who(id)}${v.v?`<div class="meta">${fmt(v.v)} vistas</div>`:""}${soonV(id)?`<div class="meta" style="color:var(--bulb)">Estreno ${fEst(v.f)} · ver el tráiler</div>`:""}</div></a>`;
+  return `<a class="item" href="${YTU(id)}" target="_blank" rel="noopener"><div class="th"><img src="${img(id)}" alt="${esc(v.t)}" loading="lazy">${v.d?`<span class="dur">${v.d}</span>`:""}</div><div>${rank?`<div class="rank">${rank}</div>`:""}${showTag(id)}<h4>${esc(tt(id))}</h4>${who(id)}${v.v?`<div class="meta">${fmt(v.v)} vistas</div>`:""}${soonV(id)?`<div class="meta" style="color:var(--bulb)">Estreno ${fEst(v.f)} · ver el tráiler</div>`:""}</div></a>`;
 }
 const proxSec = (l, t) => { l = l.filter(soonV).sort(byFecha); return l.length ? `<section>${H(t || "Próximos estrenos", l.length + "")}<div class="list">${l.map(i => item(i)).join("")}</div></section>` : ""; };
 function showCard(s){
@@ -404,7 +413,7 @@ function inicio(){
   const upcoming = Object.keys(V).filter(i => V[i].k === "proximo" && V[i].f).sort((a,b) => V[a].f.localeCompare(V[b].f));
   const next = upcoming[0] || Object.keys(V).find(i => V[i].k === "proximo");
   const fdate = f => { try { const d = new Date(f + "T12:00:00Z"); return ["DOM","LUN","MAR","MIÉ","JUE","VIE","SÁB"][d.getUTCDay()] + " " + d.getUTCDate() + " " + ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"][d.getUTCMonth()]; } catch (e) { return ""; } };
-  const upItem = id => { const sh = SH[showOf[id]] || SH.lrecs; return `<a class="up" href="${YT(id)}" target="_blank" rel="noopener"><span class="date">${fdate(V[id].f)}</span><img src="${img(id)}" alt="" loading="lazy"><div><em style="--sc:${sh.col}">${esc(sname(sh))}${V[id].n ? " " + esc(V[id].n) : ""}</em><b>${esc(tt(id))}</b>${who(id)}</div></a>`; };
+  const upItem = id => { const sh = SH[showOf[id]] || SH.lrecs; return `<a class="up" href="${YTU(id)}" target="_blank" rel="noopener"><span class="date">${fdate(V[id].f)}</span><img src="${img(id)}" alt="" loading="lazy"><div><em style="--sc:${sh.col}">${esc(sname(sh))}${V[id].n ? " " + esc(V[id].n) : ""}</em><b>${esc(tt(id))}</b>${who(id)}</div></a>`; };
   const upnext = upcoming.slice(0, 6).map(upItem).join("");
   // En el teléfono: la programación que viene después del próximo estreno (Eliam, 5-nov-2026)
   const upmob = upcoming.slice(1, 7).map(upItem).join("");
@@ -422,10 +431,10 @@ function inicio(){
   ${latest ? (() => { const sh = SH[showOf[latest]] || SH.lrecs; const f = V[latest].f || ""; const tag = f === window.MBM_TODAY ? "● Estreno de hoy" : f === yday ? "● Estrenó ayer" : "● Último estreno";
     return `<section><div class="hero"><div class="pic"><img src="${V[latest].img ? V[latest].img : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt="${esc(V[latest].t)}"><span class="tag">${tag}</span></div>
     <div class="body"><span class="show" style="--sc:${sh.col}">${esc(sname(sh))}${V[latest].n ? " " + esc(V[latest].n) : ""}</span><h3>${esc(tt(latest))}</h3>${who(latest)}
-    <div class="btns"><a class="btn yt" href="${YT(latest)}" target="_blank" rel="noopener">▶ Verlo ahora</a>${next ? `<button class="btn ghost" data-open-sheet>🔔 Avísame</button>` : ""}<button class="btn ghost" data-share="${latest}" data-t="${esc(V[latest].t)}">📤 Compartir</button></div></div></div></section>`; })() : ""}
+    <div class="btns"><a class="btn yt" href="${YTU(latest)}" target="_blank" rel="noopener">▶ Verlo ahora</a>${next ? `<button class="btn ghost" data-open-sheet>🔔 Avísame</button>` : ""}<button class="btn ghost" data-share="${latest}" data-t="${esc(V[latest].t)}">📤 Compartir</button></div></div></div></section>`; })() : ""}
   ${upnext ? `<section class="deskonly">${H("Próximos estrenos en la red")}<div class="uplist">${upnext}</div></section>` : ""}
   </div><div>
-  ${next ? `<section><a class="next" href="${YT(next)}" target="_blank" rel="noopener"><img src="${img(next)}" alt="${esc(V[next].t)}"><div><em>Próximo estreno · ${esc(SH[showOf[next]] ? sname(SH[showOf[next]]) : "La Risa es Cosa Seria")}${V[next].n ? " " + esc(V[next].n) : ""}</em><b>${esc(tt(next))}</b><span>Toca y dale a la campanita en YouTube</span></div></a></section>` : ""}
+  ${next ? `<section><a class="next" href="${YTU(next)}" target="_blank" rel="noopener"><img src="${img(next)}" alt="${esc(V[next].t)}"><div><em>Próximo estreno · ${esc(SH[showOf[next]] ? sname(SH[showOf[next]]) : "La Risa es Cosa Seria")}${V[next].n ? " " + esc(V[next].n) : ""}</em><b>${esc(tt(next))}</b><span>Toca y dale a la campanita en YouTube</span></div></a></section>` : ""}
   ${upmob ? `<section class="mobonly">${H("Lo que viene en la red")}<div class="uplist">${upmob}</div></section>` : ""}
   <section>${H("La semana en El Home")}<div class="week">${week}</div></section>
   <section class="deskonly">${H("Los más vistos de la casa")}<div class="list one">${all.slice().sort(byViews).slice(0,6).map((id,i)=>item(id,i+1)).join("")}</div></section></div></div>
@@ -476,7 +485,7 @@ function comicPage(c){
   ${groups.map(([s, g]) => `<section>${H(esc(s.id==="lrecs"?"Más de La Risa es Cosa Seria":sname(s)), g.length + "")}<div class="list">${g.sort(byViews).map(i => item(i)).join("")}</div></section>`).join("")}`;
 }
 function noticias(){
-  return `<section>${H("Noticias de la casa")}<div class="list">${D.posts.map(p => `<article class="post"><div class="ph"><img src="thumbs/logo-home.jpg" alt=""><div><b>El Home de la Risa</b><span>${esc(p.f)}</span></div></div><p>${esc(p.txt)}</p><a href="${YT(p.id)}" target="_blank" rel="noopener"><img src="${img(p.id)}" alt="" loading="lazy"></a><div class="act"><a href="${YT(p.id)}" target="_blank" rel="noopener">▶ ${esc(p.cta)}</a>${p.wa?` · <a href="https://chat.whatsapp.com/BibOkpcOvAg19Mc25grPvi" target="_blank" rel="noopener">Unirme al WhatsApp</a>`:""}</div></article>`).join("")}</div></section>`;
+  return `<section>${H("Noticias de la casa")}<div class="list">${D.posts.map(p => `<article class="post"><div class="ph"><img src="thumbs/logo-home.jpg" alt=""><div><b>El Home de la Risa</b><span>${esc(p.f)}</span></div></div><p>${esc(p.txt)}</p><a href="${YTU(p.id)}" target="_blank" rel="noopener"><img src="${img(p.id)}" alt="" loading="lazy"></a><div class="act"><a href="${YTU(p.id)}" target="_blank" rel="noopener">▶ ${esc(p.cta)}</a>${p.wa?` · <a href="https://chat.whatsapp.com/BibOkpcOvAg19Mc25grPvi" target="_blank" rel="noopener">Unirme al WhatsApp</a>`:""}</div></article>`).join("")}</div></section>`;
 }
 function search(q){
   const n = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
@@ -547,7 +556,7 @@ document.getElementById("fbForm").addEventListener("submit", async e => {
 });
 document.addEventListener("click", e => { if (e.target.closest("[data-fb]")) openFb(true); });
 document.addEventListener("click", e => { const b = e.target.closest("[data-share]"); if (!b) return; e.preventDefault();
-  const url = YT(b.dataset.share), text = b.dataset.t + " — " + url + "\nBaja la app: " + location.origin + location.pathname;
+  const url = YTU(b.dataset.share), text = b.dataset.t + " — " + url + "\nBaja la app: " + location.origin + location.pathname;
   if (navigator.share) navigator.share({ title: b.dataset.t, text: b.dataset.t + "\nBaja la app: " + location.origin + location.pathname, url }).catch(() => {});
   else window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank", "noopener"); });
 const IS_SITE = /elhomedelarisa\.com$/.test(location.hostname);
