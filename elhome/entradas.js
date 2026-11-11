@@ -95,12 +95,12 @@
   }
   function tarjeta(g) {
     const [, m, d] = g.fecha.split("-").map(Number), varios = g.funciones.length > 1;
-    return `<div class="en-card"><div class="en-pic"><img src="${esc(g.banner || "og.jpg")}" alt="" loading="lazy"><span class="en-badge">GRABACIÓN CON PÚBLICO</span></div>
+    return `<div class="en-card"><div class="en-pic"><img src="${esc(g.banner || "og.jpg")}" alt="" loading="lazy"></div>
 <div class="en-body"><h3>${esc(g.titulo)}</h3><div class="en-sub">${esc(g.sub || "")}</div>
 <div class="en-when"><div class="en-cal"><small>${MES[m - 1].slice(0, 3)}</small><b>${d}</b></div><div><b>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}</b>${varios ? ` · ${g.funciones.length} turnos` : ""}<br>${lugarHtml(g)}</div></div>
 ${varios ? `<div class="en-elige">Elige tu turno:</div>` : ""}${g.funciones.map(f => turno(f, varios)).join("")}</div></div>`;
   }
-  const html = () => `<h2>Entradas gratis <small>a las grabaciones</small></h2><div class="bulbs"></div>` + (!G ? `<p class="en-vacio">Cargando…</p>` : G.length ? `<div class="en-list">${G.map(tarjeta).join("")}</div>` : `<p class="en-vacio">Por ahora no hay grabaciones con público anunciadas. Activa los avisos 🔔 y te avisamos cuando se abran las entradas.</p>`);
+  const html = () => `` + (!G ? `<p class="en-vacio">Cargando…</p>` : G.length ? `<div class="en-list">${G.map(tarjeta).join("")}</div>` : `<p class="en-vacio">Por ahora no hay grabaciones con público anunciadas. Activa los avisos 🔔 y te avisamos cuando se abran las entradas.</p>`);
   function seccion() { return `<section class="en-sec" id="entradasSec">${html()}</section>`; }
   function pintar() {
     const pon = () => { const s = document.getElementById("entradasSec"); if (s) s.innerHTML = html(); };
