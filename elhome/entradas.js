@@ -60,6 +60,10 @@
 .en-est{display:inline-block;font-weight:800;font-size:12px;border-radius:999px;padding:4px 10px;margin:4px 0}
 .en-est.confirmada{background:#1f7a1f;color:#fff}.en-est.espera{background:#f2c14e;color:#111}
 .en-conf{border:1px solid #444;border-radius:12px;padding:12px;margin:8px 0}.en-conf p{margin:0 0 10px;font-weight:700;color:var(--fg)}.en-conf div{display:flex;gap:8px}.en-conf button{flex:1;border-radius:10px;padding:11px 8px;font:inherit;font-weight:800;font-size:14px;cursor:pointer;border:1px solid #444;background:none;color:var(--fg)}.en-conf .si{background:#b3261e;border-color:#b3261e;color:#fff}
+.en-pushok{font-size:13.5px;font-weight:700;color:var(--lime);margin:10px 0 4px}
+.en-aviso{position:fixed;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom,0px) + 76px);z-index:60;display:flex;align-items:center;gap:10px;background:#1d1a22;border:1px solid #444;border-radius:14px;padding:10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.5);color:var(--fg);font-size:13.5px;line-height:1.25}
+.en-aviso span{flex:1}.en-aviso .ok{border:0;border-radius:10px;background:var(--lime);color:#111;font:inherit;font-weight:800;padding:9px 12px;cursor:pointer;white-space:nowrap}.en-aviso .x{border:0;background:none;color:var(--mute);font-size:20px;line-height:1;padding:4px 6px;cursor:pointer}
+@media(min-width:900px){.en-aviso{left:auto;right:20px;bottom:20px;max-width:420px}}
 .en-link{background:none;border:0;color:var(--mute);text-decoration:underline;font:inherit;font-size:13px;cursor:pointer;padding:8px 0}
 .en-store{display:flex;align-items:center;gap:10px;justify-content:center;background:#000;color:#fff;border:1px solid #444;border-radius:12px;padding:12px;font-weight:800;text-decoration:none;margin:8px 0}
 .en-stores{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0;align-items:start}
@@ -186,12 +190,12 @@ ${r.estado === "espera" ? `<p>La grabación está llena. Si alguien cancela, tu 
 <div class="en-ticket"><h4>${esc(g.titulo)}</h4>${g.sub ? `<p>${esc(g.sub)}</p>` : ""}<p><b>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · " + esc(g.hora) : ""}</b></p>${g.lugar ? `<p>📍 ${esc(g.lugar)}${g.direccion ? "<br>" + esc(g.direccion) : ""}</p>` : ""}${g.mapa ? `<p><a href="${esc(g.mapa)}" target="_blank" rel="noopener" data-yt style="color:#0a58ca;font-weight:700">Cómo llegar →</a></p>` : ""}
 <div class="qr" id="enQr"></div><div class="en-est ${esc(r.estado)}">${r.estado === "espera" ? "LISTA DE ESPERA" : "CONFIRMADA"}</div>
 <p style="font-size:16px"><b>${esc(r.nombre)}</b> · ${r.cantidad} ${r.cantidad == 1 ? "entrada" : "entradas"}</p><div class="cod">${esc(r.codigo)}</div></div>
-${!pushOn && document.getElementById("pushBtn") && !document.getElementById("pushBtn").hidden ? `<button class="en-go" data-en-push>🔔 Activar avisos para recordarte la grabación</button>` : ""}
+${pushOn ? `<p class="en-pushok">🔔 Avisos activados: te recordamos la grabación ✓</p>` : document.getElementById("pushBtn") && !document.getElementById("pushBtn").hidden ? `<button class="en-go" data-en-push>🔔 Activar avisos para recordarte la grabación</button>` : ""}
 <p style="font-size:12.5px">Si cambias de planes, cancela para que otra persona pueda ir.</p>
 <button class="en-link" data-en-cancel="${esc(r.codigo)}">Cancelar mi reserva</button>
 <button class="close" data-en-x>Listo</button>`);
     qrLib().then(() => { const q = qrcode(0, "M"); q.addData(url); q.make(); const el = root.querySelector("#enQr"); if (el) el.innerHTML = q.createSvgTag({ cellSize: 4, margin: 2, scalable: true }); }).catch(() => {});
-    const pb = root.querySelector("[data-en-push]"); if (pb) pb.onclick = () => { document.getElementById("pushBtn").click(); pb.remove(); };
+    const pb = root.querySelector("[data-en-push]"); if (pb) pb.onclick = () => { document.getElementById("pushBtn").click(); pb.outerHTML = `<p class="en-pushok">🔔 Avisos: acepta el permiso que te pide el teléfono.</p>`; };
     // Confirmación dentro de la app (sin el cuadro del navegador «marrerobernalmedia.com dice»; Eliam, 11-nov-2026)
     root.querySelector("[data-en-cancel]").onclick = e => {
       const btn = e.currentTarget, cod = btn.dataset.enCancel, caja = document.createElement("div");
@@ -217,5 +221,16 @@ ${!pushOn && document.getElementById("pushBtn") && !document.getElementById("pus
     formulario(g);
   });
   // Enlace directo (avisos, WhatsApp): ...?entradas=1 abre la pestaña Entradas (lo hace index.html)
+  // Al abrir la app: si los avisos no están activados, se ofrece activarlos (Eliam, 11-nov-2026). Si lo cierra, vuelve a ofrecerse a los 3 días.
+  setTimeout(() => {
+    const btn = document.getElementById("pushBtn"), lbl = document.getElementById("pushLbl");
+    if (!btn || btn.hidden || !lbl || /✓/.test(lbl.textContent) || !esApp()) return;
+    if (Date.now() - (+ls.get("mbm_aviso_no") || 0) < 3 * 864e5) return;
+    const d = document.createElement("div"); d.className = "en-aviso";
+    d.innerHTML = `<span>🔔 Activa los avisos: te recordamos tu grabación y cada estreno.</span><button type="button" class="ok">Activar</button><button type="button" class="x" aria-label="Cerrar">×</button>`;
+    document.body.appendChild(d);
+    d.querySelector(".ok").onclick = () => { btn.click(); d.remove(); };
+    d.querySelector(".x").onclick = () => { ls.set("mbm_aviso_no", String(Date.now())); d.remove(); };
+  }, 5000);
   window.ENTRADAS = { seccion, pintar, esApp };
 })();
