@@ -59,6 +59,7 @@
 .en-ticket .cod{font-size:22px;font-weight:900;letter-spacing:.18em;margin-top:4px}
 .en-est{display:inline-block;font-weight:800;font-size:12px;border-radius:999px;padding:4px 10px;margin:4px 0}
 .en-est.confirmada{background:#1f7a1f;color:#fff}.en-est.espera{background:#f2c14e;color:#111}
+.en-conf{border:1px solid #444;border-radius:12px;padding:12px;margin:8px 0}.en-conf p{margin:0 0 10px;font-weight:700;color:var(--fg)}.en-conf div{display:flex;gap:8px}.en-conf button{flex:1;border-radius:10px;padding:11px 8px;font:inherit;font-weight:800;font-size:14px;cursor:pointer;border:1px solid #444;background:none;color:var(--fg)}.en-conf .si{background:#b3261e;border-color:#b3261e;color:#fff}
 .en-link{background:none;border:0;color:var(--mute);text-decoration:underline;font:inherit;font-size:13px;cursor:pointer;padding:8px 0}
 .en-store{display:flex;align-items:center;gap:10px;justify-content:center;background:#000;color:#fff;border:1px solid #444;border-radius:12px;padding:12px;font-weight:800;text-decoration:none;margin:8px 0}
 .en-stores{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0;align-items:start}
@@ -191,12 +192,20 @@ ${!pushOn && document.getElementById("pushBtn") && !document.getElementById("pus
 <button class="close" data-en-x>Listo</button>`);
     qrLib().then(() => { const q = qrcode(0, "M"); q.addData(url); q.make(); const el = root.querySelector("#enQr"); if (el) el.innerHTML = q.createSvgTag({ cellSize: 4, margin: 2, scalable: true }); }).catch(() => {});
     const pb = root.querySelector("[data-en-push]"); if (pb) pb.onclick = () => { document.getElementById("pushBtn").click(); pb.remove(); };
-    root.querySelector("[data-en-cancel]").onclick = async e => {
-      if (!confirm("¿Seguro que quieres cancelar tu reserva?")) return;
-      const fd = new FormData(); fd.set("accion", "cancelar"); fd.set("codigo", e.target.dataset.enCancel); fd.set("disp", disp);
-      try { await fetch("reservas.php", { method: "POST", body: fd }); } catch (x) {}
-      mias = mias.filter(x => x.codigo !== e.target.dataset.enCancel); ls.set("mbm_mias", JSON.stringify(mias)); etiqueta(g.id, "cancelada");
-      cerrar(); await cargar(true); pintar();
+    // Confirmación dentro de la app (sin el cuadro del navegador «marrerobernalmedia.com dice»; Eliam, 11-nov-2026)
+    root.querySelector("[data-en-cancel]").onclick = e => {
+      const btn = e.currentTarget, cod = btn.dataset.enCancel, caja = document.createElement("div");
+      caja.className = "en-conf";
+      caja.innerHTML = `<p>¿Seguro que quieres cancelar tu reserva?</p><div><button type="button" class="si">Sí, cancelar</button><button type="button" class="no">No, la conservo</button></div>`;
+      btn.hidden = true; btn.after(caja); caja.scrollIntoView({ block: "nearest" });
+      caja.querySelector(".no").onclick = () => { caja.remove(); btn.hidden = false; };
+      caja.querySelector(".si").onclick = async ev => {
+        ev.currentTarget.disabled = true;
+        const fd = new FormData(); fd.set("accion", "cancelar"); fd.set("codigo", cod); fd.set("disp", disp);
+        try { await fetch("reservas.php", { method: "POST", body: fd }); } catch (x) {}
+        mias = mias.filter(x => x.codigo !== cod); ls.set("mbm_mias", JSON.stringify(mias)); etiqueta(g.id, "cancelada");
+        cerrar(); await cargar(true); pintar();
+      };
     };
   }
 
