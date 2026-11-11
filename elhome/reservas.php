@@ -2,6 +2,7 @@
 // ============================================================
 // Entradas gratis a las grabaciones — El Home de la Risa (Eliam, 11-nov-2026)
 // Las grabaciones están en grabaciones.json (fecha, lugar, cupo, máximo por persona).
+// Reglas (Eliam, 11-nov-2026): máximo 4 entradas por reserva y UNA reserva por teléfono (por número y por aparato) en cada grabación.
 // Las reservas se guardan en opiniones/reservas.json (carpeta protegida, no está en el repo).
 // Lo usa entradas.js desde la app. La lista y la puerta: entradas-admin.php.
 //   GET  ?accion=cupos                 → asientos libres de cada grabación
@@ -49,6 +50,7 @@ if ($accion === 'reservar') {
   if (strlen($dig) < 7 || strlen($dig) > 15) fallo('Escribe un teléfono válido, con el código del país si no es de EE. UU.');
   $max = max(1, intval($g['max'] ?? 4));
   if ($cant < 1 || $cant > $max) fallo("Puedes reservar de 1 a $max entradas.");
+  if (strlen($disp) < 12) fallo('Las entradas se reservan desde la app de El Home de la Risa.');
   if (!limite('reservar', 8, 3600)) fallo('Demasiados intentos. Prueba en un rato.', 429);
 
   $res = con_reservas(function (&$db) use ($gid, $g, $G, $nombre, $tel, $dig, $cant, $disp) {
@@ -56,6 +58,11 @@ if ($accion === 'reservar') {
     foreach ($db['reservas'] as $x) {
       if ($x['grabacion'] !== $gid && $x['estado'] !== 'cancelada' && ($G[$x['grabacion']]['grupo'] ?? '') === $g['grupo'] && preg_replace('/\D/', '', $x['telefono']) === $dig)
         return ['otro' => $G[$x['grabacion']]['hora'] ?? ''];
+    }
+    // Una sola reserva por teléfono (aparato): si esta app ya reservó con otro número para esta grabación, no puede hacer otra (Eliam, 11-nov-2026)
+    foreach ($db['reservas'] as $x) {
+      if ($x['estado'] !== 'cancelada' && ($x['disp'] ?? '') === $disp && ($G[$x['grabacion']]['grupo'] ?? '') === $g['grupo'] && preg_replace('/\D/', '', $x['telefono']) !== $dig)
+        return ['aparato' => true];
     }
     // Mismo teléfono y misma grabación: se actualiza la reserva que ya tiene
     foreach ($db['reservas'] as &$r) {
@@ -76,6 +83,7 @@ if ($accion === 'reservar') {
     return ['r' => $r, 'nueva' => true];
   });
   if (!$res) fallo('No se pudo guardar. Prueba otra vez.', 500);
+  if (isset($res['aparato'])) fallo('Este teléfono ya tiene una reserva para esta grabación (máximo ' . $max . ' entradas). Cada persona reserva desde su propia app.');
   if (isset($res['otro'])) fallo('Ya tienes entradas para el turno de las ' . $res['otro'] . ' de esta grabación. Si quieres cambiar de turno, cancela esas primero.');
   echo json_encode(['ok' => true, 'reserva' => publica($res['r']), 'nueva' => $res['nueva']]); exit;
 }

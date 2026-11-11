@@ -144,7 +144,8 @@ ${l <= 0 ? `<p style="color:var(--bulb)">Ya no quedan entradas. Si te anotas, qu
 <form class="en-f" id="enForm">
 <label for="enNom">Tu nombre</label><input id="enNom" name="nombre" autocomplete="name" maxlength="80" required value="${esc(ls.get("mbm_nom") || "")}">
 <label for="enTel">Tu teléfono (WhatsApp)</label><input id="enTel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="Ej. 702 555 1234 o +34 600 000 000" required value="${esc(ls.get("mbm_tel") || "")}">
-<label>¿Cuántas entradas? <span style="font-weight:400;color:var(--mute)">(máximo ${max})</span></label>
+<label>¿Cuántas entradas? <span style="font-weight:400;color:var(--mute)">(máximo ${max} por reserva)</span></label>
+<p style="font-size:13px;color:var(--mute);margin:2px 0 8px">Una sola reserva por teléfono. Si vienen más de ${max}, cada persona reserva desde su propia app.</p>
 <div class="en-n"><button type="button" data-en-n="-1" aria-label="Menos">−</button><b id="enN">${n}</b><button type="button" data-en-n="1" aria-label="Más">+</button></div>
 <div style="position:absolute;left:-9999px" aria-hidden="true"><input name="web" tabindex="-1" autocomplete="off"></div>
 <div class="en-msg" id="enMsg" role="status"></div>
