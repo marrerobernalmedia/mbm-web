@@ -324,6 +324,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
 <script src="data.js"></script>
 <script src="ajustes.js"></script>
 <script src="player.js" defer></script>
+<script src="entradas.js"></script>
 <script>
 const FB_HTML = `
 <div id="fbRoot" hidden>
@@ -428,7 +429,7 @@ function inicio(){
     return `<section>${H(esc(sname(s)), "", `<button class="more" data-show="${s.id}">Ver todo →</button>`)}<div class="row">${l.map(tile).join("")}</div></section>`;
   }).join("");
   const funny = D.comics.slice(0, window.matchMedia("(min-width: 900px)").matches ? 12 : 10);
-  return `<div class="home-top"><div>
+  return `${window.ENTRADAS ? ENTRADAS.seccion() : ""}<div class="home-top"><div>
   ${latest ? (() => { const sh = SH[showOf[latest]] || SH.lrecs; const f = V[latest].f || ""; const tag = f === window.MBM_TODAY ? "● Estreno de hoy" : f === yday ? "● Estrenó ayer" : "● Último estreno";
     return `<section><div class="hero"><div class="pic"><img src="${V[latest].img ? V[latest].img : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt="${esc(V[latest].t)}"><span class="tag">${tag}</span></div>
     <div class="body"><span class="show" style="--sc:${sh.col}">${esc(sname(sh))}${V[latest].n ? " " + esc(V[latest].n) : ""}</span><h3>${esc(tt(latest))}</h3>${who(latest)}
@@ -496,6 +497,7 @@ function search(q){
 function render(){
   const q = document.getElementById("q").value;
   view.innerHTML = (q.trim() ? search(q) : ({inicio, shows, humoristas, noticias}[tab])()) + fbStrip();
+  if (window.ENTRADAS && !q.trim() && tab === "inicio") ENTRADAS.pintar();
 }
 function go(t){
   tab = t; document.getElementById("q").value = "";

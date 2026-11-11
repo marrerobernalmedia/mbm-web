@@ -28,7 +28,7 @@
   const OS = {
     init: async () => {},
     Notifications: { get permission() { return est.permiso; }, requestPermission: pedir, addEventListener: (e, f) => ls.push(f) },
-    User: { PushSubscription: { get optedIn() { return est.suscrito; }, optIn: pedir, addEventListener: (e, f) => ls.push(f) } }
+    User: { addTag: (k, v) => { if (Av && Av.etiqueta) Av.etiqueta({ clave: String(k), valor: String(v) }).catch(() => {}); }, PushSubscription: { get optedIn() { return est.suscrito; }, optIn: pedir, addEventListener: (e, f) => ls.push(f) } }
   };
   const cola = [];
   Object.defineProperty(cola, "push", { writable: false, value: fn => { try { const r = fn(OS); if (r && r.catch) r.catch(() => {}); } catch (e) {} return 0; } });

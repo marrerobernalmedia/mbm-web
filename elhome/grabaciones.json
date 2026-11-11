@@ -1,0 +1,30 @@
+[
+  {
+    "id": "cuero-t1",
+    "show": "cuero",
+    "titulo": "Si de Cuero se Trata",
+    "sub": "Grabación de la primera temporada",
+    "fecha": "2027-02-02",
+    "hora": "",
+    "lugar": "",
+    "direccion": "",
+    "cupo": 100,
+    "max": 4,
+    "abierta": true,
+    "banner": "banners/cuero.jpg"
+  },
+  {
+    "id": "lrecs-t9",
+    "show": "lrecs",
+    "titulo": "La Risa es Cosa Seria",
+    "sub": "Grabación de la temporada 9",
+    "fecha": "2027-03-02",
+    "hora": "",
+    "lugar": "",
+    "direccion": "",
+    "cupo": 100,
+    "max": 4,
+    "abierta": true,
+    "banner": "banners/lrecs.jpg"
+  }
+]

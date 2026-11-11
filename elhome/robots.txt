@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /feedback.php
 Disallow: /avisos.php
+Disallow: /reservas.php
+Disallow: /entradas-admin.php
 
 Sitemap: https://www.elhomedelarisa.com/sitemap.xml

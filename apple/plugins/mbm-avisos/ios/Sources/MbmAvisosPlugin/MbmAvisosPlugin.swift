@@ -12,7 +12,8 @@ public class MbmAvisosPlugin: CAPPlugin, CAPBridgedPlugin {
     public let pluginMethods: [CAPPluginMethod] = [
         CAPPluginMethod(name: "iniciar", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "estado", returnType: CAPPluginReturnPromise),
-        CAPPluginMethod(name: "pedir", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "pedir", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "etiqueta", returnType: CAPPluginReturnPromise)
     ]
     private static let clave = "mbm_onesignal_app_id"
     private static var iniciado = false
@@ -59,6 +60,15 @@ public class MbmAvisosPlugin: CAPPlugin, CAPBridgedPlugin {
             OneSignal.Notifications.requestPermission({ ok in
                 call.resolve(["permiso": ok])
             }, fallbackToSettings: true)
+        }
+    }
+
+    // Etiqueta en OneSignal (p. ej. grabacion_cuero_t1 = confirmada) para avisar solo a quienes reservaron
+    @objc func etiqueta(_ call: CAPPluginCall) {
+        guard let k = call.getString("clave"), let v = call.getString("valor") else { call.reject("Faltan datos"); return }
+        DispatchQueue.main.async {
+            if MbmAvisosPlugin.iniciado { OneSignal.User.addTag(key: k, value: v) }
+            call.resolve()
         }
     }
 }
