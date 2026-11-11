@@ -14,7 +14,7 @@ function limpio($s, $max) { return mb_substr(trim(strip_tags((string)$s)), 0, $m
 function fallo($msg, $code = 400) { http_response_code($code); echo json_encode(['ok' => false, 'error' => $msg]); exit; }
 function hoy_lv() { return date('Y-m-d'); }
 
-// Cada grabación puede tener varios TURNOS (p. ej. 4 PM y 6 PM): cada turno es una función con su propio cupo
+// Cada grabación puede tener varios TURNOS (p. ej. 3 PM y 6 PM): cada turno es una función con su propio cupo
 // y su propio id "<grabación>-<turno>"; "grupo" = la grabación a la que pertenece.
 function grabaciones() {
   $l = json_decode(@file_get_contents(__DIR__ . '/grabaciones.json'), true) ?: [];

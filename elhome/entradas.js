@@ -73,7 +73,7 @@
       fetch("reservas.php?accion=mias&disp=" + disp, { cache: "no-store" }).then(r => r.json()).catch(() => null)
     ]).then(([g, c, m]) => {
       G = (g || []).filter(x => x.fecha >= hoy()).sort((a, b) => a.fecha.localeCompare(b.fecha));
-      // Turnos (p. ej. 4 PM y 6 PM): cada turno es una función con su propio cupo e id "<grabación>-<turno>"
+      // Turnos (p. ej. 3 PM y 6 PM): cada turno es una función con su propio cupo e id "<grabación>-<turno>"
       G.forEach(x => { x.funciones = (x.turnos && x.turnos.length ? x.turnos : [{ id: "", hora: x.hora, cupo: x.cupo }]).map(t => Object.assign({}, x, { turnos: null, funciones: null, grupo: x.id, id: t.id ? x.id + "-" + t.id : x.id, hora: t.hora || "", cupo: t.cupo })); });
       F = G.flatMap(x => x.funciones);
       cupos = (c && c.cupos) || cupos;

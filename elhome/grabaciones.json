@@ -15,7 +15,7 @@
     "turnos": [
       {
         "id": "4pm",
-        "hora": "4:00 PM",
+        "hora": "3:00 PM",
         "cupo": 100
       },
       {
@@ -41,7 +41,7 @@
     "turnos": [
       {
         "id": "4pm",
-        "hora": "4:00 PM",
+        "hora": "3:00 PM",
         "cupo": 100
       },
       {
