@@ -264,7 +264,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
   </header>
   <main class="wrap" id="view"></main>
   <footer class="webfoot wrap">
-    <div><b>El Home de la Risa</b>La casa del humor cubano: todos los shows de Marrero Bernal Media en un solo lugar. Cada video se ve en YouTube.<br><br>© <span id="yr"></span> Marrero Bernal Media LLC. Todos los derechos reservados.</div>
+    <div><b>El Home de la Risa</b>La casa del humor cubano: todos los shows de Marrero Bernal Media en un solo lugar.<br><br>© <span id="yr"></span> Marrero Bernal Media LLC. Todos los derechos reservados.</div>
     <div><b>Los canales</b><a href="https://www.ehdlr.com" target="_blank" rel="noopener">El Home de la Risa en YouTube</a><a href="https://www.youtube.com/@LaRisaEsCosaSeria" target="_blank" rel="noopener">La Risa es Cosa Seria</a><a href="https://www.youtube.com/@LaCosaEsDeRisa" target="_blank" rel="noopener">La Cosa es de Risa</a><a href="https://www.youtube.com/@WelcomeToApagonia" target="_blank" rel="noopener">Welcome to Apagonia</a></div>
     <div><b>La casa</b><a href="https://marrerobernalmedia.com" target="_blank" rel="noopener">Marrero Bernal Media</a><a href="https://marrerobernalmedia.com/apps/" target="_blank" rel="noopener">Descargar la app</a><a href="https://chat.whatsapp.com/BibOkpcOvAg19Mc25grPvi" target="_blank" rel="noopener">Comunidad de WhatsApp</a><a href="https://www.rectaalpecho.com" target="_blank" rel="noopener">Recta al Pecho (deportes)</a></div>
   </footer>
@@ -442,8 +442,7 @@ function inicio(){
   <section>${H("Lo nuevo de la casa")}<div class="row">${nuevos.map(tile).join("")}</div></section>
   <section>${H("Los humoristas", "", `<button class="more" data-tab-go="humoristas">Ver todos →</button>`)}<div class="row">${funny.map(c => `<div class="tile">${comicCard(c)}</div>`).join("")}</div></section>
   ${shelves}
-  <section class="mobonly">${H("Los más vistos de la casa")}<div class="list">${all.sort(byViews).slice(0,10).map((id,i)=>item(id,i+1)).join("")}</div></section>
-  <p class="foot">Cada video se abre en YouTube · El Home de la Risa</p>`;
+  <section class="mobonly">${H("Los más vistos de la casa")}<div class="list">${all.sort(byViews).slice(0,10).map((id,i)=>item(id,i+1)).join("")}</div></section>`;
 }
 function shows(){
   if (openShow) return showPage(SH[openShow]);
