@@ -63,6 +63,7 @@
 .en-store{display:flex;align-items:center;gap:10px;justify-content:center;background:#000;color:#fff;border:1px solid #444;border-radius:12px;padding:12px;font-weight:800;text-decoration:none;margin:8px 0}
 .en-stores{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0;align-items:start}
 .en-stores>div{min-width:0;text-align:center}
+.en-badge-t{display:block}.en-badge-t img{display:block;height:46px;width:auto;max-width:100%;margin:0 auto}.en-badge-t.off{opacity:.6}
 .en-stores .en-store{margin:0;padding:10px 8px;gap:8px;text-align:left;line-height:1.15;font-size:15px}
 .en-store small{display:block;font-size:10px;font-weight:600;opacity:.75;white-space:nowrap}
 .en-store.off{opacity:.55}
@@ -129,8 +130,8 @@ ${varios ? `<div class="en-elige">Elige tu turno:</div>` : ""}${g.funciones.map(
   function bajarApp(g) {
     hoja(`<h3>Las entradas se reservan en la app</h3>
 <p>Baja gratis la app de El Home de la Risa y reserva tus entradas para <b>${esc(g.titulo)}</b> (${esc(larga(g.fecha))}${g.hora ? ", turno de las " + esc(g.hora) : ""}). En la app también tienes tu entrada con código para la puerta y los avisos de la grabación.</p>
-<div class="en-stores"><div><a class="en-store" href="${PLAY}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5z"/></svg><span><small>Disponible en</small>Google Play</span></a></div>
-<div><span class="en-store off" aria-disabled="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg><span><small>iPhone y iPad</small>App Store</span></span><em class="en-soon">Próximamente</em></div></div>
+<div class="en-stores"><div><a class="en-badge-t" href="${PLAY}" target="_blank" rel="noopener"><img src="tiendas/google-play.png" alt="Disponible en Google Play"></a></div>
+<div><span class="en-badge-t off"><img src="tiendas/app-store.svg" alt="App Store"></span><em class="en-soon">Próximamente</em></div></div>
 <button class="close" data-en-x>Cerrar</button>`);
   }
 
