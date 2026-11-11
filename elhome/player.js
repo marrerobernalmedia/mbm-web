@@ -38,6 +38,7 @@
 .mbp-it span{display:block;font-size:12px;opacity:.65;margin-top:3px}
 .mbp-it em{display:inline-block;font-style:normal;font-size:11px;font-weight:700;background:#c00;border-radius:4px;padding:1px 5px;margin-bottom:3px}
 html.mbp-lock,html.mbp-lock body{overflow:hidden}
+html.mbp-lock nav.tabs{z-index:10000}
 @media(min-width:900px){.mbp-it img{width:180px}}`;
 
   let root, yt = null, cur = null, apiP = null, queue = [], autoNext = true, forcedMute = false, watch = 0, pushed = false;
@@ -124,6 +125,8 @@ html.mbp-lock,html.mbp-lock body{overflow:hidden}
   function open(id){
     build();
     root.hidden = false; document.documentElement.classList.add("mbp-lock");
+    // En el teléfono el menú de abajo sigue a la vista con el reproductor abierto (Eliam, 11-nov-2026)
+    { const nav = document.querySelector("nav.tabs"); root.style.bottom = nav && getComputedStyle(nav).position === "fixed" ? nav.offsetHeight + "px" : ""; }
     if (!pushed) { try { history.pushState({ mbp: 1 }, ""); pushed = true; } catch (e) {} }
     play(id);
   }
@@ -133,6 +136,8 @@ html.mbp-lock,html.mbp-lock body{overflow:hidden}
     root.hidden = true; document.documentElement.classList.remove("mbp-lock");
     if (pushed) { pushed = false; if (!fromPop) { try { history.back(); } catch (e) {} } }
   }
+  // Tocar una pestaña del menú con el reproductor abierto: se cierra y la app va a esa pestaña
+  document.addEventListener("click", e => { if (root && !root.hidden && e.target.closest("nav.tabs button")) close(); }, true);
   // Botón "atrás" del teléfono / de la app: cierra el reproductor en vez de salir
   window.addEventListener("popstate", () => { if (root && !root.hidden) close(true); });
 
