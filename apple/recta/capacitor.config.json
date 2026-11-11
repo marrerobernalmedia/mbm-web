@@ -1,0 +1,17 @@
+{
+  "appId": "com.marrerobernalmedia.recta",
+  "appName": "Recta Al Pecho",
+  "webDir": "www",
+  "backgroundColor": "#0a1424",
+  "server": {
+    "url": "https://marrerobernalmedia.com/recta/",
+    "errorPath": "offline.html",
+    "allowNavigation": ["marrerobernalmedia.com", "www.marrerobernalmedia.com", "rectaalpecho.com", "www.rectaalpecho.com", "*.youtube.com", "youtube.com", "*.youtube-nocookie.com", "*.ytimg.com", "*.googlevideo.com"]
+  },
+  "ios": {
+    "contentInset": "never",
+    "backgroundColor": "#0a1424",
+    "scheme": "Recta Al Pecho",
+    "limitsNavigationsToAppBoundDomains": false
+  }
+}

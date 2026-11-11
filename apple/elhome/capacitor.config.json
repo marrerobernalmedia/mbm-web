@@ -1,0 +1,17 @@
+{
+  "appId": "com.marrerobernalmedia.elhome",
+  "appName": "El Home de la Risa",
+  "webDir": "www",
+  "backgroundColor": "#0b0b0d",
+  "server": {
+    "url": "https://www.elhomedelarisa.com/",
+    "errorPath": "offline.html",
+    "allowNavigation": ["www.elhomedelarisa.com", "elhomedelarisa.com", "marrerobernalmedia.com", "www.marrerobernalmedia.com", "*.youtube.com", "youtube.com", "*.youtube-nocookie.com", "*.ytimg.com", "*.googlevideo.com"]
+  },
+  "ios": {
+    "contentInset": "never",
+    "backgroundColor": "#0b0b0d",
+    "scheme": "El Home de la Risa",
+    "limitsNavigationsToAppBoundDomains": false
+  }
+}

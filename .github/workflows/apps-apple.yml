@@ -1,0 +1,70 @@
+# Compila en la nube las apps de iPhone/iPad (El Home de la Risa y Recta Al Pecho).
+# Sin las claves de Apple: solo comprueba que compilan (simulador).
+# Con los secretos APPLE_TEAM_ID, ASC_KEY_ID, ASC_ISSUER_ID y ASC_KEY_P8: firma y sube a TestFlight.
+name: Apps Apple
+
+on:
+  workflow_dispatch:
+    inputs:
+      subir:
+        description: "Subir a TestFlight (necesita las claves de Apple)"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ["apple/**", ".github/workflows/apps-apple.yml"]
+
+concurrency:
+  group: apps-apple
+  cancel-in-progress: true
+
+jobs:
+  ios:
+    runs-on: macos-26
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [elhome, recta]
+    env:
+      SUBIR: ${{ github.event_name == 'workflow_dispatch' && inputs.subir }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Xcode
+        run: |
+          sudo xcode-select -s "$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1 || echo /Applications/Xcode.app)" || true
+          xcodebuild -version
+      - name: Preparar proyecto
+        working-directory: apple/${{ matrix.app }}
+        run: |
+          npm ci --no-audit --no-fund
+          npx cap sync ios
+      - name: Compilar (simulador, sin firmar)
+        if: env.SUBIR != 'true'
+        working-directory: apple/${{ matrix.app }}/ios/App
+        run: |
+          xcodebuild -project App.xcodeproj -scheme App -configuration Release \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO build | tail -40
+          test "${PIPESTATUS[0]}" = 0
+      - name: Firmar y subir a TestFlight
+        if: env.SUBIR == 'true'
+        working-directory: apple/${{ matrix.app }}/ios/App
+        env:
+          TEAM: ${{ secrets.APPLE_TEAM_ID }}
+          KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ISSUER: ${{ secrets.ASC_ISSUER_ID }}
+          KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          set -o pipefail
+          KEY="$RUNNER_TEMP/AuthKey_$KEY_ID.p8"; printf '%s' "$KEY_P8" > "$KEY"
+          AUTH="-allowProvisioningUpdates -authenticationKeyPath $KEY -authenticationKeyID $KEY_ID -authenticationKeyIssuerID $ISSUER"
+          BUILD=$(( $(date +%s) / 60 ))
+          xcodebuild -project App.xcodeproj -scheme App -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            DEVELOPMENT_TEAM="$TEAM" CURRENT_PROJECT_VERSION="$BUILD" $AUTH archive | tail -40
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -exportOptionsPlist ../../../ExportOptions.plist -exportPath "$RUNNER_TEMP/export" $AUTH | tail -40

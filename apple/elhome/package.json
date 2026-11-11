@@ -1,0 +1,15 @@
+{
+  "name": "mbm-elhome-ios",
+  "private": true,
+  "version": "1.0.0",
+  "description": "App de iPhone y iPad de El Home de la Risa (Capacitor: abre la web en vivo)",
+  "dependencies": {
+    "@capacitor/core": "8.6.0",
+    "@capacitor/ios": "8.6.0",
+    "@capacitor/share": "8.0.3",
+    "mbm-avisos": "file:../plugins/mbm-avisos"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.6.0"
+  }
+}

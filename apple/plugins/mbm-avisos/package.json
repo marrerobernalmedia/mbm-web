@@ -1,0 +1,9 @@
+{
+  "name": "mbm-avisos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Avisos de estreno (OneSignal nativo) para las apps de iPhone de Marrero Bernal Media",
+  "main": "index.js",
+  "files": ["ios/Sources", "Package.swift", "index.js"],
+  "capacitor": { "ios": { "src": "ios" } }
+}
