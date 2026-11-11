@@ -19,6 +19,7 @@
 
   const css = `
 .en-sec{margin-bottom:22px}
+.en-vacio{color:var(--mute);padding:8px 0 30px}
 .en-sec h2 small{font-weight:600}
 .en-list{display:grid;gap:12px}
 @media(min-width:900px){.en-list{grid-template-columns:repeat(2,1fr)}}
@@ -88,10 +89,10 @@
 <div class="en-when"><div class="en-cal"><small>${MES[m - 1].slice(0, 3)}</small><b>${d}</b></div><div><b>${esc(larga(g.fecha).replace(/^./, c => c.toUpperCase()))}${g.hora ? " · " + esc(g.hora) : ""}</b><br>${g.lugar ? esc(g.lugar) + (g.direccion ? `<br><em>${esc(g.direccion)}</em>` : "") : "<em>La hora y el lugar te los avisamos en la app</em>"}</div></div>
 ${cupo}${btn}</div></div>`;
   }
-  function seccion() { return `<section class="en-sec" id="entradasSec"${G && !G.length ? " hidden" : ""}>${G && G.length ? html() : ""}</section>`; }
-  const html = () => `<h2>Entradas gratis <small>a las grabaciones</small></h2><div class="bulbs"></div><div class="en-list">${G.map(tarjeta).join("")}</div>`;
+  const html = () => `<h2>Entradas gratis <small>a las grabaciones</small></h2><div class="bulbs"></div>` + (!G ? `<p class="en-vacio">Cargando…</p>` : G.length ? `<div class="en-list">${G.map(tarjeta).join("")}</div>` : `<p class="en-vacio">Por ahora no hay grabaciones con público anunciadas. Activa los avisos 🔔 y te avisamos cuando se abran las entradas.</p>`);
+  function seccion() { return `<section class="en-sec" id="entradasSec">${html()}</section>`; }
   function pintar() {
-    const pon = () => { const s = document.getElementById("entradasSec"); if (!s) return; if (!G || !G.length) { s.hidden = true; return; } s.hidden = false; s.innerHTML = html(); };
+    const pon = () => { const s = document.getElementById("entradasSec"); if (s) s.innerHTML = html(); };
     pon(); cargar().then(pon);
   }
 
@@ -187,8 +188,6 @@ ${!pushOn && document.getElementById("pushBtn") && !document.getElementById("pus
     if (!esApp()) return bajarApp(g);
     formulario(g);
   });
-  // Enlace directo (avisos, WhatsApp): ...?entradas=1 lleva a la sección
-  try { if (new URLSearchParams(location.search).has("entradas")) cargar().then(() => setTimeout(() => { pintar(); const s = document.getElementById("entradasSec"); if (s) s.scrollIntoView({ behavior: "smooth", block: "start" }); }, 300)); } catch (e) {}
-
+  // Enlace directo (avisos, WhatsApp): ...?entradas=1 abre la pestaña Entradas (lo hace index.html)
   window.ENTRADAS = { seccion, pintar, esApp };
 })();
