@@ -31,9 +31,14 @@ if ($accion === 'cupos') {
 if ($accion === 'mias') {
   $disp = limpio($_GET['disp'] ?? '', 64);
   if (strlen($disp) < 12) { echo '{"ok":true,"reservas":[]}'; exit; }
+  // Reservas de ensayo (disp "prueba-…", creadas por el equipo): devuelven su enlace de confirmación y, con avisar=1, arrancan las 24 horas como si ya se les hubiera escrito
+  $ensayo = strncmp($disp, 'prueba-', 7) === 0;
+  if ($ensayo && !empty($_GET['avisar'])) con_reservas(function (&$db) use ($disp) {
+    foreach ($db['reservas'] as &$r) if (($r['disp'] ?? '') === $disp && $r['estado'] !== 'cancelada' && empty($r['aviso'])) { $r['aviso'] = date('c'); $r['actualizada'] = date('c'); }
+  });
   $db = leer_reservas();
   $out = [];
-  foreach ($db['reservas'] as $r) if (($r['disp'] ?? '') === $disp && $r['estado'] !== 'cancelada') $out[] = publica($r);
+  foreach ($db['reservas'] as $r) if (($r['disp'] ?? '') === $disp && $r['estado'] !== 'cancelada') { $p = publica($r); if ($ensayo) $p['enlace'] = enlace_confirmar($r); $out[] = $p; }
   echo json_encode(['ok' => true, 'reservas' => $out]); exit;
 }
 
