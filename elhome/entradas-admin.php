@@ -160,6 +160,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px 6px;b
       <td style="white-space:nowrap"><form method="post" class="i"><input type="hidden" name="codigo" value="<?= $h($r['codigo']) ?>">
         <?php if ($r['estado'] === 'espera'): ?><button class="b" name="op" value="confirmar">Confirmar</button><?php endif; ?>
         <?php if ($r['estado'] !== 'cancelada' && empty($r['reconf']) && ($toca || !empty($r['aviso']))): ?><button class="b s" name="op" value="reconf" title="Si confirmó contestando el mensaje en vez de tocar el enlace">✓ Confirmó</button><?php endif; ?>
+        <?php if ($toca && $r['estado'] !== 'cancelada' && empty($r['aviso']) && empty($r['reconf'])): ?><button class="b g s" name="op" value="aviso" title="Anota que ya se le escribió por WhatsApp: empiezan sus 24 horas">Ya le escribí</button><?php endif; ?>
         <?php if (por_confirmar($r)): ?><button class="b g s" name="op" value="prorroga" title="Le da 24 horas más desde ahora">+24 h</button><?php endif; ?>
         <?php if ($r['estado'] === 'cancelada' && $g['fecha'] >= hoy_lv()): ?><button class="b g s" name="op" value="reactivar">Reactivar</button><?php endif; ?>
         <?php if ($r['estado'] !== 'cancelada'): ?><button class="b r" name="op" value="cancelar" onclick="return confirm('¿Cancelar la reserva de <?= $h(addslashes($r['nombre'])) ?>?')">Cancelar</button><?php endif; ?>
