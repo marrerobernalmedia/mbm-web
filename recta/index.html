@@ -307,7 +307,7 @@ const D = window.APPDATA;
 (() => { try {
   const p = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hour12: false }).formatToParts(new Date());
   const g = t => p.find(x => x.type === t).value; const today = g("year") + "-" + g("month") + "-" + g("day"), hour = +g("hour");
-  Object.values(D.vid).forEach(v => { if (v.k === "proximo" && v.f && (v.f < today || (v.f === today && hour >= 8))) { v.k = "episodio"; if (v.d === "Próximamente") v.d = ""; v.nuevo = true; } });
+  Object.values(D.vid).forEach(v => { if ((v.k === "proximo" || v.k === "futuro") && v.f && (v.f < today || (v.f === today && hour >= 8))) { v.k = "episodio"; if (v.d === "Próximamente") v.d = ""; v.nuevo = true; } });
   // el estreno que acaba de salir pasa a ser el "Último estreno" del inicio
   const n = Object.keys(D.vid).filter(i => D.vid[i].nuevo).sort((a, b) => D.vid[b].f.localeCompare(D.vid[a].f))[0];
   if (n && (!D.vid[D.last] || D.vid[n].f >= (D.vid[D.last].f || ""))) D.last = n;
