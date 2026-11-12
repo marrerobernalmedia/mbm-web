@@ -236,6 +236,10 @@
       <h2>Cuéntanos tu proyecto.</h2>
       <p>Respondemos en menos de un día hábil.</p>
       <a href="mailto:info@marrerobernalmedia.com">info@marrerobernalmedia.com</a>
+      <a href="https://wa.me/18336277376" target="_blank" rel="noopener">WhatsApp 833-627-7376</a>
+      <a href="tel:+18336277376">833-627-7376 <small style="font-size:13px;font-weight:400;color:var(--mut)">833-MARRERO</small></a>
+      <p>Llámanos y deja tu mensaje de voz, o escríbenos por WhatsApp. Este número no recibe mensajes de texto (SMS).</p>
+      <div id="vonageClick2callme" style="margin-top:16px"></div>
       <p>Las Vegas, Nevada · producciones en todo Estados Unidos</p>
       <p style="margin-top:22px">YouTube · Facebook · Instagram · TikTok · X: <b style="color:var(--fg)">@marrerobernalmedia</b></p>
     </div>

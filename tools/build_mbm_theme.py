@@ -57,6 +57,7 @@ Text Domain: mbm
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <?php wp_head(); ?>
+<script src="https://s3.amazonaws.com/vonageclick2callme/click2callme.js?version=v1" c2cmKey="6DIY3sYHXjlWsLlUI2%2FsZwpqdxcMXCM%2FXx%2BpOIMcLaU8tkABErKJ%2BGJ3K4oDdEsNh3sYL7hQGmI5yMrJdQs3MQ%3D%3D" c2cmCompanyName="Marrero%20Bernal%20Media" c2cmLinkType="click-to-call-red"></script>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>

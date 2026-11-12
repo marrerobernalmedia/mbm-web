@@ -79,7 +79,7 @@ window.I18N_EN = {
 "Proponemos":"We propose","Recibes una propuesta clara con formato, alcance, calendario y presupuesto cerrado.":"You get a clear proposal with format, scope, schedule and a fixed budget.",
 "Producimos":"We produce","Guion, rodaje, dron, edición y diseño con nuestro equipo. Tú apruebas cada etapa.":"Script, shoot, drone, editing and design with our team. You approve every stage.",
 "Entregamos y distribuimos":"We deliver and distribute","Versiones para cada plataforma y, si lo quieres, difusión dentro de nuestra red con reporte de resultados.":"Versions for every platform and, if you want, distribution inside our network with a results report.",
-"Contacto":"Contact","Cuéntanos tu proyecto.":"Tell us about your project.","Respondemos en menos de un día hábil.":"We reply within one business day.",
+"Contacto":"Contact","Cuéntanos tu proyecto.":"Tell us about your project.","Respondemos en menos de un día hábil.":"We reply within one business day.","Llámanos y deja tu mensaje de voz, o escríbenos por WhatsApp. Este número no recibe mensajes de texto (SMS).":"Call us and leave a voicemail, or message us on WhatsApp. This number does not receive text messages (SMS).",
 "Las Vegas, Nevada · producciones en todo Estados Unidos":"Las Vegas, Nevada · productions across the United States",
 "Nombre":"Name","Empresa":"Company","Correo":"Email","Teléfono o WhatsApp":"Phone or WhatsApp",
 "¿Qué necesitas?":"What do you need?","Comercial o video corporativo":"Commercial or corporate video","Dron":"Drone","Podcast o streaming":"Podcast or streaming","Diseño gráfico":"Graphic design","Web o app":"Website or app","Gestión de canales":"Channel management",
