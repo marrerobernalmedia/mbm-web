@@ -36,6 +36,15 @@ if ($accion === 'mias') {
   if ($ensayo && !empty($_GET['avisar'])) con_reservas(function (&$db) use ($disp) {
     foreach ($db['reservas'] as &$r) if (($r['disp'] ?? '') === $disp && $r['estado'] !== 'cancelada' && empty($r['aviso'])) { $r['aviso'] = date('c'); $r['actualizada'] = date('c'); }
   });
+  // LIMPIEZA DE UN SOLO USO (Eliam, 12-nov-2026): vacía el archivo solo si no queda ninguna reserva viva. Se retira del código después de usarla.
+  if (hash_equals('747a9f5851b082fadbf493a159400008', (string)($_GET['limpiar'] ?? ''))) {
+    $res = con_reservas(function (&$db) {
+      $vivas = count(array_filter($db['reservas'], fn($r) => $r['estado'] !== 'cancelada'));
+      if ($vivas) return ['ok' => false, 'vivas' => $vivas];
+      $n = count($db['reservas']); $db['reservas'] = []; return ['ok' => true, 'borradas' => $n];
+    });
+    echo json_encode($res); exit;
+  }
   // borrar=1: quita del archivo todas las reservas de ese aparato de ensayo (también las canceladas), para dejar la lista limpia
   if ($ensayo && !empty($_GET['borrar'])) {
     $n = con_reservas(function (&$db) use ($disp) {
