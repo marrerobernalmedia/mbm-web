@@ -16,12 +16,12 @@
       {
         "id": "4pm",
         "hora": "3:00 PM",
-        "cupo": 0
+        "cupo": 100
       },
       {
         "id": "6pm",
         "hora": "6:00 PM",
-        "cupo": 0
+        "cupo": 100
       }
     ]
   },
@@ -42,12 +42,12 @@
       {
         "id": "4pm",
         "hora": "3:00 PM",
-        "cupo": 0
+        "cupo": 100
       },
       {
         "id": "6pm",
         "hora": "6:00 PM",
-        "cupo": 0
+        "cupo": 100
       }
     ]
   }
