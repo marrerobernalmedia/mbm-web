@@ -36,7 +36,7 @@
     "direccion": "",
     "max": 4,
     "abierta": true,
-    "banner": "banners/lrecs.jpg",
+    "banner": "banners/lrecs-entradas.jpg",
     "mapa": "https://maps.app.goo.gl/8J1vZLF6Hpyu3Ngv7",
     "turnos": [
       {
