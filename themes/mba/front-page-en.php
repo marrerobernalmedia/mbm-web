@@ -272,6 +272,7 @@
       <h2>Visit, call or write.</h2>
       <a class="big" href="tel:+18888772583">888-877-2583</a><div style="font-size:14px;color:var(--mut);margin:-4px 0 10px">888-87-SALUD · toll-free from any state · local 702-997-2982</div>
       <a class="wa" href="https://wa.me/17023027361" target="_blank" rel="noopener">💬 WhatsApp 702-302-7361</a>
+      <div id="vonageClick2callme" style="margin-top:12px"></div>
       <p style="margin-top:16px"><b style="color:var(--ink)">3455 W Craig Rd, Suite D</b><br>North Las Vegas, NV 89032</p>
       <p>Monday to Friday, 9:00 AM – 5:00 PM<br>Closed Saturday and Sunday</p>
       <div class="map"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=3455+W+Craig+Rd+Ste+D,+North+Las+Vegas,+NV+89032&output=embed" title="Map"></iframe></div>
