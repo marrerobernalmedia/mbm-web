@@ -71,8 +71,9 @@ button.no{background:transparent;color:var(--mute);border:1px solid var(--line);
   <?php else: ?>
     <h1>¿Vienes a la grabación?</h1>
     <p>Hola, <?= $h($r['nombre']) ?>. Confirma que vas para conservar <?= $n === 1 ? 'tu entrada' : 'tus ' . $n . ' entradas' ?>.</p><?= $datos ?>
-    <?php if (!empty($r['aviso'])): ?><?php $lim = new DateTime('@' . vence($r)); $lim->setTimezone(new DateTimeZone('America/Havana')); // la grabación y el público están en Cuba ?>
-    <p class="warn">Tienes hasta el <?= $h(fecha_larga($lim->format('Y-m-d'))) ?> a las <?= $h($lim->format('g:i A')) ?> (hora de Cuba). Si no confirmas, la reserva se cancela sola.</p><?php endif; ?>
+    <?php if (!empty($r['aviso'])): ?><?php // La hora límite la calcula el propio teléfono de la persona (su hora local): Cuba no siempre cambia la hora cuando dicen las tablas del servidor (Eliam, 11-nov-2026) ?>
+    <p class="warn" id="lim" data-t="<?= (int)vence($r) ?>">Tienes 24 horas desde que te escribimos para confirmar. Si no confirmas, la reserva se cancela sola.</p>
+    <script>(function(){var e=document.getElementById("lim"),d=new Date(+e.dataset.t*1000);if(isNaN(d))return;var D=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"],M=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],h=d.getHours(),m=("0"+d.getMinutes()).slice(-2);e.textContent="Tienes hasta el "+D[d.getDay()]+" "+d.getDate()+" de "+M[d.getMonth()]+" a las "+((h%12)||12)+":"+m+" "+(h<12?"AM":"PM")+". Si no confirmas, la reserva se cancela sola.";})();</script><?php endif; ?>
     <form method="post"><input type="hidden" name="c" value="<?= $h($tok) ?>">
     <button name="r" value="si">Sí, voy · confirmar</button>
     <button class="no" name="r" value="no">No puedo ir: cancelar mi reserva</button></form>
