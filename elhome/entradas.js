@@ -15,10 +15,14 @@
   const disp = (() => { let d = ls.get("mbm_disp"); if (!d) { d = Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2, "0")).join(""); ls.set("mbm_disp", d); } return d; })();
   const DIA = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"], MES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
   const larga = f => { const [y, m, d] = f.split("-").map(Number); const w = new Date(Date.UTC(y, m - 1, d, 12)).getUTCDay(); return DIA[w] + " " + d + " de " + MES[m - 1]; };
+  const limite = iso => { const d = new Date(iso); return isNaN(d) ? "plazo" : DIA[d.getDay()] + " " + d.getDate() + " de " + MES[d.getMonth()] + " a las " + d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }); };
   const hoy = () => window.MBM_TODAY || new Date().toISOString().slice(0, 10);
 
   const css = `
 .en-sec{margin-bottom:22px}
+.en-ojo{font-size:13px;line-height:1.4;border-left:3px solid var(--bulb);background:rgba(255,211,107,.08);padding:8px 10px;border-radius:0 8px 8px 0;margin:10px 0}
+.en-reconf{border:1px solid var(--bulb);border-radius:12px;padding:12px;margin:10px 0}
+.en-conf.en-reconf .si{background:var(--lime);border-color:var(--lime);color:#111;font-size:16px;padding:14px 8px}.en-reconf .en-msg{display:block}
 .en-vacio{color:var(--mute);padding:8px 0 30px}
 .en-sec h2 small{font-weight:600}
 .en-list{display:grid;gap:12px}
@@ -101,8 +105,8 @@
   const lugarHtml = g => g.lugar ? `📍 ${esc(g.lugar)}${g.direccion ? `<br><em>${esc(g.direccion)}</em>` : ""}${g.mapa ? `<br><a href="${esc(g.mapa)}" target="_blank" rel="noopener" data-yt style="color:var(--lime);font-weight:700">Cómo llegar →</a>` : ""}` : "<em>El lugar te lo avisamos en la app</em>";
   function turno(f, varios) {
     const r = mia(f.id), l = libres(f), otra = !r && f.grupo !== f.id && F.some(x => x.grupo === f.grupo && x.id !== f.id && mia(x.id));
-    const cupo = r ? (r.estado === "espera" ? "Estás en la lista de espera" : `Tienes ${r.cantidad} ${r.cantidad == 1 ? "entrada" : "entradas"}`) : !f.abierta ? "Reservas cerradas" : l <= 0 ? "Lleno · lista de espera" : l <= Math.max(10, f.cupo * 0.25) ? `¡Quedan solo ${l}!` : "Entradas Gratis · Cupo Limitado";
-    const btn = r ? `<button class="en-go mia" data-en-ver="${esc(f.id)}">🎟️ Ver mi entrada</button>` : !f.abierta || otra ? "" : `<button class="en-go" data-en-res="${esc(f.id)}">🎟️ Reservar${varios ? "" : " gratis"}</button>`;
+    const cupo = r ? (r.confirmar ? "⚠️ Confirma tu asistencia" : r.estado === "espera" ? "Estás en la lista de espera" : `Tienes ${r.cantidad} ${r.cantidad == 1 ? "entrada" : "entradas"}`) : !f.abierta ? "Reservas cerradas" : l <= 0 ? "Lleno · lista de espera" : l <= Math.max(10, f.cupo * 0.25) ? `¡Quedan solo ${l}!` : "Entradas Gratis · Cupo Limitado";
+    const btn = r ? `<button class="en-go mia" data-en-ver="${esc(f.id)}">${r.confirmar ? "✅ Confirmar que voy" : "🎟️ Ver mi entrada"}</button>` : !f.abierta || otra ? "" : `<button class="en-go" data-en-res="${esc(f.id)}">🎟️ Reservar${varios ? "" : " gratis"}</button>`;
     return `<div class="en-turno">${f.hora ? `<div class="en-hora"><b>${esc(f.hora)}</b>${varios ? "<small>turno</small>" : ""}</div>` : ""}<div class="en-tc"><div class="en-cupo${l <= 0 && !r ? " lleno" : ""}">${cupo}</div>${btn}</div></div>`;
   }
   function tarjeta(g) {
@@ -153,6 +157,7 @@ ${l <= 0 ? `<p style="color:var(--bulb)">Ya no quedan entradas. Si te anotas, qu
 <p style="font-size:13px;color:var(--mute);margin:2px 0 8px">Una sola reserva por teléfono. Si vienen más de ${max}, cada persona reserva desde su propia app.</p>
 <div class="en-n"><button type="button" data-en-n="-1" aria-label="Menos">−</button><b id="enN">${n}</b><button type="button" data-en-n="1" aria-label="Más">+</button></div>
 <div style="position:absolute;left:-9999px" aria-hidden="true"><input name="web" tabindex="-1" autocomplete="off"></div>
+<p class="en-ojo">📲 <b>Importante:</b> una semana antes de la grabación te escribimos por WhatsApp a este número para la confirmación final. Si no confirmas en 24 horas, tu reserva se cancela y las entradas pasan a otra persona.</p>
 <div class="en-msg" id="enMsg" role="status"></div>
 <button class="en-go" id="enSend">${l <= 0 ? "Anotarme en la lista de espera" : "Reservar mis entradas"}</button>
 <p style="font-size:12px;margin-top:10px">Usamos tu nombre y teléfono solo para la lista de la puerta y para avisarte de esta grabación. <a href="privacidad/" target="_blank" rel="noopener" style="color:inherit">Privacidad</a></p>
@@ -191,10 +196,23 @@ ${r.estado === "espera" ? `<p>La grabación está llena. Si alguien cancela, tu 
 <div class="qr" id="enQr"></div><div class="en-est ${esc(r.estado)}">${r.estado === "espera" ? "LISTA DE ESPERA" : "CONFIRMADA"}</div>
 <p style="font-size:16px"><b>${esc(r.nombre)}</b> · ${r.cantidad} ${r.cantidad == 1 ? "entrada" : "entradas"}</p><div class="cod">${esc(r.codigo)}</div></div>
 ${pushOn ? `<p class="en-pushok">🔔 Avisos activados: te recordamos la grabación ✓</p>` : document.getElementById("pushBtn") && !document.getElementById("pushBtn").hidden ? `<button class="en-go" data-en-push>🔔 Activar avisos para recordarte la grabación</button>` : ""}
+${r.confirmar ? `<div class="en-conf en-reconf"><p><b>¿Vienes a la grabación?</b> Confirma antes del ${esc(limite(r.confirmar))} o tu reserva se cancela sola.</p><div><button type="button" class="si" data-en-reconf="${esc(r.codigo)}">Sí, voy · confirmar</button></div><div class="en-msg" id="enRcMsg" role="status"></div></div>`
+: r.reconf ? `<p class="en-pushok">✅ Asistencia confirmada. ¡Te esperamos!</p>`
+: `<p class="en-ojo">📲 Una semana antes te escribimos por WhatsApp para la confirmación final. Si no confirmas en 24 horas, la reserva se cancela.</p>`}
 <p style="font-size:12.5px">Si cambias de planes, cancela para que otra persona pueda ir.</p>
 <button class="en-link" data-en-cancel="${esc(r.codigo)}">Cancelar mi reserva</button>
 <button class="close" data-en-x>Listo</button>`);
     qrLib().then(() => { const q = qrcode(0, "M"); q.addData(url); q.make(); const el = root.querySelector("#enQr"); if (el) el.innerHTML = q.createSvgTag({ cellSize: 4, margin: 2, scalable: true }); }).catch(() => {});
+    const rc = root.querySelector("[data-en-reconf]"); if (rc) rc.onclick = async () => {
+      rc.disabled = true; const m = root.querySelector("#enRcMsg");
+      const fd = new FormData(); fd.set("accion", "reconfirmar"); fd.set("codigo", r.codigo); fd.set("disp", disp);
+      try {
+        const x = await fetch("reservas.php", { method: "POST", body: fd }).then(y => y.json());
+        if (!x.ok) throw new Error(x.error || "No se pudo confirmar. Prueba otra vez.");
+        mias = mias.filter(y => y.codigo !== x.reserva.codigo).concat(x.reserva); ls.set("mbm_mias", JSON.stringify(mias));
+        await cargar(true); pintar(); entrada(g);
+      } catch (err) { m.textContent = err.message || "Sin conexión. Prueba otra vez."; rc.disabled = false; }
+    };
     const pb = root.querySelector("[data-en-push]"); if (pb) pb.onclick = () => { document.getElementById("pushBtn").click(); pb.outerHTML = `<p class="en-pushok">🔔 Avisos: acepta el permiso que te pide el teléfono.</p>`; };
     // Confirmación dentro de la app (sin el cuadro del navegador «marrerobernalmedia.com dice»; Eliam, 11-nov-2026)
     root.querySelector("[data-en-cancel]").onclick = e => {

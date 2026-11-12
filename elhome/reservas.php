@@ -10,9 +10,13 @@
 //   POST accion=reservar  (grabacion, nombre, telefono, cantidad, disp)
 //   POST accion=cancelar  (codigo, disp)
 // ============================================================
-header('Content-Type: application/json; charset=utf-8');
-header('Cache-Control: no-store');
+//   POST accion=reconfirmar (codigo, disp)  → confirmación final desde la app
+//   GET  ?c=TOKEN                      → página del enlace de WhatsApp para confirmar o cancelar (reservas-confirmar.php)
 require __DIR__ . '/reservas-lib.php';
+header('Cache-Control: no-store');
+al_dia();
+if (isset($_GET['c']) || isset($_POST['c'])) { require __DIR__ . '/reservas-confirmar.php'; exit; }
+header('Content-Type: application/json; charset=utf-8');
 
 $accion = $_POST['accion'] ?? $_GET['accion'] ?? '';
 $G = grabaciones();
@@ -78,7 +82,7 @@ if ($accion === 'reservar') {
     unset($r);
     $libres = $g['cupo'] - ocupadas($db, $gid);
     $r = ['codigo' => codigo_nuevo($db), 'grabacion' => $gid, 'nombre' => $nombre, 'telefono' => $tel, 'cantidad' => $cant,
-          'estado' => $cant <= $libres ? 'confirmada' : 'espera', 'creada' => date('c'), 'disp' => $disp, 'entro' => null];
+          'estado' => $cant <= $libres ? 'confirmada' : 'espera', 'creada' => date('c'), 'disp' => $disp, 'entro' => null, 'tok' => token_nuevo()];
     $db['reservas'][] = $r;
     return ['r' => $r, 'nueva' => true];
   });
@@ -98,6 +102,21 @@ if ($accion === 'cancelar') {
     return false;
   });
   echo json_encode(['ok' => (bool)$ok]); exit;
+}
+
+if ($accion === 'reconfirmar') {
+  $cod = strtoupper(limpio($_POST['codigo'] ?? '', 12));
+  $disp = limpio($_POST['disp'] ?? '', 64);
+  $r = con_reservas(function (&$db) use ($cod, $disp) {
+    foreach ($db['reservas'] as &$r) if ($r['codigo'] === $cod && ($r['disp'] ?? '') === $disp && $disp !== '') {
+      if ($r['estado'] === 'cancelada') return ['cancelada' => true];
+      $r['reconf'] = date('c'); $r['reconf_via'] = 'app'; $r['actualizada'] = date('c'); return ['r' => $r];
+    }
+    return null;
+  });
+  if (!$r) fallo('No encontramos esa reserva.');
+  if (isset($r['cancelada'])) fallo('Esa reserva ya se canceló porque no se confirmó a tiempo. Si quedan entradas, puedes reservar de nuevo.');
+  echo json_encode(['ok' => true, 'reserva' => publica($r['r'])]); exit;
 }
 
 fallo('Acción desconocida.');

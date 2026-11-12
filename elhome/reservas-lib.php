@@ -41,6 +41,7 @@ function con_reservas($fn) {
   $txt = stream_get_contents($h);
   $db = $txt ? json_decode($txt, true) : null;
   if (!is_array($db) || !isset($db['reservas'])) $db = ['reservas' => []];
+  vencer($db);
   $res = $fn($db);
   ftruncate($h, 0); rewind($h);
   fwrite($h, json_encode($db, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
@@ -58,6 +59,39 @@ function promover(&$db, $gid) {
     if ($r['cantidad'] <= $g['cupo'] - ocupadas($db, $gid)) { $r['estado'] = 'confirmada'; $r['actualizada'] = date('c'); }
   }
 }
+// --- Confirmación final por WhatsApp (Eliam, 11-nov-2026)
+// Una semana antes de la grabación el equipo le escribe a cada persona por WhatsApp (desde entradas-admin.php) con un enlace
+// para confirmar que va. Desde que se le escribe ("aviso") tiene 24 horas: si no confirma ("reconf"), la reserva se cancela
+// sola y sus asientos pasan a la lista de espera. También puede confirmar desde la app.
+const DIAS_AVISO = 7;
+const HORAS_CONFIRMAR = 24;
+function token_nuevo() { return bin2hex(random_bytes(9)); }
+function por_confirmar($r) { return $r['estado'] !== 'cancelada' && !empty($r['aviso']) && empty($r['reconf']); }
+function vence($r) { return strtotime($r['aviso']) + HORAS_CONFIRMAR * 3600; }
+// Cancela las reservas avisadas que no confirmaron a tiempo. Se llama sola en cada cambio (con_reservas) y en cada lectura (al_dia).
+function vencer(&$db) {
+  $gids = [];
+  foreach ($db['reservas'] as &$r) if (por_confirmar($r) && time() > vence($r)) {
+    $r['estado'] = 'cancelada'; $r['motivo'] = 'sin-confirmar'; $r['actualizada'] = date('c'); $gids[$r['grabacion']] = 1;
+  }
+  unset($r);
+  foreach (array_keys($gids) as $gid) promover($db, $gid);
+  return count($gids);
+}
+function al_dia() {
+  foreach (leer_reservas()['reservas'] as $r) if (por_confirmar($r) && time() > vence($r)) { con_reservas(fn(&$db) => true); return; }
+}
+function base_url() {
+  $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https';
+  $dir = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/');
+  return ($https ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'www.elhomedelarisa.com') . $dir . '/';
+}
+function enlace_confirmar($r) { return base_url() . 'reservas.php?c=' . ($r['tok'] ?? ''); }
+function fecha_larga($f) {
+  $d = strtotime($f . ' 12:00'); $dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  $m = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  return $dias[date('w', $d)] . ' ' . date('j', $d) . ' de ' . $m[date('n', $d) - 1];
+}
 function codigo_nuevo($db) {
   $abc = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   $usados = array_column($db['reservas'], 'codigo');
@@ -65,7 +99,8 @@ function codigo_nuevo($db) {
   return $c;
 }
 function publica($r) {
-  return ['codigo' => $r['codigo'], 'grabacion' => $r['grabacion'], 'nombre' => $r['nombre'], 'cantidad' => $r['cantidad'], 'estado' => $r['estado'], 'entro' => $r['entro'] ?? null];
+  return ['codigo' => $r['codigo'], 'grabacion' => $r['grabacion'], 'nombre' => $r['nombre'], 'cantidad' => $r['cantidad'], 'estado' => $r['estado'], 'entro' => $r['entro'] ?? null,
+          'confirmar' => por_confirmar($r) ? date('c', vence($r)) : null, 'reconf' => !empty($r['reconf'])];
 }
 function limite($que, $n, $seg) {
   $f = dir_datos() . '/.limite-' . $que . '.json';
