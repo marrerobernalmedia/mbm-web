@@ -2,7 +2,7 @@
 // ============================================================
 // Entradas gratis a las grabaciones — El Home de la Risa (Eliam, 11-nov-2026)
 // Las grabaciones están en grabaciones.json (fecha, lugar, cupo, máximo por persona).
-// Reglas (Eliam, 11-nov-2026): máximo 4 entradas por reserva y UNA reserva por teléfono (por número y por aparato) en cada grabación.
+// Reglas (Eliam, 11-nov-2026): solo celulares de Cuba (+53); máximo 4 entradas por reserva y UNA reserva por teléfono (por número y por aparato) en cada grabación.
 // Las reservas se guardan en opiniones/reservas.json (carpeta protegida, no está en el repo).
 // Lo usa entradas.js desde la app. La lista y la puerta: entradas-admin.php.
 //   GET  ?accion=cupos                 → asientos libres de cada grabación
@@ -50,8 +50,11 @@ if ($accion === 'reservar') {
   $g = $G[$gid];
   if (empty($g['abierta']) || $g['fecha'] < hoy_lv()) fallo('Las reservas para esta grabación están cerradas.');
   if (mb_strlen($nombre) < 2) fallo('Escribe tu nombre.');
-  $dig = preg_replace('/\D/', '', $tel);
-  if (strlen($dig) < 7 || strlen($dig) > 15) fallo('Escribe un teléfono válido, con el código del país si no es de EE. UU.');
+  // Solo celulares de Cuba (+53): la grabación es en Cuba y la confirmación final va por WhatsApp a ese número (Eliam, 11-nov-2026)
+  $dig = preg_replace('/^00/', '', preg_replace('/\D/', '', $tel));
+  if (strlen($dig) === 10 && str_starts_with($dig, '53')) $dig = substr($dig, 2);
+  if (!preg_match('/^[56]\d{7}$/', $dig)) fallo('Escribe tu celular de Cuba: 8 números, empezando por 5 o 6. Las entradas son para quienes están en Cuba.');
+  $tel = '+53' . $dig; $dig = '53' . $dig;
   $max = max(1, intval($g['max'] ?? 4));
   if ($cant < 1 || $cant > $max) fallo("Puedes reservar de 1 a $max entradas.");
   if (strlen($disp) < 12) fallo('Las entradas se reservan desde la app de El Home de la Risa.');
