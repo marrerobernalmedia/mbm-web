@@ -71,7 +71,8 @@ button.no{background:transparent;color:var(--mute);border:1px solid var(--line);
   <?php else: ?>
     <h1>¿Vienes a la grabación?</h1>
     <p>Hola, <?= $h($r['nombre']) ?>. Confirma que vas para conservar <?= $n === 1 ? 'tu entrada' : 'tus ' . $n . ' entradas' ?>.</p><?= $datos ?>
-    <?php if (!empty($r['aviso'])): ?><p class="warn">Tienes hasta el <?= $h(fecha_larga(date('Y-m-d', vence($r)))) ?> a las <?= $h(date('g:i A', vence($r))) ?> (hora de Las Vegas). Si no confirmas, la reserva se cancela sola.</p><?php endif; ?>
+    <?php if (!empty($r['aviso'])): ?><?php $lim = new DateTime('@' . vence($r)); $lim->setTimezone(new DateTimeZone('America/Havana')); // la grabación y el público están en Cuba ?>
+    <p class="warn">Tienes hasta el <?= $h(fecha_larga($lim->format('Y-m-d'))) ?> a las <?= $h($lim->format('g:i A')) ?> (hora de Cuba). Si no confirmas, la reserva se cancela sola.</p><?php endif; ?>
     <form method="post"><input type="hidden" name="c" value="<?= $h($tok) ?>">
     <button name="r" value="si">Sí, voy · confirmar</button>
     <button class="no" name="r" value="no">No puedo ir: cancelar mi reserva</button></form>
