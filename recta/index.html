@@ -306,7 +306,7 @@ const D = window.APPDATA;
 // Estado por fecha: un capítulo "proximo" pasa a estrenado solo cuando llega su día (8:00 AM Las Vegas), sin esperar al data.js nuevo
 (() => { try {
   const p = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hour12: false }).formatToParts(new Date());
-  const g = t => p.find(x => x.type === t).value; const today = g("year") + "-" + g("month") + "-" + g("day"), hour = +g("hour");
+  const g = t => p.find(x => x.type === t).value; const today = g("year") + "-" + g("month") + "-" + g("day"), hour = +g("hour"); window.MBM_TODAY = today;
   Object.values(D.vid).forEach(v => { if ((v.k === "proximo" || v.k === "futuro") && v.f && (v.f < today || (v.f === today && hour >= 8))) { v.k = "episodio"; if (v.d === "Próximamente") v.d = ""; v.nuevo = true; } });
   // el estreno que acaba de salir pasa a ser el "Último estreno" del inicio
   const n = Object.keys(D.vid).filter(i => D.vid[i].nuevo).sort((a, b) => D.vid[b].f.localeCompare(D.vid[a].f))[0];
@@ -376,7 +376,7 @@ function inicio(){
   const proxId = PROX_ID;
   const shelves = D.series.map(s => `<section>${H(esc(s.name), "", `<button class="more" data-open="${s.id}">${L("Ver todo →","See all →")}</button>`)}<div class="row">${s.v.slice(0,8).map(tile).join("")}</div></section>`).join("");
   return `
-  <section><div class="hero"><div class="pic"><img src="${TH_EN.has(last) ? img(last) : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + last + "/maxresdefault.jpg" : img(last)}" onerror="this.onerror=null;this.src=img(last)" alt=""><span class="tag">${L("● Último estreno","● Latest episode")}</span></div>
+  <section><div class="hero"><div class="pic"><img src="${TH_EN.has(last) ? img(last) : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + last + "/maxresdefault.jpg" : img(last)}" onerror="this.onerror=null;this.src=img(last)" alt=""><span class="tag">${V[last].f === window.MBM_TODAY ? L("● Estreno de hoy","● Out today") : L("● Último estreno","● Latest episode")}</span></div>
     <div class="body"><div class="who">${esc(V[last].p)}</div><h3>${esc(V[last].t)}</h3><div class="meta">${V[last].d}</div>
     <div class="btns"><a class="btn yt" href="${YTU(last)}" target="_blank" rel="noopener">${L("▶ Ver ahora","▶ Watch now")}</a><button class="btn ghost" data-open-sheet>${L("🔔 Avísame","🔔 Notify me")}</button><button class="btn ghost" data-share="${last}" data-t="${esc(V[last].p + ": " + V[last].t)}">${L("📤 Compartir","📤 Share")}</button></div>${EN?`<p class="meta" style="margin-top:10px">🎧 English audio: ⚙ Settings → Audio track → English</p>`:""}</div></div></section>
   <section>${H(L("Próximo jueves","Next Thursday"))}<${proxId?`a href="${YTU(proxId)}" target="_blank" rel="noopener"`:"div"} class="board"><div class="day"><small>${esc(d[0].toUpperCase())}</small><b>${esc(d[1])}</b><small>${esc((d[3]||"").slice(0,3).toUpperCase())}</small></div>
