@@ -142,7 +142,7 @@ add_action('wp_head', function () {
     'telephone' => '+1-888-877-2583', 'priceRange' => '$$', 'foundingDate' => '2008', 'knowsLanguage' => ['es', 'en'],
     'address' => ['@type' => 'PostalAddress', 'streetAddress' => '3455 W Craig Rd Ste D', 'addressLocality' => 'North Las Vegas', 'addressRegion' => 'NV', 'postalCode' => '89032', 'addressCountry' => 'US'],
     'openingHoursSpecification' => [['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens' => '09:00', 'closes' => '17:00']],
-    'contactPoint' => [['@type' => 'ContactPoint', 'telephone' => '+1-888-877-2583', 'contactType' => 'customer service', 'availableLanguage' => ['Spanish','English']], ['@type' => 'ContactPoint', 'telephone' => '+1-702-997-2982', 'contactType' => 'sales', 'areaServed' => 'US-NV']],
+    'contactPoint' => [['@type' => 'ContactPoint', 'telephone' => '+1-888-877-2583', 'contactType' => 'customer service', 'availableLanguage' => ['Spanish','English']]],
     'areaServed' => [['@type' => 'State', 'name' => 'Nevada'], ['@type' => 'State', 'name' => 'California'], ['@type' => 'State', 'name' => 'Arizona']],
     'makesOffer' => [['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Preparación de impuestos a distancia (IRS e-file)', 'serviceType' => 'Tax preparation', 'areaServed' => [['@type' => 'Country', 'name' => 'United States'], ['@type' => 'Place', 'name' => 'Worldwide']]]], ['@type' => 'Offer', 'itemOffered' => ['@type' => 'Service', 'name' => 'Solicitud de ITIN con Agentes de Aceptación Certificados (CAA)', 'serviceType' => 'ITIN application']]],
     'sameAs' => ['https://www.facebook.com/marrerobernal']];

@@ -270,8 +270,8 @@
     <div class="cinfo">
       <div class="kicker">Contacto</div>
       <h2>Ven, llama o escribe.</h2>
-      <a class="big" href="tel:+18888772583">888-877-2583</a><div style="font-size:14px;color:var(--mut);margin:-4px 0 10px">888-87-SALUD · gratis desde cualquier estado · local 702-997-2982</div>
-      <a class="wa" href="https://wa.me/17023027361" target="_blank" rel="noopener">💬 WhatsApp 702-302-7361</a>
+      <a class="big" href="tel:+18888772583">888-877-2583</a><div style="font-size:14px;color:var(--mut);margin:-4px 0 10px">888-87-SALUD · llamadas y WhatsApp · gratis desde cualquier estado</div>
+      <a class="wa" href="https://wa.me/18888772583" target="_blank" rel="noopener">💬 WhatsApp 888-877-2583</a>
       <div id="vonageClick2callme" style="margin-top:12px"></div>
       <p style="margin-top:16px"><b style="color:var(--ink)">3455 W Craig Rd, Suite D</b><br>North Las Vegas, NV 89032</p>
       <p>Lunes a viernes, 9:00 AM – 5:00 PM<br>Sábados y domingos cerrado</p>
