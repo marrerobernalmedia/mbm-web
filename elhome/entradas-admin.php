@@ -137,7 +137,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px 6px;b
     $nNo = count($viv) - $nSi - $nPe;
     $nCa = count(array_filter($l, fn($r) => ($r['motivo'] ?? '') === 'sin-confirmar'));
     $desde = date('Y-m-d', strtotime($g['fecha'] . ' 12:00') - DIAS_AVISO * 86400);
-    $toca = hoy_lv() >= $desde && hoy_lv() <= $g['fecha']; ?>
+    $toca = (hoy_lv() >= $desde && hoy_lv() <= $g['fecha']) || !empty($_GET['prueba']); // ?prueba=1: muestra los botones antes de la fecha, para ensayar ?>
     <h2><?= $h($g['titulo']) ?><?= !empty($g['hora']) ? ' · turno de las ' . $h($g['hora']) : '' ?> — <?= $h($g['sub'] ?? '') ?></h2>
     <div class="mute"><?= $h($fechaLarga($g['fecha'])) ?><?= !empty($g['hora']) ? ' · ' . $h($g['hora']) : '' ?><?= !empty($g['lugar']) ? ' · ' . $h($g['lugar']) : '' ?> · <?= empty($g['abierta']) ? 'reservas cerradas' : 'reservas abiertas' ?></div>
     <div class="stats"><div><b><?= $conf ?><?= $g['cupo'] >= SIN_LIMITE ? '' : ' / ' . $g['cupo'] ?></b>confirmadas<?= $g['cupo'] >= SIN_LIMITE ? ' · sin límite' : '' ?></div><div><b><?= $esp ?></b>en espera</div><div><b><?= $ent ?></b>ya entraron</div><div><b><?= count(array_filter($l, fn($r) => $r['estado'] !== 'cancelada')) ?></b>reservas</div></div>
