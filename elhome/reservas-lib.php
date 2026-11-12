@@ -16,7 +16,16 @@ function hoy_lv() { return date('Y-m-d'); }
 
 // Cada grabación puede tener varios TURNOS (p. ej. 3 PM y 6 PM): cada turno es una función con su propio cupo
 // y su propio id "<grabación>-<turno>"; "grupo" = la grabación a la que pertenece.
+// "cupo": 0 en grabaciones.json = SIN LÍMITE de entradas (Eliam, 11-nov-2026: la última grabación tuvo poca asistencia).
+// Para volver a limitar un turno basta poner su número de asientos.
+const SIN_LIMITE = 1000000;
 function grabaciones() {
+  static $o = null; if ($o !== null) return $o;
+  $o = _grabaciones();
+  foreach ($o as &$g) if ($g['cupo'] <= 0) $g['cupo'] = SIN_LIMITE;
+  return $o;
+}
+function _grabaciones() {
   $l = json_decode(@file_get_contents(__DIR__ . '/grabaciones.json'), true) ?: [];
   $o = [];
   foreach ($l as $g) {

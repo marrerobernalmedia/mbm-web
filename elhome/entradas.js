@@ -101,12 +101,13 @@
     return cargando;
   };
   const mia = id => mias.find(r => r.grabacion === id && r.estado !== "cancelada");
-  const libres = g => { const c = cupos[g.id]; return c ? Math.max(0, c.cupo - c.ocupadas) : g.cupo; };
+  // cupo 0 (o el número enorme que devuelve el servidor) = sin límite de entradas
+  const libres = g => { const c = cupos[g.id], cap = c ? c.cupo : g.cupo; if (!(cap > 0) || cap >= 1e6) return Infinity; return c ? Math.max(0, c.cupo - c.ocupadas) : g.cupo; };
 
   const lugarHtml = g => g.lugar ? `📍 ${esc(g.lugar)}${g.direccion ? `<br><em>${esc(g.direccion)}</em>` : ""}${g.mapa ? `<br><a href="${esc(g.mapa)}" target="_blank" rel="noopener" data-yt style="color:var(--lime);font-weight:700">Cómo llegar →</a>` : ""}` : "<em>El lugar te lo avisamos en la app</em>";
   function turno(f, varios) {
     const r = mia(f.id), l = libres(f), otra = !r && f.grupo !== f.id && F.some(x => x.grupo === f.grupo && x.id !== f.id && mia(x.id));
-    const cupo = r ? (r.confirmar ? "⚠️ Confirma tu asistencia" : r.estado === "espera" ? "Estás en la lista de espera" : `Tienes ${r.cantidad} ${r.cantidad == 1 ? "entrada" : "entradas"}`) : !f.abierta ? "Reservas cerradas" : l <= 0 ? "Lleno · lista de espera" : l <= Math.max(10, f.cupo * 0.25) ? `¡Quedan solo ${l}!` : "Entradas Gratis · Cupo Limitado";
+    const cupo = r ? (r.confirmar ? "⚠️ Confirma tu asistencia" : r.estado === "espera" ? "Estás en la lista de espera" : `Tienes ${r.cantidad} ${r.cantidad == 1 ? "entrada" : "entradas"}`) : !f.abierta ? "Reservas cerradas" : l <= 0 ? "Lleno · lista de espera" : l === Infinity ? "Entradas Gratis" : l <= Math.max(10, f.cupo * 0.25) ? `¡Quedan solo ${l}!` : "Entradas Gratis · Cupo Limitado";
     const btn = r ? `<button class="en-go mia" data-en-ver="${esc(f.id)}">${r.confirmar ? "✅ Confirmar que voy" : "🎟️ Ver mi entrada"}</button>` : !f.abierta || otra ? "" : `<button class="en-go" data-en-res="${esc(f.id)}">🎟️ Reservar${varios ? "" : " gratis"}</button>`;
     return `<div class="en-turno">${f.hora ? `<div class="en-hora"><b>${esc(f.hora)}</b>${varios ? "<small>turno</small>" : ""}</div>` : ""}<div class="en-tc"><div class="en-cupo${l <= 0 && !r ? " lleno" : ""}">${cupo}</div>${btn}</div></div>`;
   }
