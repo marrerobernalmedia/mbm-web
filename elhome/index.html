@@ -410,7 +410,7 @@ function item(id, rank){
 const proxSec = (l, t) => { l = l.filter(soonV).sort(byFecha); return l.length ? `<section>${H(t || "Próximos estrenos", l.length + "")}<div class="list">${l.map(i => item(i)).join("")}</div></section>` : ""; };
 function showCard(s){
   const n = s.v.filter(live).length;
-  return `<button class="sc" data-show="${s.id}" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt="${esc(sname(s))}" loading="lazy">${s.soon?`<span class="soon">Próximamente</span>`:""}</div><div class="b"><b>${esc(sname(s))}</b><span>${s.soon?esc(s.soon):n+" videos · "+esc(s.ch)}</span></div></button>`;
+  return `<button class="sc" data-show="${s.id}" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt="${esc(sname(s))}" loading="lazy"></div><div class="b"><b>${esc(sname(s))}</b><span>${s.soon?esc(s.soon):n+" videos · "+esc(s.ch)}</span></div></button>`;
 }
 function inicio(){
   const upcoming = Object.keys(V).filter(i => V[i].k === "proximo" && V[i].f).sort((a,b) => V[a].f.localeCompare(V[b].f));
