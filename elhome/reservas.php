@@ -36,6 +36,15 @@ if ($accion === 'mias') {
   if ($ensayo && !empty($_GET['avisar'])) con_reservas(function (&$db) use ($disp) {
     foreach ($db['reservas'] as &$r) if (($r['disp'] ?? '') === $disp && $r['estado'] !== 'cancelada' && empty($r['aviso'])) { $r['aviso'] = date('c'); $r['actualizada'] = date('c'); }
   });
+  // borrar=1: quita del archivo todas las reservas de ese aparato de ensayo (también las canceladas), para dejar la lista limpia
+  if ($ensayo && !empty($_GET['borrar'])) {
+    $n = con_reservas(function (&$db) use ($disp) {
+      $antes = count($db['reservas']);
+      $db['reservas'] = array_values(array_filter($db['reservas'], fn($r) => ($r['disp'] ?? '') !== $disp));
+      return $antes - count($db['reservas']);
+    });
+    echo json_encode(['ok' => true, 'borradas' => $n, 'quedan' => count(leer_reservas()['reservas'])]); exit;
+  }
   $db = leer_reservas();
   $out = [];
   foreach ($db['reservas'] as $r) if (($r['disp'] ?? '') === $disp && $r['estado'] !== 'cancelada') { $p = publica($r); if ($ensayo) $p['enlace'] = enlace_confirmar($r); $out[] = $p; }
