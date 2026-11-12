@@ -5,7 +5,10 @@ if (basename($_SERVER['SCRIPT_FILENAME'] ?? '') === basename(__FILE__)) { http_r
 header('Content-Type: text/html; charset=utf-8');
 header('X-Robots-Tag: noindex');
 $h = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
-$tok = preg_replace('/[^a-f0-9]/', '', $_POST['c'] ?? $_GET['c'] ?? '');
+$crudo = (string)($_POST['c'] ?? $_GET['c'] ?? '');
+// Enlace de muestra para probar el mensaje sin tocar las reservas: ?c=demo-<id de la función>, p. ej. demo-cuero-t1-4pm. No guarda nada.
+$demo = preg_match('/^demo-([a-z0-9-]{3,40})$/', $crudo, $mm) ? $mm[1] : '';
+$tok = $demo ? '' : preg_replace('/[^a-f0-9]/', '', $crudo);
 $resp = $_POST['r'] ?? '';
 $hecho = '';
 if (strlen($tok) >= 12 && ($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && in_array($resp, ['si', 'no'], true) && limite('confirmar', 30, 3600)) {
@@ -20,10 +23,21 @@ if (strlen($tok) >= 12 && ($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && in_ar
 }
 $r = null;
 if (strlen($tok) >= 12) foreach (leer_reservas()['reservas'] as $x) if (($x['tok'] ?? '') === $tok) $r = $x;
+if ($demo && isset(grabaciones()[$demo])) {
+  $resp = $_POST['r'] ?? '';
+  $r = ['grabacion' => $demo, 'nombre' => 'Eliam (prueba)', 'cantidad' => 2, 'estado' => $resp === 'no' ? 'cancelada' : 'confirmada', 'aviso' => date('c'), 'tok' => ''];
+  if ($resp === 'si') $r['reconf'] = date('c');
+  if ($resp === 'no') { $r['motivo'] = 'no-va'; $hecho = 'no'; }
+  $tok = 'demo-' . $demo;
+}
 $g = $r ? (grabaciones()[$r['grabacion']] ?? null) : null;
+// La tarjeta que muestra WhatsApp lleva el banner y el nombre del show de esa reserva
+$ogImg = base_url() . ($g && !empty($g['banner']) ? $g['banner'] : 'og.jpg');
+$ogTit = $g ? 'Confirma tu asistencia · ' . $g['titulo'] : 'Confirma tu asistencia a la grabación';
+$ogDes = $g ? ucfirst(fecha_larga($g['fecha'])) . (!empty($g['hora']) ? ' · ' . $g['hora'] : '') . ' · toca para confirmar tus entradas' : 'El Home de la Risa · toca para confirmar tus entradas';
 ?><!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex"><title>Confirma tu asistencia — El Home de la Risa</title><link rel="icon" href="icons/icon-192.png">
-<meta property="og:title" content="Confirma tu asistencia a la grabación"><meta property="og:description" content="El Home de la Risa · toca para confirmar tus entradas"><meta property="og:image" content="<?= $h(base_url()) ?>og.jpg">
+<meta property="og:title" content="<?= $h($ogTit) ?>"><meta property="og:description" content="<?= $h($ogDes) ?>"><meta property="og:image" content="<?= $h($ogImg) ?>"><meta property="og:site_name" content="El Home de la Risa">
 <style>:root{--bg:#0c0a0d;--card:#1c181f;--line:#2f2834;--fg:#f7f2ea;--mute:#a99fa8;--lime:#8fd11f;--red:#e2262f;--bulb:#ffd36b;color-scheme:dark}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .w{max-width:520px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left)) 60px}
@@ -36,6 +50,7 @@ button.no{background:transparent;color:var(--mute);border:1px solid var(--line);
 .ok{color:var(--lime)}.bad{color:#ff8a8a}.warn{color:var(--bulb)}a{color:var(--lime)}</style></head><body><div class="w">
 <div class="top"><img src="icons/icon-192.png" alt=""><b>El Home de la Risa</b></div>
 <div class="card">
+<?php if ($demo && $r): ?><p class="warn" style="margin-top:0">Enlace de prueba: nada de lo que toques aquí se guarda.</p><?php endif; ?>
 <?php if (!$r || !$g): ?>
   <h1>No encontramos esa reserva</h1><p class="mute">El enlace no es válido o la grabación ya pasó. Abre la app de El Home de la Risa para ver tus entradas.</p>
 <?php else:
