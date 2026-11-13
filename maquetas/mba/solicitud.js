@@ -129,7 +129,9 @@ const get=(o,k)=>k.split('.').reduce((a,p)=>a==null?a:a[p],o);
 function set(o,k,v){const p=k.split('.');let a=o;p.slice(0,-1).forEach(x=>a=a[x]??=(/^\d+$/.test(x)?{}:{}));a[p.at(-1)]=v}
 function render(){
   if(S.enviado){app.innerHTML=`<div class="q-spanel q-done"><div class="q-ok">✓</div><h1>${T('Recibimos tu solicitud.','We received your request.')}</h1>
-   <p class="lead" style="margin:0 auto">${T('Un especialista de Marrero Bernal Agency te contactará con opciones de varias compañías. Si es urgente, llámanos o escríbenos por WhatsApp al 888-877-2583.','A Marrero Bernal Agency specialist will contact you with options from several companies. If it is urgent, call or WhatsApp us at 888-877-2583.')}</p></div>`;app.scrollIntoView({block:'start'});return}
+   <p class="lead" style="margin:0 auto">${T('Un especialista de Marrero Bernal Agency te contactará con opciones de varias compañías. Si es urgente, llámanos o escríbenos por WhatsApp al 888-877-2583.','A Marrero Bernal Agency specialist will contact you with options from several companies. If it is urgent, call or WhatsApp us at 888-877-2583.')}</p>
+   <p style="margin:22px 0 6px;font-weight:600">${T('¿Prefieres hablarlo en persona o por teléfono? Escoge día y hora ahora.','Prefer to talk it over in person or by phone? Pick a day and time now.')}</p>
+   <a class="q-sbtn q-p" style="display:inline-block;text-decoration:none" href="${T('/citas/','/en/appointments/')}">📅 ${T('Agendar una cita','Book an appointment')}</a></div>`;app.scrollIntoView({block:'start'});return}
   const bar=`<div class="q-ssteps">${[1,2,3,4].map(i=>`<i class="${i<=S.paso?'q-on':''}"></i>`).join('')}</div>`;
   let h='';
   if(S.paso===1){
