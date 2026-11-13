@@ -450,6 +450,7 @@ REDIR = {
 SOL_JS = (root / 'maquetas/mba/solicitud.js').read_text()
 def _sol(lang):
     return ('\n<section class="sub sol"><div class="wrap">\n'
+            '  <a class="gstars" href="https://g.page/r/CRuuvSm15kNDEAI" target="_blank" rel="noopener"><b>★★★★★</b> ' + ('4.9 en Google · 27 reseñas' if lang == 'es' else '4.9 on Google · 27 reviews') + '</a>\n'
             '  <div id="sol-app" data-lang="' + lang + '" data-ajax="<?php echo esc_url(admin_url(\'admin-ajax.php\')); ?>"></div>\n'
             '  <noscript><p>' + ('Para pedir tu cotización llámanos o escríbenos por WhatsApp al 888-877-2583.' if lang == 'es' else 'To request your quote, call or WhatsApp us at 888-877-2583.') + '</p></noscript>\n'
             '</div></section>\n<script>\n' + SOL_JS + '</script>\n')
@@ -611,13 +612,20 @@ function mba_solicitud() {
   $claves = array_slice(array_filter(array_map(fn($c) => preg_replace('/[^a-z]/', '', (string) $c), (array) ($d['claves'] ?? []))), 0, 20);
   $eti = array_merge(['solicitud-web'], array_map(fn($c) => 'serv-' . $c, $claves), [($d['idioma'] ?? '') === 'en' ? 'idioma-ingles' : 'idioma-espanol', 'fuente-' . $fcat, $s('cliente', 4) === 'si' ? 'cliente-existente' : 'prospecto-nuevo']);
   $resumen .= "\n\nORIGEN\n  Llegó por: " . ucfirst($fcat) . ($fuente && $fuente !== $fcat ? " ($fuente)" : '');
+  // Cuándo llamará la oficina (lun-vie 9 a 5, hora de Las Vegas), para que el texto de confirmación no prometa de más.
+  $lv = new DateTime('now', new DateTimeZone('America/Los_Angeles')); $dw = (int) $lv->format('N'); $hr = (int) $lv->format('G');
+  if ($dw <= 5 && $hr < 9) { $cu = ['hoy', 'today']; }
+  elseif ($dw <= 5 && $hr < 15) { $cu = ['hoy o mañana', 'today or tomorrow']; }
+  elseif ($dw <= 4) { $cu = ['mañana', 'tomorrow']; }
+  else { $cu = ['el lunes', 'on Monday']; }
+  $msgconf = ($d['idioma'] ?? '') === 'en'
+    ? "Hi $nombre, we received your request at Marrero Bernal & Associates. A specialist will contact you {$cu[1]} (office hours: Mon-Fri, 9 to 5). To write to us, use WhatsApp at 888-877-2583; if it is urgent, call that same number."
+    : "Hola $nombre, recibimos tu solicitud en Marrero Bernal & Associates. Un especialista te contactará {$cu[0]} (atendemos de lunes a viernes, de 9 a 5). Para escribirnos, usa WhatsApp al 888-877-2583; si es urgente, llama a ese mismo número.";
   $payload = ['first_name' => $nombre, 'last_name' => $apellido, 'phone' => '+' . $tel, 'email' => sanitize_email((string) ($d['correo'] ?? '')),
     'address1' => $s('direccion', 200), 'city' => $s('ciudad'), 'postal_code' => $s('zip', 12), 'date_of_birth' => $s('nacimiento', 10),
     'servicios' => $lista, 'idioma' => ($d['idioma'] ?? '') === 'en' ? 'Inglés' : 'Español', 'whatsapp' => !empty($d['whatsapp']) ? 'Sí' : 'No',
     'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4), 'resumen' => $resumen, 'origen' => $esapp ? 'App' : 'marrerobernal.com', 'fuente' => $fcat, 'fuente_detalle' => $fuente, 'etiquetas' => implode(',', $eti), 'servicio_principal' => $servs[0] ?? '',
-    'mensaje_confirmacion' => ($d['idioma'] ?? '') === 'en'
-      ? "Hi $nombre, we received your request at Marrero Bernal & Associates. A specialist will contact you within one business day. To write to us, use WhatsApp at 888-877-2583; if it is urgent, call that same number."
-      : "Hola $nombre, recibimos tu solicitud en Marrero Bernal & Associates. Un especialista te contactará en un día hábil. Para escribirnos, usa WhatsApp al 888-877-2583; si es urgente, llama a ese mismo número.",
+    'mensaje_confirmacion' => $msgconf,
     'fecha' => wp_date('Y-m-d H:i')];
   delete_transient('mba_parc_' . $tel);
   $hook = get_option('mba_ghl_webhook', ''); $crm = false;

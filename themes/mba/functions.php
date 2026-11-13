@@ -31,6 +31,10 @@ add_action('wp_enqueue_scripts', function () {
 /** Chat del CRM (LeadConnector), igual que el sitio anterior. */
 add_action('wp_footer', function () {
   echo '<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a3d5751a3d7dca497eb1973"></script>' . "\n";
+  // Botón fijo de WhatsApp en teléfonos (abajo a la izquierda; el chat queda a la derecha).
+  $en = (bool) preg_match('#^/en(/|$)#', $_SERVER['REQUEST_URI'] ?? '');
+  echo '<style>.mba-wa{display:none}@media(max-width:800px){.mba-wa{display:flex;position:fixed;left:14px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:9990;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;background:#1f8a5b;color:#fff;font:600 15px/1 Inter,system-ui,sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.22)}}</style>'
+    . '<a class="mba-wa" href="https://wa.me/18888772583?text=' . rawurlencode($en ? 'Hi, I am writing from marrerobernal.com. I need information about: ' : 'Hola, escribo desde marrerobernal.com. Necesito información sobre: ') . '" target="_blank" rel="noopener">💬 WhatsApp</a>' . "\n";
   // De dónde llegó la visita (se envía con la solicitud para medir las promos).
   // Píxel de Meta (marrerobernal.com). Solo vistas de página y el evento Lead; sin datos del formulario ni configuración automática.
   echo '<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("set","autoConfig",false,"1186649107123403");fbq("init","1186649107123403");fbq("track","PageView");</script>' . "\n";

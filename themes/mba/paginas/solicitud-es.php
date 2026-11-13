@@ -2,6 +2,7 @@
 ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'solicitud', 'request'); ?>
 <main class="subpage">
 <section class="sub sol"><div class="wrap">
+  <a class="gstars" href="https://g.page/r/CRuuvSm15kNDEAI" target="_blank" rel="noopener"><b>★★★★★</b> 4.9 en Google · 27 reseñas</a>
   <div id="sol-app" data-lang="es" data-ajax="<?php echo esc_url(admin_url('admin-ajax.php')); ?>"></div>
   <noscript><p>Para pedir tu cotización llámanos o escríbenos por WhatsApp al 888-877-2583.</p></noscript>
 </div></section>

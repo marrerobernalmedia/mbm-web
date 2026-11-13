@@ -2,6 +2,7 @@
 ob_start(); get_header('en'); echo mba_pag_fix(ob_get_clean(), 'en', 'request', 'solicitud'); ?>
 <main class="subpage">
 <section class="sub sol"><div class="wrap">
+  <a class="gstars" href="https://g.page/r/CRuuvSm15kNDEAI" target="_blank" rel="noopener"><b>★★★★★</b> 4.9 on Google · 27 reviews</a>
   <div id="sol-app" data-lang="en" data-ajax="<?php echo esc_url(admin_url('admin-ajax.php')); ?>"></div>
   <noscript><p>To request your quote, call or WhatsApp us at 888-877-2583.</p></noscript>
 </div></section>

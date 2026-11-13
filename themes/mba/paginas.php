@@ -105,13 +105,20 @@ function mba_solicitud() {
 
 ORIGEN
   Llegó por: " . ucfirst($fcat) . ($fuente && $fuente !== $fcat ? " ($fuente)" : '');
+  // Cuándo llamará la oficina (lun-vie 9 a 5, hora de Las Vegas), para que el texto de confirmación no prometa de más.
+  $lv = new DateTime('now', new DateTimeZone('America/Los_Angeles')); $dw = (int) $lv->format('N'); $hr = (int) $lv->format('G');
+  if ($dw <= 5 && $hr < 9) { $cu = ['hoy', 'today']; }
+  elseif ($dw <= 5 && $hr < 15) { $cu = ['hoy o mañana', 'today or tomorrow']; }
+  elseif ($dw <= 4) { $cu = ['mañana', 'tomorrow']; }
+  else { $cu = ['el lunes', 'on Monday']; }
+  $msgconf = ($d['idioma'] ?? '') === 'en'
+    ? "Hi $nombre, we received your request at Marrero Bernal & Associates. A specialist will contact you {$cu[1]} (office hours: Mon-Fri, 9 to 5). To write to us, use WhatsApp at 888-877-2583; if it is urgent, call that same number."
+    : "Hola $nombre, recibimos tu solicitud en Marrero Bernal & Associates. Un especialista te contactará {$cu[0]} (atendemos de lunes a viernes, de 9 a 5). Para escribirnos, usa WhatsApp al 888-877-2583; si es urgente, llama a ese mismo número.";
   $payload = ['first_name' => $nombre, 'last_name' => $apellido, 'phone' => '+' . $tel, 'email' => sanitize_email((string) ($d['correo'] ?? '')),
     'address1' => $s('direccion', 200), 'city' => $s('ciudad'), 'postal_code' => $s('zip', 12), 'date_of_birth' => $s('nacimiento', 10),
     'servicios' => $lista, 'idioma' => ($d['idioma'] ?? '') === 'en' ? 'Inglés' : 'Español', 'whatsapp' => !empty($d['whatsapp']) ? 'Sí' : 'No',
     'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4), 'resumen' => $resumen, 'origen' => $esapp ? 'App' : 'marrerobernal.com', 'fuente' => $fcat, 'fuente_detalle' => $fuente, 'etiquetas' => implode(',', $eti), 'servicio_principal' => $servs[0] ?? '',
-    'mensaje_confirmacion' => ($d['idioma'] ?? '') === 'en'
-      ? "Hi $nombre, we received your request at Marrero Bernal & Associates. A specialist will contact you within one business day. To write to us, use WhatsApp at 888-877-2583; if it is urgent, call that same number."
-      : "Hola $nombre, recibimos tu solicitud en Marrero Bernal & Associates. Un especialista te contactará en un día hábil. Para escribirnos, usa WhatsApp al 888-877-2583; si es urgente, llama a ese mismo número.",
+    'mensaje_confirmacion' => $msgconf,
     'fecha' => wp_date('Y-m-d H:i')];
   delete_transient('mba_parc_' . $tel);
   $hook = get_option('mba_ghl_webhook', ''); $crm = false;
