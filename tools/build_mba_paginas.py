@@ -609,7 +609,7 @@ function mba_solicitud() {
   if ($fcat === 'directo' && $fuente && $fuente !== 'directo') $fcat = 'otro';
   $esapp = ($d['origen'] ?? '') === 'app'; if ($esapp) $fcat = 'app';
   $claves = array_slice(array_filter(array_map(fn($c) => preg_replace('/[^a-z]/', '', (string) $c), (array) ($d['claves'] ?? []))), 0, 20);
-  $eti = array_merge(['solicitud-web'], array_map(fn($c) => 'serv-' . $c, $claves), [($d['idioma'] ?? '') === 'en' ? 'idioma-ingles' : 'idioma-espanol', 'fuente-' . $fcat]);
+  $eti = array_merge(['solicitud-web'], array_map(fn($c) => 'serv-' . $c, $claves), [($d['idioma'] ?? '') === 'en' ? 'idioma-ingles' : 'idioma-espanol', 'fuente-' . $fcat, $s('cliente', 4) === 'si' ? 'cliente-existente' : 'prospecto-nuevo']);
   $resumen .= "\n\nORIGEN\n  Llegó por: " . ucfirst($fcat) . ($fuente && $fuente !== $fcat ? " ($fuente)" : '');
   $payload = ['first_name' => $nombre, 'last_name' => $apellido, 'phone' => '+' . $tel, 'email' => sanitize_email((string) ($d['correo'] ?? '')),
     'address1' => $s('direccion', 200), 'city' => $s('ciudad'), 'postal_code' => $s('zip', 12), 'date_of_birth' => $s('nacimiento', 10),
@@ -653,7 +653,7 @@ function mba_solicitud_parcial() {
   if ($fcat === 'directo' && $fuente && $fuente !== 'directo') $fcat = 'otro';
   $claves = array_slice(array_filter(array_map(fn($c) => preg_replace('/[^a-z]/', '', (string) $c), (array) ($d['claves'] ?? []))), 0, 20);
   $en = ($d['idioma'] ?? '') === 'en'; $lista = implode(', ', $servs);
-  $eti = array_merge(['solicitud-incompleta'], array_map(fn($c) => 'serv-' . $c, $claves), [$en ? 'idioma-ingles' : 'idioma-espanol', 'fuente-' . $fcat]);
+  $eti = array_merge(['solicitud-incompleta'], array_map(fn($c) => 'serv-' . $c, $claves), [$en ? 'idioma-ingles' : 'idioma-espanol', 'fuente-' . $fcat, $s('cliente', 4) === 'si' ? 'cliente-existente' : 'prospecto-nuevo']);
   $payload = ['tipo' => 'incompleta', 'first_name' => $nombre, 'last_name' => $s('apellido'), 'phone' => '+' . $tel, 'email' => sanitize_email((string) ($d['correo'] ?? '')),
     'servicios' => $lista, 'idioma' => $en ? 'Inglés' : 'Español', 'whatsapp' => !empty($d['whatsapp']) ? 'Sí' : 'No', 'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4),
     'resumen' => "SOLICITUD INCOMPLETA\\nDejó sus datos de contacto y no terminó el formulario. Llamar para completar la solicitud.\\n\\nSERVICIOS: $lista\\nIDIOMA DEL CLIENTE: " . ($en ? 'Inglés' : 'Español')
