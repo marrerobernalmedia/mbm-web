@@ -199,7 +199,7 @@ function enviar(btn){
     origen:/[?&]app=1/.test(location.search)||window.matchMedia('(display-mode: standalone)').matches?'app':'web',seg:Math.round((Date.now()-S.t0)/1000),fuente:(function(){try{return sessionStorage.getItem('mba_fuente')||''}catch(e){return ''}})()};
   btn.disabled=true;btn.textContent=T('Enviando…','Sending…');
   const fd=new FormData();fd.append('action','mba_solicitud');fd.append('datos',JSON.stringify(datos));fd.append('empresa','');
-  fetch(app.dataset.ajax,{method:'POST',body:fd,credentials:'same-origin'}).then(r=>r.json()).then(j=>{if(!j||!j.success)throw 0;S.enviado=true;try{if(window.gtag)gtag('event','generate_lead',{servicios:S.sel.join(','),idioma:L})}catch(e){}render()})
+  fetch(app.dataset.ajax,{method:'POST',body:fd,credentials:'same-origin'}).then(r=>r.json()).then(j=>{if(!j||!j.success)throw 0;S.enviado=true;try{if(window.gtag)gtag('event','generate_lead',{servicios:S.sel.join(','),idioma:L})}catch(e){}try{if(window.fbq)fbq('track','Lead')}catch(e){}render()})
    .catch(()=>{btn.disabled=false;btn.textContent=T('Enviar solicitud','Send request');$('#msg').textContent=T('No se pudo enviar. Inténtalo otra vez o llámanos al 888-877-2583.','It could not be sent. Try again or call us at 888-877-2583.')});
 }
 app.addEventListener('click',e=>{
