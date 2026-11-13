@@ -409,11 +409,11 @@ P['contabilidad'] = dict(
   </div>
 </div></section'''+'''>'''))
 
-# Páginas viejas de Elementor → destino (301). Las de seguros van a los cotizadores de Farmers con el código de agente.
+# Páginas viejas de Elementor → destino (301). Las de seguros van al formulario propio de solicitud.
 FQ = 'https://esales.farmers.com/fastquote?Lob={}&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032'
 REDIR = {
-    'insurance': '/#personal', 'insurance-2': FQ.format('autoHome'), 'vehicle-insurance': FQ.format('Auto'),
-    'home-insurance': FQ.format('Home'), 'life': FQ.format('Lifec'), 'business-insurance-2': FQ.format('Business'),
+    'insurance': '/#personal', 'insurance-2': '/solicitud/?serv=auto,casa', 'vehicle-insurance': '/solicitud/?serv=auto',
+    'home-insurance': '/solicitud/?serv=casa', 'life': '/solicitud/?serv=vida', 'business-insurance-2': '/solicitud/?serv=negocio',
     'health': '/obamacare-nevada/', 'travel': '/#personal', 'personal': '/#personal', 'business': '/#negocios',
     'taxes': '/#irs', 'taxes-2': '/#irs', 'business-taxes': '/#negocios', 'business-licenses': '/#negocios',
     'about-us': '/#nosotros', 'contact': '/#contacto', 'blog': '/', 'immigration': '/', 'payroll': '/contabilidad-y-nomina/',
@@ -583,10 +583,17 @@ function mba_solicitud() {
   if (!$nombre || strlen($tel) < 10 || !$servs || (int) ($d['seg'] ?? 0) < 5) wp_send_json_error(null, 400);
   if (strlen($tel) === 10) $tel = '1' . $tel;
   $lista = implode(', ', $servs);
+  $fuente = strtolower($s('fuente', 80)); $fcat = 'directo';
+  foreach (['facebook' => 'facebook|fb\\.|fbclid', 'instagram' => 'instagram', 'google' => 'google', 'whatsapp' => 'whatsapp|wa\\.me', 'youtube' => 'youtube|youtu\\.be', 'tiktok' => 'tiktok', 'bing' => 'bing'] as $k => $re) if (preg_match("/$re/", $fuente)) { $fcat = $k; break; }
+  if ($fcat === 'directo' && $fuente && $fuente !== 'directo') $fcat = 'otro';
+  $esapp = ($d['origen'] ?? '') === 'app'; if ($esapp) $fcat = 'app';
+  $claves = array_slice(array_filter(array_map(fn($c) => preg_replace('/[^a-z]/', '', (string) $c), (array) ($d['claves'] ?? []))), 0, 20);
+  $eti = array_merge(['solicitud-web'], array_map(fn($c) => 'serv-' . $c, $claves), [($d['idioma'] ?? '') === 'en' ? 'idioma-ingles' : 'idioma-espanol', 'fuente-' . $fcat]);
+  $resumen .= "\n\nORIGEN\n  Llegó por: " . ucfirst($fcat) . ($fuente && $fuente !== $fcat ? " ($fuente)" : '');
   $payload = ['first_name' => $nombre, 'last_name' => $apellido, 'phone' => '+' . $tel, 'email' => sanitize_email((string) ($d['correo'] ?? '')),
     'address1' => $s('direccion', 200), 'city' => $s('ciudad'), 'postal_code' => $s('zip', 12), 'date_of_birth' => $s('nacimiento', 10),
     'servicios' => $lista, 'idioma' => ($d['idioma'] ?? '') === 'en' ? 'Inglés' : 'Español', 'whatsapp' => !empty($d['whatsapp']) ? 'Sí' : 'No',
-    'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4), 'resumen' => $resumen, 'origen' => ($d['origen'] ?? '') === 'app' ? 'App' : 'marrerobernal.com', 'fecha' => wp_date('Y-m-d H:i')];
+    'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4), 'resumen' => $resumen, 'origen' => $esapp ? 'App' : 'marrerobernal.com', 'fuente' => $fcat, 'fuente_detalle' => $fuente, 'etiquetas' => implode(',', $eti), 'servicio_principal' => $servs[0] ?? '', 'fecha' => wp_date('Y-m-d H:i')];
   $hook = get_option('mba_ghl_webhook', ''); $crm = false;
   if ($hook) {
     $r = wp_remote_post($hook, ['timeout' => 12, 'headers' => ['Content-Type' => 'application/json'], 'body' => wp_json_encode($payload)]);

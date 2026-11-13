@@ -183,7 +183,7 @@ function enviar(btn){
   const c=S.c,datos={servicios:S.sel.map(k=>SERV[k].es),claves:S.sel,idioma:L,whatsapp:S.wa,
     nombre:c.nombre,apellido:c.apellido,telefono:c.tel,correo:c.correo||'',direccion:c.dir||'',ciudad:c.ciudad||'',zip:c.zip||'',
     nacimiento:c.nac||'',hora:val(CONTACTO.find(f=>f.id==='hora'),c.hora)||'',cliente:c.cliente||'',resumen:resumen(),
-    origen:/[?&]app=1/.test(location.search)||window.matchMedia('(display-mode: standalone)').matches?'app':'web',seg:Math.round((Date.now()-S.t0)/1000)};
+    origen:/[?&]app=1/.test(location.search)||window.matchMedia('(display-mode: standalone)').matches?'app':'web',seg:Math.round((Date.now()-S.t0)/1000),fuente:(function(){try{return sessionStorage.getItem('mba_fuente')||''}catch(e){return ''}})()};
   btn.disabled=true;btn.textContent=T('Enviando…','Sending…');
   const fd=new FormData();fd.append('action','mba_solicitud');fd.append('datos',JSON.stringify(datos));fd.append('empresa','');
   fetch(app.dataset.ajax,{method:'POST',body:fd,credentials:'same-origin'}).then(r=>r.json()).then(j=>{if(!j||!j.success)throw 0;S.enviado=true;render()})

@@ -4,7 +4,7 @@
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <?php wp_head(); ?>
-<script src="https://s3.amazonaws.com/vonageclick2callme/click2callme.js?version=v1" c2cmKey="dmq10aFDG29Db9WC57GhgWY7EedaWz5f7or%2BNiWHlFtFD4%2FFgdPktS9wcP6CJ2AXDkJLUkTIkmImrRVuwjxoEQ%3D%3D" c2cmCompanyName="Marrero%20Bernal%20and%20Associates" c2cmLinkType="click-to-call-orange"></script>
+<?php if (is_front_page() || preg_match('#^/en/?$#', (string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH))) : ?><script src="https://s3.amazonaws.com/vonageclick2callme/click2callme.js?version=v1" c2cmKey="dmq10aFDG29Db9WC57GhgWY7EedaWz5f7or%2BNiWHlFtFD4%2FFgdPktS9wcP6CJ2AXDkJLUkTIkmImrRVuwjxoEQ%3D%3D" c2cmCompanyName="Marrero%20Bernal%20and%20Associates" c2cmLinkType="click-to-call-orange"></script><?php endif; ?>
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
