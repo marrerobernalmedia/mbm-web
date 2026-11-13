@@ -110,8 +110,8 @@ ORIGEN
     'servicios' => $lista, 'idioma' => ($d['idioma'] ?? '') === 'en' ? 'Inglés' : 'Español', 'whatsapp' => !empty($d['whatsapp']) ? 'Sí' : 'No',
     'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4), 'resumen' => $resumen, 'origen' => $esapp ? 'App' : 'marrerobernal.com', 'fuente' => $fcat, 'fuente_detalle' => $fuente, 'etiquetas' => implode(',', $eti), 'servicio_principal' => $servs[0] ?? '',
     'mensaje_confirmacion' => ($d['idioma'] ?? '') === 'en'
-      ? "Hi $nombre, we received your request at Marrero Bernal & Associates. A specialist will contact you within one business day. If it is urgent, call us at 888-877-2583."
-      : "Hola $nombre, recibimos tu solicitud en Marrero Bernal & Associates. Un especialista te contactará en un día hábil. Si es urgente, llámanos al 888-877-2583.",
+      ? "Hi $nombre, we received your request at Marrero Bernal & Associates. A specialist will contact you within one business day. To write to us, use WhatsApp at 888-877-2583; if it is urgent, call that same number."
+      : "Hola $nombre, recibimos tu solicitud en Marrero Bernal & Associates. Un especialista te contactará en un día hábil. Para escribirnos, usa WhatsApp al 888-877-2583; si es urgente, llama a ese mismo número.",
     'fecha' => wp_date('Y-m-d H:i')];
   $hook = get_option('mba_ghl_webhook', ''); $crm = false;
   if ($hook) {
