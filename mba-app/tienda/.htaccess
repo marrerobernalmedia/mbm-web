@@ -1,0 +1,4 @@
+# Imágenes de la ficha de las tiendas (ícono, gráfico y capturas). Se dejan leer desde otras páginas para poder cargarlas en la consola.
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+</IfModule>
