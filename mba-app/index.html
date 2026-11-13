@@ -205,9 +205,9 @@ const T={
  i_ios:['Para instalarla, toca el botón «Instalar» de arriba.','To install it, tap the “Install” button above.'],
  h_t:['Pon Marrero Bernal en tu teléfono','Put Marrero Bernal on your phone'], h_p:['Gratis. Cotiza, agenda, escanea documentos y paga sin buscar el sitio.','Free. Get quotes, book, scan documents and pay without looking up the site.'],
  h_ok:['Listo','Done'], h_uno:['Instalar ahora','Install now'], h_uno2:['Un toque y queda en tu pantalla de inicio.','One tap and it’s on your home screen.'],
- s1:['Toca el botón de compartir {S} en la barra de Safari. Si no lo ves, toca primero los tres puntos (···).','Tap the share button {S} in Safari’s toolbar. If you don’t see it, tap the three dots (···) first.'],
- s2:['Baja y toca «Agregar a pantalla de inicio».','Scroll down and tap “Add to Home Screen”.'],
- s3:['Toca «Agregar». El ícono queda junto a tus otras apps.','Tap “Add”. The icon appears with your other apps.'],
+ s1:['Abajo, junto a la dirección, toca el botón de menú (☰ o ···) y luego «Compartir» {S}. En iPhones anteriores, el botón {S} está directo en la barra.','At the bottom, next to the address, tap the menu button (☰ or ···) and then “Share” {S}. On older iPhones, the {S} button is right on the toolbar.'],
+ s2:['Si no ves «Agregar a pantalla de inicio», toca «Ver más» (la flecha hacia abajo).','If you don’t see “Add to Home Screen”, tap “View More” (the down arrow).'],
+ s3:['Toca «Agregar a pantalla de inicio» y luego «Agregar». El ícono queda junto a tus otras apps.','Tap “Add to Home Screen”, then “Add”. The icon appears with your other apps.'],
  saf:['Estás viendo esto dentro de otra app, y desde aquí no se puede instalar. Copia la dirección y ábrela en Safari.','You are viewing this inside another app, and it can’t be installed from here. Copy the address and open it in Safari.'],
  cop:['Copiar la dirección','Copy the address'], cop2:['Copiada: pégala en Safari','Copied: paste it in Safari'],
  a1:['Toca el menú ⋮ del navegador (arriba a la derecha).','Tap the browser’s ⋮ menu (top right).'], a2:['Toca «Instalar app» o «Agregar a pantalla principal».','Tap “Install app” or “Add to Home screen”.'],
@@ -333,7 +333,7 @@ function pintaHoja(){
  $('#appb').hidden=instalada; $('#appb-t').textContent=t('i_btn');
  $('#hoja-h').textContent=t('h_t'); $('#hoja-p').textContent=t('h_p'); $('#hoja-x').textContent=t('h_ok');
  const c=$('#hoja-c'); c.innerHTML='';
- const paso=(n,k)=>{const d=document.createElement('div');d.className='paso';const i=document.createElement('i');i.textContent=n;const x=document.createElement('div');x.innerHTML=t(k).replace('{S}',COMP);d.append(i,x);c.append(d)};
+ const paso=(n,k)=>{const d=document.createElement('div');d.className='paso';const i=document.createElement('i');i.textContent=n;const x=document.createElement('div');x.innerHTML=t(k).split('{S}').join(COMP);d.append(i,x);c.append(d)};
  if(aviso){const b=document.createElement('button');b.className='btn acc';b.textContent=t('h_uno');b.onclick=async()=>{const a=aviso;aviso=null;$('#hoja').hidden=true;a.prompt()};const s=document.createElement('p');s.style.cssText='font-size:13px;color:var(--mut);margin:8px 0 14px';s.textContent=t('h_uno2');c.append(b,s)}
  else if(ios&&!safari){const s=document.createElement('div');s.className='paso';s.innerHTML='<i>!</i><div></div>';s.lastChild.textContent=t('saf');const b=document.createElement('button');b.className='btn acc';b.textContent=t('cop');b.onclick=async()=>{try{await navigator.clipboard.writeText(URLAPP);b.textContent=t('cop2')}catch(e){b.textContent=URLAPP}};const u=document.createElement('p');u.style.cssText='font-weight:700;text-align:center;margin:10px 0;user-select:all;-webkit-user-select:all';u.textContent='marrerobernal.com/app';c.append(s,u,b)}
  else if(ios){paso(1,'s1');paso(2,'s2');paso(3,'s3')}
