@@ -1297,7 +1297,7 @@ function mba_solicitud() {
   $resumen .= "\n\nORIGEN\n  Llegó por: " . ucfirst($fcat) . ($fuente && $fuente !== $fcat ? " ($fuente)" : '');
   // Cuándo llamará la oficina (lun-vie 9 a 5, hora de Las Vegas), para que el texto de confirmación no prometa de más.
   $lv = new DateTime('now', new DateTimeZone('America/Los_Angeles')); $dw = (int) $lv->format('N'); $hr = (int) $lv->format('G');
-  $fer = ['2026-11-26', '2026-12-25', '2027-01-01', '2027-01-18', '2027-02-15', '2027-05-31', '2027-06-18', '2027-07-05', '2027-09-06', '2027-10-11', '2027-11-11', '2027-11-25', '2027-12-24'];
+  $fer = ['2026-11-26', '2026-11-27', '2026-12-24', '2026-12-25', '2026-12-31', '2027-01-01', '2027-01-18', '2027-02-15', '2027-05-31', '2027-06-18', '2027-07-05', '2027-09-06', '2027-10-11', '2027-11-11', '2027-11-25', '2027-12-24'];
   $habil = fn($x) => (int) $x->format('N') <= 5 && !in_array($x->format('Y-m-d'), $fer, true);
   $sig = clone $lv; do { $sig->modify('+1 day'); } while (!$habil($sig));
   $man = (clone $lv)->modify('+1 day')->format('Y-m-d') === $sig->format('Y-m-d'); $n = (int) $sig->format('N');
