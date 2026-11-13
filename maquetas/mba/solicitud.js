@@ -198,6 +198,6 @@ app.addEventListener('click',e=>{
   if(t.id==='sig'){leer();const m=validar();if(m){$('#msg').textContent=m;return}
     if(S.paso<4){S.paso++;render()}else enviar(t)}
 });
-(new URLSearchParams(location.search).get('s')||'').split(',').forEach(k=>{if(SERV[k]&&!S.sel.includes(k))S.sel.push(k)});
+(new URLSearchParams(location.search).get('serv')||'').split(',').forEach(k=>{if(SERV[k]&&!S.sel.includes(k))S.sel.push(k)});
 render();
 })();

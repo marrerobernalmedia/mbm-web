@@ -40,15 +40,15 @@
   <div class="quote" id="cotizar">
     <div><div class="kicker" style="margin-bottom:6px">Quote online</div><h3>Your quote goes straight to our office.</h3><p>Five minutes, no phone calls. A specialist reviews it and contacts you with options from several companies.</p></div>
     <div class="qbtns">
-      <a href="/en/request/?s=auto">🚗 Auto</a>
-      <a href="/en/request/?s=casa">🏠 Home</a>
-      <a href="/en/request/?s=casa">🏢 Condo</a>
-      <a href="/en/request/?s=renters">🔑 Renters</a>
-      <a href="/en/request/?s=vida">❤️ Life</a>
-      <a href="/en/request/?s=negocio">💼 Business</a>
-      <a href="/en/request/?s=auto,casa">🚗+🏠 Auto + home</a>
-      <a href="/en/request/?s=auto,renters">🚗+🔑 Auto + renters</a>
-      <a href="/en/request/?s=mexico">🇲🇽 Mexico auto</a>
+      <a href="/en/request/?serv=auto">🚗 Auto</a>
+      <a href="/en/request/?serv=casa">🏠 Home</a>
+      <a href="/en/request/?serv=casa">🏢 Condo</a>
+      <a href="/en/request/?serv=renters">🔑 Renters</a>
+      <a href="/en/request/?serv=vida">❤️ Life</a>
+      <a href="/en/request/?serv=negocio">💼 Business</a>
+      <a href="/en/request/?serv=auto,casa">🚗+🏠 Auto + home</a>
+      <a href="/en/request/?serv=auto,renters">🚗+🔑 Auto + renters</a>
+      <a href="/en/request/?serv=mexico">🇲🇽 Mexico auto</a>
       <a href="/en/request/">📋 Taxes, translations and more</a>
     </div>
   </div>
