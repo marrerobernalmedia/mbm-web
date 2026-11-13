@@ -44,11 +44,7 @@ ol li::before{content:counter(p);flex:none;width:28px;height:28px;border-radius:
 ol svg{width:18px;height:18px;vertical-align:-4px}
 .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:50px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);color:var(--fg);font:800 16px/1 var(--body);text-decoration:none;padding:0 16px;margin-top:12px}
 .btn.lima{background:var(--lime);color:#111;border-color:var(--lime)}
-.qr{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center}
-.qr div:first-child{background:#fff;border-radius:12px;padding:8px;line-height:0}
-.qr svg{width:100%;height:auto}
-.qr p{margin:0;font-size:15.5px}
-.qr b{display:block;font-family:var(--display);font-weight:400;font-size:18px;color:var(--lime);margin-top:6px;word-break:break-word}
+.fila{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.fila b{font-size:18px;flex:none}.fila .play{flex:1;min-width:220px}
 ul.por{list-style:none;margin:6px 0 18px;padding:0;display:grid;gap:10px}
 ul.por li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px}
 ul.por span{flex:none;width:34px;height:34px;border-radius:10px;background:var(--bg2);border:1px solid var(--line);display:grid;place-items:center;font-size:17px}
@@ -62,7 +58,6 @@ details{margin:4px 0 18px;font-size:14.5px;color:var(--mute)}
 summary{cursor:pointer;padding:8px 0;font-weight:600;color:var(--fg)}
 footer{border-top:1px solid var(--line);margin-top:10px;padding-block:18px calc(22px + env(safe-area-inset-bottom,0px));font-size:12.5px;color:var(--mute);text-align:center}
 footer a{margin:0 8px}
-@media (max-width:420px){.qr{grid-template-columns:1fr;justify-items:center;text-align:center}.qr div:first-child{width:170px}}
 </style>
 </head>
 <body>
@@ -101,9 +96,9 @@ footer a{margin:0 8px}
 
   <!-- Computadora -->
   <section class="caja" id="pc" hidden>
-    <h2>Escanéalo con tu teléfono</h2>
-    <div class="qr"><div id="qr"></div><p>Abre la cámara del teléfono y apunta al código. O escribe en el navegador:<b id="dir2"></b></p></div>
-    <a class="play" style="margin-top:14px" data-play target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.elhome"><img src="../tiendas/google-play.png" alt="Disponible en Google Play" width="196" height="58"></a>
+    <h2>Bájala en tu Android</h2>
+    <div class="fila"><b>Haz clic aquí 👉</b><a class="play" data-play target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.elhome"><img src="../tiendas/google-play.png" alt="Disponible en Google Play" width="196" height="58"></a></div>
+    <p class="nota">¿Tienes iPhone? Abre larisaapp.com en Safari desde tu teléfono. Muy pronto en el App Store.</p>
   </section>
 
   <section class="caja entradas">
@@ -144,11 +139,10 @@ footer a{margin:0 8px}
   var safari=ios&&/safari/i.test(ua)&&!/crios|fxios|edgios|opios|fban|fbav|instagram|line\/|gsa\/|whatsapp/i.test(ua);
   var cual=and?'and':ios?(safari?'ios':'iosapp'):'pc';
   document.getElementById(cual).hidden=false;
-  document.getElementById('dir').textContent=corta; document.getElementById('dir2').textContent=corta;
+  document.getElementById('dir').textContent=corta;
   var b=document.getElementById('copiar');
   b.onclick=function(){var ok=function(){b.textContent='Copiada: pégala en Safari'};
     if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(completa).then(ok,function(){b.textContent=corta});else b.textContent=corta};
-  if(cual==='pc'){var s=document.createElement('script');s.src='../qrcode.js';s.onload=function(){try{var c=qrcode(0,'M');c.addData(completa+'?de=qr');c.make();document.getElementById('qr').innerHTML=c.createSvgTag({cellSize:4,margin:1,scalable:true})}catch(e){}};document.head.appendChild(s)}
 })();
 </script>
 </body>
