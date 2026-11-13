@@ -125,7 +125,7 @@ footer a{margin:0 8px}
   if(dentro){location.replace('../');return}
   // Dirección corta que se le enseña a la gente (rectago.com reenvía aquí). El QR y el botón de copiar usan la dirección directa, que siempre responde.
   var EN=!/^es/i.test(navigator.language||'es')&&q.get('lang')!=='es'||q.get('lang')==='en';
-  if(EN){document.documentElement.lang='en';document.title='Get the Straight 2D Chest app';[].forEach.call(document.querySelectorAll('[data-en]'),function(e){e.innerHTML=e.getAttribute('data-en')})}
+  if(EN){document.documentElement.lang='en';document.title='Get the Straight 2D Chest app';[].forEach.call(document.querySelectorAll('[data-en]'),function(e){e.innerHTML=e.getAttribute('data-en')});[].forEach.call(document.querySelectorAll('.play img'),function(i){i.src='google-play-en.png';i.alt='Get it on Google Play'})}
   var corta='rectago.com', completa='https://marrerobernalmedia.com/recta/app/';
   // De dónde vino la visita (?de=comercial, ?de=facebook…): Google Play lo muestra en sus informes de adquisición.
   var de=(q.get('de')||q.get('utm_source')||'').replace(/[^a-z0-9_-]/gi,'').slice(0,40)||'rectago';
