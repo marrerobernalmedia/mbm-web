@@ -146,6 +146,10 @@ ${varios ? `<div class="en-elige">Elige tu turno:</div>` : ""}${g.funciones.map(
 <button class="close" data-en-x>Cerrar</button>`);
   }
 
+  // Celular de Cuba: 8 números. Si pegan el número con +53 o 53 delante, se le quita.
+  const telDig = v => { let d = String(v).replace(/\D/g, "").replace(/^00/, ""); if (d.length > 8 && d.startsWith("53")) d = d.slice(2); return d.slice(0, 8); };
+  const telBonito = v => { const d = telDig(v); return d.replace(/^(\d)(\d{0,3})(\d{0,4})$/, (m, a, b, c) => [a, b, c].filter(Boolean).join(" ")); };
+
   function formulario(g) {
     const max = Math.max(1, g.max || 4), l = libres(g);
     let n = Math.min(2, max);
@@ -154,7 +158,8 @@ ${varios ? `<div class="en-elige">Elige tu turno:</div>` : ""}${g.funciones.map(
 ${l <= 0 ? `<p style="color:var(--bulb)">Ya no quedan entradas. Si te anotas, quedas en la lista de espera y te avisamos si se libera un lugar.</p>` : ""}
 <form class="en-f" id="enForm">
 <label for="enNom">Tu nombre</label><input id="enNom" name="nombre" autocomplete="name" maxlength="80" required value="${esc(ls.get("mbm_nom") || "")}">
-<label for="enTel">Tu celular de Cuba con WhatsApp</label><div class="en-tel"><span>+53</span><input id="enTel" name="telefono" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="20" placeholder="Ej. 5 234 5678" required value="${esc((ls.get("mbm_tel") || "").replace(/^\+?53(?=\d{8}$)/, ""))}"></div>
+<label for="enTel">Tu celular de Cuba con WhatsApp</label><div class="en-tel"><span>+53</span><input id="enTel" name="telefono" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="10" placeholder="5 234 5678" required aria-describedby="enTelAy" value="${esc(telBonito(ls.get("mbm_tel") || ""))}"></div>
+<p id="enTelAy" style="font-size:13px;color:var(--mute);margin:4px 0 8px">8 números, empezando por 5 o 6. El +53 ya está puesto.</p>
 <label>¿Cuántas entradas? <span style="font-weight:400;color:var(--mute)">(máximo ${max} por reserva)</span></label>
 <p style="font-size:13px;color:var(--mute);margin:2px 0 8px">Una sola reserva por teléfono. Si vienen más de ${max}, cada persona reserva desde su propia app.</p>
 <div class="en-n"><button type="button" data-en-n="-1" aria-label="Menos">−</button><b id="enN">${n}</b><button type="button" data-en-n="1" aria-label="Más">+</button></div>
@@ -165,9 +170,20 @@ ${l <= 0 ? `<p style="color:var(--bulb)">Ya no quedan entradas. Si te anotas, qu
 <p style="font-size:12px;margin-top:10px">Usamos tu nombre y teléfono solo para la lista de la puerta y para avisarte de esta grabación. <a href="privacidad/" target="_blank" rel="noopener" style="color:inherit">Privacidad</a></p>
 </form><button class="close" data-en-x>Cancelar</button>`);
     root.querySelectorAll("[data-en-n]").forEach(b => b.onclick = () => { n = Math.max(1, Math.min(max, n + +b.dataset.enN)); root.querySelector("#enN").textContent = n; });
+    // El celular: solo números, exactamente 8 (sin el +53), y se va diciendo cuántos faltan
+    const tel = root.querySelector("#enTel"), ay = root.querySelector("#enTelAy");
+    const telVe = () => {
+      const d = telDig(tel.value); tel.value = telBonito(d);
+      const mal = d && !/^[56]/.test(d);
+      ay.textContent = mal ? "Los celulares de Cuba empiezan por 5 o 6." : d.length === 8 ? "✓ Número completo: +53 " + telBonito(d) : d.length ? "Faltan " + (8 - d.length) + (8 - d.length === 1 ? " número." : " números.") : "8 números, empezando por 5 o 6. El +53 ya está puesto.";
+      ay.style.color = mal ? "#ff6b6b" : d.length === 8 ? "var(--lime)" : "var(--mute)";
+      return !mal && d.length === 8;
+    };
+    tel.addEventListener("input", telVe); telVe();
     root.querySelector("#enForm").onsubmit = async e => {
       e.preventDefault();
       const f = e.target, msg = root.querySelector("#enMsg"), send = root.querySelector("#enSend");
+      if (!telVe()) { msg.textContent = "Revisa tu celular: son 8 números, empezando por 5 o 6."; tel.focus(); return; }
       const fd = new FormData(f); fd.set("accion", "reservar"); fd.set("grabacion", g.id); fd.set("cantidad", n); fd.set("disp", disp);
       send.disabled = true; msg.textContent = "";
       try {

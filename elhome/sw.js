@@ -1,7 +1,7 @@
 // Avisos de OneSignal (si no carga, la app sigue funcionando)
 try { importScripts("https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js"); } catch (e) {}
 // El Home de la Risa — service worker: siempre intenta la red primero (así ve lo nuevo) y usa la copia guardada sin conexión
-const CACHE = "elhome-v58";
+const CACHE = "elhome-v59";
 self.addEventListener("install", e => { self.skipWaiting(); e.waitUntil(caches.open(CACHE).then(c => c.addAll(["./", "./index.html", "./data.js", "./manifest.webmanifest", "./icons/icon-192.png"]))); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k))))); self.clients.claim(); });
 self.addEventListener("fetch", e => {
