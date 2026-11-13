@@ -77,7 +77,7 @@
           <p>The home of Cuban humor: La Risa es Cosa Seria, La Cosa Es De Risa, Welcome to Apagonia and every show, by episode and by comedian.</p>
           <div class="ctas">
             <a class="btn btn-acc" href="https://www.elhomedelarisa.com/" target="_blank" rel="noopener">Open the app</a>
-            <a class="btn btn-ghost" href="https://marrerobernalmedia.com/apk/elhome.apk">Download for Android (APK)</a>
+            <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.elhome" target="_blank" rel="noopener">Get it on Google Play</a>
           </div>
         </div>
       </div>

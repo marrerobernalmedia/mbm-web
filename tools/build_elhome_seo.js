@@ -54,7 +54,7 @@ function page({ url, title, desc, image, h1, body, ld }) {
 <script type="application/ld+json">${JSON.stringify(ld)}</script></head><body>
 <header><div class="wrap"><a href="/"><img src="/brand/elhome-ico.png" alt="El Home de la Risa"></a><a href="/"><b>El Home de la Risa</b><span>La casa del humor cubano</span></a><a class="go" href="/">Abrir El Home</a></div></header>
 <main class="wrap">${body}</main>
-<footer><div class="wrap"><a href="/">Inicio</a><a href="/shows/">Shows</a><a href="/humoristas/">Humoristas</a><a href="https://marrerobernalmedia.com/apk/elhome.apk">Descargar la app (Android)</a><a href="/privacidad/">Privacidad</a><a href="/soporte/">Ayuda</a><p>© ${today.slice(0, 4)} Marrero Bernal Media LLC. Todos los derechos reservados.</p></div></footer>
+<footer><div class="wrap"><a href="/">Inicio</a><a href="/shows/">Shows</a><a href="/humoristas/">Humoristas</a><a href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.elhome">Bájala en Google Play (Android)</a><a href="/privacidad/">Privacidad</a><a href="/soporte/">Ayuda</a><p>© ${today.slice(0, 4)} Marrero Bernal Media LLC. Todos los derechos reservados.</p></div></footer>
 </body></html>`;
 }
 const vcard = id => { const v = V[id], s = showOf[id]; return `<a class="v" href="${wurl(id)}" target="_blank" rel="noopener"><img src="${thumb(id)}" alt="${esc(v.t)}" loading="lazy"><h3>${esc(window.TITULO_LIMPIO(D, id))}</h3><small>${esc(s ? sname(s) : "")}${v.n ? " " + esc(v.n) : ""}${v.v ? " · " + fmt(v.v) + " vistas" : ""}</small></a>`; };
