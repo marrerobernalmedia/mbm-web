@@ -21,6 +21,11 @@ add_action('wp_head', function () {
   if (is_front_page() && !mba_is_en()) echo '<meta name="description" content="' . esc_attr("Marrero Bernal & Associates: agencia independiente con sede en Las Vegas que atiende clientes en todo Estados Unidos y el extranjero, con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; workers' compensation para negocios; taxes personales y de negocio, contabilidad y nómina, ITIN, notary public, traducciones para el DMV y creación de LLC. En español, en North Las Vegas desde 2008.") . '">' . "\n";
 }, 1);
 
+/** Vista dentro de la app (marrerobernal.com/app y las apps de las tiendas): sin cabecera ni pie del sitio, con barra para volver. */
+add_action('wp_head', function () {
+  echo '<style>html.en-app .topbar,html.en-app body>header,html.en-app body>footer,html.en-app .mba-wa{display:none!important}.mba-appbar{position:sticky;top:0;z-index:999;display:block;background:#0f1b2d;color:#fff;font:600 15px/1 Inter,system-ui,sans-serif;padding:calc(14px + env(safe-area-inset-top,0px)) 16px 14px;text-decoration:none}</style><script>(function(){var q=location.search,s=null;try{s=sessionStorage}catch(e){}if(/[?&]app=0/.test(q)){try{s.removeItem("mba_app")}catch(e){}return}var on=/[?&]app=1/.test(q);try{if(on)s.setItem("mba_app","1");else on=s.getItem("mba_app")==="1"}catch(e){}if(!on)return;document.documentElement.className+=" en-app";document.addEventListener("DOMContentLoaded",function(){var en=location.pathname.indexOf("/en/")===0,a=document.createElement("a");a.className="mba-appbar";a.href="/app/";a.textContent=en?"‹ Back to the app":"‹ Volver a la app";document.body.insertBefore(a,document.body.firstChild)})})();</script>' . "\n";
+}, 2);
+
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('mba-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap', [], null);
   wp_enqueue_style('mba', get_stylesheet_uri(), ['mba-fonts'], @filemtime(get_stylesheet_directory() . '/style.css') ?: MBA_VER);

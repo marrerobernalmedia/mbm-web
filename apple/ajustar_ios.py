@@ -1,10 +1,15 @@
 # Ajustes del proyecto Xcode que Capacitor no pone solo (se puede correr varias veces).
-# Uso: python3 apple/ajustar_ios.py elhome|recta
+# Uso: python3 apple/ajustar_ios.py elhome|recta|mba
 import sys, os
 app = sys.argv[1]; R = os.path.join(os.path.dirname(os.path.abspath(__file__)), app, "ios", "App")
 p = f"{R}/App/Info.plist"; s = open(p).read()
 s = s.replace("<key>CFBundleDevelopmentRegion</key>\n\t<string>en</string>", "<key>CFBundleDevelopmentRegion</key>\n\t<string>es</string>")
 s = s.replace("<string>armv7</string>", "<string>arm64</string>")
+if app == "mba":
+    # Sin avisos por ahora; el escáner de documentos usa la cámara y las fotos.
+    if "NSCameraUsageDescription" not in s:
+        s = s.replace("\t<key>UIViewControllerBasedStatusBarAppearance</key>", "\t<key>NSCameraUsageDescription</key>\n\t<string>Para tomar fotos de tus documentos y enviarlos a la oficina.</string>\n\t<key>NSPhotoLibraryUsageDescription</key>\n\t<string>Para elegir fotos de tus documentos y enviarlos a la oficina.</string>\n\t<key>ITSAppUsesNonExemptEncryption</key>\n\t<false/>\n\t<key>UIViewControllerBasedStatusBarAppearance</key>")
+    open(p, "w").write(s); print(app, "ajustado"); sys.exit()
 if "UIBackgroundModes" not in s:
     s = s.replace("\t<key>UIViewControllerBasedStatusBarAppearance</key>", "\t<key>UIBackgroundModes</key>\n\t<array>\n\t\t<string>remote-notification</string>\n\t</array>\n\t<key>ITSAppUsesNonExemptEncryption</key>\n\t<false/>\n\t<key>UIViewControllerBasedStatusBarAppearance</key>")
 open(p, "w").write(s)

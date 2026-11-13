@@ -195,7 +195,7 @@ const t=k=>T[k][L==='es'?0:1];
 // ---------- enlaces (el sitio decide español o inglés por la ruta)
 const RUTA={
  solicitud:['/solicitud/?app=1','/en/request/?app=1'], citas:['/citas/?app=1','/en/appointments/?app=1'],
- priv:['/privacidad/','/en/privacy/'], sitio:['/','/en/']
+ priv:['/privacidad/?app=1','/en/privacy/?app=1'], sitio:['/?app=0','/en/?app=0']
 };
 const FUERA={portal:'https://marrerobernal.securefilepro.com/portal/#/login',pago:'https://55a7805c-ea2c-4f0e-951b-1aa3c932e857.paylinks.godaddy.com',wa:'https://wa.me/18888772583'};
 const url=k=>FUERA[k]||SITE+RUTA[k][L==='es'?0:1];
@@ -221,7 +221,7 @@ function pinta(){
  $$('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));
  $$('[data-href]').forEach(a=>a.href=url(a.dataset.href));
  $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===L));
- $('#servs').innerHTML=SERV.map(s=>`<a class="row" href="${SITE+(L==='es'?s[3]:s[4])}"><span class="ic">${s[0]}</span><b>${L==='es'?s[1]:s[2]}</b><span class="go">›</span></a>`).join('');
+ $('#servs').innerHTML=SERV.map(s=>`<a class="row" href="${SITE+(L==='es'?s[3]:s[4])}?app=1"><span class="ic">${s[0]}</span><b>${L==='es'?s[1]:s[2]}</b><span class="go">›</span></a>`).join('');
  pintaPags(); pintaInst();
 }
 $$('.lang button').forEach(b=>b.onclick=()=>{L=b.dataset.l;guarda.set('mba_lang',L);pinta()});
@@ -293,7 +293,7 @@ $('#pdf').onclick=async()=>{
 };
 
 // ---------- instalar
-let aviso=null; const instalada=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+let aviso=null; const instalada=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone||!!window.Capacitor||document.referrer.indexOf('android-app://')===0;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();aviso=e;pintaInst()});
 function pintaInst(){
  const box=$('#inst'),tx=$('#inst-t'); if(instalada||guarda.get('mba_inst_x')){box.hidden=true;return}

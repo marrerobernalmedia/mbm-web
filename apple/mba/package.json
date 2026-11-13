@@ -1,0 +1,13 @@
+{
+  "name": "mba-ios",
+  "private": true,
+  "version": "1.0.0",
+  "description": "App de iPhone y iPad de Marrero Bernal & Associates (Capacitor: abre marrerobernal.com/app en vivo)",
+  "dependencies": {
+    "@capacitor/core": "8.6.0",
+    "@capacitor/ios": "8.6.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.6.0"
+  }
+}

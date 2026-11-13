@@ -1,4 +1,4 @@
-# Compila en la nube las apps de iPhone/iPad (El Home de la Risa y Recta Al Pecho).
+# Compila en la nube las apps de iPhone/iPad (El Home de la Risa, Recta Al Pecho y Marrero Bernal).
 # Sin las claves de Apple: solo comprueba que compilan (simulador).
 # Con los secretos APPLE_TEAM_ID, ASC_KEY_ID, ASC_ISSUER_ID y ASC_KEY_P8: firma y sube a TestFlight.
 name: Apps Apple
@@ -25,7 +25,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        app: [elhome, recta]
+        app: [elhome, recta, mba]
     env:
       SUBIR: ${{ github.event_name == 'workflow_dispatch' && inputs.subir }}
     steps:

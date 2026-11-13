@@ -1,0 +1,17 @@
+{
+  "appId": "com.marrerobernal.app",
+  "appName": "Marrero Bernal",
+  "webDir": "www",
+  "backgroundColor": "#0f1b2d",
+  "server": {
+    "url": "https://marrerobernal.com/app/",
+    "errorPath": "offline.html",
+    "allowNavigation": ["marrerobernal.com", "www.marrerobernal.com", "*.leadconnectorhq.com", "*.msgsndr.com"]
+  },
+  "ios": {
+    "contentInset": "never",
+    "backgroundColor": "#0f1b2d",
+    "scheme": "Marrero Bernal",
+    "limitsNavigationsToAppBoundDomains": false
+  }
+}
