@@ -123,13 +123,13 @@ footer a{margin:0 8px}
   // Dentro de la app instalada no tiene sentido ofrecerla: va al inicio.
   var dentro=(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true||document.referrer.indexOf('android-app://com.marrerobernalmedia.recta')===0;
   if(dentro){location.replace('../');return}
-  // Dirección corta que se le enseña a la gente (rectaapp.com reenviará aquí). El QR y el botón de copiar usan la dirección directa, que siempre responde.
+  // Dirección corta que se le enseña a la gente (rectago.com reenvía aquí). El QR y el botón de copiar usan la dirección directa, que siempre responde.
   var EN=!/^es/i.test(navigator.language||'es')&&q.get('lang')!=='es'||q.get('lang')==='en';
   if(EN){document.documentElement.lang='en';document.title='Get the Straight 2D Chest app';[].forEach.call(document.querySelectorAll('[data-en]'),function(e){e.innerHTML=e.getAttribute('data-en')})}
-  var corta='rectaapp.com', completa='https://marrerobernalmedia.com/recta/app/';
+  var corta='rectago.com', completa='https://marrerobernalmedia.com/recta/app/';
   // De dónde vino la visita (?de=comercial, ?de=facebook…): Google Play lo muestra en sus informes de adquisición.
-  var de=(q.get('de')||q.get('utm_source')||'').replace(/[^a-z0-9_-]/gi,'').slice(0,40)||'rectaapp';
-  [].forEach.call(document.querySelectorAll('[data-play]'),function(a){a.href+='&referrer='+encodeURIComponent('utm_source='+de+'&utm_medium=rectaapp')});
+  var de=(q.get('de')||q.get('utm_source')||'').replace(/[^a-z0-9_-]/gi,'').slice(0,40)||'rectago';
+  [].forEach.call(document.querySelectorAll('[data-play]'),function(a){a.href+='&referrer='+encodeURIComponent('utm_source='+de+'&utm_medium=rectago')});
   var ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1), and=/android/i.test(ua);
   var safari=ios&&/safari/i.test(ua)&&!/crios|fxios|edgios|opios|fban|fbav|instagram|line\/|gsa\/|whatsapp/i.test(ua);
   var cual=and?'and':ios?(safari?'ios':'iosapp'):'pc';
