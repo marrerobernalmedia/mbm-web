@@ -1076,11 +1076,27 @@ def _priv(es):
   <p>No compartimos ni vendemos tu número de teléfono ni tu autorización para recibir mensajes con terceros para fines de mercadeo.</p>''', '''<p>If you authorize us in a form, we contact you by call, text message or WhatsApp about your request and your appointments. Message frequency varies. Message and data rates from your carrier may apply. Reply <b>STOP</b> to stop receiving text messages and <b>HELP</b> for help. Consent is not a condition of purchasing any service.</p>
   <p>We do not share or sell your phone number or your consent to receive messages with third parties for marketing purposes.</p>''')),
      (T('Cookies y medición', 'Cookies and measurement'), T('<p>El sitio usa cookies de Google Analytics y de Meta para contar visitas y medir anuncios, y guarda en tu navegador el idioma que escogiste. Puedes bloquear las cookies en tu navegador; el sitio sigue funcionando.</p>', '<p>The site uses Google Analytics and Meta cookies to count visits and measure ads, and stores your language choice in your browser. You can block cookies in your browser; the site keeps working.</p>')),
+     (T('La app Marrero Bernal', 'The Marrero Bernal app'), T('''<p id="app">Esta política también aplica a la app «Marrero Bernal» para Android y iPhone. La app muestra las mismas páginas de este sitio, así que recoge los mismos datos: lo que escribes en la solicitud y en las citas, y los datos de uso. No tiene cuentas ni contraseñas propias.</p>
+  <p><b>Escáner de documentos:</b> la app usa la cámara solo cuando tú la abres para escanear. Las fotos y el PDF se arman en tu teléfono y no se envían ni se guardan en nuestros servidores; tú decides a quién le mandas el PDF.</p>''', '''<p id="app">This policy also applies to the “Marrero Bernal” app for Android and iPhone. The app shows the same pages as this site, so it collects the same data: what you type in the request and appointment forms, and usage data. It has no accounts or passwords of its own.</p>
+  <p><b>Document scanner:</b> the app uses the camera only when you open it to scan. The photos and the PDF are built on your phone and are not sent to or stored on our servers; you decide who you send the PDF to.</p>''')),
+     (T('Cómo pedir que borremos tus datos', 'How to ask us to delete your data'), T('''<p id="borrar">Si usaste el sitio o la app Marrero Bernal y quieres que borremos tus datos:</p>
+  <ol class="sub-list">
+    <li>Llámanos o escríbenos por WhatsApp al <b>888-877-2583</b>, o ven a la oficina, y di «quiero que borren mis datos».</li>
+    <li>Danos el nombre y el teléfono o correo con que hiciste la solicitud, para encontrarla.</li>
+    <li>Borramos tu solicitud, tus datos de contacto y tus citas y te lo confirmamos.</li>
+  </ol>
+  <p>Lo que la ley nos obliga a conservar no se puede borrar antes de tiempo: las declaraciones de impuestos y sus documentos, y los registros de las pólizas de seguro, por el plazo que exigen el IRS y los reguladores de seguros.</p>''', '''<p id="borrar">If you used the site or the Marrero Bernal app and want us to delete your data:</p>
+  <ol class="sub-list">
+    <li>Call or WhatsApp us at <b>888-877-2583</b>, or come to the office, and say “I want my data deleted”.</li>
+    <li>Give us the name and the phone or email you used in your request, so we can find it.</li>
+    <li>We delete your request, your contact details and your appointments and confirm it to you.</li>
+  </ol>
+  <p>What the law requires us to keep cannot be deleted early: tax returns and their documents, and insurance policy records, for the period required by the IRS and insurance regulators.</p>''')),
      (T('Tus opciones', 'Your choices'), T('<p>Puedes pedirnos ver, corregir o borrar los datos que tenemos de ti, o que dejemos de contactarte: llámanos o escríbenos por WhatsApp al 888-877-2583, o ven a la oficina. Hay datos que la ley nos obliga a conservar, como los de las declaraciones de impuestos y las pólizas.</p>', '<p>You can ask us to see, correct or delete the data we hold about you, or to stop contacting you: call or WhatsApp us at 888-877-2583, or come to the office. Some data we are required by law to keep, such as tax return and policy records.</p>')),
     ]
     body = ''.join(f'\n  <h2>{h}</h2>\n  {c}' for h, c in S)
     return ('\n<section class="sub"><div class="wrap">\n  <div class="kicker">' + T('Privacidad', 'Privacy') + '</div>\n  <h1>' + T('Política de privacidad', 'Privacy policy') + '</h1>\n  <p class="lead">'
-            + T('Qué datos recogemos en marrerobernal.com, para qué los usamos y con quién los compartimos.', 'What data we collect at marrerobernal.com, how we use it and who we share it with.') + '</p>' + body
+            + T('Qué datos recogemos en marrerobernal.com y en la app Marrero Bernal, para qué los usamos y con quién los compartimos.', 'What data we collect at marrerobernal.com and in the Marrero Bernal app, how we use it and who we share it with.') + '</p>' + body
             + '\n  <div class="sub-legal"><p>' + T('Vigente desde el 13 de noviembre de 2026. Si cambiamos esta política, publicamos aquí la nueva versión.', 'Effective November 13, 2026. If we change this policy, we will post the new version here.') + '</p></div>\n</div></section>')
 P['privacidad'] = dict(
     es=dict(slug='privacidad', img='og.jpg', title='Política de privacidad · Marrero Bernal & Associates',

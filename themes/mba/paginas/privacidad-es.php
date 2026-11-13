@@ -4,7 +4,7 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'privacidad', '
 <section class="sub"><div class="wrap">
   <div class="kicker">Privacidad</div>
   <h1>Política de privacidad</h1>
-  <p class="lead">Qué datos recogemos en marrerobernal.com, para qué los usamos y con quién los compartimos.</p>
+  <p class="lead">Qué datos recogemos en marrerobernal.com y en la app Marrero Bernal, para qué los usamos y con quién los compartimos.</p>
   <h2>Quiénes somos</h2>
   <p>Marrero Bernal &amp; Associates y Marrero Bernal Agency LLC, 3455 W Craig Rd, Suite D, North Las Vegas, NV 89032. Teléfono y WhatsApp: 888-877-2583.</p>
   <h2>Qué datos recogemos</h2>
@@ -28,6 +28,17 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'privacidad', '
   <p>No compartimos ni vendemos tu número de teléfono ni tu autorización para recibir mensajes con terceros para fines de mercadeo.</p>
   <h2>Cookies y medición</h2>
   <p>El sitio usa cookies de Google Analytics y de Meta para contar visitas y medir anuncios, y guarda en tu navegador el idioma que escogiste. Puedes bloquear las cookies en tu navegador; el sitio sigue funcionando.</p>
+  <h2>La app Marrero Bernal</h2>
+  <p id="app">Esta política también aplica a la app «Marrero Bernal» para Android y iPhone. La app muestra las mismas páginas de este sitio, así que recoge los mismos datos: lo que escribes en la solicitud y en las citas, y los datos de uso. No tiene cuentas ni contraseñas propias.</p>
+  <p><b>Escáner de documentos:</b> la app usa la cámara solo cuando tú la abres para escanear. Las fotos y el PDF se arman en tu teléfono y no se envían ni se guardan en nuestros servidores; tú decides a quién le mandas el PDF.</p>
+  <h2>Cómo pedir que borremos tus datos</h2>
+  <p id="borrar">Si usaste el sitio o la app Marrero Bernal y quieres que borremos tus datos:</p>
+  <ol class="sub-list">
+    <li>Llámanos o escríbenos por WhatsApp al <b>888-877-2583</b>, o ven a la oficina, y di «quiero que borren mis datos».</li>
+    <li>Danos el nombre y el teléfono o correo con que hiciste la solicitud, para encontrarla.</li>
+    <li>Borramos tu solicitud, tus datos de contacto y tus citas y te lo confirmamos.</li>
+  </ol>
+  <p>Lo que la ley nos obliga a conservar no se puede borrar antes de tiempo: las declaraciones de impuestos y sus documentos, y los registros de las pólizas de seguro, por el plazo que exigen el IRS y los reguladores de seguros.</p>
   <h2>Tus opciones</h2>
   <p>Puedes pedirnos ver, corregir o borrar los datos que tenemos de ti, o que dejemos de contactarte: llámanos o escríbenos por WhatsApp al 888-877-2583, o ven a la oficina. Hay datos que la ley nos obliga a conservar, como los de las declaraciones de impuestos y las pólizas.</p>
   <div class="sub-legal"><p>Vigente desde el 13 de noviembre de 2026. Si cambiamos esta política, publicamos aquí la nueva versión.</p></div>
