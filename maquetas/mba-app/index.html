@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Marrero Bernal</title>
+<meta name="description" content="La app de Marrero Bernal &amp; Associates: pide tu cotización, agenda tu cita, escanea y envía documentos, entra a tus taxes y paga, todo desde el teléfono.">
+<meta name="theme-color" content="#0f1b2d">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Marrero Bernal">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f1b2d;--navy2:#16263d;--ink:#1a1f2b;--mut:#5b6472;--bg:#f5f2ea;--card:#fff;--line:#e4e1d8;--acc:#c8921a;--acc2:#e6b64a;--ok:#1f8a5b}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:16px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);-webkit-tap-highlight-color:transparent;padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
+h1,h2{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0;text-wrap:balance}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}
+.top{background:var(--navy);color:#fff;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-left,0px)) 14px max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:5}
+.top img{height:38px;width:auto;display:block}
+.lang{display:flex;border:1px solid rgba(255,255,255,.28);border-radius:999px;overflow:hidden;font-size:13px;font-weight:600}
+.lang button{background:none;border:0;color:#cfd6e2;padding:7px 12px;min-height:34px}.lang button[aria-pressed=true]{background:#fff;color:var(--navy)}
+main{max-width:640px;margin:0 auto;padding:18px max(16px,env(safe-area-inset-left,0px)) 8px max(16px,env(safe-area-inset-right,0px))}
+.view{display:none}.view.on{display:block}
+.hola{margin:4px 0 16px}.hola h1{font-size:26px}.hola p{margin:6px 0 0;color:var(--mut)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 14px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;text-align:left;width:100%}
+.tile .ic{font-size:26px;line-height:1}.tile b{display:block;font-size:16px;line-height:1.25}.tile span{display:block;font-size:13px;color:var(--mut);line-height:1.35;margin-top:3px}
+.tile.pri{background:var(--navy);border-color:var(--navy);color:#fff;grid-column:1/-1;min-height:0;flex-direction:row;align-items:center;justify-content:flex-start;gap:14px}
+.tile.pri span{color:#c9d2df}.tile.pri .go{margin-left:auto;font-size:22px;color:var(--acc2)}
+.tile:active{transform:scale(.985)}
+h2{font-size:21px;margin:26px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.card p{margin:0 0 10px;color:var(--mut)}.card p:last-child{margin-bottom:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:#fff;font-weight:600;width:100%;text-align:center}
+.btn.acc{background:var(--acc);border-color:var(--acc);color:#fff}.btn.navy{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn[disabled]{opacity:.45}
+.stack{display:grid;gap:10px}
+.rows{display:grid;gap:8px}
+.row{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;min-height:54px}
+.row .ic{font-size:20px;width:26px;text-align:center}.row b{font-weight:600}.row small{display:block;color:var(--mut);font-size:13px}.row .go{margin-left:auto;color:var(--mut)}
+.pags{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+.pag{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;aspect-ratio:3/4}
+.pag img{width:100%;height:100%;object-fit:cover;display:block}
+.pag i{position:absolute;left:6px;top:6px;background:var(--navy);color:#fff;font:600 12px Inter,sans-serif;border-radius:999px;padding:2px 8px;font-style:normal}
+.pag button{position:absolute;right:4px;top:4px;width:30px;height:30px;border-radius:50%;border:0;background:rgba(15,27,45,.82);color:#fff;font-size:16px;line-height:1}
+.nota{font-size:13px;color:var(--mut);margin:10px 2px 0}
+.ok{background:#e9f6ef;border:1px solid #bfe3d0;color:#14573a;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:14px}
+.pasos{margin:0;padding-left:20px;color:var(--mut)}.pasos li{margin:4px 0}
+.tabs{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding-bottom:env(safe-area-inset-bottom,0px);z-index:6}
+.tabs button{background:none;border:0;padding:9px 4px 8px;display:grid;gap:2px;justify-items:center;font-size:11.5px;font-weight:600;color:var(--mut);min-height:58px}
+.tabs button span{font-size:21px;line-height:1}.tabs button[aria-current=page]{color:var(--navy)}
+.inst{background:#fff7e6;border:1px solid #f0d9a6;border-radius:14px;padding:12px 14px;margin:0 0 16px;font-size:14px;display:flex;gap:10px;align-items:flex-start}
+.inst button{margin-left:auto;background:none;border:0;font-size:18px;color:var(--mut);padding:0 4px}
+.pie{font-size:12.5px;color:var(--mut);margin:26px 2px 6px;line-height:1.5}.pie a{text-decoration:underline}
+[hidden]{display:none!important}
+@media(min-width:560px){.grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header class="top">
+  <img src="logo.svg" alt="Marrero Bernal &amp; Associates" width="98" height="38">
+  <div class="lang" role="group" aria-label="Idioma / Language"><button data-l="es" aria-pressed="true">ES</button><button data-l="en" aria-pressed="false">EN</button></div>
+</header>
+
+<main>
+<!-- ============ INICIO ============ -->
+<section class="view on" id="v-inicio">
+  <div class="inst" id="inst" hidden><span>📲</span><div id="inst-t"></div><button id="inst-x" aria-label="Cerrar">×</button></div>
+  <div class="hola"><h1 data-t="hola"></h1><p data-t="hola2"></p></div>
+  <div class="grid">
+    <a class="tile pri" data-href="solicitud"><div class="ic">📝</div><div><b data-t="t_cot"></b><span data-t="t_cot2"></span></div><div class="go">›</div></a>
+    <a class="tile" data-href="citas"><div class="ic">📅</div><div><b data-t="t_cita"></b><span data-t="t_cita2"></span></div></a>
+    <button class="tile" data-ir="docs"><div class="ic">📷</div><div><b data-t="t_doc"></b><span data-t="t_doc2"></span></div></button>
+    <a class="tile" data-href="portal" target="_blank" rel="noopener"><div class="ic">🔐</div><div><b data-t="t_tax"></b><span data-t="t_tax2"></span></div></a>
+    <a class="tile" data-href="pago" target="_blank" rel="noopener"><div class="ic">💳</div><div><b data-t="t_pago"></b><span data-t="t_pago2"></span></div></a>
+    <a class="tile" data-href="wa" target="_blank" rel="noopener"><div class="ic">💬</div><div><b>WhatsApp</b><span data-t="t_wa2"></span></div></a>
+    <a class="tile" href="tel:+18888772583"><div class="ic">📞</div><div><b data-t="t_tel"></b><span>888-877-2583</span></div></a>
+  </div>
+  <p class="pie"><span data-t="pie"></span> <a data-href="priv" data-t="priv"></a></p>
+</section>
+
+<!-- ============ DOCUMENTOS ============ -->
+<section class="view" id="v-docs">
+  <div class="hola"><h1 data-t="d_h"></h1><p data-t="d_p"></p></div>
+  <div class="card">
+    <div class="stack">
+      <label class="btn navy" for="cam">📷 <span data-t="d_foto"></span></label>
+      <input id="cam" type="file" accept="image/*" capture="environment" hidden>
+      <label class="btn" for="gal">🖼️ <span data-t="d_gal"></span></label>
+      <input id="gal" type="file" accept="image/*" multiple hidden>
+    </div>
+    <div class="pags" id="pags"></div>
+    <div class="stack">
+      <button class="btn acc" id="pdf" disabled>📄 <span data-t="d_pdf"></span></button>
+    </div>
+    <div class="ok" id="listo" hidden></div>
+    <p class="nota" data-t="d_nota"></p>
+  </div>
+  <h2 data-t="d_h2"></h2>
+  <div class="card">
+    <ol class="pasos"><li data-t="d_s1"></li><li data-t="d_s2"></li><li data-t="d_s3"></li></ol>
+    <div class="stack" style="margin-top:14px">
+      <a class="btn navy" data-href="portal" target="_blank" rel="noopener">🔐 <span data-t="d_portal"></span></a>
+    </div>
+    <p class="nota" data-t="d_nota2"></p>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="view" id="v-serv">
+  <div class="hola"><h1 data-t="s_h"></h1><p data-t="s_p"></p></div>
+  <div class="rows" id="servs"></div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="view" id="v-cont">
+  <div class="hola"><h1 data-t="c_h"></h1><p data-t="c_p"></p></div>
+  <div class="rows">
+    <a class="row" href="tel:+18888772583"><span class="ic">📞</span><div><b data-t="c_tel"></b><small>888-877-2583</small></div><span class="go">›</span></a>
+    <a class="row" data-href="wa" target="_blank" rel="noopener"><span class="ic">💬</span><div><b>WhatsApp</b><small>888-877-2583</small></div><span class="go">›</span></a>
+    <a class="row" data-href="citas"><span class="ic">📅</span><div><b data-t="t_cita"></b><small data-t="c_cita"></small></div><span class="go">›</span></a>
+    <a class="row" href="https://www.google.com/maps/search/?api=1&query=3455+W+Craig+Rd+Ste+D+North+Las+Vegas+NV+89032" target="_blank" rel="noopener"><span class="ic">📍</span><div><b data-t="c_dir"></b><small>3455 W Craig Rd, Suite D, North Las Vegas, NV 89032</small></div><span class="go">›</span></a>
+    <div class="row"><span class="ic">🕘</span><div><b data-t="c_hor"></b><small data-t="c_hor2"></small></div></div>
+    <a class="row" data-href="sitio" target="_blank" rel="noopener"><span class="ic">🌐</span><div><b>marrerobernal.com</b><small data-t="c_web"></small></div><span class="go">›</span></a>
+  </div>
+  <p class="pie" data-t="legal"></p>
+</section>
+</main>
+
+<nav class="tabs" aria-label="Secciones">
+  <button data-ir="inicio" aria-current="page"><span>🏠</span><em data-t="n_ini" style="font-style:normal"></em></button>
+  <button data-ir="docs"><span>📷</span><em data-t="n_doc" style="font-style:normal"></em></button>
+  <button data-ir="serv"><span>🧾</span><em data-t="n_serv" style="font-style:normal"></em></button>
+  <button data-ir="cont"><span>📞</span><em data-t="n_cont" style="font-style:normal"></em></button>
+</nav>
+
+<script>
+(function(){
+const SITE='https://marrerobernal.com';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const guarda={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let L=guarda.get('mba_lang')||(/^es/i.test(navigator.language||'es')?'es':'en');
+
+// ---------- textos
+const T={
+ hola:['¿En qué te ayudamos hoy?','How can we help you today?'],
+ hola2:['Seguros, taxes y trámites, desde tu teléfono.','Insurance, taxes and paperwork, from your phone.'],
+ t_cot:['Pedir cotización o servicio','Request a quote or service'],
+ t_cot2:['Cinco minutos. Un especialista te contacta.','Five minutes. A specialist contacts you.'],
+ t_cita:['Agendar una cita','Book an appointment'],
+ t_cita2:['En la oficina, lunes a viernes.','At the office, Monday to Friday.'],
+ t_doc:['Escanear documentos','Scan documents'],
+ t_doc2:['Tómales foto y conviértelos en un PDF.','Take photos and turn them into a PDF.'],
+ t_tax:['Mis taxes','My taxes'],
+ t_tax2:['Portal seguro: ver, descargar y subir.','Secure portal: view, download and upload.'],
+ t_pago:['Pagar','Pay'],
+ t_pago2:['Pago seguro en línea.','Secure online payment.'],
+ t_wa2:['Escríbenos ahora.','Message us now.'],
+ t_tel:['Llamar','Call'],
+ pie:['Marrero Bernal & Associates · agencia de seguros independiente · NV, CA y AZ.','Marrero Bernal & Associates · independent insurance agency · NV, CA and AZ.'],
+ priv:['Privacidad','Privacy'],
+ d_h:['Escanea tus documentos','Scan your documents'],
+ d_p:['Toma una foto de cada página. La app las junta en un solo PDF, listo para subir.','Take a photo of each page. The app combines them into a single PDF, ready to upload.'],
+ d_foto:['Tomar foto de una página','Take a photo of a page'],
+ d_gal:['Escoger fotos del teléfono','Choose photos from the phone'],
+ d_pdf:['Crear el PDF','Create the PDF'],
+ d_nota:['Las fotos no salen de tu teléfono: el PDF se arma aquí mismo y no se guarda en nuestros servidores.','The photos never leave your phone: the PDF is built right here and is not stored on our servers.'],
+ d_h2:['Cómo enviarlo','How to send it'],
+ d_s1:['Crea el PDF y guárdalo en tu teléfono.','Create the PDF and save it to your phone.'],
+ d_s2:['Abre el portal seguro y entra con tu usuario y contraseña.','Open the secure portal and sign in with your username and password.'],
+ d_s3:['Sube el PDF desde el portal.','Upload the PDF from the portal.'],
+ d_portal:['Abrir el portal seguro','Open the secure portal'],
+ d_nota2:['¿Todavía no tienes acceso al portal? Llámanos o escríbenos por WhatsApp y te lo creamos. No envíes por WhatsApp ni por correo documentos con tu Seguro Social.','No portal access yet? Call or WhatsApp us and we will set it up. Do not send documents with your Social Security number by WhatsApp or email.'],
+ d_pag:['Página','Page'], d_quitar:['Quitar página','Remove page'],
+ d_listo:['PDF creado: ','PDF created: '], d_listo2:[' página(s). Guárdalo y súbelo desde el portal seguro.',' page(s). Save it and upload it from the secure portal.'],
+ d_guardar:['Guardar el PDF','Save the PDF'],
+ s_h:['Servicios','Services'], s_p:['Toca uno para ver qué necesitas y pedirlo.','Tap one to see what you need and request it.'],
+ c_h:['Contacto','Contact'], c_p:['Estamos para ayudarte, en español e inglés.','We are here to help, in English and Spanish.'],
+ c_tel:['Llamar a la oficina','Call the office'], c_cita:['Lunes, martes, jueves y viernes.','Monday, Tuesday, Thursday and Friday.'],
+ c_dir:['Cómo llegar','Directions'], c_hor:['Horario','Hours'], c_hor2:['Lunes a viernes, de 9:00 AM a 5:00 PM (hora de Las Vegas).','Monday to Friday, 9:00 AM to 5:00 PM (Las Vegas time).'],
+ c_web:['Abrir el sitio completo','Open the full website'],
+ legal:['Marrero Bernal & Associates es una agencia de seguros independiente con licencia en Nevada, California y Arizona. No somos abogados y no ofrecemos asesoría legal.','Marrero Bernal & Associates is an independent insurance agency licensed in Nevada, California and Arizona. We are not attorneys and do not give legal advice.'],
+ n_ini:['Inicio','Home'], n_doc:['Escanear','Scan'], n_serv:['Servicios','Services'], n_cont:['Contacto','Contact'],
+ i_and:['Instala la app para tenerla a mano.','Install the app to keep it handy.'], i_btn:['Instalar','Install'],
+ i_ios:['Para instalarla: toca Compartir y luego «Añadir a pantalla de inicio».','To install it: tap Share, then “Add to Home Screen”.']
+};
+const t=k=>T[k][L==='es'?0:1];
+
+// ---------- enlaces (el sitio decide español o inglés por la ruta)
+const RUTA={
+ solicitud:['/solicitud/?app=1','/en/request/?app=1'], citas:['/citas/?app=1','/en/appointments/?app=1'],
+ priv:['/privacidad/','/en/privacy/'], sitio:['/','/en/']
+};
+const FUERA={portal:'https://marrerobernal.securefilepro.com/portal/#/login',pago:'https://55a7805c-ea2c-4f0e-951b-1aa3c932e857.paylinks.godaddy.com',wa:'https://wa.me/18888772583'};
+const url=k=>FUERA[k]||SITE+RUTA[k][L==='es'?0:1];
+
+const SERV=[
+ ['🚗','Seguro de auto','Auto insurance','/seguro-de-auto/','/en/auto-insurance/'],
+ ['🏠','Casa, condominio y renters','Home, condo and renters','/seguro-de-casa/','/en/home-insurance/'],
+ ['❤️','Seguro de vida','Life insurance','/seguro-de-vida/','/en/life-insurance/'],
+ ['🏗️','Workers’ comp y seguro de negocio','Workers’ comp and business insurance','/seguro-de-negocio/','/en/business-insurance/'],
+ ['🩺','Obamacare · Nevada Health Link','Obamacare · Nevada Health Link','/obamacare-nevada/','/en/obamacare-nevada/'],
+ ['👵','Medicare Advantage','Medicare Advantage','/medicare/','/en/medicare/'],
+ ['🧾','Taxes personales y de negocio','Personal and business taxes','/taxes/','/en/taxes/'],
+ ['🪪','Número ITIN','ITIN number','/itin/','/en/itin/'],
+ ['📊','Contabilidad y nómina','Bookkeeping and payroll','/contabilidad-y-nomina/','/en/bookkeeping-payroll/'],
+ ['🏢','LLC y licencias de negocio','LLC and business licenses','/llc-y-licencias/','/en/llc-and-licenses/'],
+ ['🌎','Traducciones (DMV de Nevada)','Translations (Nevada DMV)','/traducciones/','/en/translations/'],
+ ['✒️','Notary public','Notary public','/notary-public/','/en/notary/'],
+ ['📱','Protección de dispositivos','Device protection','/proteccion-de-dispositivos/','/en/device-protection/']
+];
+
+function pinta(){
+ document.documentElement.lang=L;
+ $$('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));
+ $$('[data-href]').forEach(a=>a.href=url(a.dataset.href));
+ $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===L));
+ $('#servs').innerHTML=SERV.map(s=>`<a class="row" href="${SITE+(L==='es'?s[3]:s[4])}"><span class="ic">${s[0]}</span><b>${L==='es'?s[1]:s[2]}</b><span class="go">›</span></a>`).join('');
+ pintaPags(); pintaInst();
+}
+$$('.lang button').forEach(b=>b.onclick=()=>{L=b.dataset.l;guarda.set('mba_lang',L);pinta()});
+
+// ---------- navegación entre vistas (solo el ancla, para volver con el botón atrás)
+function ir(v,push){
+ if(!$('#v-'+v))v='inicio';
+ $$('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));
+ $$('.tabs button').forEach(b=>b.dataset.ir===v?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current'));
+ if(push)history.pushState({v},'','#'+v); window.scrollTo(0,0);
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-ir]');if(b){e.preventDefault();ir(b.dataset.ir,true)}});
+window.addEventListener('popstate',()=>ir((location.hash||'#inicio').slice(1)));
+
+// ---------- escáner: fotos → PDF armado en el teléfono
+const pags=[]; // {blob,w,h,url}
+function reducir(file){return new Promise((ok,no)=>{const im=new Image(),u=URL.createObjectURL(file);
+ im.onload=()=>{const M=1700,k=Math.min(1,M/Math.max(im.width,im.height)),w=Math.round(im.width*k),h=Math.round(im.height*k);
+  const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);URL.revokeObjectURL(u);
+  c.toBlob(b=>b?ok({blob:b,w,h,url:URL.createObjectURL(b)}):no(),'image/jpeg',.82)};
+ im.onerror=()=>{URL.revokeObjectURL(u);no()};im.src=u})}
+async function agrega(files){for(const f of files){try{pags.push(await reducir(f))}catch(e){}} $('#listo').hidden=true; pintaPags()}
+$('#cam').onchange=e=>{agrega([...e.target.files]);e.target.value=''};
+$('#gal').onchange=e=>{agrega([...e.target.files]);e.target.value=''};
+function pintaPags(){
+ $('#pags').innerHTML=pags.map((p,i)=>`<div class="pag"><img src="${p.url}" alt="${t('d_pag')} ${i+1}"><i>${i+1}</i><button data-q="${i}" aria-label="${t('d_quitar')} ${i+1}">×</button></div>`).join('');
+ $('#pdf').disabled=!pags.length;
+}
+$('#pags').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(!b)return;const p=pags.splice(+b.dataset.q,1)[0];URL.revokeObjectURL(p.url);$('#listo').hidden=true;pintaPags()});
+
+async function armaPDF(){
+ const enc=new TextEncoder(),parts=[],offs=[];let len=0;
+ const put=x=>{const u=typeof x==='string'?enc.encode(x):x;parts.push(u);len+=u.length};
+ const obj=(n,body)=>{offs[n]=len;put(n+' 0 obj\n'+body+'\nendobj\n')};
+ put('%PDF-1.4\n%âãÏÓ\n');
+ const N=pags.length, kids=[];
+ for(let i=0;i<N;i++)kids.push((3+i*3)+' 0 R');
+ obj(1,'<< /Type /Catalog /Pages 2 0 R >>');
+ obj(2,'<< /Type /Pages /Count '+N+' /Kids ['+kids.join(' ')+'] >>');
+ for(let i=0;i<N;i++){const p=pags[i],a=3+i*3,W=612,H=792,m=18;
+  const k=Math.min((W-2*m)/p.w,(H-2*m)/p.h),w=p.w*k,h=p.h*k,x=(W-w)/2,y=(H-h)/2;
+  const cont='q '+w.toFixed(2)+' 0 0 '+h.toFixed(2)+' '+x.toFixed(2)+' '+y.toFixed(2)+' cm /Im0 Do Q';
+  obj(a,'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+W+' '+H+'] /Resources << /XObject << /Im0 '+(a+2)+' 0 R >> >> /Contents '+(a+1)+' 0 R >>');
+  obj(a+1,'<< /Length '+cont.length+' >>\nstream\n'+cont+'\nendstream');
+  const jpg=new Uint8Array(await p.blob.arrayBuffer());
+  offs[a+2]=len;put((a+2)+' 0 obj\n<< /Type /XObject /Subtype /Image /Width '+p.w+' /Height '+p.h+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+jpg.length+' >>\nstream\n');put(jpg);put('\nendstream\nendobj\n');
+ }
+ const total=2+N*3,xref=len;
+ let x='xref\n0 '+(total+1)+'\n0000000000 65535 f \n';
+ for(let n=1;n<=total;n++)x+=String(offs[n]).padStart(10,'0')+' 00000 n \n';
+ put(x+'trailer\n<< /Size '+(total+1)+' /Root 1 0 R >>\nstartxref\n'+xref+'\n%%EOF');
+ return new Blob(parts,{type:'application/pdf'});
+}
+let ultimo=null;
+$('#pdf').onclick=async()=>{
+ if(!pags.length)return; $('#pdf').disabled=true;
+ const blob=await armaPDF(), d=new Date(), nombre='documentos-'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'.pdf';
+ if(ultimo)URL.revokeObjectURL(ultimo); ultimo=URL.createObjectURL(blob);
+ const file=new File([blob],nombre,{type:'application/pdf'});
+ const box=$('#listo'); box.hidden=false;
+ box.innerHTML='';
+ const p=document.createElement('div'); p.textContent=t('d_listo')+nombre+' · '+pags.length+t('d_listo2'); box.appendChild(p);
+ const b=document.createElement('button'); b.className='btn navy'; b.style.marginTop='10px'; b.textContent='💾 '+t('d_guardar'); box.appendChild(b);
+ b.onclick=async()=>{
+  try{ if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:nombre});return} }catch(e){ if(e&&e.name==='AbortError')return }
+  const a=document.createElement('a'); a.href=ultimo; a.download=nombre; document.body.appendChild(a); a.click(); a.remove();
+ };
+ $('#pdf').disabled=false; box.scrollIntoView({block:'center',behavior:'smooth'});
+};
+
+// ---------- instalar
+let aviso=null; const instalada=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();aviso=e;pintaInst()});
+function pintaInst(){
+ const box=$('#inst'),tx=$('#inst-t'); if(instalada||guarda.get('mba_inst_x')){box.hidden=true;return}
+ const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+ if(aviso){tx.innerHTML='';tx.append(t('i_and')+' ');const b=document.createElement('button');b.className='btn acc';b.style.cssText='display:inline-flex;width:auto;min-height:36px;padding:6px 14px;margin-top:6px';b.textContent=t('i_btn');b.onclick=async()=>{aviso.prompt();aviso=null;box.hidden=true};tx.append(document.createElement('br'),b);box.hidden=false}
+ else if(ios){tx.textContent=t('i_ios');box.hidden=false}
+ else box.hidden=true;
+}
+$('#inst-x').onclick=()=>{guarda.set('mba_inst_x','1');$('#inst').hidden=true};
+
+pinta(); ir((location.hash||'#inicio').slice(1));
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+})();
+</script>
+</body>
+</html>
