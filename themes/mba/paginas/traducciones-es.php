@@ -15,7 +15,7 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'traducciones',
     <div class="sub-card"><b>Traductor aprobado</b><p>Y como el DMV no está aceptando nuevos traductores, somos de los pocos que pueden hacerlo.</p></div>
     <div class="sub-card"><b>Como la exige el DMV</b><p>Completa, escrita a máquina, con fecha, firma, número de traductor y certificación en la misma hoja.</p></div>
     <div class="sub-card"><b>Más que el DMV</b><p>Traducciones certificadas para inmigración, corte y otros trámites.</p></div>
-    <div class="sub-card"><b>En la oficina o a distancia</b><p>Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump y Moapa Valley / Mesquite.</p></div>
+    <div class="sub-card"><b>En la oficina o a distancia</b><p>En persona en Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump y Moapa Valley / Mesquite. A distancia, desde cualquier estado o país.</p></div>
   </div>
   <h2>Qué traducimos</h2>
   <ul class="sub-list">

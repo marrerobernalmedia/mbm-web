@@ -304,7 +304,7 @@ P['dispositivos'] = dict(
 P['contabilidad'] = dict(
     es=dict(slug='contabilidad-y-nomina', img='contabilidad.jpg',
         title='Contabilidad, nómina y sales tax para negocios en Nevada · Marrero Bernal & Associates',
-        desc='Nómina con las planillas 941 y 940, W-2 y 1099, los reportes de Nevada (DETR y Modified Business Tax), declaraciones de sales tax y contabilidad mensual. En español, en la oficina o a distancia.',
+        desc='Nómina con las planillas 941 y 940, W-2 y 1099, los reportes de Nevada (DETR y Modified Business Tax), declaraciones de sales tax y contabilidad mensual. En español, en la oficina o a distancia, estés donde estés.',
         html='''
 <section class="sub-hero"><div class="wrap">
   <div>
@@ -357,7 +357,7 @@ P['contabilidad'] = dict(
 </div></section>'''),
     en=dict(slug='bookkeeping-payroll', img='contabilidad.jpg',
         title='Bookkeeping, payroll and sales tax for Nevada businesses · Marrero Bernal & Associates',
-        desc='Payroll with Forms 941 and 940, W-2s and 1099s, Nevada filings (DETR and Modified Business Tax), sales tax returns and monthly bookkeeping. In English or Spanish, at the office or remotely.',
+        desc='Payroll with Forms 941 and 940, W-2s and 1099s, Nevada filings (DETR and Modified Business Tax), sales tax returns and monthly bookkeeping. In English or Spanish, at the office or remotely, wherever you are.',
         html='''
 <section class="sub-hero"><div class="wrap">
   <div>
@@ -683,7 +683,7 @@ _fien = [('Do I have to mail my original passport to the IRS?', 'No. Our Certify
 P['itin'] = dict(
     es=dict(slug='itin', img='tramites.jpg', faq=_faqs(_fi),
         title='Número ITIN con Agentes de Aceptación Certificados del IRS · Marrero Bernal & Associates',
-        desc='Solicita o renueva tu ITIN en español con Agentes de Aceptación Certificados (CAA) del IRS: certificamos tus documentos en la oficina y no mandas tu pasaporte original. También a distancia.',
+        desc='Solicita o renueva tu ITIN en español con Agentes de Aceptación Certificados (CAA) del IRS: certificamos tus documentos en la oficina y no mandas tu pasaporte original. También a distancia, vivas donde vivas.',
         html=_pag('es', 'Impuestos · ITIN', 'Tu ITIN sin mandar el pasaporte original al IRS.',
             'Si pides el ITIN por tu cuenta, tienes que enviar tus documentos originales al IRS por correo, y se pueden perder. Contamos con Agentes de Aceptación Certificados (CAA) del IRS: revisamos y certificamos tus documentos aquí mismo.',
             [('btn-acc', '/solicitud/?serv=itin', 'Solicitar mi ITIN'), _TEL], 'Persona firmando una solicitud junto a una carpeta de trámites', '''
@@ -710,7 +710,7 @@ P['itin'] = dict(
   </ol>''', _fi, [_LEGTAX, 'El IRS decide sobre cada solicitud de ITIN.'])),
     en=dict(slug='itin', img='tramites.jpg', faq=_faqs(_fien),
         title='ITIN with IRS Certifying Acceptance Agents · Marrero Bernal & Associates',
-        desc='Apply for or renew your ITIN with IRS Certifying Acceptance Agents (CAA): we certify your documents at the office and you do not mail your original passport. Also available remotely.',
+        desc='Apply for or renew your ITIN with IRS Certifying Acceptance Agents (CAA): we certify your documents at the office and you do not mail your original passport. Also available remotely, wherever you live.',
         html=_pag('en', 'Taxes · ITIN', 'Your ITIN without mailing your original passport to the IRS.',
             'If you apply for an ITIN on your own, you have to mail your original documents to the IRS, and they can get lost. We have IRS Certifying Acceptance Agents (CAA): we review and certify your documents right here.',
             [('btn-acc', '/en/request/?serv=itin', 'Apply for my ITIN'), _TELEN], 'Person signing an application next to a folder of paperwork', '''
@@ -751,7 +751,7 @@ _fren = [('Does the DMV accept your translations?', 'Yes. Our founder, Eliam Mar
 P['traducciones'] = dict(
     es=dict(slug='traducciones', img='tramites.jpg', faq=_faqs(_fr),
         title='Traducciones para el DMV de Nevada y traducciones certificadas · Marrero Bernal & Associates',
-        desc='Traductor aprobado por el DMV de Nevada. Traducimos actas de nacimiento, pasaportes, licencias de otros países y más, con número de traductor y certificación. En la oficina o a distancia.',
+        desc='Traductor aprobado por el DMV de Nevada. Traducimos actas de nacimiento, pasaportes, licencias de otros países y más, con número de traductor y certificación. En la oficina o a distancia, desde cualquier país.',
         html=_pag('es', 'Trámites · Traducciones', 'Traducciones que el DMV de Nevada sí acepta.',
             'Para sacar la licencia de manejo, la Driver Authorization Card o la tarjeta de identificación en Nevada, el DMV exige que todo documento que no esté en inglés venga traducido por un traductor aprobado. Nuestro fundador, Eliam Marrero Bernal, lo es.',
             [('btn-acc', '/solicitud/?serv=trad', 'Traducir mis documentos'), ('btn-ghost', _DMV, 'Verlo en el sitio del DMV')], 'Persona revisando y firmando documentos sobre un escritorio', '''
@@ -759,7 +759,7 @@ P['traducciones'] = dict(
     <div class="sub-card"><b>Traductor aprobado</b><p>Y como el DMV no está aceptando nuevos traductores, somos de los pocos que pueden hacerlo.</p></div>
     <div class="sub-card"><b>Como la exige el DMV</b><p>Completa, escrita a máquina, con fecha, firma, número de traductor y certificación en la misma hoja.</p></div>
     <div class="sub-card"><b>Más que el DMV</b><p>Traducciones certificadas para inmigración, corte y otros trámites.</p></div>
-    <div class="sub-card"><b>En la oficina o a distancia</b><p>Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump y Moapa Valley / Mesquite.</p></div>
+    <div class="sub-card"><b>En la oficina o a distancia</b><p>En persona en Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump y Moapa Valley / Mesquite. A distancia, desde cualquier estado o país.</p></div>
   </div>
   <h2>Qué traducimos</h2>
   <ul class="sub-list">
@@ -779,7 +779,7 @@ P['traducciones'] = dict(
   <p>Lo hacemos en la misma oficina. <a href="/notary-public/">Ver el servicio de notary public →</a></p>''', _fr, ['Los requisitos de las traducciones para licencias e identificaciones los fija el DMV de Nevada y pueden cambiar. No somos abogados y no ofrecemos asesoría legal.'])),
     en=dict(slug='translations', img='tramites.jpg', faq=_faqs(_fren),
         title='Nevada DMV translations and certified translations · Marrero Bernal & Associates',
-        desc='Nevada DMV-approved translator. We translate birth certificates, passports, foreign driver licenses and more, with translator number and certification. At the office or remotely.',
+        desc='Nevada DMV-approved translator. We translate birth certificates, passports, foreign driver licenses and more, with translator number and certification. At the office or remotely, from any country.',
         html=_pag('en', 'Paperwork · Translations', 'Translations the Nevada DMV accepts.',
             'To get a driver license, a Driver Authorization Card or an ID card in Nevada, the DMV requires every document not in English to be translated by an approved translator. Our founder, Eliam Marrero Bernal, is one.',
             [('btn-acc', '/en/request/?serv=trad', 'Translate my documents'), ('btn-ghost', _DMV, 'See it on the DMV website')], 'Person reviewing and signing documents at a desk', '''
@@ -787,7 +787,7 @@ P['traducciones'] = dict(
     <div class="sub-card"><b>Approved translator</b><p>And since the DMV is not accepting new translators, we are among the few who can do it.</p></div>
     <div class="sub-card"><b>The way the DMV requires</b><p>Complete, typed, with date, signature, translator number and certification on the same page.</p></div>
     <div class="sub-card"><b>Beyond the DMV</b><p>Certified translations for immigration, court and other paperwork.</p></div>
-    <div class="sub-card"><b>At the office or remotely</b><p>Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump and Moapa Valley / Mesquite.</p></div>
+    <div class="sub-card"><b>At the office or remotely</b><p>In person in Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump and Moapa Valley / Mesquite. Remotely, from any state or country.</p></div>
   </div>
   <h2>What we translate</h2>
   <ul class="sub-list">
@@ -995,25 +995,28 @@ P['negocio'] = dict(
 
 # ---- LLC y licencias
 _fl = [('¿Qué hacen exactamente?', 'Te formamos la LLC, sacamos la licencia de negocio, tramitamos el EIN y el registro estatal, y dejamos el seguro listo.'),
-       ('¿Cuántas visitas hacen falta?', 'La idea es resolverlo en una sola visita: LLC, licencia y seguro.'),
+       ('¿Cuántas visitas hacen falta?', 'La idea es resolverlo en una sola visita: LLC, licencia y seguro. Y si no puedes venir, lo hacemos a distancia.'),
+       ('Vivo fuera de Estados Unidos. ¿Puedo abrir una LLC con ustedes?', 'Sí. Atendemos a clientes en cualquier país: formamos la LLC y tramitamos el EIN a distancia, sin que tengas que viajar. El seguro del negocio lo ofrecemos en Nevada, California y Arizona.'),
        ('Después de abrir, ¿quién me lleva los impuestos y la nómina?', 'Nosotros, si quieres: contabilidad, nómina, sales tax y los taxes del negocio.'),
        ('¿Dan asesoría legal?', 'No. No somos abogados y no ofrecemos asesoría legal. Si necesitas decidir qué estructura legal te conviene, consulta a un abogado.')]
 _flen = [('What exactly do you do?', 'We form your LLC, get the business license, handle the EIN and state registration, and set up the insurance.'),
-       ('How many visits does it take?', 'The idea is to get it done in a single visit: LLC, license and insurance.'),
+       ('How many visits does it take?', 'The idea is to get it done in a single visit: LLC, license and insurance. And if you cannot come in, we do it remotely.'),
+       ('I live outside the United States. Can I open an LLC with you?', 'Yes. We serve clients in any country: we form the LLC and handle the EIN remotely, with no need to travel. We offer business insurance in Nevada, California and Arizona.'),
        ('After I open, who handles my taxes and payroll?', 'We can: bookkeeping, payroll, sales tax and the business taxes.'),
        ('Do you give legal advice?', 'No. We are not attorneys and do not give legal advice. If you need to decide which legal structure suits you, consult an attorney.')]
 P['llc'] = dict(
     es=dict(slug='llc-y-licencias', img='negocio.jpg', faq=_faqs(_fl),
-        title='Crear una LLC, licencia de negocio y EIN en Nevada · Marrero Bernal & Associates',
-        desc='Abre tu negocio en español: formamos tu LLC, sacamos la licencia de negocio, el EIN y el registro estatal, y dejamos el seguro listo en una sola visita.',
+        title='Crear una LLC en Estados Unidos desde cualquier país: LLC, licencia y EIN · Marrero Bernal & Associates',
+        desc='Abre tu negocio en español: formamos tu LLC, sacamos la licencia de negocio, el EIN y el registro estatal, y dejamos el seguro listo. En la oficina o a distancia, desde cualquier parte del mundo.',
         html=_pag('es', 'Para tu negocio · LLC y licencias', 'Abre tu negocio: LLC, licencia y seguro en una sola visita.',
-            'Te formamos la LLC, sacamos la licencia de negocio, tramitamos el EIN y el registro estatal, y dejamos el seguro listo. En español, en la oficina de North Las Vegas.',
+            'Te formamos la LLC, sacamos la licencia de negocio, tramitamos el EIN y el registro estatal, y dejamos el seguro listo. En español, en la oficina de North Las Vegas o a distancia, vivas en el país que vivas.',
             [('btn-acc', '/solicitud/?serv=llc', 'Empezar mi negocio'), _TEL], 'Dueño de una panadería en su local', '''
   <div class="sub-grid">
     <div class="sub-card"><b>Creación de LLC</b><p>Formamos la compañía con el nombre que quieres usar.</p></div>
     <div class="sub-card"><b>Licencia de negocio</b><p>Sacamos la licencia para que puedas operar.</p></div>
     <div class="sub-card"><b>EIN y registro estatal</b><p>El número del negocio ante el IRS y el registro ante el estado.</p></div>
     <div class="sub-card"><b>Seguro listo</b><p>Workers' comp y responsabilidad civil, para empezar asegurado. <a href="/seguro-de-negocio/">Ver seguros →</a></p></div>
+    <div class="sub-card"><b>Desde cualquier país</b><p>No tienes que vivir en Estados Unidos ni venir a la oficina: lo hacemos a distancia, por teléfono, WhatsApp y correo.</p></div>
   </div>
   <h2>Ten esto a mano</h2>
   <ul class="sub-list">
@@ -1024,16 +1027,17 @@ P['llc'] = dict(
   <h2>Y después de abrir</h2>
   <p>Llevamos la contabilidad, la nómina, el sales tax y los taxes del negocio durante el año. <a href="/contabilidad-y-nomina/">Ver contabilidad y nómina →</a></p>''', _fl, ['No somos abogados y no ofrecemos asesoría legal. Los requisitos y las tarifas de registro y de licencias los fijan el estado, el condado y la ciudad, y pueden cambiar.'])),
     en=dict(slug='llc-and-licenses', img='negocio.jpg', faq=_faqs(_flen),
-        title='Form an LLC, business license and EIN in Nevada · Marrero Bernal & Associates',
-        desc='Open your business: we form your LLC, get the business license, the EIN and state registration, and set up the insurance in a single visit. In English or Spanish.',
+        title='Form a U.S. LLC from any country: LLC, license and EIN · Marrero Bernal & Associates',
+        desc='Open your business: we form your LLC, get the business license, the EIN and state registration, and set up the insurance. At the office or remotely, from anywhere in the world. In English or Spanish.',
         html=_pag('en', 'For your business · LLC and licenses', 'Open your business: LLC, license and insurance in one visit.',
-            'We form your LLC, get the business license, handle the EIN and state registration, and set up the insurance. At our North Las Vegas office.',
+            'We form your LLC, get the business license, handle the EIN and state registration, and set up the insurance. At our North Las Vegas office or remotely, whatever country you live in.',
             [('btn-acc', '/en/request/?serv=llc', 'Start my business'), _TELEN], 'Bakery owner at his shop', '''
   <div class="sub-grid">
     <div class="sub-card"><b>LLC formation</b><p>We form the company with the name you want to use.</p></div>
     <div class="sub-card"><b>Business license</b><p>We get the license so you can operate.</p></div>
     <div class="sub-card"><b>EIN and state registration</b><p>The business's IRS number and its registration with the state.</p></div>
     <div class="sub-card"><b>Insurance ready</b><p>Workers' comp and general liability, so you start out insured. <a href="/en/business-insurance/">See insurance →</a></p></div>
+    <div class="sub-card"><b>From any country</b><p>You do not have to live in the United States or come to the office: we do it remotely, by phone, WhatsApp and email.</p></div>
   </div>
   <h2>Have this ready</h2>
   <ul class="sub-list">

@@ -5,7 +5,7 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'llc-y-licencia
   <div>
     <div class="kicker">Para tu negocio · LLC y licencias</div>
     <h1>Abre tu negocio: LLC, licencia y seguro en una sola visita.</h1>
-    <p class="lead">Te formamos la LLC, sacamos la licencia de negocio, tramitamos el EIN y el registro estatal, y dejamos el seguro listo. En español, en la oficina de North Las Vegas.</p>
+    <p class="lead">Te formamos la LLC, sacamos la licencia de negocio, tramitamos el EIN y el registro estatal, y dejamos el seguro listo. En español, en la oficina de North Las Vegas o a distancia, vivas en el país que vivas.</p>
     <div class="sub-cta"><a class="btn btn-acc" href="/solicitud/?serv=llc">Empezar mi negocio</a><a class="btn btn-ghost" href="tel:+18888772583">Llamar al 888-877-2583</a></div>
   </div>
   <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/negocio.jpg')); ?>" alt="Dueño de una panadería en su local" width="1280" height="720">
@@ -16,6 +16,7 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'llc-y-licencia
     <div class="sub-card"><b>Licencia de negocio</b><p>Sacamos la licencia para que puedas operar.</p></div>
     <div class="sub-card"><b>EIN y registro estatal</b><p>El número del negocio ante el IRS y el registro ante el estado.</p></div>
     <div class="sub-card"><b>Seguro listo</b><p>Workers' comp y responsabilidad civil, para empezar asegurado. <a href="/seguro-de-negocio/">Ver seguros →</a></p></div>
+    <div class="sub-card"><b>Desde cualquier país</b><p>No tienes que vivir en Estados Unidos ni venir a la oficina: lo hacemos a distancia, por teléfono, WhatsApp y correo.</p></div>
   </div>
   <h2>Ten esto a mano</h2>
   <ul class="sub-list">
@@ -27,7 +28,8 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'llc-y-licencia
   <p>Llevamos la contabilidad, la nómina, el sales tax y los taxes del negocio durante el año. <a href="/contabilidad-y-nomina/">Ver contabilidad y nómina →</a></p>
   <h2>Preguntas frecuentes</h2>
   <details class="sub-faq"><summary>¿Qué hacen exactamente?</summary><p>Te formamos la LLC, sacamos la licencia de negocio, tramitamos el EIN y el registro estatal, y dejamos el seguro listo.</p></details>
-  <details class="sub-faq"><summary>¿Cuántas visitas hacen falta?</summary><p>La idea es resolverlo en una sola visita: LLC, licencia y seguro.</p></details>
+  <details class="sub-faq"><summary>¿Cuántas visitas hacen falta?</summary><p>La idea es resolverlo en una sola visita: LLC, licencia y seguro. Y si no puedes venir, lo hacemos a distancia.</p></details>
+  <details class="sub-faq"><summary>Vivo fuera de Estados Unidos. ¿Puedo abrir una LLC con ustedes?</summary><p>Sí. Atendemos a clientes en cualquier país: formamos la LLC y tramitamos el EIN a distancia, sin que tengas que viajar. El seguro del negocio lo ofrecemos en Nevada, California y Arizona.</p></details>
   <details class="sub-faq"><summary>Después de abrir, ¿quién me lleva los impuestos y la nómina?</summary><p>Nosotros, si quieres: contabilidad, nómina, sales tax y los taxes del negocio.</p></details>
   <details class="sub-faq"><summary>¿Dan asesoría legal?</summary><p>No. No somos abogados y no ofrecemos asesoría legal. Si necesitas decidir qué estructura legal te conviene, consulta a un abogado.</p></details>
   <div class="sub-legal">

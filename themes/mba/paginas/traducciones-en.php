@@ -15,7 +15,7 @@ ob_start(); get_header('en'); echo mba_pag_fix(ob_get_clean(), 'en', 'translatio
     <div class="sub-card"><b>Approved translator</b><p>And since the DMV is not accepting new translators, we are among the few who can do it.</p></div>
     <div class="sub-card"><b>The way the DMV requires</b><p>Complete, typed, with date, signature, translator number and certification on the same page.</p></div>
     <div class="sub-card"><b>Beyond the DMV</b><p>Certified translations for immigration, court and other paperwork.</p></div>
-    <div class="sub-card"><b>At the office or remotely</b><p>Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump and Moapa Valley / Mesquite.</p></div>
+    <div class="sub-card"><b>At the office or remotely</b><p>In person in Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump and Moapa Valley / Mesquite. Remotely, from any state or country.</p></div>
   </div>
   <h2>What we translate</h2>
   <ul class="sub-list">
