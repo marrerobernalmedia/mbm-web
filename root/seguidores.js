@@ -3,10 +3,10 @@
    (Facebook e Instagram) y con vidIQ (YouTube). No editar a mano los sitios:
    editar este archivo y hacer push. */
 window.SEGUIDORES = {
-  "actualizado": "2026-11-12",
+  "actualizado": "2026-11-13",
   "fb": {"larisa":585725,"lacosa":173701,"recta":72407,"elhome":14449,"mba":5213,"cuero":2330,"welcome":3726,"mbm":1397,"eliam":11445,"nadie":456},
   "ig": {"larisa":50597,"lacosa":31382,"mbm":10256,"recta":9422,"welcome":3705,"elhome":2040,"nadie":46,"cuero":19,"mba":218,"eliam":7163},
-  "yt": {"larisa":91900,"recta":19140,"lacosa":14057,"elhome":3414,"welcome":2858,"mbm":18}
+  "yt": {"larisa":91925,"recta":19150,"lacosa":14075,"elhome":3426,"welcome":2868,"mbm":18}
 };
 (function(){
   var S=window.SEGUIDORES, RED=["larisa","lacosa","recta","elhome","welcome","mbm","cuero","nadie"];
