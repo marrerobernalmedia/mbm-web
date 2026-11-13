@@ -20,7 +20,7 @@ window.I18N_EN = {
 "Trabajamos con":"We work with","y otras compañías de primer nivel":"and other top-tier carriers",
 "Cotiza en línea":"Quote online","Tu cotización llega directo a nuestra oficina.":"Your quote goes straight to our office.",
 "Cinco minutos, sin llamadas. Un especialista la revisa y te contacta con opciones de varias compañías.":"Five minutes, no phone calls. A specialist reviews it and contacts you with options from several companies.",
-"📋 Taxes, traducciones y más":"📋 Taxes, translations and more",
+"📋 Taxes, traducciones y más":"📋 Taxes, translations and more","📅 Agendar una cita":"📅 Book an appointment","Agendar una cita":"Book an appointment",
 "🚗 Auto":"🚗 Auto","🏠 Casa":"🏠 Home","🏢 Condominio":"🏢 Condo","🔑 Renters":"🔑 Renters","❤️ Vida":"❤️ Life","💼 Negocio":"💼 Business","🚗+🏠 Auto + casa":"🚗+🏠 Auto + home","🚗+🔑 Auto + renters":"🚗+🔑 Auto + renters","🇲🇽 Auto para México":"🇲🇽 Mexico auto",
 "Índice de servicios":"Service index","Todo lo que hacemos, en una sola página.":"Everything we do, on one page.",
 "Cada servicio tiene su propia página con lo que necesitas traer, cuánto demora y preguntas frecuentes. Haz clic y entérate antes de llamar.":"Each service has its own page with what to bring, how long it takes and FAQs. Click and find out before you call.",

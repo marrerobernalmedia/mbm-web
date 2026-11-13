@@ -463,6 +463,26 @@ P['solicitud'] = dict(
         desc='Request your auto, home, life or business insurance quote, or ask for taxes, ITIN, translations and notary. A specialist contacts you with options from several companies.',
         html=_sol('en')))
 
+# ---------------------------------------------------------------- citas en línea (calendario del CRM)
+def _cita(lang):
+    es = lang == 'es'
+    return ('\n<section class="sub sol"><div class="wrap" style="max-width:860px">\n'
+            '  <div class="kicker">' + ('Citas' if es else 'Appointments') + '</div>\n'
+            '  <h1 style="font-family:Fraunces,serif;margin:6px 0 10px">' + ('Agenda tu cita en la oficina' if es else 'Book your appointment at the office') + '</h1>\n'
+            '  <p class="lead" style="margin:0 0 18px">' + ('Escoge el día y la hora. Atendemos citas lunes, martes, jueves y viernes de 9:00 AM a 4:00 PM, excepto feriados. Si prefieres, llámanos o escríbenos por WhatsApp al 888-877-2583.' if es else 'Pick a day and time. Appointments are Monday, Tuesday, Thursday and Friday from 9:00 AM to 4:00 PM, except holidays. If you prefer, call or WhatsApp us at 888-877-2583.') + '</p>\n'
+            '  <iframe src="https://api.leadconnectorhq.com/widget/booking/J9VOKpFkhYtqSUi4Lbrn" style="width:100%;min-height:720px;border:none;overflow:hidden;background:#fff;border-radius:16px" scrolling="no" id="J9VOKpFkhYtqSUi4Lbrn_cita" title="' + ('Calendario de citas' if es else 'Appointment calendar') + '"></iframe>\n'
+            '  <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>\n'
+            '</div></section>\n')
+P['citas'] = dict(
+    es=dict(slug='citas', img='tramites.jpg',
+        title='Agenda tu cita · Marrero Bernal & Associates',
+        desc='Agenda en línea tu cita en la oficina de Marrero Bernal & Associates en North Las Vegas: lunes, martes, jueves y viernes de 9 a 4.',
+        html=_cita('es')),
+    en=dict(slug='appointments', img='tramites.jpg',
+        title='Book your appointment · Marrero Bernal & Associates',
+        desc='Book your appointment online at the Marrero Bernal & Associates office in North Las Vegas: Monday, Tuesday, Thursday and Friday, 9 to 4.',
+        html=_cita('en')))
+
 # ---------------------------------------------------------------- plantillas
 for key, pair in P.items():
     for lang, d in pair.items():
@@ -593,7 +613,11 @@ function mba_solicitud() {
   $payload = ['first_name' => $nombre, 'last_name' => $apellido, 'phone' => '+' . $tel, 'email' => sanitize_email((string) ($d['correo'] ?? '')),
     'address1' => $s('direccion', 200), 'city' => $s('ciudad'), 'postal_code' => $s('zip', 12), 'date_of_birth' => $s('nacimiento', 10),
     'servicios' => $lista, 'idioma' => ($d['idioma'] ?? '') === 'en' ? 'Inglés' : 'Español', 'whatsapp' => !empty($d['whatsapp']) ? 'Sí' : 'No',
-    'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4), 'resumen' => $resumen, 'origen' => $esapp ? 'App' : 'marrerobernal.com', 'fuente' => $fcat, 'fuente_detalle' => $fuente, 'etiquetas' => implode(',', $eti), 'servicio_principal' => $servs[0] ?? '', 'fecha' => wp_date('Y-m-d H:i')];
+    'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4), 'resumen' => $resumen, 'origen' => $esapp ? 'App' : 'marrerobernal.com', 'fuente' => $fcat, 'fuente_detalle' => $fuente, 'etiquetas' => implode(',', $eti), 'servicio_principal' => $servs[0] ?? '',
+    'mensaje_confirmacion' => ($d['idioma'] ?? '') === 'en'
+      ? "Hi $nombre, we received your request at Marrero Bernal & Associates. A specialist will contact you within one business day. If it is urgent, call us at 888-877-2583."
+      : "Hola $nombre, recibimos tu solicitud en Marrero Bernal & Associates. Un especialista te contactará en un día hábil. Si es urgente, llámanos al 888-877-2583.",
+    'fecha' => wp_date('Y-m-d H:i')];
   $hook = get_option('mba_ghl_webhook', ''); $crm = false;
   if ($hook) {
     $r = wp_remote_post($hook, ['timeout' => 12, 'headers' => ['Content-Type' => 'application/json'], 'body' => wp_json_encode($payload)]);
