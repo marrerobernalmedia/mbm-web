@@ -867,13 +867,234 @@ P['notary'] = dict(
   <h2>If you also need a translation</h2>
   <p>We do certified translations and translations for the Nevada DMV. <a href="/en/translations/">See translations →</a></p>''', _fnen, ['The notary public verifies the identity of the signer and witnesses the signature; it does not review or guarantee the content of the document. We are not attorneys and do not give legal advice.'])))
 
+# ---- vida
+_fv = [('¿Qué tipos de seguro de vida cotizan?', 'A término (por un número de años), vida entera y vida universal. Si no sabes cuál te conviene, márcalo en la solicitud y el especialista te aconseja.'),
+       ('¿Me van a hacer preguntas de salud en el formulario?', 'No. Las preguntas de salud te las hace el especialista por teléfono.'),
+       ('¿Puedo asegurar a mi cónyuge o a un hijo?', 'Sí. En la solicitud nos dices para quién es: para ti, tu cónyuge, un hijo u otro familiar.'),
+       ('¿Cuánto cuesta la cotización?', 'Nada. La cotización no tiene costo ni compromiso.')]
+_fven = [('Which types of life insurance do you quote?', 'Term (for a number of years), whole life and universal life. If you are not sure which fits you, say so in the request and the specialist will advise you.'),
+       ('Will the form ask me health questions?', 'No. Health questions are asked by the specialist over the phone.'),
+       ('Can I insure my spouse or a child?', 'Yes. In the request you tell us who it is for: yourself, your spouse, a child or another relative.'),
+       ('How much does the quote cost?', 'Nothing. The quote is free, with no obligation.')]
+P['vida'] = dict(
+    es=dict(slug='seguro-de-vida', img='familia.jpg', faq=_faqs(_fv),
+        title='Seguro de vida en español: a término, vida entera y universal · Marrero Bernal & Associates',
+        desc='Cotiza tu seguro de vida en español: a término, vida entera o vida universal, para ti, tu cónyuge o tus hijos. Un especialista te explica las opciones. Cotización sin costo.',
+        html=_pag('es', 'Seguros personales · Vida', 'Seguro de vida, explicado en tu idioma.',
+            'Para que tu familia no quede desprotegida. Te explicamos en español la diferencia entre un seguro a término y uno permanente, y cotizamos el monto que necesitas.',
+            [('btn-acc', '/solicitud/?serv=vida', 'Cotizar seguro de vida'), _TEL], 'Familia con dos hijos frente a su casa', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>A término</b><p>Te cubre por un número de años.</p></div>
+    <div class="sub-card"><b>Vida entera</b><p>Cobertura permanente.</p></div>
+    <div class="sub-card"><b>Vida universal</b><p>Otra forma de cobertura permanente. Te explicamos cómo funciona.</p></div>
+    <div class="sub-card"><b>¿No sabes cuál?</b><p>Márcalo en la solicitud y el especialista te aconseja.</p></div>
+  </div>
+  <h2>Ten esto a mano</h2>
+  <ul class="sub-list">
+    <li>Para quién es el seguro: para ti, tu cónyuge, un hijo u otro familiar.</li>
+    <li>La fecha de nacimiento de la persona asegurada y si fuma.</li>
+    <li>El monto que buscas, o dinos que no lo sabes.</li>
+  </ul>
+  <p>Las preguntas de salud no van en el formulario: te las hace el especialista por teléfono.</p>
+  <h2>Cómo trabajamos</h2>
+  <ol class="sub-steps">
+    <li><b>Nos cuentas.</b> Llenas la solicitud en línea, llamas, escribes por WhatsApp o vienes a la oficina.</li>
+    <li><b>Te llamamos.</b> Un especialista revisa tu caso contigo.</li>
+    <li><b>Tú decides.</b> Te explicamos cada opción, sin presión.</li>
+    <li><b>Seguimos ahí.</b> La misma oficina y la misma gente.</li>
+  </ol>''', _fv, [_LEGSEG, 'La aprobación, la cobertura y la prima dependen de la compañía aseguradora y de cada persona.'])),
+    en=dict(slug='life-insurance', img='familia.jpg', faq=_faqs(_fven),
+        title='Life insurance: term, whole and universal life · Marrero Bernal & Associates',
+        desc='Get a life insurance quote in English or Spanish: term, whole life or universal life, for you, your spouse or your children. A specialist explains the options. Free quote.',
+        html=_pag('en', 'Personal insurance · Life', 'Life insurance, explained in your language.',
+            'So your family is not left unprotected. We explain the difference between term and permanent insurance and quote the amount you need.',
+            [('btn-acc', '/en/request/?serv=vida', 'Quote life insurance'), _TELEN], 'Family with two children in front of their home', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>Term</b><p>Covers you for a number of years.</p></div>
+    <div class="sub-card"><b>Whole life</b><p>Permanent coverage.</p></div>
+    <div class="sub-card"><b>Universal life</b><p>Another form of permanent coverage. We explain how it works.</p></div>
+    <div class="sub-card"><b>Not sure which?</b><p>Say so in the request and the specialist will advise you.</p></div>
+  </div>
+  <h2>Have this ready</h2>
+  <ul class="sub-list">
+    <li>Who the insurance is for: yourself, your spouse, a child or another relative.</li>
+    <li>The insured person's date of birth and whether they smoke.</li>
+    <li>The amount you are looking for, or tell us you are not sure.</li>
+  </ul>
+  <p>Health questions are not in the form: the specialist asks them over the phone.</p>
+  <h2>How we work</h2>
+  <ol class="sub-steps">
+    <li><b>You tell us.</b> Fill out the online request, call, WhatsApp us or come to the office.</li>
+    <li><b>We call you.</b> A specialist reviews your case with you.</li>
+    <li><b>You decide.</b> We explain each option, with no pressure.</li>
+    <li><b>We stay with you.</b> The same office and the same people.</li>
+  </ol>''', _fven, [_LEGSEGEN, 'Approval, coverage and premium depend on the insurance company and on each person.'])))
+
+# ---- negocio / workers' comp
+_fb = [('¿Estoy obligado a tener workers\' comp?', 'En Nevada, si tienes uno o más empleados, sí: la ley lo exige. En construcción, aunque el trabajo sea corto.'),
+       ('Trabajo solo. ¿Para qué lo quiero?', 'Porque muchos contratistas generales, dueños de obra y clientes no dan el trabajo sin un certificado de seguro.'),
+       ('Me piden un certificado de seguro para un contrato. ¿Me lo dan?', 'Sí. Te lo enviamos cuando te lo pidan, para que no pierdas el trabajo. En la solicitud nos dices para qué fecha lo necesitas.'),
+       ('¿Qué pasa si no tengo la cobertura?', 'El estado puede multarte hasta con $15,000 y ordenar que cierres el negocio hasta tener el seguro, y pagas tú los costos de cualquier accidente de trabajo.'),
+       ('¿Qué otros seguros de negocio cotizan?', 'Responsabilidad civil, auto comercial, propiedad comercial, bonos y paquetes por industria.')]
+_fben = [('Am I required to have workers\' comp?', 'In Nevada, if you have one or more employees, yes: the law requires it. In construction, even for a short job.'),
+       ('I work alone. Why would I need it?', 'Because many general contractors, project owners and clients will not give you the job without a certificate of insurance.'),
+       ('I am asked for a certificate of insurance for a contract. Do you provide it?', 'Yes. We send it when you are asked for it, so you do not lose the job. In the request you tell us the date you need it by.'),
+       ('What if I do not have coverage?', 'The state can fine you up to $15,000 and order your business closed until you have insurance, and you pay the costs of any workplace accident.'),
+       ('What other business insurance do you quote?', 'General liability, commercial auto, commercial property, bonds and industry packages.')]
+P['negocio'] = dict(
+    es=dict(slug='seguro-de-negocio', img='workers.jpg', faq=_faqs(_fb),
+        title='Workers\' compensation y seguro de negocio en Nevada · Marrero Bernal & Associates',
+        desc='Workers\' comp, responsabilidad civil, auto comercial y propiedad para tu negocio, cotizados en español. Certificados de seguro cuando te los pidan. Cotización sin costo.',
+        html=_pag('es', 'Para tu negocio · Seguros comerciales', 'Workers\' comp y seguro de negocio, en español.',
+            'En Nevada, si tienes uno o más empleados, la ley te obliga a tener seguro de compensación al trabajador. Te lo cotizamos en español, junto con el resto de los seguros del negocio, y te mandamos los certificados cuando te los pidan.',
+            [('btn-acc', '/solicitud/?serv=negocio', 'Cotizar mi negocio'), _TEL], 'Contratista con casco dándole la mano a una agente de seguros en una obra', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>Obligatorio en Nevada</b><p>Con uno o más empleados. En construcción, aunque el trabajo sea corto.</p></div>
+    <div class="sub-card destacado"><b>Multas de hasta $15,000</b><p>Sin cobertura, el estado puede multarte y ordenar que cierres hasta tener el seguro.</p></div>
+    <div class="sub-card"><b>Certificados</b><p>Si un contratista o un cliente te pide el certificado de seguro, te lo enviamos.</p></div>
+    <div class="sub-card"><b>Todo el negocio</b><p>Responsabilidad civil, auto comercial, propiedad y paquetes por industria.</p></div>
+  </div>
+  <h2>Industrias que atendemos</h2>
+  <p>Construcción, limpieza, jardinería, restaurantes, transporte y camiones, salones y barberías, y tiendas.</p>
+  <h2>Ten esto a mano</h2>
+  <ul class="sub-list">
+    <li>El nombre del negocio, a qué se dedica y su estructura (LLC, corporación o dueño único).</li>
+    <li>Años operando y número de empleados.</li>
+    <li>La nómina anual y las ventas anuales aproximadas.</li>
+    <li>Qué necesitas: responsabilidad general, workers' comp, auto comercial, propiedad o bonos.</li>
+    <li>Si necesitas un certificado para un contrato, y para qué fecha.</li>
+  </ul>
+  <h2>La nómina y el seguro, en el mismo lugar</h2>
+  <p>El workers' comp se calcula sobre la nómina. Como también llevamos la contabilidad, la nómina y los taxes del negocio, todo cuadra en un mismo lugar. <a href="/contabilidad-y-nomina/">Ver contabilidad y nómina →</a></p>
+  <p>¿Vas a abrir tu negocio? <a href="/llc-y-licencias/">Ver LLC y licencias →</a></p>''', _fb, [_LEGSEG, 'Fuente de los requisitos: División de Relaciones Industriales de Nevada. Las coberturas y las primas dependen de la aseguradora, la industria y la nómina.'])),
+    en=dict(slug='business-insurance', img='workers.jpg', faq=_faqs(_fben),
+        title='Workers\' compensation and business insurance in Nevada · Marrero Bernal & Associates',
+        desc='Workers\' comp, general liability, commercial auto and property for your business, in English or Spanish. Certificates of insurance when you are asked for them. Free quote.',
+        html=_pag('en', 'For your business · Commercial insurance', 'Workers\' comp and business insurance, in your language.',
+            'In Nevada, if you have one or more employees, the law requires workers\' compensation insurance. We quote it, along with the rest of your business insurance, and send certificates when you are asked for them.',
+            [('btn-acc', '/en/request/?serv=negocio', 'Quote my business'), _TELEN], 'Contractor in a hard hat shaking hands with an insurance agent at a job site', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>Required in Nevada</b><p>With one or more employees. In construction, even for a short job.</p></div>
+    <div class="sub-card destacado"><b>Fines up to $15,000</b><p>Without coverage, the state can fine you and order you closed until you have insurance.</p></div>
+    <div class="sub-card"><b>Certificates</b><p>If a contractor or client asks for a certificate of insurance, we send it.</p></div>
+    <div class="sub-card"><b>The whole business</b><p>General liability, commercial auto, property and industry packages.</p></div>
+  </div>
+  <h2>Industries we serve</h2>
+  <p>Construction, cleaning, landscaping, restaurants, transportation and trucking, salons and barbershops, and retail stores.</p>
+  <h2>Have this ready</h2>
+  <ul class="sub-list">
+    <li>The business name, what it does and its structure (LLC, corporation or sole proprietor).</li>
+    <li>Years in business and number of employees.</li>
+    <li>Approximate annual payroll and annual sales.</li>
+    <li>What you need: general liability, workers' comp, commercial auto, property or bonds.</li>
+    <li>Whether you need a certificate for a contract, and by what date.</li>
+  </ul>
+  <h2>Payroll and insurance in the same place</h2>
+  <p>Workers' comp is based on payroll. Since we also handle the business's bookkeeping, payroll and taxes, everything lines up in one place. <a href="/en/bookkeeping-payroll/">See bookkeeping and payroll →</a></p>
+  <p>Opening a business? <a href="/en/llc-and-licenses/">See LLC and licenses →</a></p>''', _fben, [_LEGSEGEN, 'Source of the requirements: Nevada Division of Industrial Relations. Coverage and premiums depend on the carrier, the industry and the payroll.'])))
+
+# ---- LLC y licencias
+_fl = [('¿Qué hacen exactamente?', 'Te formamos la LLC, sacamos la licencia de negocio, tramitamos el EIN y el registro estatal, y dejamos el seguro listo.'),
+       ('¿Cuántas visitas hacen falta?', 'La idea es resolverlo en una sola visita: LLC, licencia y seguro.'),
+       ('Después de abrir, ¿quién me lleva los impuestos y la nómina?', 'Nosotros, si quieres: contabilidad, nómina, sales tax y los taxes del negocio.'),
+       ('¿Dan asesoría legal?', 'No. No somos abogados y no ofrecemos asesoría legal. Si necesitas decidir qué estructura legal te conviene, consulta a un abogado.')]
+_flen = [('What exactly do you do?', 'We form your LLC, get the business license, handle the EIN and state registration, and set up the insurance.'),
+       ('How many visits does it take?', 'The idea is to get it done in a single visit: LLC, license and insurance.'),
+       ('After I open, who handles my taxes and payroll?', 'We can: bookkeeping, payroll, sales tax and the business taxes.'),
+       ('Do you give legal advice?', 'No. We are not attorneys and do not give legal advice. If you need to decide which legal structure suits you, consult an attorney.')]
+P['llc'] = dict(
+    es=dict(slug='llc-y-licencias', img='negocio.jpg', faq=_faqs(_fl),
+        title='Crear una LLC, licencia de negocio y EIN en Nevada · Marrero Bernal & Associates',
+        desc='Abre tu negocio en español: formamos tu LLC, sacamos la licencia de negocio, el EIN y el registro estatal, y dejamos el seguro listo en una sola visita.',
+        html=_pag('es', 'Para tu negocio · LLC y licencias', 'Abre tu negocio: LLC, licencia y seguro en una sola visita.',
+            'Te formamos la LLC, sacamos la licencia de negocio, tramitamos el EIN y el registro estatal, y dejamos el seguro listo. En español, en la oficina de North Las Vegas.',
+            [('btn-acc', '/solicitud/?serv=llc', 'Empezar mi negocio'), _TEL], 'Dueño de una panadería en su local', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>Creación de LLC</b><p>Formamos la compañía con el nombre que quieres usar.</p></div>
+    <div class="sub-card"><b>Licencia de negocio</b><p>Sacamos la licencia para que puedas operar.</p></div>
+    <div class="sub-card"><b>EIN y registro estatal</b><p>El número del negocio ante el IRS y el registro ante el estado.</p></div>
+    <div class="sub-card"><b>Seguro listo</b><p>Workers' comp y responsabilidad civil, para empezar asegurado. <a href="/seguro-de-negocio/">Ver seguros →</a></p></div>
+  </div>
+  <h2>Ten esto a mano</h2>
+  <ul class="sub-list">
+    <li>Qué necesitas: crear la LLC, la licencia de negocio, el EIN, o todo.</li>
+    <li>A qué se va a dedicar el negocio.</li>
+    <li>El nombre que quieres usar.</li>
+  </ul>
+  <h2>Y después de abrir</h2>
+  <p>Llevamos la contabilidad, la nómina, el sales tax y los taxes del negocio durante el año. <a href="/contabilidad-y-nomina/">Ver contabilidad y nómina →</a></p>''', _fl, ['No somos abogados y no ofrecemos asesoría legal. Los requisitos y las tarifas de registro y de licencias los fijan el estado, el condado y la ciudad, y pueden cambiar.'])),
+    en=dict(slug='llc-and-licenses', img='negocio.jpg', faq=_faqs(_flen),
+        title='Form an LLC, business license and EIN in Nevada · Marrero Bernal & Associates',
+        desc='Open your business: we form your LLC, get the business license, the EIN and state registration, and set up the insurance in a single visit. In English or Spanish.',
+        html=_pag('en', 'For your business · LLC and licenses', 'Open your business: LLC, license and insurance in one visit.',
+            'We form your LLC, get the business license, handle the EIN and state registration, and set up the insurance. At our North Las Vegas office.',
+            [('btn-acc', '/en/request/?serv=llc', 'Start my business'), _TELEN], 'Bakery owner at his shop', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>LLC formation</b><p>We form the company with the name you want to use.</p></div>
+    <div class="sub-card"><b>Business license</b><p>We get the license so you can operate.</p></div>
+    <div class="sub-card"><b>EIN and state registration</b><p>The business's IRS number and its registration with the state.</p></div>
+    <div class="sub-card"><b>Insurance ready</b><p>Workers' comp and general liability, so you start out insured. <a href="/en/business-insurance/">See insurance →</a></p></div>
+  </div>
+  <h2>Have this ready</h2>
+  <ul class="sub-list">
+    <li>What you need: forming the LLC, the business license, the EIN, or all of it.</li>
+    <li>What the business will do.</li>
+    <li>The name you want to use.</li>
+  </ul>
+  <h2>After you open</h2>
+  <p>We keep the books, payroll, sales tax and business taxes during the year. <a href="/en/bookkeeping-payroll/">See bookkeeping and payroll →</a></p>''', _flen, ['We are not attorneys and do not give legal advice. Registration and license requirements and fees are set by the state, county and city, and may change.'])))
+
+# ---- privacidad
+def _priv(es):
+    T = lambda a, b: a if es else b
+    S = [
+     (T('Quiénes somos', 'Who we are'), T('<p>Marrero Bernal &amp; Associates y Marrero Bernal Agency LLC, 3455 W Craig Rd, Suite D, North Las Vegas, NV 89032. Teléfono y WhatsApp: 888-877-2583.</p>', '<p>Marrero Bernal &amp; Associates and Marrero Bernal Agency LLC, 3455 W Craig Rd, Suite D, North Las Vegas, NV 89032. Phone and WhatsApp: 888-877-2583.</p>')),
+     (T('Qué datos recogemos', 'What we collect'), T('''<ul class="sub-list">
+    <li><b>Lo que tú nos das</b> en la solicitud en línea, el formulario de contacto, el chat y las citas: nombre, teléfono, correo, dirección, fecha de nacimiento y los datos del servicio que pides (por ejemplo, tu vehículo o tu propiedad).</li>
+    <li><b>De dónde llegaste</b> al sitio (por ejemplo, Google o Facebook), para saber qué anuncios funcionan.</li>
+    <li><b>Datos de uso</b> del sitio, por medio de Google Analytics y del píxel de Meta: páginas vistas y si se envió una solicitud. Al píxel de Meta no le enviamos lo que escribes en los formularios.</li>
+  </ul>
+  <p>En los formularios del sitio no pedimos números de Seguro Social o ITIN, ni datos bancarios. Los documentos de tus taxes se suben por el portal seguro de clientes (SecureFilePro), y los pagos en línea los procesa GoDaddy Payments; no guardamos tu tarjeta en este sitio.</p>''', '''<ul class="sub-list">
+    <li><b>What you give us</b> in the online request, the contact form, the chat and appointments: name, phone, email, address, date of birth and the details of the service you ask for (for example, your vehicle or your property).</li>
+    <li><b>How you reached</b> the site (for example, Google or Facebook), so we know which ads work.</li>
+    <li><b>Usage data</b> through Google Analytics and the Meta pixel: pages viewed and whether a request was sent. We do not send what you type in forms to the Meta pixel.</li>
+  </ul>
+  <p>The site's forms do not ask for Social Security or ITIN numbers or for bank information. Your tax documents are uploaded through the secure client portal (SecureFilePro), and online payments are processed by GoDaddy Payments; we do not store your card on this site.</p>''')),
+     (T('Para qué los usamos', 'How we use it'), T('<p>Para contactarte sobre lo que pediste, preparar tu cotización o tu trámite, confirmar y recordarte tus citas, y mejorar el sitio.</p>', '<p>To contact you about what you requested, prepare your quote or your paperwork, confirm and remind you of appointments, and improve the site.</p>')),
+     (T('Con quién los compartimos', 'Who we share it with'), T('''<p><b>No vendemos tus datos.</b> Los compartimos solo con:</p>
+  <ul class="sub-list">
+    <li>Las compañías de seguros con las que cotizamos lo que pediste, y las agencias ante las que hacemos tu trámite (por ejemplo, el IRS).</li>
+    <li>Los proveedores que operan nuestras herramientas: el sistema de clientes y mensajería (HighLevel / LeadConnector), el alojamiento del sitio, Google Analytics y Meta.</li>
+    <li>Las autoridades, cuando la ley lo exige.</li>
+  </ul>''', '''<p><b>We do not sell your data.</b> We share it only with:</p>
+  <ul class="sub-list">
+    <li>The insurance companies we quote your request with, and the agencies we file your paperwork with (for example, the IRS).</li>
+    <li>The providers that run our tools: the client and messaging system (HighLevel / LeadConnector), the site's hosting, Google Analytics and Meta.</li>
+    <li>Authorities, when the law requires it.</li>
+  </ul>''')),
+     (T('Mensajes de texto y WhatsApp', 'Text messages and WhatsApp'), T('''<p>Si nos autorizas en un formulario, te contactamos por llamada, mensaje de texto o WhatsApp sobre tu solicitud y tus citas. La frecuencia de los mensajes varía. Pueden aplicar tarifas de mensajes y datos de tu compañía telefónica. Responde <b>STOP</b> para dejar de recibir mensajes de texto y <b>HELP</b> para ayuda. Dar tu autorización no es condición para comprar ningún servicio.</p>
+  <p>No compartimos ni vendemos tu número de teléfono ni tu autorización para recibir mensajes con terceros para fines de mercadeo.</p>''', '''<p>If you authorize us in a form, we contact you by call, text message or WhatsApp about your request and your appointments. Message frequency varies. Message and data rates from your carrier may apply. Reply <b>STOP</b> to stop receiving text messages and <b>HELP</b> for help. Consent is not a condition of purchasing any service.</p>
+  <p>We do not share or sell your phone number or your consent to receive messages with third parties for marketing purposes.</p>''')),
+     (T('Cookies y medición', 'Cookies and measurement'), T('<p>El sitio usa cookies de Google Analytics y de Meta para contar visitas y medir anuncios, y guarda en tu navegador el idioma que escogiste. Puedes bloquear las cookies en tu navegador; el sitio sigue funcionando.</p>', '<p>The site uses Google Analytics and Meta cookies to count visits and measure ads, and stores your language choice in your browser. You can block cookies in your browser; the site keeps working.</p>')),
+     (T('Tus opciones', 'Your choices'), T('<p>Puedes pedirnos ver, corregir o borrar los datos que tenemos de ti, o que dejemos de contactarte: llámanos o escríbenos por WhatsApp al 888-877-2583, o ven a la oficina. Hay datos que la ley nos obliga a conservar, como los de las declaraciones de impuestos y las pólizas.</p>', '<p>You can ask us to see, correct or delete the data we hold about you, or to stop contacting you: call or WhatsApp us at 888-877-2583, or come to the office. Some data we are required by law to keep, such as tax return and policy records.</p>')),
+    ]
+    body = ''.join(f'\n  <h2>{h}</h2>\n  {c}' for h, c in S)
+    return ('\n<section class="sub"><div class="wrap">\n  <div class="kicker">' + T('Privacidad', 'Privacy') + '</div>\n  <h1>' + T('Política de privacidad', 'Privacy policy') + '</h1>\n  <p class="lead">'
+            + T('Qué datos recogemos en marrerobernal.com, para qué los usamos y con quién los compartimos.', 'What data we collect at marrerobernal.com, how we use it and who we share it with.') + '</p>' + body
+            + '\n  <div class="sub-legal"><p>' + T('Vigente desde el 13 de noviembre de 2026. Si cambiamos esta política, publicamos aquí la nueva versión.', 'Effective November 13, 2026. If we change this policy, we will post the new version here.') + '</p></div>\n</div></section>')
+P['privacidad'] = dict(
+    es=dict(slug='privacidad', img='og.jpg', title='Política de privacidad · Marrero Bernal & Associates',
+        desc='Qué datos recoge marrerobernal.com, para qué se usan, con quién se comparten y cómo dejar de recibir mensajes.', html=_priv(True)),
+    en=dict(slug='privacy', img='og.jpg', title='Privacy policy · Marrero Bernal & Associates',
+        desc='What data marrerobernal.com collects, how it is used, who it is shared with and how to stop receiving messages.', html=_priv(False)))
+
 # Páginas viejas de Elementor → destino (301). Las de seguros van al formulario propio de solicitud.
 FQ = 'https://esales.farmers.com/fastquote?Lob={}&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032'
 REDIR = {
     'insurance': '/#personal', 'insurance-2': '/solicitud/?serv=auto,casa', 'vehicle-insurance': '/seguro-de-auto/',
-    'home-insurance': '/seguro-de-casa/', 'life': '/solicitud/?serv=vida', 'business-insurance-2': '/solicitud/?serv=negocio',
+    'home-insurance': '/seguro-de-casa/', 'life': '/seguro-de-vida/', 'business-insurance-2': '/seguro-de-negocio/',
     'health': '/obamacare-nevada/', 'travel': '/#personal', 'personal': '/#personal', 'business': '/#negocios',
-    'taxes-2': '/taxes/', 'business-taxes': '/#negocios', 'business-licenses': '/#negocios',
+    'taxes-2': '/taxes/', 'business-taxes': '/#negocios', 'business-licenses': '/llc-y-licencias/',
     'about-us': '/#nosotros', 'contact': '/#contacto', 'blog': '/', 'immigration': '/', 'payroll': '/contabilidad-y-nomina/',
     'dmv': '/traducciones/', 'translations': '/traducciones/', 'notary': '/notary-public/', 'media': 'https://marrerobernalmedia.com/',
     # Artículos del blog viejo (2023), enviados a la papelera el 6-nov-2026 por orden de Eliam
@@ -900,7 +1121,7 @@ REDIR = {
     'if-its-about-spending-less': '/',
     'how-to-pay-bills-and-die-while-doing-it': '/',
     'are-you-saving-for-a-rainy-day': '/',
-    'hello-world': '/',
+    'hello-world': '/', 'privacy-policy': '/privacidad/',
 }
 
 # ---------------------------------------------------------------- solicitud en línea (formulario por pasos → CRM)
@@ -915,7 +1136,7 @@ def _sol(lang):
 P['solicitud'] = dict(
     es=dict(slug='solicitud', img='tramites.jpg',
         title='Cotiza o solicita un servicio en línea · Marrero Bernal & Associates',
-        desc='Pide tu cotización de seguro de auto, casa, vida o negocio, o solicita taxes, ITIN, traducciones y notaría. Un especialista te contacta con opciones de varias compañías.',
+        desc='Pide tu cotización de seguro de auto, casa, vida o negocio, o solicita taxes, ITIN, traducciones y notary public. Un especialista te contacta con opciones de varias compañías.',
         html=_sol('es')),
     en=dict(slug='request', img='tramites.jpg',
         title='Get a quote or request a service online · Marrero Bernal & Associates',
@@ -929,7 +1150,7 @@ def _cita(lang):
             '  <div class="kicker">' + ('Citas' if es else 'Appointments') + '</div>\n'
             '  <h1 style="font-family:Fraunces,serif;margin:6px 0 10px">' + ('Agenda tu cita en la oficina' if es else 'Book your appointment at the office') + '</h1>\n'
             '  <p class="lead" style="margin:0 0 18px">' + ('Escoge el día y la hora. Atendemos citas lunes, martes, jueves y viernes de 9:00 AM a 4:00 PM, excepto feriados. Si prefieres, llámanos o escríbenos por WhatsApp al 888-877-2583.' if es else 'Pick a day and time. Appointments are Monday, Tuesday, Thursday and Friday from 9:00 AM to 4:00 PM, except holidays. If you prefer, call or WhatsApp us at 888-877-2583.') + '</p>\n'
-            '  <p style="margin:0 0 18px;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid #e4dfd3"><b>' + ('Dinos para qué es la cita.' if es else 'Tell us what the appointment is for.') + '</b> ' + ('Al llenar tus datos, escribe en la casilla «Additional information» el motivo: taxes, seguro de auto, ITIN, traducción, notaría u otro. Así te atendemos con todo listo.' if es else 'When you enter your details, use the “Additional information” box to tell us the reason: taxes, auto insurance, ITIN, translation, notary or other. That way we have everything ready for you.') + '</p>\n'
+            '  <p style="margin:0 0 18px;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid #e4dfd3"><b>' + ('Dinos para qué es la cita.' if es else 'Tell us what the appointment is for.') + '</b> ' + ('Al llenar tus datos, escribe en la casilla «Additional information» el motivo: taxes, seguro de auto, ITIN, traducción, notary public u otro. Así te atendemos con todo listo.' if es else 'When you enter your details, use the “Additional information” box to tell us the reason: taxes, auto insurance, ITIN, translation, notary or other. That way we have everything ready for you.') + '</p>\n'
             '  <iframe src="https://api.leadconnectorhq.com/widget/booking/J9VOKpFkhYtqSUi4Lbrn" style="width:100%;min-height:720px;border:none;overflow:hidden;background:#fff;border-radius:16px" scrolling="no" id="J9VOKpFkhYtqSUi4Lbrn_cita" title="' + ('Calendario de citas' if es else 'Appointment calendar') + '"></iframe>\n'
             '  <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>\n'
             '</div></section>\n')

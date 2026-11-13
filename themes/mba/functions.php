@@ -18,7 +18,7 @@ add_filter('pre_get_document_title', function ($t) {
 
 add_action('wp_head', function () {
   echo '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
-  if (is_front_page() && !mba_is_en()) echo '<meta name="description" content="' . esc_attr("Marrero Bernal & Associates: agencia independiente con sede en Las Vegas que atiende clientes en todo Estados Unidos y el extranjero, con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; workers' compensation para negocios; taxes personales y de negocio, contabilidad y nómina, ITIN, notaría, traducciones para el DMV y creación de LLC. En español, en North Las Vegas desde 2008.") . '">' . "\n";
+  if (is_front_page() && !mba_is_en()) echo '<meta name="description" content="' . esc_attr("Marrero Bernal & Associates: agencia independiente con sede en Las Vegas que atiende clientes en todo Estados Unidos y el extranjero, con contratos con múltiples compañías de primer nivel como Farmers y Progressive. Seguros de auto, hogar, vida, negocio y Medicare; workers' compensation para negocios; taxes personales y de negocio, contabilidad y nómina, ITIN, notary public, traducciones para el DMV y creación de LLC. En español, en North Las Vegas desde 2008.") . '">' . "\n";
 }, 1);
 
 add_action('wp_enqueue_scripts', function () {

@@ -13,7 +13,7 @@
         <div class="sugg" id="sugg"></div>
       </div>
       <div class="pop">Most searched:
-        <a href="/en/auto-insurance/">Auto insurance</a><a href="#s-medicare">Medicare Advantage</a><a href="/en/taxes/">Personal taxes</a><a href="#s-llc">Form an LLC</a><a href="/en/translations/">DMV translations</a><a href="/en/notary/">Notary</a>
+        <a href="/en/auto-insurance/">Auto insurance</a><a href="#s-medicare">Medicare Advantage</a><a href="/en/taxes/">Personal taxes</a><a href="/en/llc-and-licenses/">Form an LLC</a><a href="/en/translations/">DMV translations</a><a href="/en/notary/">Notary</a>
       </div>
       <a class="gstars" href="https://g.page/r/CRuuvSm15kNDEAI" target="_blank" rel="noopener"><b>★★★★★</b> 4.9 on Google · 27 reviews</a>
       <div class="badges"><span>Licensed NV · CA · AZ</span><span>Independent agency · 10 carriers</span><span>Spanish and English</span><span>Free quotes</span></div>
@@ -31,7 +31,7 @@
     <a class="tile" href="/en/taxes/"><div class="ic">🧾</div><b>Taxes</b><span>Personal and business, from anywhere in the country</span></a>
     <a class="tile" href="#dmv"><div class="ic">📝</div><b>Translations</b><span>Approved by the Nevada DMV</span></a>
     <a class="tile" href="/en/notary/"><div class="ic">✒️</div><b>Notary and translations</b><span>Certified documents in Spanish and English</span></a>
-    <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licenses and LLC</b><span>Start your business</span></a>
+    <a class="tile" href="/en/llc-and-licenses/"><div class="ic">📑</div><b>Licenses and LLC</b><span>Start your business</span></a>
   </div>
   <div class="carriers"><span>We work with</span><b>Farmers</b><b>Progressive</b><b>Travelers</b><b>Liberty Mutual</b><b>Mercury</b><b>National General</b><b>Bristol West</b><b>Foremost</b><b>Homeowners of America</b><b>Lemonade</b></div>
   <div class="cli">
@@ -80,7 +80,7 @@
         <div class="grp"><b>Commercial insurance</b><ul><li><a href="/en/request/?serv=negocio">Business insurance</a></li><li><a href="/en/request/?serv=negocio">Commercial auto</a></li><li><a href="/en/request/?serv=negocio">Commercial property</a></li><li><a href="/en/request/?serv=negocio">General liability</a></li><li><a href="/en/request/?serv=negocio">Workers' compensation</a></li><li><a href="/en/request/?serv=negocio">By industry</a></li></ul></div>
         <div class="grp"><b>Bookkeeping and payroll</b><ul><li><a href="/en/bookkeeping-payroll/">Bookkeeping</a></li><li><a href="/en/bookkeeping-payroll/">Payroll</a></li><li><a href="/en/bookkeeping-payroll/">Nevada sales tax</a></li></ul></div>
         <div class="grp"><b>Taxes and formation</b><ul><li><a href="/en/request/?serv=taxneg">Business taxes</a></li><li><a href="/en/request/?serv=llc">Business licenses</a></li><li><a id="s-llc" href="/en/request/?serv=llc">LLC formation</a></li><li><a href="/en/request/?serv=llc">EIN and state registration</a></li></ul></div>
-        <div class="grp"><b>Industries we serve</b><ul><li><a href="#contacto">Restaurants</a></li><li><a href="#contacto">Construction</a></li><li><a href="#contacto">Transportation</a></li><li><a href="#contacto">Cleaning</a></li><li><a href="#contacto">Salons and barbershops</a></li><li><a href="#contacto">Retail stores</a></li></ul></div>
+        <div class="grp"><b>Industries we serve</b><ul><li><a href="/en/business-insurance/">Restaurants</a></li><li><a href="/en/business-insurance/">Construction</a></li><li><a href="/en/business-insurance/">Transportation</a></li><li><a href="/en/business-insurance/">Cleaning</a></li><li><a href="/en/business-insurance/">Salons and barbershops</a></li><li><a href="/en/business-insurance/">Retail stores</a></li></ul></div>
         <div style="margin-top:26px;padding:18px;background:var(--cream);border-radius:14px">
           <b style="display:block;margin-bottom:4px">Opening a business?</b>
           <span style="font-size:14px;color:var(--mut)">We form your LLC, get your license and set up your insurance in a single visit.</span>
@@ -286,11 +286,10 @@
       <input name="nombre" placeholder="Name" required>
       <input name="telefono" placeholder="Phone or WhatsApp" required>
       <input type="email" name="correo" placeholder="Email (optional)">
-      <select name="servicio"><option>What do you need?</option><option>Auto insurance</option><option>Home or renters insurance</option><option>Life insurance</option><option>Medicare Advantage</option><option>Obamacare (Nevada Health Link)</option><option>Device protection</option><option>Business insurance</option><option>Workers' compensation</option><option>Bookkeeping and payroll</option><option>Taxes</option><option>Notary or translation</option><option>License or LLC</option><option>Other</option></select>
+      <select aria-label="What do you need?"><option>What do you need?</option><option>Auto insurance</option><option>Home or renters insurance</option><option>Life insurance</option><option>Medicare Advantage</option><option>Obamacare (Nevada Health Link)</option><option>Device protection</option><option>Business insurance</option><option>Workers' compensation</option><option>Bookkeeping and payroll</option><option>Taxes</option><option>Notary or translation</option><option>License or LLC</option><option>Other</option></select>
       <textarea name="mensaje" placeholder="Tell us briefly"></textarea>
       <button class="btn btn-navy" type="submit" style="justify-self:start">Send</button>
-      <small>We reply the same business day. We never share your information.</small>
-      <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Received. We will contact you the same business day.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">Could not send. Call us at 888-877-2583.</div><?php endif; ?>
+      <small>We reply the same business day. We do not sell your information.</small>
     </form>
   </div>
 </section>

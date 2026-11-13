@@ -8,12 +8,12 @@
       <p class="lead">Somos una agencia de seguros independiente con contratos con múltiples compañías de primer nivel, como Farmers y Progressive, además de preparadores de impuestos y especialistas en trámites. Diecisiete años atendiendo a la comunidad hispana, en nuestra oficina y a distancia, en todo Estados Unidos y desde cualquier parte del mundo.</p>
       <div class="search" id="search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
-        <input id="q" type="search" placeholder="¿Qué necesitas? Ej. seguro de auto, Medicare, LLC, notaría…" autocomplete="off">
+        <input id="q" type="search" placeholder="¿Qué necesitas? Ej. seguro de auto, Medicare, LLC, notary public…" autocomplete="off">
         <button type="button">Buscar</button>
         <div class="sugg" id="sugg"></div>
       </div>
       <div class="pop">Lo más buscado:
-        <a href="/seguro-de-auto/">Seguro de auto</a><a href="#s-medicare">Medicare Advantage</a><a href="/taxes/">Taxes personales</a><a href="#s-llc">Crear una LLC</a><a href="/traducciones/">Traducciones DMV</a><a href="/notary-public/">Notaría</a>
+        <a href="/seguro-de-auto/">Seguro de auto</a><a href="#s-medicare">Medicare Advantage</a><a href="/taxes/">Taxes personales</a><a href="/llc-y-licencias/">Crear una LLC</a><a href="/traducciones/">Traducciones DMV</a><a href="/notary-public/">Notary public</a>
       </div>
       <a class="gstars" href="https://g.page/r/CRuuvSm15kNDEAI" target="_blank" rel="noopener"><b>★★★★★</b> 4.9 en Google · 27 reseñas</a>
       <div class="badges"><span>Licencia NV · CA · AZ</span><span>Agencia independiente · 10 aseguradoras</span><span>Español e inglés</span><span>Cotización sin costo</span></div>
@@ -30,8 +30,8 @@
     <a class="tile" href="#workers-comp"><div class="ic">🏢</div><b>Seguros de negocio</b><span>Workers' comp, responsabilidad, auto comercial · contabilidad y nómina</span></a>
     <a class="tile" href="/taxes/"><div class="ic">🧾</div><b>Taxes</b><span>Personales y de negocio, desde cualquier parte del país</span></a>
     <a class="tile" href="#dmv"><div class="ic">📝</div><b>Traducciones</b><span>Aprobadas por el DMV de Nevada</span></a>
-    <a class="tile" href="/notary-public/"><div class="ic">✒️</div><b>Notaría y traducciones</b><span>Documentos certificados en español e inglés</span></a>
-    <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licencias y LLC</b><span>Abre tu negocio</span></a>
+    <a class="tile" href="/notary-public/"><div class="ic">✒️</div><b>Notary public y traducciones</b><span>Documentos certificados en español e inglés</span></a>
+    <a class="tile" href="/llc-y-licencias/"><div class="ic">📑</div><b>Licencias y LLC</b><span>Abre tu negocio</span></a>
   </div>
   <div class="carriers"><span>Trabajamos con</span><b>Farmers</b><b>Progressive</b><b>Travelers</b><b>Liberty Mutual</b><b>Mercury</b><b>National General</b><b>Bristol West</b><b>Foremost</b><b>Homeowners of America</b><b>Lemonade</b></div>
   <div class="cli">
@@ -70,7 +70,7 @@
         <div class="grp"><b>Propiedad</b><ul><li><a href="/solicitud/?serv=casa">Casa</a></li><li><a href="/solicitud/?serv=casa">Condominio</a></li><li><a href="/solicitud/?serv=renters">Renters</a></li><li><a href="/solicitud/?serv=casa">Landlord</a></li><li><a href="/solicitud/?serv=casa">Casa móvil</a></li><li><a href="/solicitud/?serv=casa">Casa de vacaciones</a></li><li><a href="/solicitud/?serv=casa">Inundación</a></li><li><a href="/solicitud/?serv=casa">Terremoto</a></li></ul></div>
         <div class="grp"><b>Vida y salud</b><ul><li><a href="/solicitud/?serv=vida">Vida</a></li><li><a href="/solicitud/?serv=vida">Vida a término</a></li><li><a href="/solicitud/?serv=vida">Vida entera</a></li><li><a href="/solicitud/?serv=vida">Vida universal</a></li><li><a id="s-medicare" href="#medicare">Medicare Advantage</a></li><li><a href="/obamacare-nevada/">Obamacare (Nevada Health Link)</a></li><li><a href="/medicaid-nevada/">Medicaid de Nevada</a></li></ul></div>
         <div class="grp"><b>Otros seguros</b><ul><li><a href="/solicitud/?serv=otros">Umbrella</a></li><li><a href="/solicitud/?serv=otros">Mascotas</a></li><li><a href="/proteccion-de-dispositivos/">Dispositivos electrónicos</a></li><li><a href="/solicitud/?serv=auto,casa">Paquete auto + casa</a></li><li><a href="/solicitud/?serv=auto,renters">Paquete auto + renters</a></li><li><a href="/solicitud/?serv=mexico">Auto para manejar en México</a></li></ul></div>
-        <div class="grp"><b>Trámites</b><ul><li><a id="s-taxes" href="/solicitud/?serv=taxes">Taxes personales</a></li><li><a href="/taxes/">E-file directo al IRS</a></li><li><a href="/itin/">Número ITIN (Agentes Certificados CAA)</a></li><li><a id="s-notaria" href="/solicitud/?serv=notaria">Notaría</a></li><li><a href="/solicitud/?serv=trad">Traducciones certificadas</a></li><li><a href="/traducciones/">Traducciones para el DMV (traductor aprobado)</a></li><li><a href="/solicitud/">Revisión gratuita de coberturas</a></li></ul></div>
+        <div class="grp"><b>Trámites</b><ul><li><a id="s-taxes" href="/solicitud/?serv=taxes">Taxes personales</a></li><li><a href="/taxes/">E-file directo al IRS</a></li><li><a href="/itin/">Número ITIN (Agentes Certificados CAA)</a></li><li><a id="s-notaria" href="/solicitud/?serv=notaria">Notary public</a></li><li><a href="/solicitud/?serv=trad">Traducciones certificadas</a></li><li><a href="/traducciones/">Traducciones para el DMV (traductor aprobado)</a></li><li><a href="/solicitud/">Revisión gratuita de coberturas</a></li></ul></div>
         <p class="note">Seguros con múltiples compañías de primer nivel, entre ellas Farmers y Progressive. La disponibilidad de coberturas varía por compañía y por estado.</p>
       </div>
       <div class="card" id="negocios">
@@ -80,7 +80,7 @@
         <div class="grp"><b>Seguros comerciales</b><ul><li><a href="/solicitud/?serv=negocio">Seguro de negocio</a></li><li><a href="/solicitud/?serv=negocio">Auto comercial</a></li><li><a href="/solicitud/?serv=negocio">Propiedad comercial</a></li><li><a href="/solicitud/?serv=negocio">Responsabilidad civil</a></li><li><a href="/solicitud/?serv=negocio">Workers' compensation</a></li><li><a href="/solicitud/?serv=negocio">Por industria</a></li></ul></div>
         <div class="grp"><b>Contabilidad y nómina</b><ul><li><a href="/contabilidad-y-nomina/">Contabilidad (bookkeeping)</a></li><li><a href="/contabilidad-y-nomina/">Nómina (payroll)</a></li><li><a href="/contabilidad-y-nomina/">Sales tax de Nevada</a></li></ul></div>
         <div class="grp"><b>Impuestos y formación</b><ul><li><a href="/solicitud/?serv=taxneg">Taxes de negocio</a></li><li><a href="/solicitud/?serv=llc">Licencias de negocio</a></li><li><a id="s-llc" href="/solicitud/?serv=llc">Creación de LLC</a></li><li><a href="/solicitud/?serv=llc">EIN y registro estatal</a></li></ul></div>
-        <div class="grp"><b>Industrias que atendemos</b><ul><li><a href="#contacto">Restaurantes</a></li><li><a href="#contacto">Construcción</a></li><li><a href="#contacto">Transporte</a></li><li><a href="#contacto">Limpieza</a></li><li><a href="#contacto">Salones y barberías</a></li><li><a href="#contacto">Tiendas</a></li></ul></div>
+        <div class="grp"><b>Industrias que atendemos</b><ul><li><a href="/seguro-de-negocio/">Restaurantes</a></li><li><a href="/seguro-de-negocio/">Construcción</a></li><li><a href="/seguro-de-negocio/">Transporte</a></li><li><a href="/seguro-de-negocio/">Limpieza</a></li><li><a href="/seguro-de-negocio/">Salones y barberías</a></li><li><a href="/seguro-de-negocio/">Tiendas</a></li></ul></div>
         <div style="margin-top:26px;padding:18px;background:var(--cream);border-radius:14px">
           <b style="display:block;margin-bottom:4px">¿Vas a abrir tu negocio?</b>
           <span style="font-size:14px;color:var(--mut)">Te formamos la LLC, sacamos la licencia y dejamos el seguro listo en una sola visita.</span>
@@ -127,7 +127,7 @@
       <div><b>2008</b><p>Año en que abrimos en North Las Vegas. Seguimos en el mismo lugar.</p></div>
       <div><b>Sin fronteras</b><p>Taxes, ITIN, traducciones y trámites a distancia para todo Estados Unidos y para quienes viven en otros países. Seguros con licencia en Nevada, California y Arizona.</p></div>
       <div><b>10 compañías</b><p>Somos independientes. En auto cotizamos con Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General y Bristol West; en casa, con Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America y Lemonade. Te damos la mejor opción.</p></div>
-      <div><b>1 visita</b><p>Seguro, taxes, contabilidad, nómina, ITIN, traducciones, notaría y más, en la misma oficina.</p></div>
+      <div><b>1 visita</b><p>Seguro, taxes, contabilidad, nómina, ITIN, traducciones, notary public y más, en la misma oficina.</p></div>
     </div>
     <div class="resenas">
       <h3>Lo que dicen nuestros clientes en Google</h3>
@@ -286,11 +286,10 @@
       <input name="nombre" placeholder="Nombre" required>
       <input name="telefono" placeholder="Teléfono o WhatsApp" required>
       <input type="email" name="correo" placeholder="Correo (opcional)">
-      <select name="servicio"><option>¿Qué necesitas?</option><option>Seguro de auto</option><option>Seguro de casa o renters</option><option>Seguro de vida</option><option>Medicare Advantage</option><option>Obamacare (Nevada Health Link)</option><option>Protección de dispositivos</option><option>Seguro de negocio</option><option>Workers' compensation</option><option>Contabilidad y nómina</option><option>Taxes</option><option>Notaría o traducción</option><option>Licencia o LLC</option><option>Otro</option></select>
+      <select aria-label="¿Qué necesitas?"><option>¿Qué necesitas?</option><option>Seguro de auto</option><option>Seguro de casa o renters</option><option>Seguro de vida</option><option>Medicare Advantage</option><option>Obamacare (Nevada Health Link)</option><option>Protección de dispositivos</option><option>Seguro de negocio</option><option>Workers' compensation</option><option>Contabilidad y nómina</option><option>Taxes</option><option>Notary public o traducción</option><option>Licencia o LLC</option><option>Otro</option></select>
       <textarea name="mensaje" placeholder="Cuéntanos brevemente"></textarea>
       <button class="btn btn-navy" type="submit" style="justify-self:start">Enviar</button>
-      <small>Respondemos el mismo día hábil. Nunca compartimos tus datos.</small>
-      <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Recibido. Te contactamos el mismo día hábil.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">No se pudo enviar. Llámanos al 888-877-2583.</div><?php endif; ?>
+      <small>Respondemos el mismo día hábil. No vendemos tus datos.</small>
     </form>
   </div>
 </section>

@@ -108,7 +108,7 @@ const SERV={
    F('idioma','De qué idioma a cuál','From which language to which'),F('pag','Número de páginas','Number of pages','number'),
    F('para','¿Para qué lo necesitas?','What is it for?','select',[['dmv','DMV','DMV'],['inm','Inmigración','Immigration'],['corte','Corte','Court'],['otro','Otro','Other']]),
    F('limite','¿Para qué fecha?','By what date?','date')]},
- notaria:{g:'doc',ic:'✒️',es:'Notaría',en:'Notary',
+ notaria:{g:'doc',ic:'✒️',es:'Notary public',en:'Notary',
   f:[F('doc','¿Qué documento?','What document?','text',null,'r'),F('firmas','¿Cuántas firmas?','How many signatures?','number'),
    F('fecha','¿Para qué fecha?','By what date?','date')]},
 };
@@ -161,7 +161,7 @@ function render(){
       `<div class="q-blk"><div class="q-f q-w"><label>${T('¿Algo más que debamos saber?','Anything else we should know?')}</label><textarea data-k="c.nota">${esc(S.c.nota||'')}</textarea></div></div></div>`;
   } else {
     h=`<div class="kicker">${T('Paso 4 de 4','Step 4 of 4')}</div><h1>${T('Revisa y envía','Review and send')}</h1><p class="lead">${T('No te damos un precio automático: un especialista revisa tu caso y te contacta con opciones.','We don\'t give an automatic price: a specialist reviews your case and contacts you with options.')}</p>${bar}<div class="q-spanel"><div class="q-sum">${esc(resumen())}</div>
-      <label class="q-chk" style="margin-top:16px"><input type="checkbox" id="ok" ${S.ok?'checked':''}>${T('Autorizo a Marrero Bernal & Associates a contactarme por llamada, mensaje de texto o WhatsApp sobre esta solicitud.','I authorize Marrero Bernal & Associates to contact me by call, text message or WhatsApp about this request.')}</label>
+      <label class="q-chk" style="margin-top:16px"><input type="checkbox" id="ok" ${S.ok?'checked':''}>${T('Autorizo a Marrero Bernal & Associates a contactarme por llamada, mensaje de texto o WhatsApp sobre esta solicitud. Pueden aplicar tarifas de mensajes y datos; responde STOP para cancelar los textos. <a href="/privacidad/" target="_blank" rel="noopener">Privacidad</a>','I authorize Marrero Bernal & Associates to contact me by call, text message or WhatsApp about this request. Message and data rates may apply; reply STOP to cancel texts. <a href="/en/privacy/" target="_blank" rel="noopener">Privacy</a>')}</label>
       <p class="q-fine">${T('Nunca pedimos tu Seguro Social por este formulario. Tus datos van solo a nuestra oficina.','We never ask for your Social Security number on this form. Your information goes only to our office.')}</p></div>`;
   }
   h+=`<div class="q-msg" id="msg"></div><div class="q-snav">${S.paso>1?`<button type="button" class="q-sbtn q-g" id="atras">← ${T('Atrás','Back')}</button>`:''}<button type="button" class="q-sbtn q-p" id="sig">${S.paso<4?T('Continuar','Continue')+' →':T('Enviar solicitud','Send request')}</button></div>`;
