@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.marrerobernal.app",
+      "sha256_cert_fingerprints": ["2C:C5:89:2A:D2:3B:D5:77:5F:E7:C8:AC:B0:A9:5E:19:F4:02:E6:1F:91:1D:80:52:56:C1:D7:1E:80:C4:52:2E"]
+    }
+  }
+]
