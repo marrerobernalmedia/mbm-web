@@ -409,15 +409,473 @@ P['contabilidad'] = dict(
   </div>
 </div></section'''+'''>'''))
 
+# ---------------------------------------------------------------- páginas por servicio (auto, casa, taxes, ITIN, traducciones, notary)
+# Solo datos que ya están en el sitio o en el formulario de solicitud, más los requisitos públicos del estado o del IRS.
+def _pag(lang, kicker, h1, lead, ctas, alt, cuerpo, faq, legal, med=False):
+    es = lang == 'es'
+    b = ''.join(f'<a class="btn {c}" href="{h}">{t}</a>' for c, h, t in ctas)
+    q = ''.join(f'\n  <details class="sub-faq"><summary>{a}</summary><p>{r}</p></details>' for a, r in faq)
+    lg = ''.join(f'\n    <p>{x}</p>' for x in legal)
+    return f'''
+<section class="sub-hero"><div class="wrap">
+  <div>
+    <div class="kicker">{kicker}</div>
+    <h1>{h1}</h1>
+    <p class="lead">{lead}</p>
+    <div class="sub-cta">{b}</div>
+  </div>
+  <img class="mimg" src="IMG" alt="{alt}" width="1280" height="720">
+</div></section>
+<section class="sub"><div class="wrap">{cuerpo}
+  <h2>{'Preguntas frecuentes' if es else 'Frequently asked questions'}</h2>{q}
+  <div class="sub-legal">{lg}
+  </div>
+</div></section>'''
+
+_TEL = ('btn-ghost', 'tel:+18888772583', 'Llamar al 888-877-2583')
+_TELEN = ('btn-ghost', 'tel:+18888772583', 'Call 888-877-2583')
+_LEGSEG = 'Marrero Bernal &amp; Associates es una agencia de seguros independiente con licencia en Nevada, California y Arizona. Los seguros se ofrecen a través de las compañías con las que la agencia mantiene contrato; cada póliza la emite la compañía correspondiente. La disponibilidad de coberturas varía por compañía y por estado.'
+_LEGSEGEN = 'Marrero Bernal &amp; Associates is an independent insurance agency licensed in Nevada, California and Arizona. Insurance is offered through the companies the agency is contracted with; each policy is issued by the corresponding company. Coverage availability varies by company and state.'
+_LEGTAX = 'No somos abogados y no ofrecemos asesoría legal. Las fechas y los requisitos los fija el IRS y pueden cambiar.'
+_LEGTAXEN = 'We are not attorneys and do not give legal advice. Dates and requirements are set by the IRS and may change.'
+
+def _faqs(faq): return [[re.sub(r'<[^>]+>', '', a), re.sub(r'<[^>]+>', '', r)] for a, r in faq]
+
+# ---- auto
+_fa = [('¿Cuánto cuesta la cotización?', 'Nada. La cotización no tiene costo ni compromiso.'),
+       ('¿Con qué compañías cotizan el auto?', 'Con Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General y Bristol West. Te mostramos las opciones y tú decides.'),
+       ('Mi licencia es de otro país o todavía no tengo licencia. ¿Puedo pedir la cotización?', 'Sí. En la solicitud nos dices de dónde es tu licencia y el especialista revisa qué compañías aplican a tu caso.'),
+       ('¿Atienden fuera de Nevada?', 'Tenemos licencia de seguros en Nevada, California y Arizona.'),
+       ('¿Y después de comprar la póliza?', 'Seguimos contigo: reclamos, renovaciones, cambios y preguntas, en la misma oficina y con la misma gente.')]
+_faen = [('How much does the quote cost?', 'Nothing. The quote is free, with no obligation.'),
+       ('Which companies do you quote auto with?', 'Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General and Bristol West. We show you the options and you decide.'),
+       ('My license is from another country, or I do not have one yet. Can I request a quote?', 'Yes. In the request you tell us where your license is from and the specialist checks which companies fit your case.'),
+       ('Do you serve clients outside Nevada?', 'We hold insurance licenses in Nevada, California and Arizona.'),
+       ('What about after I buy the policy?', 'We stay with you: claims, renewals, changes and questions, at the same office with the same people.')]
+P['auto'] = dict(
+    es=dict(slug='seguro-de-auto', img='familia.jpg', faq=_faqs(_fa),
+        title='Seguro de auto en Las Vegas con varias compañías · Marrero Bernal & Associates',
+        desc='Cotiza tu seguro de auto en español con Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General y Bristol West. Qué exige Nevada y qué tener a mano. Cotización sin costo.',
+        html=_pag('es', 'Seguros personales · Auto', 'Seguro de auto con varias compañías, explicado en español.',
+            'Somos una agencia independiente: cotizamos tu auto con varias compañías de primer nivel y te mostramos las opciones para que escojas. La cotización no cuesta y la pides en cinco minutos.',
+            [('btn-acc', '/solicitud/?serv=auto', 'Cotizar mi auto'), _TEL], 'Familia frente a su casa en Las Vegas con su auto en la entrada', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>7 compañías</b><p>Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General y Bristol West.</p></div>
+    <div class="sub-card"><b>Paquetes</b><p>Auto + casa o auto + renters en una sola cotización.</p></div>
+    <div class="sub-card"><b>Más que autos</b><p>Motocicleta, RV, bote y jet ski, ATV, autos clásicos y seguro para manejar en México.</p></div>
+    <div class="sub-card"><b>NV · CA · AZ</b><p>Licencia de seguros en Nevada, California y Arizona.</p></div>
+  </div>
+  <h2>Lo mínimo que exige Nevada</h2>
+  <p>Para manejar en Nevada la ley exige seguro de responsabilidad civil con estos mínimos: <b>$25,000</b> por persona lesionada, <b>$50,000</b> por accidente y <b>$20,000</b> por daños a la propiedad de otros. Ese seguro paga los daños que tú causas a los demás; no paga tu carro.</p>
+  <p>Lo que la gente llama «full cover» añade colisión y comprensivo, que sí cubren tu vehículo. Si el carro está financiado o arrendado, el banco normalmente lo exige. En la solicitud puedes pedir la mínima, la completa, o decirnos que te aconsejemos.</p>
+  <h2>Ten esto a mano</h2>
+  <ul class="sub-list">
+    <li>Año, marca y modelo de cada vehículo, y el VIN si lo tienes.</li>
+    <li>Si está financiado, arrendado o pagado, para qué lo usas y las millas que haces al año.</li>
+    <li>Nombre, fecha de nacimiento y licencia de cada conductor de la casa.</li>
+    <li>Accidentes o multas de los últimos 3 años.</li>
+    <li>Tu seguro actual, si tienes: la compañía y cuándo vence.</li>
+  </ul>
+  <h2>Cómo trabajamos</h2>
+  <ol class="sub-steps">
+    <li><b>Nos cuentas.</b> Llenas la solicitud en línea, llamas, escribes por WhatsApp o vienes a la oficina.</li>
+    <li><b>Cotizamos.</b> Un especialista revisa tu caso con varias compañías.</li>
+    <li><b>Tú decides.</b> Te explicamos cada opción en tu idioma, sin letra pequeña.</li>
+    <li><b>Seguimos ahí.</b> Reclamos, renovaciones y cambios, con la misma gente.</li>
+  </ol>''', _fa, [_LEGSEG, 'Los mínimos de responsabilidad civil los fija el estado de Nevada y pueden cambiar.'])),
+    en=dict(slug='auto-insurance', img='familia.jpg', faq=_faqs(_faen),
+        title='Auto insurance in Las Vegas with several companies · Marrero Bernal & Associates',
+        desc='Get your auto insurance quote in English or Spanish with Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General and Bristol West. What Nevada requires and what to have ready. Free quote.',
+        html=_pag('en', 'Personal insurance · Auto', 'Auto insurance with several companies, explained clearly.',
+            'We are an independent agency: we quote your auto with several top companies and show you the options so you can choose. The quote is free and takes five minutes to request.',
+            [('btn-acc', '/en/request/?serv=auto', 'Quote my auto'), _TELEN], 'Family in front of their Las Vegas home with their car in the driveway', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>7 companies</b><p>Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General and Bristol West.</p></div>
+    <div class="sub-card"><b>Bundles</b><p>Auto + home or auto + renters in a single quote.</p></div>
+    <div class="sub-card"><b>More than cars</b><p>Motorcycle, RV, boat and jet ski, ATV, classic cars and insurance to drive in Mexico.</p></div>
+    <div class="sub-card"><b>NV · CA · AZ</b><p>Insurance licenses in Nevada, California and Arizona.</p></div>
+  </div>
+  <h2>The minimum Nevada requires</h2>
+  <p>To drive in Nevada the law requires liability insurance with these minimums: <b>$25,000</b> per injured person, <b>$50,000</b> per accident and <b>$20,000</b> for damage to other people's property. That insurance pays for the damage you cause to others; it does not pay for your car.</p>
+  <p>What people call “full coverage” adds collision and comprehensive, which do cover your vehicle. If the car is financed or leased, the lender usually requires it. In the request you can ask for the minimum, full coverage, or tell us to advise you.</p>
+  <h2>Have this ready</h2>
+  <ul class="sub-list">
+    <li>Year, make and model of each vehicle, and the VIN if you have it.</li>
+    <li>Whether it is financed, leased or paid off, how you use it and the miles you drive per year.</li>
+    <li>Name, date of birth and license of each driver in the household.</li>
+    <li>Accidents or tickets in the last 3 years.</li>
+    <li>Your current insurance, if any: the company and when it expires.</li>
+  </ul>
+  <h2>How we work</h2>
+  <ol class="sub-steps">
+    <li><b>You tell us.</b> Fill out the online request, call, WhatsApp us or come to the office.</li>
+    <li><b>We quote.</b> A specialist reviews your case with several companies.</li>
+    <li><b>You decide.</b> We explain each option in your language, with no fine print.</li>
+    <li><b>We stay with you.</b> Claims, renewals and changes, with the same people.</li>
+  </ol>''', _faen, [_LEGSEGEN, 'Liability minimums are set by the State of Nevada and may change.'])))
+
+# ---- casa
+_fc = [('¿Con qué compañías cotizan la casa?', 'Con Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America y Lemonade.'),
+       ('Estoy comprando una casa. ¿Cuándo pido el seguro?', 'Apenas tengas la dirección y la fecha de cierre. Ponlas en la solicitud para tener la póliza lista a tiempo; el banco suele pedir la prueba de seguro antes del cierre.'),
+       ('¿El seguro de casa cubre inundación y terremoto?', 'Normalmente no: son seguros aparte. Los cotizamos también; pídelos en la solicitud, en «Otros seguros».'),
+       ('Rento donde vivo. ¿Qué seguro me toca?', 'El de renters, que cubre tus pertenencias. En la solicitud nos dices qué tipo de vivienda es y el valor aproximado de tus cosas.'),
+       ('Tengo una propiedad que rento a otros. ¿La pueden asegurar?', 'Sí, con un seguro de landlord. Dinos en la solicitud que la rentas a otros.')]
+_fcen = [('Which companies do you quote home insurance with?', 'Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America and Lemonade.'),
+       ('I am buying a house. When should I request the insurance?', 'As soon as you have the address and the closing date. Put them in the request so the policy is ready on time; the lender usually asks for proof of insurance before closing.'),
+       ('Does home insurance cover flood and earthquake?', 'Usually not: those are separate policies. We quote them too; ask for them in the request under “Other insurance”.'),
+       ('I rent where I live. Which insurance do I need?', 'Renters insurance, which covers your belongings. In the request you tell us the type of home and the approximate value of your things.'),
+       ('I own a property I rent out. Can you insure it?', 'Yes, with landlord insurance. Tell us in the request that you rent it out.')]
+P['casa'] = dict(
+    es=dict(slug='seguro-de-casa', img='familia.jpg', faq=_faqs(_fc),
+        title='Seguro de casa, condominio y renters en Las Vegas · Marrero Bernal & Associates',
+        desc='Cotiza en español tu seguro de casa, condominio, casa móvil, renters o landlord con Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America y Lemonade. Cotización sin costo.',
+        html=_pag('es', 'Seguros personales · Casa', 'Seguro de casa, condominio y renters, con varias compañías.',
+            'Seas dueño o rentes, cotizamos tu vivienda con varias compañías de primer nivel y te explicamos en español qué cubre cada opción. Si estás comprando casa, la dejamos lista para el cierre.',
+            [('btn-acc', '/solicitud/?serv=casa', 'Cotizar mi casa'), ('btn-ghost', '/solicitud/?serv=renters', 'Cotizar renters')], 'Familia frente a su casa en Las Vegas', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>7 compañías</b><p>Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America y Lemonade.</p></div>
+    <div class="sub-card"><b>Dueños</b><p>Casa, condominio, townhouse, casa móvil y casa de vacaciones.</p></div>
+    <div class="sub-card"><b>Renters y landlord</b><p>Para quien renta donde vive y para quien renta su propiedad a otros.</p></div>
+    <div class="sub-card"><b>Aparte</b><p>Inundación, terremoto y umbrella se cotizan como seguros separados.</p></div>
+  </div>
+  <h2>Ten esto a mano</h2>
+  <ul class="sub-list">
+    <li>La dirección de la propiedad y qué tipo es: casa, condominio, townhouse o casa móvil.</li>
+    <li>Año de construcción, pies cuadrados y año del techo.</li>
+    <li>Si tiene hipoteca; y si la estás comprando, la fecha de cierre.</li>
+    <li>Si hay piscina, trampolín, perros (la raza), alarma o cámaras.</li>
+    <li>Reclamos de los últimos 5 años y tu seguro actual, si tienes.</li>
+  </ul>
+  <h2>Junta la casa con el auto</h2>
+  <p>Puedes pedir el paquete de auto + casa o auto + renters en la misma solicitud, y el especialista los cotiza juntos. <a href="/seguro-de-auto/">Ver seguro de auto →</a></p>
+  <h2>Cómo trabajamos</h2>
+  <ol class="sub-steps">
+    <li><b>Nos cuentas.</b> Llenas la solicitud en línea, llamas, escribes por WhatsApp o vienes a la oficina.</li>
+    <li><b>Cotizamos.</b> Un especialista revisa tu caso con varias compañías.</li>
+    <li><b>Tú decides.</b> Te explicamos cada opción en tu idioma.</li>
+    <li><b>Seguimos ahí.</b> Reclamos, renovaciones y cambios, con la misma gente.</li>
+  </ol>''', _fc, [_LEGSEG])),
+    en=dict(slug='home-insurance', img='familia.jpg', faq=_faqs(_fcen),
+        title='Home, condo and renters insurance in Las Vegas · Marrero Bernal & Associates',
+        desc='Get a quote in English or Spanish for home, condo, mobile home, renters or landlord insurance with Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America and Lemonade. Free quote.',
+        html=_pag('en', 'Personal insurance · Home', 'Home, condo and renters insurance, with several companies.',
+            'Whether you own or rent, we quote your home with several top companies and explain what each option covers. If you are buying a house, we have it ready for closing.',
+            [('btn-acc', '/en/request/?serv=casa', 'Quote my home'), ('btn-ghost', '/en/request/?serv=renters', 'Quote renters')], 'Family in front of their Las Vegas home', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>7 companies</b><p>Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America and Lemonade.</p></div>
+    <div class="sub-card"><b>Owners</b><p>House, condo, townhouse, mobile home and vacation home.</p></div>
+    <div class="sub-card"><b>Renters and landlord</b><p>For those who rent where they live and those who rent their property to others.</p></div>
+    <div class="sub-card"><b>Separate</b><p>Flood, earthquake and umbrella are quoted as separate policies.</p></div>
+  </div>
+  <h2>Have this ready</h2>
+  <ul class="sub-list">
+    <li>The property address and its type: house, condo, townhouse or mobile home.</li>
+    <li>Year built, square feet and roof year.</li>
+    <li>Whether there is a mortgage; and if you are buying it, the closing date.</li>
+    <li>Whether there is a pool, trampoline, dogs (the breed), an alarm or cameras.</li>
+    <li>Claims in the last 5 years and your current insurance, if any.</li>
+  </ul>
+  <h2>Bundle home and auto</h2>
+  <p>You can request the auto + home or auto + renters bundle in the same request, and the specialist quotes them together. <a href="/en/auto-insurance/">See auto insurance →</a></p>
+  <h2>How we work</h2>
+  <ol class="sub-steps">
+    <li><b>You tell us.</b> Fill out the online request, call, WhatsApp us or come to the office.</li>
+    <li><b>We quote.</b> A specialist reviews your case with several companies.</li>
+    <li><b>You decide.</b> We explain each option in your language.</li>
+    <li><b>We stay with you.</b> Claims, renewals and changes, with the same people.</li>
+  </ol>''', _fcen, [_LEGSEGEN])))
+
+# ---- taxes
+_PORTAL = 'https://marrerobernal.securefilepro.com/portal/#/login'
+_ft = [('¿Tengo que vivir en Nevada?', 'No. Preparamos los taxes de clientes en cualquier estado de EE. UU. y de estadounidenses que viven en otros países.'),
+       ('¿Cómo les mando mis documentos?', 'Por el portal seguro de clientes o por correo a la oficina: 3455 W Craig Rd Ste D, North Las Vegas, NV 89032. También puedes traerlos en persona.'),
+       ('¿Qué pasa si el IRS me manda una carta?', 'Tu declaración va protegida con Protection Plus, por escrito: hasta $1,000,000 en servicios de defensa si recibes una carta, una auditoría o una consulta del IRS o del estado.'),
+       ('No tengo Seguro Social. ¿Puedo declarar?', 'Sí, con un número ITIN. Contamos con Agentes de Aceptación Certificados del IRS para solicitarlo, y también preparamos tu declaración.'),
+       ('¿También hacen los taxes de mi negocio?', 'Sí, y además la contabilidad, la nómina y el sales tax.')]
+_ften = [('Do I have to live in Nevada?', 'No. We prepare taxes for clients in any U.S. state and for Americans living in other countries.'),
+       ('How do I send you my documents?', 'Through the secure client portal or by mail to the office: 3455 W Craig Rd Ste D, North Las Vegas, NV 89032. You can also bring them in person.'),
+       ('What if the IRS sends me a letter?', 'Your return is protected with Protection Plus, in writing: up to $1,000,000 in defense services if you receive a letter, an audit or an inquiry from the IRS or the state.'),
+       ('I do not have a Social Security number. Can I file?', 'Yes, with an ITIN. We have IRS Certifying Acceptance Agents to apply for it, and we also prepare your return.'),
+       ('Do you also do my business taxes?', 'Yes, as well as bookkeeping, payroll and sales tax.')]
+P['taxes'] = dict(
+    es=dict(slug='taxes', img='tramites.jpg', faq=_faqs(_ft),
+        title='Preparación de taxes en español, en la oficina o a distancia · Marrero Bernal & Associates',
+        desc='Preparamos tus taxes personales y de negocio en español, en North Las Vegas o a distancia para todo EE. UU. y el extranjero. E-file directo al IRS y protección Protection Plus por escrito.',
+        html=_pag('es', 'Impuestos · Taxes', 'Tus taxes, directo al IRS y protegidos por escrito.',
+            'Preparamos tu declaración personal o de negocio en español, en la oficina de North Las Vegas o a distancia, vivas donde vivas. Somos proveedor autorizado de e-file del IRS: la transmitimos nosotros, sin intermediarios.',
+            [('btn-acc', '/solicitud/?serv=taxes', 'Empezar mis taxes'), ('btn-ghost', _PORTAL, 'Subir mis documentos')], 'Persona firmando documentos de impuestos junto a una laptop y una calculadora', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>E-file directo</b><p>Somos proveedor autorizado de e-file del IRS. Tu declaración va de nuestra oficina al IRS.</p></div>
+    <div class="sub-card destacado"><b>Protection Plus</b><p>Hasta $1,000,000 en servicios de defensa si recibes una carta, auditoría o consulta del IRS o del estado.</p></div>
+    <div class="sub-card"><b>A distancia</b><p>Para clientes en cualquier estado y estadounidenses en el extranjero, por el portal seguro o por correo.</p></div>
+    <div class="sub-card"><b>ITIN aquí mismo</b><p>Agentes de Aceptación Certificados del IRS: no mandas tu pasaporte original. <a href="/itin/">Ver ITIN →</a></p></div>
+  </div>
+  <h2>Qué incluye Protection Plus</h2>
+  <ul class="sub-list">
+    <li>Evaluación profesional de tu caso y respuesta preparada por expertos.</li>
+    <li>Representación ante el IRS o el estado.</li>
+    <li>Ayuda para restaurar tu identidad si te la roban.</li>
+  </ul>
+  <h2>Ten esto a mano</h2>
+  <p>En la solicitud te preguntamos lo básico; después te damos una lista corta y clara de los documentos de tu caso.</p>
+  <ul class="sub-list">
+    <li>El año o los años que vas a declarar.</li>
+    <li>Tu estado civil y cuántos dependientes tienes.</li>
+    <li>De dónde vienen tus ingresos: empleo (W-2), cuenta propia (1099), negocio, rentas o ingresos del extranjero.</li>
+    <li>Si es tu primera vez con nosotros y si necesitas un ITIN.</li>
+  </ul>
+  <h2>Cómo trabajamos a distancia</h2>
+  <ol class="sub-steps">
+    <li><b>Nos mandas tus documentos.</b> Por el portal seguro de clientes o por correo a la oficina.</li>
+    <li><b>Te explicamos todo.</b> Por teléfono o videollamada, en tu idioma.</li>
+    <li><b>Transmitimos.</b> Tu declaración sale directo al IRS.</li>
+  </ol>
+  <h2>Si tienes un negocio</h2>
+  <p>Preparamos la declaración del negocio y llevamos la contabilidad, la nómina y el sales tax durante el año. <a href="/contabilidad-y-nomina/">Ver contabilidad y nómina →</a></p>
+  <p>¿Eres preparador de impuestos? Puedes transmitir tus declaraciones al IRS a través de nosotros. <a href="/#contacto">Escríbenos →</a></p>''', _ft, [_LEGTAX, 'Protection Plus es un servicio de terceros; aplican sus términos y condiciones.'])),
+    en=dict(slug='taxes', img='tramites.jpg', faq=_faqs(_ften),
+        title='Tax preparation in English and Spanish, at the office or remotely · Marrero Bernal & Associates',
+        desc='We prepare your personal and business taxes in North Las Vegas or remotely for all of the U.S. and abroad. Direct IRS e-file and Protection Plus coverage in writing.',
+        html=_pag('en', 'Taxes', 'Your taxes, straight to the IRS and protected in writing.',
+            'We prepare your personal or business return at our North Las Vegas office or remotely, wherever you live. We are an authorized IRS e-file provider: we transmit it ourselves, with no middleman.',
+            [('btn-acc', '/en/request/?serv=taxes', 'Start my taxes'), ('btn-ghost', _PORTAL, 'Upload my documents')], 'Person signing tax documents next to a laptop and a calculator', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>Direct e-file</b><p>We are an authorized IRS e-file provider. Your return goes from our office to the IRS.</p></div>
+    <div class="sub-card destacado"><b>Protection Plus</b><p>Up to $1,000,000 in defense services if you receive a letter, audit or inquiry from the IRS or the state.</p></div>
+    <div class="sub-card"><b>Remote</b><p>For clients in any state and Americans abroad, through the secure portal or by mail.</p></div>
+    <div class="sub-card"><b>ITIN right here</b><p>IRS Certifying Acceptance Agents: you do not mail your original passport. <a href="/en/itin/">See ITIN →</a></p></div>
+  </div>
+  <h2>What Protection Plus includes</h2>
+  <ul class="sub-list">
+    <li>A professional evaluation of your case and a response prepared by experts.</li>
+    <li>Representation before the IRS or the state.</li>
+    <li>Help restoring your identity if it is stolen.</li>
+  </ul>
+  <h2>Have this ready</h2>
+  <p>The request asks for the basics; afterwards we give you a short, clear list of the documents for your case.</p>
+  <ul class="sub-list">
+    <li>The tax year or years you are filing.</li>
+    <li>Your filing status and how many dependents you have.</li>
+    <li>Where your income comes from: a job (W-2), self-employment (1099), a business, rentals or foreign income.</li>
+    <li>Whether it is your first time with us and whether you need an ITIN.</li>
+  </ul>
+  <h2>How we work remotely</h2>
+  <ol class="sub-steps">
+    <li><b>You send us your documents.</b> Through the secure client portal or by mail to the office.</li>
+    <li><b>We explain everything.</b> By phone or video call, in your language.</li>
+    <li><b>We transmit.</b> Your return goes straight to the IRS.</li>
+  </ol>
+  <h2>If you have a business</h2>
+  <p>We prepare the business return and keep the books, payroll and sales tax during the year. <a href="/en/bookkeeping-payroll/">See bookkeeping and payroll →</a></p>
+  <p>Are you a tax preparer? You can transmit your returns to the IRS through us. <a href="/en/#contacto">Write to us →</a></p>''', _ften, [_LEGTAXEN, 'Protection Plus is a third-party service; its terms and conditions apply.'])))
+
+# ---- ITIN
+_fi = [('¿Tengo que mandar mi pasaporte original al IRS?', 'No. Nuestros Agentes de Aceptación Certificados revisan y certifican tus documentos aquí, y los originales no van al IRS.'),
+       ('No puedo ir a la oficina. ¿Se puede a distancia?', 'Sí. Nos envías los documentos por correo a la oficina, los certificamos y te los devolvemos.'),
+       ('¿Hacen renovaciones?', 'Sí: solicitud nueva o renovación.'),
+       ('¿El ITIN me da permiso de trabajo?', 'No. El ITIN es un número del IRS para declarar impuestos; no cambia tu estatus migratorio ni autoriza a trabajar.'),
+       ('¿Cuánto tarda en llegar?', 'El tiempo lo pone el IRS y cambia según la época del año. Te acompañamos hasta que llega tu número.')]
+_fien = [('Do I have to mail my original passport to the IRS?', 'No. Our Certifying Acceptance Agents review and certify your documents here, and the originals do not go to the IRS.'),
+       ('I cannot come to the office. Can it be done remotely?', 'Yes. You mail the documents to our office, we certify them and send them back to you.'),
+       ('Do you handle renewals?', 'Yes: new applications and renewals.'),
+       ('Does an ITIN give me a work permit?', 'No. An ITIN is an IRS number for filing taxes; it does not change your immigration status or authorize you to work.'),
+       ('How long does it take to arrive?', 'The IRS sets the timing and it changes with the time of year. We stay with you until your number arrives.')]
+P['itin'] = dict(
+    es=dict(slug='itin', img='tramites.jpg', faq=_faqs(_fi),
+        title='Número ITIN con Agentes de Aceptación Certificados del IRS · Marrero Bernal & Associates',
+        desc='Solicita o renueva tu ITIN en español con Agentes de Aceptación Certificados (CAA) del IRS: certificamos tus documentos en la oficina y no mandas tu pasaporte original. También a distancia.',
+        html=_pag('es', 'Impuestos · ITIN', 'Tu ITIN sin mandar el pasaporte original al IRS.',
+            'Si pides el ITIN por tu cuenta, tienes que enviar tus documentos originales al IRS por correo, y se pueden perder. Contamos con Agentes de Aceptación Certificados (CAA) del IRS: revisamos y certificamos tus documentos aquí mismo.',
+            [('btn-acc', '/solicitud/?serv=itin', 'Solicitar mi ITIN'), _TEL], 'Persona firmando una solicitud junto a una carpeta de trámites', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>Tus originales, contigo</b><p>Los certificamos en la oficina. No van al IRS.</p></div>
+    <div class="sub-card"><b>Nuevo o renovación</b><p>Hacemos la solicitud nueva y la renovación.</p></div>
+    <div class="sub-card"><b>A distancia</b><p>¿No puedes venir? Nos los envías por correo, los certificamos y te los devolvemos.</p></div>
+    <div class="sub-card"><b>Hasta el final</b><p>Te acompañamos hasta que llega tu número.</p></div>
+  </div>
+  <h2>Qué es el ITIN</h2>
+  <p>Es el número que da el IRS a quien tiene que declarar impuestos, o aparecer en una declaración, y no puede obtener un número de Seguro Social. Se pide con el formulario W-7, por lo general junto con la declaración de impuestos, que también preparamos. <a href="/taxes/">Ver taxes →</a></p>
+  <h2>Ten esto a mano</h2>
+  <ul class="sub-list">
+    <li>Para cuántas personas es.</li>
+    <li>Si es una solicitud nueva o una renovación.</li>
+    <li>Si tienes pasaporte vigente. Si no lo tienes, dínoslo y te decimos qué otros documentos sirven.</li>
+  </ul>
+  <h2>Cómo trabajamos</h2>
+  <ol class="sub-steps">
+    <li><b>Nos cuentas.</b> Llenas la solicitud en línea, llamas o escribes por WhatsApp.</li>
+    <li><b>Te decimos qué traer.</b> Una lista corta y clara para tu caso.</li>
+    <li><b>Certificamos tus documentos.</b> En la oficina, o por correo si estás lejos.</li>
+    <li><b>Enviamos la solicitud</b> y seguimos contigo hasta que llega el número.</li>
+  </ol>''', _fi, [_LEGTAX, 'El IRS decide sobre cada solicitud de ITIN.'])),
+    en=dict(slug='itin', img='tramites.jpg', faq=_faqs(_fien),
+        title='ITIN with IRS Certifying Acceptance Agents · Marrero Bernal & Associates',
+        desc='Apply for or renew your ITIN with IRS Certifying Acceptance Agents (CAA): we certify your documents at the office and you do not mail your original passport. Also available remotely.',
+        html=_pag('en', 'Taxes · ITIN', 'Your ITIN without mailing your original passport to the IRS.',
+            'If you apply for an ITIN on your own, you have to mail your original documents to the IRS, and they can get lost. We have IRS Certifying Acceptance Agents (CAA): we review and certify your documents right here.',
+            [('btn-acc', '/en/request/?serv=itin', 'Apply for my ITIN'), _TELEN], 'Person signing an application next to a folder of paperwork', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>Your originals stay with you</b><p>We certify them at the office. They do not go to the IRS.</p></div>
+    <div class="sub-card"><b>New or renewal</b><p>We handle new applications and renewals.</p></div>
+    <div class="sub-card"><b>Remote</b><p>Cannot come in? Mail them to us, we certify them and send them back.</p></div>
+    <div class="sub-card"><b>To the finish</b><p>We stay with you until your number arrives.</p></div>
+  </div>
+  <h2>What an ITIN is</h2>
+  <p>It is the number the IRS issues to people who must file taxes, or be listed on a return, and cannot get a Social Security number. You apply with Form W-7, usually together with your tax return, which we also prepare. <a href="/en/taxes/">See taxes →</a></p>
+  <h2>Have this ready</h2>
+  <ul class="sub-list">
+    <li>How many people it is for.</li>
+    <li>Whether it is a new application or a renewal.</li>
+    <li>Whether you have a valid passport. If you do not, tell us and we will tell you which other documents work.</li>
+  </ul>
+  <h2>How we work</h2>
+  <ol class="sub-steps">
+    <li><b>You tell us.</b> Fill out the online request, call or WhatsApp us.</li>
+    <li><b>We tell you what to bring.</b> A short, clear list for your case.</li>
+    <li><b>We certify your documents.</b> At the office, or by mail if you are far away.</li>
+    <li><b>We submit the application</b> and stay with you until the number arrives.</li>
+  </ol>''', _fien, [_LEGTAXEN, 'The IRS decides on each ITIN application.'])))
+
+# ---- traducciones
+_DMV = 'https://dmv.nv.gov/translators.htm'
+_fr = [('¿El DMV acepta sus traducciones?', 'Sí. Nuestro fundador, Eliam Marrero Bernal, es traductor aprobado por el DMV de Nevada, y cada traducción lleva nuestro número de traductor. Puedes verlo en la lista del sitio del DMV.'),
+       ('¿Qué documentos traducen?', 'Actas de nacimiento y de matrimonio, pasaportes, documentos de identidad, licencias de manejo de otros países, diplomas y notas, entre otros.'),
+       ('¿Cómo les hago llegar el documento?', 'En la oficina o a distancia. Pide la traducción en línea y te decimos cómo enviarlo.'),
+       ('¿Cuánto demora y cuánto cuesta?', 'Depende del documento y del número de páginas. Dinos para qué fecha lo necesitas y te respondemos el mismo día hábil.'),
+       ('¿Qué pasa si la traducción no lleva número de traductor?', 'El DMV la rechaza en la oficina. Por eso la nuestra lleva la fecha, la firma, el número de traductor y la certificación en la misma hoja.')]
+_fren = [('Does the DMV accept your translations?', 'Yes. Our founder, Eliam Marrero Bernal, is a Nevada DMV-approved translator, and every translation carries our translator number. You can see it on the list on the DMV website.'),
+       ('Which documents do you translate?', 'Birth and marriage certificates, passports, identity documents, driver licenses from other countries, diplomas and transcripts, among others.'),
+       ('How do I get the document to you?', 'At the office or remotely. Request the translation online and we will tell you how to send it.'),
+       ('How long does it take and what does it cost?', 'It depends on the document and the number of pages. Tell us the date you need it by and we will answer the same business day.'),
+       ('What if a translation has no translator number?', 'The DMV rejects it at the counter. That is why ours carries the date, the signature, the translator number and the certification on the same page.')]
+P['traducciones'] = dict(
+    es=dict(slug='traducciones', img='tramites.jpg', faq=_faqs(_fr),
+        title='Traducciones para el DMV de Nevada y traducciones certificadas · Marrero Bernal & Associates',
+        desc='Traductor aprobado por el DMV de Nevada. Traducimos actas de nacimiento, pasaportes, licencias de otros países y más, con número de traductor y certificación. En la oficina o a distancia.',
+        html=_pag('es', 'Trámites · Traducciones', 'Traducciones que el DMV de Nevada sí acepta.',
+            'Para sacar la licencia de manejo, la Driver Authorization Card o la tarjeta de identificación en Nevada, el DMV exige que todo documento que no esté en inglés venga traducido por un traductor aprobado. Nuestro fundador, Eliam Marrero Bernal, lo es.',
+            [('btn-acc', '/solicitud/?serv=trad', 'Traducir mis documentos'), ('btn-ghost', _DMV, 'Verlo en el sitio del DMV')], 'Persona revisando y firmando documentos sobre un escritorio', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>Traductor aprobado</b><p>Y como el DMV no está aceptando nuevos traductores, somos de los pocos que pueden hacerlo.</p></div>
+    <div class="sub-card"><b>Como la exige el DMV</b><p>Completa, escrita a máquina, con fecha, firma, número de traductor y certificación en la misma hoja.</p></div>
+    <div class="sub-card"><b>Más que el DMV</b><p>Traducciones certificadas para inmigración, corte y otros trámites.</p></div>
+    <div class="sub-card"><b>En la oficina o a distancia</b><p>Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump y Moapa Valley / Mesquite.</p></div>
+  </div>
+  <h2>Qué traducimos</h2>
+  <ul class="sub-list">
+    <li>Actas de nacimiento y de matrimonio.</li>
+    <li>Pasaportes y documentos de identidad.</li>
+    <li>Licencias de manejo de otros países.</li>
+    <li>Diplomas y notas.</li>
+  </ul>
+  <h2>Ten esto a mano</h2>
+  <ul class="sub-list">
+    <li>Qué documento es y cuántas páginas tiene.</li>
+    <li>De qué idioma a cuál.</li>
+    <li>Para qué lo necesitas: DMV, inmigración, corte u otro trámite.</li>
+    <li>Para qué fecha lo necesitas.</li>
+  </ul>
+  <h2>Si también necesitas notarizar</h2>
+  <p>Lo hacemos en la misma oficina. <a href="/notary-public/">Ver el servicio de notary public →</a></p>''', _fr, ['Los requisitos de las traducciones para licencias e identificaciones los fija el DMV de Nevada y pueden cambiar. No somos abogados y no ofrecemos asesoría legal.'])),
+    en=dict(slug='translations', img='tramites.jpg', faq=_faqs(_fren),
+        title='Nevada DMV translations and certified translations · Marrero Bernal & Associates',
+        desc='Nevada DMV-approved translator. We translate birth certificates, passports, foreign driver licenses and more, with translator number and certification. At the office or remotely.',
+        html=_pag('en', 'Paperwork · Translations', 'Translations the Nevada DMV accepts.',
+            'To get a driver license, a Driver Authorization Card or an ID card in Nevada, the DMV requires every document not in English to be translated by an approved translator. Our founder, Eliam Marrero Bernal, is one.',
+            [('btn-acc', '/en/request/?serv=trad', 'Translate my documents'), ('btn-ghost', _DMV, 'See it on the DMV website')], 'Person reviewing and signing documents at a desk', '''
+  <div class="sub-grid">
+    <div class="sub-card"><b>Approved translator</b><p>And since the DMV is not accepting new translators, we are among the few who can do it.</p></div>
+    <div class="sub-card"><b>The way the DMV requires</b><p>Complete, typed, with date, signature, translator number and certification on the same page.</p></div>
+    <div class="sub-card"><b>Beyond the DMV</b><p>Certified translations for immigration, court and other paperwork.</p></div>
+    <div class="sub-card"><b>At the office or remotely</b><p>Las Vegas, North Las Vegas, Henderson, Paradise, Pahrump and Moapa Valley / Mesquite.</p></div>
+  </div>
+  <h2>What we translate</h2>
+  <ul class="sub-list">
+    <li>Birth and marriage certificates.</li>
+    <li>Passports and identity documents.</li>
+    <li>Driver licenses from other countries.</li>
+    <li>Diplomas and transcripts.</li>
+  </ul>
+  <h2>Have this ready</h2>
+  <ul class="sub-list">
+    <li>What the document is and how many pages it has.</li>
+    <li>From which language to which.</li>
+    <li>What you need it for: DMV, immigration, court or other paperwork.</li>
+    <li>The date you need it by.</li>
+  </ul>
+  <h2>If you also need a notarization</h2>
+  <p>We do it at the same office. <a href="/en/notary/">See the notary public service →</a></p>''', _fren, ['Translation requirements for licenses and IDs are set by the Nevada DMV and may change. We are not attorneys and do not give legal advice.'])))
+
+# ---- notary public (en el texto en español se dice «notary public» y «notarizar», nunca «notario»)
+_fn = [('¿Qué tengo que traer?', 'Una identificación oficial vigente con foto y el documento completo, sin firmar: se firma delante del notary public.'),
+       ('¿Tienen que venir todas las personas que firman?', 'Sí. Cada persona que firma tiene que presentarse con su identificación.'),
+       ('¿Me pueden explicar o redactar el documento?', 'No. Un notary public que no es abogado no puede dar asesoría legal ni decirte qué documento necesitas. Si tienes dudas legales, consulta a un abogado.'),
+       ('¿Necesito cita?', 'Para la mayoría de los trámites no. Si quieres asegurar la hora, agenda tu cita en línea o llámanos.'),
+       ('Mi documento está en español. ¿Lo pueden traducir?', 'Sí, hacemos traducciones certificadas en la misma oficina.')]
+_fnen = [('What do I need to bring?', 'A valid government-issued photo ID and the complete document, unsigned: you sign it in front of the notary public.'),
+       ('Do all the signers have to come?', 'Yes. Each person signing must appear with their ID.'),
+       ('Can you explain or draft the document for me?', 'No. A notary public who is not an attorney cannot give legal advice or tell you which document you need. If you have legal questions, consult an attorney.'),
+       ('Do I need an appointment?', 'Not for most paperwork. If you want to secure a time, book your appointment online or call us.'),
+       ('My document is in Spanish. Can you translate it?', 'Yes, we do certified translations at the same office.')]
+_AVISO = '<b>Aviso:</b> No soy abogado en el estado de Nevada. No tengo licencia para dar asesoría legal. No puedo aceptar honorarios por dar asesoría legal.'
+_AVISOEN = '<b>Notice:</b> I am not an attorney in the State of Nevada. I am not licensed to give legal advice. I may not accept fees for giving legal advice.'
+P['notary'] = dict(
+    es=dict(slug='notary-public', img='tramites.jpg', faq=_faqs(_fn),
+        title='Notary public en español en North Las Vegas · Marrero Bernal & Associates',
+        desc='Notariza tus documentos en español o inglés en nuestra oficina de North Las Vegas. Qué traer, quién tiene que venir y cómo agendar. También traducciones certificadas.',
+        html=_pag('es', 'Trámites · Notary public', 'Notariza tus documentos, atendido en español.',
+            'Servicio de notary public en nuestra oficina de North Las Vegas, en español e inglés. Y si el documento hay que traducirlo, lo hacemos aquí mismo.',
+            [('btn-acc', '/solicitud/?serv=notaria', 'Pedir el servicio'), ('btn-ghost', '/citas/', 'Agendar una cita')], 'Persona firmando un documento sobre un escritorio', f'''
+  <div class="sub-alert">{_AVISO}</div>
+  <h2>Qué traer</h2>
+  <ul class="sub-list">
+    <li>Una identificación oficial vigente con foto de cada persona que firma.</li>
+    <li>El documento completo y <b>sin firmar</b>: se firma delante del notary public.</li>
+    <li>Todas las personas que firman tienen que presentarse.</li>
+  </ul>
+  <h2>Dinos esto al pedirlo</h2>
+  <ul class="sub-list">
+    <li>Qué documento es.</li>
+    <li>Cuántas firmas lleva.</li>
+    <li>Para qué fecha lo necesitas.</li>
+  </ul>
+  <h2>Dónde y cuándo</h2>
+  <p>3455 W Craig Rd, Suite D, North Las Vegas, NV 89032. Lunes a viernes, de 9:00 AM a 5:00 PM. Para la mayoría de los trámites no hace falta cita; si prefieres asegurar la hora, <a href="/citas/">agéndala en línea</a>.</p>
+  <h2>Si también necesitas traducir</h2>
+  <p>Hacemos traducciones certificadas y traducciones para el DMV de Nevada. <a href="/traducciones/">Ver traducciones →</a></p>''', _fn, ['El notary public verifica la identidad de quien firma y presencia la firma; no revisa ni garantiza el contenido del documento. No somos abogados y no ofrecemos asesoría legal.'])),
+    en=dict(slug='notary', img='tramites.jpg', faq=_faqs(_fnen),
+        title='Notary public in North Las Vegas, in English and Spanish · Marrero Bernal & Associates',
+        desc='Get your documents notarized in English or Spanish at our North Las Vegas office. What to bring, who has to come and how to book. Certified translations too.',
+        html=_pag('en', 'Paperwork · Notary public', 'Get your documents notarized, in your language.',
+            'Notary public service at our North Las Vegas office, in English and Spanish. And if the document needs to be translated, we do that right here.',
+            [('btn-acc', '/en/request/?serv=notaria', 'Request the service'), ('btn-ghost', '/en/appointments/', 'Book an appointment')], 'Person signing a document at a desk', f'''
+  <div class="sub-alert">{_AVISOEN}</div>
+  <h2>What to bring</h2>
+  <ul class="sub-list">
+    <li>A valid government-issued photo ID for each person signing.</li>
+    <li>The complete document, <b>unsigned</b>: you sign it in front of the notary public.</li>
+    <li>Every person signing must appear.</li>
+  </ul>
+  <h2>Tell us this when you request it</h2>
+  <ul class="sub-list">
+    <li>What the document is.</li>
+    <li>How many signatures it needs.</li>
+    <li>The date you need it by.</li>
+  </ul>
+  <h2>Where and when</h2>
+  <p>3455 W Craig Rd, Suite D, North Las Vegas, NV 89032. Monday to Friday, 9:00 AM to 5:00 PM. Most paperwork needs no appointment; if you prefer to secure a time, <a href="/en/appointments/">book it online</a>.</p>
+  <h2>If you also need a translation</h2>
+  <p>We do certified translations and translations for the Nevada DMV. <a href="/en/translations/">See translations →</a></p>''', _fnen, ['The notary public verifies the identity of the signer and witnesses the signature; it does not review or guarantee the content of the document. We are not attorneys and do not give legal advice.'])))
+
 # Páginas viejas de Elementor → destino (301). Las de seguros van al formulario propio de solicitud.
 FQ = 'https://esales.farmers.com/fastquote?Lob={}&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032'
 REDIR = {
-    'insurance': '/#personal', 'insurance-2': '/solicitud/?serv=auto,casa', 'vehicle-insurance': '/solicitud/?serv=auto',
-    'home-insurance': '/solicitud/?serv=casa', 'life': '/solicitud/?serv=vida', 'business-insurance-2': '/solicitud/?serv=negocio',
+    'insurance': '/#personal', 'insurance-2': '/solicitud/?serv=auto,casa', 'vehicle-insurance': '/seguro-de-auto/',
+    'home-insurance': '/seguro-de-casa/', 'life': '/solicitud/?serv=vida', 'business-insurance-2': '/solicitud/?serv=negocio',
     'health': '/obamacare-nevada/', 'travel': '/#personal', 'personal': '/#personal', 'business': '/#negocios',
-    'taxes': '/#irs', 'taxes-2': '/#irs', 'business-taxes': '/#negocios', 'business-licenses': '/#negocios',
+    'taxes-2': '/taxes/', 'business-taxes': '/#negocios', 'business-licenses': '/#negocios',
     'about-us': '/#nosotros', 'contact': '/#contacto', 'blog': '/', 'immigration': '/', 'payroll': '/contabilidad-y-nomina/',
-    'dmv': '/#dmv', 'translations': '/#dmv', 'notary': '/#contacto', 'media': 'https://marrerobernalmedia.com/',
+    'dmv': '/traducciones/', 'translations': '/traducciones/', 'notary': '/notary-public/', 'media': 'https://marrerobernalmedia.com/',
     # Artículos del blog viejo (2023), enviados a la papelera el 6-nov-2026 por orden de Eliam
     'do-you-want-to-avoid-paying-taxes-today-on-your-first-61000-per-year': '/#irs',
     'the-advance-of-the-child-tax-credit-a-double-edged-weapon': '/#irs',
@@ -502,8 +960,8 @@ ob_start(); {hdr}; echo mba_pag_fix(ob_get_clean(), '{lang}', '{d['slug']}', '{o
 
 routes = {}
 for key, pair in P.items():
-    routes[pair['es']['slug'] + '|es'] = dict(file=f'{key}-es', title=pair['es']['title'], desc=pair['es']['desc'], img=pair['es']['img'], pair='/en/' + pair['en']['slug'] + '/', self='/' + pair['es']['slug'] + '/')
-    routes[pair['en']['slug'] + '|en'] = dict(file=f'{key}-en', title=pair['en']['title'], desc=pair['en']['desc'], img=pair['en']['img'], pair='/' + pair['es']['slug'] + '/', self='/en/' + pair['en']['slug'] + '/')
+    routes[pair['es']['slug'] + '|es'] = dict(file=f'{key}-es', title=pair['es']['title'], desc=pair['es']['desc'], img=pair['es']['img'], faq=pair['es'].get('faq', []), pair='/en/' + pair['en']['slug'] + '/', self='/' + pair['es']['slug'] + '/')
+    routes[pair['en']['slug'] + '|en'] = dict(file=f'{key}-en', title=pair['en']['title'], desc=pair['en']['desc'], img=pair['en']['img'], faq=pair['en'].get('faq', []), pair='/' + pair['es']['slug'] + '/', self='/en/' + pair['en']['slug'] + '/')
 
 J = lambda o: json.dumps(o, ensure_ascii=False)
 import hashlib
@@ -540,6 +998,10 @@ add_action('wp_head', function () {
     . '<meta property="og:type" content="website"><meta property="og:site_name" content="Marrero Bernal & Associates"><meta property="og:locale" content="' . ($p['lang'] === 'en' ? 'en_US' : 'es_US') . '">'
     . '<meta property="og:url" content="' . esc_url($self) . '"><meta property="og:title" content="' . esc_attr($p['title']) . '"><meta property="og:description" content="' . esc_attr($p['desc']) . '">'
     . '<meta property="og:image" content="' . esc_url(get_theme_file_uri('img/' . $p['img'])) . '"><meta name="twitter:card" content="summary_large_image">' . "\\n";
+  $ld = [['@context' => 'https://schema.org', '@type' => 'WebPage', 'url' => $self, 'name' => $p['title'], 'description' => $p['desc'], 'inLanguage' => $p['lang'],
+    'isPartOf' => ['@type' => 'WebSite', 'url' => home_url('/'), 'name' => 'Marrero Bernal & Associates'], 'publisher' => ['@id' => home_url('/#agencia')]]];
+  if (!empty($p['faq'])) $ld[] = ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => array_map(fn($q) => ['@type' => 'Question', 'name' => $q[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $q[1]]], $p['faq'])];
+  foreach ($ld as $x) echo '<script type="application/ld+json">' . wp_json_encode($x, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
 }, 5);
 
 /** Cabecera y pie dentro de una subpágina: las anclas (#personal…) vuelven a la portada del idioma y las banderas llevan a la página par. */
@@ -701,6 +1163,7 @@ CSS = '''
 .sub-list{padding-left:20px;display:grid;gap:8px;line-height:1.55}.sub-steps{padding-left:20px;display:grid;gap:10px;line-height:1.55}
 .sub-alert{background:#fff6e2;border:1px solid #f0d699;border-radius:14px;padding:16px 18px;margin:8px 0 18px;line-height:1.55}
 .sub-nota{font-size:13px!important;color:var(--mut)}
+.sub-faq{background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 18px;margin:10px 0}.sub-faq summary{cursor:pointer;font-weight:600;padding:15px 0;line-height:1.4}.sub-faq p{margin:0 0 16px;color:var(--mut)}
 .sub-legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}.sub-legal p{font-size:13px!important;color:var(--mut);line-height:1.55}
 '''
 st = (out / 'style.css').read_text()

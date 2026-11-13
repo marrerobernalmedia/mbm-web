@@ -13,7 +13,7 @@
         <div class="sugg" id="sugg"></div>
       </div>
       <div class="pop">Lo más buscado:
-        <a href="#s-auto">Seguro de auto</a><a href="#s-medicare">Medicare Advantage</a><a href="#s-taxes">Taxes personales</a><a href="#s-llc">Crear una LLC</a><a href="#dmv">Traducciones DMV</a><a href="#s-notaria">Notaría</a>
+        <a href="/seguro-de-auto/">Seguro de auto</a><a href="#s-medicare">Medicare Advantage</a><a href="/taxes/">Taxes personales</a><a href="#s-llc">Crear una LLC</a><a href="/traducciones/">Traducciones DMV</a><a href="/notary-public/">Notaría</a>
       </div>
       <a class="gstars" href="https://g.page/r/CRuuvSm15kNDEAI" target="_blank" rel="noopener"><b>★★★★★</b> 4.9 en Google · 27 reseñas</a>
       <div class="badges"><span>Licencia NV · CA · AZ</span><span>Agencia independiente · 10 aseguradoras</span><span>Español e inglés</span><span>Cotización sin costo</span></div>
@@ -28,9 +28,9 @@
   <div class="tiles">
     <a class="tile" href="#personal"><div class="ic">🚗</div><b>Seguros personales</b><span>Auto, hogar, vida, mascotas, dispositivos y más</span></a>
     <a class="tile" href="#workers-comp"><div class="ic">🏢</div><b>Seguros de negocio</b><span>Workers' comp, responsabilidad, auto comercial · contabilidad y nómina</span></a>
-    <a class="tile" href="#s-taxes"><div class="ic">🧾</div><b>Taxes</b><span>Personales y de negocio, desde cualquier parte del país</span></a>
+    <a class="tile" href="/taxes/"><div class="ic">🧾</div><b>Taxes</b><span>Personales y de negocio, desde cualquier parte del país</span></a>
     <a class="tile" href="#dmv"><div class="ic">📝</div><b>Traducciones</b><span>Aprobadas por el DMV de Nevada</span></a>
-    <a class="tile" href="#s-notaria"><div class="ic">✒️</div><b>Notaría y traducciones</b><span>Documentos certificados en español e inglés</span></a>
+    <a class="tile" href="/notary-public/"><div class="ic">✒️</div><b>Notaría y traducciones</b><span>Documentos certificados en español e inglés</span></a>
     <a class="tile" href="#s-llc"><div class="ic">📑</div><b>Licencias y LLC</b><span>Abre tu negocio</span></a>
   </div>
   <div class="carriers"><span>Trabajamos con</span><b>Farmers</b><b>Progressive</b><b>Travelers</b><b>Liberty Mutual</b><b>Mercury</b><b>National General</b><b>Bristol West</b><b>Foremost</b><b>Homeowners of America</b><b>Lemonade</b></div>
@@ -70,7 +70,7 @@
         <div class="grp"><b>Propiedad</b><ul><li><a href="/solicitud/?serv=casa">Casa</a></li><li><a href="/solicitud/?serv=casa">Condominio</a></li><li><a href="/solicitud/?serv=renters">Renters</a></li><li><a href="/solicitud/?serv=casa">Landlord</a></li><li><a href="/solicitud/?serv=casa">Casa móvil</a></li><li><a href="/solicitud/?serv=casa">Casa de vacaciones</a></li><li><a href="/solicitud/?serv=casa">Inundación</a></li><li><a href="/solicitud/?serv=casa">Terremoto</a></li></ul></div>
         <div class="grp"><b>Vida y salud</b><ul><li><a href="/solicitud/?serv=vida">Vida</a></li><li><a href="/solicitud/?serv=vida">Vida a término</a></li><li><a href="/solicitud/?serv=vida">Vida entera</a></li><li><a href="/solicitud/?serv=vida">Vida universal</a></li><li><a id="s-medicare" href="#medicare">Medicare Advantage</a></li><li><a href="/obamacare-nevada/">Obamacare (Nevada Health Link)</a></li><li><a href="/medicaid-nevada/">Medicaid de Nevada</a></li></ul></div>
         <div class="grp"><b>Otros seguros</b><ul><li><a href="/solicitud/?serv=otros">Umbrella</a></li><li><a href="/solicitud/?serv=otros">Mascotas</a></li><li><a href="/proteccion-de-dispositivos/">Dispositivos electrónicos</a></li><li><a href="/solicitud/?serv=auto,casa">Paquete auto + casa</a></li><li><a href="/solicitud/?serv=auto,renters">Paquete auto + renters</a></li><li><a href="/solicitud/?serv=mexico">Auto para manejar en México</a></li></ul></div>
-        <div class="grp"><b>Trámites</b><ul><li><a id="s-taxes" href="/solicitud/?serv=taxes">Taxes personales</a></li><li><a href="#irs">E-file directo al IRS</a></li><li><a href="#irs">Número ITIN (Agentes Certificados CAA)</a></li><li><a id="s-notaria" href="/solicitud/?serv=notaria">Notaría</a></li><li><a href="/solicitud/?serv=trad">Traducciones certificadas</a></li><li><a href="#dmv">Traducciones para el DMV (traductor aprobado)</a></li><li><a href="/solicitud/">Revisión gratuita de coberturas</a></li></ul></div>
+        <div class="grp"><b>Trámites</b><ul><li><a id="s-taxes" href="/solicitud/?serv=taxes">Taxes personales</a></li><li><a href="/taxes/">E-file directo al IRS</a></li><li><a href="/itin/">Número ITIN (Agentes Certificados CAA)</a></li><li><a id="s-notaria" href="/solicitud/?serv=notaria">Notaría</a></li><li><a href="/solicitud/?serv=trad">Traducciones certificadas</a></li><li><a href="/traducciones/">Traducciones para el DMV (traductor aprobado)</a></li><li><a href="/solicitud/">Revisión gratuita de coberturas</a></li></ul></div>
         <p class="note">Seguros con múltiples compañías de primer nivel, entre ellas Farmers y Progressive. La disponibilidad de coberturas varía por compañía y por estado.</p>
       </div>
       <div class="card" id="negocios">

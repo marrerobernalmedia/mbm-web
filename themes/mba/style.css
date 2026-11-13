@@ -161,6 +161,7 @@ footer .legal{grid-column:1/-1;border-top:1px solid #2a3a55;padding-top:18px;fon
 .sub-list{padding-left:20px;display:grid;gap:8px;line-height:1.55}.sub-steps{padding-left:20px;display:grid;gap:10px;line-height:1.55}
 .sub-alert{background:#fff6e2;border:1px solid #f0d699;border-radius:14px;padding:16px 18px;margin:8px 0 18px;line-height:1.55}
 .sub-nota{font-size:13px!important;color:var(--mut)}
+.sub-faq{background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 18px;margin:10px 0}.sub-faq summary{cursor:pointer;font-weight:600;padding:15px 0;line-height:1.4}.sub-faq p{margin:0 0 16px;color:var(--mut)}
 .sub-legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}.sub-legal p{font-size:13px!important;color:var(--mut);line-height:1.55}
 /* ---- solicitud en línea (maquetas/mba/solicitud.css) ---- */
 .subpage .sol{background:var(--cream);padding:34px 0 70px}.subpage .sol .wrap{max-width:860px}
