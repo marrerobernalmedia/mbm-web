@@ -1313,7 +1313,7 @@ function mba_solicitud() {
     'address1' => $s('direccion', 200), 'city' => $s('ciudad'), 'postal_code' => $s('zip', 12), 'date_of_birth' => $s('nacimiento', 10),
     'servicios' => $lista, 'idioma' => ($d['idioma'] ?? '') === 'en' ? 'Inglés' : 'Español', 'whatsapp' => !empty($d['whatsapp']) ? 'Sí' : 'No',
     'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4), 'resumen' => $resumen, 'origen' => $esapp ? 'App' : 'marrerobernal.com', 'fuente' => $fcat, 'fuente_detalle' => $fuente, 'etiquetas' => implode(',', $eti), 'servicio_principal' => $servs[0] ?? '',
-    'mensaje_confirmacion' => $msgconf,
+    'mensaje_confirmacion' => $msgconf, 'vence_seguro' => preg_match('/^20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]$/', $s('vence', 10)) ? $s('vence', 10) : '',
     'fecha' => wp_date('Y-m-d H:i')];
   delete_transient('mba_parc_' . $tel);
   $hook = get_option('mba_ghl_webhook', ''); $crm = false;

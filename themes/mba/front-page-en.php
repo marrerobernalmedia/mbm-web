@@ -286,10 +286,11 @@
       <input name="nombre" placeholder="Name" required>
       <input name="telefono" placeholder="Phone or WhatsApp" required>
       <input type="email" name="correo" placeholder="Email (optional)">
-      <select aria-label="What do you need?"><option>What do you need?</option><option>Auto insurance</option><option>Home or renters insurance</option><option>Life insurance</option><option>Medicare Advantage</option><option>Obamacare (Nevada Health Link)</option><option>Device protection</option><option>Business insurance</option><option>Workers' compensation</option><option>Bookkeeping and payroll</option><option>Taxes</option><option>Notary or translation</option><option>License or LLC</option><option>Other</option></select>
+      <select name="servicio" aria-label="What do you need?"><option>What do you need?</option><option>Auto insurance</option><option>Home or renters insurance</option><option>Life insurance</option><option>Medicare Advantage</option><option>Obamacare (Nevada Health Link)</option><option>Device protection</option><option>Business insurance</option><option>Workers' compensation</option><option>Bookkeeping and payroll</option><option>Taxes</option><option>Notary or translation</option><option>License or LLC</option><option>Other</option></select>
       <textarea name="mensaje" placeholder="Tell us briefly"></textarea>
       <button class="btn btn-navy" type="submit" style="justify-self:start">Send</button>
-      <small>We reply the same business day. We do not sell your information.</small>
+      <small>We reply the same business day. We do not sell your information. By sending, you authorize Marrero Bernal &amp; Associates to contact you by call, text message or WhatsApp about your request. Message and data rates may apply; reply STOP to cancel texts. <a href="/en/privacy/">Privacy</a></small>
+      <?php if (isset($_GET['enviado'])): ?><div class="ok">✅ Received. We will contact you the same business day.</div><?php elseif (isset($_GET['error'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">Could not send. Call us at 888-877-2583.</div><?php endif; ?>
     </form>
   </div>
 </section>

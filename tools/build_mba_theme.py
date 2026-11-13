@@ -31,15 +31,17 @@ def fix(h):
 main_html = main_html.replace('<!--TRUSTINDEX--><p class="ti-demo">★★★★★ Aquí aparecen las reseñas de Google de la oficina.</p>', "<?php echo do_shortcode('[trustindex no-registration=google]'); ?>")
 
 # formulario real → admin-post
+SMALL_OLD = '<small>Respondemos el mismo día hábil. No vendemos tus datos.</small>'
+assert SMALL_OLD in main_html and '<select aria-label="¿Qué necesitas?"><option>' in main_html
 form_old = re.search(r'<form onsubmit="[^"]*">', main_html).group(0)
 main_html = main_html.replace(form_old, '<form method="post" action="<?php echo esc_url(admin_url(\'admin-post.php\')); ?>">\n      <input type="hidden" name="action" value="mba_contacto"><?php wp_nonce_field(\'mba_contacto\',\'mba_n\'); ?><input type="text" name="empresa" style="display:none" tabindex="-1" autocomplete="off">')
 main_html = main_html.replace('<input placeholder="Nombre" required>', '<input name="nombre" placeholder="Nombre" required>')
 main_html = main_html.replace('<input placeholder="Teléfono o WhatsApp" required>', '<input name="telefono" placeholder="Teléfono o WhatsApp" required>')
 main_html = main_html.replace('<input type="email" placeholder="Correo (opcional)">', '<input type="email" name="correo" placeholder="Correo (opcional)">')
-main_html = main_html.replace('<select><option>¿Qué necesitas?</option>', '<select name="servicio"><option>¿Qué necesitas?</option>')
+main_html = main_html.replace('<select aria-label="¿Qué necesitas?"><option>¿Qué necesitas?</option>', '<select name="servicio" aria-label="¿Qué necesitas?"><option>¿Qué necesitas?</option>')
 main_html = main_html.replace('<textarea placeholder="Cuéntanos brevemente"></textarea>', '<textarea name="mensaje" placeholder="Cuéntanos brevemente"></textarea>')
-main_html = main_html.replace('<small>Respondemos el mismo día hábil. Nunca compartimos tus datos.</small>',
-  '<small>Respondemos el mismo día hábil. Nunca compartimos tus datos.</small>\n      <?php if (isset($_GET[\'enviado\'])): ?><div class="ok">✅ Recibido. Te contactamos el mismo día hábil.</div><?php elseif (isset($_GET[\'error\'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">No se pudo enviar. Llámanos al 888-877-2583.</div><?php endif; ?>')
+main_html = main_html.replace(SMALL_OLD,
+  '<small>Respondemos el mismo día hábil. No vendemos tus datos. Al enviar, autorizas a Marrero Bernal &amp; Associates a contactarte por llamada, mensaje de texto o WhatsApp sobre tu pedido. Pueden aplicar tarifas de mensajes y datos; responde STOP para cancelar los textos. <a href="/privacidad/">Privacidad</a></small>\n      <?php if (isset($_GET[\'enviado\'])): ?><div class="ok">✅ Recibido. Te contactamos el mismo día hábil.</div><?php elseif (isset($_GET[\'error\'])): ?><div class="ok" style="background:#fdecec;color:#8a1f1f">No se pudo enviar. Llámanos al 888-877-2583.</div><?php endif; ?>')
 
 (out/'style.css').write_text('''/*
 Theme Name: Marrero Bernal & Associates
@@ -175,6 +177,19 @@ function mba_contacto() {
   $to = get_option('mba_contacto_email', get_option('admin_email'));
   $body = "Nueva solicitud desde marrerobernal.com\\n\\nNombre: $nombre\\nTeléfono/WhatsApp: $tel\\nCorreo: $correo\\nServicio: $serv\\n\\nMensaje:\\n$msg\\n\\nFecha: " . wp_date('Y-m-d H:i');
   $ok = wp_mail($to, "Cotización web: $serv — $nombre", $body, $correo ? ["Reply-To: $correo"] : []);
+  // También al CRM (misma entrada que la solicitud en línea), para que tenga tarea, texto de confirmación y alarma.
+  $dig = preg_replace('/[^0-9]/', '', $tel); if (strlen($dig) === 10) $dig = '1' . $dig; $hook = get_option('mba_ghl_webhook', '');
+  if ($hook && strlen($dig) >= 11) {
+    $en = strpos((string) wp_get_referer(), '/en/') !== false; $pn = explode(' ', trim($nombre), 2); $s1 = ($serv && strpos($serv, '¿') === false && strpos($serv, '?') === false) ? $serv : 'Consulta';
+    wp_remote_post($hook, ['timeout' => 12, 'headers' => ['Content-Type' => 'application/json'], 'body' => wp_json_encode(['first_name' => $pn[0], 'last_name' => $pn[1] ?? '', 'phone' => '+' . $dig, 'email' => $correo,
+      'servicios' => $s1, 'idioma' => $en ? 'Inglés' : 'Español', 'whatsapp' => 'No dijo', 'mejor_hora' => '', 'ya_cliente' => '',
+      'resumen' => "FORMULARIO DE CONTACTO DE LA PORTADA\nSERVICIO: $s1\nIDIOMA DEL CLIENTE: " . ($en ? 'Inglés' : 'Español') . "\n\nMENSAJE\n" . ($msg ?: '(sin mensaje)'),
+      'origen' => 'marrerobernal.com (contacto)', 'fuente' => 'directo', 'fuente_detalle' => '', 'etiquetas' => 'solicitud-web,formulario-contacto,' . ($en ? 'idioma-ingles' : 'idioma-espanol'), 'servicio_principal' => $s1, 'vence_seguro' => '',
+      'mensaje_confirmacion' => $en ? "Hi {$pn[0]}, we received your message at Marrero Bernal & Associates. A specialist will contact you during office hours (Mon-Fri, 9 to 5). To write to us, use WhatsApp at 888-877-2583."
+        : "Hola {$pn[0]}, recibimos tu mensaje en Marrero Bernal & Associates. Un especialista te contactará en horario de oficina (lunes a viernes, de 9 a 5). Para escribirnos, usa WhatsApp al 888-877-2583.",
+      'fecha' => wp_date('Y-m-d H:i')])]);
+  }
+
   wp_redirect($back . ($ok ? '?enviado=1' : '?error=1') . '#contacto'); exit;
 }
 

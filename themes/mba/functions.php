@@ -78,6 +78,24 @@ function mba_contacto() {
   $to = get_option('mba_contacto_email', get_option('admin_email'));
   $body = "Nueva solicitud desde marrerobernal.com\n\nNombre: $nombre\nTeléfono/WhatsApp: $tel\nCorreo: $correo\nServicio: $serv\n\nMensaje:\n$msg\n\nFecha: " . wp_date('Y-m-d H:i');
   $ok = wp_mail($to, "Cotización web: $serv — $nombre", $body, $correo ? ["Reply-To: $correo"] : []);
+  // También al CRM (misma entrada que la solicitud en línea), para que tenga tarea, texto de confirmación y alarma.
+  $dig = preg_replace('/[^0-9]/', '', $tel); if (strlen($dig) === 10) $dig = '1' . $dig; $hook = get_option('mba_ghl_webhook', '');
+  if ($hook && strlen($dig) >= 11) {
+    $en = strpos((string) wp_get_referer(), '/en/') !== false; $pn = explode(' ', trim($nombre), 2); $s1 = ($serv && strpos($serv, '¿') === false && strpos($serv, '?') === false) ? $serv : 'Consulta';
+    wp_remote_post($hook, ['timeout' => 12, 'headers' => ['Content-Type' => 'application/json'], 'body' => wp_json_encode(['first_name' => $pn[0], 'last_name' => $pn[1] ?? '', 'phone' => '+' . $dig, 'email' => $correo,
+      'servicios' => $s1, 'idioma' => $en ? 'Inglés' : 'Español', 'whatsapp' => 'No dijo', 'mejor_hora' => '', 'ya_cliente' => '',
+      'resumen' => "FORMULARIO DE CONTACTO DE LA PORTADA
+SERVICIO: $s1
+IDIOMA DEL CLIENTE: " . ($en ? 'Inglés' : 'Español') . "
+
+MENSAJE
+" . ($msg ?: '(sin mensaje)'),
+      'origen' => 'marrerobernal.com (contacto)', 'fuente' => 'directo', 'fuente_detalle' => '', 'etiquetas' => 'solicitud-web,formulario-contacto,' . ($en ? 'idioma-ingles' : 'idioma-espanol'), 'servicio_principal' => $s1, 'vence_seguro' => '',
+      'mensaje_confirmacion' => $en ? "Hi {$pn[0]}, we received your message at Marrero Bernal & Associates. A specialist will contact you during office hours (Mon-Fri, 9 to 5). To write to us, use WhatsApp at 888-877-2583."
+        : "Hola {$pn[0]}, recibimos tu mensaje en Marrero Bernal & Associates. Un especialista te contactará en horario de oficina (lunes a viernes, de 9 a 5). Para escribirnos, usa WhatsApp al 888-877-2583.",
+      'fecha' => wp_date('Y-m-d H:i')])]);
+  }
+
   wp_redirect($back . ($ok ? '?enviado=1' : '?error=1') . '#contacto'); exit;
 }
 
