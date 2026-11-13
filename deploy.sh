@@ -20,6 +20,8 @@ MBA=$HOME/public_html
 [ -d themes/mba ] && [ -d "$MBA/wp-content/themes" ] && rsync -a --delete themes/mba/ "$MBA/wp-content/themes/mba/"
 # App de Marrero Bernal & Associates (mba-app) → marrerobernal.com/app/ y su enlace con la app Android
 [ -d mba-app ] && mkdir -p "$MBA/app" && rsync -a --delete mba-app/ "$MBA/app/"
+# Página corta para bajar la app: marrerobernal.com/bajar
+[ -d mba-bajar ] && mkdir -p "$MBA/bajar" && rsync -a --delete mba-bajar/ "$MBA/bajar/"
 [ -f .well-known/assetlinks-mba.json ] && mkdir -p "$MBA/.well-known" && cp .well-known/assetlinks-mba.json "$MBA/.well-known/assetlinks.json"
 # Tema propio de marrerobernalmedia.com (themes/mbm) → wp-content/themes/mbm del mismo DEST
 [ -d themes/mbm ] && [ -d "$DEST/wp-content/themes" ] && rsync -a --delete themes/mbm/ "$DEST/wp-content/themes/mbm/"
