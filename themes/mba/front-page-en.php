@@ -38,17 +38,18 @@
     <a class="cli-card" href="https://55a7805c-ea2c-4f0e-951b-1aa3c932e857.paylinks.godaddy.com" target="_blank" rel="noopener"><div class="ic">💳</div><div><b>Pay online</b><span>Pay for your service securely by card, from your phone or computer.</span></div><em>Pay →</em></a>
   </div>
   <div class="quote" id="cotizar">
-    <div><div class="kicker" style="margin-bottom:6px">Quote online</div><h3>Your quote goes straight to our office.</h3><p>Five minutes, no phone calls. We review it and contact you with the best option.</p></div>
+    <div><div class="kicker" style="margin-bottom:6px">Quote online</div><h3>Your quote goes straight to our office.</h3><p>Five minutes, no phone calls. A specialist reviews it and contacts you with options from several companies.</p></div>
     <div class="qbtns">
-      <a href="https://esales.farmers.com/fastquote?Lob=Auto&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🚗 Auto</a>
-      <a href="https://esales.farmers.com/fastquote?Lob=Home&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🏠 Home</a>
-      <a href="https://esales.farmers.com/fastquote?Lob=Condo&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🏢 Condo</a>
-      <a href="https://esales.farmers.com/fastquote?Lob=Renter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🔑 Renters</a>
-      <a href="https://esales.farmers.com/fastquote?Lob=Lifec&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">❤️ Life</a>
-      <a href="https://esales.farmers.com/fastquote?Lob=Business&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">💼 Business</a>
-      <a href="https://esales.farmers.com/fastquote?Lob=autoHome&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🚗+🏠 Auto + home</a>
-      <a href="https://esales.farmers.com/fastquote?Lob=autoRenter&Source_Indicator=AP&State_Code=NV&Agent_Code=67249W%2430306E%248833H2&Zip_Code=89032" target="_blank" rel="noopener">🚗+🔑 Auto + renters</a>
-      <a href="https://farmers.bordersolutions.com/ap.php?a=67249W" target="_blank" rel="noopener">🇲🇽 Mexico auto</a>
+      <a href="/en/request/?s=auto">🚗 Auto</a>
+      <a href="/en/request/?s=casa">🏠 Home</a>
+      <a href="/en/request/?s=casa">🏢 Condo</a>
+      <a href="/en/request/?s=renters">🔑 Renters</a>
+      <a href="/en/request/?s=vida">❤️ Life</a>
+      <a href="/en/request/?s=negocio">💼 Business</a>
+      <a href="/en/request/?s=auto,casa">🚗+🏠 Auto + home</a>
+      <a href="/en/request/?s=auto,renters">🚗+🔑 Auto + renters</a>
+      <a href="/en/request/?s=mexico">🇲🇽 Mexico auto</a>
+      <a href="/en/request/">📋 Taxes, translations and more</a>
     </div>
   </div>
 </div>

@@ -445,6 +445,24 @@ REDIR = {
     'hello-world': '/',
 }
 
+# ---------------------------------------------------------------- solicitud en línea (formulario por pasos → CRM)
+# El formulario vive en maquetas/mba/solicitud.js y solicitud.css; aquí solo se monta la página en los dos idiomas.
+SOL_JS = (root / 'maquetas/mba/solicitud.js').read_text()
+def _sol(lang):
+    return ('\n<section class="sub sol"><div class="wrap">\n'
+            '  <div id="sol-app" data-lang="' + lang + '" data-ajax="<?php echo esc_url(admin_url(\'admin-ajax.php\')); ?>"></div>\n'
+            '  <noscript><p>' + ('Para pedir tu cotización llámanos o escríbenos por WhatsApp al 888-877-2583.' if lang == 'es' else 'To request your quote, call or WhatsApp us at 888-877-2583.') + '</p></noscript>\n'
+            '</div></section>\n<script>\n' + SOL_JS + '</script>\n')
+P['solicitud'] = dict(
+    es=dict(slug='solicitud', img='tramites.jpg',
+        title='Cotiza o solicita un servicio en línea · Marrero Bernal & Associates',
+        desc='Pide tu cotización de seguro de auto, casa, vida o negocio, o solicita taxes, ITIN, traducciones y notaría. Un especialista te contacta con opciones de varias compañías.',
+        html=_sol('es')),
+    en=dict(slug='request', img='tramites.jpg',
+        title='Get a quote or request a service online · Marrero Bernal & Associates',
+        desc='Request your auto, home, life or business insurance quote, or ask for taxes, ITIN, translations and notary. A specialist contacts you with options from several companies.',
+        html=_sol('en')))
+
 # ---------------------------------------------------------------- plantillas
 for key, pair in P.items():
     for lang, d in pair.items():
@@ -536,6 +554,52 @@ add_action('init', function () {
     public function get_max_num_pages($subtype = '') { return 1; }
   });
 });
+
+/** Solicitud en línea (formulario por pasos de /solicitud/ y /en/request/).
+ *  Va al CRM por la dirección guardada en Ajustes → Generales («Solicitudes web → CRM»). Si no hay dirección o el CRM no responde,
+ *  la solicitud completa queda guardada en WordPress (menú «Solicitudes web») para que no se pierda. El correo de aviso no lleva los datos. */
+add_action('init', function () {
+  register_post_type('mba_solicitud', ['labels' => ['name' => 'Solicitudes web', 'singular_name' => 'Solicitud web'], 'public' => false, 'show_ui' => true, 'show_in_rest' => false,
+    'exclude_from_search' => true, 'capability_type' => 'page', 'supports' => ['title', 'editor'], 'menu_icon' => 'dashicons-clipboard', 'menu_position' => 25]);
+});
+add_action('admin_init', function () {
+  register_setting('general', 'mba_ghl_webhook', ['type' => 'string', 'sanitize_callback' => function ($v) { $v = esc_url_raw(trim((string) $v), ['https']); return $v; }, 'default' => '']);
+  add_settings_field('mba_ghl_webhook', 'Solicitudes web → CRM', function () {
+    echo '<input type="url" class="regular-text code" name="mba_ghl_webhook" value="' . esc_attr(get_option('mba_ghl_webhook', '')) . '" placeholder="https://…">'
+      . '<p class="description">Dirección de entrada (inbound webhook) de HighLevel. Si está vacía, las solicitudes se guardan solo aquí, en «Solicitudes web».</p>';
+  }, 'general');
+});
+add_action('wp_ajax_nopriv_mba_solicitud', 'mba_solicitud');
+add_action('wp_ajax_mba_solicitud', 'mba_solicitud');
+function mba_solicitud() {
+  $d = json_decode(wp_unslash($_POST['datos'] ?? ''), true);
+  if (!is_array($d) || !empty($_POST['empresa'])) wp_send_json_error(null, 400);
+  $ipk = 'mba_sol_' . md5($_SERVER['REMOTE_ADDR'] ?? '');
+  $n = (int) get_transient($ipk); if ($n >= 8) wp_send_json_error(null, 429); set_transient($ipk, $n + 1, HOUR_IN_SECONDS);
+  $s = fn($k, $max = 120) => mb_substr(sanitize_text_field((string) ($d[$k] ?? '')), 0, $max);
+  $nombre = $s('nombre'); $apellido = $s('apellido'); $tel = preg_replace('/\\\\D/', '', $s('telefono', 30));
+  $servs = array_slice(array_filter(array_map('sanitize_text_field', (array) ($d['servicios'] ?? []))), 0, 20);
+  $resumen = mb_substr(sanitize_textarea_field((string) ($d['resumen'] ?? '')), 0, 12000);
+  if (!$nombre || strlen($tel) < 10 || !$servs || (int) ($d['seg'] ?? 0) < 5) wp_send_json_error(null, 400);
+  if (strlen($tel) === 10) $tel = '1' . $tel;
+  $lista = implode(', ', $servs);
+  $payload = ['first_name' => $nombre, 'last_name' => $apellido, 'phone' => '+' . $tel, 'email' => sanitize_email((string) ($d['correo'] ?? '')),
+    'address1' => $s('direccion', 200), 'city' => $s('ciudad'), 'postal_code' => $s('zip', 12), 'date_of_birth' => $s('nacimiento', 10),
+    'servicios' => $lista, 'idioma' => ($d['idioma'] ?? '') === 'en' ? 'Inglés' : 'Español', 'whatsapp' => !empty($d['whatsapp']) ? 'Sí' : 'No',
+    'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4), 'resumen' => $resumen, 'origen' => ($d['origen'] ?? '') === 'app' ? 'App' : 'marrerobernal.com', 'fecha' => wp_date('Y-m-d H:i')];
+  $hook = get_option('mba_ghl_webhook', ''); $crm = false;
+  if ($hook) {
+    $r = wp_remote_post($hook, ['timeout' => 12, 'headers' => ['Content-Type' => 'application/json'], 'body' => wp_json_encode($payload)]);
+    $crm = !is_wp_error($r) && (int) wp_remote_retrieve_response_code($r) < 300;
+  }
+  $id = wp_insert_post(['post_type' => 'mba_solicitud', 'post_status' => 'private', 'post_title' => trim("$nombre $apellido") . ' — ' . $lista,
+    'post_content' => $crm ? 'Enviada al CRM el ' . wp_date('Y-m-d H:i') . '. Los datos están en HighLevel.' : $resumen]);
+  if (!$crm && !$id) wp_send_json_error(null, 500);
+  $to = get_option('mba_contacto_email', get_option('admin_email'));
+  wp_mail($to, "Solicitud web: $lista — $nombre", "Entró una solicitud nueva desde " . $payload['origen'] . ".\\n\\nCliente: $nombre $apellido\\nServicios: $lista\\n\\n"
+    . ($crm ? "Los datos completos están en HighLevel." : "Los datos completos están en WordPress → Solicitudes web.") . "\\n\\nFecha: " . wp_date('Y-m-d H:i'));
+  wp_send_json_success();
+}
 """
 (out / 'paginas.php').write_text(php)
 
@@ -557,6 +621,7 @@ CSS = '''
 .sub-legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}.sub-legal p{font-size:13px!important;color:var(--mut);line-height:1.55}
 '''
 st = (out / 'style.css').read_text()
+CSS += (root / 'maquetas/mba/solicitud.css').read_text()
 st = st.split('/* ---- subpáginas (build_mba_paginas.py) ---- */')[0].rstrip() + '\n' + CSS
 (out / 'style.css').write_text(st)
 
@@ -566,7 +631,7 @@ for f in ('front-page-en.php', 'footer-en.php', 'header-en.php'):
     fp = out / f
     if fp.exists():
         t = fp.read_text()
-        for a, b in slugmap.items(): t = t.replace(f'href="{a}"', f'href="{b}"')
+        for a, b in slugmap.items(): t = t.replace(f'href="{a}"', f'href="{b}"').replace(f'href="{a}?', f'href="{b}?')
         fp.write_text(t)
 
 # functions.php carga paginas.php

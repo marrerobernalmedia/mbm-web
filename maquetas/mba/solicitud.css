@@ -1,0 +1,47 @@
+/* ---- solicitud en línea (maquetas/mba/solicitud.css) ---- */
+.subpage .sol{background:var(--cream);padding:34px 0 70px}.subpage .sol .wrap{max-width:860px}
+#sol-app{--err:#b3261e;scroll-margin-top:96px}#sol-app *{box-sizing:border-box}
+#sol-app h1{font-size:clamp(26px,5vw,36px);margin:0 0 8px}#sol-app .lead{margin:0 0 20px}#sol-app .kicker{margin-bottom:8px}
+#sol-app .q-sbtn[disabled]{opacity:.6;cursor:default}
+#sol-app h2{font-family:Fraunces,Georgia,serif;font-size:22px;line-height:1.15;margin:0 0 4px}
+#sol-app .q-ssteps{display:flex;gap:6px;margin:0 0 18px}
+#sol-app .q-ssteps i{flex:1;height:5px;border-radius:99px;background:var(--line)}
+#sol-app .q-ssteps i.q-on{background:var(--acc)}
+#sol-app .q-spanel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}
+#sol-app .q-grp{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:18px 0 10px}
+#sol-app .q-grp:first-child{margin-top:0}
+#sol-app .q-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+#sol-app .q-tile{display:flex;align-items:center;gap:10px;padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;cursor:pointer;font-weight:600;font-size:14px;text-align:left;font-family:inherit;color:inherit;min-height:56px}
+#sol-app .q-tile span{font-size:20px;flex:none}
+#sol-app .q-tile.q-on{border-color:var(--navy);background:var(--navy);color:#fff}
+#sol-app .q-blk{border-top:1px solid var(--line);margin-top:22px;padding-top:20px}
+#sol-app .q-blk:first-child{border-top:0;margin-top:0;padding-top:0}
+#sol-app .q-blk h2 span{margin-right:8px}
+#sol-app .q-srow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 14px;margin-top:12px}
+#sol-app .q-f{display:flex;flex-direction:column;gap:5px;min-width:0}
+#sol-app .q-f.q-w{grid-column:1/-1}
+#sol-app .q-f label{font-size:13px;font-weight:600}
+#sol-app .q-f label em{font-style:normal;font-weight:500;color:var(--mut)}
+#sol-app input,#sol-app select,#sol-app textarea{font:inherit;font-size:16px;padding:11px 12px;border:1.5px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);width:100%;min-width:0}
+#sol-app textarea{min-height:84px;resize:vertical}
+#sol-app input:focus,#sol-app select:focus,#sol-app textarea:focus{outline:2px solid var(--acc2);outline-offset:1px;border-color:var(--acc)}
+#sol-app .q-bad{border-color:var(--err)!important}
+#sol-app .q-chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;font-weight:500}
+#sol-app .q-chk input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--navy)}
+#sol-app .q-opts{display:flex;flex-wrap:wrap;gap:8px}
+#sol-app .q-opts label{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border:1.5px solid var(--line);border-radius:99px;font-size:13px;font-weight:600;cursor:pointer}
+#sol-app .q-opts input{width:16px;height:16px;accent-color:var(--navy)}
+#sol-app .q-rep{background:var(--cream);border-radius:14px;padding:14px;margin-top:12px}
+#sol-app .q-rep>b{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+#sol-app .q-rep .q-x{float:right;all:unset;cursor:pointer;float:right;font-size:13px;color:var(--err);font-weight:600}
+#sol-app .q-add{all:unset;cursor:pointer;margin-top:12px;font-weight:700;font-size:14px;color:var(--navy);border-bottom:2px solid var(--acc)}
+#sol-app .q-snav{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+#sol-app .q-sbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:12px;font-weight:700;font-size:15px;box-sizing:border-box}
+#sol-app .q-sbtn.q-p{background:var(--acc);color:#fff;flex:1;min-width:180px}
+#sol-app .q-sbtn.q-g{border:1.5px solid var(--line);background:#fff}
+#sol-app .q-msg{color:var(--err);font-size:14px;font-weight:600;margin-top:12px;min-height:20px}
+#sol-app .q-sum{white-space:pre-wrap;font-size:14px;background:var(--cream);border-radius:14px;padding:16px;margin-top:12px;font-family:ui-monospace,Menlo,monospace;overflow-x:auto}
+#sol-app .q-done{text-align:center;padding:30px 10px}
+#sol-app .q-done .q-ok{width:64px;height:64px;border-radius:50%;background:var(--ok);color:#fff;font-size:32px;display:grid;place-items:center;margin:0 auto 16px}
+#sol-app .q-fine{font-size:12.5px;color:var(--mut);margin-top:14px}
+@media(max-width:560px){#sol-app .q-srow{grid-template-columns:1fr}#sol-app .q-spanel{padding:16px;border-radius:16px}#sol-app .q-tiles{grid-template-columns:1fr 1fr}}
