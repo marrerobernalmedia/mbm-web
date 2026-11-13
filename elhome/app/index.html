@@ -135,11 +135,10 @@ footer a{margin:0 8px}
   // Dentro de la app instalada no tiene sentido ofrecerla: va al inicio.
   var dentro=(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone===true||document.referrer.indexOf('android-app://com.marrerobernalmedia.elhome')===0;
   if(dentro){location.replace('/');return}
-  // Dirección que se le enseña a la gente: el dominio corto si se llegó por él; si no, esta página.
-  var corta=/larisaapp\.com$/i.test(location.hostname)?'larisaapp.com':'elhomedelarisa.com/app';
-  var completa='https://'+(corta==='larisaapp.com'?'larisaapp.com':'www.elhomedelarisa.com/app/');
+  // Dirección corta que se le enseña a la gente (larisaapp.com reenvía aquí). El QR y el botón de copiar usan la dirección directa, que siempre responde.
+  var corta='larisaapp.com', completa='https://www.elhomedelarisa.com/app/';
   // De dónde vino la visita (?de=comercial, ?de=facebook…): Google Play lo muestra en sus informes de adquisición.
-  var de=(q.get('de')||q.get('utm_source')||'').replace(/[^a-z0-9_-]/gi,'').slice(0,40)||'pagina-app';
+  var de=(q.get('de')||q.get('utm_source')||'').replace(/[^a-z0-9_-]/gi,'').slice(0,40)||'larisaapp';
   [].forEach.call(document.querySelectorAll('[data-play]'),function(a){a.href+='&referrer='+encodeURIComponent('utm_source='+de+'&utm_medium=larisaapp')});
   var ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1), and=/android/i.test(ua);
   var safari=ios&&/safari/i.test(ua)&&!/crios|fxios|edgios|opios|fban|fbav|instagram|line\/|gsa\/|whatsapp/i.test(ua);
@@ -149,7 +148,7 @@ footer a{margin:0 8px}
   var b=document.getElementById('copiar');
   b.onclick=function(){var ok=function(){b.textContent='Copiada: pégala en Safari'};
     if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(completa).then(ok,function(){b.textContent=corta});else b.textContent=corta};
-  if(cual==='pc'){var s=document.createElement('script');s.src='../qrcode.js';s.onload=function(){try{var c=qrcode(0,'M');c.addData(completa);c.make();document.getElementById('qr').innerHTML=c.createSvgTag({cellSize:4,margin:1,scalable:true})}catch(e){}};document.head.appendChild(s)}
+  if(cual==='pc'){var s=document.createElement('script');s.src='../qrcode.js';s.onload=function(){try{var c=qrcode(0,'M');c.addData(completa+'?de=qr');c.make();document.getElementById('qr').innerHTML=c.createSvgTag({cellSize:4,margin:1,scalable:true})}catch(e){}};document.head.appendChild(s)}
 })();
 </script>
 </body>
