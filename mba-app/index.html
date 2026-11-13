@@ -211,7 +211,8 @@ const T={
  saf:['Estás viendo esto dentro de otra app, y desde aquí no se puede instalar. Copia la dirección y ábrela en Safari.','You are viewing this inside another app, and it can’t be installed from here. Copy the address and open it in Safari.'],
  cop:['Copiar la dirección','Copy the address'], cop2:['Copiada: pégala en Safari','Copied: paste it in Safari'],
  a1:['Toca el menú ⋮ del navegador (arriba a la derecha).','Tap the browser’s ⋮ menu (top right).'], a2:['Toca «Instalar app» o «Agregar a pantalla principal».','Tap “Install app” or “Add to Home screen”.'],
- pronto:['Muy pronto también en Google Play y App Store.','Coming soon to Google Play and the App Store.']
+ pronto:['Ya en Google Play. Muy pronto en App Store.','Now on Google Play. Coming soon to the App Store.'],
+ gp_t:['Ya está en Google Play.','Now on Google Play.'], gp_b:['Bajar en Google Play','Get it on Google Play'], gp_alt:['Disponible en Google Play','Get it on Google Play'], gp_pc:['¿Tienes Android? Bájala gratis en Google Play.','Have an Android phone? Get it free on Google Play.']
 };
 const t=k=>T[k][L==='es'?0:1];
 
@@ -321,11 +322,13 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();aviso=e;pin
 function pintaInst(){
  const box=$('#inst'),tx=$('#inst-t'); if(instalada||guarda.get('mba_inst_x')){box.hidden=true;return}
  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
- if(aviso){tx.innerHTML='';tx.append(t('i_and')+' ');const b=document.createElement('button');b.className='btn acc';b.style.cssText='display:inline-flex;width:auto;min-height:36px;padding:6px 14px;margin-top:6px';b.textContent=t('i_btn');b.onclick=async()=>{aviso.prompt();aviso=null;box.hidden=true};tx.append(document.createElement('br'),b);box.hidden=false}
+ if(AND){tx.innerHTML='';tx.append(t('gp_t')+' ');const a=document.createElement('a');a.className='btn acc';a.style.cssText='display:inline-flex;width:auto;min-height:36px;padding:6px 14px;margin-top:6px;text-decoration:none';a.textContent=t('gp_b');a.href=PLAY;a.target='_blank';a.rel='noopener';tx.append(document.createElement('br'),a);box.hidden=false}
+ else if(aviso){tx.innerHTML='';tx.append(t('i_and')+' ');const b=document.createElement('button');b.className='btn acc';b.style.cssText='display:inline-flex;width:auto;min-height:36px;padding:6px 14px;margin-top:6px';b.textContent=t('i_btn');b.onclick=async()=>{aviso.prompt();aviso=null;box.hidden=true};tx.append(document.createElement('br'),b);box.hidden=false}
  else if(ios){tx.textContent=t('i_ios');box.hidden=false}
  else box.hidden=true;
 }
 $('#inst-x').onclick=()=>{guarda.set('mba_inst_x','1');$('#inst').hidden=true};
+const PLAY='https://play.google.com/store/apps/details?id=com.marrerobernal.app&referrer='+encodeURIComponent('utm_source=marrerobernal.com&utm_medium=app'), AND=/android/i.test(navigator.userAgent);
 const URLAPP='https://marrerobernal.com/app/', COMP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><rect x="5" y="11" width="14" height="10" rx="2"/></svg>';
 function pintaHoja(){
  const ua=navigator.userAgent, ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
@@ -334,7 +337,10 @@ function pintaHoja(){
  $('#hoja-h').textContent=t('h_t'); $('#hoja-p').textContent=t('h_p'); $('#hoja-x').textContent=t('h_ok');
  const c=$('#hoja-c'); c.innerHTML='';
  const paso=(n,k)=>{const d=document.createElement('div');d.className='paso';const i=document.createElement('i');i.textContent=n;const x=document.createElement('div');x.innerHTML=t(k).split('{S}').join(COMP);d.append(i,x);c.append(d)};
- if(aviso){const b=document.createElement('button');b.className='btn acc';b.textContent=t('h_uno');b.onclick=async()=>{const a=aviso;aviso=null;$('#hoja').hidden=true;a.prompt()};const s=document.createElement('p');s.style.cssText='font-size:13px;color:var(--mut);margin:8px 0 14px';s.textContent=t('h_uno2');c.append(b,s)}
+ const insignia=()=>{const a=document.createElement('a');a.href=PLAY;a.target='_blank';a.rel='noopener';a.style.cssText='display:block;text-align:center;margin:6px 0 12px';const im=document.createElement('img');im.src=L==='es'?'google-play.png':'google-play-en.png';im.alt=t('gp_alt');im.style.cssText='height:62px;width:auto;max-width:100%';a.append(im);return a};
+ if(AND){c.append(insignia())}
+ else if(!ios){const s=document.createElement('p');s.style.cssText='margin:0 0 6px;font-size:15px';s.textContent=t('gp_pc');c.append(s,insignia())}
+ else if(aviso){const b=document.createElement('button');b.className='btn acc';b.textContent=t('h_uno');b.onclick=async()=>{const a=aviso;aviso=null;$('#hoja').hidden=true;a.prompt()};const s=document.createElement('p');s.style.cssText='font-size:13px;color:var(--mut);margin:8px 0 14px';s.textContent=t('h_uno2');c.append(b,s)}
  else if(ios&&!safari){const s=document.createElement('div');s.className='paso';s.innerHTML='<i>!</i><div></div>';s.lastChild.textContent=t('saf');const b=document.createElement('button');b.className='btn acc';b.textContent=t('cop');b.onclick=async()=>{try{await navigator.clipboard.writeText(URLAPP);b.textContent=t('cop2')}catch(e){b.textContent=URLAPP}};const u=document.createElement('p');u.style.cssText='font-weight:700;text-align:center;margin:10px 0;user-select:all;-webkit-user-select:all';u.textContent='marrerobernal.com/app';c.append(s,u,b)}
  else if(ios){paso(1,'s1');paso(2,'s2');paso(3,'s3')}
  else{paso(1,'a1');paso(2,'a2')}
