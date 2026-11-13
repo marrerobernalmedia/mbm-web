@@ -138,7 +138,8 @@ function render(){
       `<p class="q-fine">${T('Para Medicare, llámanos al 888-877-2583: lo atendemos por separado.','For Medicare, call us at 888-877-2583: we handle it separately.')}</p></div>`;
   } else if(S.paso===2){
     h=`<div class="kicker">${T('Paso 2 de 4','Step 2 of 4')}</div><h1>${T('Sobre ti','About you')}</h1><p class="lead">${T('Para saber a quién contactar.','So we know who to contact.')}</p>${bar}<div class="q-spanel"><div class="q-srow">${CONTACTO.map(f=>campo(f,'c',S.c[f.id])).join('')}</div>
-      <label class="q-chk" style="margin-top:14px"><input type="checkbox" id="wa" ${S.wa?'checked':''}>${T('Ese teléfono tiene WhatsApp','That phone has WhatsApp')}</label></div>`;
+      <label class="q-chk" style="margin-top:14px"><input type="checkbox" id="wa" ${S.wa?'checked':''}>${T('Ese teléfono tiene WhatsApp','That phone has WhatsApp')}</label>
+      <p class="q-fine">${T('Si no terminas el formulario, un especialista puede llamarte para ayudarte a completarlo.','If you don\'t finish the form, a specialist may call you to help you complete it.')}</p></div>`;
   } else if(S.paso===3){
     h=`<div class="kicker">${T('Paso 3 de 4','Step 3 of 4')}</div><h1>${T('Los detalles','The details')}</h1><p class="lead">${T('Mientras más completo, más rápido te respondemos. Lo que no sepas, déjalo en blanco.','The more complete, the faster we answer. Leave blank whatever you don\'t know.')}</p>${bar}<div class="q-spanel">`+
       S.sel.map(k=>{const s=SERV[k],d=S.d[k]??={};
@@ -182,6 +183,13 @@ function resumen(){ // siempre en español: es lo que lee la oficina
   if(S.c.nota)out.push('','NOTA DEL CLIENTE','  '+S.c.nota);
   return out.join('\n');
 }
+const fuente=()=>{try{return sessionStorage.getItem('mba_fuente')||''}catch(e){return ''}};
+function parcial(){ // guarda el contacto al terminar el paso 2; solo llega al CRM si no termina el formulario
+  try{const c=S.c,fd=new FormData();fd.append('action','mba_solicitud_parcial');fd.append('empresa','');
+    fd.append('datos',JSON.stringify({servicios:S.sel.map(k=>SERV[k].es),claves:S.sel,idioma:L,whatsapp:S.wa,nombre:c.nombre,apellido:c.apellido,telefono:c.tel,correo:c.correo||'',
+      hora:val(CONTACTO.find(f=>f.id==='hora'),c.hora)||'',cliente:c.cliente||'',seg:Math.round((Date.now()-S.t0)/1000),fuente:fuente()}));
+    fetch(app.dataset.ajax,{method:'POST',body:fd,credentials:'same-origin',keepalive:true}).catch(()=>{})}catch(e){}
+}
 function enviar(btn){
   const c=S.c,datos={servicios:S.sel.map(k=>SERV[k].es),claves:S.sel,idioma:L,whatsapp:S.wa,
     nombre:c.nombre,apellido:c.apellido,telefono:c.tel,correo:c.correo||'',direccion:c.dir||'',ciudad:c.ciudad||'',zip:c.zip||'',
@@ -189,7 +197,7 @@ function enviar(btn){
     origen:/[?&]app=1/.test(location.search)||window.matchMedia('(display-mode: standalone)').matches?'app':'web',seg:Math.round((Date.now()-S.t0)/1000),fuente:(function(){try{return sessionStorage.getItem('mba_fuente')||''}catch(e){return ''}})()};
   btn.disabled=true;btn.textContent=T('Enviando…','Sending…');
   const fd=new FormData();fd.append('action','mba_solicitud');fd.append('datos',JSON.stringify(datos));fd.append('empresa','');
-  fetch(app.dataset.ajax,{method:'POST',body:fd,credentials:'same-origin'}).then(r=>r.json()).then(j=>{if(!j||!j.success)throw 0;S.enviado=true;render()})
+  fetch(app.dataset.ajax,{method:'POST',body:fd,credentials:'same-origin'}).then(r=>r.json()).then(j=>{if(!j||!j.success)throw 0;S.enviado=true;try{if(window.gtag)gtag('event','generate_lead',{servicios:S.sel.join(','),idioma:L})}catch(e){}render()})
    .catch(()=>{btn.disabled=false;btn.textContent=T('Enviar solicitud','Send request');$('#msg').textContent=T('No se pudo enviar. Inténtalo otra vez o llámanos al 888-877-2583.','It could not be sent. Try again or call us at 888-877-2583.')});
 }
 app.addEventListener('click',e=>{
@@ -199,7 +207,7 @@ app.addEventListener('click',e=>{
   if(t.dataset.del){leer();const p=t.dataset.del.split('.');get(S.d,p.slice(0,2).join('.')).splice(+p[2],1);render();return}
   if(t.id==='atras'){leer();S.paso--;render();return}
   if(t.id==='sig'){leer();const m=validar();if(m){$('#msg').textContent=m;return}
-    if(S.paso<4){S.paso++;render()}else enviar(t)}
+    if(S.paso<4){if(S.paso===2)parcial();S.paso++;render()}else enviar(t)}
 });
 (new URLSearchParams(location.search).get('serv')||'').split(',').forEach(k=>{if(SERV[k]&&!S.sel.includes(k))S.sel.push(k)});
 render();

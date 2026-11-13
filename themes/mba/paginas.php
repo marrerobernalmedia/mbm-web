@@ -113,6 +113,7 @@ ORIGEN
       ? "Hi $nombre, we received your request at Marrero Bernal & Associates. A specialist will contact you within one business day. To write to us, use WhatsApp at 888-877-2583; if it is urgent, call that same number."
       : "Hola $nombre, recibimos tu solicitud en Marrero Bernal & Associates. Un especialista te contactará en un día hábil. Para escribirnos, usa WhatsApp al 888-877-2583; si es urgente, llama a ese mismo número.",
     'fecha' => wp_date('Y-m-d H:i')];
+  delete_transient('mba_parc_' . $tel);
   $hook = get_option('mba_ghl_webhook', ''); $crm = false;
   if ($hook) {
     $r = wp_remote_post($hook, ['timeout' => 12, 'headers' => ['Content-Type' => 'application/json'], 'body' => wp_json_encode($payload)]);
@@ -126,3 +127,40 @@ ORIGEN
     . ($crm ? "Los datos completos están en HighLevel." : "Los datos completos están en WordPress → Solicitudes web.") . "\n\nFecha: " . wp_date('Y-m-d H:i'));
   wp_send_json_success();
 }
+
+/** Solicitud a medias: al terminar el paso 2 se guarda el contacto 30 minutos. Si en ese tiempo no envía el formulario completo,
+ *  pasa al CRM marcada como incompleta (tipo = incompleta) para que la oficina lo llame. Si lo completa, no se envía nada. */
+add_action('wp_ajax_nopriv_mba_solicitud_parcial', 'mba_solicitud_parcial');
+add_action('wp_ajax_mba_solicitud_parcial', 'mba_solicitud_parcial');
+function mba_solicitud_parcial() {
+  $d = json_decode(wp_unslash($_POST['datos'] ?? ''), true);
+  if (!is_array($d) || !empty($_POST['empresa'])) wp_send_json_error(null, 400);
+  $ipk = 'mba_solp_' . md5($_SERVER['REMOTE_ADDR'] ?? '');
+  $n = (int) get_transient($ipk); if ($n >= 6) wp_send_json_error(null, 429); set_transient($ipk, $n + 1, HOUR_IN_SECONDS);
+  $s = fn($k, $max = 120) => mb_substr(sanitize_text_field((string) ($d[$k] ?? '')), 0, $max);
+  $nombre = $s('nombre'); $tel = preg_replace('/\D/', '', $s('telefono', 30));
+  $servs = array_slice(array_filter(array_map('sanitize_text_field', (array) ($d['servicios'] ?? []))), 0, 20);
+  if (!$nombre || strlen($tel) < 10 || !$servs || (int) ($d['seg'] ?? 0) < 5) wp_send_json_error(null, 400);
+  if (strlen($tel) === 10) $tel = '1' . $tel;
+  $fuente = strtolower($s('fuente', 80)); $fcat = 'directo';
+  foreach (['facebook' => 'facebook|fb\.|fbclid', 'instagram' => 'instagram', 'google' => 'google', 'whatsapp' => 'whatsapp|wa\.me', 'youtube' => 'youtube|youtu\.be', 'tiktok' => 'tiktok', 'bing' => 'bing'] as $k => $re) if (preg_match("/$re/", $fuente)) { $fcat = $k; break; }
+  if ($fcat === 'directo' && $fuente && $fuente !== 'directo') $fcat = 'otro';
+  $claves = array_slice(array_filter(array_map(fn($c) => preg_replace('/[^a-z]/', '', (string) $c), (array) ($d['claves'] ?? []))), 0, 20);
+  $en = ($d['idioma'] ?? '') === 'en'; $lista = implode(', ', $servs);
+  $eti = array_merge(['solicitud-incompleta'], array_map(fn($c) => 'serv-' . $c, $claves), [$en ? 'idioma-ingles' : 'idioma-espanol', 'fuente-' . $fcat]);
+  $payload = ['tipo' => 'incompleta', 'first_name' => $nombre, 'last_name' => $s('apellido'), 'phone' => '+' . $tel, 'email' => sanitize_email((string) ($d['correo'] ?? '')),
+    'servicios' => $lista, 'idioma' => $en ? 'Inglés' : 'Español', 'whatsapp' => !empty($d['whatsapp']) ? 'Sí' : 'No', 'mejor_hora' => $s('hora', 40), 'ya_cliente' => $s('cliente', 4),
+    'resumen' => "SOLICITUD INCOMPLETA\nDejó sus datos de contacto y no terminó el formulario. Llamar para completar la solicitud.\n\nSERVICIOS: $lista\nIDIOMA DEL CLIENTE: " . ($en ? 'Inglés' : 'Español')
+      . "\nMejor hora para llamar: " . ($s('hora', 40) ?: 'no dijo') . "\nWhatsApp: " . (!empty($d['whatsapp']) ? 'Sí' : 'No') . "\n\nORIGEN\n  Llegó por: " . ucfirst($fcat),
+    'origen' => 'marrerobernal.com (solicitud incompleta)', 'fuente' => $fcat, 'fuente_detalle' => $fuente, 'etiquetas' => implode(',', $eti), 'servicio_principal' => $servs[0] ?? '', 'fecha' => wp_date('Y-m-d H:i')];
+  set_transient('mba_parc_' . $tel, $payload, 2 * DAY_IN_SECONDS);
+  wp_clear_scheduled_hook('mba_parcial_enviar', [$tel]);
+  wp_schedule_single_event(time() + 30 * MINUTE_IN_SECONDS, 'mba_parcial_enviar', [$tel]);
+  wp_send_json_success();
+}
+add_action('mba_parcial_enviar', function ($tel) {
+  $p = get_transient('mba_parc_' . $tel); if (!is_array($p)) return;
+  delete_transient('mba_parc_' . $tel);
+  $hook = get_option('mba_ghl_webhook', ''); if (!$hook) return;
+  wp_remote_post($hook, ['timeout' => 12, 'headers' => ['Content-Type' => 'application/json'], 'body' => wp_json_encode($p)]);
+});
