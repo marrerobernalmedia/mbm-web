@@ -88,7 +88,7 @@
           <p>Béisbol sin filtro: las entrevistas, las series Las Fugas y Los Borrados, los mitos con su respuesta y las noticias de rectaalpecho.com.</p>
           <div class="ctas">
             <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/" target="_blank" rel="noopener">Abrir la app</a>
-            <a class="btn btn-ghost" href="https://marrerobernalmedia.com/apk/recta.apk">Descargar para Android (APK)</a>
+            <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.recta" target="_blank" rel="noopener">Bájala en Google Play</a>
           </div>
         </div>
       </div>

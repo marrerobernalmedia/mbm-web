@@ -88,7 +88,7 @@
           <p>Sports, with baseball as the passion: the interviews with English audio, the series, the myths with their answers and the stories from straight2dchest.com.</p>
           <div class="ctas">
             <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/?lang=en" target="_blank" rel="noopener">Open the app</a>
-            <a class="btn btn-ghost" href="https://marrerobernalmedia.com/apk/recta.apk">Download for Android (APK)</a>
+            <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.recta" target="_blank" rel="noopener">Get it on Google Play</a>
           </div>
         </div>
       </div>

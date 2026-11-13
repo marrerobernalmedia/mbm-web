@@ -38,7 +38,7 @@ $shown = [];
   <small>App gratis</small><h2>Lleva Recta al Pecho en tu teléfono</h2>
   <p>Cada entrevista, cada estreno y los avisos, sin buscar en YouTube.</p>
   <div class="app-btns">
-   <a class="b1" href="https://marrerobernalmedia.com/apk/recta.apk">Android · Descargar (APK)</a>
+   <a class="b1" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.recta" target="_blank" rel="noopener">Android · Bájala en Google Play</a>
    <a class="b2" href="https://marrerobernalmedia.com/recta/" target="_blank" rel="noopener">Abrir la app en el navegador</a>
   </div>
   <p class="nota">iPhone: abre <a href="https://marrerobernalmedia.com/recta/" target="_blank" rel="noopener">marrerobernalmedia.com/recta</a> en Safari, toca Compartir y luego "Agregar a inicio". Muy pronto en Google Play y App Store.</p>
