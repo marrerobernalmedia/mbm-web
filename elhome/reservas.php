@@ -67,7 +67,7 @@ if ($accion === 'reservar') {
   // Solo celulares de Cuba (+53): la grabación es en Cuba y la confirmación final va por WhatsApp a ese número (Eliam, 11-nov-2026)
   $dig = preg_replace('/^00/', '', preg_replace('/\D/', '', $tel));
   if (strlen($dig) === 10 && str_starts_with($dig, '53')) $dig = substr($dig, 2);
-  if (!preg_match('/^[56]\d{7}$/', $dig)) fallo('Escribe tu celular de Cuba: el 5 y siete números más (ejemplo: +53 5 3787159). Las entradas son para quienes están en Cuba.');
+  if (!preg_match('/^[56]\d{7}$/', $dig)) fallo('Escribe tu celular de Cuba: ocho números, empezando por 5 o por 6 (ejemplo: +53 5 3787159). Las entradas son para quienes están en Cuba.');
   $tel = '+53' . $dig; $dig = '53' . $dig;
   $max = max(1, intval($g['max'] ?? 4));
   if ($cant < 1 || $cant > $max) fallo("Puedes reservar de 1 a $max entradas.");
