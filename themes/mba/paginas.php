@@ -107,10 +107,15 @@ ORIGEN
   Llegó por: " . ucfirst($fcat) . ($fuente && $fuente !== $fcat ? " ($fuente)" : '');
   // Cuándo llamará la oficina (lun-vie 9 a 5, hora de Las Vegas), para que el texto de confirmación no prometa de más.
   $lv = new DateTime('now', new DateTimeZone('America/Los_Angeles')); $dw = (int) $lv->format('N'); $hr = (int) $lv->format('G');
-  if ($dw <= 5 && $hr < 9) { $cu = ['hoy', 'today']; }
-  elseif ($dw <= 5 && $hr < 15) { $cu = ['hoy o mañana', 'today or tomorrow']; }
-  elseif ($dw <= 4) { $cu = ['mañana', 'tomorrow']; }
-  else { $cu = ['el lunes', 'on Monday']; }
+  $fer = ['2026-11-26', '2026-12-25', '2027-01-01', '2027-01-18', '2027-02-15', '2027-05-31', '2027-06-18', '2027-07-05', '2027-09-06', '2027-10-11', '2027-11-11', '2027-11-25', '2027-12-24'];
+  $habil = fn($x) => (int) $x->format('N') <= 5 && !in_array($x->format('Y-m-d'), $fer, true);
+  $sig = clone $lv; do { $sig->modify('+1 day'); } while (!$habil($sig));
+  $man = (clone $lv)->modify('+1 day')->format('Y-m-d') === $sig->format('Y-m-d'); $n = (int) $sig->format('N');
+  $des = [1 => 'el lunes', 2 => 'el martes', 3 => 'el miércoles', 4 => 'el jueves', 5 => 'el viernes']; $den = [1 => 'on Monday', 2 => 'on Tuesday', 3 => 'on Wednesday', 4 => 'on Thursday', 5 => 'on Friday'];
+  $prox = [$man ? 'mañana' : $des[$n], $man ? 'tomorrow' : $den[$n]];
+  if ($habil($lv) && $hr < 12) { $cu = ['hoy', 'today']; }
+  elseif ($habil($lv) && $hr < 15) { $cu = ['hoy o ' . $prox[0], 'today or ' . $prox[1]]; }
+  else { $cu = $prox; }
   $msgconf = ($d['idioma'] ?? '') === 'en'
     ? "Hi $nombre, we received your request at Marrero Bernal & Associates. A specialist will contact you {$cu[1]} (office hours: Mon-Fri, 9 to 5). To write to us, use WhatsApp at 888-877-2583; if it is urgent, call that same number."
     : "Hola $nombre, recibimos tu solicitud en Marrero Bernal & Associates. Un especialista te contactará {$cu[0]} (atendemos de lunes a viernes, de 9 a 5). Para escribirnos, usa WhatsApp al 888-877-2583; si es urgente, llama a ese mismo número.";
