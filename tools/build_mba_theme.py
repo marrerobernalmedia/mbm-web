@@ -126,6 +126,8 @@ add_action('wp_enqueue_scripts', function () {
 /** Chat del CRM (LeadConnector), igual que el sitio anterior. */
 add_action('wp_footer', function () {
   echo '<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a3d5751a3d7dca497eb1973"></script>' . "\\n";
+  // En las páginas en español, el chat sale en español (el widget viene en inglés por defecto).
+  echo '<script>(function(){if(/^\\/en(\\/|$)/.test(location.pathname))return;var n=0,t=setInterval(function(){var e=document.querySelector("chat-widget");if(e){clearInterval(t);e.locale="es";e.promptMsg="¡Hola! ¿Tienes una pregunta? Escríbenos.";e.subHeading="Escribe tu pregunta y un representante te responderá enseguida.";}else if(++n>60)clearInterval(t);},250);})();</script>' . "\\n";
 }, 99);
 
 /** Título en inglés para el conmutador de idioma. */
