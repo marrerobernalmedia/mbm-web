@@ -825,7 +825,7 @@ P['notary'] = dict(
         desc='Notariza tus documentos en español o inglés en nuestra oficina de North Las Vegas. Qué traer, quién tiene que venir y cómo agendar. También traducciones certificadas.',
         html=_pag('es', 'Trámites · Notary public', 'Notariza tus documentos, atendido en español.',
             'Servicio de notary public en nuestra oficina de North Las Vegas, en español e inglés. Y si el documento hay que traducirlo, lo hacemos aquí mismo.',
-            [('btn-acc', '/solicitud/?serv=notaria', 'Pedir el servicio'), ('btn-ghost', '/citas/', 'Agendar una cita')], 'Persona firmando un documento sobre un escritorio', f'''
+            [('btn-acc', '/solicitud/?serv=notary', 'Pedir el servicio'), ('btn-ghost', '/citas/', 'Agendar una cita')], 'Persona firmando un documento sobre un escritorio', f'''
   <div class="sub-alert">{_AVISO}</div>
   <h2>Qué traer</h2>
   <ul class="sub-list">
@@ -848,7 +848,7 @@ P['notary'] = dict(
         desc='Get your documents notarized in English or Spanish at our North Las Vegas office. What to bring, who has to come and how to book. Certified translations too.',
         html=_pag('en', 'Paperwork · Notary public', 'Get your documents notarized, in your language.',
             'Notary public service at our North Las Vegas office, in English and Spanish. And if the document needs to be translated, we do that right here.',
-            [('btn-acc', '/en/request/?serv=notaria', 'Request the service'), ('btn-ghost', '/en/appointments/', 'Book an appointment')], 'Person signing a document at a desk', f'''
+            [('btn-acc', '/en/request/?serv=notary', 'Request the service'), ('btn-ghost', '/en/appointments/', 'Book an appointment')], 'Person signing a document at a desk', f'''
   <div class="sub-alert">{_AVISOEN}</div>
   <h2>What to bring</h2>
   <ul class="sub-list">

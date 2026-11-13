@@ -6,7 +6,7 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'notary-public'
     <div class="kicker">Trámites · Notary public</div>
     <h1>Notariza tus documentos, atendido en español.</h1>
     <p class="lead">Servicio de notary public en nuestra oficina de North Las Vegas, en español e inglés. Y si el documento hay que traducirlo, lo hacemos aquí mismo.</p>
-    <div class="sub-cta"><a class="btn btn-acc" href="/solicitud/?serv=notaria">Pedir el servicio</a><a class="btn btn-ghost" href="/citas/">Agendar una cita</a></div>
+    <div class="sub-cta"><a class="btn btn-acc" href="/solicitud/?serv=notary">Pedir el servicio</a><a class="btn btn-ghost" href="/citas/">Agendar una cita</a></div>
   </div>
   <img class="mimg" src="<?php echo esc_url(get_theme_file_uri('img/tramites.jpg')); ?>" alt="Persona firmando un documento sobre un escritorio" width="1280" height="720">
 </div></section>
