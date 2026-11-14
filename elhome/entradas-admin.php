@@ -8,6 +8,15 @@
 $CLAVE_HASH = '$2y$10$cdxXGdH6URGecet9DPav5ehqjFH/ayny/4ECETLVaOSesUDPSfjSO';
 
 require __DIR__ . '/reservas-lib.php';
+// La contraseña que puso Eliam se guarda cifrada en el servidor (carpeta protegida), fuera del repositorio: manda sobre la de arriba.
+$CLAVE_ARCHIVO = dir_datos() . '/.clave-admin.json';
+if (is_file($CLAVE_ARCHIVO)) { $cj = json_decode((string)file_get_contents($CLAVE_ARCHIVO), true); if (!empty($cj['hash'])) $CLAVE_HASH = $cj['hash']; }
+// Enlace de UN SOLO USO para que Eliam ponga su contraseña (13-nov-2026): solo sirve con su código secreto, antes de que
+// venza y mientras no exista una contraseña puesta por él. Después queda desactivado.
+const CREAR_SHA = '8069c3c3ebe917eac68244cf147cf1ebd0afc5aad97b22709fc910b6e6cc3ae3';
+const CREAR_VENCE = '2026-11-15 20:00:00';
+$crear = (string)($_GET['crear'] ?? '');
+$puede_crear = $crear !== '' && hash_equals(CREAR_SHA, hash('sha256', $crear)) && time() < strtotime(CREAR_VENCE) && !is_file($CLAVE_ARCHIVO);
 header('Cache-Control: no-store');
 header('X-Robots-Tag: noindex');
 session_set_cookie_params(['lifetime' => 60 * 60 * 24 * 30, 'httponly' => true, 'secure' => !empty($_SERVER['HTTPS']), 'samesite' => 'Lax']);
@@ -17,6 +26,18 @@ $G = grabaciones();
 $entrada = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $_GET['entrada'] ?? ''));
 $yo = strtok($_SERVER['REQUEST_URI'] ?? 'entradas-admin.php', '?');
 
+// --- poner la contraseña por primera vez (enlace de un solo uso)
+if ($puede_crear && isset($_POST['nueva'], $_POST['nueva2'])) {
+  $n1 = (string)$_POST['nueva']; $n2 = (string)$_POST['nueva2'];
+  if (!limite('crear', 10, 900)) $error_crear = 'Demasiados intentos. Espera unos minutos.';
+  elseif (strlen($n1) < 10) $error_crear = 'Tiene que tener al menos 10 caracteres.';
+  elseif ($n1 !== $n2) $error_crear = 'Las dos no coinciden. Escríbelas otra vez.';
+  else {
+    file_put_contents($CLAVE_ARCHIVO, json_encode(['hash' => password_hash($n1, PASSWORD_DEFAULT), 'puesta' => date('c')]), LOCK_EX);
+    @chmod($CLAVE_ARCHIVO, 0640);
+    session_regenerate_id(true); $_SESSION['ok'] = 1; header('Location: ' . strtok($_SERVER['REQUEST_URI'] ?? 'entradas-admin.php', '?')); exit;
+  }
+}
 // --- entrar / salir
 if (isset($_POST['clave'])) {
   if (limite('admin', 10, 900) && password_verify($_POST['clave'], $CLAVE_HASH)) { session_regenerate_id(true); $_SESSION['ok'] = 1; }
@@ -96,7 +117,15 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px 6px;b
 .mute{color:var(--mute)}.wa{display:inline-block;text-decoration:none;background:#25d366;color:#07240f;border-radius:8px;padding:6px 10px;font-weight:700;font-size:13px;margin-top:4px}
 .cf{font-size:12px;margin-top:4px}.cf.si{color:var(--lime)}.cf.pe{color:var(--bulb)}.b.s{padding:6px 10px;font-size:13px;margin-top:4px}.nota{border-left:3px solid var(--bulb);padding:8px 12px;background:#120f14;border-radius:0 10px 10px 0;margin:8px 0;font-size:14px}</style></head><body><div class="w">
 <div class="top"><div style="display:flex;gap:10px;align-items:center"><img src="icons/icon-192.png" alt=""><b>Entradas · El Home de la Risa</b></div><?php if ($dentro): ?><a href="<?= $h($yo) ?>?salir=1">Salir</a><?php endif; ?></div>
-<?php if (!$dentro): ?>
+<?php if (!$dentro && $puede_crear): ?>
+  <h1>Pon tu contraseña</h1>
+  <form method="post" class="card"><p class="mute">Este enlace sirve una sola vez. Escribe la contraseña que quieras usar para ver las reservas (10 caracteres o más) y repítela. Nadie más la ve: se guarda cifrada.</p>
+  <p><input type="password" name="nueva" autocomplete="new-password" minlength="10" autofocus required placeholder="Contraseña nueva"></p>
+  <p><input type="password" name="nueva2" autocomplete="new-password" minlength="10" required placeholder="Repítela"></p>
+  <p><button class="b">Guardar y entrar</button></p>
+  <?php if (!empty($error_crear)) echo '<p class="err">' . $h($error_crear) . '</p>'; ?></form>
+<?php elseif (!$dentro): ?>
+  <?php if ($crear !== '') echo '<div class="nota">Ese enlace ya se usó o venció. Entra con tu contraseña.</div>'; ?>
   <h1>Entrar</h1>
   <form method="post" class="card"><p class="mute">Solo para el equipo. Escribe la contraseña.</p>
   <input type="password" name="clave" autocomplete="current-password" autofocus required><p><button class="b">Entrar</button></p>
