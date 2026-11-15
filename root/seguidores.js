@@ -3,10 +3,10 @@
    (Facebook e Instagram) y con vidIQ (YouTube). No editar a mano los sitios:
    editar este archivo y hacer push. */
 window.SEGUIDORES = {
-  "actualizado": "2026-11-14",
-  "fb": {"larisa":585725,"lacosa":173701,"recta":72407,"elhome":14449,"mba":5213,"cuero":2330,"welcome":3726,"mbm":1397,"eliam":11445,"nadie":456},
-  "ig": {"larisa":50597,"lacosa":31382,"mbm":10256,"recta":9422,"welcome":3705,"elhome":2040,"nadie":46,"cuero":19,"mba":218,"eliam":7163},
-  "yt": {"larisa":91973,"recta":19154,"lacosa":14106,"elhome":3472,"welcome":2903,"mbm":20}
+  "actualizado": "2026-11-15",
+  "fb": {"larisa":586324,"lacosa":174750,"recta":73000,"elhome":17123,"mba":5209,"cuero":2359,"welcome":5228,"mbm":2167,"eliam":11445,"nadie":490},
+  "ig": {"larisa":50614,"lacosa":31371,"mbm":10306,"recta":9477,"welcome":3720,"elhome":2776,"nadie":47,"cuero":20,"mba":219,"eliam":7159},
+  "yt": {"larisa":92036,"recta":19165,"lacosa":14142,"elhome":3500,"welcome":2922,"mbm":20}
 };
 (function(){
   var S=window.SEGUIDORES, RED=["larisa","lacosa","recta","elhome","welcome","mbm","cuero","nadie"];
