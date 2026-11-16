@@ -4,7 +4,7 @@ $lead = $latest[0] ?? null; $side = array_slice($latest, 1, 3);
 $shown = [];
 ?>
 <main class="wrap">
-<?php [$eLast, $eNext] = recta_estrenos(); if ($eLast || $eNext): ?>
+<?php [$eLast, $eNext, $eAfter] = recta_estrenos(); if ($eLast || $eNext): ?>
 <section class="estrenos" aria-label="Estrenos en YouTube">
 <?php if ($eLast): ?>
  <article class="ep">
@@ -19,6 +19,8 @@ $shown = [];
   <div class="tx"><b><?php echo esc_html($eNext['guest']); ?></b><?php if (!empty($eNext['title'])): ?><span><?php echo esc_html($eNext['title']); ?></span><?php endif; ?><small>Estreno el <?php echo esc_html($eNext['date']); ?> · 8:00 AM Las Vegas · 11:00 AM Miami · 5:00 PM Madrid</small>
   <p class="acts"><?php if (!empty($eNext['id'])): ?><a class="btn" href="https://youtu.be/<?php echo esc_attr($eNext['id']); ?>" target="_blank" rel="noopener">🔔 Recordármelo en YouTube</a><?php endif; ?></p></div>
  </article>
+<?php endif; if ($eAfter): ?>
+ <a class="despues" href="https://youtu.be/<?php echo esc_attr($eAfter['id']); ?>" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/<?php echo esc_attr($eAfter['id']); ?>/mqdefault.jpg" alt="<?php echo esc_attr($eAfter['guest']); ?>" loading="lazy"><span><small>Después · estreno el <?php echo esc_html($eAfter['date']); ?></small><b><?php echo esc_html($eAfter['guest']); ?></b><?php if (!empty($eAfter['title'])): ?><em><?php echo esc_html($eAfter['title']); ?></em><?php endif; ?><i>🔔 Recordármelo en YouTube →</i></span></a>
 <?php endif; ?>
 </section>
 <?php endif; ?>

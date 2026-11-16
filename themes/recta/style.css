@@ -214,4 +214,9 @@ body{background:var(--paper)!important;color:var(--ink)!important}
 .ep .tx small{color:var(--mute);font-size:14px;margin-top:2px}
 .ep .acts{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
 .btn.en{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+
+.estrenos .despues{grid-column:1/-1;display:flex;gap:14px;align-items:center;padding:10px;border:1px solid rgba(127,127,127,.25);border-radius:10px;color:inherit;text-decoration:none}
+.estrenos .despues img{width:160px;max-width:40%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;flex:none}
+.estrenos .despues span{display:flex;flex-direction:column;gap:3px;min-width:0}
+.estrenos .despues small{opacity:.7;font-size:13px}.estrenos .despues b{font-size:18px}.estrenos .despues em{font-style:normal;opacity:.85}.estrenos .despues i{font-style:normal;font-weight:600;font-size:14px}
 @media (max-width:760px){.estrenos{grid-template-columns:1fr;gap:16px;padding-top:16px}.ep .tx b{font-size:23px}}

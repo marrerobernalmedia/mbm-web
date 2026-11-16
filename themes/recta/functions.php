@@ -5,7 +5,7 @@
  */
 if (!defined('ABSPATH')) exit;
 
-define('RECTA_VER', '1.1.0');
+define('RECTA_VER', '1.1.1');
 
 add_action('after_setup_theme', function () {
   add_theme_support('title-tag');
@@ -60,15 +60,16 @@ function recta_live() {
 
 /** Último estreno y próximo estreno para la portada. Si ya llegó la hora del próximo (8:00 AM Las Vegas de next.f), pasa solo a último. */
 function recta_estrenos() {
-  $d = recta_live(); $last = $d['last'] ?? null; $next = $d['next'] ?? null;
+  $d = recta_live(); $last = $d['last'] ?? null; $next = $d['next'] ?? null; $after = $d['next2'] ?? null;
   if ($next && !empty($next['id']) && !empty($next['f'])) {
     $tz = new DateTimeZone('America/Los_Angeles');
     $sale = new DateTime($next['f'] . ' 08:00:00', $tz);
-    if (new DateTime('now', $tz) >= $sale) { $last = $next; $next = $d['next2'] ?? null; }
+    if (new DateTime('now', $tz) >= $sale) { $last = $next; $next = $d['next2'] ?? null; $after = null; }
   }
   if ($last && empty($last['id'])) $last = null;
   if ($next && empty($next['guest'])) $next = null;
-  return [$last, $next];
+  if ($after && empty($after['id'])) $after = null;
+  return [$last, $next, $after];
 }
 
 function recta_fecha($post = null) { return get_the_date('j M Y', $post); }
