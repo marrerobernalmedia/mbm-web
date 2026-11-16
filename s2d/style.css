@@ -222,3 +222,4 @@ nav a.app{border:1px solid rgba(255,255,255,.4)}
 .estrenos .despues small{opacity:.7;font-size:13px}.estrenos .despues b{font-size:18px}.estrenos .despues em{font-style:normal;opacity:.85}.estrenos .despues i{font-style:normal;font-weight:600;font-size:14px}
 @media (max-width:760px){.estrenos{grid-template-columns:1fr;gap:16px;padding-top:16px}.ep .tx b{font-size:23px}}
 @media (min-width:1101px){.brand{flex:none}.top-in nav{flex-wrap:nowrap;gap:2px}.top-in nav a{white-space:nowrap;font-size:16px;padding:8px 9px;letter-spacing:.04em}}
+@media (min-width:1101px) and (max-width:1320px){.top-in nav a{font-size:14px;padding:7px 6px;letter-spacing:.02em}.top-in .lang a b{display:none}.top-in .lang a{padding:6px 7px}.top-in{gap:10px}}
