@@ -220,3 +220,4 @@ body{background:var(--paper)!important;color:var(--ink)!important}
 .estrenos .despues span{display:flex;flex-direction:column;gap:3px;min-width:0}
 .estrenos .despues small{opacity:.7;font-size:13px}.estrenos .despues b{font-size:18px}.estrenos .despues em{font-style:normal;opacity:.85}.estrenos .despues i{font-style:normal;font-weight:600;font-size:14px}
 @media (max-width:760px){.estrenos{grid-template-columns:1fr;gap:16px;padding-top:16px}.ep .tx b{font-size:23px}}
+@media (max-width:640px){.ticker .wrap{flex-wrap:wrap;height:auto;row-gap:6px;column-gap:10px;padding-block:7px}.ticker b.t2{margin-left:0}}
