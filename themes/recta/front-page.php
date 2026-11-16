@@ -10,14 +10,14 @@ $shown = [];
  <article class="ep">
   <a class="th" href="https://youtu.be/<?php echo esc_attr($eLast['id']); ?>" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/<?php echo esc_attr($eLast['id']); ?>/maxresdefault.jpg" alt="<?php echo esc_attr($eLast['guest']); ?>" fetchpriority="high"><span class="tag">Último estreno</span><span class="pl" aria-hidden="true">▶</span></a>
   <div class="tx"><b><?php echo esc_html($eLast['guest']); ?></b><span><?php echo esc_html($eLast['title']); ?></span><small>Estrenado el <?php echo esc_html($eLast['date']); ?></small>
-  <p class="acts"><a class="btn" href="https://youtu.be/<?php echo esc_attr($eLast['id']); ?>" target="_blank" rel="noopener">Ver la entrevista</a><?php if (!empty($eLast['s2d'])): ?><a class="btn en" href="https://www.straight2dchest.com/<?php echo esc_attr($eLast['s2d']); ?>/" target="_blank" rel="noopener">🇺🇸 En inglés</a><?php endif; ?></p></div>
+  <p class="acts"><a class="btn" href="https://youtu.be/<?php echo esc_attr($eLast['id']); ?>" target="_blank" rel="noopener">Ver la entrevista</a></p></div>
  </article>
 <?php endif; if ($eNext): ?>
  <article class="ep prox">
   <?php if (!empty($eNext['id'])): ?><a class="th" href="https://youtu.be/<?php echo esc_attr($eNext['id']); ?>" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/<?php echo esc_attr($eNext['id']); ?>/maxresdefault.jpg" alt="<?php echo esc_attr($eNext['guest']); ?>" loading="lazy"><span class="tag">Próximo estreno</span></a>
   <?php else: ?><div class="th vacio"><img src="<?php echo esc_url(get_theme_file_uri('img/og.jpg')); ?>" alt="" loading="lazy"><span class="tag">Próximo estreno</span></div><?php endif; ?>
   <div class="tx"><b><?php echo esc_html($eNext['guest']); ?></b><?php if (!empty($eNext['title'])): ?><span><?php echo esc_html($eNext['title']); ?></span><?php endif; ?><small>Estreno el <?php echo esc_html($eNext['date']); ?> · 8:00 AM Las Vegas · 11:00 AM Miami · 5:00 PM Madrid</small>
-  <p class="acts"><?php if (!empty($eNext['id'])): ?><a class="btn" href="https://youtu.be/<?php echo esc_attr($eNext['id']); ?>" target="_blank" rel="noopener">🔔 Recordármelo en YouTube</a><?php endif; ?><?php if (!empty($eNext['s2d'])): ?><a class="btn en" href="https://www.straight2dchest.com/<?php echo esc_attr($eNext['s2d']); ?>/" target="_blank" rel="noopener">🇺🇸 En inglés</a><?php endif; ?></p></div>
+  <p class="acts"><?php if (!empty($eNext['id'])): ?><a class="btn" href="https://youtu.be/<?php echo esc_attr($eNext['id']); ?>" target="_blank" rel="noopener">🔔 Recordármelo en YouTube</a><?php endif; ?></p></div>
  </article>
 <?php endif; ?>
 </section>
