@@ -132,6 +132,7 @@ const HOWTO = `<div class="howto"><strong>Hear it in English</strong><ol><li>Pre
   const lead = NEWS[0], side = NEWS.slice(1, 4);
   const lastEp = V.filter(v => v.f && !v.soon).sort((x, y) => y.f.localeCompare(x.f))[0];
   const nextEp = V.filter(v => v.f && v.soon).sort((x, y) => x.f.localeCompare(y.f))[0];
+  const afterEp = V.filter(v => v.f && v.soon).sort((x, y) => x.f.localeCompare(y.f))[1];
   const hrs = "8:00 AM Las Vegas · 11:00 AM Miami · 5:00 PM Madrid";
   // Último y próximo estreno arriba de todo. El script de abajo pasa solo el próximo a "último" a las 8 AM Las Vegas de su fecha, sin reconstruir el sitio.
   const epCard = (v, prox) => `<article class="ep${prox ? " prox" : ""}"${prox ? ` data-sale="${isoTZ(v.f)}"` : ""}>
@@ -142,6 +143,7 @@ const HOWTO = `<div class="howto"><strong>Hear it in English</strong><ol><li>Pre
   const estrenos = (lastEp || nextEp) ? `<section class="estrenos" aria-label="Premieres">
  ${lastEp ? epCard(lastEp, false) : ""}
  ${nextEp ? epCard(nextEp, true) : ""}
+ ${afterEp ? `<a class="despues" href="https://www.youtube.com/watch?v=${afterEp.id}" rel="noopener"><img src="${big(afterEp.id)}" alt="${esc(afterEp.who)}" loading="lazy"><span><small>Up next · premieres ${fdate(afterEp.f)}</small><b>${esc(afterEp.who)}</b><em>${esc(afterEp.t)}</em><i>🔔 Remind me on YouTube →</i></span></a>` : ""}
 </section>
 <script>(function(){var n=document.querySelector(".estrenos .prox");if(!n)return;var t=Date.parse(n.dataset.sale);if(!t||Date.now()<t)return;var l=document.querySelector(".estrenos .ep:not(.prox)");if(l)l.remove();n.classList.remove("prox");n.querySelector(".tag").textContent="Latest episode";var a=n.querySelector(".btn");a.textContent="Watch the interview";a.href=n.querySelector(".th").getAttribute("href");var sm=n.querySelector("small");sm.textContent=sm.textContent.replace(/^Premieres ([^·]+)·.*$/,"Premiered $1· English audio");})();</script>` : "";
   const serieOf = n => SERIES.find(x => x.id === n.series);
