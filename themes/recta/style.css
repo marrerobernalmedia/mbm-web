@@ -34,7 +34,7 @@ nav.main a.app{border:1px solid rgba(255,255,255,.45)}
 .ticker{background:var(--red);color:#fff;font:600 13px/1 "Barlow",sans-serif;letter-spacing:.5px}
 .ticker .wrap{display:flex;gap:18px;align-items:center;height:36px;overflow:hidden;white-space:nowrap}
 .ticker b{background:#fff;color:var(--red);padding:5px 8px;border-radius:3px;font-weight:800;letter-spacing:1.5px;font-size:11px}
-.ticker span{opacity:.95}
+.ticker span{opacity:.95}.ticker a{color:#fff;text-decoration:underline;text-underline-offset:3px}.ticker a:hover{text-decoration-thickness:2px}.ticker b.t2{margin-left:22px}
 /* hero */
 .hero{display:grid;grid-template-columns:7fr 5fr;gap:28px;align-items:stretch;padding-block:28px}
 .hero .big{position:relative;border-radius:14px;overflow:hidden;min-height:420px;background:#223;display:flex;align-items:flex-end;color:#fff}

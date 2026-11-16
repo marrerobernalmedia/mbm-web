@@ -32,9 +32,12 @@
   <a href="https://www.youtube.com/@RectaAlPecho" target="_blank" rel="noopener">▶ Entrevistas en YouTube</a>
 </div>
 </header>
-<?php if (!empty($live['next']['guest']) || !empty($live['last']['guest'])): ?>
+<?php [, $tNext, $tAfter] = recta_estrenos(); if ($tNext): $tz = new DateTimeZone('America/Los_Angeles');
+  $dias = !empty($tNext['f']) ? (int) (new DateTime('today', $tz))->diff(new DateTime($tNext['f'], $tz))->format('%r%a') : 0;
+  $lbl = $dias > 6 ? 'PRÓXIMO JUEVES' : 'ESTE JUEVES';
+  $tlink = function ($e) { return !empty($e['id']) ? '<a href="https://youtu.be/' . esc_attr($e['id']) . '" target="_blank" rel="noopener">' . esc_html($e['guest']) . '</a>' : '<span>' . esc_html($e['guest']) . '</span>'; }; ?>
 <div class="ticker"><div class="wrap">
- <?php if (!empty($live['next']['guest'])): ?><b>ESTE JUEVES</b><span><?php echo esc_html($live['next']['guest']); ?> · nueva entrevista en YouTube</span><?php endif; ?>
- <?php if (!empty($live['last']['guest'])): ?><span>•</span><span>Último capítulo: <?php echo esc_html($live['last']['guest']); ?></span><?php endif; ?>
+ <b><?php echo $lbl; ?></b><?php echo $tlink($tNext); ?>
+ <?php if ($tAfter && !empty($tAfter['guest'])): ?><b class="t2"><?php echo esc_html(mb_strtoupper($tAfter['date'] ?? 'Después')); ?></b><?php echo $tlink($tAfter); ?><?php endif; ?>
 </div></div>
 <?php endif; ?>

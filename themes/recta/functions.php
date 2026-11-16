@@ -5,7 +5,7 @@
  */
 if (!defined('ABSPATH')) exit;
 
-define('RECTA_VER', '1.1.1');
+define('RECTA_VER', '1.1.2');
 
 add_action('after_setup_theme', function () {
   add_theme_support('title-tag');
