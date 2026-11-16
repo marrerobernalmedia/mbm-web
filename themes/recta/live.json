@@ -1,12 +1,49 @@
 {
-  "last": {"id": "Sev0k7B7YT4", "guest": "Erly Casanova", "title": "100 victorias con Pinar del Río y Cuba lo sancionó por ir a Italia", "date": "jueves 12 de noviembre"},
-  "next": {"guest": "Manuel Ramírez \"Mengana\"", "date": "jueves 19 de noviembre"},
+  "last": {
+    "id": "Sev0k7B7YT4",
+    "guest": "Erly Casanova",
+    "title": "100 victorias con Pinar del Río y Cuba lo sancionó por ir a Italia",
+    "date": "jueves 12 de noviembre",
+    "s2d": "erly-casanova"
+  },
+  "next": {
+    "id": "WdAe4Or7dgs",
+    "guest": "Manuel Ramírez \"Mengana\"",
+    "title": "De ingeniero ganaba más que Capiró en el equipo Cuba",
+    "date": "jueves 19 de noviembre",
+    "f": "2026-11-19",
+    "s2d": "manuel-ramirez-mengana"
+  },
   "mitos": [
-    ["La pelota de los 80 tenía nivel de Grandes Ligas", "Cuba mandaba profesionales disfrazados de amateurs contra universitarios. Contra profesionales de verdad, la cosa cambió.", "eoXBslJ-ecw"],
-    ["Es el mejor porque yo lo vi", "Tus ojos vieron veinte juegos; el anotador los vio todos, y no le va a nadie.", "qRSWVf9m864"],
-    ["Linares fue el mejor de la historia", "Bateó .368 con aluminio. En Japón, contra profesionales: .246.", "HAw4DE2KYgk"],
-    ["Si en Cuba nadie lo menciona, no fue grande", "Tito Fuentes: 13 temporadas en Grandes Ligas, 1,491 hits y el Muro de la Fama de los Gigantes.", "QZamWqu-N5E"],
-    ["El mejor cubano es uno de Series Nacionales", "En Cooperstown hay seis cubanos y ninguno jugó una Serie Nacional.", "5I7xajTMsVk"],
-    ["Antes se jugaba por amor a la camiseta", "Lo que no cobraban como profesionales, lo cobraban por el centro de trabajo.", "6vUrT7CeSAs"]
+    [
+      "La pelota de los 80 tenía nivel de Grandes Ligas",
+      "Cuba mandaba profesionales disfrazados de amateurs contra universitarios. Contra profesionales de verdad, la cosa cambió.",
+      "eoXBslJ-ecw"
+    ],
+    [
+      "Es el mejor porque yo lo vi",
+      "Tus ojos vieron veinte juegos; el anotador los vio todos, y no le va a nadie.",
+      "qRSWVf9m864"
+    ],
+    [
+      "Linares fue el mejor de la historia",
+      "Bateó .368 con aluminio. En Japón, contra profesionales: .246.",
+      "HAw4DE2KYgk"
+    ],
+    [
+      "Si en Cuba nadie lo menciona, no fue grande",
+      "Tito Fuentes: 13 temporadas en Grandes Ligas, 1,491 hits y el Muro de la Fama de los Gigantes.",
+      "QZamWqu-N5E"
+    ],
+    [
+      "El mejor cubano es uno de Series Nacionales",
+      "En Cooperstown hay seis cubanos y ninguno jugó una Serie Nacional.",
+      "5I7xajTMsVk"
+    ],
+    [
+      "Antes se jugaba por amor a la camiseta",
+      "Lo que no cobraban como profesionales, lo cobraban por el centro de trabajo.",
+      "6vUrT7CeSAs"
+    ]
   ]
 }

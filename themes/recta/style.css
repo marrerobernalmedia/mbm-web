@@ -198,3 +198,20 @@ body{background:var(--paper)!important;color:var(--ink)!important}
 
 /* Selector de idioma: ES = rectaalpecho.com, EN = straight2dchest.com */
 .lang{display:inline-flex;gap:3px;padding:3px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.05);margin-left:10px;flex:none}.lang a{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;font:700 13px/1 "Barlow",sans-serif;color:#cfd8ea;opacity:.75;text-decoration:none;text-transform:uppercase;letter-spacing:.04em}.lang a svg{border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.25);flex:none}.lang a:hover{opacity:1}.lang a.on{opacity:1;color:#fff;background:rgba(255,255,255,.14)}@media(max-width:640px){.lang a b{display:none}.lang a{padding:6px 7px}.lang{margin-left:auto;margin-right:8px}}
+
+/* estrenos: último y próximo, arriba de todo */
+.estrenos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;padding-block:24px 4px}
+.ep{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.ep .th{position:relative;display:block;aspect-ratio:16/9;background:#0d174e;overflow:hidden}
+.ep .th img{width:100%;height:100%;object-fit:cover;display:block}
+.ep .th.vacio img{object-fit:contain;padding:12%}
+.ep .tag{position:absolute;left:12px;top:12px;background:var(--red);color:#fff;font:800 12px/1 "Barlow",sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:7px 10px;border-radius:6px}
+.ep.prox .tag{background:#0d174e}
+.ep .pl{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:22px;padding-left:4px;opacity:.92}
+.ep .tx{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px;flex:1}
+.ep .tx b{font:800 26px/1.05 "Barlow Condensed",sans-serif;color:var(--ink)}
+.ep .tx span{font-size:16px;line-height:1.35;color:var(--ink)}
+.ep .tx small{color:var(--mute);font-size:14px;margin-top:2px}
+.ep .acts{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.btn.en{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+@media (max-width:760px){.estrenos{grid-template-columns:1fr;gap:16px;padding-top:16px}.ep .tx b{font-size:23px}}

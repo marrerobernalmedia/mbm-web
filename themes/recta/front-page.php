@@ -4,23 +4,32 @@ $lead = $latest[0] ?? null; $side = array_slice($latest, 1, 3);
 $shown = [];
 ?>
 <main class="wrap">
+<?php [$eLast, $eNext] = recta_estrenos(); if ($eLast || $eNext): ?>
+<section class="estrenos" aria-label="Estrenos en YouTube">
+<?php if ($eLast): ?>
+ <article class="ep">
+  <a class="th" href="https://youtu.be/<?php echo esc_attr($eLast['id']); ?>" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/<?php echo esc_attr($eLast['id']); ?>/maxresdefault.jpg" alt="<?php echo esc_attr($eLast['guest']); ?>" fetchpriority="high"><span class="tag">Último estreno</span><span class="pl" aria-hidden="true">▶</span></a>
+  <div class="tx"><b><?php echo esc_html($eLast['guest']); ?></b><span><?php echo esc_html($eLast['title']); ?></span><small>Estrenado el <?php echo esc_html($eLast['date']); ?></small>
+  <p class="acts"><a class="btn" href="https://youtu.be/<?php echo esc_attr($eLast['id']); ?>" target="_blank" rel="noopener">Ver la entrevista</a><?php if (!empty($eLast['s2d'])): ?><a class="btn en" href="https://www.straight2dchest.com/<?php echo esc_attr($eLast['s2d']); ?>/" target="_blank" rel="noopener">🇺🇸 En inglés</a><?php endif; ?></p></div>
+ </article>
+<?php endif; if ($eNext): ?>
+ <article class="ep prox">
+  <?php if (!empty($eNext['id'])): ?><a class="th" href="https://youtu.be/<?php echo esc_attr($eNext['id']); ?>" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/<?php echo esc_attr($eNext['id']); ?>/maxresdefault.jpg" alt="<?php echo esc_attr($eNext['guest']); ?>" loading="lazy"><span class="tag">Próximo estreno</span></a>
+  <?php else: ?><div class="th vacio"><img src="<?php echo esc_url(get_theme_file_uri('img/og.jpg')); ?>" alt="" loading="lazy"><span class="tag">Próximo estreno</span></div><?php endif; ?>
+  <div class="tx"><b><?php echo esc_html($eNext['guest']); ?></b><?php if (!empty($eNext['title'])): ?><span><?php echo esc_html($eNext['title']); ?></span><?php endif; ?><small>Estreno el <?php echo esc_html($eNext['date']); ?> · 8:00 AM Las Vegas · 11:00 AM Miami · 5:00 PM Madrid</small>
+  <p class="acts"><?php if (!empty($eNext['id'])): ?><a class="btn" href="https://youtu.be/<?php echo esc_attr($eNext['id']); ?>" target="_blank" rel="noopener">🔔 Recordármelo en YouTube</a><?php endif; ?><?php if (!empty($eNext['s2d'])): ?><a class="btn en" href="https://www.straight2dchest.com/<?php echo esc_attr($eNext['s2d']); ?>/" target="_blank" rel="noopener">🇺🇸 En inglés</a><?php endif; ?></p></div>
+ </article>
+<?php endif; ?>
+</section>
+<?php endif; ?>
 <?php if ($lead): [$serie, $slink] = recta_post_serie($lead->ID); $shown[] = $lead->ID; ?>
 <section class="hero">
- <a class="big" href="<?php echo esc_url(get_permalink($lead)); ?>"><img src="<?php echo esc_url(get_the_post_thumbnail_url($lead, 'recta-hero') ?: get_theme_file_uri('img/portada.jpg')); ?>" alt="" fetchpriority="high"><div class="txt"><span class="kicker"><?php echo esc_html($serie); ?></span><h1><?php echo esc_html(get_the_title($lead)); ?></h1><p><?php echo esc_html(recta_excerpt($lead, 32)); ?></p></div></a>
+ <a class="big" href="<?php echo esc_url(get_permalink($lead)); ?>"><img src="<?php echo esc_url(get_the_post_thumbnail_url($lead, 'recta-hero') ?: get_theme_file_uri('img/portada.jpg')); ?>" alt="" loading="lazy"><div class="txt"><span class="kicker"><?php echo esc_html($serie); ?></span><h1><?php echo esc_html(get_the_title($lead)); ?></h1><p><?php echo esc_html(recta_excerpt($lead, 32)); ?></p></div></a>
  <aside class="side"><h3>Lo último</h3>
  <?php foreach ($side as $p): [$serie] = recta_post_serie($p->ID); $shown[] = $p->ID; ?>
   <a class="mini" href="<?php echo esc_url(get_permalink($p)); ?>"><img src="<?php echo esc_url(get_the_post_thumbnail_url($p, 'thumbnail') ?: get_theme_file_uri('img/portada.jpg')); ?>" alt="" loading="lazy"><span><small><?php echo esc_html($serie); ?></small><b><?php echo esc_html(get_the_title($p)); ?></b></span></a>
  <?php endforeach; ?>
  </aside>
-</section>
-<?php endif; ?>
-
-<?php if (!empty($live['last']['id'])): $l = $live['last']; ?>
-<section class="yt-strip">
- <a class="play" href="https://youtu.be/<?php echo esc_attr($l['id']); ?>" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/<?php echo esc_attr($l['id']); ?>/maxresdefault.jpg" alt="<?php echo esc_attr($l['guest'] ?? 'Último capítulo de Recta al Pecho'); ?>" loading="lazy"></a>
- <div><h3>Último capítulo en YouTube</h3><h2><?php echo esc_html($l['guest']); ?>: <?php echo esc_html($l['title']); ?></h2><p>Estrenado el <?php echo esc_html($l['date']); ?>. Entrevista completa en el canal.</p><a class="btn" href="https://youtu.be/<?php echo esc_attr($l['id']); ?>" target="_blank" rel="noopener">Ver la entrevista</a>
- <?php if (!empty($live['next']['guest'])): ?><div class="next"><h3>Próximo estreno</h3><b><?php echo esc_html($live['next']['guest']); ?></b> · <?php echo esc_html($live['next']['date']); ?><br><span class="ui" style="font-size:14px;opacity:.85">Activa los avisos en la app y te llega al teléfono el día del estreno.</span></div><?php endif; ?>
- </div>
 </section>
 <?php endif; ?>
 

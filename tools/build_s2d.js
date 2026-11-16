@@ -18,7 +18,10 @@ const V = S.v.map(([id, c, slug, who, t, sum]) => {
   const r = RV[id] || {};
   const dt = DT[id] || {};
   // soon = estreno programado que aún no sale (k "proximo"/"futuro" en recta/data.js): sin duración, "Premiere: <fecha>", uploadDate = cuando se subió (dt.up)
-  const soon = r.k === "proximo" || r.k === "futuro";
+  // ya estrenado si llegó su fecha a las 8 AM Las Vegas (aunque recta/data.js siga diciendo "proximo")
+  const fx = r.f || dt.f || "", lvNow = new Date(Date.now() + 3600e3 * Number(lvOff(new Date().toISOString().slice(0, 10)).slice(0, 3)));
+  const lvDay = lvNow.toISOString().slice(0, 10), lvHour = lvNow.getUTCHours();
+  const soon = (r.k === "proximo" || r.k === "futuro") && !(fx && (fx < lvDay || (fx === lvDay && lvHour >= 8)));
   return { id, c, slug, who, t, sum, soon, up: dt.up || "", d: (r.d && !/^(Próximamente|Coming soon)$/i.test(r.d)) ? r.d : "", f: r.f || dt.f || "", iso: dt.dur || "", views: r.v || 0 };
 });
 const byId = Object.fromEntries(V.map(v => [v.id, v]));
@@ -128,21 +131,31 @@ const HOWTO = `<div class="howto"><strong>Hear it in English</strong><ol><li>Pre
 {
   const lead = NEWS[0], side = NEWS.slice(1, 4);
   const lastEp = V.filter(v => v.f && !v.soon).sort((x, y) => y.f.localeCompare(x.f))[0];
+  const nextEp = V.filter(v => v.f && v.soon).sort((x, y) => x.f.localeCompare(y.f))[0];
+  const hrs = "8:00 AM Las Vegas · 11:00 AM Miami · 5:00 PM Madrid";
+  // Último y próximo estreno arriba de todo. El script de abajo pasa solo el próximo a "último" a las 8 AM Las Vegas de su fecha, sin reconstruir el sitio.
+  const epCard = (v, prox) => `<article class="ep${prox ? " prox" : ""}"${prox ? ` data-sale="${isoTZ(v.f)}"` : ""}>
+  <a class="th" href="${v.slug}/"><img src="${big(v.id)}" alt="${esc(v.who)}"${prox ? ' loading="lazy"' : ' fetchpriority="high"'}><span class="tag">${prox ? "Next premiere" : "Latest episode"}</span>${prox ? "" : '<span class="pl" aria-hidden="true">▶</span>'}</a>
+  <div class="tx"><b>${esc(v.who)}</b><span>${esc(v.t)}</span><small>${prox ? `Premieres ${fdate(v.f)} · ${hrs}` : `Premiered ${fdate(v.f)} · English audio`}</small>
+  <p class="acts"><a class="btn" href="${prox ? "https://www.youtube.com/watch?v=" + v.id : v.slug + "/"}" rel="noopener">${prox ? "🔔 Remind me on YouTube" : "Watch the interview"}</a></p></div>
+ </article>`;
+  const estrenos = (lastEp || nextEp) ? `<section class="estrenos" aria-label="Premieres">
+ ${lastEp ? epCard(lastEp, false) : ""}
+ ${nextEp ? epCard(nextEp, true) : ""}
+</section>
+<script>(function(){var n=document.querySelector(".estrenos .prox");if(!n)return;var t=Date.parse(n.dataset.sale);if(!t||Date.now()<t)return;var l=document.querySelector(".estrenos .ep:not(.prox)");if(l)l.remove();n.classList.remove("prox");n.querySelector(".tag").textContent="Latest episode";var a=n.querySelector(".btn");a.textContent="Watch the interview";a.href=n.querySelector(".th").getAttribute("href");var sm=n.querySelector("small");sm.textContent=sm.textContent.replace(/^Premieres ([^·]+)·.*$/,"Premiered $1· English audio");})();</script>` : "";
   const serieOf = n => SERIES.find(x => x.id === n.series);
   const body = `
 <main class="wrap">
+${estrenos}
 ${lead ? `<section class="r-hero">
- <a class="r-big" href="news/${lead.slug}/"><img src="${newsImg(lead)}" alt="" fetchpriority="high"><div class="txt">${serieOf(lead) ? `<span class="kicker">${esc(serieOf(lead).name)}</span>` : ""}<h1>${esc(lead.title)}</h1><p>${esc(lead.dek)}</p></div></a>
+ <a class="r-big" href="news/${lead.slug}/"><img src="${newsImg(lead)}" alt="" loading="lazy"><div class="txt">${serieOf(lead) ? `<span class="kicker">${esc(serieOf(lead).name)}</span>` : ""}<h1>${esc(lead.title)}</h1><p>${esc(lead.dek)}</p></div></a>
  <aside class="r-side"><h3>Latest</h3>
  ${side.map(n => `<a class="mini" href="news/${n.slug}/"><img src="${newsImg(n)}" alt="" loading="lazy"><span><small>${esc(serieOf(n) ? serieOf(n).name : "Story")}</small><b>${esc(n.title)}</b></span></a>`).join("")}
  </aside>
 </section>` : ""}
 
-${lastEp ? `<section class="r-yt">
- <button class="player" data-yt="${lastEp.id}" aria-label="Play: ${esc(lastEp.t)}"><img src="${big(lastEp.id)}" alt="" loading="lazy"><span class="play"></span></button>
- <div><h3>Latest episode on YouTube</h3><h2>${esc(lastEp.who)}: ${esc(lastEp.t)}</h2><p>Premiered ${fdate(lastEp.f)}. Full interview with English audio.</p><a class="btn" href="${lastEp.slug}/">Watch the interview</a>
- <div class="next"><h3>New interview every Thursday</h3><span>Interviews in Spanish carry an English audio track on YouTube — and more and more are recorded in English.</span></div></div>
-</section>` : ""}
+
 
 </main>
 <section class="appband" id="app"><div class="wrap appband-in">
