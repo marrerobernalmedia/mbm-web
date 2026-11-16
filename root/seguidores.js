@@ -9,7 +9,7 @@ window.SEGUIDORES = {
   "yt": {"larisa":92081,"recta":19171,"lacosa":14174,"elhome":3523,"welcome":2937,"mbm":20}
 };
 (function(){
-  var S=window.SEGUIDORES, RED=["larisa","lacosa","recta","elhome","welcome","mbm","cuero","nadie","eliam"]; /* eliam suma a la red desde el 16-nov-2026 (pedido de Eliam) */
+  var S=window.SEGUIDORES, RED=["larisa","lacosa","recta","elhome","welcome","mbm","cuero","nadie","eliam","mba"]; /* eliam y mba suman a la red desde el 16-nov-2026 (pedido de Eliam) */
   function sum(o,keys){var t=0;keys.forEach(function(k){t+=o[k]||0});return t;}
   var fbRed=sum(S.fb,RED), igRed=sum(S.ig,RED), ytRed=sum(S.yt,RED);
   S.tot={fbRed:fbRed, igRed:igRed, ytRed:ytRed, metaRed:fbRed+igRed, todo:fbRed+igRed+ytRed,
