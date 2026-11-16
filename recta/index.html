@@ -297,7 +297,7 @@ const FB_HTML = `
       </div>
       <div><div style="font-size:13px;font-weight:700;margin-bottom:4px">¿Qué nota le das a la app?</div>
         <div class="stars" id="fbStars"><button type="button" data-n="1" aria-label="1 estrellas">★</button><button type="button" data-n="2" aria-label="2 estrellas">★</button><button type="button" data-n="3" aria-label="3 estrellas">★</button><button type="button" data-n="4" aria-label="4 estrellas">★</button><button type="button" data-n="5" aria-label="5 estrellas">★</button></div></div>
-      <label>Cuéntanos<textarea name="texto" id="fbText" maxlength="2000" placeholder="Qué te gustaría encontrar, qué cambiarías, qué humorista o pelotero quieres ver…"></textarea></label>
+      <label>Cuéntanos<textarea name="texto" id="fbText" maxlength="2000" placeholder="Qué te gustaría encontrar, qué cambiarías, qué pelotero quieres ver…"></textarea></label>
       <label>Tu nombre o WhatsApp (si quieres que te respondamos)<input type="text" name="contacto" id="fbContact" maxlength="120"></label>
       <div class="hp" aria-hidden="true"><input type="text" name="web" tabindex="-1" autocomplete="off"></div>
       <button class="fbsend" id="fbSend" type="submit">Enviar mi opinión</button>
@@ -541,6 +541,7 @@ if (EN) {
   walk(document.body);
   document.querySelectorAll('a[href="https://rectaalpecho.com/"]').forEach(a => a.href = "https://www.straight2dchest.com/news/");
   const q = document.getElementById("q"); q.placeholder = "Search a player: Liván, Soler, Casanova…";
+  const fb = document.getElementById("fbText"); if (fb) fb.placeholder = "What would you like to find, what would you change, which player would you like to see…";
   const b = document.querySelector(".brand b"); if (b) b.innerHTML = "Straight <i>2D</i> Chest";
 }
 </script>
