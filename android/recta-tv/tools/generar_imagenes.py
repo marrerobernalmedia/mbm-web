@@ -42,6 +42,8 @@ for root, _, files in os.walk(R):
         if fn == "splash.png":
             p = os.path.join(root, fn); w, h = Image.open(p).size
             im = Image.new("RGBA", (w, h), BG); s = int(min(w, h) * .35)
-            lg = LOGO.resize((s, s), Image.LANCZOS); im.paste(lg, ((w - s) // 2, (h - s) // 2), lg)
+            lg = LOGO.resize((s, s), Image.LANCZOS); cm = Image.new("L", (s * 4, s * 4), 0)
+            ImageDraw.Draw(cm).ellipse((6, 6, s * 4 - 7, s * 4 - 7), fill=255); cm = cm.resize((s, s), Image.LANCZOS)
+            im.paste(lg, ((w - s) // 2, (h - s) // 2), cm)  # solo la pelota redonda, sin el cuadrado blanco
             im.convert("RGB").save(p)
 print("ok")
