@@ -172,6 +172,11 @@ html.tv input.tv-foco{transform:none}
       if (score < bestScore) { bestScore = score; best = el; }
     }
     if (best) mark(best);
+    // Sin nada más que marcar hacia abajo/arriba: la página se desplaza igual para leer el texto que queda
+    else if (dir === "ArrowDown" || dir === "ArrowUp") {
+      const sc = document.scrollingElement || root, paso = Math.round(window.innerHeight * 0.6) * (dir === "ArrowDown" ? 1 : -1);
+      sc.scrollTop = Math.max(0, sc.scrollTop + paso); window.scrollTo(0, sc.scrollTop);
+    }
   }
 
   // Reproductor a pantalla completa: OK pausa/sigue, ← → retrocede/adelanta 10 s, ↓ muestra "Sigue viendo", Atrás cierra
@@ -334,6 +339,9 @@ html.tv input.tv-foco{transform:none}
 
   // Cuando la pantalla cambia (pestaña, show, reproductor), el foco vuelve a algo visible
   const first = () => { const l = items(); return l.find(el => !el.closest("nav.tabs, header, [data-mbp-close]")) || l[0] || null; };
+  // En el TV no hay Facebook: el texto de "Muy pronto" no lo menciona
+  const sinFb = () => document.querySelectorAll("#view p").forEach(p => { if (/Síguelo en Facebook/.test(p.textContent)) p.textContent = p.textContent.replace(/Síguelo en Facebook[^.]*\./, "Muy pronto, aquí en El Home de la Risa."); });
+  new MutationObserver(() => sinFb()).observe(document.documentElement, { childList: true, subtree: true });
   const fix = () => { if (!cur || !document.contains(cur) || !visible(cur) || !items().includes(cur)) mark(first()); };
   new MutationObserver(() => { clearTimeout(fix.t); fix.t = setTimeout(fix, 150); }).observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["hidden"] });
   window.addEventListener("load", () => setTimeout(fix, 300));
