@@ -189,7 +189,7 @@ html.tv input.tv-foco{transform:none}
     if (!id) return;
     e.preventDefault(); e.stopImmediatePropagation();
     try { window.MBP && window.MBP.close(); } catch (x) {}
-    location.href = "vnd.youtube:" + id;
+    location.href = "https://youtu.be/" + id; // youtu.be no está en allowNavigation: Android lo manda a la app de YouTube con el video
     let fuera = false; const v = () => { fuera = true; }; window.addEventListener("blur", v, { once: true }); document.addEventListener("visibilitychange", v, { once: true }); window.addEventListener("pagehide", v, { once: true });
     setTimeout(() => { if (!fuera && !document.hidden && document.hasFocus() && window.MBP) window.MBP.open(id); }, 3000);
   }, true);
