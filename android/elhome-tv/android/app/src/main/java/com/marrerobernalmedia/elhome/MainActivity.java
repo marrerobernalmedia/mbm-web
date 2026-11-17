@@ -4,6 +4,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.webkit.JavascriptInterface;
+import android.content.Context;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import androidx.activity.OnBackPressedCallback;
@@ -26,6 +29,17 @@ public class MainActivity extends BridgeActivity {
 
         final WebView web = getBridge() != null ? getBridge().getWebView() : null;
         if (web != null) {
+            // Teclado en pantalla: la página lo pide al entrar al cuadro de búsqueda (en el TV no sale solo)
+            web.addJavascriptInterface(new Object() {
+                @JavascriptInterface
+                public void teclado() {
+                    runOnUiThread(() -> {
+                        web.requestFocus();
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        if (imm != null) imm.showSoftInput(web, InputMethodManager.SHOW_FORCED);
+                    });
+                }
+            }, "MBMNative");
             web.setWebChromeClient(new BridgeWebChromeClient(getBridge()) {
                 @Override
                 public void onShowCustomView(View view, CustomViewCallback callback) {

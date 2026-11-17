@@ -221,7 +221,12 @@ html.tv input.tv-foco{transform:none}
   document.addEventListener("keydown", e => {
     const k = e.key;
     // Entrar al cuadro de búsqueda (OK) cuenta como un paso: Atrás sale del cuadro, no de la app
-    if ((k === "Enter" || k === " ") && cur && cur.id === "q" && !cur.dataset.tvPaso) { cur.dataset.tvPaso = "1"; paso(); }
+    if (k === "Enter" && cur && cur.id === "q") {
+      if (!cur.dataset.tvPaso) { cur.dataset.tvPaso = "1"; paso(); }
+      // En el TV el teclado no sale solo: se pide a la app (y, por si acaso, con un toque simulado)
+      const q = cur;
+      if (!q.value.trim()) { e.preventDefault(); try { q.blur(); } catch (x) {} setTimeout(() => { try { q.focus(); q.click(); } catch (x) {} try { window.MBMNative && window.MBMNative.teclado(); } catch (x) {} }, 30); return; }
+    }
     const pl = player();
     if (pl && !pl.classList.contains("tvlist")) {
       const y = window.MBP && window.MBP.yt;
