@@ -80,7 +80,7 @@ html.tv input.tv-foco{transform:none}
     el.classList.add("tv-foco");
     try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
     // La pantalla sigue al cursor (sin animación: en el TV la animación se cortaba) y nunca se corre de lado
-    if (el.closest("header, nav.tabs")) { window.scrollTo(0, 0); return; }
+    if (el.closest("header, nav.tabs")) { (document.scrollingElement || root).scrollTop = 0; window.scrollTo(0, 0); return; }
     const box = el.closest(".mbp-list") || null;
     // Filas que se desplazan de lado (carruseles): acomoda la fila, no la página
     let p = el.parentElement;
@@ -98,8 +98,15 @@ html.tv input.tv-foco{transform:none}
     const r = el.getBoundingClientRect(), H = window.innerHeight;
     const hdr = document.querySelector("header"), top = 70;
     if (r.top < top || r.bottom > H - 30) {
-      const y = window.scrollY + r.top - Math.max(top, (H - r.height) / 2);
-      window.scrollTo(0, Math.max(0, y));
+      // Si quedó trabado el bloqueo del reproductor (html.mbp-lock) con el reproductor cerrado, se quita
+      if (root.classList.contains("mbp-lock") && !document.querySelector(".mbp:not([hidden])")) root.classList.remove("mbp-lock");
+      const d = r.top - Math.max(top, (H - r.height) / 2);
+      // El contenedor que de verdad se desplaza (la página o una caja con barra propia)
+      let sc = el.parentElement;
+      while (sc && sc !== document.body && sc !== root) { const o = getComputedStyle(sc).overflowY; if (/(auto|scroll)/.test(o) && sc.scrollHeight > sc.clientHeight + 2) break; sc = sc.parentElement; }
+      if (!sc || sc === document.body || sc === root) sc = document.scrollingElement || root;
+      sc.scrollTop = Math.max(0, sc.scrollTop + d);
+      if (sc === (document.scrollingElement || root) && Math.abs(window.scrollY - sc.scrollTop) > 2) window.scrollTo(0, sc.scrollTop);
     }
     if (document.documentElement.scrollLeft) document.documentElement.scrollLeft = 0;
   };
@@ -183,7 +190,8 @@ html.tv input.tv-foco{transform:none}
     e.preventDefault(); e.stopImmediatePropagation();
     try { window.MBP && window.MBP.close(); } catch (x) {}
     location.href = "vnd.youtube:" + id;
-    setTimeout(() => { if (!document.hidden && window.MBP) window.MBP.open(id); }, 2500);
+    let fuera = false; const v = () => { fuera = true; }; window.addEventListener("blur", v, { once: true }); document.addEventListener("visibilitychange", v, { once: true }); window.addEventListener("pagehide", v, { once: true });
+    setTimeout(() => { if (!fuera && !document.hidden && document.hasFocus() && window.MBP) window.MBP.open(id); }, 3000);
   }, true);
 
   // El video nunca se queda con el foco (si lo toma, el control remoto deja de llegar a la página)
