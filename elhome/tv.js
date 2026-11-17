@@ -194,8 +194,7 @@ html.tv input.tv-foco{transform:none}
     e.preventDefault(); e.stopImmediatePropagation();
     try { window.MBP && window.MBP.close(); } catch (x) {}
     location.href = "https://youtu.be/" + id; // youtu.be no está en allowNavigation: Android lo manda a la app de YouTube con el video
-    let fuera = false; const v = () => { fuera = true; }; window.addEventListener("blur", v, { once: true }); document.addEventListener("visibilitychange", v, { once: true }); window.addEventListener("pagehide", v, { once: true });
-    setTimeout(() => { if (!fuera && !document.hidden && document.hasFocus() && window.MBP) window.MBP.open(id); }, 3000);
+    // Sin respaldo automático: el reproductor de la página le quitaba el sonido a YouTube y la app de YouTube se cerraba a los 2 s (17-nov-2026)
   }, true);
 
   // El video nunca se queda con el foco (si lo toma, el control remoto deja de llegar a la página)
