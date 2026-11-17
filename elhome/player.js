@@ -113,17 +113,22 @@ html.mbp-lock nav.tabs{z-index:10000}
     f.href = "https://youtu.be/" + cur; f.innerHTML = "<span>▶</span>" + L("Ver este video en YouTube", "Watch this video on YouTube"); f.hidden = false;
   }
   // Al cambiar de video, tapa el cuadro anterior hasta que el nuevo arranque (si no, se ve un destello de la portada vieja)
-  let coverT;
+  let coverT, ytHl;
   function cover(on){ const v = root && root.querySelector(".mbp-vid"); if (!v) return; clearTimeout(coverT); v.classList.toggle("mbp-load", on); if (on) coverT = setTimeout(() => v.classList.remove("mbp-load"), 9000); }
   function play(id){
     cur = id; fill(id); cover(true);
     const f = root.querySelector(".mbp-fail"); if (f) f.hidden = true;
     forcedMute = false; root.querySelector(".mbp-snd").hidden = true;
+    // El reproductor lleva el idioma de la app (hl): en la app de TV de Recta, en inglés escoge el audio en inglés.
+    // Si cambió el idioma desde la última vez, se rehace el reproductor.
+    const hl = P().en ? "en" : "es";
+    if (yt && ytHl !== hl) { try { yt.destroy(); } catch (e) {} yt = null; const v = root.querySelector(".mbp-vid"); if (!v.querySelector("#mbpPlayer")) { const d = document.createElement("div"); d.id = "mbpPlayer"; v.insertBefore(d, v.firstChild); } }
     if (yt && yt.loadVideoById) { try { yt.loadVideoById(id); guard(); return; } catch (e) {} }
     api().then(() => {
       if (yt && yt.loadVideoById) { yt.loadVideoById(cur); guard(); return; }
+      ytHl = P().en ? "en" : "es";
       yt = new YT.Player("mbpPlayer", { videoId: cur, host: "https://www.youtube.com",
-        playerVars: { autoplay: 1, playsinline: 1, rel: 0, modestbranding: 1, origin: location.origin },
+        playerVars: { autoplay: 1, playsinline: 1, rel: 0, modestbranding: 1, origin: location.origin, hl: ytHl },
         events: { onReady: e => { try { e.target.playVideo(); } catch (x) {} guard(); }, onStateChange: onState,
           onError: ev => { window.MBP.err = ev.data; fail(); } } });
     }).catch(fail);

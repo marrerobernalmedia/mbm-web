@@ -10,6 +10,10 @@ import android.content.Context;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import androidx.activity.OnBackPressedCallback;
+import androidx.webkit.WebViewCompat;
+import androidx.webkit.WebViewFeature;
+import java.util.HashSet;
+import java.util.Arrays;
 import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.BridgeWebChromeClient;
 
@@ -19,6 +23,17 @@ import com.getcapacitor.BridgeWebChromeClient;
 // 2) Botón Atrás del control: primero sale del video, después retrocede dentro de la app (serie → lista → Inicio)
 //    y solo cierra la app desde Inicio.
 public class MainActivity extends BridgeActivity {
+
+    private static final String AUDIO_JS =
+        "(function(){if(!/^\\/embed\\//.test(location.pathname))return;" +
+        "var want=(new URLSearchParams(location.search).get('hl')||'').slice(0,2).toLowerCase();if(!want)return;" +
+        "function meta(t){for(var k in t){var v=t[k];if(v&&typeof v==='object'&&typeof v.id==='string'&&('isDefault' in v))return v;}return {};}" +
+        "var done={};setInterval(function(){try{var p=document.getElementById('movie_player');if(!p||!p.getAvailableAudioTracks)return;" +
+        "var vd=p.getVideoData&&p.getVideoData();var vid=vd&&vd.video_id;if(!vid||done[vid])return;" +
+        "var av=p.getAvailableAudioTracks()||[];if(!av.length)return;" +
+        "var cur=(meta(p.getAudioTrack()).id||'').slice(0,2).toLowerCase();if(cur===want){done[vid]=1;return;}" +
+        "var t=av.find(function(x){return (meta(x).id||'').slice(0,2).toLowerCase()===want;});" +
+        "if(!t){done[vid]=1;return;}if(p.setAudioTrack(t))done[vid]=1;}catch(e){}},700);})();";
 
     private View videoView = null;
     private android.webkit.WebChromeClient.CustomViewCallback videoCallback = null;
@@ -40,6 +55,14 @@ public class MainActivity extends BridgeActivity {
                     });
                 }
             }, "MBMNative");
+            // Audio en inglés: si la app está en inglés (el reproductor lleva hl=en), dentro del reproductor de YouTube
+            // se escoge la pista de audio en inglés cuando el video la tiene (Eliam, 17-nov-2026)
+            if (WebViewFeature.isFeatureSupported(WebViewFeature.DOCUMENT_START_SCRIPT)) {
+                try {
+                    WebViewCompat.addDocumentStartJavaScript(web, AUDIO_JS, new HashSet<>(Arrays.asList(
+                        "https://www.youtube.com", "https://www.youtube-nocookie.com")));
+                } catch (Exception e) {}
+            }
             web.setWebChromeClient(new BridgeWebChromeClient(getBridge()) {
                 @Override
                 public void onShowCustomView(View view, CustomViewCallback callback) {
