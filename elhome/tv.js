@@ -47,6 +47,13 @@ html.tv .mbp-fail.tv-foco{position:absolute!important;transform:none}
 html.tv .mbp-snd.tv-foco{position:absolute!important;transform:translateX(-50%) scale(1.04)}
 html.tv .tvhint{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:10001;background:rgba(0,0,0,.78);color:#fff;border-radius:999px;padding:10px 20px;font:600 16px/1.2 system-ui,sans-serif;pointer-events:none;transition:opacity .4s}
 html.tv .tvhint.off{opacity:0}
+html.tv .shead{grid-template-columns:minmax(0,3fr) minmax(0,2fr)!important;align-items:center}
+html.tv .shead .pic{align-self:stretch;display:flex;align-items:center;background:#000}
+html.tv .shead .pic img{width:100%;height:auto!important;aspect-ratio:16/9;object-fit:cover;display:block}
+html.tv .shead .b{padding:14px 18px!important;align-self:stretch!important;display:flex;flex-direction:column;justify-content:center}
+html.tv .shead h1{font-size:26px!important}
+html.tv .shead p{font-size:14px}
+html.tv .shead .btn{padding:10px 14px;font-size:14px}
 html.tv :focus{outline:none}
 html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:4px;border-radius:12px;box-shadow:0 0 0 8px rgba(143,209,31,.25);transform:scale(1.04);transition:transform .12s, box-shadow .12s;position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{transform:none}
