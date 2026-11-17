@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">El Home de la Risa</string>
+    <string name="title_activity_main">El Home de la Risa</string>
+    <string name="package_name">com.marrerobernalmedia.elhome</string>
+    <string name="custom_url_scheme">com.marrerobernalmedia.elhome</string>
+</resources>
