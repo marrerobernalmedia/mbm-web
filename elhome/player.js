@@ -19,6 +19,7 @@
 .mbp-wrap{max-width:960px;margin:0 auto}
 .mbp-vid{position:relative;width:100%;aspect-ratio:16/9;background:#111}
 .mbp-vid iframe,.mbp-vid>div{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mbp-vid.mbp-load iframe{opacity:0}
 .mbp-fail{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#111;color:#fff;text-decoration:none;font-weight:700;font-size:15px}
 .mbp-fail[hidden]{display:none}
 .mbp-fail span{width:64px;height:44px;border-radius:12px;background:#f00;display:flex;align-items:center;justify-content:center;font-size:20px}
@@ -93,7 +94,7 @@ html.mbp-lock nav.tabs{z-index:10000}
   function onState(e){
     const s = e.data;
     if (s === 1 && /MBMTV/.test(navigator.userAgent)) { try { if (yt.isMuted()) { yt.unMute(); yt.setVolume(100); } } catch (x) {} }
-    if (s === 1) { clearTimeout(watch); root.querySelector(".mbp-snd").hidden = !(forcedMute && yt.isMuted && yt.isMuted()); }
+    if (s === 1) { cover(false); clearTimeout(watch); root.querySelector(".mbp-snd").hidden = !(forcedMute && yt.isMuted && yt.isMuted()); }
     if (s === 0 && autoNext && queue[0]) play(queue[0]);
   }
   // Si el navegador no deja arrancar con sonido (iPhone sobre todo), arranca en silencio con el botón "activar el sonido"
@@ -106,13 +107,16 @@ html.mbp-lock nav.tabs{z-index:10000}
 
   // Si YouTube no deja verlo aquí, un botón grande para abrirlo en YouTube (un toque: así el navegador no lo bloquea)
   function fail(){
-    clearTimeout(watch);
+    clearTimeout(watch); cover(false);
     const v = root.querySelector(".mbp-vid"); let f = v.querySelector(".mbp-fail");
     if (!f) { f = document.createElement("a"); f.className = "mbp-fail"; f.target = "_blank"; f.rel = "noopener"; f.setAttribute("data-yt", ""); v.appendChild(f); }
     f.href = "https://youtu.be/" + cur; f.innerHTML = "<span>▶</span>" + L("Ver este video en YouTube", "Watch this video on YouTube"); f.hidden = false;
   }
+  // Al cambiar de video, tapa el cuadro anterior hasta que el nuevo arranque (si no, se ve un destello de la portada vieja)
+  let coverT;
+  function cover(on){ const v = root && root.querySelector(".mbp-vid"); if (!v) return; clearTimeout(coverT); v.classList.toggle("mbp-load", on); if (on) coverT = setTimeout(() => v.classList.remove("mbp-load"), 9000); }
   function play(id){
-    cur = id; fill(id);
+    cur = id; fill(id); cover(true);
     const f = root.querySelector(".mbp-fail"); if (f) f.hidden = true;
     forcedMute = false; root.querySelector(".mbp-snd").hidden = true;
     if (yt && yt.loadVideoById) { try { yt.loadVideoById(id); guard(); return; } catch (e) {} }
@@ -135,7 +139,7 @@ html.mbp-lock nav.tabs{z-index:10000}
   }
   function close(fromPop){
     if (!root || root.hidden) return;
-    clearTimeout(watch); try { yt && yt.stopVideo(); } catch (e) {}
+    clearTimeout(watch); cover(true); try { yt && yt.stopVideo(); } catch (e) {}
     root.hidden = true; root.classList.remove("tvlist"); document.documentElement.classList.remove("mbp-lock");
     if (pushed) { pushed = false; if (!fromPop) { try { history.back(); } catch (e) {} } }
   }
