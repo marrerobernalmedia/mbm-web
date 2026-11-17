@@ -3,10 +3,10 @@
    (Facebook e Instagram) y con vidIQ (YouTube). No editar a mano los sitios:
    editar este archivo y hacer push. */
 window.SEGUIDORES = {
-  "actualizado": "2026-11-16",
-  "fb": {"larisa":586490,"lacosa":174902,"recta":73230,"elhome":18102,"mba":5210,"cuero":2373,"welcome":5356,"mbm":2179,"eliam":11542,"nadie":523},
-  "ig": {"larisa":50629,"lacosa":31364,"mbm":10311,"recta":9480,"welcome":3721,"elhome":3064,"nadie":47,"cuero":20,"mba":219,"eliam":7158},
-  "yt": {"larisa":92081,"recta":19171,"lacosa":14174,"elhome":3523,"welcome":2937,"mbm":20}
+  "actualizado": "2026-11-17",
+  "fb": {"larisa":586643,"lacosa":175128,"recta":73363,"elhome":19261,"mba":5210,"cuero":2390,"welcome":5483,"mbm":2193,"eliam":11542,"nadie":642},
+  "ig": {"larisa":50617,"lacosa":31387,"mbm":10321,"recta":9481,"welcome":3732,"elhome":3240,"nadie":47,"cuero":21,"mba":219,"eliam":7157},
+  "yt": {"larisa":92188,"recta":19174,"lacosa":14203,"elhome":3545,"welcome":2957,"mbm":21}
 };
 (function(){
   var S=window.SEGUIDORES, RED=["larisa","lacosa","recta","elhome","welcome","mbm","cuero","nadie","eliam","mba"]; /* eliam y mba suman a la red desde el 16-nov-2026 (pedido de Eliam) */
