@@ -63,6 +63,9 @@ html.tv nav.tabs [data-tab="shows"]{order:3}
 html.tv nav.tabs [data-tab="humoristas"]{order:4}
 html.tv nav.tabs [data-tvcomp]{order:5}
 html.tv .hdrow nav.tabs{flex:1 1 auto}
+html.tv .subs{overflow:visible!important;flex-wrap:wrap!important;gap:12px!important;padding:10px 8px 8px!important;margin:8px 0 0!important}
+html.tv .sortbar{gap:12px;padding:8px;margin:0 0 10px}
+html.tv .chip.tv-foco{transform:none!important;outline-offset:2px;box-shadow:0 0 0 5px rgba(143,209,31,.25)}
 html.tv :focus{outline:none}
 html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:4px;border-radius:12px;box-shadow:0 0 0 8px rgba(143,209,31,.25);transform:scale(1.04);transition:transform .12s, box-shadow .12s;position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{transform:none}
