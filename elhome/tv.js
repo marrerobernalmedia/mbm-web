@@ -21,7 +21,7 @@ html.tv #instBtn, html.tv #appBtn, html.tv .inst,
 html.tv a[href*="marrerobernalmedia.com/apps"], html.tv a[href*="larisaapp.com"],
 html.tv [data-share], html.tv .redwrap{display:none!important}
 html.tv, html.tv body{overflow-x:hidden!important;max-width:100vw}
-html.tv #bellBtn, html.tv .brand span{display:none!important}
+html.tv #bellBtn, html.tv .brand span, html.tv .en-aviso, html.tv [data-open-sheet], html.tv #pushBtn{display:none!important}
 html.tv .hdrow{gap:12px;min-width:0}
 html.tv .hdrow .hd{flex:0 1 auto;min-width:0;gap:12px}
 html.tv .hdrow .brand{margin-right:4px}
