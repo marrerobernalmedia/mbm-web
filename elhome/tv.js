@@ -55,14 +55,36 @@ html.tv .shead h1{font-size:26px!important}
 html.tv .shead p{font-size:14px}
 html.tv .shead .btn{padding:10px 14px;font-size:14px}
 html.tv .shead .btns, html.tv .shead .chl{display:none!important}
+html.tv .search, html.tv .hdrow .search{display:none!important}
+html.tv nav.tabs div{display:flex}
+html.tv nav.tabs [data-tab="inicio"]{order:1}
+html.tv nav.tabs [data-tab="noticias"]{order:2}
+html.tv nav.tabs [data-tab="shows"]{order:3}
+html.tv nav.tabs [data-tab="humoristas"]{order:4}
+html.tv nav.tabs [data-tvcomp]{order:5}
+html.tv .hdrow nav.tabs{flex:1 1 auto}
 html.tv :focus{outline:none}
 html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:4px;border-radius:12px;box-shadow:0 0 0 8px rgba(143,209,31,.25);transform:scale(1.04);transition:transform .12s, box-shadow .12s;position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{transform:none}
 html.tv input.tv-foco{transform:none}
 `;
   (document.head || root).appendChild(st);
-  const ph = () => { const q = document.getElementById("q"); if (q) q.placeholder = "Buscar…"; };
-  ph(); document.addEventListener("DOMContentLoaded", ph);
+  // Menú del TV (Eliam, 17-nov-2026): sin buscador; Inicio · Lo nuevo · Shows · Humoristas · Compilatorios
+  const menuTV = () => {
+    const nav = document.querySelector("nav.tabs div");
+    if (!nav || nav.querySelector("[data-tvcomp]")) return;
+    const b = document.createElement("button");
+    b.setAttribute("role", "tab"); b.setAttribute("data-tvcomp", ""); b.setAttribute("aria-selected", "false");
+    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="5" width="13" height="10" rx="2"/><path d="M8 19h11a2 2 0 0 0 2-2V9"/></svg>Compilatorios';
+    b.addEventListener("click", () => {
+      try {
+        openShow = "compilatorios"; openComic = null; sub = 0; sort = "show"; go("shows");
+        document.querySelectorAll("nav.tabs button").forEach(x => x.setAttribute("aria-selected", x === b));
+      } catch (e) {}
+    });
+    nav.appendChild(b);
+  };
+  menuTV(); document.addEventListener("DOMContentLoaded", menuTV);
 
   const SEL = 'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"]), [data-show], [data-comic], [data-tab-go], [data-sub], [data-play], [data-id]';
   const visible = el => {
