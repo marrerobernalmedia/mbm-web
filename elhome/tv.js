@@ -20,7 +20,8 @@ html.tv nav.tabs [data-tab="entradas"],
 html.tv #instBtn, html.tv #appBtn, html.tv .inst,
 html.tv a[href*="marrerobernalmedia.com/apps"], html.tv a[href*="larisaapp.com"],
 html.tv [data-share], html.tv .redwrap{display:none!important}
-html.tv, html.tv body{overflow-x:hidden!important;max-width:100vw}
+html.tv{overflow-x:hidden!important}
+html.tv body{overflow-x:clip!important;max-width:100vw}
 html.tv #bellBtn, html.tv .brand span, html.tv .en-aviso, html.tv [data-open-sheet], html.tv #pushBtn{display:none!important}
 html.tv .hdrow{gap:12px;min-width:0}
 html.tv .hdrow .hd{flex:0 1 auto;min-width:0;gap:12px}
@@ -78,11 +79,29 @@ html.tv input.tv-foco{transform:none}
     if (!el.matches('a[href],button,input,select,textarea,[tabindex]')) el.setAttribute("tabindex", "0");
     el.classList.add("tv-foco");
     try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
-    // Solo desplazamiento vertical: la página nunca se corre de lado
-    if (!el.closest("header, nav.tabs")) el.scrollIntoView({ block: "center", inline: "nearest", behavior: "smooth" });
-    else window.scrollTo({ top: 0, behavior: "smooth" });
-    if (window.scrollX) window.scrollTo(0, window.scrollY);
-    document.documentElement.scrollLeft = 0; document.body.scrollLeft = 0;
+    // La pantalla sigue al cursor (sin animación: en el TV la animación se cortaba) y nunca se corre de lado
+    if (el.closest("header, nav.tabs")) { window.scrollTo(0, 0); return; }
+    const box = el.closest(".mbp-list") || null;
+    // Filas que se desplazan de lado (carruseles): acomoda la fila, no la página
+    let p = el.parentElement;
+    while (p && p !== document.body) {
+      const cs = getComputedStyle(p);
+      if (/(auto|scroll)/.test(cs.overflowX) && p.scrollWidth > p.clientWidth + 2) {
+        const pr = p.getBoundingClientRect(), r = el.getBoundingClientRect();
+        if (r.left < pr.left + 20) p.scrollLeft -= (pr.left + 20 - r.left);
+        else if (r.right > pr.right - 20) p.scrollLeft += (r.right - pr.right + 20);
+        break;
+      }
+      p = p.parentElement;
+    }
+    if (box || el.closest(".mbp")) return;
+    const r = el.getBoundingClientRect(), H = window.innerHeight;
+    const hdr = document.querySelector("header"), top = 70;
+    if (r.top < top || r.bottom > H - 30) {
+      const y = window.scrollY + r.top - Math.max(top, (H - r.height) / 2);
+      window.scrollTo(0, Math.max(0, y));
+    }
+    if (document.documentElement.scrollLeft) document.documentElement.scrollLeft = 0;
   };
 
   const center = r => ({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
@@ -125,6 +144,31 @@ html.tv input.tv-foco{transform:none}
     // Si el video toma el foco, se lo devolvemos a la página para que el control remoto siga funcionando
     if (pl && document.activeElement && document.activeElement.tagName === "IFRAME") { try { window.focus(); document.activeElement.blur(); } catch (e) {} }
   }, 300);
+  // Botón Atrás del control: retrocede un paso dentro de la app (show → lista → Inicio) y solo sale desde Inicio
+  let volviendo = false;
+  const paso = () => { if (!volviendo) { try { history.pushState({ tv: 1 }, ""); } catch (x) {} } };
+  document.addEventListener("click", e => {
+    const t = e.target.closest && e.target.closest('[data-show], [data-comic], [data-tab-go], nav.tabs button');
+    if (!t) return;
+    if (t.matches("nav.tabs button") && t.getAttribute("aria-selected") === "true") return;
+    paso();
+  }, true);
+  document.addEventListener("input", e => { if (e.target && e.target.id === "q" && e.target.value.trim().length === 1 && !e.target.dataset.tvPaso) { e.target.dataset.tvPaso = "1"; paso(); } }, true);
+  window.addEventListener("popstate", () => {
+    if (document.querySelector(".mbp:not([hidden])")) return; // el reproductor maneja su propio Atrás
+    volviendo = true;
+    try {
+      const q = document.getElementById("q");
+      const atras = document.querySelector("#view [data-back]");
+      const ini = document.querySelector('nav.tabs [data-tab="inicio"]');
+      if (q && q.value.trim()) { q.value = ""; delete q.dataset.tvPaso; q.dispatchEvent(new Event("input", { bubbles: true })); }
+      else if (atras) atras.click();
+      else if (ini && ini.getAttribute("aria-selected") !== "true") ini.click();
+    } finally { volviendo = false; }
+    window.scrollTo(0, 0);
+    setTimeout(() => mark(first()), 120);
+  });
+
   // En el televisor el capítulo se abre en la app de YouTube del TV (pantalla completa, control normal, la vista cuenta en el canal).
   // El reproductor de la página parpadeaba en algunos TV (TCL, 17-nov-2026). Si el TV no tiene la app de YouTube, se usa el de la página.
   const RXV = /^https?:\/\/(?:www\.|m\.)?(?:youtu\.be\/([\w-]{11})|youtube\.com\/(?:watch\?(?:[^#]*&)?v=([\w-]{11})|shorts\/([\w-]{11})|live\/([\w-]{11})))/;
