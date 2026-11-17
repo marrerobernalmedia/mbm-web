@@ -28,10 +28,10 @@ def banner(w, h, path):
     def fit(t, s):
         while s > 6 and dr.textlength(t, font=font(s)) > room: s -= 1
         return font(s)
-    f1 = fit("AL PECHO", int(h * .22)); f2 = fit("Béisbol cubano", int(h * .12))
+    f1 = fit("AL PECHO", int(h * .22)); f2 = fit("Puro béisbol", int(h * .12))
     dr.text((x, h * .20), "RECTA", font=f1, fill=(243, 239, 230, 255))
     dr.text((x, h * .43), "AL PECHO", font=f1, fill=LIME)
-    dr.text((x, h * .68), "Béisbol cubano", font=f2, fill=(154, 168, 189, 255))
+    dr.text((x, h * .68), "Puro béisbol", font=f2, fill=(154, 168, 189, 255))
     im.convert("RGB").save(path)
 os.makedirs(f"{R}/drawable-xhdpi", exist_ok=True)
 banner(320, 180, f"{R}/drawable/banner.png")
