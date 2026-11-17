@@ -70,8 +70,10 @@ html.tv header .hdrow{padding-block:10px}
 html.tv .hdrow nav.tabs div{gap:6px!important;overflow:visible}
 html.tv .hdrow nav.tabs button{padding:10px 14px!important}
 html.tv nav.tabs button.tv-foco{outline:3px solid var(--lime,#8fd11f)!important;outline-offset:-3px!important;box-shadow:none!important;transform:none!important;background:rgba(143,209,31,.14)!important;color:var(--fg)!important}
+html.tv .week{overflow:visible!important;padding:4px 0!important;gap:8px!important}
+html.tv .home-top>div:last-child>section:first-child, html.tv .home-top>div:last-child>.mobonly+section{margin-top:0!important}
 html.tv :focus{outline:none}
-html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:4px;border-radius:12px;box-shadow:0 0 0 8px rgba(143,209,31,.25);transform:scale(1.04);transition:transform .12s, box-shadow .12s;position:relative;z-index:5}
+html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:-4px!important;border-radius:12px;box-shadow:inset 0 0 0 8px rgba(143,209,31,.18)!important;position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{transform:none}
 html.tv input.tv-foco{transform:none}
 `;
