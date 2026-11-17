@@ -125,6 +125,23 @@ html.tv input.tv-foco{transform:none}
     // Si el video toma el foco, se lo devolvemos a la página para que el control remoto siga funcionando
     if (pl && document.activeElement && document.activeElement.tagName === "IFRAME") { try { window.focus(); document.activeElement.blur(); } catch (e) {} }
   }, 300);
+  // En el televisor el capítulo se abre en la app de YouTube del TV (pantalla completa, control normal, la vista cuenta en el canal).
+  // El reproductor de la página parpadeaba en algunos TV (TCL, 17-nov-2026). Si el TV no tiene la app de YouTube, se usa el de la página.
+  const RXV = /^https?:\/\/(?:www\.|m\.)?(?:youtu\.be\/([\w-]{11})|youtube\.com\/(?:watch\?(?:[^#]*&)?v=([\w-]{11})|shorts\/([\w-]{11})|live\/([\w-]{11})))/;
+  const vid = href => { const m = RXV.exec(href || ""); return m ? (m[1] || m[2] || m[3] || m[4]) : null; };
+  const enApp = /MBMTV/.test(navigator.userAgent);
+  document.addEventListener("click", e => {
+    if (!enApp) return;
+    const a = e.target.closest && e.target.closest("a[href]");
+    const it = e.target.closest && e.target.closest("[data-mbp-id]");
+    const id = it ? it.dataset.mbpId : a ? vid(a.href) : null;
+    if (!id) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    try { window.MBP && window.MBP.close(); } catch (x) {}
+    location.href = "vnd.youtube:" + id;
+    setTimeout(() => { if (!document.hidden && window.MBP) window.MBP.open(id); }, 2500);
+  }, true);
+
   // El video nunca se queda con el foco (si lo toma, el control remoto deja de llegar a la página)
   window.addEventListener("blur", () => { if (player()) setTimeout(() => { try { const f = document.querySelector(".mbp-vid iframe"); if (f) f.setAttribute("tabindex", "-1"); if (document.activeElement) document.activeElement.blur(); window.focus(); } catch (e) {} }, 0); });
   document.addEventListener("click", e => { const pl = player(); if (pl && e.target.closest("[data-mbp-id]")) { pl.classList.remove("tvlist"); mark(null); } }, true);
