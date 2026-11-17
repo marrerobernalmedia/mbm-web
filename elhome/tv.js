@@ -20,12 +20,24 @@ html.tv nav.tabs [data-tab="entradas"],
 html.tv #instBtn, html.tv #appBtn, html.tv .inst,
 html.tv a[href*="marrerobernalmedia.com/apps"], html.tv a[href*="larisaapp.com"],
 html.tv [data-share], html.tv .redwrap{display:none!important}
+html.tv, html.tv body{overflow-x:hidden!important;max-width:100vw}
+html.tv #bellBtn, html.tv .brand span{display:none!important}
+html.tv .hdrow{gap:12px;min-width:0}
+html.tv .hdrow .hd{flex:0 1 auto;min-width:0;gap:12px}
+html.tv .hdrow .brand{margin-right:4px}
+html.tv .hdrow .brand b{font-size:20px;white-space:nowrap}
+html.tv .hdrow .hd>img{width:44px;height:44px}
+html.tv .hdrow nav.tabs div{gap:2px}
+html.tv .hdrow nav.tabs button{padding:9px 11px;font-size:15px}
+html.tv .hdrow .search{flex:1 1 200px;min-width:160px;max-width:none;margin-left:auto}
 html.tv :focus{outline:none}
 html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:4px;border-radius:12px;box-shadow:0 0 0 8px rgba(143,209,31,.25);transform:scale(1.04);transition:transform .12s, box-shadow .12s;position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{transform:none}
 html.tv input.tv-foco{transform:none}
 `;
   (document.head || root).appendChild(st);
+  const ph = () => { const q = document.getElementById("q"); if (q) q.placeholder = "Buscar…"; };
+  ph(); document.addEventListener("DOMContentLoaded", ph);
 
   const SEL = 'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"]), [data-show], [data-comic], [data-tab-go], [data-sub], [data-play], [data-id]';
   const visible = el => {
@@ -50,7 +62,11 @@ html.tv input.tv-foco{transform:none}
     if (!el.matches('a[href],button,input,select,textarea,[tabindex]')) el.setAttribute("tabindex", "0");
     el.classList.add("tv-foco");
     try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
-    el.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" });
+    // Solo desplazamiento vertical: la página nunca se corre de lado
+    if (!el.closest("header, nav.tabs")) el.scrollIntoView({ block: "center", inline: "nearest", behavior: "smooth" });
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+    if (window.scrollX) window.scrollTo(0, window.scrollY);
+    document.documentElement.scrollLeft = 0; document.body.scrollLeft = 0;
   };
 
   const center = r => ({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
