@@ -54,6 +54,7 @@ html.tv .shead .b{padding:14px 18px!important;align-self:stretch!important;displ
 html.tv .shead h1{font-size:26px!important}
 html.tv .shead p{font-size:14px}
 html.tv .shead .btn{padding:10px 14px;font-size:14px}
+html.tv .shead .btns, html.tv .shead .chl{display:none!important}
 html.tv :focus{outline:none}
 html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:4px;border-radius:12px;box-shadow:0 0 0 8px rgba(143,209,31,.25);transform:scale(1.04);transition:transform .12s, box-shadow .12s;position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{transform:none}
