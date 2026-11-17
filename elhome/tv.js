@@ -73,7 +73,7 @@ html.tv nav.tabs button.tv-foco{outline:3px solid var(--lime,#8fd11f)!important;
 html.tv .week{overflow:visible!important;padding:4px 0!important;gap:8px!important}
 html.tv .home-top>div:last-child>section:first-child, html.tv .home-top>div:last-child>.mobonly+section{margin-top:0!important}
 html.tv :focus{outline:none}
-html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:-4px!important;border-radius:12px;box-shadow:inset 0 0 0 8px rgba(143,209,31,.18)!important;position:relative;z-index:5}
+html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:3px!important;border-radius:12px;box-shadow:0 0 0 9px rgba(143,209,31,.18);position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{transform:none}
 html.tv input.tv-foco{transform:none}
 `;
