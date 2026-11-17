@@ -1,0 +1,13 @@
+{
+  "name": "mbm-recta-tv",
+  "private": true,
+  "version": "1.0.0",
+  "description": "App de Android TV / Google TV de Recta Al Pecho (Capacitor: abre la web en vivo en modo televisor)",
+  "dependencies": {
+    "@capacitor/android": "8.6.0",
+    "@capacitor/core": "8.6.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.6.0"
+  }
+}
