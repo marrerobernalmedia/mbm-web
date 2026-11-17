@@ -92,12 +92,15 @@ html.mbp-lock nav.tabs{z-index:10000}
 
   function onState(e){
     const s = e.data;
+    if (s === 1 && /MBMTV/.test(navigator.userAgent)) { try { if (yt.isMuted()) { yt.unMute(); yt.setVolume(100); } } catch (x) {} }
     if (s === 1) { clearTimeout(watch); root.querySelector(".mbp-snd").hidden = !(forcedMute && yt.isMuted && yt.isMuted()); }
     if (s === 0 && autoNext && queue[0]) play(queue[0]);
   }
   // Si el navegador no deja arrancar con sonido (iPhone sobre todo), arranca en silencio con el botón "activar el sonido"
   function guard(){
     clearTimeout(watch);
+    // En la app de televisor el sonido siempre está permitido: nunca se silencia (el video solo tarda más en cargar)
+    if (/MBMTV/.test(navigator.userAgent)) { watch = setTimeout(() => { try { if (yt.isMuted && yt.isMuted()) yt.unMute(); yt.setVolume(100); if (yt.getPlayerState() !== 1) yt.playVideo(); } catch (e) {} }, 2500); return; }
     watch = setTimeout(() => { try { const s = yt.getPlayerState(); if (s !== 1 && s !== 3 && s !== 0) { forcedMute = true; yt.mute(); yt.playVideo(); } } catch (e) {} }, 2200);
   }
 
