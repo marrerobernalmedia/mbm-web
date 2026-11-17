@@ -133,7 +133,7 @@ html.mbp-lock nav.tabs{z-index:10000}
   function close(fromPop){
     if (!root || root.hidden) return;
     clearTimeout(watch); try { yt && yt.stopVideo(); } catch (e) {}
-    root.hidden = true; document.documentElement.classList.remove("mbp-lock");
+    root.hidden = true; root.classList.remove("tvlist"); document.documentElement.classList.remove("mbp-lock");
     if (pushed) { pushed = false; if (!fromPop) { try { history.back(); } catch (e) {} } }
   }
   // Tocar una pestaña del menú con el reproductor abierto: se cierra y la app va a esa pestaña
@@ -153,5 +153,5 @@ html.mbp-lock nav.tabs{z-index:10000}
   const pre = () => api().catch(() => {});
   if ("requestIdleCallback" in window) requestIdleCallback(pre, { timeout: 4000 }); else setTimeout(pre, 2500);
 
-  window.MBP = { open, close, idOf };
+  window.MBP = { open, close, idOf, get yt(){ return yt; } };
 })();

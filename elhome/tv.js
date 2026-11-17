@@ -30,6 +30,22 @@ html.tv .hdrow .hd>img{width:44px;height:44px}
 html.tv .hdrow nav.tabs div{gap:2px}
 html.tv .hdrow nav.tabs button{padding:9px 11px;font-size:15px}
 html.tv .hdrow .search{flex:1 1 200px;min-width:160px;max-width:none;margin-left:auto}
+html.tv .mbp-top, html.tv .mbp-info, html.tv .mbp-acts, html.tv .mbp h4, html.tv .mbp-list{display:none!important}
+html.tv .mbp-body{overflow:hidden}
+html.tv .mbp-vid{position:fixed!important;inset:0;width:100vw!important;height:100vh!important;aspect-ratio:auto!important;z-index:1;background:#000}
+html.tv .mbp.tvlist h4, html.tv .mbp.tvlist .mbp-list{display:block!important;position:relative;z-index:2}
+html.tv .mbp.tvlist .mbp-list{display:flex!important;gap:14px;overflow-x:auto;padding:4px 28px 26px;scrollbar-width:none}
+html.tv .mbp.tvlist .mbp-body{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:2;overflow:visible;background:linear-gradient(transparent,rgba(0,0,0,.92) 30%);padding-top:60px}
+html.tv .mbp.tvlist h4{margin:0 28px 10px;font-size:18px}
+html.tv .mbp.tvlist .mbp-it{flex:none;width:240px;flex-direction:column;gap:6px;background:rgba(20,20,20,.9);padding:8px}
+html.tv .mbp.tvlist .mbp-it img{width:100%}
+html.tv .mbp.tvlist .mbp-it b{font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+html.tv .mbp.tvlist .mbp-it span{display:none}
+html.tv .mbp-vid iframe{pointer-events:none}
+html.tv .mbp-fail.tv-foco{position:absolute!important;transform:none}
+html.tv .mbp-snd.tv-foco{position:absolute!important;transform:translateX(-50%) scale(1.04)}
+html.tv .tvhint{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:10001;background:rgba(0,0,0,.78);color:#fff;border-radius:999px;padding:10px 20px;font:600 16px/1.2 system-ui,sans-serif;pointer-events:none;transition:opacity .4s}
+html.tv .tvhint.off{opacity:0}
 html.tv :focus{outline:none}
 html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:4px;border-radius:12px;box-shadow:0 0 0 8px rgba(143,209,31,.25);transform:scale(1.04);transition:transform .12s, box-shadow .12s;position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{transform:none}
@@ -92,8 +108,54 @@ html.tv input.tv-foco{transform:none}
     if (best) mark(best);
   }
 
+  // Reproductor a pantalla completa: OK pausa/sigue, ← → retrocede/adelanta 10 s, ↓ muestra "Sigue viendo", Atrás cierra
+  let hintT = 0;
+  const hint = txt => {
+    let h = document.querySelector(".tvhint");
+    if (!h) { h = document.createElement("div"); h.className = "tvhint"; document.body.appendChild(h); }
+    h.textContent = txt; h.classList.remove("off"); clearTimeout(hintT); hintT = setTimeout(() => h.classList.add("off"), 3500);
+  };
+  const player = () => document.querySelector(".mbp:not([hidden])");
+  let wasOpen = false;
+  setInterval(() => {
+    const pl = player();
+    if (pl && !wasOpen) { hint("OK: pausa · ← → : 10 segundos · ↓ : más capítulos · Atrás: salir"); try { if (document.activeElement && document.activeElement.tagName === "IFRAME") document.activeElement.blur(); } catch (e) {} }
+    if (!pl && wasOpen) { const h = document.querySelector(".tvhint"); if (h) h.classList.add("off"); }
+    wasOpen = !!pl;
+    // Si el video toma el foco, se lo devolvemos a la página para que el control remoto siga funcionando
+    if (pl && document.activeElement && document.activeElement.tagName === "IFRAME") { try { window.focus(); document.activeElement.blur(); } catch (e) {} }
+  }, 300);
+  // El video nunca se queda con el foco (si lo toma, el control remoto deja de llegar a la página)
+  window.addEventListener("blur", () => { if (player()) setTimeout(() => { try { const f = document.querySelector(".mbp-vid iframe"); if (f) f.setAttribute("tabindex", "-1"); if (document.activeElement) document.activeElement.blur(); window.focus(); } catch (e) {} }, 0); });
+  document.addEventListener("click", e => { const pl = player(); if (pl && e.target.closest("[data-mbp-id]")) { pl.classList.remove("tvlist"); mark(null); } }, true);
+
   document.addEventListener("keydown", e => {
     const k = e.key;
+    const pl = player();
+    if (pl && !pl.classList.contains("tvlist")) {
+      const y = window.MBP && window.MBP.yt;
+      const extra = pl.querySelector(".mbp-fail:not([hidden]), .mbp-snd:not([hidden])");
+      if (k === "Enter" || k === " " || k === "MediaPlayPause") {
+        e.preventDefault();
+        if (extra) { extra.click(); return; }
+        try { if (y.getPlayerState() === 1) { y.pauseVideo(); hint("⏸ Pausa"); } else { y.playVideo(); hint("▶"); } } catch (x) {}
+        return;
+      }
+      if (k === "ArrowRight" || k === "ArrowLeft" || k === "MediaFastForward" || k === "MediaRewind") {
+        e.preventDefault();
+        const d = (k === "ArrowRight" || k === "MediaFastForward") ? 10 : -10;
+        try { y.seekTo(Math.max(0, y.getCurrentTime() + d), true); hint(d > 0 ? "+10 s ⏩" : "⏪ −10 s"); } catch (x) {}
+        return;
+      }
+      if (k === "ArrowDown" || k === "ArrowUp") {
+        e.preventDefault();
+        const first = pl.querySelector(".mbp-it");
+        if (first) { pl.classList.add("tvlist"); setTimeout(() => mark(first), 30); }
+        return;
+      }
+      return;
+    }
+    if (pl && pl.classList.contains("tvlist") && k === "ArrowUp") { e.preventDefault(); pl.classList.remove("tvlist"); mark(null); return; }
     if (cur && cur.tagName === "INPUT" && (k === "ArrowLeft" || k === "ArrowRight")) return; // mover el cursor del texto
     if (k === "ArrowUp" || k === "ArrowDown" || k === "ArrowLeft" || k === "ArrowRight") {
       e.preventDefault(); move(k); return;
