@@ -138,7 +138,8 @@ html.tv input.tv-foco{transform:none}
   let hintT = 0;
   const hint = txt => {
     let h = document.querySelector(".tvhint");
-    if (!h) { h = document.createElement("div"); h.className = "tvhint"; document.body.appendChild(h); }
+    if (!h) { h = document.createElement("div"); h.className = "tvhint"; }
+    (document.querySelector(".mbp:not([hidden])") || document.body).appendChild(h);
     h.textContent = txt; h.classList.remove("off"); clearTimeout(hintT); hintT = setTimeout(() => h.classList.add("off"), 3500);
   };
   const player = () => document.querySelector(".mbp:not([hidden])");
@@ -191,6 +192,15 @@ html.tv input.tv-foco{transform:none}
     const it = e.target.closest && e.target.closest("[data-mbp-id]");
     const id = it ? it.dataset.mbpId : a ? vid(a.href) : null;
     if (!id) return;
+    // App nueva (con pantalla completa de verdad, lleva "MBMTVFS"): se ve dentro de la app, a pantalla completa
+    if (/MBMTVFS/.test(navigator.userAgent) && window.MBP) {
+      if (it) return; // dentro del reproductor ("Sigue viendo") lo maneja el reproductor
+      e.preventDefault(); e.stopImmediatePropagation();
+      window.MBP.open(id);
+      const pl = document.querySelector(".mbp");
+      try { const rq = pl.requestFullscreen || pl.webkitRequestFullscreen; const r = rq && rq.call(pl); if (r && r.catch) r.catch(() => {}); } catch (x) {}
+      return;
+    }
     e.preventDefault(); e.stopImmediatePropagation();
     try { window.MBP && window.MBP.close(); } catch (x) {}
     location.href = "https://youtu.be/" + id; // youtu.be no está en allowNavigation: Android lo manda a la app de YouTube con el video
