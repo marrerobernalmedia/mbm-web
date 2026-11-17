@@ -1,7 +1,7 @@
 # Compila en la nube la app de Android TV / Google TV de Recta Al Pecho (android/recta-tv).
 # Sin la llave: compila sin firmar (solo para comprobar). Con los secretos RECTA_KEYSTORE_B64,
 # RECTA_KEYSTORE_PASSWORD, RECTA_KEY_ALIAS y RECTA_KEY_PASSWORD (la llave de subida de Google Play
-# de Recta), firma el .aab listo para subir a la pista de Android TV en Play Console. Sin ellos prueba con la llave de El Home.
+# de Recta), firma el .aab listo para subir a la pista de Android TV en Play Console. (Recta tiene su propia llave: SHA1 3F:13:D5:75:…:E9:7A).
 name: App Android TV Recta
 
 on:
@@ -34,7 +34,7 @@ jobs:
           npx cap sync android
       - name: Llave de firma (si está)
         env:
-          KS_B64: ${{ secrets.RECTA_KEYSTORE_B64 || secrets.ANDROID_KEYSTORE_B64 }}
+          KS_B64: ${{ secrets.RECTA_KEYSTORE_B64 }}
         run: |
           if [ -n "$KS_B64" ]; then
             printf '%s' "$KS_B64" | base64 -d > "$RUNNER_TEMP/subida.keystore"
@@ -46,9 +46,9 @@ jobs:
       - name: Compilar .aab y .apk
         working-directory: android/recta-tv/android
         env:
-          KEYSTORE_PASSWORD: ${{ secrets.RECTA_KEYSTORE_PASSWORD || secrets.ANDROID_KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.RECTA_KEY_ALIAS || secrets.ANDROID_KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.RECTA_KEY_PASSWORD || secrets.ANDROID_KEY_PASSWORD }}
+          KEYSTORE_PASSWORD: ${{ secrets.RECTA_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.RECTA_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.RECTA_KEY_PASSWORD }}
         run: |
           export VERSION_CODE=$(( $(date +%s) / 60 ))
           echo "versionCode $VERSION_CODE"
