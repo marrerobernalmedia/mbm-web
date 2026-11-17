@@ -470,7 +470,7 @@ function showPage(s){
   <div class="list">${l.map(id => item(id)).join("")}</div></section>`}`;
 }
 function comicCard(c){
-  return `<button class="cm${c.banner?"":" noart"}" data-comic="${esc(c.name)}"><div class="th" data-n="${esc(c.name)}"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="${esc(c.name)}" loading="lazy">${(() => { const u = c.all.filter(soonV).sort(byFecha)[0]; return u ? `<span class="soon">Estreno ${fEst(V[u].f, 1)}</span>` : ""; })()}</div><b>${esc(c.name)}</b><span>${c.aka ? esc(c.aka.join(" · ")) + " · " : ""}${c.all.filter(live).length ? c.all.filter(live).length + " videos · " + fmt(c.views) + " vistas" : "Estreno en La Risa es Cosa Seria"}</span></button>`;
+  return `<button class="cm${c.banner?"":" noart"}" data-comic="${esc(c.name)}"><div class="th" data-n="${esc(c.name)}"><img src="${c.banner || img(c.all.slice().sort(byViews)[0])}" alt="${esc(c.name)}" loading="lazy">${(() => { const u = c.all.filter(soonV).sort(byFecha)[0]; return u ? `<span class="soon">Estreno ${fEst(V[u].f, 1)}</span>` : ""; })()}</div><b>${esc(c.name)}</b><span>${c.all.filter(live).length ? c.all.filter(live).length + " videos · " + fmt(c.views) + " vistas" : "Estreno en La Risa es Cosa Seria"}</span></button>`;
 }
 function humoristas(){
   if (openComic) return comicPage(CM[openComic]);
