@@ -161,32 +161,70 @@ html.tv input.tv-foco{transform:none}
   }, 300);
   // Botón Atrás del control: retrocede un paso dentro de la app (show → lista → Inicio) y solo sale desde Inicio
   let volviendo = false;
-  const paso = () => { if (!volviendo) { try { history.pushState({ tv: 1 }, ""); } catch (x) {} } };
+  // Pila de "dónde estaba": pantalla, desplazamiento y el elemento marcado, para volver exactamente ahí con Atrás
+  const pila = [];
+  const huella = el => {
+    if (!el) return null;
+    for (const a of ["data-comic", "data-show", "data-tab-go", "data-tab", "data-sub"]) {
+      if (el.hasAttribute(a)) { const v = el.getAttribute(a); const todos = [...document.querySelectorAll(`[${a}="${CSS.escape(v)}"]`)]; return { a, v, i: Math.max(0, todos.indexOf(el)) }; }
+    }
+    if (el.matches("a[href]")) { const v = el.getAttribute("href"); const todos = [...document.querySelectorAll("a[href]")].filter(x => x.getAttribute("href") === v); return { a: "href", v, i: Math.max(0, todos.indexOf(el)) }; }
+    return null;
+  };
+  const buscar = h => {
+    if (!h) return null;
+    const todos = h.a === "href" ? [...document.querySelectorAll("a[href]")].filter(x => x.getAttribute("href") === h.v) : [...document.querySelectorAll(`[${h.a}="${CSS.escape(h.v)}"]`)];
+    return todos[h.i] || todos[0] || null;
+  };
+  const foto = el => {
+    let st = null;
+    try { st = { tab, openShow, openComic, sub, sort }; } catch (x) {}
+    return { st, y: window.scrollY, h: huella(el) };
+  };
+  const paso = el => { if (!volviendo) { pila.push(foto(el || cur)); try { history.pushState({ tv: 1 }, ""); } catch (x) {} } };
   document.addEventListener("click", e => {
     const t = e.target.closest && e.target.closest('[data-show], [data-comic], [data-tab-go], nav.tabs button');
     if (!t) return;
     if (t.matches("nav.tabs button") && t.getAttribute("aria-selected") === "true") return;
-    paso();
+    paso(t);
   }, true);
   document.addEventListener("input", e => { if (e.target && e.target.id === "q" && e.target.value.trim().length === 1 && !e.target.dataset.tvPaso) { e.target.dataset.tvPaso = "1"; paso(); } }, true);
   window.addEventListener("popstate", () => {
     if (document.querySelector(".mbp:not([hidden])")) return; // el reproductor maneja su propio Atrás
+    const antes = pila.pop();
     volviendo = true;
     try {
       const q = document.getElementById("q");
-      const atras = document.querySelector("#view [data-back]");
-      const ini = document.querySelector('nav.tabs [data-tab="inicio"]');
       if (q && (q.value.trim() || q.dataset.tvPaso)) {
         const habia = q.value.trim(); q.value = ""; delete q.dataset.tvPaso; try { q.blur(); } catch (x) {}
         if (habia) q.dispatchEvent(new Event("input", { bubbles: true }));
-        window.scrollTo(0, 0); setTimeout(() => mark(first()), 120); return;
+      } else if (antes && antes.st) {
+        // Vuelve a la misma pantalla de antes (pestaña, show o humorista abierto, sección y orden)
+        try {
+          tab = antes.st.tab; openShow = antes.st.openShow; openComic = antes.st.openComic; sub = antes.st.sub; sort = antes.st.sort;
+          document.querySelectorAll("nav.tabs button").forEach(x => x.setAttribute("aria-selected", x.dataset.tab === tab));
+          render();
+        } catch (x) {
+          const atras = document.querySelector("#view [data-back]"), ini = document.querySelector('nav.tabs [data-tab="inicio"]');
+          if (atras) atras.click(); else if (ini) ini.click();
+        }
+      } else {
+        const atras = document.querySelector("#view [data-back]");
+        const ini = document.querySelector('nav.tabs [data-tab="inicio"]');
+        if (atras) atras.click();
+        else if (ini && ini.getAttribute("aria-selected") !== "true") ini.click();
       }
-      else if (atras) atras.click();
-      else if (ini && ini.getAttribute("aria-selected") !== "true") ini.click();
     } finally { volviendo = false; }
-    window.scrollTo(0, 0);
-    setTimeout(() => mark(first()), 120);
+    // Mismo lugar de la página y el mismo elemento marcado
+    const y = antes ? antes.y : 0;
+    (document.scrollingElement || root).scrollTop = y; window.scrollTo(0, y);
+    setTimeout(() => {
+      (document.scrollingElement || root).scrollTop = y; window.scrollTo(0, y);
+      const el = antes && buscar(antes.h);
+      mark(el && visible(el) ? el : first());
+    }, 120);
   });
+
 
   // En el televisor el capítulo se abre en la app de YouTube del TV (pantalla completa, control normal, la vista cuenta en el canal).
   // El reproductor de la página parpadeaba en algunos TV (TCL, 17-nov-2026). Si el TV no tiene la app de YouTube, se usa el de la página.
