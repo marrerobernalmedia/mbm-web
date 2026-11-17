@@ -168,7 +168,11 @@ html.tv input.tv-foco{transform:none}
       const q = document.getElementById("q");
       const atras = document.querySelector("#view [data-back]");
       const ini = document.querySelector('nav.tabs [data-tab="inicio"]');
-      if (q && q.value.trim()) { q.value = ""; delete q.dataset.tvPaso; q.dispatchEvent(new Event("input", { bubbles: true })); }
+      if (q && (q.value.trim() || q.dataset.tvPaso)) {
+        const habia = q.value.trim(); q.value = ""; delete q.dataset.tvPaso; try { q.blur(); } catch (x) {}
+        if (habia) q.dispatchEvent(new Event("input", { bubbles: true }));
+        window.scrollTo(0, 0); setTimeout(() => mark(first()), 120); return;
+      }
       else if (atras) atras.click();
       else if (ini && ini.getAttribute("aria-selected") !== "true") ini.click();
     } finally { volviendo = false; }
@@ -200,6 +204,8 @@ html.tv input.tv-foco{transform:none}
 
   document.addEventListener("keydown", e => {
     const k = e.key;
+    // Entrar al cuadro de búsqueda (OK) cuenta como un paso: Atrás sale del cuadro, no de la app
+    if ((k === "Enter" || k === " ") && cur && cur.id === "q" && !cur.dataset.tvPaso) { cur.dataset.tvPaso = "1"; paso(); }
     const pl = player();
     if (pl && !pl.classList.contains("tvlist")) {
       const y = window.MBP && window.MBP.yt;
