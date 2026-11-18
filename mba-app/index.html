@@ -264,6 +264,7 @@ function pinta(){
  $$('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));
  $$('[data-href]').forEach(a=>a.href=url(a.dataset.href));
  $$('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===L));
+ const lg=$('.top img'); if(lg){const es=L==='es', src=es?'logo-es.svg':'logo.svg'; if(lg.getAttribute('src')!==src)lg.setAttribute('src',src); lg.alt=es?'Marrero Bernal & Asociados':'Marrero Bernal & Associates';}
  $('#servs').innerHTML=SERV.map(s=>`<a class="row" href="${SITE+(L==='es'?s[3]:s[4])}?app=1"><span class="ic">${s[0]}</span><b>${L==='es'?s[1]:s[2]}</b><span class="go">›</span></a>`).join('');
  pintaPags(); pintaInst(); pintaHoja();
 }
