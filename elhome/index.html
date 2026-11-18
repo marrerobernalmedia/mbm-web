@@ -505,7 +505,7 @@ function showPage(s){
   <div class="socl">Síguenos y no te pierdas nada</div>${socRow(s)}</div></div>
   ${lists.length > 1 ? `<div class="subs">${lists.map((x,k) => `<button class="chip" data-sub="${k}" aria-pressed="${k===sub}">${esc(x.name)}</button>`).join("")}</div>` : ""}</section>
   ${sub===0?proxSec(s.v):""}
-  ${!l.length ? `<section>${H("Muy pronto")}<p style="color:var(--mute);max-width:62ch">${esc(s.name)} está en producción. Síguelo en Facebook para ver las fotos del rodaje y enterarte del estreno.</p>${s.fb ? `<a class="btn yt" style="display:inline-block;margin-top:6px;background:#1877f2" href="${s.fb}" target="_blank" rel="noopener">Seguir en Facebook</a>` : ""}</section>` : `<section>${H(esc(s.soon ? "Mientras tanto" : cur.name), l.length + " videos")}
+  ${!l.length ? `<section>${H("Muy pronto")}<p style="color:var(--mute);max-width:62ch">${esc(s.name)} está en producción. Síguelo en las redes de arriba para ver las fotos del rodaje y enterarte del estreno.</p></section>` : `<section>${H(esc(s.soon ? "Mientras tanto" : cur.name), l.length + " videos")}
   <div class="sortbar"><button class="chip" data-sort="show" aria-pressed="${sort==="show"}">Orden del show</button><button class="chip" data-sort="vistos" aria-pressed="${sort==="vistos"}">Más vistos</button></div>
   <div class="list">${l.map(id => item(id)).join("")}</div></section>`}`;
 }
