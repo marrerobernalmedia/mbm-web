@@ -194,6 +194,7 @@ svg{width:22px;height:22px;flex:none}
 .fbsend[disabled]{opacity:.5}
 .fbmsg{font-size:14px;text-align:center;color:var(--mute);min-height:1.2em}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.paises{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}.pc{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.pc svg{width:100%;border-radius:8px;display:block}.pc b{font-family:var(--display);font-size:22px;text-transform:uppercase;letter-spacing:.03em}.pc span{color:var(--mute);font-size:13px}.pflag svg{height:.8em;width:auto;vertical-align:-.05em;border-radius:3px}
 nav.tabs .tvonly{display:none}html.tv nav.tabs .tvonly{display:flex}
 .lng{display:inline-flex;margin-left:auto;margin-right:6px;flex:none}.lng button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:7px 9px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font:700 12px/1 system-ui,sans-serif;color:#fff}.lng button::after{content:attr(data-lang);text-transform:uppercase}.lng button svg{border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.3)}.lng button.on{display:none}
 .next a.nx{display:flex;gap:10px;align-items:center;color:inherit;text-decoration:none;padding:8px 12px;border:1px dashed var(--line);border-radius:12px;background:var(--card)}.next a.nx img{width:96px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;flex:none}.next a.nx span{display:flex;flex-direction:column;min-width:0}.next a.nx em{font-style:normal;font-size:12px;opacity:.8}
@@ -233,6 +234,7 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
   <button role="tab" data-tab="mitos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M7 5.5c2 2 2.5 4 2.5 6.5S9 16.5 7 18.5M17 5.5c-2 2-2.5 4-2.5 6.5s.5 4.5 2.5 6.5"/></svg>Mitos</button>
   <button role="tab" data-tab="mlb" class="tvonly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6L3.4 9.300l6-.7z"/></svg>MLB</button>
   <button role="tab" data-tab="jugadores" class="tvonly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.200-4 4.200-6 8-6s6.800 2 8 6"/></svg>Jugadores</button>
+  <button role="tab" data-tab="paises" class="tvonly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.800 3 2.800 15 0 18M12 3c-2.800 3-2.800 15 0 18"/></svg>Países</button>
   <button role="tab" data-tab="noticias"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>Noticias</button>
 </div></nav>
 
@@ -429,6 +431,19 @@ function jugadores(){ const esp = new Set((D.series.find(x => /Especiales/i.test
   const n = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   const l = Object.keys(V).filter(i => vivo(i) && V[i].p && !EVENTO(i) && !esp.has(i)).sort((a, b) => n(V[a].p).localeCompare(n(V[b].p)) || byViews(a, b));
   return `<section>${H(L("Jugadores","Players"), String(new Set(l.map(i => V[i].p)).size))}<p class="lede">${L("Todas las entrevistas, por orden alfabético.","Every interview, in alphabetical order.")}</p><div class="row">${l.map(tile).join("")}</div></section>`; }
+// Países (TV; Eliam, 17-nov-2026): se escoge el país y salen sus peloteros. Cada video es de Cuba salvo que data.js diga otro en "c" (p. ej. "ve")
+const PAISES = [
+  { id: "pais-cu", c: "cu", es: "Cuba", en: "Cuba", flag: `<svg viewBox="0 0 60 30"><rect width="60" height="30" fill="#002a8f"/><rect y="6" width="60" height="6" fill="#fff"/><rect y="18" width="60" height="6" fill="#fff"/><path d="M0 0l26 15L0 30z" fill="#cf142b"/><path d="M8.700 10.200l1.200 3.600h3.800l-3.100 2.200 1.200 3.600-3.100-2.200-3.100 2.200 1.200-3.600-3.100-2.200h3.800z" fill="#fff"/></svg>` },
+  { id: "pais-ve", c: "ve", es: "Venezuela", en: "Venezuela", flag: `<svg viewBox="0 0 60 30"><rect width="60" height="10" fill="#ffcc00"/><rect y="10" width="60" height="10" fill="#00247d"/><rect y="20" width="60" height="10" fill="#cf142b"/>${[-52.5,-37.5,-22.5,-7.5,7.5,22.5,37.5,52.5].map(g => { const r = g * Math.PI / 180; return `<circle cx="${(30 + 9 * Math.sin(r)).toFixed(2)}" cy="${(20.5 - 7 * Math.cos(r)).toFixed(2)}" r="0.9" fill="#fff"/>`; }).join("")}</svg>` }
+];
+const paisDe = i => (V[i] && V[i].c) || "cu";
+const paisIds = c => Object.keys(V).filter(i => vivo(i) && V[i].p && !EVENTO(i) && paisDe(i) === c).sort(byViews);
+function paises(){
+  const P = PAISES.find(x => x.id === open);
+  if (P) { const l = paisIds(P.c);
+    return `<button class="back" data-back>${L("← Países","← Countries")}</button><section style="margin-top:8px">${H(`<span class="pflag">${P.flag}</span> ` + esc(L(P.es, P.en)), String(l.length))}<div class="row">${l.map(tile).join("")}</div></section>`; }
+  return `<section>${H(L("Países","Countries"))}<p class="lede">${L("Escoge un país para ver a sus peloteros.","Pick a country to see its players.")}</p><div class="paises">${PAISES.map(x => { const n = paisIds(x.c).length; return n ? `<button class="pc" data-open="${x.id}">${x.flag}<b>${esc(L(x.es, x.en))}</b><span>${n} ${n === 1 ? L("entrevista","interview") : L("entrevistas","interviews")}</span></button>` : ""; }).join("")}</div></section>`;
+}
 function noticias(){
   return `<section>${H(L("Noticias","Stories"), L("de rectaalpecho.com","from straight2dchest.com"))}<div class="list">${D.n.map(n=>`<article class="post"><div class="ph"><img src="thumbs/logo.jpg" alt=""><div><b>${L("rectaalpecho.com","straight2dchest.com")}</b><span>${esc(n[1])}</span></div></div><h3>${esc(n[0])}</h3><p>${esc(n[4])}</p><a href="${n[2]}" target="_blank" rel="noopener"><img src="${n[5] || img(n[3])}" alt="" loading="lazy"></a><div class="act"><a href="${n[2]}" target="_blank" rel="noopener">${L("Leer el artículo →","Read the story →")}</a></div></article>`).join("")}</div></section>`;
 }
@@ -440,7 +455,7 @@ function search(q){
 }
 function render(){
   const q = document.getElementById("q").value;
-  view.innerHTML = (q.trim() ? search(q) : ({inicio,series,mitos,noticias,mlb,jugadores}[tab] || inicio)()) + fbStrip();
+  view.innerHTML = (q.trim() ? search(q) : ({inicio,series,mitos,noticias,mlb,jugadores,paises}[tab] || inicio)()) + fbStrip();
 }
 function go(t){
   tab = t; document.getElementById("q").value = "";
@@ -455,7 +470,7 @@ document.addEventListener("click", e => { const b = e.target.closest("[data-shar
 view.addEventListener("click", e => {
   const o = e.target.closest("[data-open]"), g = e.target.closest("[data-go]"), so = e.target.closest("[data-sort]");
   if (so){ sort = so.dataset.sort; render(); return; }
-  if (o){ open = o.dataset.open; sort = "serie"; go("series"); return; }
+  if (o){ open = o.dataset.open; sort = "serie"; go(/^pais-/.test(open) ? "paises" : "series"); return; }
   if (g){ open = null; go(g.dataset.go); return; }
   if (e.target.closest("[data-back]")){ open = null; render(); window.scrollTo({top:0}); return; }
   if (e.target.closest("[data-open-sheet]")) openSheet(true);
@@ -539,7 +554,7 @@ document.querySelectorAll(".lng [data-lang]").forEach(b => { b.classList.toggle(
 if (EN) {
   const T = {
     "Deportes · El béisbol es la pasión · estreno cada jueves": "Sports · Baseball is the passion · new episode every Thursday",
-    "Descargar la app": "Get the app", "Inicio": "Home", "Series": "Series", "Mitos": "Myths", "Jugadores": "Players", "Noticias": "Stories",
+    "Descargar la app": "Get the app", "Inicio": "Home", "Series": "Series", "Mitos": "Myths", "Jugadores": "Players", "Países": "Countries", "Noticias": "Stories",
     "Que no se te escape un jueves": "Don't miss a Thursday",
     "Cada jueves estrena una entrevista nueva. Elige cómo quieres enterarte.": "A new interview premieres every Thursday. Choose how you want to hear about it.",
     "Activar avisos de estrenos": "Turn on premiere alerts", "Te avisamos en este teléfono el día que sale un capítulo nuevo": "We'll notify this phone the day a new episode comes out",
