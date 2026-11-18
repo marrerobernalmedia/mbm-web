@@ -133,7 +133,7 @@ add_action('wp_head', function () {
 add_filter('wpseo_schema_website', function ($data) { $data['description'] = RECTA_HOME_DESC; return $data; });
 add_filter('wpseo_schema_organization', function ($data) {
   $data['description'] = RECTA_HOME_DESC; $data['url'] = home_url('/');
-  $data['sameAs'] = ['https://www.youtube.com/@RectaAlPecho', 'https://www.facebook.com/RectaAlPecho/', 'https://www.instagram.com/rectaalpecho/'];
+  $data['sameAs'] = ['https://www.youtube.com/@RectaAlPecho', 'https://www.facebook.com/RectaAlPecho/', 'https://www.instagram.com/rectaalpecho/', 'https://x.com/RectaAlPecho'];
   return $data;
 });
 /** Si Yoast no está activo, cabecera mínima propia. */
