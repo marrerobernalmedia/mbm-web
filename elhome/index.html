@@ -497,13 +497,16 @@ function sorted(l){
   return l;
 }
 function showPage(s){
-  const lists = [{name: s.id === "lrecs" ? "Todos los episodios" : "Todos", v: s.v}].concat(s.subs || []);
+  // La Risa: solo las temporadas (1, 2, 3…), sin las listas de compilaciones; sin tocar ninguna se ven todos los episodios (Eliam, 18-nov-2026)
+  const soloT = s.id === "lrecs";
+  const subs = soloT ? (s.subs || []).filter(x => /^Temporada\s/i.test(x.name)).sort((a, b) => parseInt(a.name.replace(/\D/g, "")) - parseInt(b.name.replace(/\D/g, ""))) : (s.subs || []);
+  const lists = [{name: soloT ? "Todos los episodios" : "Todos", v: s.v}].concat(subs);
   const cur = lists[Math.min(sub, lists.length-1)];
   const l = sorted(cur.v);
   return `<button class="back" data-back>← Todos los shows</button>
   <section style="margin-top:8px"><div class="shead" style="--sc:${s.col}"><div class="pic"><img src="${cover(s)}" alt="${esc(s.name)}"></div><div class="b"><h1>${esc(s.name)}</h1><p>${esc(s.tag)}</p><div class="meta" style="margin-top:6px">${s.soon?esc(s.soon):""}</div>
   <div class="socl">Síguenos y no te pierdas nada</div>${socRow(s)}</div></div>
-  ${lists.length > 1 ? `<div class="subs">${lists.map((x,k) => `<button class="chip" data-sub="${k}" aria-pressed="${k===sub}">${esc(x.name)}</button>`).join("")}</div>` : ""}</section>
+  ${lists.length > 1 ? `<div class="subs">${lists.map((x,k) => (soloT && k === 0) ? "" : `<button class="chip" data-sub="${k}" aria-pressed="${k===sub}">${esc(x.name)}</button>`).join("")}</div>` : ""}</section>
   ${sub===0?proxSec(s.v):""}
   ${!l.length ? `<section>${H("Muy pronto")}<p style="color:var(--mute);max-width:62ch">${esc(s.name)} está en producción. Síguelo en las redes de arriba para ver las fotos del rodaje y enterarte del estreno.</p></section>` : `<section>${H(esc(s.soon ? "Mientras tanto" : cur.name), l.length + " videos")}
   <div class="sortbar"><button class="chip" data-sort="show" aria-pressed="${sort==="show"}">Orden del show</button><button class="chip" data-sort="vistos" aria-pressed="${sort==="vistos"}">Más vistos</button></div>
@@ -553,7 +556,7 @@ document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("cl
 view.addEventListener("click", e => {
   const s = e.target.closest("[data-show]"), c = e.target.closest("[data-comic]"), g = e.target.closest("[data-tab-go]");
   const sb = e.target.closest("[data-sub]"), so = e.target.closest("[data-sort]");
-  if (sb){ sub = +sb.dataset.sub; render(); return; }
+  if (sb){ const k = +sb.dataset.sub; sub = (openShow === "lrecs" && k === sub) ? 0 : k; render(); return; }
   if (so){ sort = so.dataset.sort; render(); return; }
   if (s){ openShow = s.dataset.show; sub = 0; sort = "show"; go("shows"); return; }
   if (c){ openComic = c.dataset.comic; go("humoristas"); return; }
