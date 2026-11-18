@@ -194,7 +194,7 @@ svg{width:22px;height:22px;flex:none}
 .fbsend[disabled]{opacity:.5}
 .fbmsg{font-size:14px;text-align:center;color:var(--mute);min-height:1.2em}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.paises{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}.pc{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.pc svg{width:100%;border-radius:8px;display:block}.pc b{font-family:var(--display);font-size:22px;text-transform:uppercase;letter-spacing:.03em}.pc span{color:var(--mute);font-size:13px}.pflag svg{height:.8em;width:auto;vertical-align:-.05em;border-radius:3px}
+.paises{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}.pc{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.pc svg{width:100%;height:auto;aspect-ratio:2/1;border-radius:8px;display:block}.pc b{font-family:var(--display);font-size:22px;text-transform:uppercase;letter-spacing:.03em}.pc span{color:var(--mute);font-size:13px}.pflag svg{height:.8em;width:1.6em;vertical-align:-.05em;border-radius:3px}
 nav.tabs .tvonly{display:none}html.tv nav.tabs .tvonly{display:flex}
 .lng{display:inline-flex;margin-left:auto;margin-right:6px;flex:none}.lng button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:7px 9px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font:700 12px/1 system-ui,sans-serif;color:#fff}.lng button::after{content:attr(data-lang);text-transform:uppercase}.lng button svg{border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.3)}.lng button.on{display:none}
 .next a.nx{display:flex;gap:10px;align-items:center;color:inherit;text-decoration:none;padding:8px 12px;border:1px dashed var(--line);border-radius:12px;background:var(--card)}.next a.nx img{width:96px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;flex:none}.next a.nx span{display:flex;flex-direction:column;min-width:0}.next a.nx em{font-style:normal;font-size:12px;opacity:.8}
@@ -437,7 +437,8 @@ const PAISES = [
   { id: "pais-ve", c: "ve", es: "Venezuela", en: "Venezuela", flag: `<svg viewBox="0 0 60 30"><rect width="60" height="10" fill="#ffcc00"/><rect y="10" width="60" height="10" fill="#00247d"/><rect y="20" width="60" height="10" fill="#cf142b"/>${[-52.5,-37.5,-22.5,-7.5,7.5,22.5,37.5,52.5].map(g => { const r = g * Math.PI / 180; return `<circle cx="${(30 + 9 * Math.sin(r)).toFixed(2)}" cy="${(20.5 - 7 * Math.cos(r)).toFixed(2)}" r="0.9" fill="#fff"/>`; }).join("")}</svg>` }
 ];
 const paisDe = i => (V[i] && V[i].c) || "cu";
-const paisIds = c => Object.keys(V).filter(i => vivo(i) && V[i].p && !EVENTO(i) && paisDe(i) === c).sort(byViews);
+const ESP = new Set((D.series.find(x => /Especiales/i.test(x.name)) || { v: [] }).v);
+const paisIds = c => Object.keys(V).filter(i => vivo(i) && V[i].p && !EVENTO(i) && !ESP.has(i) && paisDe(i) === c).sort(byViews);
 function paises(){
   const P = PAISES.find(x => x.id === open);
   if (P) { const l = paisIds(P.c);
