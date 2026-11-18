@@ -69,7 +69,26 @@ h2{font-size:21px;margin:26px 0 10px}
 .inst button{margin-left:auto;background:none;border:0;font-size:18px;color:var(--mut);padding:0 4px}
 .pie{font-size:12.5px;color:var(--mut);margin:26px 2px 6px;line-height:1.5}.pie a{text-decoration:underline}
 [hidden]{display:none!important}
-@media(min-width:560px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:560px) and (max-width:639.98px){.grid{grid-template-columns:repeat(3,1fr)}}
+/* Libro abierto (iPhone plegable abierto, iPad): Inicio a la izquierda, la sección elegida a la derecha */
+@media(min-width:640px){
+ main{max-width:1180px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;padding-top:22px}
+ main>.view{padding:0 clamp(14px,2.6vw,36px);min-width:0}
+ #v-inicio{display:block;border-right:1px solid var(--line);min-height:calc(100vh - 190px)}
+ main:has(#v-inicio.on) #v-cont{display:block}
+ .tabs{grid-template-columns:repeat(3,1fr);left:50%}
+ .tabs [data-ir=inicio]{display:none}
+ main:has(#v-inicio.on)~.tabs [data-ir=cont]{color:var(--navy)}
+ #v-inicio [data-ir=docs]{outline-offset:2px}
+ main:has(#v-docs.on) #v-inicio [data-ir=docs]{border-color:var(--navy);box-shadow:0 0 0 1px var(--navy)}
+}
+@media(min-width:900px){
+ body{font-size:18px}.hola h1{font-size:32px}h2{font-size:24px}
+ .tile{min-height:150px;padding:20px 18px}.tile .ic{font-size:32px}.tile b{font-size:19px}.tile span{font-size:15px}
+ .row{padding:17px 18px;min-height:66px}.row small{font-size:15px}.btn{min-height:58px}
+ .tabs button{font-size:13px;min-height:66px}.tabs button span{font-size:24px}
+ .top img{height:46px}
+}
 </style>
 </head>
 <body>
