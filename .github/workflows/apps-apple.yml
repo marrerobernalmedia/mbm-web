@@ -50,6 +50,14 @@ jobs:
             -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' \
             CODE_SIGNING_ALLOWED=NO build | tail -40
           test "${PIPESTATUS[0]}" = 0
+      - name: Compilar para iPhone real (sin firmar)
+        if: env.SUBIR != 'true'
+        working-directory: apple/${{ matrix.app }}/ios/App
+        run: |
+          xcodebuild -project App.xcodeproj -scheme App -configuration Release \
+            -sdk iphoneos -destination 'generic/platform=iOS' \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build | tail -40
+          test "${PIPESTATUS[0]}" = 0
       - name: Firmar y subir a TestFlight
         if: env.SUBIR == 'true'
         working-directory: apple/${{ matrix.app }}/ios/App
