@@ -14,6 +14,9 @@ on:
         description: "Usar Mac Intel (cuando GitHub no tiene Mac arm64 libres)"
         type: boolean
         default: false
+      version:
+        description: "Versión que se sube (la 1.0 está en revisión de Apple)"
+        default: "1.0.1"
   push:
     branches: [main]
     paths: ["apple/**", "!apple/tienda/**", ".github/workflows/apps-apple.yml"]
@@ -70,6 +73,7 @@ jobs:
           KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ISSUER: ${{ secrets.ASC_ISSUER_ID }}
           KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          VERSION: ${{ inputs.version || '1.0.1' }}
         run: |
           set -o pipefail
           KEY="$RUNNER_TEMP/AuthKey_$KEY_ID.p8"; printf '%s' "$KEY_P8" > "$KEY"
@@ -93,7 +97,7 @@ jobs:
           BUILD=$(( $(date +%s) / 60 ))
           xcodebuild -project App.xcodeproj -scheme App -configuration Release \
             -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/App.xcarchive" \
-            DEVELOPMENT_TEAM="$TEAM" CURRENT_PROJECT_VERSION="$BUILD" \
+            DEVELOPMENT_TEAM="$TEAM" CURRENT_PROJECT_VERSION="$BUILD" MARKETING_VERSION="$VERSION" \
             CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES \
             PROVISIONING_PROFILE_SPECIFIER= PROVISIONING_PROFILE= archive | tail -60
           # El archivo se firma "ad hoc" (sin perfil de desarrollo, que exigiría un iPhone registrado);

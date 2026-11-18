@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "App de iPhone y iPad de Marrero Bernal & Associates (Capacitor: abre marrerobernal.com/app en vivo)",
   "dependencies": {
+    "@capacitor/browser": "8.0.3",
     "@capacitor/core": "8.6.0",
     "@capacitor/ios": "8.6.0"
   },
