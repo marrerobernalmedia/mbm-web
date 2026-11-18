@@ -66,7 +66,11 @@ html.tv #view.tvinicio>section:nth-child(2) h2{margin-top:22px}
 html.tv .board .trl{display:none!important}
 /* En el televisor nada manda a YouTube: fuera la frase «ya está programado en YouTube» y el «Avísame en YouTube» de los próximos */
 html.tv .board p.pyt, html.tv .next a.nx em{display:none!important}
-html.tv .board p.sin{font-size:1.02em;line-height:1.45}
+/* Sin sinopsis en el televisor: solo nombre y título (Eliam, 17-nov-2026) */
+html.tv .board p.sin{display:none!important}
+/* El último estreno cabe entero en la primera pantalla: la foto no pasa de media pantalla (sin recortarla) */
+html.tv #view.tvinicio .hero .pic{max-height:50vh;background:#060d18;display:flex;justify-content:center}
+html.tv #view.tvinicio .hero .pic img{max-height:50vh;width:auto!important;max-width:100%;object-fit:contain}
 html.tv :focus{outline:none}
 html.tv .tv-foco{outline:4px solid var(--tvf)!important;outline-offset:3px!important;border-radius:12px;box-shadow:0 0 0 9px rgba(255,210,63,.18);position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{outline:3px solid var(--tvf)!important;outline-offset:-3px!important;box-shadow:none!important;background:rgba(255,210,63,.14)!important;color:var(--fg)!important}
@@ -123,6 +127,8 @@ html.tv nav.tabs button.tv-foco{outline:3px solid var(--tvf)!important;outline-o
     if (box || el.closest(".mbp")) return;
     const r = el.getBoundingClientRect(), H = window.innerHeight;
     const hdr = document.querySelector("header"), top = 70;
+    // Si el elemento cabe con la página arriba del todo, la página se queda arriba (así al arrancar se ve el menú y la portada completa)
+    { const pg = document.scrollingElement || root; if (!el.closest(".mbp") && r.bottom + pg.scrollTop <= H - 20) { if (pg.scrollTop) { pg.scrollTop = 0; window.scrollTo(0, 0); } if (document.documentElement.scrollLeft) document.documentElement.scrollLeft = 0; return; } }
     if (r.top < top || r.bottom > H - 30) {
       // Si quedó trabado el bloqueo del reproductor (html.mbp-lock) con el reproductor cerrado, se quita
       if (root.classList.contains("mbp-lock") && !document.querySelector(".mbp:not([hidden])")) root.classList.remove("mbp-lock");
