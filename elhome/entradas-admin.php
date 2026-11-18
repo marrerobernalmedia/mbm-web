@@ -50,6 +50,13 @@ $dentro = !empty($_SESSION['ok']);
 if ($dentro && isset($_POST['op'], $_POST['codigo'])) {
   $op = $_POST['op']; $cod = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $_POST['codigo']));
   con_reservas(function (&$db) use ($op, $cod) {
+    // "borrar" = quitarla del todo (solo las ya canceladas: pruebas, duplicadas). No se puede deshacer.
+    if ($op === 'borrar') {
+      foreach ($db['reservas'] as $i => $x) if ($x['codigo'] === $cod && $x['estado'] === 'cancelada') {
+        unset($db['reservas'][$i]); $db['reservas'] = array_values($db['reservas']); return true;
+      }
+      return false;
+    }
     foreach ($db['reservas'] as &$r) if ($r['codigo'] === $cod) {
       if ($op === 'entro') $r['entro'] = date('c');
       if ($op === 'desentro') $r['entro'] = null;
@@ -192,6 +199,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px 6px;b
         <?php if ($toca && $r['estado'] !== 'cancelada' && empty($r['aviso']) && empty($r['reconf'])): ?><button class="b g s" name="op" value="aviso" title="Anota que ya se le escribió por WhatsApp: empiezan sus 24 horas">Ya le escribí</button><?php endif; ?>
         <?php if (por_confirmar($r)): ?><button class="b g s" name="op" value="prorroga" title="Le da 24 horas más desde ahora">+24 h</button><?php endif; ?>
         <?php if ($r['estado'] === 'cancelada' && $g['fecha'] >= hoy_lv()): ?><button class="b g s" name="op" value="reactivar">Reactivar</button><?php endif; ?>
+        <?php if ($r['estado'] === 'cancelada'): ?><button class="b r" name="op" value="borrar" onclick="return confirm('¿Borrar del todo la reserva de <?= $h(addslashes($r['nombre'])) ?>? No se puede recuperar.')">Borrar del todo</button><?php endif; ?>
         <?php if ($r['estado'] !== 'cancelada'): ?><button class="b r" name="op" value="cancelar" onclick="return confirm('¿Cancelar la reserva de <?= $h(addslashes($r['nombre'])) ?>?')">Cancelar</button><?php endif; ?>
       </form></td></tr>
     <?php endforeach; if (!$l) echo '<tr><td colspan="5" class="mute">Todavía no hay reservas.</td></tr>'; ?>
