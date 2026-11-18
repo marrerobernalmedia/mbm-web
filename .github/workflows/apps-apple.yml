@@ -16,7 +16,7 @@ on:
         default: false
   push:
     branches: [main]
-    paths: ["apple/**", ".github/workflows/apps-apple.yml"]
+    paths: ["apple/**", "!apple/tienda/**", ".github/workflows/apps-apple.yml"]
 
 concurrency:
   group: apps-apple
