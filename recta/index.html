@@ -194,6 +194,7 @@ svg{width:22px;height:22px;flex:none}
 .fbsend[disabled]{opacity:.5}
 .fbmsg{font-size:14px;text-align:center;color:var(--mute);min-height:1.2em}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+nav.tabs .tvonly{display:none}html.tv nav.tabs .tvonly{display:flex}
 .lng{display:inline-flex;margin-left:auto;margin-right:6px;flex:none}.lng button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:7px 9px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font:700 12px/1 system-ui,sans-serif;color:#fff}.lng button::after{content:attr(data-lang);text-transform:uppercase}.lng button svg{border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.3)}.lng button.on{display:none}
 .next a.nx{display:flex;gap:10px;align-items:center;color:inherit;text-decoration:none;padding:8px 12px;border:1px dashed var(--line);border-radius:12px;background:var(--card)}.next a.nx img{width:96px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;flex:none}.next a.nx span{display:flex;flex-direction:column;min-width:0}.next a.nx em{font-style:normal;font-size:12px;opacity:.8}
 </style>
@@ -230,6 +231,8 @@ if (window.ONESIGNAL_APP_ID) OneSignalDeferred.push(async OS => {
   <button role="tab" data-tab="inicio" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 21 12 12 21 3 12z"/><path d="M12 8v8M8 12h8" stroke-linecap="round"/></svg>Inicio</button>
   <button role="tab" data-tab="series"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m8 2 4 4 4-4" stroke-linecap="round"/></svg>Series</button>
   <button role="tab" data-tab="mitos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M7 5.5c2 2 2.5 4 2.5 6.5S9 16.5 7 18.5M17 5.5c-2 2-2.5 4-2.5 6.5s.5 4.5 2.5 6.5"/></svg>Mitos</button>
+  <button role="tab" data-tab="mlb" class="tvonly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6L3.4 9.300l6-.7z"/></svg>MLB</button>
+  <button role="tab" data-tab="jugadores" class="tvonly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.200-4 4.200-6 8-6s6.800 2 8 6"/></svg>Jugadores</button>
   <button role="tab" data-tab="noticias"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>Noticias</button>
 </div></nav>
 
@@ -413,6 +416,19 @@ function mitos(){
   <section><div class="list">${D.m.map((m,i)=>`<article class="mito"><div class="q"><div class="lbl">${L("El mito","The myth")} <span class="num">#${i+1}</span></div><p>${esc(m[0])}</p></div>
   <a class="a" href="${YTU(m[2])}" target="_blank" rel="noopener"><div><div class="lbl">${L("Recta al pecho","Straight to the chest")}</div><p>${esc(m[1])}</p></div><div class="th"><img src="${img(m[2])}" alt="" loading="lazy"></div></a></article>`).join("")}</div></section>`;
 }
+// ── Pestañas del televisor (Eliam, 17-nov-2026): MLB y Jugadores
+// MLB = los que jugaron en Grandes Ligas o llegaron al sistema de la MLB: las colecciones "Pura Grandes Ligas" y
+// "Los Atléticos y Los Aviadores" (lo que se añada ahí entra solo) + los que se apuntan a mano aquí
+const MLB_EXTRA = ["OlhqbIbdsSk", "56ieZ9LGdxY", "LhgEUVHLH2g"]; // Osvaldo Fernández, Rolando Viera, Yordanys Pérez
+function mlbIds(){ const out = []; (D.cols||[]).filter(c => /Grandes Ligas|Atléticos/i.test(c.name)).forEach(c => c.v.forEach(i => out.includes(i) || out.push(i)));
+  MLB_EXTRA.forEach(i => out.includes(i) || out.push(i)); return out.filter(i => vivo(i) && !EVENTO(i)).sort(byViews); }
+function mlb(){ const l = mlbIds();
+  return `<section>${H("MLB", String(l.length))}<p class="lede">${L("Los que jugaron en Grandes Ligas o llegaron al béisbol organizado de la MLB.","The ones who played in the majors or made it into MLB organized baseball.")}</p><div class="row">${l.map(tile).join("")}</div></section>`; }
+// Jugadores = todas las entrevistas, por orden alfabético del pelotero (sin juegos completos ni especiales de grupo)
+function jugadores(){ const esp = new Set((D.series.find(x => /Especiales/i.test(x.name)) || { v: [] }).v);
+  const n = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const l = Object.keys(V).filter(i => vivo(i) && V[i].p && !EVENTO(i) && !esp.has(i)).sort((a, b) => n(V[a].p).localeCompare(n(V[b].p)) || byViews(a, b));
+  return `<section>${H(L("Jugadores","Players"), String(new Set(l.map(i => V[i].p)).size))}<p class="lede">${L("Todas las entrevistas, por orden alfabético.","Every interview, in alphabetical order.")}</p><div class="row">${l.map(tile).join("")}</div></section>`; }
 function noticias(){
   return `<section>${H(L("Noticias","Stories"), L("de rectaalpecho.com","from straight2dchest.com"))}<div class="list">${D.n.map(n=>`<article class="post"><div class="ph"><img src="thumbs/logo.jpg" alt=""><div><b>${L("rectaalpecho.com","straight2dchest.com")}</b><span>${esc(n[1])}</span></div></div><h3>${esc(n[0])}</h3><p>${esc(n[4])}</p><a href="${n[2]}" target="_blank" rel="noopener"><img src="${n[5] || img(n[3])}" alt="" loading="lazy"></a><div class="act"><a href="${n[2]}" target="_blank" rel="noopener">${L("Leer el artículo →","Read the story →")}</a></div></article>`).join("")}</div></section>`;
 }
@@ -424,7 +440,7 @@ function search(q){
 }
 function render(){
   const q = document.getElementById("q").value;
-  view.innerHTML = (q.trim() ? search(q) : ({inicio,series,mitos,noticias}[tab])()) + fbStrip();
+  view.innerHTML = (q.trim() ? search(q) : ({inicio,series,mitos,noticias,mlb,jugadores}[tab] || inicio)()) + fbStrip();
 }
 function go(t){
   tab = t; document.getElementById("q").value = "";
@@ -523,7 +539,7 @@ document.querySelectorAll(".lng [data-lang]").forEach(b => { b.classList.toggle(
 if (EN) {
   const T = {
     "Deportes · El béisbol es la pasión · estreno cada jueves": "Sports · Baseball is the passion · new episode every Thursday",
-    "Descargar la app": "Get the app", "Inicio": "Home", "Series": "Series", "Mitos": "Myths", "Noticias": "Stories",
+    "Descargar la app": "Get the app", "Inicio": "Home", "Series": "Series", "Mitos": "Myths", "Jugadores": "Players", "Noticias": "Stories",
     "Que no se te escape un jueves": "Don't miss a Thursday",
     "Cada jueves estrena una entrevista nueva. Elige cómo quieres enterarte.": "A new interview premieres every Thursday. Choose how you want to hear about it.",
     "Activar avisos de estrenos": "Turn on premiere alerts", "Te avisamos en este teléfono el día que sale un capítulo nuevo": "We'll notify this phone the day a new episode comes out",
