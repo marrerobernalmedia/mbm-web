@@ -64,6 +64,9 @@ html.tv #view.tvinicio>section:nth-child(2){margin-top:0}
 html.tv #view.tvinicio>section:nth-child(1){margin-top:22px}
 html.tv #view.tvinicio>section:nth-child(2) h2{margin-top:22px}
 html.tv .board .trl{display:none!important}
+/* En el televisor nada manda a YouTube: fuera la frase «ya está programado en YouTube» y el «Avísame en YouTube» de los próximos */
+html.tv .board p.pyt, html.tv .next a.nx em{display:none!important}
+html.tv .board p.sin{font-size:1.02em;line-height:1.45}
 html.tv :focus{outline:none}
 html.tv .tv-foco{outline:4px solid var(--tvf)!important;outline-offset:3px!important;border-radius:12px;box-shadow:0 0 0 9px rgba(255,210,63,.18);position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{outline:3px solid var(--tvf)!important;outline-offset:-3px!important;box-shadow:none!important;background:rgba(255,210,63,.14)!important;color:var(--fg)!important}
