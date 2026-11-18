@@ -236,6 +236,20 @@ h2 .more{flex:none;white-space:nowrap}
 .deskonly{display:none}
 @media (max-width:899px){.up{grid-template-columns:116px minmax(0,1fr);column-gap:14px;padding:10px}.up img{width:100%}.up .date{grid-column:1/-1;justify-self:start;width:auto}.up>div{min-width:0}.up b{overflow-wrap:anywhere}}
 @media (min-width:900px){.deskonly{display:block}.mobonly{display:none}.fbstrip{display:none}.row{grid-template-columns:repeat(var(--cols,4),minmax(0,1fr))}.list.one{grid-template-columns:1fr;gap:12px}.list.one .item{grid-template-columns:38% 1fr}}
+
+/* Libro abierto (iPhone plegable abierto): el estreno a la izquierda, la semana y los más vistos a la derecha */
+@media (min-width:640px) and (max-width:899.98px){
+  .app{max-width:none}
+  nav.tabs div{max-width:none}
+  .home-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+  .home-top>div{min-width:0}
+  .home-top>div:first-child{padding-right:16px;border-right:1px solid var(--line)}
+  .home-top>div:last-child{padding-left:16px}
+  .home-top .deskonly{display:block}.home-top .mobonly,.home-top~section.mobonly{display:none}
+  .home-top .list.one{display:flex;flex-direction:column;gap:12px}
+  .list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 32px}
+  .tile{flex:0 0 38%}
+}
 </style>
 <script src="onesignal-config.js"></script>
 <script src="nativo.js"></script>
