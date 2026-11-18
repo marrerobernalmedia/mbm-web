@@ -1,0 +1,52 @@
+name: Ficha App Store
+# Sube a App Store Connect los textos, la categoría, las capturas y los datos del revisor
+# de las tres apps (apple/tienda/<app>). No compila ni sube binarios.
+on:
+  workflow_dispatch:
+    inputs:
+      apps:
+        description: "Apps (elhome, recta, mba) separadas por coma"
+        default: "elhome,recta,mba"
+      sin_capturas:
+        description: "No volver a subir las capturas"
+        type: boolean
+        default: false
+      enviar:
+        description: "ENVIAR A REVISIÓN de Apple (solo con el sí de Eliam)"
+        type: boolean
+        default: false
+jobs:
+  ficha:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [elhome, recta, mba]
+    steps:
+      - uses: actions/checkout@v4
+      - name: ¿Toca esta app?
+        id: toca
+        run: |
+          case ",${{ inputs.apps }}," in *",${{ matrix.app }},"*) echo "si=true" >> "$GITHUB_OUTPUT";; *) echo "si=false" >> "$GITHUB_OUTPUT";; esac
+      - uses: ruby/setup-ruby@v1
+        if: steps.toca.outputs.si == 'true'
+        with:
+          ruby-version: "3.3"
+      - name: Subir la ficha
+        if: steps.toca.outputs.si == 'true'
+        working-directory: apple/tienda
+        env:
+          APP: ${{ matrix.app }}
+          ENVIAR: ${{ inputs.enviar }}
+          SIN_CAPTURAS: ${{ inputs.sin_capturas }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          FASTLANE_SKIP_UPDATE_CHECK: "1"
+          FASTLANE_HIDE_CHANGELOG: "1"
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
+        run: |
+          set -a; . "./$APP/app.env"; set +a
+          gem install fastlane --no-document -q
+          fastlane ficha

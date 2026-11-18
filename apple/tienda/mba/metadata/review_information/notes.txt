@@ -1,0 +1,5 @@
+Marrero Bernal is the official client app of Marrero Bernal & Associates (Marrero Bernal Agency LLC), an insurance, tax-preparation and document-services agency in North Las Vegas, Nevada, operating since 2008. The app is published by Marrero Bernal Media LLC, a sister company with the same owner and CEO (Eliam Marrero Bernal); a signed authorization letter from the agency is attached.
+
+What the app does: clients request a quote or service through a native-feeling form, book an office appointment, scan paper documents with the camera into a single PDF built on the device (photos are never uploaded to our servers), open the agency's secure tax portal, and pay for services already rendered by the agency.
+
+Payments are for real-world professional services performed outside the app (insurance, tax preparation, translations, notary), so they are not digital goods and do not use In-App Purchase. No login is required to review the app. The app does not sell insurance policies inside the app, does not give loans and does not hold customer funds. Contact: info@marrerobernal.com.
