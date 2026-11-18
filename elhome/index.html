@@ -545,6 +545,7 @@ function entradas(){ return window.ENTRADAS ? ENTRADAS.seccion() : ""; }
 function render(){
   const q = document.getElementById("q").value;
   view.innerHTML = (q.trim() ? search(q) : ({inicio, shows, humoristas, noticias, entradas}[tab])()) + fbStrip();
+  tchips();
   if (window.ENTRADAS && !q.trim() && tab === "entradas") ENTRADAS.pintar();
 }
 function go(t){
@@ -610,6 +611,10 @@ document.addEventListener("click", e => { const b = e.target.closest("[data-shar
   if (navigator.share) navigator.share({ title: b.dataset.t, text: b.dataset.t + "\nBaja la app: " + location.origin + location.pathname, url }).catch(() => {});
   else window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank", "noopener"); });
 const IS_SITE = /elhomedelarisa\.com$/.test(location.hostname);
+// Botones de selección con mayúscula en cada palabra, menos las palabras cortas (de, la, del…) (Eliam, 18-nov-2026)
+const TC_MIN = new Set("de del la las el los y e o u a al en por con para que un una of the and or to in by for on at an".split(" "));
+function tcase(t){ return t.split(" ").map((w, i) => { const m = w.match(/^([^A-Za-zÀ-ÿ]*)(.*)$/), c = m[2]; if (!c) return w; if (i > 0 && TC_MIN.has(c.toLowerCase())) return m[1] + c.toLowerCase(); return m[1] + c.charAt(0).toLocaleUpperCase("es") + c.slice(1); }).join(" "); }
+function tchips(){ view.querySelectorAll(".chip").forEach(c => { if (!c.children.length) c.textContent = tcase(c.textContent); }); }
 const fbStrip = () => IS_SITE ? "" : `<button class="fbstrip" data-fb><div class="ic">💬</div><div><b>¿Cómo mejoramos la app?</b><span>Danos tu opinión: ideas, fallos o lo que quieres ver.</span></div></button>`;
 
 // --- avisos al teléfono (OneSignal; solo en la versión publicada con su configuración) ---
