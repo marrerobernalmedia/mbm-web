@@ -21,7 +21,8 @@ html.tv body{overflow-x:clip!important;max-width:100vw}
 html.tv #instBtn, html.tv #appBtn, html.tv .inst, html.tv a[href*="marrerobernalmedia.com/apps"], html.tv a[href*="rectago.com"],
 html.tv [data-share], html.tv #bellBtn, html.tv [data-open-sheet], html.tv #pushBtn, html.tv .search, html.tv .brand span,
 html.tv nav.tabs [data-tab="noticias"], html.tv a[href*="facebook.com"], html.tv a[href*="fb.com"], html.tv a[href*="fb.me"], html.tv .fbstrip,
-html.tv a[href*="sub_confirmation"], html.tv .shead .btns{display:none!important}
+html.tv a[href*="sub_confirmation"], html.tv .shead .btns,
+html.tv .socl, html.tv .socb, html.tv a[href*="instagram.com"], html.tv a[href*="x.com/"], html.tv a[href*="whatsapp.com"]{display:none!important}
 html.tv header .hd{display:flex;align-items:center;gap:14px;padding-block:10px}
 html.tv header .hd>img{width:44px;height:44px}
 html.tv .brand{flex:none}

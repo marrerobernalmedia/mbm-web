@@ -72,7 +72,8 @@ html.tv .hdrow nav.tabs button{padding:10px 14px!important}
 html.tv nav.tabs button.tv-foco{outline:3px solid var(--lime,#8fd11f)!important;outline-offset:-3px!important;box-shadow:none!important;transform:none!important;background:rgba(143,209,31,.14)!important;color:var(--fg)!important}
 html.tv .week{overflow:visible!important;padding:4px 0!important;gap:8px!important}
 html.tv .home-top>div:last-child>section:first-child, html.tv .home-top>div:last-child>.mobonly+section{margin-top:0!important}
-html.tv a[href*="facebook.com"], html.tv a[href*="fb.com"], html.tv a[href*="fb.me"], html.tv .fbstrip{display:none!important}
+html.tv a[href*="facebook.com"], html.tv a[href*="fb.com"], html.tv a[href*="fb.me"], html.tv .fbstrip,
+html.tv .socl, html.tv .socb, html.tv a[href*="instagram.com"], html.tv a[href*="whatsapp.com"]{display:none!important}
 html.tv :focus{outline:none}
 html.tv .tv-foco{outline:4px solid var(--lime,#8fd11f)!important;outline-offset:3px!important;border-radius:12px;box-shadow:0 0 0 9px rgba(143,209,31,.18);position:relative;z-index:5}
 html.tv nav.tabs button.tv-foco{transform:none}
