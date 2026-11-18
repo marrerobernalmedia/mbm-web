@@ -421,13 +421,14 @@ function mitos(){
 // ── Pestañas del televisor (Eliam, 17-nov-2026): MLB y Jugadores
 // MLB = los que jugaron en Grandes Ligas o llegaron al sistema de la MLB: las colecciones "Pura Grandes Ligas" y
 // "Los Atléticos y Los Aviadores" (lo que se añada ahí entra solo) + los que se apuntan a mano aquí
+const MLB_COLS = ["PLOjbIbSNSkpZYsSbf2bfvWmy9djxQx5OI", "PLP2OLNyjRaqo"]; // por id: en inglés el nombre de la colección cambia
 const MLB_EXTRA = ["OlhqbIbdsSk", "56ieZ9LGdxY", "LhgEUVHLH2g"]; // Osvaldo Fernández, Rolando Viera, Yordanys Pérez
-function mlbIds(){ const out = []; (D.cols||[]).filter(c => /Grandes Ligas|Atléticos/i.test(c.name)).forEach(c => c.v.forEach(i => out.includes(i) || out.push(i)));
+function mlbIds(){ const out = []; (D.cols||[]).filter(c => MLB_COLS.includes(c.id)).forEach(c => c.v.forEach(i => out.includes(i) || out.push(i)));
   MLB_EXTRA.forEach(i => out.includes(i) || out.push(i)); return out.filter(i => vivo(i) && !EVENTO(i)).sort(byViews); }
 function mlb(){ const l = mlbIds();
   return `<section>${H("MLB", String(l.length))}<p class="lede">${L("Los que jugaron en Grandes Ligas o llegaron al béisbol organizado de la MLB.","The ones who played in the majors or made it into MLB organized baseball.")}</p><div class="row">${l.map(tile).join("")}</div></section>`; }
 // Jugadores = todas las entrevistas, por orden alfabético del pelotero (sin juegos completos ni especiales de grupo)
-function jugadores(){ const esp = new Set((D.series.find(x => /Especiales/i.test(x.name)) || { v: [] }).v);
+function jugadores(){ const esp = new Set((D.series.find(x => x.id === "PLaTGBnf6Kovg") || { v: [] }).v);
   const n = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   const l = Object.keys(V).filter(i => vivo(i) && V[i].p && !EVENTO(i) && !esp.has(i)).sort((a, b) => n(V[a].p).localeCompare(n(V[b].p)) || byViews(a, b));
   return `<section>${H(L("Jugadores","Players"), String(new Set(l.map(i => V[i].p)).size))}<p class="lede">${L("Todas las entrevistas, por orden alfabético.","Every interview, in alphabetical order.")}</p><div class="row">${l.map(tile).join("")}</div></section>`; }
@@ -437,7 +438,7 @@ const PAISES = [
   { id: "pais-ve", c: "ve", es: "Venezuela", en: "Venezuela", flag: `<svg viewBox="0 0 60 30"><rect width="60" height="10" fill="#ffcc00"/><rect y="10" width="60" height="10" fill="#00247d"/><rect y="20" width="60" height="10" fill="#cf142b"/>${[-52.5,-37.5,-22.5,-7.5,7.5,22.5,37.5,52.5].map(g => { const r = g * Math.PI / 180; return `<circle cx="${(30 + 9 * Math.sin(r)).toFixed(2)}" cy="${(20.5 - 7 * Math.cos(r)).toFixed(2)}" r="0.9" fill="#fff"/>`; }).join("")}</svg>` }
 ];
 const paisDe = i => (V[i] && V[i].c) || "cu";
-const ESP = new Set((D.series.find(x => /Especiales/i.test(x.name)) || { v: [] }).v);
+const ESP = new Set((D.series.find(x => x.id === "PLaTGBnf6Kovg") || { v: [] }).v);
 const paisIds = c => Object.keys(V).filter(i => vivo(i) && V[i].p && !EVENTO(i) && !ESP.has(i) && paisDe(i) === c).sort(byViews);
 function paises(){
   const P = PAISES.find(x => x.id === open);
