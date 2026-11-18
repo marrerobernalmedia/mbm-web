@@ -42,7 +42,7 @@ NOMBRES = set()
 
 def cargar_nombres(vids, comics):
     for x in list(vids.values()):
-        for n in (x.get('c') or []) + ([x['p']] if x.get('p') else []):
+        for n in (x.get('c') if isinstance(x.get('c'), list) else []) + ([x['p']] if x.get('p') else []):
             NOMBRES.add(norm(n))
     for c in comics or []:
         NOMBRES.add(norm(c.get('name', '')))
