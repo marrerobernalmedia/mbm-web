@@ -42,6 +42,9 @@ html.mbp-lock,html.mbp-lock body{overflow:hidden}
 html.mbp-lock nav.tabs{z-index:10000}
 @media(min-width:900px){.mbp-it img{width:180px}}`;
 
+  // Dentro de las apps (televisor, iPhone, iPad) el video puede sonar sin que el usuario toque nada: ahí nunca se silencia solo.
+  // En el navegador sí hay que silenciar para que arranque (Eliam, 18-nov-2026: al volver a inglés en iPhone arrancaba en mute).
+  const APPNAT = /MBMTV/.test(navigator.userAgent) || !!(window.Capacitor && Capacitor.isNativePlatform && Capacitor.isNativePlatform());
   let root, yt = null, cur = null, apiP = null, queue = [], autoNext = true, forcedMute = false, watch = 0, pushed = false;
 
   function api(){
@@ -93,7 +96,7 @@ html.mbp-lock nav.tabs{z-index:10000}
 
   function onState(e){
     const s = e.data;
-    if (s === 1 && /MBMTV/.test(navigator.userAgent)) { try { if (yt.isMuted()) { yt.unMute(); yt.setVolume(100); } } catch (x) {} }
+    if (s === 1 && APPNAT) { try { if (yt.isMuted()) { yt.unMute(); yt.setVolume(100); } } catch (x) {} }
     if (s === 1) { cover(false); clearTimeout(watch); root.querySelector(".mbp-snd").hidden = !(forcedMute && yt.isMuted && yt.isMuted()); }
     if (s === 0 && autoNext && queue[0]) play(queue[0]);
   }
@@ -101,7 +104,7 @@ html.mbp-lock nav.tabs{z-index:10000}
   function guard(){
     clearTimeout(watch);
     // En la app de televisor el sonido siempre está permitido: nunca se silencia (el video solo tarda más en cargar)
-    if (/MBMTV/.test(navigator.userAgent)) { watch = setTimeout(() => { try { if (yt.isMuted && yt.isMuted()) yt.unMute(); yt.setVolume(100); if (yt.getPlayerState() !== 1) yt.playVideo(); } catch (e) {} }, 2500); return; }
+    if (APPNAT) { watch = setTimeout(() => { try { if (yt.isMuted && yt.isMuted()) yt.unMute(); yt.setVolume(100); if (yt.getPlayerState() !== 1) yt.playVideo(); } catch (e) {} }, 2500); return; }
     watch = setTimeout(() => { try { const s = yt.getPlayerState(); if (s !== 1 && s !== 3 && s !== 0) { forcedMute = true; yt.mute(); yt.playVideo(); } } catch (e) {} }, 2200);
   }
 
