@@ -166,6 +166,11 @@ svg{width:22px;height:22px;flex:none}
 .col span{font-size:12.5px;color:var(--mute);display:block;margin-top:2px}
 .col>div{min-width:0}
 .back{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:var(--red2);padding:6px 0}
+.socl{margin-top:14px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.socb{margin-top:8px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.socb a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:8px 6px;border-radius:12px;font-weight:800;font-size:13px;color:#fff;min-width:0}
+.socb svg{width:20px;height:20px;flex:none}
+.socb .yt{background:#e2262f}.socb .fb{background:#1b6fe0}.socb .ig{background:linear-gradient(45deg,#f09433,#dc2743 50%,#bc1888)}
 .shead{border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
 .shead img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .shead .b{padding:14px 16px 16px}
@@ -430,7 +435,7 @@ function page(s){
   const l = sort === "vistos" ? s.v.slice().sort(byViews) : s.v;
   return `<button class="back" data-back>${L("← Series y colecciones","← Series and collections")}</button>
   <section style="margin-top:8px"><div class="shead">${s.banner?`<img src="${s.banner}" alt="">`:`<img src="${img(s.v[0])}" alt="">`}<div class="b"><h1>${esc(s.name)}</h1><p>${esc(s.tag)}</p>
-  <div class="btns"><a class="btn yt" href="https://www.youtube.com/@RectaAlPecho?sub_confirmation=1" target="_blank" rel="noopener">${L("Suscribirme al canal","Subscribe to the channel")}</a></div></div></div></section>
+  <div class="socl">${L("Síguenos y no te pierdas nada","Follow us and don't miss a thing")}</div><div class="socb"><a class="yt" href="https://www.youtube.com/@RectaAlPecho?sub_confirmation=1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4.5" fill="currentColor"/><path d="M10 9v6l5.2-3z" fill="#e2262f"/></svg>YouTube</a><a class="fb" href="https://www.facebook.com/RectaAlPecho" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.6 21v-7.3h2.5l.4-3h-2.9V8.9c0-.9.3-1.5 1.5-1.5h1.5V4.7c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.3H8.2v3h2.5V21z"/></svg>Facebook</a><a class="ig" href="https://www.instagram.com/rectaalpecho/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a></div></div></div></section>
   <section>${H(L("Las entrevistas","The interviews"), s.v.length + "")}<div class="sortbar"><button class="chip" data-sort="serie" aria-pressed="${sort==="serie"}">${L("Orden de la serie","Series order")}</button><button class="chip" data-sort="vistos" aria-pressed="${sort==="vistos"}">${L("Más vistos","Most watched")}</button></div>
   <div class="list">${l.map(i=>item(i)).join("")}</div></section>`;
 }
