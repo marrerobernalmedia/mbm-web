@@ -472,7 +472,7 @@ function inicio(){
   }).join("");
   const funny = D.comics.slice(0, window.matchMedia("(min-width: 900px)").matches ? 12 : 10);
   return `<div class="home-top"><div>
-  ${latest ? (() => { const sh = SH[showOf[latest]] || SH.lrecs; const f = V[latest].f || ""; const tag = "● Estreno del día";
+  ${latest ? (() => { const sh = SH[showOf[latest]] || SH.lrecs; const f = V[latest].f || ""; const tag = "● Último estreno";
     return `<section><div class="hero"><div class="pic"><img src="${V[latest].img ? V[latest].img : window.THUMB_REMOTE ? "https://i.ytimg.com/vi/" + latest + "/maxresdefault.jpg" : img(latest)}" onerror="this.onerror=null;this.src=img(latest)" alt="${esc(V[latest].t)}"><span class="tag">${tag}</span></div>
     <div class="body"><span class="show" style="--sc:${sh.col}">${esc(sname(sh))}${V[latest].n ? " " + esc(V[latest].n) : ""}</span><h3>${esc(tt(latest))}</h3>${who(latest)}
     <div class="btns"><a class="btn yt" href="${YTU(latest)}" target="_blank" rel="noopener">▶ Verlo ahora</a>${next ? `<button class="btn ghost" data-open-sheet>🔔 Avísame</button>` : ""}<button class="btn ghost" data-share="${latest}" data-t="${esc(V[latest].t)}">📤 Compartir</button></div></div></div></section>`; })() : ""}
