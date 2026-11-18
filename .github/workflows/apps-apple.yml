@@ -73,6 +73,22 @@ jobs:
         run: |
           set -o pipefail
           KEY="$RUNNER_TEMP/AuthKey_$KEY_ID.p8"; printf '%s' "$KEY_P8" > "$KEY"
+          # Diagnóstico de la clave (no imprime secretos): formato del .p8 y respuesta de Apple.
+          echo "Key ID: ${#KEY_ID} caracteres · Issuer: ${#ISSUER} caracteres · líneas del .p8: $(wc -l < "$KEY" | tr -d ' ') · CR: $(grep -c $'\r' "$KEY" || true)"
+          head -1 "$KEY" | grep -q "BEGIN PRIVATE KEY" && echo "p8: cabecera correcta" || echo "p8: FALTA la línea BEGIN PRIVATE KEY"
+          tr -d '\r' < "$KEY" > "$KEY.lf" && mv "$KEY.lf" "$KEY"
+          KEY="$KEY" ruby -ropenssl -rbase64 -rjson -rnet/http -e '
+            key=OpenSSL::PKey.read(File.read(ENV["KEY"]))
+            b=->(s){Base64.urlsafe_encode64(s,padding:false)}
+            h=b.({alg:"ES256",kid:ENV["KEY_ID"],typ:"JWT"}.to_json)
+            c=b.({iss:ENV["ISSUER"],iat:Time.now.to_i,exp:Time.now.to_i+600,aud:"appstoreconnect-v1"}.to_json)
+            der=key.sign("SHA256","#{h}.#{c}")
+            sig=OpenSSL::ASN1.decode(der).value.map{|i| i.value.to_s(2).rjust(32,"\0")}.join
+            u=URI("https://api.appstoreconnect.apple.com/v1/apps?limit=1")
+            r=Net::HTTP.start(u.host,443,use_ssl:true){|x| x.get(u.request_uri,{"Authorization"=>"Bearer #{h}.#{c}.#{b.(sig)}"})}
+            puts "App Store Connect API responde: #{r.code}"
+            unless r.code=="200"; puts r.body[0,400]; exit 1; end
+          '
           AUTH="-allowProvisioningUpdates -authenticationKeyPath $KEY -authenticationKeyID $KEY_ID -authenticationKeyIssuerID $ISSUER"
           BUILD=$(( $(date +%s) / 60 ))
           xcodebuild -project App.xcodeproj -scheme App -configuration Release \
