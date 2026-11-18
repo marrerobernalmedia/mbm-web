@@ -24,16 +24,18 @@ import com.getcapacitor.BridgeWebChromeClient;
 //    y solo cierra la app desde Inicio.
 public class MainActivity extends BridgeActivity {
 
+    // Insiste 60 s por video: YouTube a veces entrega la lista de audios después de arrancar, o vuelve al original
     private static final String AUDIO_JS =
         "(function(){if(!/^\\/embed\\//.test(location.pathname))return;" +
         "var want=(new URLSearchParams(location.search).get('hl')||'').slice(0,2).toLowerCase();if(!want)return;" +
         "function meta(t){for(var k in t){var v=t[k];if(v&&typeof v==='object'&&typeof v.id==='string'&&('isDefault' in v))return v;}return {};}" +
-        "var done={};setInterval(function(){try{var p=document.getElementById('movie_player');if(!p||!p.getAvailableAudioTracks)return;" +
-        "var vd=p.getVideoData&&p.getVideoData();var vid=vd&&vd.video_id;if(!vid||done[vid])return;" +
-        "var av=p.getAvailableAudioTracks()||[];if(!av.length)return;" +
-        "var cur=(meta(p.getAudioTrack()).id||'').slice(0,2).toLowerCase();if(cur===want){done[vid]=1;return;}" +
-        "var t=av.find(function(x){return (meta(x).id||'').slice(0,2).toLowerCase()===want;});" +
-        "if(!t){done[vid]=1;return;}if(p.setAudioTrack(t))done[vid]=1;}catch(e){}},700);})();";
+        "function lang(t){var m=meta(t);var id=(m.id||'').slice(0,2).toLowerCase();if(id)return id;return /english|ingl/i.test(m.name||'')?'en':'';}" +
+        "var st={},last='';setInterval(function(){try{var p=document.getElementById('movie_player');if(!p||!p.getAvailableAudioTracks)return;" +
+        "var vd=p.getVideoData&&p.getVideoData();var vid=vd&&vd.video_id;if(!vid)return;" +
+        "if(vid!==last){last=vid;st[vid]={t:Date.now()};}var s=st[vid];if(Date.now()-s.t>60000)return;" +
+        "if(lang(p.getAudioTrack())===want)return;" +
+        "var av=p.getAvailableAudioTracks()||[];var t=av.find(function(x){return lang(x)===want;});" +
+        "if(t)p.setAudioTrack(t);}catch(e){}},600);})();";
 
     private View videoView = null;
     private android.webkit.WebChromeClient.CustomViewCallback videoCallback = null;
