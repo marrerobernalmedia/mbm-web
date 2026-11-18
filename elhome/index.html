@@ -2,6 +2,7 @@
 <html lang="es"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>/* Dentro de la app nativa no hay zoom: el doble toque estiraba la pantalla (Eliam, 18-nov-2026) */if(window.Capacitor||navigator.standalone||matchMedia("(display-mode: standalone)").matches){document.querySelector('meta[name=viewport]').setAttribute("content","width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover")}</script>
 <title>El Home de la Risa — La casa del humor cubano</title>
 <meta name="description" content="El Home de la Risa, la casa del humor cubano: todos los shows en un solo lugar. La Risa es Cosa Seria, Bacallao Sin Pan, Apagonia Hoy, El Despingmoment, Si de Cuero se Trata y más.">
 <link rel="canonical" href="https://www.elhomedelarisa.com/">
@@ -20,6 +21,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap">
 <style>
 html,body{margin:0}
+html{touch-action:manipulation;-webkit-text-size-adjust:100%}
 .inst .l{display:none}@media (min-width:600px){.inst .l{display:inline}.inst .s{display:none}}
 .inst{flex:none;white-space:nowrap;padding:9px 14px;border-radius:999px;background:var(--lime);color:#111;font-weight:800;font-size:13px;flex:none}
 :root{
