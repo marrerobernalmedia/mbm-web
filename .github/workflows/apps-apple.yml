@@ -10,6 +10,10 @@ on:
         description: "Subir a TestFlight (necesita las claves de Apple)"
         type: boolean
         default: false
+      intel:
+        description: "Usar Mac Intel (cuando GitHub no tiene Mac arm64 libres)"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths: ["apple/**", ".github/workflows/apps-apple.yml"]
@@ -20,7 +24,7 @@ concurrency:
 
 jobs:
   ios:
-    runs-on: macos-26
+    runs-on: ${{ (github.event_name == 'workflow_dispatch' && inputs.intel) && 'macos-26-intel' || 'macos-26' }}
     timeout-minutes: 45
     strategy:
       fail-fast: false
