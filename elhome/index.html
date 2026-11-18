@@ -250,6 +250,17 @@ h2 .more{flex:none;white-space:nowrap}
   .list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 32px}
   .tile{flex:0 0 38%}
 }
+/* De 900 a 1279 px (plegable abierto en horizontal, iPad): el menú no cabe arriba; se queda abajo como en el teléfono */
+@media (min-width:900px) and (max-width:1279.98px){
+  .app{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;flex:none;background:rgba(12,10,13,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:0 env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+  nav.tabs div{max-width:none;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  nav.tabs button{flex-direction:column;gap:3px;padding:10px 0 9px;font-size:12px;font-weight:600;border-radius:0;white-space:normal}
+  nav.tabs button[aria-selected="true"]{background:none}
+  nav.tabs svg{width:22px;height:22px}
+  .search{max-width:none;margin:0 0 6px;padding:10px 12px}
+  .brand{flex:1;margin-right:0}
+}
 </style>
 <script src="onesignal-config.js"></script>
 <script src="nativo.js"></script>
@@ -605,7 +616,7 @@ if (window.ONESIGNAL_APP_ID && pushBtn) {
 render();
 // --- diseño de página web en pantallas grandes: el menú pasa a la cabecera ---
 (() => {
-  const mq = window.matchMedia("(min-width: 900px)"), nav = document.querySelector("nav.tabs"), hd = document.querySelector(".hd"), hdr = document.querySelector("header .wrap"), search = document.querySelector(".search");
+  const mq = window.matchMedia("(min-width: 1280px)"), nav = document.querySelector("nav.tabs"), hd = document.querySelector(".hd"), hdr = document.querySelector("header .wrap"), search = document.querySelector(".search");
   const place = () => { if (mq.matches) { hd.insertBefore(nav, document.getElementById("appBtn")); hdr.classList.add("hdrow"); hd.appendChild(search); } else { document.body.appendChild(nav); hdr.classList.remove("hdrow"); hdr.appendChild(search); } };
   place(); mq.addEventListener("change", place);
   const fit = () => document.querySelectorAll("#view .row").forEach(r => { const n = r.children.length; r.style.setProperty("--cols", n >= 4 ? 4 : Math.max(1, n)); });
