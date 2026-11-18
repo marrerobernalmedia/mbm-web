@@ -213,6 +213,13 @@ html.tv nav.tabs button.tv-foco{outline:3px solid var(--tvf)!important;outline-o
     return { st, y: window.scrollY, h: huella(el) };
   };
   const paso = el => { if (!volviendo) { pila.push(foto(el || cur)); try { history.pushState({ tv: 1 }, ""); } catch (x) {} } };
+  // El botón de volver de la página hace lo mismo que Atrás del control: vuelve al mismo lugar y al mismo botón marcado
+  document.addEventListener("click", e => {
+    const bk = e.target.closest && e.target.closest("#view [data-back]");
+    if (!bk || volviendo || !pila.length) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    try { history.back(); } catch (x) {}
+  }, true);
   document.addEventListener("click", e => {
     const t = e.target.closest && e.target.closest('[data-open], [data-go], nav.tabs button');
     if (!t) return;
