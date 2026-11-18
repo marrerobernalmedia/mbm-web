@@ -15,8 +15,24 @@ on:
         description: "ENVIAR A REVISIÓN de Apple (solo con el sí de Eliam)"
         type: boolean
         default: false
+      clave_publica:
+        description: "Solo mostrar la clave pública (para cifrar adjuntos privados)"
+        type: boolean
+        default: false
 jobs:
+  clave:
+    if: inputs.clave_publica
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clave pública (no es secreta)
+        env:
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          printf '%s' "$ASC_KEY_P8" | tr -d '\r' > k.p8
+          openssl pkey -in k.p8 -pubout -outform DER | xxd -p -c 200 | sed 's/^/PUB:/'
+          rm -f k.p8
   ficha:
+    if: ${{ !inputs.clave_publica }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -48,5 +64,14 @@ jobs:
           LANG: en_US.UTF-8
         run: |
           set -a; . "./$APP/app.env"; set +a
+          # Adjunto privado para el revisor: viaja cifrado en el repositorio y se descifra aquí.
+          if [ -f "$APP/carta.enc" ]; then
+            printf '%s' "$ASC_KEY_P8" | tr -d '\r' > "$RUNNER_TEMP/k.p8"
+            openssl pkeyutl -derive -inkey "$RUNNER_TEMP/k.p8" -peerkey "$APP/carta.eph.pem" -out "$RUNNER_TEMP/s.bin"
+            K=$(openssl dgst -sha256 -binary "$RUNNER_TEMP/s.bin" | xxd -p -c 64)
+            openssl enc -d -aes-256-cbc -K "$K" -iv "$(cat "$APP/carta.iv")" -in "$APP/carta.enc" -out "$APP/carta_autorizacion.pdf"
+            rm -f "$RUNNER_TEMP/k.p8" "$RUNNER_TEMP/s.bin"
+            echo "$(cat "$APP/carta.sha256")  $APP/carta_autorizacion.pdf" | sha256sum -c -
+          fi
           gem install fastlane --no-document -q
           fastlane ficha
