@@ -142,7 +142,7 @@ ${varios ? `<div class="en-elige">Elige tu turno:</div>` : ""}${g.funciones.map(
     hoja(`<h3>Descarga y Reserva</h3>
 <p>Las entradas se reservan solo desde la app de El Home de la Risa. Bájala gratis y reserva tus entradas para <b>${esc(g.titulo)}</b> (${esc(larga(g.fecha))}${g.hora ? ", turno de las " + esc(g.hora) : ""}). En la app también tendrás tu entrada con código para la puerta y los avisos de la grabación.</p>
 <div class="en-stores"><div><a class="en-badge-t" href="${PLAY}" target="_blank" rel="noopener"><img src="tiendas/google-play.png" alt="Disponible en Google Play"></a><em class="en-soon">Ya disponible</em></div>
-<div><span class="en-badge-t off"><img src="tiendas/app-store.svg" alt="App Store"></span><em class="en-soon">Próximamente</em></div></div>
+<div><a class="en-badge-t" href="https://apps.apple.com/app/el-home-de-la-risa/id6836433003" target="_blank" rel="noopener"><img src="tiendas/app-store.svg" alt="App Store"></a><em class="en-soon">Ya disponible</em></div></div>
 <button class="close" data-en-x>Cerrar</button>`);
   }
 

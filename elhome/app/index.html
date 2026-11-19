@@ -76,14 +76,9 @@ footer a{margin:0 8px}
 
   <!-- iPhone en Safari -->
   <section class="caja" id="ios" hidden>
-    <h2>Ponla en tu iPhone</h2>
-    <ol>
-      <li><div>Abajo, junto a la dirección, toca el botón de menú (☰ o ···) y luego «Compartir» <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><rect x="5" y="11" width="14" height="10" rx="2"/></svg>.</div></li>
-      <li><div>Si no ves «Agregar a pantalla de inicio», toca «Ver más».</div></li>
-      <li><div>Toca «Agregar a pantalla de inicio» y luego «Agregar».</div></li>
-    </ol>
-    <a class="btn lima" href="/">Abrir El Home de la Risa</a>
-    <p class="nota">Muy pronto también en el App Store.</p>
+    <h2>Bájala en tu iPhone</h2>
+    <a class="play" target="_blank" rel="noopener" href="https://apps.apple.com/app/el-home-de-la-risa/id6836433003"><img src="../tiendas/app-store.svg" alt="Descárgala en el App Store" width="196" height="58"></a>
+    <p class="nota">Gratis. Para iPhone y iPad.</p>
   </section>
 
   <!-- iPhone dentro de Facebook, Instagram, WhatsApp… -->
@@ -96,9 +91,9 @@ footer a{margin:0 8px}
 
   <!-- Computadora -->
   <section class="caja" id="pc" hidden>
-    <h2>Bájala en tu Android</h2>
-    <div class="fila"><b>Haz clic aquí 👉</b><a class="play" data-play target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.elhome"><img src="../tiendas/google-play.png" alt="Disponible en Google Play" width="196" height="58"></a></div>
-    <p class="nota">¿Tienes iPhone? Abre larisaapp.com en Safari desde tu teléfono. Muy pronto en el App Store.</p>
+    <h2>Bájala en tu teléfono</h2>
+    <div class="fila"><b>Android 👉</b><a class="play" data-play target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.elhome"><img src="../tiendas/google-play.png" alt="Disponible en Google Play" width="196" height="58"></a></div>
+    <div class="fila" style="margin-top:10px"><b>iPhone 👉</b><a class="play" target="_blank" rel="noopener" href="https://apps.apple.com/app/el-home-de-la-risa/id6836433003"><img src="../tiendas/app-store.svg" alt="Descárgala en el App Store" width="196" height="58"></a></div>
   </section>
 
   <section class="caja entradas">
@@ -117,7 +112,7 @@ footer a{margin:0 8px}
   <details id="otro">
     <summary>¿Tienes otro teléfono?</summary>
     <p><b>Android:</b> <a data-play href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.elhome">bájala en Google Play</a>.</p>
-    <p><b>iPhone:</b> abre esta página en Safari, toca Compartir y luego «Agregar a pantalla de inicio». Muy pronto en el App Store.</p>
+    <p><b>iPhone:</b> <a target="_blank" rel="noopener" href="https://apps.apple.com/app/el-home-de-la-risa/id6836433003">bájala en el App Store</a>.</p>
     <p><b>Sin instalar nada:</b> <a href="/">úsala en el navegador</a>.</p>
   </details>
 </main>
@@ -137,7 +132,7 @@ footer a{margin:0 8px}
   [].forEach.call(document.querySelectorAll('[data-play]'),function(a){a.href+='&referrer='+encodeURIComponent('utm_source='+de+'&utm_medium=larisaapp')});
   var ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1), and=/android/i.test(ua);
   var safari=ios&&/safari/i.test(ua)&&!/crios|fxios|edgios|opios|fban|fbav|instagram|line\/|gsa\/|whatsapp/i.test(ua);
-  var cual=and?'and':ios?(safari?'ios':'iosapp'):'pc';
+  var cual=and?'and':ios?'ios':'pc';
   document.getElementById(cual).hidden=false;
   document.getElementById('dir').textContent=corta;
   var b=document.getElementById('copiar');
