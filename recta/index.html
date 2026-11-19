@@ -541,19 +541,19 @@ document.getElementById("fbForm").addEventListener("submit", async e => {
   e.preventDefault();
   const msg = document.getElementById("fbMsg"), send = document.getElementById("fbSend");
   const texto = document.getElementById("fbText").value.trim();
-  if (!texto && !fbNote){ msg.textContent = "Escribe algo o marca una nota."; return; }
+  if (!texto && !fbNote){ msg.textContent = L("Escribe algo o marca una nota.", "Write something or pick a rating."); return; }
   const fd = new FormData(e.target);
   fd.set("tipo", fbType); fd.set("nota", fbNote); fd.set("pantalla", (typeof tab !== "undefined" ? tab : ""));
-  send.disabled = true; msg.textContent = "Enviando…";
+  send.disabled = true; msg.textContent = L("Enviando…", "Sending…");
   try {
     const r = await fetch("feedback.php", { method: "POST", body: fd });
-    if (r.status === 429) { msg.textContent = "Espera un momento antes de mandar otra."; return; }
+    if (r.status === 429) { msg.textContent = L("Espera un momento antes de mandar otra.", "Wait a moment before sending another one."); return; }
     const j = await r.json();
     if (!j.ok) throw 0;
-    msg.textContent = "¡Gracias! Ya lo recibimos."; e.target.reset(); fbNote = 0;
+    msg.textContent = L("¡Gracias! Ya lo recibimos.", "Thank you! We got it."); e.target.reset(); fbNote = 0;
     fbRoot.querySelectorAll("#fbStars [data-n]").forEach(b => b.classList.remove("on"));
   } catch (err) {
-    msg.textContent = "No se pudo enviar ahora. Inténtalo más tarde.";
+    msg.textContent = L("No se pudo enviar ahora. Inténtalo más tarde.", "Couldn't send right now. Please try again later.");
   } finally { send.disabled = false; }
 });
 document.addEventListener("click", e => { if (e.target.closest("[data-fb]")) openFb(true); });
@@ -617,7 +617,7 @@ if (EN) {
     "Instalar desde el navegador": "Install from the browser", "Un toque y queda en tu pantalla de inicio": "One tap and it's on your home screen",
     "iPhone: añadir a pantalla de inicio": "iPhone: add to home screen", "En Safari toca Compartir y luego \"Agregar a inicio\"": "In Safari tap Share, then \"Add to Home Screen\"",
     "Usarla en el navegador": "Use it in the browser", "Ya en Google Play. Muy pronto en App Store.": "Now on Google Play. Coming soon to the App Store.",
-    "Danos tu opinión": "Tell us what you think", "Cuéntanos": "Tell us", "Enviar mi opinión": "Send", "Tu nombre o WhatsApp (si quieres que te respondamos)": "Your name or WhatsApp (if you'd like a reply)",
+    "Danos tu opinión": "Tell us what you think", "¿Cómo mejoramos la app?": "How can we improve the app?", "Lo lee el equipo. Cada semana la app mejora con lo que nos dicen.": "The team reads every message. The app gets better each week with what you tell us.", "Privacidad": "Privacy", "Ayuda": "Help", "💡 Una idea": "💡 An idea", "🔧 Algo no funciona": "🔧 Something's broken", "🎬 Quiero ver…": "🎬 I want to see…", "❤️ Me gusta": "❤️ I like it", "¿Qué nota le das a la app?": "How would you rate the app?", "Cerrar": "Close", "Cuéntanos": "Tell us", "Enviar mi opinión": "Send", "Tu nombre o WhatsApp (si quieres que te respondamos)": "Your name or WhatsApp (if you'd like a reply)",
     "Abre el archivo y acepta \"instalar de esta fuente\" si el teléfono lo pide": "Open the file and allow \"install from this source\" if your phone asks",
     "Android: menú ⋮ → \"Instalar app\". iPhone: Compartir → \"Agregar a inicio\"": "Android: menu ⋮ → \"Install app\". iPhone: Share → \"Add to Home Screen\""
   };
