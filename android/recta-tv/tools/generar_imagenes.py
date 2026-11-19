@@ -5,6 +5,7 @@ import os
 R = "android/app/src/main/res"
 LOGO = Image.open("../../recta/icons/icon-512.png").convert("RGBA")
 MASK = Image.open("../../recta/icons/maskable-512.png").convert("RGBA")
+PELOTA = LOGO.crop((10, 10, 502, 502))  # el icono nuevo es la pelota (96 %) sobre negro: para banner y arranque se usa solo la pelota
 BG = (10, 20, 36, 255); LIME = (255, 75, 85, 255)
 F = "/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf"
 def font(s):
@@ -21,7 +22,7 @@ for d, s in D.items():
     MASK.resize((fg, fg), Image.LANCZOS).save(f"{p}/ic_launcher_foreground.png")
 def banner(w, h, path):
     im = Image.new("RGBA", (w, h), BG); dr = ImageDraw.Draw(im)
-    pad = int(h * .10); lg = LOGO.resize((int(h * .80), int(h * .80)), Image.LANCZOS)
+    pad = int(h * .10); lg = PELOTA.resize((int(h * .80), int(h * .80)), Image.LANCZOS)
     cm = Image.new("L", lg.size, 0); ImageDraw.Draw(cm).ellipse((0, 0, lg.width - 1, lg.height - 1), fill=255)
     im.paste(lg, (pad, (h - lg.height) // 2), cm)
     x = pad * 2 + lg.width; room = w - x - pad
@@ -42,7 +43,7 @@ for root, _, files in os.walk(R):
         if fn == "splash.png":
             p = os.path.join(root, fn); w, h = Image.open(p).size
             im = Image.new("RGBA", (w, h), BG); s = int(min(w, h) * .35)
-            lg = LOGO.resize((s, s), Image.LANCZOS); cm = Image.new("L", (s * 4, s * 4), 0)
+            lg = PELOTA.resize((s, s), Image.LANCZOS); cm = Image.new("L", (s * 4, s * 4), 0)
             ImageDraw.Draw(cm).ellipse((6, 6, s * 4 - 7, s * 4 - 7), fill=255); cm = cm.resize((s, s), Image.LANCZOS)
             im.paste(lg, ((w - s) // 2, (h - s) // 2), cm)  # solo la pelota redonda, sin el cuadrado blanco
             im.convert("RGB").save(p)
