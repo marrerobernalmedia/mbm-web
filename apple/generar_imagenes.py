@@ -9,7 +9,7 @@ def logo(app):
     if app == "mba":
         im = Image.open(f"{RAIZ}/brand/mba/mba-isotipo.png").convert("RGBA"); return im.crop(im.getbbox()), (255, 255, 255), 0.84
     t = "/tmp/pelota.png"; subprocess.run(["rsvg-convert", "-h", "2000", f"{RAIZ}/brand/recta/pelota-x-isotipo.svg", "-o", t], check=True)
-    im = Image.open(t).convert("RGBA"); return im.crop(im.getbbox()), (255, 255, 255), 0.98
+    im = Image.open(t).convert("RGBA"); return im.crop(im.getbbox()), (0, 0, 0), 0.96  # pelota completa sobre negro (Eliam, 18-nov-2026)
 def poner(fondo, im, lado, frac):
     c = Image.new("RGB", (lado, lado), fondo); x = im.copy(); x.thumbnail((int(lado * frac), int(lado * frac)), Image.LANCZOS)
     c.paste(x, ((lado - x.size[0]) // 2, (lado - x.size[1]) // 2), x); return c
