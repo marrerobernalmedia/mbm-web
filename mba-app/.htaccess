@@ -1,0 +1,6 @@
+# La pantalla de la app y su service worker no se guardan en la caché del navegador: los cambios se ven al abrirla
+<IfModule mod_headers.c>
+<FilesMatch "^(index\.html|sw\.js)$">
+Header set Cache-Control "no-cache"
+</FilesMatch>
+</IfModule>
