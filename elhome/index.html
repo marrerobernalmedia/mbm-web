@@ -618,12 +618,15 @@ function tchips(){ view.querySelectorAll(".chip").forEach(c => { if (!c.children
 const fbStrip = () => IS_SITE ? "" : `<button class="fbstrip" data-fb><div class="ic">💬</div><div><b>¿Cómo mejoramos la app?</b><span>Danos tu opinión: ideas, fallos o lo que quieres ver.</span></div></button>`;
 
 // --- avisos al teléfono (OneSignal; solo en la versión publicada con su configuración) ---
+const TACTIL = navigator.maxTouchPoints > 0, LADO = Math.min(screen.width, screen.height);
+const DISP = !TACTIL ? ["este dispositivo", "this device"] : LADO >= 700 ? ["esta tableta", "this tablet"] : ["este teléfono", "this phone"]; // iPad ≠ teléfono (Eliam, 18-nov-2026)
 const pushBtn = document.getElementById("pushBtn"), pushLbl = document.getElementById("pushLbl");
+if (pushLbl && pushLbl.nextElementSibling) pushLbl.nextElementSibling.textContent = "Te avisamos en " + DISP[0] + " el día que sale un capítulo nuevo";
 if (window.ONESIGNAL_APP_ID && pushBtn) {
   pushBtn.hidden = false;
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async OS => {
-    const upd = () => { const on = OS.Notifications.permission && OS.User.PushSubscription.optedIn; pushLbl.textContent = on ? "Avisos activados en este teléfono ✓" : "Activar avisos de estrenos"; };
+    const upd = () => { const on = OS.Notifications.permission && OS.User.PushSubscription.optedIn; pushLbl.textContent = on ? "Avisos activados en " + DISP[0] + " ✓" : "Activar avisos de estrenos"; };
     upd();
     OS.Notifications.addEventListener("permissionChange", upd);
     OS.User.PushSubscription.addEventListener("change", upd);
