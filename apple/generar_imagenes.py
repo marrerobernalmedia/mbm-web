@@ -5,7 +5,7 @@ from PIL import Image
 R = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.dirname(R)
 def logo(app):
     if app == "elhome":
-        im = Image.open(f"{RAIZ}/brand/elhome/elhome-papito.png").convert("RGBA"); return im.crop(im.getbbox()), (0, 0, 0), 0.88
+        im = Image.open(f"{RAIZ}/brand/elhome/elhome-papito.png").convert("RGBA"); return im.crop(im.getbbox()), (0, 0, 0), 0.96
     if app == "mba":
         im = Image.open(f"{RAIZ}/brand/mba/mba-isotipo.png").convert("RGBA"); return im.crop(im.getbbox()), (255, 255, 255), 0.84
     t = "/tmp/pelota.png"; subprocess.run(["rsvg-convert", "-h", "2000", f"{RAIZ}/brand/recta/pelota-x-isotipo.svg", "-o", t], check=True)
