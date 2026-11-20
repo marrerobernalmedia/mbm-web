@@ -4,7 +4,7 @@
   <div class="wrap">
     <div class="kicker">Productora audiovisual · Las Vegas</div>
     <h1>Historias que llegan al corazón de <em>nuestra gente</em>.</h1>
-    <p class="lead">Marrero Bernal Media es una productora con experiencia en el mercado latino: producimos, editamos y distribuimos contenido. Con cinco canales de YouTube y más de <span data-seg="tot.todo" data-fmt="mil">1,080,000</span> seguidores entre Facebook, Instagram y YouTube, no solo hacemos tu video: sabemos hacerlo llegar.</p>
+    <p class="lead">Marrero Bernal Media es una productora con experiencia en el mercado latino: producimos, editamos y distribuimos contenido. Con cinco canales de YouTube y más de <span data-seg="tot.todo" data-fmt="mil">1,133,000</span> seguidores entre Facebook, Instagram y YouTube, no solo hacemos tu video: sabemos hacerlo llegar.</p>
     <div class="ctas">
       <a class="btn btn-acc" href="#contacto">Cuéntanos tu proyecto</a>
       <a class="btn btn-ghost" href="#red">Conoce la red ↓</a>
@@ -16,10 +16,10 @@
   <div class="wrap">
     <div class="stat"><b>5</b><span>CANALES EN YOUTUBE</span></div>
     <div class="stat"><b>10</b><span>PÁGINAS EN FACEBOOK</span></div>
-    <div class="stat"><b>130K+</b><span>SUSCRIPTORES EN YOUTUBE</span></div>
+    <div class="stat"><b>132K+</b><span>SUSCRIPTORES EN YOUTUBE</span></div>
     <div class="stat"><b>27M+</b><span>VISTAS ACUMULADAS</span></div>
     <div class="stat"><b>4,500+</b><span>PIEZAS PUBLICADAS</span></div>
-    <div class="stat"><b data-seg="tot.todo" data-fmt="full" style="font-size:30px">1,083,324</b><span>SEGUIDORES EN REDES · AL <span data-seg="actualizado">2026-10-30</span></span></div>
+    <div class="stat"><b data-seg="tot.todo" data-fmt="full" style="font-size:30px">1,133,624</b><span>SEGUIDORES EN REDES · AL <span data-seg="actualizado">2026-11-20</span></span></div>
   </div>
 </div>
 
@@ -27,27 +27,27 @@
   <div class="wrap">
     <div class="kicker">La red</div>
     <h2>Una audiencia propia, construida semana a semana.</h2>
-    <p class="lead">Cinco canales de YouTube con estreno fijo cada semana y páginas de Facebook e Instagram que suman más de <span data-seg="tot.metaRed" data-fmt="mil">950,000</span> seguidores. Todo producido por nosotros.</p>
+    <p class="lead">Cinco canales de YouTube con estreno fijo cada semana y páginas de Facebook e Instagram que suman más de <span data-seg="tot.metaRed" data-fmt="mil">1,001,000</span> seguidores. Todo producido por nosotros.</p>
     <div class="red-grid">
       <a class="ch" href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/risa.jpg')); ?>)"></div>
-        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_risa.jpg')); ?>" alt="La Risa es Cosa Seria"><div><h3>La Risa es Cosa Seria</h3><p>Stand-up y comedia cubana. Estrenos martes y viernes.</p><span class="n"><span data-seg="yt.larisa">91K</span> en YouTube · <span data-seg="fb.larisa">584K</span> en Facebook · <span data-seg="ig.larisa">50K</span> en Instagram</span></div></div>
+        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_risa.jpg')); ?>" alt="La Risa es Cosa Seria"><div><h3>La Risa es Cosa Seria</h3><p>Stand-up y comedia cubana. Estrenos martes y viernes.</p><span class="n"><span data-seg="yt.larisa">92K</span> en YouTube · <span data-seg="fb.larisa">586K</span> en Facebook · <span data-seg="ig.larisa">50K</span> en Instagram</span></div></div>
       </a>
       <a class="ch" href="https://www.youtube.com/@RectaAlPecho?sub_confirmation=1" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/recta.jpg')); ?>)"></div>
-        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_recta.jpg')); ?>" alt="Recta al Pecho"><div><h3>Recta Al Pecho</h3><p>Entrevistas y análisis de béisbol latino. Jueves.</p><span class="n"><span data-seg="yt.recta">19K</span> en YouTube · <span data-seg="fb.recta">71K</span> en Facebook · <span data-seg="ig.recta">9.2K</span> en Instagram</span></div></div>
+        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_recta.jpg')); ?>" alt="Recta al Pecho"><div><h3>Recta Al Pecho</h3><p>Entrevistas y análisis de béisbol latino. Jueves.</p><span class="n"><span data-seg="yt.recta">19K</span> en YouTube · <span data-seg="fb.recta">73K</span> en Facebook · <span data-seg="ig.recta">9.5K</span> en Instagram</span></div></div>
       </a>
       <a class="ch" href="https://www.lcedr.com" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cosa.jpg')); ?>)"></div>
-        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_cosa.jpg')); ?>" alt="La Cosa Es De Risa"><div><h3>La Cosa Es De Risa</h3><p>El noticiero oficial de Apagonia. Domingos.</p><span class="n"><span data-seg="yt.lacosa">14K</span> en YouTube · <span data-seg="fb.lacosa">172K</span> en Facebook · <span data-seg="ig.lacosa">31K</span> en Instagram</span></div></div>
+        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_cosa.jpg')); ?>" alt="La Cosa Es De Risa"><div><h3>La Cosa Es De Risa</h3><p>El noticiero oficial de Apagonia. Domingos.</p><span class="n"><span data-seg="yt.lacosa">14K</span> en YouTube · <span data-seg="fb.lacosa">175K</span> en Facebook · <span data-seg="ig.lacosa">31K</span> en Instagram</span></div></div>
       </a>
       <a class="ch" href="https://www.welcometoapagonia.com" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/welcome.jpg')); ?>)"></div>
-        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_welcome.jpg')); ?>" alt="Welcome to Apagonia"><div><h3>Welcome to Apagonia</h3><p>Serie de comedia situacional. Próximamente.</p><span class="n"><span data-seg="yt.welcome">2.7K</span> en YouTube · <span data-seg="fb.welcome">1.7K</span> en Facebook · <span data-seg="ig.welcome">3.7K</span> en Instagram</span></div></div>
+        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_welcome.jpg')); ?>" alt="Welcome to Apagonia"><div><h3>Welcome to Apagonia</h3><p>Serie de comedia situacional. Próximamente.</p><span class="n"><span data-seg="yt.welcome">3K</span> en YouTube · <span data-seg="fb.welcome">5.7K</span> en Facebook · <span data-seg="ig.welcome">3.7K</span> en Instagram</span></div></div>
       </a>
       <a class="ch" href="https://www.elhomedelarisa.com" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/home.jpg')); ?>)"></div>
-        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_home.jpg')); ?>" alt="El Home de la Risa"><div><h3>El Home de la Risa</h3><p>La marca principal que agrupa todas nuestras producciones de humor. Lunes.</p><span class="n"><span data-seg="yt.elhome">3.2K</span> en YouTube · <span data-seg="fb.elhome">13K</span> en Facebook · <span data-seg="ig.elhome">1.7K</span> en Instagram</span></div></div>
+        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_home.jpg')); ?>" alt="El Home de la Risa"><div><h3>El Home de la Risa</h3><p>La marca principal que agrupa todas nuestras producciones de humor. Lunes.</p><span class="n"><span data-seg="yt.elhome">3.6K</span> en YouTube · <span data-seg="fb.elhome">20K</span> en Facebook · <span data-seg="ig.elhome">3.6K</span> en Instagram</span></div></div>
       </a>
     </div>
   </div>
@@ -149,7 +149,7 @@
     <div>
       <div class="kicker">Publicidad en la red</div>
       <h2>Llega al público latino donde ya está mirando.</h2>
-      <p class="lead">Un espacio en nuestros programas no es un anuncio que se salta: es parte del show. Nuestras páginas suman más de <span data-seg="tot.todo" data-fmt="mil">1,080,000</span> seguidores: <span data-seg="tot.fbRed" data-fmt="mil">846,000</span> en Facebook, <span data-seg="tot.igRed" data-fmt="mil">106,000</span> en Instagram y <span data-seg="tot.ytRed" data-fmt="mil">130,000</span> suscriptores en YouTube. La Risa es Cosa Seria <span data-seg="fb.larisa" data-fmt="full">584,344</span> en Facebook y <span data-seg="ig.larisa" data-fmt="full">50,500</span> en Instagram · La Cosa Es De Risa <span data-seg="fb.lacosa" data-fmt="full">172,454</span> y <span data-seg="ig.lacosa" data-fmt="full">31,300</span> · Recta Al Pecho <span data-seg="fb.recta" data-fmt="full">71,612</span> y <span data-seg="ig.recta" data-fmt="full">9,202</span> · Marrero Bernal Media <span data-seg="ig.mbm" data-fmt="full">10,100</span> en Instagram. <small style="opacity:.6">Cifras actualizadas el <span data-seg="actualizado">2026-10-30</span>.</small> Cada semana los estrenos llegan a decenas de miles de hogares cubanos y latinos en Estados Unidos.</p>
+      <p class="lead">Un espacio en nuestros programas no es un anuncio que se salta: es parte del show. Nuestras páginas suman más de <span data-seg="tot.todo" data-fmt="mil">1,133,000</span> seguidores: <span data-seg="tot.fbRed" data-fmt="mil">884,000</span> en Facebook, <span data-seg="tot.igRed" data-fmt="mil">116,000</span> en Instagram y <span data-seg="tot.ytRed" data-fmt="mil">132,000</span> suscriptores en YouTube. La Risa es Cosa Seria <span data-seg="fb.larisa" data-fmt="full">586,699</span> en Facebook y <span data-seg="ig.larisa" data-fmt="full">50,600</span> en Instagram · La Cosa Es De Risa <span data-seg="fb.lacosa" data-fmt="full">175,565</span> y <span data-seg="ig.lacosa" data-fmt="full">31,402</span> · Recta Al Pecho <span data-seg="fb.recta" data-fmt="full">73,407</span> y <span data-seg="ig.recta" data-fmt="full">9,512</span> · Marrero Bernal Media <span data-seg="ig.mbm" data-fmt="full">10,331</span> en Instagram. <small style="opacity:.6">Cifras actualizadas el <span data-seg="actualizado">2026-11-20</span>.</small> Cada semana los estrenos llegan a decenas de miles de hogares cubanos y latinos en Estados Unidos.</p>
       <ul class="list">
         <li>Carteles y menciones integradas en los capítulos de La Risa, Recta Al Pecho y el noticiero.</li>
         <li>Segmentos patrocinados y colaboraciones en Facebook e Instagram con nuestras páginas.</li>
@@ -180,7 +180,7 @@
       <a class="fb" href="https://www.facebook.com/aquinoserienadie/" target="_blank" rel="noopener" data-fb="nadie"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/ansn.png')); ?>" alt="Aquí No Se Ríe Nadie"><b>Aquí No Se Ríe Nadie</b><span><i data-seg="fb.nadie" data-fmt="full">263</i> seguidores · estreno primavera 2027</span></a>
       <a class="fb" href="https://www.facebook.com/marrerobernal" target="_blank" rel="noopener" data-fb="mba"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/iso_mba.png')); ?>" alt="Marrero Bernal & Associates"><b>Marrero Bernal &amp; Associates</b><span><i data-seg="fb.mba" data-fmt="full">5,214</i> seguidores · patrocinador</span></a>
     </div>
-    <p style="color:var(--mut);font-size:13px;margin-top:18px">Total en Facebook: <b style="color:var(--fg)"><span data-seg="tot.fbTodo" data-fmt="full">863,243</span></b> seguidores, más <span data-seg="tot.igTodo" data-fmt="full">113,887</span> en Instagram.</p>
+    <p style="color:var(--mut);font-size:13px;margin-top:18px">Total en Facebook: <b style="color:var(--fg)"><span data-seg="tot.fbTodo" data-fmt="full">884,493</span></b> seguidores, más <span data-seg="tot.igTodo" data-fmt="full">116,643</span> en Instagram.</p>
   </div>
 </section>
 
