@@ -17,7 +17,7 @@ P = {}
 
 P['medicare'] = dict(
     es=dict(slug='medicare', img='medicare.jpg',
-        title='Medicare Advantage en español · Marrero Bernal & Associates',
+        title='Medicare Advantage en Las Vegas, en español · Marrero Bernal & Associates',
         desc='Te ayudamos a comparar planes Medicare Advantage y de medicinas en tu condado, en español. Fechas de inscripción, qué revisar y cómo trabajamos. North Las Vegas.',
         html=f'''
 <section class="sub-hero med"><div class="wrap">
@@ -60,7 +60,7 @@ P['medicare'] = dict(
   </div>
 </div></section>'''),
     en=dict(slug='medicare', img='medicare.jpg',
-        title='Medicare Advantage help in Spanish and English · Marrero Bernal & Associates',
+        title='Medicare Advantage help in Las Vegas, in English and Spanish · Marrero Bernal & Associates',
         desc='We help you compare the Medicare Advantage and drug plans we offer in your county, in Spanish or English. Enrollment dates, what to check and how we work. North Las Vegas.',
         html=f'''
 <section class="sub-hero med"><div class="wrap">
@@ -105,7 +105,7 @@ P['medicare'] = dict(
 
 P['obamacare'] = dict(
     es=dict(slug='obamacare-nevada', img='salud.jpg',
-        title='Obamacare en Nevada (Nevada Health Link) con broker certificado · Marrero Bernal & Associates',
+        title='Obamacare en Las Vegas y todo Nevada · Broker certificado de Nevada Health Link · Marrero Bernal & Associates',
         desc='Somos broker certificado de Nevada Health Link. Te ayudamos en español a comparar planes, ver si calificas para ayuda con el pago e inscribirte. Inscripción abierta hasta el 15 de enero.',
         html='''
 <section class="sub-hero"><div class="wrap">
@@ -140,7 +140,7 @@ P['obamacare'] = dict(
   </div>
 </div></section>'''),
     en=dict(slug='obamacare-nevada', img='salud.jpg',
-        title='Obamacare in Nevada (Nevada Health Link) with a certified broker · Marrero Bernal & Associates',
+        title='Obamacare in Las Vegas and all of Nevada · Nevada Health Link certified broker · Marrero Bernal & Associates',
         desc='We are a Nevada Health Link certified broker. We help you compare plans, see if you qualify for financial help and enroll, in English or Spanish. Open enrollment runs through January 15.',
         html='''
 <section class="sub-hero"><div class="wrap">
@@ -599,7 +599,7 @@ _ften = [('Do I have to live in Nevada?', 'No. We prepare taxes for clients in a
        ('Do you also do my business taxes?', 'Yes, as well as bookkeeping, payroll and sales tax.')]
 P['taxes'] = dict(
     es=dict(slug='taxes', img='tramites.jpg', faq=_faqs(_ft),
-        title='Preparación de taxes en español, en la oficina o a distancia · Marrero Bernal & Associates',
+        title='Preparación de taxes en Las Vegas, en español, y a distancia en todo EE. UU. · Marrero Bernal & Associates',
         desc='Preparamos tus taxes personales y de negocio en español, en North Las Vegas o a distancia para todo EE. UU. y el extranjero. E-file directo al IRS y protección Protection Plus por escrito.',
         html=_pag('es', 'Impuestos · Taxes', 'Tus taxes, directo al IRS y protegidos por escrito.',
             'Preparamos tu declaración personal o de negocio en español, en la oficina de North Las Vegas o a distancia, vivas donde vivas. Somos proveedor autorizado de e-file del IRS: la transmitimos nosotros, sin intermediarios.',
@@ -634,7 +634,7 @@ P['taxes'] = dict(
   <p>Preparamos la declaración del negocio y llevamos la contabilidad, la nómina y el sales tax durante el año. <a href="/contabilidad-y-nomina/">Ver contabilidad y nómina →</a></p>
   <p>¿Eres preparador de impuestos? Puedes transmitir tus declaraciones al IRS a través de nosotros. <a href="/#contacto">Escríbenos →</a></p>''', _ft, [_LEGTAX, 'Protection Plus es un servicio de terceros; aplican sus términos y condiciones.'])),
     en=dict(slug='taxes', img='tramites.jpg', faq=_faqs(_ften),
-        title='Tax preparation in English and Spanish, at the office or remotely · Marrero Bernal & Associates',
+        title='Tax preparation in Las Vegas, in English and Spanish, and remotely nationwide · Marrero Bernal & Associates',
         desc='We prepare your personal and business taxes in North Las Vegas or remotely for all of the U.S. and abroad. Direct IRS e-file and Protection Plus coverage in writing.',
         html=_pag('en', 'Taxes', 'Your taxes, straight to the IRS and protected in writing.',
             'We prepare your personal or business return at our North Las Vegas office or remotely, wherever you live. We are an authorized IRS e-file provider: we transmit it ourselves, with no middleman.',

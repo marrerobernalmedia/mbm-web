@@ -17,7 +17,7 @@
  <a href="https://x.com/intent/tweet?url=<?php echo rawurlencode(get_permalink()); ?>&text=<?php echo rawurlencode(get_the_title()); ?>" target="_blank" rel="noopener">X</a>
 </div>
 <div class="author-box"><?php echo recta_autor_foto(get_the_author_meta('ID'), 64); ?><div><b><a href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><?php the_author(); ?></a></b><p><?php echo esc_html(recta_autor_bio(get_the_author_meta('ID'))); ?></p></div></div>
-<div class="sponsor-box">🤝 Recta al Pecho es patrocinado por <a href="https://www.marrerobernal.com" target="_blank" rel="noopener">Marrero Bernal &amp; Associates</a>: impuestos personales y comerciales, seguros, préstamos de casa, Medicare, inmigración, notaría y traducciones. Atendemos en línea: <a href="https://www.marrerobernal.com" target="_blank" rel="noopener">www.marrerobernal.com</a></div>
+<div class="sponsor-box">🤝 Recta al Pecho es patrocinado por <a href="https://www.marrerobernal.com" target="_blank" rel="noopener">Marrero Bernal &amp; Associates</a>: <a href="https://marrerobernal.com/taxes/" target="_blank" rel="noopener">taxes personales y de negocio en todo EE. UU.</a>, <a href="https://marrerobernal.com/medicare/" target="_blank" rel="noopener">Medicare</a> y <a href="https://marrerobernal.com/obamacare-nevada/" target="_blank" rel="noopener">Obamacare en Nevada</a>, seguros, notaría y traducciones. Atendemos en línea: <a href="https://www.marrerobernal.com" target="_blank" rel="noopener">www.marrerobernal.com</a></div>
 </article>
 <?php
 $rel = get_posts(['numberposts' => 4, 'post__not_in' => [get_the_ID()], 'category' => (get_the_category()[0]->term_id ?? 0), 'post_status' => 'publish']);
