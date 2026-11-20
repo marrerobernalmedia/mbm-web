@@ -19,7 +19,7 @@
     <div class="stat"><b>132K+</b><span>YOUTUBE SUBSCRIBERS</span></div>
     <div class="stat"><b>27M+</b><span>TOTAL VIEWS</span></div>
     <div class="stat"><b>4,500+</b><span>PIECES PUBLISHED</span></div>
-    <div class="stat"><b data-seg="tot.todo" data-fmt="full" style="font-size:30px">1,133,551</b><span>SOCIAL FOLLOWERS · AS OF <span data-seg="actualizado">2026-11-20</span></span></div>
+    <div class="stat"><b data-seg="tot.todo" data-fmt="full" style="font-size:30px">1,133,638</b><span>SOCIAL FOLLOWERS · AS OF <span data-seg="actualizado">2026-11-20</span></span></div>
   </div>
 </div>
 
@@ -149,7 +149,7 @@
     <div>
       <div class="kicker">Advertising on the network</div>
       <h2>Reach the Latino audience where it's already watching.</h2>
-      <p class="lead">A spot in our programs isn't an ad to skip: it's part of the show. Our pages add up to more than <span data-seg="tot.todo" data-fmt="mil">1,133,000</span> followers: <span data-seg="tot.fbRed" data-fmt="mil">884,000</span> on Facebook, <span data-seg="tot.igRed" data-fmt="mil">116,000</span> on Instagram and <span data-seg="tot.ytRed" data-fmt="mil">132,000</span> YouTube subscribers. La Risa es Cosa Seria <span data-seg="fb.larisa" data-fmt="full">586,699</span> on Facebook and <span data-seg="ig.larisa" data-fmt="full">50,581</span> on Instagram · La Cosa Es De Risa <span data-seg="fb.lacosa" data-fmt="full">175,565</span> and <span data-seg="ig.lacosa" data-fmt="full">31,300</span> · Straight 2D Chest <span data-seg="fb.recta" data-fmt="full">73,407</span> and <span data-seg="ig.recta" data-fmt="full">9,507</span> · Marrero Bernal Media <span data-seg="ig.mbm" data-fmt="full">10,331</span> on Instagram. <small style="opacity:.6">Figures updated on <span data-seg="actualizado">2026-11-20</span>.</small> Every week our premieres reach tens of thousands of Cuban and Latino homes across the United States.</p>
+      <p class="lead">A spot in our programs isn't an ad to skip: it's part of the show. Our pages add up to more than <span data-seg="tot.todo" data-fmt="mil">1,133,000</span> followers: <span data-seg="tot.fbRed" data-fmt="mil">884,000</span> on Facebook, <span data-seg="tot.igRed" data-fmt="mil">116,000</span> on Instagram and <span data-seg="tot.ytRed" data-fmt="mil">132,000</span> YouTube subscribers. La Risa es Cosa Seria <span data-seg="fb.larisa" data-fmt="full">586,699</span> on Facebook and <span data-seg="ig.larisa" data-fmt="full">50,581</span> on Instagram · La Cosa Es De Risa <span data-seg="fb.lacosa" data-fmt="full">175,565</span> and <span data-seg="ig.lacosa" data-fmt="full">31,387</span> · Straight 2D Chest <span data-seg="fb.recta" data-fmt="full">73,407</span> and <span data-seg="ig.recta" data-fmt="full">9,507</span> · Marrero Bernal Media <span data-seg="ig.mbm" data-fmt="full">10,331</span> on Instagram. <small style="opacity:.6">Figures updated on <span data-seg="actualizado">2026-11-20</span>.</small> Every week our premieres reach tens of thousands of Cuban and Latino homes across the United States.</p>
       <ul class="list">
         <li>Cards and mentions integrated into episodes of La Risa, Straight 2D Chest and the newscast.</li>
         <li>Sponsored segments and Facebook/Instagram collaborations with our pages.</li>
@@ -180,7 +180,7 @@
       <a class="fb" href="https://www.facebook.com/aquinoserienadie/" target="_blank" rel="noopener" data-fb="nadie"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/ansn.png')); ?>" alt="Aquí No Se Ríe Nadie"><b>Aquí No Se Ríe Nadie</b><span><i data-seg="fb.nadie" data-fmt="full">263</i> followers · premieres spring 2027</span></a>
       <a class="fb" href="https://www.facebook.com/marrerobernal" target="_blank" rel="noopener" data-fb="mba"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/iso_mba.png')); ?>" alt="Marrero Bernal & Associates"><b>Marrero Bernal &amp; Associates</b><span><i data-seg="fb.mba" data-fmt="full">5,214</i> followers · sponsor</span></a>
     </div>
-    <p style="color:var(--mut);font-size:13px;margin-top:18px">Facebook total: <b style="color:var(--fg)"><span data-seg="tot.fbTodo" data-fmt="full">884,493</span></b> followers, plus <span data-seg="tot.igTodo" data-fmt="full">116,570</span> on Instagram.</p>
+    <p style="color:var(--mut);font-size:13px;margin-top:18px">Facebook total: <b style="color:var(--fg)"><span data-seg="tot.fbTodo" data-fmt="full">884,493</span></b> followers, plus <span data-seg="tot.igTodo" data-fmt="full">116,657</span> on Instagram.</p>
   </div>
 </section>
 
