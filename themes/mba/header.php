@@ -23,7 +23,7 @@
 
 <header>
   <div class="wrap nav">
-    <a class="logo" href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo esc_url(get_theme_file_uri('img/logo.svg')); ?>" alt="Marrero Bernal & Associates"></a>
+    <a class="logo" href="<?php echo esc_url(home_url('/')); ?>"><img src="<?php echo esc_url(get_theme_file_uri('img/logo-es-dark.svg')); ?>" alt="Marrero Bernal & Asociados"></a>
     <ul>
       <li><a href="#personal">Personal</a></li>
       <li><a href="#negocios">Negocios</a></li>
