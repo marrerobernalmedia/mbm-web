@@ -2,7 +2,7 @@
 <section class="hero">
   <div class="wrap">
     <div>
-      <div class="kicker">Desde 2008 · En persona y a distancia</div>
+      <div class="kicker">Desde 2012 · En persona y a distancia</div>
       <span class="habla">We speak English</span>
       <h1>Seguros, taxes y trámites, <em>en tu idioma</em> y en un solo lugar.</h1>
       <p class="lead">Somos una agencia de seguros independiente con contratos con múltiples compañías de primer nivel, como Farmers y Progressive, además de preparadores de impuestos y especialistas en trámites. Diecisiete años atendiendo a la comunidad hispana, en nuestra oficina y a distancia, en todo Estados Unidos y desde cualquier parte del mundo.</p>
@@ -124,7 +124,7 @@
     <div class="kicker">Por qué nosotros</div>
     <h2>Diecisiete años, la misma gente, para clientes en todo el mundo.</h2>
     <div class="why">
-      <div><b>2008</b><p>Año en que abrimos en North Las Vegas. Seguimos en el mismo lugar.</p></div>
+      <div><b>2012</b><p>Año en que fundamos la agencia en Las Vegas.</p></div>
       <div><b>Sin fronteras</b><p>Taxes, ITIN, traducciones y trámites a distancia para todo Estados Unidos y para quienes viven en otros países. Seguros con licencia en Nevada, California y Arizona.</p></div>
       <div><b>10 compañías</b><p>Somos independientes. En auto cotizamos con Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General y Bristol West; en casa, con Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America y Lemonade. Te damos la mejor opción.</p></div>
       <div><b>1 visita</b><p>Seguro, taxes, contabilidad, nómina, ITIN, traducciones, notary public y más, en la misma oficina.</p></div>
@@ -247,7 +247,7 @@
     <div>
       <div class="kicker">Quiénes somos</div>
       <h2>Nacimos en el barrio. Hoy atendemos a todo el mundo.</h2>
-      <p class="lead">Eliam Marrero Bernal fundó Marrero Bernal &amp; Associates en 2008 con una idea simple: que un cubano, un mexicano o un salvadoreño recién llegado a Las Vegas pudiera resolver su seguro, sus taxes y sus papeles con alguien que le hablara claro y en su idioma.</p>
+      <p class="lead">Eliam Marrero Bernal fundó Marrero Bernal &amp; Associates en 2012 con una idea simple: que un cubano, un mexicano o un salvadoreño recién llegado a Las Vegas pudiera resolver su seguro, sus taxes y sus papeles con alguien que le hablara claro y en su idioma.</p>
       <p class="lead" style="margin-top:14px">Hoy somos una agencia independiente con contratos con varias compañías de primer nivel, preparadores de impuestos y un equipo que conoce a cada cliente por su nombre. Lo que ofrecemos no es un producto: es que tengas tu problema resuelto, vengas a la oficina o nos escribas desde el otro lado del mundo.</p>
       <div class="creds"><span>Agencia independiente</span><span>LUTCF · FSCP · CSP</span><span><span data-seg="tot.mba">23K</span>+ seguidores en redes</span><span>Licencia NV · CA · AZ</span><span>The American College</span><span>Español · English</span></div>
     </div>

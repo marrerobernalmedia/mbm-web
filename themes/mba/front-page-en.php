@@ -2,7 +2,7 @@
 <section class="hero">
   <div class="wrap">
     <div>
-      <div class="kicker">Since 2008 · In person and remote</div>
+      <div class="kicker">Since 2012 · In person and remote</div>
       <span class="habla">Hablamos español</span>
       <h1>Insurance, taxes and paperwork, <em>in your language</em> and in one place.</h1>
       <p class="lead">We're an independent insurance agency with contracts with multiple top-tier carriers like Farmers and Progressive, plus tax preparers and paperwork specialists. Seventeen years serving the Hispanic community, at our office and remotely, across the United States and from anywhere in the world.</p>
@@ -124,7 +124,7 @@
     <div class="kicker">Why us</div>
     <h2>Seventeen years, the same people, serving clients worldwide.</h2>
     <div class="why">
-      <div><b>2008</b><p>The year we opened in North Las Vegas. We're still in the same place.</p></div>
+      <div><b>2012</b><p>The year we founded the agency in Las Vegas.</p></div>
       <div><b>No borders</b><p>Taxes, ITIN, translations and paperwork done remotely for all of the U.S. and for people living abroad. Insurance licensed in Nevada, California and Arizona.</p></div>
       <div><b>10 carriers</b><p>We are independent. For auto we quote Farmers, Progressive, Travelers, Liberty Mutual, Mercury, National General and Bristol West; for home, Farmers, Foremost, Progressive, Mercury, National General, Homeowners of America and Lemonade. You get the best option.</p></div>
       <div><b>1 visit</b><p>Insurance, taxes, bookkeeping, payroll, ITIN, translations, notary and more, in one office.</p></div>
@@ -247,7 +247,7 @@
     <div>
       <div class="kicker">About us</div>
       <h2>Born in the neighborhood. Today we serve the whole world.</h2>
-      <p class="lead">Eliam Marrero Bernal founded Marrero Bernal &amp; Associates in 2008 with a simple idea: that a Cuban, a Mexican or a Salvadoran newly arrived in Las Vegas could sort out their insurance, taxes and paperwork with someone who spoke plainly and in their language.</p>
+      <p class="lead">Eliam Marrero Bernal founded Marrero Bernal &amp; Associates in 2012 with a simple idea: that a Cuban, a Mexican or a Salvadoran newly arrived in Las Vegas could sort out their insurance, taxes and paperwork with someone who spoke plainly and in their language.</p>
       <p class="lead" style="margin-top:14px">Today we're an independent agency with contracts with several top-tier carriers, tax preparers and a team that knows every client by name. What we offer isn't a product: it's getting your problem solved, whether you walk into our office or write to us from the other side of the world.</p>
       <div class="creds"><span>Independent agency</span><span>LUTCF · FSCP · CSP</span><span><span data-seg="tot.mba">23K</span>+ social followers</span><span>Licensed NV · CA · AZ</span><span>The American College</span><span>Español · English</span></div>
     </div>
