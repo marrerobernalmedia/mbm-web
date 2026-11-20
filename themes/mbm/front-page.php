@@ -19,7 +19,7 @@
     <div class="stat"><b>132K+</b><span>SUSCRIPTORES EN YOUTUBE</span></div>
     <div class="stat"><b>27M+</b><span>VISTAS ACUMULADAS</span></div>
     <div class="stat"><b>4,500+</b><span>PIEZAS PUBLICADAS</span></div>
-    <div class="stat"><b data-seg="tot.todo" data-fmt="full" style="font-size:30px">1,133,624</b><span>SEGUIDORES EN REDES · AL <span data-seg="actualizado">2026-11-20</span></span></div>
+    <div class="stat"><b data-seg="tot.todo" data-fmt="full" style="font-size:30px">1,133,470</b><span>SEGUIDORES EN REDES · AL <span data-seg="actualizado">2026-11-20</span></span></div>
   </div>
 </div>
 
@@ -27,7 +27,7 @@
   <div class="wrap">
     <div class="kicker">La red</div>
     <h2>Una audiencia propia, construida semana a semana.</h2>
-    <p class="lead">Cinco canales de YouTube con estreno fijo cada semana y páginas de Facebook e Instagram que suman más de <span data-seg="tot.metaRed" data-fmt="mil">1,001,000</span> seguidores. Todo producido por nosotros.</p>
+    <p class="lead">Cinco canales de YouTube con estreno fijo cada semana y páginas de Facebook e Instagram que suman más de <span data-seg="tot.metaRed" data-fmt="mil">1,000,000</span> seguidores. Todo producido por nosotros.</p>
     <div class="red-grid">
       <a class="ch" href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/risa.jpg')); ?>)"></div>
@@ -149,7 +149,7 @@
     <div>
       <div class="kicker">Publicidad en la red</div>
       <h2>Llega al público latino donde ya está mirando.</h2>
-      <p class="lead">Un espacio en nuestros programas no es un anuncio que se salta: es parte del show. Nuestras páginas suman más de <span data-seg="tot.todo" data-fmt="mil">1,133,000</span> seguidores: <span data-seg="tot.fbRed" data-fmt="mil">884,000</span> en Facebook, <span data-seg="tot.igRed" data-fmt="mil">116,000</span> en Instagram y <span data-seg="tot.ytRed" data-fmt="mil">132,000</span> suscriptores en YouTube. La Risa es Cosa Seria <span data-seg="fb.larisa" data-fmt="full">586,699</span> en Facebook y <span data-seg="ig.larisa" data-fmt="full">50,600</span> en Instagram · La Cosa Es De Risa <span data-seg="fb.lacosa" data-fmt="full">175,565</span> y <span data-seg="ig.lacosa" data-fmt="full">31,402</span> · Recta Al Pecho <span data-seg="fb.recta" data-fmt="full">73,407</span> y <span data-seg="ig.recta" data-fmt="full">9,512</span> · Marrero Bernal Media <span data-seg="ig.mbm" data-fmt="full">10,331</span> en Instagram. <small style="opacity:.6">Cifras actualizadas el <span data-seg="actualizado">2026-11-20</span>.</small> Cada semana los estrenos llegan a decenas de miles de hogares cubanos y latinos en Estados Unidos.</p>
+      <p class="lead">Un espacio en nuestros programas no es un anuncio que se salta: es parte del show. Nuestras páginas suman más de <span data-seg="tot.todo" data-fmt="mil">1,133,000</span> seguidores: <span data-seg="tot.fbRed" data-fmt="mil">884,000</span> en Facebook, <span data-seg="tot.igRed" data-fmt="mil">116,000</span> en Instagram y <span data-seg="tot.ytRed" data-fmt="mil">132,000</span> suscriptores en YouTube. La Risa es Cosa Seria <span data-seg="fb.larisa" data-fmt="full">586,699</span> en Facebook y <span data-seg="ig.larisa" data-fmt="full">50,500</span> en Instagram · La Cosa Es De Risa <span data-seg="fb.lacosa" data-fmt="full">175,565</span> y <span data-seg="ig.lacosa" data-fmt="full">31,300</span> · Recta Al Pecho <span data-seg="fb.recta" data-fmt="full">73,407</span> y <span data-seg="ig.recta" data-fmt="full">9,507</span> · Marrero Bernal Media <span data-seg="ig.mbm" data-fmt="full">10,331</span> en Instagram. <small style="opacity:.6">Cifras actualizadas el <span data-seg="actualizado">2026-11-20</span>.</small> Cada semana los estrenos llegan a decenas de miles de hogares cubanos y latinos en Estados Unidos.</p>
       <ul class="list">
         <li>Carteles y menciones integradas en los capítulos de La Risa, Recta Al Pecho y el noticiero.</li>
         <li>Segmentos patrocinados y colaboraciones en Facebook e Instagram con nuestras páginas.</li>
@@ -180,7 +180,7 @@
       <a class="fb" href="https://www.facebook.com/aquinoserienadie/" target="_blank" rel="noopener" data-fb="nadie"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/ansn.png')); ?>" alt="Aquí No Se Ríe Nadie"><b>Aquí No Se Ríe Nadie</b><span><i data-seg="fb.nadie" data-fmt="full">263</i> seguidores · estreno primavera 2027</span></a>
       <a class="fb" href="https://www.facebook.com/marrerobernal" target="_blank" rel="noopener" data-fb="mba"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/iso_mba.png')); ?>" alt="Marrero Bernal & Associates"><b>Marrero Bernal &amp; Associates</b><span><i data-seg="fb.mba" data-fmt="full">5,214</i> seguidores · patrocinador</span></a>
     </div>
-    <p style="color:var(--mut);font-size:13px;margin-top:18px">Total en Facebook: <b style="color:var(--fg)"><span data-seg="tot.fbTodo" data-fmt="full">884,493</span></b> seguidores, más <span data-seg="tot.igTodo" data-fmt="full">116,643</span> en Instagram.</p>
+    <p style="color:var(--mut);font-size:13px;margin-top:18px">Total en Facebook: <b style="color:var(--fg)"><span data-seg="tot.fbTodo" data-fmt="full">884,493</span></b> seguidores, más <span data-seg="tot.igTodo" data-fmt="full">116,489</span> en Instagram.</p>
   </div>
 </section>
 

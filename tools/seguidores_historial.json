@@ -2613,23 +2613,37 @@
 {
 "fecha": "2026-11-20",
 "red": "Instagram",
+"cuenta": "cuero",
+"seguidores": 22,
+"fuente": "Eliam (capturas de Instagram)"
+},
+{
+"fecha": "2026-11-20",
+"red": "Instagram",
 "cuenta": "elhome",
-"seguidores": 3616,
-"fuente": "Pepe (API de Meta)"
+"seguidores": 3670,
+"fuente": "Eliam (capturas de Instagram)"
+},
+{
+"fecha": "2026-11-20",
+"red": "Instagram",
+"cuenta": "eliam",
+"seguidores": 7156,
+"fuente": "Eliam (capturas de Instagram)"
 },
 {
 "fecha": "2026-11-20",
 "red": "Instagram",
 "cuenta": "lacosa",
-"seguidores": 31402,
-"fuente": "Pepe (API de Meta)"
+"seguidores": 31300,
+"fuente": "Eliam (capturas de Instagram)"
 },
 {
 "fecha": "2026-11-20",
 "red": "Instagram",
 "cuenta": "larisa",
-"seguidores": 50600,
-"fuente": "Pepe (API de Meta)"
+"seguidores": 50500,
+"fuente": "Eliam (capturas de Instagram)"
 },
 {
 "fecha": "2026-11-20",
@@ -2649,8 +2663,15 @@
 "fecha": "2026-11-20",
 "red": "Instagram",
 "cuenta": "recta",
-"seguidores": 9512,
-"fuente": "Pepe (API de Meta)"
+"seguidores": 9507,
+"fuente": "Eliam (capturas de Instagram)"
+},
+{
+"fecha": "2026-11-20",
+"red": "Instagram",
+"cuenta": "welcome",
+"seguidores": 3738,
+"fuente": "Eliam (capturas de Instagram)"
 },
 {
 "fecha": "2026-11-20",
