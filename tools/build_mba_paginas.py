@@ -103,8 +103,10 @@ P['medicare'] = dict(
   </div>
 </div></section>'''))
 
+_FOB_ES = [['¿Hasta cuándo puedo inscribirme en Obamacare en Nevada?', 'La inscripción abierta para 2027 termina el 15 de enero de 2027. Para tener cobertura desde el 1 de enero, inscríbete a más tardar el 31 de diciembre.'], ['¿Me cuesta más inscribirme con un broker?', 'No. La prima del plan es la misma si te inscribes con un broker certificado o por tu cuenta en Nevada Health Link.'], ['¿Cómo sé si califico para ayuda con el pago?', 'Depende de los ingresos y del tamaño de tu hogar. Según Nevada Health Link, cerca de 8 de cada 10 inscritos califica para ahorros. Lo revisamos contigo antes de escoger un plan.'], ['¿Qué necesito para empezar?', 'Un estimado de los ingresos de tu hogar para 2027, quiénes van en tu declaración de impuestos, los documentos de estatus migratorio de quienes piden cobertura, y tus médicos y medicinas.'], ['¿Puedo inscribirme fuera de la inscripción abierta?', 'Solo con un evento que califique, como perder otra cobertura, mudarte, casarte o tener un bebé. Normalmente tienes 60 días desde ese evento.'], ['¿Atienden en Las Vegas o por teléfono?', 'De las dos formas, en español o en inglés: en la oficina de 3455 W Craig Rd Ste D, North Las Vegas, o por teléfono al 888-877-2583.']]
+_FOB_EN = [['How long do I have to enroll in Obamacare in Nevada?', 'Open enrollment for 2027 ends January 15, 2027. For coverage starting January 1, enroll by December 31.'], ['Does it cost more to enroll with a broker?', 'No. Your plan premium is the same whether you enroll with a certified broker or on your own at Nevada Health Link.'], ['How do I know if I qualify for financial help?', 'It depends on your household income and size. According to Nevada Health Link, about 8 in 10 enrollees qualify for savings. We review it with you before you choose a plan.'], ['What do I need to get started?', 'An estimate of your household income for 2027, who is on your tax return, immigration status documents for those requesting coverage, and your doctors and medications.'], ['Can I enroll outside open enrollment?', 'Only with a qualifying life event, such as losing other coverage, moving, getting married or having a baby. You usually have 60 days from that event.'], ['Do you help in Las Vegas or by phone?', 'Both, in English or Spanish: at the office at 3455 W Craig Rd Ste D, North Las Vegas, or by phone at 888-877-2583.']]
 P['obamacare'] = dict(
-    es=dict(slug='obamacare-nevada', img='salud.jpg',
+    es=dict(slug='obamacare-nevada', img='salud.jpg', faq=_FOB_ES,
         title='Obamacare en Las Vegas y todo Nevada · Broker certificado de Nevada Health Link · Marrero Bernal & Associates',
         desc='Somos broker certificado de Nevada Health Link. Te ayudamos en español a comparar planes, ver si calificas para ayuda con el pago e inscribirte. Inscripción abierta hasta el 15 de enero.',
         html='''
@@ -135,11 +137,18 @@ P['obamacare'] = dict(
   <h2>Fuera de la inscripción abierta</h2>
   <p>Solo puedes inscribirte si tienes un evento que califique, como perder otra cobertura, mudarte, casarte o tener un bebé. Normalmente tienes 60 días desde ese evento. Llámanos y lo revisamos.</p>
   <p>Si tus ingresos son bajos, puede que califiques para Medicaid: <a href="/medicaid-nevada/">así se solicita</a>. Si vives fuera de Nevada, te orientamos hacia el mercado de tu estado.</p>
+  <h2>Preguntas frecuentes</h2>
+  <details class="sub-faq"><summary>¿Hasta cuándo puedo inscribirme en Obamacare en Nevada?</summary><p>La inscripción abierta para 2027 termina el 15 de enero de 2027. Para tener cobertura desde el 1 de enero, inscríbete a más tardar el 31 de diciembre.</p></details>
+  <details class="sub-faq"><summary>¿Me cuesta más inscribirme con un broker?</summary><p>No. La prima del plan es la misma si te inscribes con un broker certificado o por tu cuenta en Nevada Health Link.</p></details>
+  <details class="sub-faq"><summary>¿Cómo sé si califico para ayuda con el pago?</summary><p>Depende de los ingresos y del tamaño de tu hogar. Según Nevada Health Link, cerca de 8 de cada 10 inscritos califica para ahorros. Lo revisamos contigo antes de escoger un plan.</p></details>
+  <details class="sub-faq"><summary>¿Qué necesito para empezar?</summary><p>Un estimado de los ingresos de tu hogar para 2027, quiénes van en tu declaración de impuestos, los documentos de estatus migratorio de quienes piden cobertura, y tus médicos y medicinas.</p></details>
+  <details class="sub-faq"><summary>¿Puedo inscribirme fuera de la inscripción abierta?</summary><p>Solo con un evento que califique, como perder otra cobertura, mudarte, casarte o tener un bebé. Normalmente tienes 60 días desde ese evento.</p></details>
+  <details class="sub-faq"><summary>¿Atienden en Las Vegas o por teléfono?</summary><p>De las dos formas, en español o en inglés: en la oficina de 3455 W Craig Rd Ste D, North Las Vegas, o por teléfono al 888-877-2583.</p></details>
   <div class="sub-legal">
     <p>Marrero Bernal &amp; Associates es una agencia de seguros independiente y broker certificado de Nevada Health Link. No somos Nevada Health Link ni una agencia del gobierno. Los planes, las primas y la ayuda con el pago dependen de tus ingresos, tu condado y tu hogar. También puedes inscribirte directamente en NevadaHealthLink.com o al 1-800-547-2927.</p>
   </div>
 </div></section>'''),
-    en=dict(slug='obamacare-nevada', img='salud.jpg',
+    en=dict(slug='obamacare-nevada', img='salud.jpg', faq=_FOB_EN,
         title='Obamacare in Las Vegas and all of Nevada · Nevada Health Link certified broker · Marrero Bernal & Associates',
         desc='We are a Nevada Health Link certified broker. We help you compare plans, see if you qualify for financial help and enroll, in English or Spanish. Open enrollment runs through January 15.',
         html='''
@@ -170,6 +179,13 @@ P['obamacare'] = dict(
   <h2>Outside open enrollment</h2>
   <p>You can only enroll with a qualifying life event, such as losing other coverage, moving, getting married or having a baby. You usually have 60 days from that event. Call us and we will review it.</p>
   <p>If your income is low, you may qualify for Medicaid: <a href="/en/medicaid-nevada/">here is how to apply</a>. If you live outside Nevada, we point you to your state's marketplace.</p>
+  <h2>Frequently asked questions</h2>
+  <details class="sub-faq"><summary>How long do I have to enroll in Obamacare in Nevada?</summary><p>Open enrollment for 2027 ends January 15, 2027. For coverage starting January 1, enroll by December 31.</p></details>
+  <details class="sub-faq"><summary>Does it cost more to enroll with a broker?</summary><p>No. Your plan premium is the same whether you enroll with a certified broker or on your own at Nevada Health Link.</p></details>
+  <details class="sub-faq"><summary>How do I know if I qualify for financial help?</summary><p>It depends on your household income and size. According to Nevada Health Link, about 8 in 10 enrollees qualify for savings. We review it with you before you choose a plan.</p></details>
+  <details class="sub-faq"><summary>What do I need to get started?</summary><p>An estimate of your household income for 2027, who is on your tax return, immigration status documents for those requesting coverage, and your doctors and medications.</p></details>
+  <details class="sub-faq"><summary>Can I enroll outside open enrollment?</summary><p>Only with a qualifying life event, such as losing other coverage, moving, getting married or having a baby. You usually have 60 days from that event.</p></details>
+  <details class="sub-faq"><summary>Do you help in Las Vegas or by phone?</summary><p>Both, in English or Spanish: at the office at 3455 W Craig Rd Ste D, North Las Vegas, or by phone at 888-877-2583.</p></details>
   <div class="sub-legal">
     <p>Marrero Bernal &amp; Associates is an independent insurance agency and a Nevada Health Link certified broker. We are not Nevada Health Link or a government agency. Plans, premiums and financial help depend on your income, county and household. You can also enroll directly at NevadaHealthLink.com or 1-800-547-2927.</p>
   </div>

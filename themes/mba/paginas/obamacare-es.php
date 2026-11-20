@@ -28,6 +28,13 @@ ob_start(); get_header(); echo mba_pag_fix(ob_get_clean(), 'es', 'obamacare-neva
   <h2>Fuera de la inscripción abierta</h2>
   <p>Solo puedes inscribirte si tienes un evento que califique, como perder otra cobertura, mudarte, casarte o tener un bebé. Normalmente tienes 60 días desde ese evento. Llámanos y lo revisamos.</p>
   <p>Si tus ingresos son bajos, puede que califiques para Medicaid: <a href="/medicaid-nevada/">así se solicita</a>. Si vives fuera de Nevada, te orientamos hacia el mercado de tu estado.</p>
+  <h2>Preguntas frecuentes</h2>
+  <details class="sub-faq"><summary>¿Hasta cuándo puedo inscribirme en Obamacare en Nevada?</summary><p>La inscripción abierta para 2027 termina el 15 de enero de 2027. Para tener cobertura desde el 1 de enero, inscríbete a más tardar el 31 de diciembre.</p></details>
+  <details class="sub-faq"><summary>¿Me cuesta más inscribirme con un broker?</summary><p>No. La prima del plan es la misma si te inscribes con un broker certificado o por tu cuenta en Nevada Health Link.</p></details>
+  <details class="sub-faq"><summary>¿Cómo sé si califico para ayuda con el pago?</summary><p>Depende de los ingresos y del tamaño de tu hogar. Según Nevada Health Link, cerca de 8 de cada 10 inscritos califica para ahorros. Lo revisamos contigo antes de escoger un plan.</p></details>
+  <details class="sub-faq"><summary>¿Qué necesito para empezar?</summary><p>Un estimado de los ingresos de tu hogar para 2027, quiénes van en tu declaración de impuestos, los documentos de estatus migratorio de quienes piden cobertura, y tus médicos y medicinas.</p></details>
+  <details class="sub-faq"><summary>¿Puedo inscribirme fuera de la inscripción abierta?</summary><p>Solo con un evento que califique, como perder otra cobertura, mudarte, casarte o tener un bebé. Normalmente tienes 60 días desde ese evento.</p></details>
+  <details class="sub-faq"><summary>¿Atienden en Las Vegas o por teléfono?</summary><p>De las dos formas, en español o en inglés: en la oficina de 3455 W Craig Rd Ste D, North Las Vegas, o por teléfono al 888-877-2583.</p></details>
   <div class="sub-legal">
     <p>Marrero Bernal &amp; Associates es una agencia de seguros independiente y broker certificado de Nevada Health Link. No somos Nevada Health Link ni una agencia del gobierno. Los planes, las primas y la ayuda con el pago dependen de tus ingresos, tu condado y tu hogar. También puedes inscribirte directamente en NevadaHealthLink.com o al 1-800-547-2927.</p>
   </div>

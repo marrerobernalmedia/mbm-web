@@ -28,6 +28,13 @@ ob_start(); get_header('en'); echo mba_pag_fix(ob_get_clean(), 'en', 'obamacare-
   <h2>Outside open enrollment</h2>
   <p>You can only enroll with a qualifying life event, such as losing other coverage, moving, getting married or having a baby. You usually have 60 days from that event. Call us and we will review it.</p>
   <p>If your income is low, you may qualify for Medicaid: <a href="/en/medicaid-nevada/">here is how to apply</a>. If you live outside Nevada, we point you to your state's marketplace.</p>
+  <h2>Frequently asked questions</h2>
+  <details class="sub-faq"><summary>How long do I have to enroll in Obamacare in Nevada?</summary><p>Open enrollment for 2027 ends January 15, 2027. For coverage starting January 1, enroll by December 31.</p></details>
+  <details class="sub-faq"><summary>Does it cost more to enroll with a broker?</summary><p>No. Your plan premium is the same whether you enroll with a certified broker or on your own at Nevada Health Link.</p></details>
+  <details class="sub-faq"><summary>How do I know if I qualify for financial help?</summary><p>It depends on your household income and size. According to Nevada Health Link, about 8 in 10 enrollees qualify for savings. We review it with you before you choose a plan.</p></details>
+  <details class="sub-faq"><summary>What do I need to get started?</summary><p>An estimate of your household income for 2027, who is on your tax return, immigration status documents for those requesting coverage, and your doctors and medications.</p></details>
+  <details class="sub-faq"><summary>Can I enroll outside open enrollment?</summary><p>Only with a qualifying life event, such as losing other coverage, moving, getting married or having a baby. You usually have 60 days from that event.</p></details>
+  <details class="sub-faq"><summary>Do you help in Las Vegas or by phone?</summary><p>Both, in English or Spanish: at the office at 3455 W Craig Rd Ste D, North Las Vegas, or by phone at 888-877-2583.</p></details>
   <div class="sub-legal">
     <p>Marrero Bernal &amp; Associates is an independent insurance agency and a Nevada Health Link certified broker. We are not Nevada Health Link or a government agency. Plans, premiums and financial help depend on your income, county and household. You can also enroll directly at NevadaHealthLink.com or 1-800-547-2927.</p>
   </div>
