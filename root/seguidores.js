@@ -3,10 +3,10 @@
    (Facebook e Instagram) y con vidIQ (YouTube). No editar a mano los sitios:
    editar este archivo y hacer push. */
 window.SEGUIDORES = {
-  "actualizado": "2026-11-20",
+  "actualizado": "2026-11-21",
   "fb": {"larisa":586699,"lacosa":175565,"recta":73407,"elhome":20614,"mba":5210,"cuero":2422,"welcome":5750,"mbm":2360,"eliam":11573,"nadie":893},
   "ig": {"larisa":50581,"lacosa":31387,"mbm":10332,"recta":9507,"welcome":3738,"elhome":3670,"nadie":47,"cuero":22,"mba":218,"eliam":7156},
-  "yt": {"larisa":92367,"recta":19193,"lacosa":14294,"elhome":3606,"welcome":3007,"mbm":21}
+  "yt": {"larisa":92430,"recta":19195,"lacosa":14322,"elhome":3622,"welcome":3021,"mbm":20}
 };
 (function(){
   var S=window.SEGUIDORES, RED=["larisa","lacosa","recta","elhome","welcome","mbm","cuero","nadie","eliam","mba"]; /* eliam y mba suman a la red desde el 16-nov-2026 (pedido de Eliam) */
