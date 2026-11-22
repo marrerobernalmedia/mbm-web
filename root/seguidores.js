@@ -4,12 +4,12 @@
    editar este archivo y hacer push. */
 window.SEGUIDORES = {
   "actualizado": "2026-11-22",
-  "fb": {"larisa":586140,"lacosa":175309,"recta":73186,"elhome":20883,"mba":5208,"cuero":2412,"welcome":5759,"mbm":2350,"eliam":11573,"nadie":1474},
+  "fb": {"larisa":586140,"lacosa":175309,"recta":73186,"elhome":20883,"mba":5208,"cuero":2412,"welcome":5759,"mbm":2350,"eliam":11573,"nadie":1474,"chamaquitos":12},
   "ig": {"larisa":50541,"lacosa":31348,"mbm":10320,"recta":9512,"welcome":3733,"elhome":3737,"nadie":47,"cuero":22,"mba":218,"eliam":7142},
-  "yt": {"larisa":92478,"recta":19197,"lacosa":14358,"elhome":3645,"welcome":3036,"mbm":20}
+  "yt": {"larisa":92478,"recta":19197,"lacosa":14358,"elhome":3645,"welcome":3036,"mbm":20,"chamaquitos":7}
 };
 (function(){
-  var S=window.SEGUIDORES, RED=["larisa","lacosa","recta","elhome","welcome","mbm","cuero","nadie","eliam","mba"]; /* eliam y mba suman a la red desde el 16-nov-2026 (pedido de Eliam) */
+  var S=window.SEGUIDORES, RED=["larisa","lacosa","recta","elhome","welcome","mbm","cuero","nadie","chamaquitos","eliam","mba"]; /* chamaquitos desde el 22-nov-2026 */ /* eliam y mba suman a la red desde el 16-nov-2026 (pedido de Eliam) */
   function sum(o,keys){var t=0;keys.forEach(function(k){t+=o[k]||0});return t;}
   var fbRed=sum(S.fb,RED), igRed=sum(S.ig,RED), ytRed=sum(S.yt,RED);
   S.tot={fbRed:fbRed, igRed:igRed, ytRed:ytRed, metaRed:fbRed+igRed, todo:fbRed+igRed+ytRed,

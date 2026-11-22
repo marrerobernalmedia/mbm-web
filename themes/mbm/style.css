@@ -49,7 +49,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.82);backdrop-f
 .stat b{display:block;font-size:clamp(28px,3.4vw,40px);font-weight:700;color:var(--fg);line-height:1}
 .stat span{font-size:13px;color:var(--mut);letter-spacing:.04em}
 /* red */
-.red-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:44px}
+.red-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:44px}
 .ch{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.25s;position:relative}
 .ch:hover{transform:translateY(-4px);border-color:#3a3a42}
 .ch .cover{aspect-ratio:16/9;background:#222 center/cover}

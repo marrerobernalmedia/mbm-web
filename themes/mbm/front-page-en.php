@@ -4,7 +4,7 @@
   <div class="wrap">
     <div class="kicker">Video production company · Las Vegas</div>
     <h1>Stories that reach the heart of <em>our people</em>.</h1>
-    <p class="lead">Marrero Bernal Media is a production company with deep experience in the Latino market. We produce, edit and distribute content, and with five YouTube channels and more than <span data-seg="tot.todo" data-fmt="mil">1,133,000</span> followers across Facebook, Instagram and YouTube, we don't just make your video: we know how to get it seen.</p>
+    <p class="lead">Marrero Bernal Media is a production company with deep experience in the Latino market. We produce, edit and distribute content, and with six YouTube channels and more than <span data-seg="tot.todo" data-fmt="mil">1,133,000</span> followers across Facebook, Instagram and YouTube, we don't just make your video: we know how to get it seen.</p>
     <div class="ctas">
       <a class="btn btn-acc" href="#contacto">Tell us about your project</a>
       <a class="btn btn-ghost" href="#red">Meet the network ↓</a>
@@ -27,7 +27,7 @@
   <div class="wrap">
     <div class="kicker">The network</div>
     <h2>An audience of our own, built week after week.</h2>
-    <p class="lead">Five YouTube channels with a fixed weekly premiere, plus Facebook and Instagram pages with more than <span data-seg="tot.metaRed" data-fmt="mil">1,000,000</span> followers. All produced in-house.</p>
+    <p class="lead">Six YouTube channels, five with a fixed weekly premiere, plus Facebook and Instagram pages with more than <span data-seg="tot.metaRed" data-fmt="mil">1,000,000</span> followers. All produced in-house.</p>
     <div class="red-grid">
       <a class="ch" href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/risa.jpg')); ?>)"></div>
@@ -48,6 +48,10 @@
       <a class="ch" href="https://www.elhomedelarisa.com" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/home.jpg')); ?>)"></div>
         <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_home.jpg')); ?>" alt="El Home de la Risa"><div><h3>El Home de la Risa</h3><p>The flagship brand that brings together all our comedy productions. Mondays.</p><span class="n"><span data-seg="yt.elhome">3.6K</span> on YouTube · <span data-seg="fb.elhome">20K</span> on Facebook · <span data-seg="ig.elhome">3.6K</span> on Instagram</span></div></div>
+      </a>
+      <a class="ch" href="https://www.youtube.com/@chamaquitotv?sub_confirmation=1" target="_blank" rel="noopener">
+        <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/chamaquitos.jpg')); ?>)"></div>
+        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_chamaquitos.jpg')); ?>" alt="Chamaquitos"><div><h3>Chamaquitos</h3><p>Animated children's songs in Spanish. Our newest channel.</p><span class="n"><span data-seg="yt.chamaquitos">7</span> on YouTube · <span data-seg="fb.chamaquitos">12</span> on Facebook</span></div></div>
       </a>
     </div>
   </div>
@@ -166,7 +170,7 @@
 <section id="facebook" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="kicker">Our Facebook pages</div>
-    <h2>Ten pages, one network.</h2>
+    <h2>Eleven pages, one network.</h2>
     <p class="lead">Each page has its own audience and tone. Your campaign can run on one, several or all of them at once, with production done by us.</p>
     <div class="fb-grid">
       <a class="fb" href="https://www.facebook.com/RisaEsCosaSeria/" target="_blank" rel="noopener" data-fb="larisa"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/iso_larisa.jpg')); ?>" alt="La Risa es Cosa Seria"><b>La Risa es Cosa Seria</b><span><i data-seg="fb.larisa" data-fmt="full">584,344</i> followers</span></a>
@@ -178,6 +182,7 @@
       <a class="fb" href="https://www.facebook.com/apagonia" target="_blank" rel="noopener" data-fb="welcome"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/iso_welcome.jpg')); ?>" alt="Welcome to Apagonia"><b>Welcome to Apagonia</b><span><i data-seg="fb.welcome" data-fmt="full">1,729</i> followers</span></a>
       <a class="fb" href="https://www.facebook.com/marrerobernalmedia/" target="_blank" rel="noopener" data-fb="mbm"><img src="<?php echo esc_url(get_theme_file_uri('img/mbm-iso.svg')); ?>" alt="Marrero Bernal Media"><b>Marrero Bernal Media</b><span><i data-seg="fb.mbm" data-fmt="full">1,325</i> followers</span></a>
       <a class="fb" href="https://www.facebook.com/aquinoserienadie/" target="_blank" rel="noopener" data-fb="nadie"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/ansn.png')); ?>" alt="Aquí No Se Ríe Nadie"><b>Aquí No Se Ríe Nadie</b><span><i data-seg="fb.nadie" data-fmt="full">263</i> followers · premieres spring 2027</span></a>
+      <a class="fb" href="https://www.facebook.com/ChamaquitoTV/" target="_blank" rel="noopener" data-fb="chamaquitos"><img src="<?php echo esc_url(get_theme_file_uri('img/av_chamaquitos.jpg')); ?>" alt="Chamaquitos" style="border-radius:50%"><b>Chamaquitos</b><span><i data-seg="fb.chamaquitos" data-fmt="full">12</i> followers · new kids' channel</span></a>
       <a class="fb" href="https://www.facebook.com/marrerobernal" target="_blank" rel="noopener" data-fb="mba"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/iso_mba.png')); ?>" alt="Marrero Bernal & Associates"><b>Marrero Bernal &amp; Associates</b><span><i data-seg="fb.mba" data-fmt="full">5,214</i> followers · sponsor</span></a>
     </div>
     <p style="color:var(--mut);font-size:13px;margin-top:18px">Facebook total: <b style="color:var(--fg)"><span data-seg="tot.fbTodo" data-fmt="full">884,493</span></b> followers, plus <span data-seg="tot.igTodo" data-fmt="full">116,658</span> on Instagram.</p>
@@ -196,6 +201,7 @@
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/home.jpg')); ?>)" href="https://www.elhomedelarisa.com" target="_blank" rel="noopener"><div><b>El Home de la Risa</b><span>The brand that brings together all our comedy productions</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/cuero.jpg')); ?>)" href="https://www.lcedr.com" target="_blank" rel="noopener"><div><b>Si de Cuero se Trata · Premieres December 18</b><span>The Cuban roast · original format</span></div></a>
       <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/ansn.jpg') . '?v=2'); ?>)" href="https://www.facebook.com/aquinoserienadie/" target="_blank" rel="noopener"><div><b>Aquí No Se Ríe Nadie · Spring 2027</b><span>The Cuban laugh-off: whoever laughs, drinks · original format</span></div></a>
+      <a class="wk" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/chamaquitos.jpg')); ?>)" href="https://www.youtube.com/@chamaquitotv?sub_confirmation=1" target="_blank" rel="noopener"><div><b>Chamaquitos</b><span>Animated children's songs · AI production, music and animation</span></div></a>
     </div>
   </div>
 </section>
@@ -203,12 +209,12 @@
 <section id="nosotros" class="about" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="marcas">
-      <a href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/larisa.png')); ?>" alt="La Risa es Cosa Seria"></a><a href="https://www.straight2dchest.com/" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/s2d.png')); ?>" alt="Straight 2D Chest"></a><a href="https://www.youtube.com/channel/UCsLPvvD_UDgwo91eeUOZUSQ?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/lacosa.png')); ?>" alt="La Cosa Es De Risa"></a><a href="https://www.youtube.com/channel/UCtf5fq1TdwirbFswJfZSWCA?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/welcome.png')); ?>" alt="Welcome to Apagonia"></a><a href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/mbentv.png')); ?>" alt="MB en TV · tráileres de Marrero Bernal Media"></a><a href="https://www.youtube.com/channel/UCItBxtE_Ky-C7Q3IfvC5ZMg?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/cuero.png')); ?>" alt="Si de Cuero se Trata"></a>
+      <a href="https://www.youtube.com/@LaRisaEsCosaSeria?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/larisa.png')); ?>" alt="La Risa es Cosa Seria"></a><a href="https://www.straight2dchest.com/" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/s2d.png')); ?>" alt="Straight 2D Chest"></a><a href="https://www.youtube.com/channel/UCsLPvvD_UDgwo91eeUOZUSQ?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/lacosa.png')); ?>" alt="La Cosa Es De Risa"></a><a href="https://www.youtube.com/channel/UCtf5fq1TdwirbFswJfZSWCA?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/welcome.png')); ?>" alt="Welcome to Apagonia"></a><a href="https://www.youtube.com/@marrerobernalmedia?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/mbentv.png')); ?>" alt="MB en TV · tráileres de Marrero Bernal Media"></a><a href="https://www.youtube.com/channel/UCItBxtE_Ky-C7Q3IfvC5ZMg?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/cuero.png')); ?>" alt="Si de Cuero se Trata"></a><a href="https://www.youtube.com/@chamaquitotv?sub_confirmation=1" target="_blank" rel="noopener"><img src="<?php echo esc_url(get_theme_file_uri('img/marcas/chamaquitos.png')); ?>" alt="Chamaquitos"></a>
     </div>
     <div>
       <div class="kicker">About</div>
       <h2>A production company with a director's eye.</h2>
-      <p class="lead">Marrero Bernal Media LLC was founded in Las Vegas with <a href="https://www.imdb.com/name/nm3952887/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">Eliam Marrero Bernal</a> as producer: a director and cinematographer with film and television credits. What began as a Cuban comedy channel is today a network of five channels, seven Meta pages and a production team that premieres new content every week of the year.</p>
+      <p class="lead">Marrero Bernal Media LLC was founded in Las Vegas with <a href="https://www.imdb.com/name/nm3952887/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">Eliam Marrero Bernal</a> as producer: a director and cinematographer with film and television credits. What began as a Cuban comedy channel is today a network of six channels, seven Meta pages and a production team that premieres new content every week of the year.</p>
       <p class="lead" style="margin-top:14px">We bring the same rigor to an episode of our own series as to a client's commercial: script, light, sound, pacing and, above all, knowing who we're talking to.</p>
       <div class="creds">
         <span>Directing and cinematography</span><a href="https://www.imdb.com/name/nm3952887/" target="_blank" rel="noopener"><span>IMDb credits ↗</span></a><span>FAA Part 107 pilot</span><span>Las Vegas · Miami</span><span>Spanish and English</span>
