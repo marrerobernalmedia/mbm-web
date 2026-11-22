@@ -5,7 +5,7 @@
 window.SEGUIDORES = {
   "actualizado": "2026-11-22",
   "fb": {"larisa":586140,"lacosa":175309,"recta":73186,"elhome":20883,"mba":5208,"cuero":2412,"welcome":5759,"mbm":2350,"eliam":11573,"nadie":1474,"chamaquitos":12},
-  "ig": {"larisa":50541,"lacosa":31348,"mbm":10320,"recta":9512,"welcome":3733,"elhome":3737,"nadie":47,"cuero":22,"mba":218,"eliam":7142},
+  "ig": {"larisa":50541,"lacosa":31348,"mbm":10320,"recta":9512,"welcome":3733,"elhome":3737,"nadie":47,"cuero":22,"mba":218,"eliam":7142,"chamaquitos":10},
   "yt": {"larisa":92478,"recta":19197,"lacosa":14358,"elhome":3645,"welcome":3036,"mbm":20,"chamaquitos":7}
 };
 (function(){

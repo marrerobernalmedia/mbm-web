@@ -51,7 +51,7 @@
       </a>
       <a class="ch" href="https://www.youtube.com/@chamaquitotv?sub_confirmation=1" target="_blank" rel="noopener">
         <div class="cover" style="background-image:url(<?php echo esc_url(get_theme_file_uri('img/chamaquitos.jpg')); ?>)"></div>
-        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_chamaquitos.jpg')); ?>" alt="Chamaquitos"><div><h3>Chamaquitos</h3><p>Canciones infantiles animadas en español. Nuevo canal.</p><span class="n"><span data-seg="yt.chamaquitos">7</span> en YouTube · <span data-seg="fb.chamaquitos">12</span> en Facebook</span></div></div>
+        <div class="body"><img class="av" src="<?php echo esc_url(get_theme_file_uri('img/av_chamaquitos.jpg')); ?>" alt="Chamaquitos"><div><h3>Chamaquitos</h3><p>Canciones infantiles animadas en español. Nuevo canal.</p><span class="n"><span data-seg="yt.chamaquitos">7</span> en YouTube · <span data-seg="fb.chamaquitos">12</span> en Facebook · <span data-seg="ig.chamaquitos">10</span> en Instagram</span></div></div>
       </a>
     </div>
   </div>
