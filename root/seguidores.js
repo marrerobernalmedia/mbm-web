@@ -3,10 +3,10 @@
    (Facebook e Instagram) y con vidIQ (YouTube). No editar a mano los sitios:
    editar este archivo y hacer push. */
 window.SEGUIDORES = {
-  "actualizado": "2026-11-22",
+  "actualizado": "2026-11-23",
   "fb": {"larisa":586140,"lacosa":175309,"recta":73186,"elhome":20883,"mba":5208,"cuero":2412,"welcome":5759,"mbm":2350,"eliam":11573,"nadie":1474,"chamaquitos":12},
-  "ig": {"larisa":50541,"lacosa":31348,"mbm":10320,"recta":9512,"welcome":3733,"elhome":3737,"nadie":47,"cuero":22,"mba":218,"eliam":7142,"chamaquitos":10},
-  "yt": {"larisa":92478,"recta":19197,"lacosa":14358,"elhome":3645,"welcome":3036,"mbm":20,"chamaquitos":7}
+  "ig": {"larisa":50538,"lacosa":31342,"mbm":10328,"recta":9516,"welcome":3735,"elhome":3840,"nadie":47,"cuero":22,"mba":218,"eliam":7144,"chamaquitos":10},
+  "yt": {"larisa":92520,"recta":19200,"lacosa":14379,"elhome":3661,"welcome":3049,"mbm":24,"chamaquitos":7}
 };
 (function(){
   var S=window.SEGUIDORES, RED=["larisa","lacosa","recta","elhome","welcome","mbm","cuero","nadie","chamaquitos","eliam","mba"]; /* chamaquitos desde el 22-nov-2026 */ /* eliam y mba suman a la red desde el 16-nov-2026 (pedido de Eliam) */
