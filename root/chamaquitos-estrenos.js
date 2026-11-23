@@ -5,6 +5,7 @@ window.APPDATA = {
     "m3utjM33b_4": { f: "2026-11-22", t: "Suky, el perrito salchicha" },
     "2QKYOMZptWc": { f: "2026-11-22", t: "El niño de la bicicleta (versión original)" },
     "ZyJAVyJz7ek": { f: "2026-11-22", t: "El niño de la bicicleta (versión 2026)" },
-    "hNrn2sKG-PE": { f: "2026-11-23", t: "Juan me tiene sin cuidado" }
+    "hNrn2sKG-PE": { f: "2026-11-23", t: "Juan me tiene sin cuidado" },
+    "GUJHG4jGmIg": { f: "2026-11-23", t: "El Rock del Primitivo" }
   }
 };
