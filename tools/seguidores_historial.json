@@ -3040,6 +3040,13 @@
 {
 "fecha": "2026-11-24",
 "red": "Facebook",
+"cuenta": "eliam",
+"seguidores": 11623,
+"fuente": "Eliam (lectura en Facebook)"
+},
+{
+"fecha": "2026-11-24",
+"red": "Facebook",
 "cuenta": "lacosa",
 "seguidores": 175686,
 "fuente": "Pepe (API de Meta)"
