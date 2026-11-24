@@ -73,16 +73,11 @@ footer a{margin:0 8px}
     <p class="nota" data-es="Gratis. Se instala y se actualiza sola." data-en="Free. It installs and updates itself.">Gratis. Se instala y se actualiza sola.</p>
   </section>
 
-  <!-- iPhone en Safari -->
+  <!-- iPhone y iPad -->
   <section class="caja" id="ios" hidden>
-    <h2 data-es="Ponla en tu iPhone" data-en="Put it on your iPhone">Ponla en tu iPhone</h2>
-    <ol>
-      <li><div><span data-es="Abajo, junto a la dirección, toca el botón de menú (☰ o ···) y luego «Compartir»" data-en="At the bottom, next to the address, tap the menu button (☰ or ···) and then “Share”">Abajo, junto a la dirección, toca el botón de menú (☰ o ···) y luego «Compartir»</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><rect x="5" y="11" width="14" height="10" rx="2"/></svg>.</div></li>
-      <li><div data-es="Si no ves «Agregar a pantalla de inicio», toca «Ver más»." data-en="If you don’t see “Add to Home Screen”, tap “View More”.">Si no ves «Agregar a pantalla de inicio», toca «Ver más».</div></li>
-      <li><div data-es="Toca «Agregar a pantalla de inicio» y luego «Agregar»." data-en="Tap “Add to Home Screen”, then “Add”.">Toca «Agregar a pantalla de inicio» y luego «Agregar».</div></li>
-    </ol>
-    <a class="btn lima" href="../" data-es="Abrir Recta Al Pecho" data-en="Open Straight 2D Chest">Abrir Recta Al Pecho</a>
-    <p class="nota" data-es="Muy pronto también en el App Store." data-en="Coming soon to the App Store.">Muy pronto también en el App Store.</p>
+    <h2 data-es="Bájala en tu iPhone" data-en="Get it on your iPhone">Bájala en tu iPhone</h2>
+    <a class="play" data-as target="_blank" rel="noopener" href="https://apps.apple.com/app/recta-al-pecho/id6836433496"><img src="app-store.svg" alt="Descárgala en el App Store" width="196" height="58"></a>
+    <p class="nota" data-es="Gratis. Para iPhone y iPad." data-en="Free. For iPhone and iPad.">Gratis. Para iPhone y iPad.</p>
   </section>
 
   <!-- iPhone dentro de Facebook, Instagram, WhatsApp… -->
@@ -95,9 +90,9 @@ footer a{margin:0 8px}
 
   <!-- Computadora -->
   <section class="caja" id="pc" hidden>
-    <h2 data-es="Bájala en tu Android" data-en="Get it on your Android">Bájala en tu Android</h2>
-    <div class="fila"><b data-es="Haz clic aquí 👉" data-en="Click here 👉">Haz clic aquí 👉</b><a class="play" data-play target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.recta"><img src="google-play.png" alt="Disponible en Google Play" width="196" height="58"></a></div>
-    <p class="nota" data-es="¿Tienes iPhone? Abre esta página en Safari desde tu teléfono. Muy pronto en el App Store." data-en="On iPhone? Open this page in Safari on your phone. Coming soon to the App Store.">¿Tienes iPhone? Abre esta página en Safari desde tu teléfono. Muy pronto en el App Store.</p>
+    <h2 data-es="Bájala en tu teléfono" data-en="Get it on your phone">Bájala en tu teléfono</h2>
+    <div class="fila"><b data-es="Android 👉" data-en="Android 👉">Android 👉</b><a class="play" data-play target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.recta"><img src="google-play.png" alt="Disponible en Google Play" width="196" height="58"></a></div>
+    <div class="fila" style="margin-top:10px"><b>iPhone 👉</b><a class="play" data-as target="_blank" rel="noopener" href="https://apps.apple.com/app/recta-al-pecho/id6836433496"><img src="app-store.svg" alt="Descárgala en el App Store" width="196" height="58"></a></div>
   </section>
 
   <ul class="por">
@@ -110,7 +105,7 @@ footer a{margin:0 8px}
   <details id="otro">
     <summary data-es="¿Tienes otro teléfono?" data-en="Have a different phone?">¿Tienes otro teléfono?</summary>
     <p><b>Android:</b> <a data-play href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.recta" data-es="bájala en Google Play" data-en="get it on Google Play">bájala en Google Play</a>.</p>
-    <p><b>iPhone:</b> <span data-es="abre esta página en Safari, toca Compartir y luego «Agregar a pantalla de inicio». Muy pronto en el App Store." data-en="open this page in Safari, tap Share, then “Add to Home Screen”. Coming soon to the App Store.">abre esta página en Safari, toca Compartir y luego «Agregar a pantalla de inicio». Muy pronto en el App Store.</span></p>
+    <p><b>iPhone:</b> <a target="_blank" rel="noopener" href="https://apps.apple.com/app/recta-al-pecho/id6836433496" data-es="bájala en el App Store" data-en="get it on the App Store">bájala en el App Store</a>.</p>
     <p><a href="../" data-es="Úsala en el navegador, sin instalar nada." data-en="Use it in the browser, nothing to install.">Úsala en el navegador, sin instalar nada.</a></p>
   </details>
 </main>
@@ -125,14 +120,14 @@ footer a{margin:0 8px}
   if(dentro){location.replace('../');return}
   // Dirección corta que se le enseña a la gente (rectago.com reenvía aquí). El QR y el botón de copiar usan la dirección directa, que siempre responde.
   var EN=!/^es/i.test(navigator.language||'es')&&q.get('lang')!=='es'||q.get('lang')==='en';
-  if(EN){document.documentElement.lang='en';document.title='Get the Straight 2D Chest app';[].forEach.call(document.querySelectorAll('[data-en]'),function(e){e.innerHTML=e.getAttribute('data-en')});[].forEach.call(document.querySelectorAll('.play img'),function(i){i.src='google-play-en.png';i.alt='Get it on Google Play'})}
+  if(EN){document.documentElement.lang='en';document.title='Get the Straight 2D Chest app';[].forEach.call(document.querySelectorAll('[data-en]'),function(e){e.innerHTML=e.getAttribute('data-en')});[].forEach.call(document.querySelectorAll('[data-play] img'),function(i){i.src='google-play-en.png';i.alt='Get it on Google Play'});[].forEach.call(document.querySelectorAll('[data-as] img'),function(i){i.src='app-store-en.svg';i.alt='Download on the App Store'})}
   var corta='rectago.com', completa='https://marrerobernalmedia.com/recta/app/';
   // De dónde vino la visita (?de=comercial, ?de=facebook…): Google Play lo muestra en sus informes de adquisición.
   var de=(q.get('de')||q.get('utm_source')||'').replace(/[^a-z0-9_-]/gi,'').slice(0,40)||'rectago';
   [].forEach.call(document.querySelectorAll('[data-play]'),function(a){a.href+='&referrer='+encodeURIComponent('utm_source='+de+'&utm_medium=rectago')});
   var ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1), and=/android/i.test(ua);
   var safari=ios&&/safari/i.test(ua)&&!/crios|fxios|edgios|opios|fban|fbav|instagram|line\/|gsa\/|whatsapp/i.test(ua);
-  var cual=and?'and':ios?(safari?'ios':'iosapp'):'pc';
+  var cual=and?'and':ios?'ios':'pc';
   document.getElementById(cual).hidden=false;
   document.getElementById('dir').textContent=corta;
   var b=document.getElementById('copiar');
