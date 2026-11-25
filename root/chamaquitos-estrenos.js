@@ -8,6 +8,7 @@ window.APPDATA = {
     "hNrn2sKG-PE": { f: "2026-11-23", t: "Juan me tiene sin cuidado" },
     "GUJHG4jGmIg": { f: "2026-11-23", t: "El Rock del Primitivo" },
     "zuz5mKXPT9Y": { f: "2026-11-24", t: "Marinero quiero ser" },
-    "uVzwMKdc_Po": { f: "2026-11-24", t: "Deseos" }
+    "uVzwMKdc_Po": { f: "2026-11-24", t: "Deseos" },
+    "XVGWBPHMQLU": { f: "2026-11-25", t: "¿Dónde está mi cutara?" }
   }
 };
