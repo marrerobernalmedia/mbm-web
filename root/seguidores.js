@@ -3,10 +3,10 @@
    (Facebook e Instagram) y con vidIQ (YouTube). No editar a mano los sitios:
    editar este archivo y hacer push. */
 window.SEGUIDORES = {
-  "actualizado": "2026-11-24",
-  "fb": {"larisa":586639,"lacosa":175686,"recta":73246,"elhome":21315,"mba":5209,"cuero":2423,"welcome":5819,"mbm":2353,"eliam":11623,"nadie":6995,"chamaquitos":12},
-  "ig": {"larisa":50532,"lacosa":31337,"mbm":10337,"recta":9521,"welcome":3736,"elhome":3897,"nadie":47,"cuero":22,"mba":218,"eliam":7145,"chamaquitos":10},
-  "yt": {"larisa":92559,"recta":19204,"lacosa":14397,"elhome":3676,"welcome":3059,"mbm":27,"chamaquitos":18}
+  "actualizado": "2026-11-25",
+  "fb": {"larisa":586924,"lacosa":175807,"recta":73274,"elhome":21435,"mba":5210,"cuero":2429,"welcome":5837,"mbm":2353,"eliam":11623,"nadie":7066,"chamaquitos":12},
+  "ig": {"larisa":50529,"lacosa":31335,"mbm":10349,"recta":9525,"welcome":3738,"elhome":3975,"nadie":47,"cuero":22,"mba":218,"eliam":7140,"chamaquitos":10},
+  "yt": {"larisa":92590,"recta":19207,"lacosa":14426,"elhome":3703,"welcome":3083,"mbm":31,"chamaquitos":23}
 };
 (function(){
   var S=window.SEGUIDORES, RED=["larisa","lacosa","recta","elhome","welcome","mbm","cuero","nadie","chamaquitos","eliam","mba"]; /* chamaquitos desde el 22-nov-2026 */ /* eliam y mba suman a la red desde el 16-nov-2026 (pedido de Eliam) */
