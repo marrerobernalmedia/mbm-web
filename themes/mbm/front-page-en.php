@@ -72,7 +72,7 @@
   <div class="wrap">
     <div class="kicker">Apps</div>
     <h2>Our shows, on your phone.</h2>
-    <p class="lead">Two free apps with every episode, the week's premieres and alerts when a new one drops. Both are on Google Play, and El Home de la Risa is also on the App Store.</p>
+    <p class="lead">Two free apps with every episode, the week's premieres and alerts when a new one drops. Both are on Google Play and the App Store.</p>
     <div class="apps">
       <div class="app">
         <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/elhome.png')); ?>" alt="El Home de la Risa">
@@ -94,6 +94,7 @@
           <div class="ctas">
             <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/?lang=en" target="_blank" rel="noopener">Open the app</a>
             <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.recta" target="_blank" rel="noopener">Get it on Google Play</a>
+            <a class="btn btn-ghost" href="https://apps.apple.com/app/recta-al-pecho/id6836433496" target="_blank" rel="noopener">Get it on the App Store</a>
           </div>
         </div>
       </div>

@@ -72,7 +72,7 @@
   <div class="wrap">
     <div class="kicker">Apps</div>
     <h2>Nuestros shows, en tu teléfono.</h2>
-    <p class="lead">Dos apps gratis con todos los capítulos, los estrenos de la semana y avisos cuando sale uno nuevo. Las dos ya están en Google Play, y El Home de la Risa también en el App Store.</p>
+    <p class="lead">Dos apps gratis con todos los capítulos, los estrenos de la semana y avisos cuando sale uno nuevo. Las dos ya están en Google Play y en el App Store.</p>
     <div class="apps">
       <div class="app">
         <img src="<?php echo esc_url(get_theme_file_uri('img/marcas/elhome.png')); ?>" alt="El Home de la Risa">
@@ -94,6 +94,7 @@
           <div class="ctas">
             <a class="btn btn-acc" href="https://marrerobernalmedia.com/recta/" target="_blank" rel="noopener">Abrir la app</a>
             <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.marrerobernalmedia.recta" target="_blank" rel="noopener">Bájala en Google Play</a>
+            <a class="btn btn-ghost" href="https://apps.apple.com/app/recta-al-pecho/id6836433496" target="_blank" rel="noopener">Bájala en App Store</a>
           </div>
         </div>
       </div>
