@@ -10,6 +10,7 @@ window.APPDATA = {
     "zuz5mKXPT9Y": { f: "2026-11-24", t: "Marinero quiero ser" },
     "uVzwMKdc_Po": { f: "2026-11-24", t: "Deseos" },
     "XVGWBPHMQLU": { f: "2026-11-25", t: "¿Dónde está mi cutara?" },
-    "BAPwbdJwpok": { f: "2026-11-25", t: "Drume negrita" }
+    "BAPwbdJwpok": { f: "2026-11-25", t: "Drume negrita" },
+    "cCf_p4clPxU": { f: "2026-11-25", t: "Canción del espantapájaros" }
   }
 };
