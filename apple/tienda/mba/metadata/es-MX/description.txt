@@ -9,15 +9,15 @@ Reserva tu hora en la oficina sin llamar.
 ESCANEA TUS DOCUMENTOS
 Tómale foto a cada página y la app las junta en un solo PDF, listo para enviar. Las fotos no salen de tu teléfono: el PDF se arma ahí mismo y no se guarda en nuestros servidores.
 
-TUS TAXES
-Entra a tu portal seguro para ver, descargar y subir tus documentos de taxes.
+TUS TAXES (PARA CLIENTES DE TAXES)
+El botón «Mis taxes» de la pantalla de inicio abre dentro de la app el portal seguro de la agencia. El cliente entra con el usuario y la contraseña que la agencia le da al preparar su declaración, y ahí ve, descarga y sube sus documentos de taxes.
 
-PAGA EN LÍNEA
-Paga tu servicio de forma segura desde el teléfono.
+PAGA TU FACTURA
+El botón «Pagar» de la pantalla de inicio abre dentro de la app la página de pago seguro de la agencia, para pagar un servicio que la agencia ya hizo.
 
 CONTÁCTANOS
 Llama, escribe por WhatsApp o mira cómo llegar a la oficina: 3455 W Craig Rd, Suite D, North Las Vegas, NV 89032.
 
-Gratis y sin crear cuenta.
+Gratis. No hace falta crear cuenta para pedir cotización, agendar cita o escanear documentos.
 
 Marrero Bernal & Associates es una agencia de seguros independiente con licencia en Nevada, California y Arizona. No somos abogados y no ofrecemos asesoría legal.

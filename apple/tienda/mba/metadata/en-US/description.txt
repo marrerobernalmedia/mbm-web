@@ -9,15 +9,15 @@ Reserve your time at the office without calling.
 SCAN YOUR DOCUMENTS
 Take a photo of each page and the app combines them into a single PDF, ready to send. Your photos never leave your phone: the PDF is built on the device and is not stored on our servers.
 
-YOUR TAXES
-Open your secure portal to view, download and upload your tax documents.
+YOUR TAXES (FOR EXISTING TAX CLIENTS)
+The "My taxes" button on the home screen opens the agency's secure client portal inside the app. Clients sign in with the username and password the agency gives them when it prepares their return, and there they can view, download and upload their tax documents.
 
-PAY ONLINE
-Pay for your service securely from your phone.
+PAY AN INVOICE
+The "Pay" button on the home screen opens the agency's secure payment page inside the app, to pay for a service the agency already performed.
 
 CONTACT US
 Call, message us on WhatsApp or get directions to the office: 3455 W Craig Rd, Suite D, North Las Vegas, NV 89032.
 
-Free, no account needed.
+Free. No account needed to request a quote, book an appointment or scan documents.
 
 Marrero Bernal & Associates is an independent insurance agency licensed in Nevada, California and Arizona. We are not attorneys and do not provide legal advice.
