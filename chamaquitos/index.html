@@ -117,6 +117,7 @@ const ELENCO=[
   {id:"daniela",n:"Daniela",r:"La hermanita de Chamaquito",c:"#e8708a",b:"Flequillo, lacitos rosados, pequitas y una sonrisa con un diente caído. Dulce y valiente: se disfrazó de hormiguita y un día rescató de un cartucho a un gatico flaquito que hoy es Vinagrito.",s:["Hormiguita retozona","Vinagrito"]},
   {id:"nina",n:"Nina",r:"La niña de la bicicleta",c:"#1cb4a0",b:"Alegre, rápida y muy despierta, aunque siempre anda buscando su cutara. Aprendió a montar bicicleta con su papá Newito, y de bebé su mamá Sara la dormía cantándole bajito en el portal, con una linterna, las noches de apagón.",s:["El niño de la bicicleta","Deseos","¿Dónde está mi cutara?","Drume negrita","Conejito majadero","Hormiguita retozona"]},
   {id:"azul",n:"Azul",r:"La niña de la lluvia",c:"#4aa3df",b:"Soñadora y tranquila. Cuando empieza a llover sale corriendo a la ventana a escuchar el tin tin de las gotas, y para ella cada aguacero es una canción.",s:["Tin tin la lluvia"]},
+  {id:"riguito",n:"Riguito",r:"Hijo de Rigo",c:"#a3243b",b:"Igualito a su papá: gorra negra al revés, espejuelos amarillos y una sonrisa de oreja a oreja. Es de los más alegres de la pandilla y no se pierde una fiesta del barrio.",s:["Hormiguita retozona"]},
   {id:"flaky",n:"Flaky",r:"Hermano de Gordy",c:"#7fb800",b:"Hermano de Gordy y amigo inseparable de Chiquilín y Chamaquito. Inquieto y bromista: siempre tiene una idea nueva para jugar y es el primero en salir corriendo detrás de las bicicletas.",s:["El niño de la bicicleta"]},
   {id:"gordy",n:"Gordy",r:"Hermano de Flaky",c:"#f2a33a",b:"Hermano de Flaky y amigo de Chiquilín y Chamaquito. Risueño y buena gente: comparte todo lo que tiene y donde está Gordy hay carcajadas.",s:["El niño de la bicicleta"]},
   {id:"chiquilin",n:"Chiquilín",r:"El que empezó todo",c:"#e83e49",b:"Gorra roja al revés y los audífonos siempre puestos: nunca se separa de su música. Anda en bicicleta por todo el barrio y en las fiestas es el que pone la música desde el balcón. Su mamá es Minerva, su papá es Danny, el marinero, su primo es Chamaquito y su abuela es Carmen.",s:["El niño de la bicicleta","Juan me tiene sin cuidado","Marinero quiero ser","Deseos","Conejito majadero","Hormiguita retozona","Vinagrito"]}
@@ -126,6 +127,7 @@ const ELENCO=[
   {id:"minerva",n:"Minerva",r:"Mamá de Chiquilín",c:"#9b6bd6",b:"Alegre y conversadora. Hace lo que sea para ver feliz a Chiquilín, y en el parque del barrio nunca le falta un cuento para las otras mamás.",s:["Deseos"]},
   {id:"newito",n:"Newito",r:"Papá de Nina",c:"#f08a2c",b:"Un papá de los que juegan. Le enseñó a Nina a montar bicicleta y en las noches de apagón saca la linterna al portal para que nadie tenga miedo.",s:["Deseos","Drume negrita"]},
   {id:"sara",n:"Sara",r:"Mamá de Nina",c:"#a0522d",b:"Tranquila y muy cariñosa. Las noches de apagón se sienta en el portal con Nina en brazos y le canta bajito hasta que se queda dormida, mientras Newito alumbra con la linterna.",s:["Drume negrita"]},
+  {id:"rigo",n:"Rigo",r:"Papá de Riguito",c:"#a3243b",b:"El papá más divertido del barrio: gorra negra al revés, espejuelos amarillos y un chiste para cada ocasión. Él y Riguito parecen dos gotas de agua, uno grande y otro chiquitico.",s:[]},
   {id:"danny",n:"Danny",r:"El papá marinero de Chiquilín",c:"#3a8fd0",b:"Marino mercante. Ha recorrido los mares del mundo y siempre regresa a casa con historias de barcos, puertos y océanos. Chiquilín lo mira y sueña con ser marinero como su papá.",s:["Marinero quiero ser"]},
   {id:"pepe",n:"Pepe",r:"El abuelo de la bicicleta",c:"#6b8e4e",b:"El viejito más querido del barrio. Lo ves sentado en su portal, saludando a todos los que pasan, y no hay niño que pase en bicicleta sin que Pepe le grite un consejo con una sonrisa.",s:["El niño de la bicicleta"]},
   {id:"patricio",n:"Patricio",r:"El primitivo rockero",c:"#c0562b",b:"Llegó de la época de las cavernas con una guitarra y un ritmo que pone a bailar a todo el barrio. Donde suena el rock del primitivo, Patricio está en el medio de la fiesta.",s:["El Rock del Primitivo"]},
@@ -145,7 +147,7 @@ for(const g of ELENCO){
   for(const p of g.l){
     const a=document.createElement('article');a.className='ficha';a.id=p.id;
     a.innerHTML=`<div class="foto" style="--color:${p.c}"><img src="img/personajes/${p.id}.png" alt="${p.n}" loading="lazy"></div>
-      <div class="cuerpo"><h3>${p.n}</h3><p class="rol">${p.r}</p><p class="bio">${p.b}</p><p class="sale"><b>Sale en:</b> ${p.s.join(' · ')}</p></div>`;
+      <div class="cuerpo"><h3>${p.n}</h3><p class="rol">${p.r}</p><p class="bio">${p.b}</p><p class="sale"><b>Sale en:</b> ${p.s.length?p.s.join(' · '):'próximos videoclips'}</p></div>`;
     const img=a.querySelector('img');
     img.onerror=()=>{const s=document.createElement('span');s.className='inicial';s.textContent=p.n.replace('El ','').replace('La ','')[0].toUpperCase();img.replaceWith(s)};
     grid.appendChild(a);
