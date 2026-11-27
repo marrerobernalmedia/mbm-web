@@ -55,7 +55,14 @@ h2 span{color:var(--rojo)}
 .ficha .sale b{color:var(--texto)}
 #videoclips{background:var(--cielo)}
 .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
-.vid{text-decoration:none;color:var(--texto);background:#fff;border-radius:18px;overflow:hidden;border:3px solid var(--marino);display:flex;flex-direction:column;min-width:0}
+.vid{font:inherit;text-align:left;cursor:pointer;padding:0;color:var(--texto);background:#fff;border-radius:18px;overflow:hidden;border:3px solid var(--marino);display:flex;flex-direction:column;min-width:0}
+.vid.on{border-color:var(--rojo);box-shadow:0 0 0 4px var(--rojo)}
+.tv{background:var(--marino);border-radius:24px;padding:10px;box-shadow:0 6px 0 rgba(0,0,0,.25);max-width:900px;margin:0 auto 14px;scroll-margin-top:110px}
+.tv .pantalla{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:16px;overflow:hidden;background:#000}
+.tv iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tv .ahora{color:#fff;font-weight:700;font-size:20px;padding:10px 8px 4px;text-align:center}
+.lista{font-size:22px;font-weight:700;color:var(--marino);text-align:center;margin:30px 0 14px}
+.sale a{color:var(--azul);font-weight:600;cursor:pointer}
 .vid img{aspect-ratio:16/9;object-fit:cover;width:100%}
 .vid span{padding:10px 12px;font-weight:600;font-size:17px}
 .historia{max-width:65ch;margin:0 auto;font-size:19px}
@@ -72,7 +79,8 @@ footer small{display:block;opacity:.8;margin-top:8px;font-size:14px}
     <div class="logos"><img class="c" src="img/c.png" alt=""><img class="letras" src="img/letras.png" alt="Chamaquitos"></div>
     <p class="lema">Canciones infantiles animadas con los niños del barrio</p>
     <div class="botones">
-      <a class="btn yt" href="https://www.youtube.com/@chamaquitotv?sub_confirmation=1">▶ Suscríbete en YouTube</a>
+      <a class="btn yt" href="#videoclips">▶ Ver los videoclips</a>
+      <a class="btn fb" href="https://www.youtube.com/@chamaquitotv?sub_confirmation=1">Suscríbete en YouTube</a>
       <a class="btn fb" href="https://www.facebook.com/ChamaquitoTV/">Síguenos en Facebook</a>
     </div>
   </div>
@@ -91,7 +99,9 @@ footer small{display:block;opacity:.8;margin-top:8px;font-size:14px}
 
 <section id="videoclips"><div class="wrap">
   <h2>Los <span>videoclips</span></h2>
-  <p class="intro">Toca cualquiera para verlo en YouTube.</p>
+  <p class="intro">Dale play y se ponen uno detrás del otro. Toca cualquiera de la lista para cambiar de canción.</p>
+  <div class="tv" id="tv"><div class="pantalla" id="pantalla"></div><div class="ahora" id="ahora"></div></div>
+  <div class="lista">La lista de canciones</div>
   <div class="vgrid" id="videos"></div>
 </div></section>
 
@@ -157,21 +167,43 @@ for(const g of ELENCO){
   for(const p of g.l){
     const a=document.createElement('article');a.className='ficha';a.id=p.id;
     a.innerHTML=`<div class="foto" style="--color:${p.c}"><img src="img/personajes/${p.id}.png" alt="${p.n}" loading="lazy"></div>
-      <div class="cuerpo"><h3>${p.n}</h3><p class="rol">${p.r}</p><p class="bio">${p.b}</p><p class="sale"><b>Sale en:</b> ${p.s.length?p.s.join(' · '):'próximos videoclips'}</p></div>`;
+      <div class="cuerpo"><h3>${p.n}</h3><p class="rol">${p.r}</p><p class="bio">${p.b}</p><p class="sale"><b>Sale en:</b> <span class="enlaces"></span></p></div>`;
+    const en=a.querySelector('.enlaces');
+    if(!p.s.length)en.textContent='próximos videoclips';
+    p.s.forEach((t,i)=>{if(i)en.append(' · ');const l=document.createElement('a');l.textContent=t;l.dataset.cancion=t;en.appendChild(l)});
     const img=a.querySelector('img');
     img.onerror=()=>{const s=document.createElement('span');s.className='inicial';s.textContent=p.n.replace('El ','').replace('La ','')[0].toUpperCase();img.replaceWith(s)};
     grid.appendChild(a);
   }
 }
 // Videoclips: salen de chamaquitos-estrenos.js (el mismo archivo de la fila de Estrenos de marrerobernalmedia.com), del más nuevo al más viejo.
+// Se ven aquí mismo, en un reproductor incrustado (modo de privacidad de YouTube, sin cookies hasta dar play), y siguen en cadena.
 const V=(window.APPDATA&&window.APPDATA.vid)||{};
 const vs=Object.entries(V).sort((a,b)=>b[1].f.localeCompare(a[1].f));
-const vg=document.getElementById('videos');
-for(const [id,v] of vs){
-  const a=document.createElement('a');a.className='vid';a.href='https://www.youtube.com/watch?v='+id;
-  a.innerHTML=`<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy"><span></span>`;
-  a.querySelector('span').textContent=v.t;vg.appendChild(a);
+const ids=vs.map(x=>x[0]);
+const vg=document.getElementById('videos'),pant=document.getElementById('pantalla'),ahora=document.getElementById('ahora');
+function poner(id,play){
+  const i=ids.indexOf(id);const resto=ids.slice(i+1).concat(ids.slice(0,i));
+  const src='https://www.youtube-nocookie.com/embed/'+id+'?playlist='+resto.join(',')+'&rel=0&playsinline=1&modestbranding=1'+(play?'&autoplay=1':'');
+  pant.innerHTML='<iframe title="Videoclip de Chamaquitos" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+  pant.firstChild.src=src;
+  ahora.textContent='Ahora: '+V[id].t;
+  vg.querySelectorAll('.vid').forEach(b=>b.classList.toggle('on',b.dataset.id===id));
 }
+function tocar(id){poner(id,true);document.getElementById('tv').scrollIntoView({behavior:'smooth',block:'start'})}
+for(const [id,v] of vs){
+  const b=document.createElement('button');b.type='button';b.className='vid';b.dataset.id=id;
+  b.innerHTML=`<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy"><span></span>`;
+  b.querySelector('span').textContent=v.t;b.onclick=()=>tocar(id);vg.appendChild(b);
+}
+if(ids.length)poner(ids[0],false);
+// En las fichas, cada canción de «Sale en» pone ese videoclip en el reproductor.
+const norm=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f¿?]/g,'').trim();
+document.getElementById('fichas').addEventListener('click',e=>{
+  const l=e.target.closest('a[data-cancion]');if(!l)return;
+  const q=norm(l.dataset.cancion);const hit=vs.find(([id,v])=>norm(v.t).startsWith(q));
+  if(hit)tocar(hit[0]);else location.hash='videoclips';
+});
 </script>
 </body>
 </html>
