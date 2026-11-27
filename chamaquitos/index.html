@@ -183,8 +183,8 @@ const vs=Object.entries(V).sort((a,b)=>b[1].f.localeCompare(a[1].f));
 const ids=vs.map(x=>x[0]);
 const vg=document.getElementById('videos'),pant=document.getElementById('pantalla'),ahora=document.getElementById('ahora');
 function poner(id,play){
-  const i=ids.indexOf(id);const resto=ids.slice(i+1).concat(ids.slice(0,i));
-  const src='https://www.youtube-nocookie.com/embed/'+id+'?playlist='+resto.join(',')+'&rel=0&playsinline=1&modestbranding=1'+(play?'&autoplay=1':'');
+  const i=ids.indexOf(id);const orden=ids.slice(i).concat(ids.slice(0,i));
+  const src='https://www.youtube-nocookie.com/embed/'+id+'?playlist='+orden.join(',')+'&rel=0&playsinline=1&modestbranding=1'+(play?'&autoplay=1':'');
   pant.innerHTML='<iframe title="Videoclip de Chamaquitos" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
   pant.firstChild.src=src;
   ahora.textContent='Ahora: '+V[id].t;
