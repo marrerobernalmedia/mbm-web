@@ -3,6 +3,9 @@
 window.APPDATA = {
   vid: {
     "m3utjM33b_4": { f: "2026-11-22", t: "Suky, el perrito salchicha" },
+    "8AKx48StLtY": { f: "2026-11-22", t: "Chiquilín en Concierto" },
+    "FEoP_8zceVY": { f: "2026-11-22", t: "Chiquilín: ¿cómo lo hicimos?" },
+    "7xIATwmIrKw": { f: "2026-11-22", t: "La Pavita Pechugona" },
     "2QKYOMZptWc": { f: "2026-11-22", t: "El niño de la bicicleta (versión original)" },
     "ZyJAVyJz7ek": { f: "2026-11-22", t: "El niño de la bicicleta (versión 2026)" },
     "hNrn2sKG-PE": { f: "2026-11-23", t: "Juan me tiene sin cuidado" },
