@@ -123,7 +123,7 @@ footer small{display:block;opacity:.8;margin-top:8px;font-size:14px}
 
 <script src="chamaquitos-estrenos.js"></script>
 <script>
-// Fichas del elenco. La imagen va en img/personajes/<id>.png; si todavía no existe, sale la inicial sobre su color.
+// Fichas del elenco. La imagen va en img/personajes/<id>.jpg; si todavía no existe, sale la inicial sobre su color.
 const ELENCO=[
  {g:"Los niños",l:[
   {id:"chamaquito",n:"Chamaquito",r:"El que siempre va delante",c:"#2d6ed7",b:"Es la cara de la pandilla. Curioso, corredor y el primero en apuntarse a cualquier aventura. Su mejor amigo es Suky, el perrito salchicha, y vive con su mamá Yanelsi y su hermanita Daniela en una casa en alto con balcón. Chiquilín es su primo y la abuela Carmen los consiente a los dos.",s:["Suky","Deseos","Conejito majadero","Hormiguita retozona","Vinagrito","Tin tin la lluvia","¿Dónde está mi cutara?"]},
@@ -166,7 +166,7 @@ for(const g of ELENCO){
   const grid=document.createElement('div');grid.className='grid';cont.appendChild(grid);
   for(const p of g.l){
     const a=document.createElement('article');a.className='ficha';a.id=p.id;
-    a.innerHTML=`<div class="foto" style="--color:${p.c}"><img src="img/personajes/${p.id}.png" alt="${p.n}" loading="lazy"></div>
+    a.innerHTML=`<div class="foto" style="--color:${p.c}"><img src="img/personajes/${p.id}.jpg" alt="${p.n}" loading="lazy"></div>
       <div class="cuerpo"><h3>${p.n}</h3><p class="rol">${p.r}</p><p class="bio">${p.b}</p><p class="sale"><b>Sale en:</b> <span class="enlaces"></span></p></div>`;
     const en=a.querySelector('.enlaces');
     if(!p.s.length)en.textContent='próximos videoclips';
