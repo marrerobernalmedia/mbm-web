@@ -127,14 +127,14 @@ footer small{display:block;opacity:.8;margin-top:8px;font-size:14px}
 const ELENCO=[
  {g:"Los niños",l:[
   {id:"chamaquito",n:"Chamaquito",r:"El que siempre va delante",c:"#2d6ed7",b:"Es la cara de la pandilla. Curioso, corredor y el primero en apuntarse a cualquier aventura. Su mejor amigo es Suky, el perrito salchicha, y vive con su mamá Yanelsi y su hermanita Daniela en una casa en alto con balcón. Chiquilín es su primo y la abuela Carmen los consiente a los dos.",s:["Suky","Deseos","Conejito majadero","Hormiguita retozona","Vinagrito","Tin tin la lluvia","¿Dónde está mi cutara?"]},
+  {id:"chiquilin",n:"Chiquilín",r:"El que empezó todo",c:"#e83e49",b:"Gorra roja al revés y los audífonos siempre puestos: nunca se separa de su música. Anda en bicicleta por todo el barrio y en las fiestas es el que pone la música desde el balcón. Su mamá es Minerva, su papá es Danny, el marinero, su primo es Chamaquito y su abuela es Carmen.",s:["El niño de la bicicleta","Juan me tiene sin cuidado","Marinero quiero ser","Deseos","Conejito majadero","Hormiguita retozona","Vinagrito","¿Dónde está mi cutara?","El Rock del Primitivo"]},
   {id:"daniela",n:"Daniela",r:"La hermanita de Chamaquito",c:"#e8708a",b:"Flequillo, lacitos rosados, pequitas y una sonrisa con un diente caído. Dulce y valiente: se disfrazó de hormiguita y un día rescató de un cartucho a un gatico flaquito que hoy es Vinagrito.",s:["Hormiguita retozona","Vinagrito"]},
   {id:"nina",n:"Nina",r:"La niña de la bicicleta",c:"#1cb4a0",b:"Alegre, rápida y muy despierta, aunque siempre anda buscando su cutara. Aprendió a montar bicicleta con su papá Newito, y de bebé su mamá Sara la dormía cantándole bajito en el portal, con una linterna, las noches de apagón.",s:["El niño de la bicicleta","Deseos","¿Dónde está mi cutara?","Drume negrita","Conejito majadero","Hormiguita retozona","Tin tin la lluvia","El Rock del Primitivo"]},
   {id:"azul",n:"Azul",r:"La niña de la lluvia",c:"#4aa3df",b:"Una niña de agua, azulita y brillante, que sale del charco más grande de la calle cuando cae el primer aguacero. Invita a Chamaquito y a Nina a jugar con barquitos de papel y a hacer música con las gotas.",s:["Tin tin la lluvia"]},
   {id:"riguito",n:"Riguito",r:"Hijo de Rigo",c:"#a3243b",b:"Igualito a su papá: gorra negra al revés, espejuelos amarillos y una sonrisa de oreja a oreja. Es de los más alegres de la pandilla y no se pierde una fiesta del barrio.",s:["Deseos","Hormiguita retozona"]},
   {id:"rubito",n:"Rubito",r:"Hijo de Rubio",c:"#3f5fc4",b:"Gorra negra, espejuelos oscuros y camisa de flores, igualito a su papá. Pícaro y simpático: en la fiesta de disfraces fue de ratoncito y no paró de cuchichear con Nina.",s:["Deseos","Hormiguita retozona"]},
   {id:"flaky",n:"Flaky",r:"Hermano de Gordy",c:"#7fb800",b:"Hermano de Gordy y amigo inseparable de Chiquilín y Chamaquito. En la banda del rock del primitivo es el que rapea. Inquieto y bromista: siempre tiene una idea nueva para jugar y es el primero en salir corriendo detrás de las bicicletas.",s:["El niño de la bicicleta","El Rock del Primitivo"]},
-  {id:"gordy",n:"Gordy",r:"El hermano mayor de Flaky",c:"#f2a33a",b:"El hermano mayor de Flaky, con sus espejuelos y amigo de Chiquilín y Chamaquito. En la banda del rock del primitivo toca la batería. Risueño y buena gente: comparte todo lo que tiene y donde está Gordy hay carcajadas.",s:["El niño de la bicicleta","El Rock del Primitivo"]},
-  {id:"chiquilin",n:"Chiquilín",r:"El que empezó todo",c:"#e83e49",b:"Gorra roja al revés y los audífonos siempre puestos: nunca se separa de su música. Anda en bicicleta por todo el barrio y en las fiestas es el que pone la música desde el balcón. Su mamá es Minerva, su papá es Danny, el marinero, su primo es Chamaquito y su abuela es Carmen.",s:["El niño de la bicicleta","Juan me tiene sin cuidado","Marinero quiero ser","Deseos","Conejito majadero","Hormiguita retozona","Vinagrito","¿Dónde está mi cutara?","El Rock del Primitivo"]}
+  {id:"gordy",n:"Gordy",r:"El hermano mayor de Flaky",c:"#f2a33a",b:"El hermano mayor de Flaky, con sus espejuelos y amigo de Chiquilín y Chamaquito. En la banda del rock del primitivo toca la batería. Risueño y buena gente: comparte todo lo que tiene y donde está Gordy hay carcajadas.",s:["El niño de la bicicleta","El Rock del Primitivo"]}
  ]},
  {g:"Las familias y los vecinos",l:[
   {id:"yanelsi",n:"Yanelsi",r:"Mamá de Chamaquito y Daniela",c:"#ffbe1e",b:"Trabajadora y cariñosa, siempre pendiente de sus dos niños, aunque sea llamándolos por el celular. Cuando se enfermó, sus hijos y la pandilla la cuidaron hasta verla sana otra vez.",s:["Deseos","Hormiguita retozona"]},
@@ -167,10 +167,7 @@ for(const g of ELENCO){
   for(const p of g.l){
     const a=document.createElement('article');a.className='ficha';a.id=p.id;
     a.innerHTML=`<div class="foto" style="--color:${p.c}"><img src="img/personajes/${p.id}.jpg" alt="${p.n}" loading="lazy"></div>
-      <div class="cuerpo"><h3>${p.n}</h3><p class="rol">${p.r}</p><p class="bio">${p.b}</p><p class="sale"><b>Sale en:</b> <span class="enlaces"></span></p></div>`;
-    const en=a.querySelector('.enlaces');
-    if(!p.s.length)en.textContent='próximos videoclips';
-    p.s.forEach((t,i)=>{if(i)en.append(' · ');const l=document.createElement('a');l.textContent=t;l.dataset.cancion=t;en.appendChild(l)});
+      <div class="cuerpo"><h3>${p.n}</h3><p class="rol">${p.r}</p><p class="bio">${p.b}</p></div>`;
     const img=a.querySelector('img');
     img.onerror=()=>{const s=document.createElement('span');s.className='inicial';s.textContent=p.n.replace('El ','').replace('La ','')[0].toUpperCase();img.replaceWith(s)};
     grid.appendChild(a);
