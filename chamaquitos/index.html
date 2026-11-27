@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Chamaquitos — Canciones infantiles animadas</title>
+<meta name="description" content="Chamaquitos: canciones infantiles animadas y los personajes del barrio — Chamaquito, Daniela, Nina, Chiquilín y sus familias. Una producción de Marrero Bernal Media.">
+<link rel="icon" href="img/c.png">
+<meta property="og:title" content="Chamaquitos — Canciones infantiles animadas">
+<meta property="og:description" content="Conoce a Chamaquito, Daniela, Nina, Chiquilín y sus familias. Videoclips nuevos cada semana.">
+<meta property="og:image" content="img/c.png">
+<style>
+@font-face{font-family:Fredoka;font-weight:400;font-display:swap;src:url(fonts/fredoka-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Fredoka;font-weight:600;font-display:swap;src:url(fonts/fredoka-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Fredoka;font-weight:700;font-display:swap;src:url(fonts/fredoka-latin-700-normal.woff2) format("woff2")}
+:root{--rojo:#e83e49;--amarillo:#ffbe1e;--turquesa:#1cb4a0;--azul:#2d6ed7;--marino:#1f265c;--cielo:#eaf5ff;--papel:#fffdf6;--texto:#22264a;--suave:#5a6085}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Fredoka,"Trebuchet MS",system-ui,sans-serif;color:var(--texto);background:var(--papel);line-height:1.5;font-size:18px}
+img{max-width:100%;display:block}
+a{color:var(--azul)}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.hero{background:linear-gradient(180deg,#bfe3ff 0%,var(--cielo) 70%,var(--papel) 100%);padding-block:28px 40px;text-align:center;overflow:hidden}
+.hero .logos{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.hero .logos .c{height:110px;width:auto}
+.hero .logos .letras{height:auto;width:min(560px,80vw)}
+.hero p.lema{font-size:clamp(20px,3.4vw,28px);font-weight:600;color:var(--marino);margin:18px auto 22px;max-width:30ch;text-wrap:balance}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:inherit;font-weight:700;font-size:20px;text-decoration:none;border-radius:999px;padding:14px 26px;border:3px solid var(--marino);box-shadow:0 5px 0 var(--marino);transition:transform .1s}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--marino)}
+.btn.yt{background:var(--rojo);color:#fff}
+.btn.fb{background:#fff;color:var(--marino)}
+.botones{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+nav.menu{position:sticky;top:0;z-index:5;background:var(--marino)}
+nav.menu .wrap{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding-block:8px}
+nav.menu a{color:#fff;text-decoration:none;font-weight:600;padding:6px 14px;border-radius:999px}
+nav.menu a:hover{background:rgba(255,255,255,.15)}
+section{padding-block:48px}
+h2{font-size:clamp(30px,5vw,44px);margin:0 0 6px;text-align:center;color:var(--marino);text-wrap:balance}
+h2 span{color:var(--rojo)}
+.intro{text-align:center;color:var(--suave);max-width:60ch;margin:0 auto 28px}
+.grupo{font-size:24px;font-weight:700;color:var(--azul);margin:34px 0 14px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.ficha{background:#fff;border:3px solid var(--marino);border-radius:24px;overflow:hidden;box-shadow:0 6px 0 var(--marino);display:flex;flex-direction:column;min-width:0}
+.ficha .foto{aspect-ratio:1/1;background:var(--color,#dfefff);display:flex;align-items:flex-end;justify-content:center;position:relative}
+.ficha .foto img{width:100%;height:100%;object-fit:cover}
+.ficha .foto .inicial{font-size:110px;font-weight:700;color:#fff;align-self:center;text-shadow:0 5px 0 rgba(0,0,0,.15)}
+.ficha .cuerpo{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.ficha h3{margin:0;font-size:28px;line-height:1.1}
+.ficha .rol{font-weight:600;color:var(--suave);font-size:16px;margin:0}
+.ficha p.bio{margin:0;font-size:17px}
+.ficha .sale{margin-top:auto;font-size:15px;color:var(--suave)}
+.ficha .sale b{color:var(--texto)}
+#videoclips{background:var(--cielo)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.vid{text-decoration:none;color:var(--texto);background:#fff;border-radius:18px;overflow:hidden;border:3px solid var(--marino);display:flex;flex-direction:column;min-width:0}
+.vid img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.vid span{padding:10px 12px;font-weight:600;font-size:17px}
+.historia{max-width:65ch;margin:0 auto;font-size:19px}
+.historia p{margin:0 0 14px}
+.padres{background:#fff;border:3px dashed var(--turquesa);border-radius:20px;padding:18px 22px;max-width:65ch;margin:26px auto 0;font-size:17px}
+footer{background:var(--marino);color:#fff;text-align:center;padding-block:28px}
+footer a{color:var(--amarillo)}
+footer small{display:block;opacity:.8;margin-top:8px;font-size:14px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="logos"><img class="c" src="img/c.png" alt=""><img class="letras" src="img/letras.png" alt="Chamaquitos"></div>
+    <p class="lema">Canciones infantiles animadas con los niños del barrio</p>
+    <div class="botones">
+      <a class="btn yt" href="https://www.youtube.com/@chamaquitotv?sub_confirmation=1">▶ Suscríbete en YouTube</a>
+      <a class="btn fb" href="https://www.facebook.com/ChamaquitoTV/">Síguenos en Facebook</a>
+    </div>
+  </div>
+</header>
+
+<nav class="menu"><div class="wrap">
+  <a href="#personajes">Personajes</a><a href="#videoclips">Videoclips</a><a href="#historia">Nuestra historia</a>
+</div></nav>
+
+<main>
+<section id="personajes"><div class="wrap">
+  <h2>Conoce a los <span>Chamaquitos</span></h2>
+  <p class="intro">Todos viven en el mismo barrio y salen en los videoclips. Cada canción es una aventura nueva con los mismos amigos.</p>
+  <div id="fichas"></div>
+</div></section>
+
+<section id="videoclips"><div class="wrap">
+  <h2>Los <span>videoclips</span></h2>
+  <p class="intro">Toca cualquiera para verlo en YouTube.</p>
+  <div class="vgrid" id="videos"></div>
+</div></section>
+
+<section id="historia"><div class="wrap">
+  <h2>Nuestra <span>historia</span></h2>
+  <div class="historia">
+    <p>Todo empezó con <b>Chiquilín</b>, un disco de canciones infantiles que conquistó a los niños y llegó a la televisión con un gran espectáculo musical lleno de chamaquitos cantando y bailando.</p>
+    <p>Años después, aquellas canciones vuelven animadas, con un barrio nuevo y una pandilla nueva: Chamaquito, Daniela, Nina y el mismísimo Chiquilín, con sus familias y sus mascotas.</p>
+    <p>Chamaquitos es una producción de <b>Marrero Bernal Media</b>. Cada semana estrenamos un videoclip nuevo.</p>
+  </div>
+  <div class="padres"><b>Para los papás:</b> nuestros videos de YouTube están marcados «hecho para niños». Por eso YouTube no permite comentarios ni notificaciones en ellos. No es un error del canal. Este sitio no recoge datos de nadie.</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <a href="https://www.youtube.com/@chamaquitotv?sub_confirmation=1">YouTube</a> · <a href="https://www.facebook.com/ChamaquitoTV/">Facebook</a> · <a href="https://www.instagram.com/chamaquito.tv/">Instagram</a>
+  <small>© 2026 Chamaquitos · Una producción de <a href="https://www.marrerobernalmedia.com">Marrero Bernal Media</a></small>
+</div></footer>
+
+<script src="chamaquitos-estrenos.js"></script>
+<script>
+// Fichas del elenco. La imagen va en img/personajes/<id>.png; si todavía no existe, sale la inicial sobre su color.
+const ELENCO=[
+ {g:"Los niños",l:[
+  {id:"chamaquito",n:"Chamaquito",r:"El que siempre va delante",c:"#2d6ed7",b:"Es la cara de la pandilla. Curioso, corredor y el primero en apuntarse a cualquier aventura. Su mejor amigo es Suky, el perrito salchicha, y vive con su mamá Yanelsi y su hermanita Daniela en una casa en alto con balcón.",s:["Suky","Deseos","Conejito majadero","Hormiguita retozona","Vinagrito"]},
+  {id:"daniela",n:"Daniela",r:"La hermanita de Chamaquito",c:"#e8708a",b:"Flequillo, lacitos rosados, pequitas y una sonrisa con un diente caído. Dulce y valiente: se disfrazó de hormiguita y un día rescató de un cartucho a un gatico flaquito que hoy es Vinagrito.",s:["Hormiguita retozona","Vinagrito"]},
+  {id:"nina",n:"Nina",r:"La niña de la bicicleta",c:"#1cb4a0",b:"Alegre, rápida y muy despierta. Aprendió a montar bicicleta con su papá Newito, y de bebé la dormían cantándole bajito en el portal, con una linterna, las noches de apagón.",s:["El niño de la bicicleta","Deseos","Drume negrita","Conejito majadero","Hormiguita retozona"]},
+  {id:"chiquilin",n:"Chiquilín",r:"El que empezó todo",c:"#e83e49",b:"Gorra roja al revés y los audífonos siempre puestos: nunca se separa de su música. Anda en bicicleta por todo el barrio y en las fiestas es el que pone la música desde el balcón. Su mamá es Minerva.",s:["El niño de la bicicleta","Juan me tiene sin cuidado","Deseos","Conejito majadero","Hormiguita retozona","Vinagrito"]}
+ ]},
+ {g:"Las familias y los vecinos",l:[
+  {id:"yanelsi",n:"Yanelsi",r:"Mamá de Chamaquito y Daniela",c:"#ffbe1e",b:"Trabajadora y cariñosa, siempre pendiente de sus dos niños, aunque sea llamándolos por el celular. Cuando se enfermó, sus hijos y la pandilla la cuidaron hasta verla sana otra vez.",s:["Deseos","Hormiguita retozona"]},
+  {id:"minerva",n:"Minerva",r:"Mamá de Chiquilín",c:"#9b6bd6",b:"Alegre y conversadora. Hace lo que sea para ver feliz a Chiquilín, y en el parque del barrio nunca le falta un cuento para las otras mamás.",s:["Deseos"]},
+  {id:"newito",n:"Newito",r:"Papá de Nina",c:"#f08a2c",b:"Un papá de los que juegan. Le enseñó a Nina a montar bicicleta y en las noches de apagón saca la linterna al portal para que nadie tenga miedo.",s:["Deseos","Drume negrita"]},
+  {id:"marinero",n:"El papá marinero",r:"Marino mercante",c:"#3a8fd0",b:"Ha recorrido los mares del mundo y siempre regresa a casa con historias de barcos, puertos y océanos que hacen soñar a los niños.",s:["Marinero quiero ser"]},
+  {id:"yamira",n:"Yamira",r:"La vecina de los cuentos",c:"#d64f7a",b:"La vecina que llama a todos los niños del barrio y les canta cuentos. Cuando Yamira empieza a cantar, nadie quiere irse a dormir.",s:["Conejito majadero"]},
+  {id:"abuela",n:"La abuela",r:"La que todo lo sabe",c:"#8c7b6b",b:"Paciente, sabia y con mucho cariño. Juan le da trabajo, pero ella siempre tiene la frase justa para ponerlo en su lugar.",s:["Juan me tiene sin cuidado"]}
+ ]},
+ {g:"Las mascotas",l:[
+  {id:"suky",n:"Suky",r:"El perrito salchicha",c:"#b5793f",b:"Largo, juguetón y el compañero inseparable de Chamaquito. Donde hay una pelota, ahí está Suky.",s:["Suky"]},
+  {id:"vinagrito",n:"Vinagrito",r:"El gatico de Daniela",c:"#7a8ccf",b:"Blanquito como el algodón, relamido y juguetón, con un cascabel en el collar. Es amigo de un ratoncito y sueña con una fiesta en la azotea bajo la luna.",s:["Vinagrito"]}
+ ]}
+];
+const cont=document.getElementById('fichas');
+for(const g of ELENCO){
+  const t=document.createElement('div');t.className='grupo';t.textContent=g.g;cont.appendChild(t);
+  const grid=document.createElement('div');grid.className='grid';cont.appendChild(grid);
+  for(const p of g.l){
+    const a=document.createElement('article');a.className='ficha';a.id=p.id;
+    a.innerHTML=`<div class="foto" style="--color:${p.c}"><img src="img/personajes/${p.id}.png" alt="${p.n}" loading="lazy"></div>
+      <div class="cuerpo"><h3>${p.n}</h3><p class="rol">${p.r}</p><p class="bio">${p.b}</p><p class="sale"><b>Sale en:</b> ${p.s.join(' · ')}</p></div>`;
+    const img=a.querySelector('img');
+    img.onerror=()=>{const s=document.createElement('span');s.className='inicial';s.textContent=p.n.replace('El ','').replace('La ','')[0].toUpperCase();img.replaceWith(s)};
+    grid.appendChild(a);
+  }
+}
+// Videoclips: salen de chamaquitos-estrenos.js (el mismo archivo de la fila de Estrenos de marrerobernalmedia.com), del más nuevo al más viejo.
+const V=(window.APPDATA&&window.APPDATA.vid)||{};
+const vs=Object.entries(V).sort((a,b)=>b[1].f.localeCompare(a[1].f));
+const vg=document.getElementById('videos');
+for(const [id,v] of vs){
+  const a=document.createElement('a');a.className='vid';a.href='https://www.youtube.com/watch?v='+id;
+  a.innerHTML=`<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy"><span></span>`;
+  a.querySelector('span').textContent=v.t;vg.appendChild(a);
+}
+</script>
+</body>
+</html>
