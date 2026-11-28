@@ -18,6 +18,7 @@ window.APPDATA = {
     "mzhkv6_GD5k": { f: "2026-11-26", t: "Tin tin la lluvia" },
     "3WbpG7Uv4lM": { f: "2026-11-26", t: "Conejito majadero" },
     "UVACM0Uur9A": { f: "2026-11-26", t: "Hormiguita retozona" },
-    "N2i_NkOuYQw": { f: "2026-11-27", t: "Vinagrito" }
+    "N2i_NkOuYQw": { f: "2026-11-27", t: "Vinagrito" },
+    "5OqtfQ7pt_0": { f: "2026-11-27", t: "Di por qué" }
   }
 };
