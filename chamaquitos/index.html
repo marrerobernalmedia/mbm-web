@@ -177,7 +177,7 @@ for(const g of ELENCO){
 // Videoclips: salen de chamaquitos-estrenos.js (el mismo archivo de la fila de Estrenos de marrerobernalmedia.com), del más nuevo al más viejo.
 // Se ven aquí mismo, en un reproductor incrustado (modo de privacidad de YouTube, sin cookies hasta dar play), y siguen en cadena.
 const V=(window.APPDATA&&window.APPDATA.vid)||{};
-const vs=Object.entries(V).sort((a,b)=>b[1].f.localeCompare(a[1].f));
+const vs=Object.entries(V).map((x,i)=>[x[0],x[1],i]).sort((a,b)=>b[1].f.localeCompare(a[1].f)||b[2]-a[2]).map(x=>[x[0],x[1]]);
 const ids=vs.map(x=>x[0]);
 const vg=document.getElementById('videos'),pant=document.getElementById('pantalla'),ahora=document.getElementById('ahora');
 function poner(id,play){
@@ -194,7 +194,10 @@ for(const [id,v] of vs){
   b.innerHTML=`<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy"><span></span>`;
   b.querySelector('span').textContent=v.t;b.onclick=()=>tocar(id);vg.appendChild(b);
 }
-if(ids.length)poner(ids[0],false);
+// Enlace directo a un videoclip: chamaquitos.com/?v=ID_DE_YOUTUBE
+const pedido=new URLSearchParams(location.search).get('v');
+if(pedido&&ids.includes(pedido)){poner(pedido,false);setTimeout(()=>document.getElementById('tv').scrollIntoView({block:'start'}),300);}
+else if(ids.length)poner(ids[0],false);
 // En las fichas, cada canción de «Sale en» pone ese videoclip en el reproductor.
 const norm=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f¿?]/g,'').trim();
 document.getElementById('fichas').addEventListener('click',e=>{
